@@ -5,30 +5,33 @@
 
 // Presets
 const genderPresets = ["woman", "man", "girl", "boy"];
-const nationalityPresets = ["caucasian", "black", "Indian", "Thai", "Japanese", "Korean", "Chinese", "Filipina", "Brazilian", "Mexican"];
+const nationalityPresets = ["Caucasian", "Black", "Anne Hathaway", "Dolly Parton", "Sabrina Carpenter", "Marilyn Monroe", "Indian", "Thai", "Japanese", "Korean", "Filipina", "Brazilian", "Italian", "Mexican of Incan descent with Meso-American heritage"];
 const bodyTypePresets = ["slim build", "athletic build", "curvy build", "average build", "petite build", "muscular build"];
 const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a button-up shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties"];
 const agePresets = ["18 years old", "20 years old", "25 years old", "30 years old", "35 years old", "40 years old", "45 years old"];
 const skinTonePresets = ["fair skin", "pale skin", "tanned skin", "olive skin", "dark skin", "warm brown skin"];
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes"];
 const tattooPresets = ["arm tattoo", "back tattoo", "sleeve tattoo"];
-const hairColorPresets = ["blonde", "brunette", "black", "red", "auburn"];
+const hairColorPresets = ["blonde", "brunette", "black", "red", "auburn", "silver"];
 const hairLengthPresets = ["short", "medium length", "long"];
-const hairstylePresets = ["straight", "wavy", "curly", "ponytail"];
+const hairstylePresets = ["straight", "wavy", "curly", "ponytail", "messy ponytail", "with bangs", "short boyish hairstyle", "French braid", "messy double buns", "light body hair", "thick body hair"];
 
 // Composite Poses (Dropdown Presets)
 const complexActionPresets = [
     { 
         label: "📷 Wall Pose (Back against wall)", 
-        value: "standing with her back against the wall, arms raised high above her head and hands clasped together with one knee bent and 1 foot on the wall while looking off to the side away from the camera with her lips parted" 
+        value: "standing with her back against a wall, arms raised high above her head and hands clasped together with one knee bent and one foot on the wall" 
     },
-		{
-			label: "Spread Eagle", 
-        value: "laying on her back with her legs raised and spread wide, feet wide apart and in foreground, looking through her open legs at the camera with her lips parted" 
+    {
+        label: "Leaning Forward, ass up",
+        value: "on her knees, leaning forward, back arched, ass high in the air, arms stretched out in front of her"
     },
-
+	{
+		label: "Spread Eagle", 
+        value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" 
+    },
     { 
-        label: "📷 Bed Pose (Leaning forward)", 
+        label: "Leaning Over Edge of Bed", 
         value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" 
     },
     { 
@@ -41,14 +44,22 @@ const complexActionPresets = [
 const actionSwitchPresets = [
     "standing with back against wall",
     "arms raised high above head",
+    "arms stretched out in front of her",
     "hands clasped together",
     "one knee bent",
     "one foot on the wall",
     "looking off to the side",
     "looking away from camera",
+    "looking at camera",
+    "looking down",
+    "facing camera",
+    "facing away from camera",
     "lips parted",
     "leaning forward",
-    "elbows resting on bed"
+    "elbows resting on bed",
+    "smiling",
+    "feet spread wide",
+    "feet together",
 ];
 
 // =========================================
@@ -63,7 +74,8 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
                 this.menu(0, ["1 Subject", "2 Subjects", "3 Subjects", "4 Subjects", "5 Subjects"]),
                 this.menu(0, ["1 Outfit", "2 Outfits", "3 Outfits", "4 Outfits", "5 Outfits"]),
                 this.menu(0, ["1 Action", "2 Actions", "3 Actions", "4 Actions", "5 Actions"]),
-                this.segmented(0, ["1:1 Square", "3:4 Portrait", "4:3 Landscape"])
+                // Keep labels compact so all four equal-width segments fit on narrow screens.
+                this.segmented(0, ["1:1", "3:4", "4:3", "16:9"])
             ]
         )
     ];
@@ -313,6 +325,7 @@ const promptTemplate = templateData[0];
 let width = 1024, height = 1024;
 if (aspectIndex === 1) { width = 768; height = 1024; }
 if (aspectIndex === 2) { width = 1024; height = 768; }
+if (aspectIndex === 3) { width = 1024; height = 576; }
 
 // Build Final Prompts
 const finalPrompts = [];
@@ -343,6 +356,8 @@ async function generateBatch() {
     config.batchCount = 1;
     config.batchSize = 1;
     config.seed = -1;
+
+    canvas.clear()
 
     for (const prompt of finalPrompts) {
         console.log("Generating Prompt:", prompt);
