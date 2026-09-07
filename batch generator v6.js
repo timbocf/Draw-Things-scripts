@@ -70,6 +70,10 @@ const actionSwitchPresets = [
     "smiling",
     "feet spread wide",
     "feet together",
+    "hands on hips",
+    "hands on breasts",
+    "hands in hair",
+    "hands lightly touching upper chest area"
 ];
 
 // =========================================
