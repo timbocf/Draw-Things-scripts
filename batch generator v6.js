@@ -75,7 +75,7 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
                 this.menu(0, ["1 Outfit", "2 Outfits", "3 Outfits", "4 Outfits", "5 Outfits"]),
                 this.menu(0, ["1 Action", "2 Actions", "3 Actions", "4 Actions", "5 Actions"]),
                 // Keep labels compact so all four equal-width segments fit on narrow screens.
-                this.segmented(0, ["1:1", "3:4", "4:3", "16:9"])
+                this.segmented(0, ["1:1", "3:4 Portrait", "4:3 Landscape", "16:9"])
             ]
         )
     ];
