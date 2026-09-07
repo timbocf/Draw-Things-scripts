@@ -7,14 +7,19 @@
 const genderPresets = ["woman", "man", "girl", "boy"];
 const nationalityPresets = ["Caucasian", "Black", "Anne Hathaway", "Dolly Parton", "Sabrina Carpenter", "Marilyn Monroe", "Indian", "Thai", "Japanese", "Korean", "Filipina", "Brazilian", "Italian", "Mexican of Incan descent with Meso-American heritage"];
 const bodyTypePresets = ["slim build", "athletic build", "curvy build", "average build", "petite build", "muscular build"];
-const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties"];
+const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties", "black french maid uniform with short pleated skirt and white collar"];
 const agePresets = ["18 years old", "20 years old", "25 years old", "30 years old", "35 years old", "40 years old", "45 years old"];
 const skinTonePresets = ["fair skin", "pale skin", "tanned skin", "olive skin", "dark skin", "warm brown skin"];
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes"];
 const tattooPresets = ["arm tattoo", "back tattoo", "sleeve tattoo"];
 const hairColorPresets = ["blonde", "brunette", "black", "red", "auburn", "silver"];
 const hairLengthPresets = ["short", "medium length", "long"];
-const hairstylePresets = ["straight", "wavy", "curly", "ponytail", "messy ponytail", "with bangs", "short boyish hairstyle", "French braid", "messy double buns", "light body hair", "thick body hair"];
+const hairstylePresets = ["straight", "wavy", "curly", "ponytail", "messy ponytail", "with bangs", "short boyish hairstyle", "French braid", "messy double buns", "Hollywood curls", "Victory curls", "light body hair", "thick body hair"];
+const artStylePresets = [
+    "photo",
+    "1940s era pinup oil painting in the style of Gil Ervgren and Alberto Vargas",
+    "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses"
+];
 
 // Composite Poses (Dropdown Presets)
 const complexActionPresets = [
@@ -188,9 +193,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
     fields.push(
         this.section(
             "❖  Prompt Template",
-            "Available tags: {subject}, {clothing}, {action}",
+            "Choose an art style and customize the prompt with available tags",
             [
-                this.textField("A photo of {subject} wearing {clothing}, {action}", "Prompt Template", false, 80)
+                this.menu(0, artStylePresets),
+                this.textField("A {artStyle} of {subject} wearing {clothing}, {action}", "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}", false, 80)
             ]
         )
     );
@@ -319,7 +325,8 @@ for (let i = 0; i < actionCount; i++) {
 
 // Parse Prompt Template
 const templateData = inputs[sectionIdx++];
-const promptTemplate = templateData[0];
+const artStyle = artStylePresets[templateData[0]];
+const promptTemplate = templateData[1];
 
 // Calculate Dimensions
 let width = 1024, height = 1024;
@@ -333,6 +340,7 @@ for (const subject of subjects) {
     for (const outfit of outfits) {
         for (const action of actions) {
             let constructedPrompt = promptTemplate
+                .replace(/{artStyle}/gi, artStyle)
                 .replace(/{subjects}/gi, subject)
                 .replace(/{subject}/gi, subject)
                 .replace(/{clothing}/gi, outfit)
