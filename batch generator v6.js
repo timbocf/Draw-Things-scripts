@@ -52,7 +52,9 @@ const complexActionPresets = [
 
 // Individual Modular Pose Switches
 const actionSwitchPresets = [
-    "standing with back against wall",
+    "standing",
+    "sitting",
+    "laying",
     "arms raised high above head",
     "arms stretched out in front of her",
     "hands clasped together",
