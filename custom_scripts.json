@@ -1,0 +1,18 @@
+[
+  {
+    "description" : "Automated workflow for Flux, including text-to-image, image refine, batch prompts, batch random prompts, etc.",
+    "author" : "czkoko",
+    "name" : "Flux Auto Workflow",
+    "file" : "flux-auto-workflow.js",
+    "tags" : [
+      "image-to-image",
+      "text-to-image"
+    ]
+  },
+  {
+    "description" : "Generate a batch of images using inline wildcards to randomize elements within the prompt.",
+    "author" : "wetcircuit",
+    "name" : "Wildcards",
+    "file" : "wildcards.js"
+  }
+]
