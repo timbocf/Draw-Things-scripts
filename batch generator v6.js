@@ -7,7 +7,7 @@
 const genderPresets = ["woman", "man", "girl", "boy"];
 const nationalityPresets = ["Caucasian", "Black", "Anne Hathaway", "Dolly Parton", "Sabrina Carpenter", "Marilyn Monroe", "Indian", "Thai", "Japanese", "Korean", "Filipina", "Brazilian", "Italian", "Mexican of Incan descent with Meso-American heritage"];
 const bodyTypePresets = ["slim build", "athletic build", "curvy build", "average build", "petite build", "muscular build"];
-const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a button-up shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties"];
+const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties"];
 const agePresets = ["18 years old", "20 years old", "25 years old", "30 years old", "35 years old", "40 years old", "45 years old"];
 const skinTonePresets = ["fair skin", "pale skin", "tanned skin", "olive skin", "dark skin", "warm brown skin"];
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes"];
