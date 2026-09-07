@@ -7,7 +7,7 @@
 const genderPresets = ["woman", "man", "girl", "boy"];
 const nationalityPresets = ["Caucasian", "Black", "Anne Hathaway", "Dolly Parton", "Sabrina Carpenter", "Marilyn Monroe", "Indian", "Thai", "Japanese", "Korean", "Filipina", "Brazilian", "Italian", "Mexican of Incan descent with Meso-American heritage"];
 const bodyTypePresets = ["slim build", "athletic build", "curvy build", "average build", "petite build", "muscular build"];
-const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties", "black french maid uniform with short pleated skirt and white collar"];
+const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "a summer dress", "nude", "bikini panties", "black french maid uniform with short pleated skirt and white collar", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots", "garter belt", "lace bustier", "champagne-colored silk pajama set with shorts that show ample thigh"];
 const agePresets = ["18 years old", "20 years old", "25 years old", "30 years old", "35 years old", "40 years old", "45 years old"];
 const skinTonePresets = ["fair skin", "pale skin", "tanned skin", "olive skin", "dark skin", "warm brown skin"];
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes"];
@@ -20,6 +20,7 @@ const artStylePresets = [
     "1940s era pinup oil painting in the style of Gil Ervgren and Alberto Vargas",
     "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses"
 ];
+const cameraViewPresets = ["side-view", "birds-eye view", "worms-eye view"];
 
 // Composite Poses (Dropdown Presets)
 const complexActionPresets = [
@@ -28,7 +29,7 @@ const complexActionPresets = [
         value: "standing with her back against a wall, arms raised high above her head and hands clasped together with one knee bent and one foot on the wall" 
     },
     {
-        label: "Leaning Forward, ass up",
+        label: "Leaning Forward (Ass Up)",
         value: "on her knees, leaning forward, back arched, ass high in the air, arms stretched out in front of her"
     },
 	{
@@ -42,6 +43,10 @@ const complexActionPresets = [
     { 
         label: "📷 Floor Pose (Cross-legged)", 
         value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" 
+    },
+    {
+        label: "Bending Over (Legs Straight)",
+        value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with hand covering her mouth and wide-eyed open-mouthed look of surprise"
     }
 ];
 
@@ -196,7 +201,8 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             "Choose an art style and customize the prompt with available tags",
             [
                 this.menu(0, artStylePresets),
-                this.textField("A {artStyle} of {subject} wearing {clothing}, {action}", "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}", false, 80)
+                ...cameraViewPresets.map(view => this.switch(false, view)),
+                this.textField("A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}", "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}", false, 80)
             ]
         )
     );
@@ -326,7 +332,9 @@ for (let i = 0; i < actionCount; i++) {
 // Parse Prompt Template
 const templateData = inputs[sectionIdx++];
 const artStyle = artStylePresets[templateData[0]];
-const promptTemplate = templateData[1];
+const selectedCameraViews = cameraViewPresets.filter((_, index) => templateData[index + 1]);
+const cameraView = selectedCameraViews.length ? `, ${selectedCameraViews.join(", ")}` : "";
+const promptTemplate = templateData[cameraViewPresets.length + 1];
 
 // Calculate Dimensions
 let width = 1024, height = 1024;
@@ -341,6 +349,7 @@ for (const subject of subjects) {
         for (const action of actions) {
             let constructedPrompt = promptTemplate
                 .replace(/{artStyle}/gi, artStyle)
+                .replace(/{cameraView}/gi, cameraView)
                 .replace(/{subjects}/gi, subject)
                 .replace(/{subject}/gi, subject)
                 .replace(/{clothing}/gi, outfit)
