@@ -292,16 +292,26 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         );
     }
 
-    // --- PROMPT TEMPLATE ---
+    // --- PROMPT OPTIONS & TEMPLATE ---
+    const promptControls = [
+        // Art style
+        this.menu(0, artStylePresets),
+        // Camera view modifiers
+        ...cameraViewPresets.map(view => this.switch(false, view)),
+        // Prompt text
+        this.textField(
+            "A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}",
+            "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}. Natural anatomy.",
+            false,
+            80
+        )
+    ];
+
     fields.push(
         this.section(
-            "❖  Prompt Template",
-            "Choose an art style and customize the prompt with available tags",
-            [
-                this.menu(0, artStylePresets),
-                ...cameraViewPresets.map(view => this.switch(false, view)),
-                this.textField("A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}", "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}. Natural anatomy.", false, 80)
-            ]
+            "❖  Prompt Options & Template",
+            "Choose an art style and camera view, then customize the template with tags",
+            promptControls
         )
     );
 
