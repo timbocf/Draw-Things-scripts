@@ -92,10 +92,10 @@ const complexActionPresets = [
         label: "Leaning Over Edge of Bed (on elbows)",
         value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera"
     },
-	{
-		label: "Leaning Over Edge of Bed (face on mattress)",
-		value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing ass toward the camera."
-	},
+    {
+        label: "Leaning Over Edge of Bed (face on mattress)",
+        value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing ass toward the camera."
+    },
     // Kneeling and squatting poses
     {
         label: "Leaning Forward (Ass Up)",
@@ -124,10 +124,10 @@ const complexActionPresets = [
         label: "Bending Over (Legs Straight)",
         value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with hand covering her mouth and wide-eyed open-mouthed look of surprise"
     },
-	{
-		label: "View in shower from below",
-		value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body. She is looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up at her wet body."
-	}
+    {
+        label: "View in shower from below",
+        value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body. She is looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up at her wet body."
+    }
 ];
 
 // Individual Modular Pose Switches
@@ -331,6 +331,92 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
 // =========================================
 let sectionIdx = 0;
 const subjects = [];
+const subjectGenderForms = [];
+
+function getGenderForm(gender) {
+    if (/\b(man|boy|male|masculine|he|him)\b/i.test(gender)) return "masculine";
+    if (/\b(woman|girl|female|feminine|she|her)\b/i.test(gender)) return "feminine";
+    return "neutral";
+}
+
+function matchCase(source, replacement) {
+    if (source === source.toUpperCase()) return replacement.toUpperCase();
+    if (source[0] === source[0].toUpperCase()) {
+        return replacement[0].toUpperCase() + replacement.slice(1);
+    }
+    return replacement;
+}
+
+function replaceWord(text, source, replacement) {
+    return text.replace(new RegExp(`\\b${source}\\b`, "gi"), match => matchCase(match, replacement));
+}
+
+function applyGenderTerms(prompt, genderForm) {
+    const genderTerms = {
+        masculine: {
+            subject: "he",
+            object: "him",
+            possessive: "his",
+            reflexive: "himself",
+            noun: ["man", "male", "boy"]
+        },
+        feminine: {
+            subject: "she",
+            object: "her",
+            possessive: "her",
+            reflexive: "herself",
+            noun: ["woman", "female", "girl"]
+        },
+        neutral: {
+            subject: "they",
+            object: "them",
+            possessive: "their",
+            reflexive: "themselves",
+            noun: ["person", "person", "person"]
+        }
+    };
+    const forms = genderTerms[genderForm];
+    let result = prompt;
+
+    // Collapse paired alternatives before replacing standalone terms.
+    const pairedAlternatives = [
+        ["himself(?:\\s*/\\s*|\\s+or\\s+)herself", forms.reflexive],
+        ["he(?:\\s*/\\s*|\\s+or\\s+)she", forms.subject],
+        ["him(?:\\s*/\\s*|\\s+or\\s+)her", forms.object],
+        ["his(?:\\s*/\\s*|\\s+or\\s+)her", forms.possessive],
+        ["man(?:\\s*/\\s*|\\s+or\\s+)woman", forms.noun[0]],
+        ["male(?:\\s*/\\s*|\\s+or\\s+)female", forms.noun[1]],
+        ["boy(?:\\s*/\\s*|\\s+or\\s+)girl", forms.noun[2]]
+    ];
+    for (const [source, replacement] of pairedAlternatives) {
+        result = result.replace(new RegExp(source, "gi"), match => matchCase(match, replacement));
+    }
+
+    // Replace longer forms first so "herself" is not split into "her" + "self".
+    result = replaceWord(result, "himself", forms.reflexive);
+    result = replaceWord(result, "herself", forms.reflexive);
+    result = replaceWord(result, "hers", forms.possessive);
+    result = replaceWord(result, "his", forms.possessive);
+    result = replaceWord(result, "he", forms.subject);
+    result = replaceWord(result, "she", forms.subject);
+    result = replaceWord(result, "him", forms.object);
+
+    // "her" is possessive in "her hands" but an object in "looking at her".
+    result = result.replace(/\bher\b/gi, (match, offset, fullText) => {
+        const after = fullText.slice(offset + match.length);
+        const isPossessive = /^\s+(body|back|legs|feet|hands|arms|hair|face|mouth|eyes|head|breasts|ass|butt|knees|fingers|shoulders)\b/i.test(after);
+        return matchCase(match, isPossessive ? forms.possessive : forms.object);
+    });
+
+    const nounReplacements = [
+        ["woman", forms.noun[0]], ["female", forms.noun[1]], ["girl", forms.noun[2]],
+        ["man", forms.noun[0]], ["male", forms.noun[1]], ["boy", forms.noun[2]]
+    ];
+    for (const [source, replacement] of nounReplacements) {
+        result = replaceWord(result, source, replacement);
+    }
+    return result;
+}
 
 // Parse Subject Data
 for (let i = 0; i < subjectCount; i++) {
@@ -351,6 +437,7 @@ for (let i = 0; i < subjectCount; i++) {
     let age = agePresets[ageIndex] || "";
     let skin = typedSkin !== "" ? typedSkin : (skinToneIndex > 0 ? skinTonePresets[skinToneIndex - 1] : "");
     let bodyType = typedBodyType !== "" ? typedBodyType : (bodyTypeIndex > 0 ? bodyTypePresets[bodyTypeIndex - 1] : "");
+    const genderForm = getGenderForm(gender);
 
     if (nationality) subjectParts.push(nationality);
     if (gender) subjectParts.push(gender);
@@ -388,6 +475,7 @@ for (let i = 0; i < subjectCount; i++) {
     if (additionalDetails) subjectParts.push(additionalDetails);
 
     subjects.push(subjectParts.join(", "));
+    subjectGenderForms.push(genderForm);
 }
 
 // Parse Outfits Data
@@ -460,7 +548,9 @@ if (aspectIndex === 3) { width = 1024; height = 576; }
 
 // Build Final Prompts
 const finalPrompts = [];
-for (const subject of subjects) {
+for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
+    const subject = subjects[subjectIndex];
+    const genderForm = subjectGenderForms[subjectIndex];
     for (const outfit of outfits) {
         for (const action of actions) {
             let constructedPrompt = promptTemplate
@@ -472,6 +562,7 @@ for (const subject of subjects) {
                 .replace(/{action}/gi, action)
                 .replace(", ,", ",")
                 .replace("  ", " ");
+            constructedPrompt = applyGenderTerms(constructedPrompt, genderForm);
             finalPrompts.push(constructedPrompt);
         }
     }
