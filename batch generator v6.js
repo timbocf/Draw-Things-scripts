@@ -633,20 +633,6 @@ const artStylePresets = [
 
 
 // =========================================
-// CAMERA VIEW
-// =========================================
-
-const cameraViewPresets = [
-    "side-view",
-    "3/4 view",
-    "birds-eye view",
-    "worms-eye view",
-    "close-up",
-    "extreme close-up"
-];
-
-
-// =========================================
 // CAMERA • FRAMING
 // =========================================
 
@@ -654,6 +640,14 @@ const cameraFramingPresets = [
     {
         label: "Head and shoulders",
         value: "head-and-shoulders framing"
+    },
+    {
+        label: "Close-up",
+        value: "close-up framing focused tightly on the subject"
+    },
+    {
+        label: "Extreme close-up",
+        value: "extreme close-up framing focused very tightly on specific facial or bodily details"
     },
     {
         label: "Chest-up",
@@ -706,6 +700,14 @@ const cameraPerspectivePresets = [
     {
         label: "Bird's-eye",
         value: "high bird's-eye perspective looking down from above"
+    },
+    {
+        label: "Side view",
+        value: "side-view camera perspective"
+    },
+    {
+        label: "3/4 view",
+        value: "three-quarter camera perspective showing the subject from an oblique angle"
     },
     {
         label: "Wide-angle perspective",
@@ -1704,16 +1706,6 @@ const inputs = requestFromUser(
         // CAMERA
         // =====================================
 
-        const cameraViewControls =
-            cameraViewPresets.map(
-                view =>
-                    this.switch(
-                        false,
-                        `✡︎  ${view}`
-                    )
-            );
-
-
         const cameraFramingControls =
             cameraFramingPresets.map(
                 p =>
@@ -1771,22 +1763,9 @@ const inputs = requestFromUser(
 
             this.section(
 
-                "❖  CAMERA • View",
-
-                "Choose the camera's basic viewing direction or shot type",
-
-                cameraViewControls
-            )
-        );
-
-
-        fields.push(
-
-            this.section(
-
                 "❖  CAMERA • Perspective",
 
-                "Control the camera's viewing angle and spatial perspective",
+                "Control the camera's viewing angle, direction, and spatial perspective",
 
                 cameraPerspectiveControls
             )
@@ -2001,9 +1980,9 @@ const inputs = requestFromUser(
 
             this.textField(
 
-                "A {cameraView}{artStyle} of {subject} wearing {clothing}, {action}, {timeOfDay}, {camera}, {lighting}, Natural anatomy",
+                "A {artStyle} of {subject} wearing {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, Natural anatomy",
 
-                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}, {camera}, {timeOfDay}, {lighting}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
 
                 false,
 
@@ -3008,28 +2987,6 @@ for (
 
 
 // -----------------------------------------
-// View
-// -----------------------------------------
-
-const cameraViewData =
-    inputs[sectionIdx++];
-
-
-const selectedCameraViews =
-    cameraViewPresets.filter(
-
-        (_, index) =>
-            cameraViewData[index] === true
-    );
-
-
-const cameraView =
-    selectedCameraViews.length
-        ? `${selectedCameraViews.join(", ")} `
-        : "";
-
-
-// -----------------------------------------
 // Perspective
 // -----------------------------------------
 
@@ -3415,11 +3372,6 @@ for (
                     .replace(
                         /{artStyle}/gi,
                         artStyle || ""
-                    )
-
-                    .replace(
-                        /{cameraView}/gi,
-                        cameraView || ""
                     )
 
                     .replace(
