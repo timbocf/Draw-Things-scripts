@@ -300,7 +300,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         ...cameraViewPresets.map(view => this.switch(false, view)),
         // Prompt text
         this.textField(
-            "A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}, Natural anatomy",
+            "A {cameraView}{artStyle} of {subject} wearing {clothing}, {action}, Natural anatomy",
             "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}. Natural anatomy.",
             false,
             80
@@ -441,7 +441,7 @@ for (let i = 0; i < actionCount; i++) {
 const templateData = inputs[sectionIdx++];
 const artStyle = artStylePresets[templateData[0]];
 const selectedCameraViews = cameraViewPresets.filter((_, index) => templateData[index + 1]);
-const cameraView = selectedCameraViews.length ? `, ${selectedCameraViews.join(", ")}` : "";
+const cameraView = selectedCameraViews.length ? `${selectedCameraViews.join(", ")} ` : "";
 const promptTemplate = templateData[cameraViewPresets.length + 1];
 
 // Calculate Dimensions
