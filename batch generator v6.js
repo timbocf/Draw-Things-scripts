@@ -4,28 +4,29 @@
 // =========================================
 
 // Presets
-const genderPresets = ["woman", "man", "girl", "boy"];
+const genderPresets = ["woman", "man", "girl", "boy", "midget woman with achondroplasia"];
 const nationalityPresets = ["Caucasian", "Black", "Anne Hathaway", "Dolly Parton", "Sabrina Carpenter", "Marilyn Monroe", "Indian", "Thai", "Japanese", "Korean", "Filipina", "Brazilian", "Italian", "Mexican of Incan descent with Meso-American heritage"];
 const bodyTypePresets = ["slim build", "athletic build", "curvy build", "average build", "petite build", "muscular build"];
-const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "cutoff jean shorts", "a summer dress", "nude", "bikini panties", "black french maid uniform with short pleated skirt and white collar", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots", "garter belt", "lace bustier", "champagne-colored silk pajama set with shorts that show ample thigh"];
-const agePresets = ["18 years old", "20 years old", "25 years old", "30 years old", "35 years old", "40 years old", "45 years old"];
+const clothingPresets = ["a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top", "a blouse", "a short babydoll dress", "an unbuttoned mens dress shirt", "a hoodie", "jeans", "shorts", "cutoff jean shorts", "a summer dress", "nude", "barefoot", "bikini-style panties", "black french maid uniform with short pleated skirt and white collar", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots", "garter belt", "lace bustier", "champagne-colored silk pajama set with shorts that show ample thigh", "thong", "one-piece swimsuit", "string bikini", "Hooters uniform (tight-fitting white t-shirt with the Hooters logo across the chest and short tight-fitting short orange shorts"];
+const agePresets = ["14 years old", "16 years old", "18 years old", "20 years old", "25 years old", "30 years old", "35 years old", "40 years old", "45 years old", "55 years old", "65 years old"];
 const skinTonePresets = ["fair skin", "pale skin", "tanned skin", "olive skin", "dark skin", "warm brown skin"];
-const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes"];
-const tattooPresets = ["arm tattoo", "back tattoo", "sleeve tattoo"];
-const hairColorPresets = ["blonde", "brunette", "black", "red", "auburn", "silver"];
-const hairLengthPresets = ["short", "medium length", "long"];
+const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
+const tattooPresets = ["arm tattoo", "back tattoo", "sleeve tattoo", "red & green rose tattoos that cover both arms"];
+const hairColorPresets = ["blonde", "brunette", "black", "red", "auburn", "salt & pepper", "silver"];
+const hairLengthPresets = ["short", "medium length", "long", "very long"];
 const hairstylePresets = ["straight", "wavy", "curly", "ponytail", "messy ponytail", "with bangs", "short boyish hairstyle", "French braid", "messy double buns", "Hollywood curls", "Victory curls", "light body hair", "thick body hair"];
 const artStylePresets = [
     "photo",
     "1940s era pinup oil painting in the style of Gil Ervgren and Alberto Vargas",
-    "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses"
+    "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses",
+		"bathroom mirror selfie"
 ];
-const cameraViewPresets = ["side-view", "birds-eye view", "worms-eye view"];
+const cameraViewPresets = ["side-view", "birds-eye view", "worms-eye view", "3/4 view"];
 
 // Composite Poses (Dropdown Presets)
 const complexActionPresets = [
     { 
-        label: "📷 Wall Pose (Back against wall)", 
+        label: "Wall Pose (Back against wall)", 
         value: "standing with her back against a wall, arms raised high above her head and hands clasped together with one knee bent and one foot on the wall" 
     },
     {
@@ -33,7 +34,7 @@ const complexActionPresets = [
         value: "on her knees, leaning forward, back arched, ass high in the air, arms stretched out in front of her"
     },
 	{
-		label: "Spread Eagle", 
+			label: "Spread Eagle", 
         value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" 
     },
     { 
@@ -41,20 +42,36 @@ const complexActionPresets = [
         value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" 
     },
     { 
-        label: "📷 Floor Pose (Cross-legged)", 
+        label: "Floor Pose (Cross-legged)", 
         value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" 
     },
     {
         label: "Bending Over (Legs Straight)",
         value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with hand covering her mouth and wide-eyed open-mouthed look of surprise"
-    }
+    },
+	{
+		label: "On Back (Legs Straight)",
+		value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only"
+	},
+	{
+		label: "Squatting (from below)",
+		value: "worms-eye view, squatting with her knees spread wide, and on the tips of her toes. Her hands are resting on her knees"
+	}
 ];
 
 // Individual Modular Pose Switches
 const actionSwitchPresets = [
     "standing",
-    "sitting",
-    "laying",
+	  "sitting",
+	  "laying",
+	"on a bed",
+	"on her back", 
+	"her butt at the edge of the bed", 
+	"legs straight", 
+	"elevated into the air", 
+	"knees locked", 
+	"bending at waist only",
+	 "leaning forward",
     "arms raised high above head",
     "arms stretched out in front of her",
     "hands clasped together",
@@ -64,10 +81,10 @@ const actionSwitchPresets = [
     "looking away from camera",
     "looking at camera",
     "looking down",
+	"looking up",
     "facing camera",
     "facing away from camera",
     "lips parted",
-    "leaning forward",
     "elbows resting on bed",
     "smiling",
     "feet spread wide",
@@ -75,7 +92,13 @@ const actionSwitchPresets = [
     "hands on hips",
     "hands on breasts",
     "hands in hair",
-    "hands lightly touching upper chest area"
+    "hands lightly touching upper chest area",
+	"hands on ass",
+	"hands spreading ass cheeks",
+	"in the shower",
+	"in a bedroom",
+	"in a crowded city street",
+	"in a glade"
 ];
 
 // =========================================
@@ -208,7 +231,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             [
                 this.menu(0, artStylePresets),
                 ...cameraViewPresets.map(view => this.switch(false, view)),
-                this.textField("A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}", "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}", false, 80)
+                this.textField("A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}", "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}. Natural anatomy.", false, 80)
             ]
         )
     );
