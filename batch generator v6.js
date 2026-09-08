@@ -34,7 +34,7 @@ const clothingPresets = [
     "champagne-colored silk pajama set with shorts that show ample thigh",
     // Uniforms
     "black french maid uniform with short pleated skirt and white collar",
-    "Hooters uniform (tight-fitting white t-shirt with the Hooters logo across the chest and short tight-fitting short orange shorts",
+    "Hooters uniform (tight-fitting white t-shirt with the Hooters logo across the chest and short tight-fitting short orange shorts)",
     // Footwear and legwear
     "barefoot",
     "stiletto heels",
@@ -69,7 +69,7 @@ const hairstylePresets = [
 ];
 const artStylePresets = [
     "photo",
-    "1940s era pinup oil painting in the style of Gil Ervgren and Alberto Vargas",
+    "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
     "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses",
     "bathroom mirror selfie"
 ];
@@ -300,7 +300,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         ...cameraViewPresets.map(view => this.switch(false, view)),
         // Prompt text
         this.textField(
-            "A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}",
+            "A {artStyle} of {subject} wearing {clothing}, {action}{cameraView}, Natural anatomy",
             "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}. Natural anatomy.",
             false,
             80
