@@ -1,4 +1,4 @@
-//@api-1.0 
+//@api-1.0
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
 // PRESETS + BODY PHYSIQUE + GENDER-AWARE TERMS
@@ -20,6 +20,7 @@ const genderPresets = [
 const nationalityPresets = [
     "Caucasian",
     "Black",
+    "Mixed race with Afro-European features",
     "Anne Hathaway",
     "Dolly Parton",
     "Sabrina Carpenter",
@@ -61,7 +62,9 @@ const skinTonePresets = [
     "fair skin",
     "pale skin",
     "tanned skin",
+    "cream skin",
     "olive skin",
+    "caramel skin",
     "dark skin",
     "warm brown skin",
     "dark glossy skin"
