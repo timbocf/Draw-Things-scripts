@@ -89,9 +89,13 @@ const complexActionPresets = [
         value: "standing with her back against a wall, arms raised high above her head and hands clasped together with one knee bent and one foot on the wall"
     },
     {
-        label: "Leaning Over Edge of Bed",
+        label: "Leaning Over Edge of Bed (on elbows)",
         value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera"
     },
+	{
+		label: "Leaning Over Edge of Bed (face on mattress)",
+		value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing ass toward the camera."
+	},
     // Kneeling and squatting poses
     {
         label: "Leaning Forward (Ass Up)",
@@ -119,7 +123,11 @@ const complexActionPresets = [
     {
         label: "Bending Over (Legs Straight)",
         value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with hand covering her mouth and wide-eyed open-mouthed look of surprise"
-    }
+    },
+	{
+		label: "View in shower from below",
+		value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body. She is looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up at her wet body."
+	}
 ];
 
 // Individual Modular Pose Switches
@@ -323,25 +331,6 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
 // =========================================
 let sectionIdx = 0;
 const subjects = [];
-const subjectPronouns = [];
-
-function getPronouns(gender) {
-    if (/\b(man|boy|male)\b/i.test(gender)) {
-        return { subject: "he", possessive: "his", reflexive: "himself" };
-    }
-    if (/\b(woman|girl|female)\b/i.test(gender)) {
-        return { subject: "she", possessive: "her", reflexive: "herself" };
-    }
-    return { subject: "they", possessive: "their", reflexive: "themselves" };
-}
-
-function applySubjectPronouns(prompt, pronouns) {
-    return prompt
-        .replace(/\bherself\b/gi, pronouns.reflexive)
-        .replace(/\bhers\b/gi, pronouns.possessive)
-        .replace(/\bher\b/gi, pronouns.possessive)
-        .replace(/\bshe\b/gi, pronouns.subject);
-}
 
 // Parse Subject Data
 for (let i = 0; i < subjectCount; i++) {
@@ -362,7 +351,6 @@ for (let i = 0; i < subjectCount; i++) {
     let age = agePresets[ageIndex] || "";
     let skin = typedSkin !== "" ? typedSkin : (skinToneIndex > 0 ? skinTonePresets[skinToneIndex - 1] : "");
     let bodyType = typedBodyType !== "" ? typedBodyType : (bodyTypeIndex > 0 ? bodyTypePresets[bodyTypeIndex - 1] : "");
-    const pronouns = getPronouns(gender);
 
     if (nationality) subjectParts.push(nationality);
     if (gender) subjectParts.push(gender);
@@ -400,7 +388,6 @@ for (let i = 0; i < subjectCount; i++) {
     if (additionalDetails) subjectParts.push(additionalDetails);
 
     subjects.push(subjectParts.join(", "));
-    subjectPronouns.push(pronouns);
 }
 
 // Parse Outfits Data
@@ -473,9 +460,7 @@ if (aspectIndex === 3) { width = 1024; height = 576; }
 
 // Build Final Prompts
 const finalPrompts = [];
-for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
-    const subject = subjects[subjectIndex];
-    const pronouns = subjectPronouns[subjectIndex];
+for (const subject of subjects) {
     for (const outfit of outfits) {
         for (const action of actions) {
             let constructedPrompt = promptTemplate
@@ -487,7 +472,6 @@ for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
                 .replace(/{action}/gi, action)
                 .replace(", ,", ",")
                 .replace("  ", " ");
-            constructedPrompt = applySubjectPronouns(constructedPrompt, pronouns);
             finalPrompts.push(constructedPrompt);
         }
     }
@@ -499,7 +483,6 @@ for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
 async function generateBatch() {
     let config = JSON.parse(JSON.stringify(pipeline.configuration));
     config.model = "krea_2_turbo_i8x.ckpt";
-    config.mode = "txt2img";
     config.width = width;
     config.height = height;
     config.batchCount = 1;
