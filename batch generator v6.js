@@ -2,7 +2,7 @@
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
 // PRESETS + BODY PHYSIQUE + GENDER-AWARE TERMS
-// + LIGHTING + TENEBRISM
+// + CAMERA + LIGHTING + TENEBRISM
 // =========================================
 
 
@@ -21,7 +21,7 @@ const genderPresets = [
 const nationalityPresets = [
     "Caucasian",
     "Black",
-    "Mixed race with Afro-European features",
+    "Mixed-race adult with a natural blend of African and European facial features",
     "Anne Hathaway",
     "Dolly Parton",
     "Sabrina Carpenter",
@@ -33,7 +33,7 @@ const nationalityPresets = [
     "Filipina",
     "Brazilian",
     "Italian",
-    "Mexican of Incan descent with Meso-American heritage"
+    "Mexican with prominent Indigenous Mesoamerican facial features"
 ];
 
 
@@ -383,8 +383,25 @@ const hairstylePresets = [
 // CLOTHING
 // =========================================
 
+// Clothing presets can be either:
+//
+// 1. A simple string:
+//    "a tank top"
+//
+// 2. An object with:
+//    label = what appears in the UI
+//    value = what is actually sent to Krea
+//
+// This allows the UI to stay clean while
+// detailed clothing descriptions are sent
+// to the prompt generator.
+
 const clothingPresets = [
+
+    // -------------------------------------
     // Tops
+    // -------------------------------------
+
     "a loose fitting T-shirt",
     "a fitted T-shirt",
     "a tank top",
@@ -393,36 +410,108 @@ const clothingPresets = [
     "an unbuttoned mens dress shirt",
     "a hoodie",
 
+
+    // -------------------------------------
     // Dresses and one-piece outfits
+    // -------------------------------------
+
     "a short babydoll dress",
     "a summer dress",
     "one-piece swimsuit",
 
+
+    // -------------------------------------
     // Bottoms
+    // -------------------------------------
+
     "jeans",
     "shorts",
     "cutoff jean shorts",
 
+
+    // -------------------------------------
     // Undergarments and lingerie
+    // -------------------------------------
+
     "nude",
     "bikini-style panties",
     "thong",
     "string bikini",
     "garter belt",
     "lace bustier",
-    "champagne-colored silk pajama set with shorts that show ample thigh",
 
+
+    // -------------------------------------
+    // Detailed clothing presets
+    // -------------------------------------
+
+    {
+        label: "Champagne Silk Pajama Set",
+        value: "champagne-colored silk pajama set with shorts that show ample thigh"
+    },
+
+
+    // -------------------------------------
     // Uniforms
-    "black french maid uniform with short pleated skirt and white collar",
-    "Hooters uniform (tight-fitting white t-shirt with the Hooters logo across the chest and short tight-fitting short orange shorts)",
+    // -------------------------------------
 
+    {
+        label: "French Maid Uniform",
+        value: "black French maid uniform with short pleated skirt and white collar"
+    },
+
+    {
+        label: "Hooters Uniform",
+        value: "Hooters uniform (tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts)"
+    },
+
+
+    // -------------------------------------
     // Footwear and legwear
+    // -------------------------------------
+
     "barefoot",
     "stiletto heels",
     "cowboy boots",
     "thigh-high stockings",
     "thigh-high leather boots"
 ];
+
+
+// -----------------------------------------
+// Clothing helper functions
+//
+// These allow clothingPresets to contain
+// both simple strings and label/value
+// objects.
+// -----------------------------------------
+
+function getClothingLabel(preset) {
+
+    if (
+        typeof preset === "object" &&
+        preset !== null
+    ) {
+
+        return preset.label;
+    }
+
+    return preset;
+}
+
+
+function getClothingValue(preset) {
+
+    if (
+        typeof preset === "object" &&
+        preset !== null
+    ) {
+
+        return preset.value;
+    }
+
+    return preset;
+}
 
 
 // =========================================
@@ -478,6 +567,7 @@ const complexActionPresets = [
 // =========================================
 
 const actionSwitchPresets = [
+
     // Base position
     "standing",
     "sitting",
@@ -557,6 +647,142 @@ const cameraViewPresets = [
 
 
 // =========================================
+// CAMERA • FRAMING
+// =========================================
+
+const cameraFramingPresets = [
+    {
+        label: "Head and shoulders",
+        value: "head-and-shoulders framing"
+    },
+    {
+        label: "Chest-up",
+        value: "chest-up framing"
+    },
+    {
+        label: "Waist-up",
+        value: "waist-up framing"
+    },
+    {
+        label: "3/4 body",
+        value: "three-quarter body framing"
+    },
+    {
+        label: "Full body",
+        value: "full-body framing with the entire subject visible"
+    },
+    {
+        label: "Wide shot",
+        value: "wide shot showing the subject and surrounding environment"
+    },
+    {
+        label: "Environmental",
+        value: "environmental portrait framing with the subject integrated into the surrounding scene"
+    }
+];
+
+
+// =========================================
+// CAMERA • PERSPECTIVE
+// =========================================
+
+const cameraPerspectivePresets = [
+    {
+        label: "Eye level",
+        value: "natural eye-level perspective"
+    },
+    {
+        label: "Low angle",
+        value: "low-angle perspective looking upward toward the subject"
+    },
+    {
+        label: "High angle",
+        value: "high-angle perspective looking downward toward the subject"
+    },
+    {
+        label: "Worm's-eye",
+        value: "extreme low-angle worm's-eye perspective"
+    },
+    {
+        label: "Bird's-eye",
+        value: "high bird's-eye perspective looking down from above"
+    },
+    {
+        label: "Wide-angle perspective",
+        value: "pronounced wide-angle perspective with natural spatial exaggeration"
+    },
+    {
+        label: "Compressed perspective",
+        value: "compressed telephoto-style perspective with reduced apparent depth"
+    }
+];
+
+
+// =========================================
+// CAMERA • DEPTH OF FIELD
+// =========================================
+
+const depthOfFieldPresets = [
+    {
+        label: "Deep focus",
+        value: "deep depth of field with the subject and environment clearly in focus"
+    },
+    {
+        label: "Moderate",
+        value: "moderate depth of field with gentle background separation"
+    },
+    {
+        label: "Shallow",
+        value: "shallow depth of field with the subject sharply focused against a softly blurred background"
+    },
+    {
+        label: "Very shallow",
+        value: "very shallow depth of field with strong background blur and pronounced subject isolation"
+    }
+];
+
+
+// =========================================
+// CAMERA • COMPOSITION
+// =========================================
+
+const cameraCompositionPresets = [
+    {
+        label: "Centered",
+        value: "centered composition"
+    },
+    {
+        label: "Rule of thirds",
+        value: "rule-of-thirds composition"
+    },
+    {
+        label: "Symmetrical",
+        value: "symmetrical composition with balanced visual elements"
+    },
+    {
+        label: "Off-center",
+        value: "off-center composition with intentional visual balance"
+    },
+    {
+        label: "Negative space",
+        value: "composition using deliberate negative space around the subject"
+    },
+    {
+        label: "Leading lines",
+        value: "composition using leading lines to draw attention toward the subject"
+    },
+    {
+        label: "Foreground framing",
+        value: "composition using foreground elements to naturally frame the subject"
+    },
+    {
+        label: "Dynamic diagonal",
+        value: "dynamic diagonal composition creating a sense of movement and visual energy"
+    }
+];
+
+
+// =========================================
 // LIGHTING • TIME OF DAY
 // =========================================
 
@@ -610,12 +836,8 @@ const timeOfDayPresets = [
 
 const naturalLightingPresets = [
     {
-        label: "Nearby window light",
-        value: "light entering from a nearby window"
-    },
-    {
-        label: "Soft window light",
-        value: "large soft window light illuminating the subject"
+        label: "Window light",
+        value: "soft natural light entering from a nearby window"
     },
     {
         label: "Direct sunlight",
@@ -634,19 +856,15 @@ const naturalLightingPresets = [
         value: "visible shafts of sunlight entering the scene"
     },
     {
-        label: "Cloud-filtered light",
-        value: "cloud-filtered daylight with gentle contrast"
-    },
-    {
         label: "Moonlight",
         value: "cool natural moonlight"
     },
     {
-        label: "Streetlight illumination",
+        label: "Streetlights",
         value: "ambient streetlight illumination spilling into the scene"
     },
     {
-        label: "Neon lighting",
+        label: "Neon",
         value: "colorful neon illumination from nearby signs"
     },
     {
@@ -654,155 +872,91 @@ const naturalLightingPresets = [
         value: "warm flickering candlelight illuminating the subject"
     },
     {
-        label: "Fireplace light",
+        label: "Fireplace",
         value: "warm flickering firelight from a nearby fireplace"
     },
     {
-        label: "Practical lamp light",
-        value: "warm illumination from a nearby practical lamp"
-    },
-    {
-        label: "Desk lamp",
-        value: "localized warm light from a nearby desk lamp"
-    },
-    {
-        label: "Sodium-vapor streetlight",
-        value: "warm sodium-vapor streetlight illumination"
+        label: "Practical lamps",
+        value: "warm illumination from visible practical lamps"
     }
 ];
 
 
 // =========================================
-// LIGHTING • PHOTOGRAPHIC / STUDIO
+// LIGHTING • QUALITY / DIRECTION
 // =========================================
 
-const photographicLightingPresets = [
+const lightingQualityPresets = [
     {
-        label: "Softbox lighting",
-        value: "large softbox lighting with broad flattering illumination"
+        label: "Soft light",
+        value: "soft flattering illumination with gentle shadows"
     },
     {
-        label: "Key light",
-        value: "controlled directional key light illuminating the main subject"
+        label: "Hard light",
+        value: "hard directional illumination with crisp defined shadows"
     },
     {
-        label: "Fill light",
-        value: "soft fill light gently reducing shadow contrast"
-    },
-    {
-        label: "Rim lighting",
-        value: "strong directional backlight creating a subtle bright rim along the edges of the subject, separating the subject from the background"
-    },
-    {
-        label: "Backlighting",
-        value: "strong backlighting with the main light positioned behind the subject"
+        label: "Front lighting",
+        value: "frontal lighting illuminating the subject evenly"
     },
     {
         label: "Side lighting",
         value: "directional side lighting emphasizing form and dimensionality"
     },
     {
-        label: "Front lighting",
-        value: "soft frontal lighting illuminating the subject evenly"
+        label: "Backlighting",
+        value: "strong backlighting with the main light positioned behind the subject"
     },
     {
-        label: "Three-point lighting",
-        value: "professional three-point lighting using key, fill and backlight"
+        label: "Rim lighting",
+        value: "bright rim lighting outlining the edges of the subject and separating the subject from the background"
     },
     {
-        label: "Butterfly lighting",
-        value: "butterfly lighting with a soft key light positioned above and centered in front of the subject"
+        label: "Overhead lighting",
+        value: "directional overhead lighting from above the subject"
     },
     {
-        label: "Rembrandt lighting",
-        value: "Rembrandt lighting with a directional key light creating a small triangle of light on the shadowed side of the face"
-    },
-    {
-        label: "Split lighting",
-        value: "split lighting with one side of the face illuminated and the other in shadow"
-    },
-    {
-        label: "Loop lighting",
-        value: "loop lighting with a soft directional key light creating a small nose shadow"
-    },
-    {
-        label: "Broad lighting",
-        value: "broad lighting illuminating the larger visible side of the face"
-    },
-    {
-        label: "Short lighting",
-        value: "short lighting illuminating the narrower turned side of the face for sculpted contrast"
-    },
-    {
-        label: "High-key lighting",
-        value: "high-key lighting with bright even illumination, low contrast and minimal shadows"
-    },
-    {
-        label: "Low-key lighting",
-        value: "low-key lighting with dramatic contrast, deep shadows and controlled highlights"
-    },
-    {
-        label: "Large soft studio light",
-        value: "large soft studio source producing broad, even illumination"
-    },
-    {
-        label: "Hard studio light",
-        value: "hard studio lighting with crisp defined shadows"
-    },
-    {
-        label: "Beauty lighting",
-        value: "professional beauty lighting with soft flattering illumination"
-    },
-    {
-        label: "Beauty dish",
-        value: "beauty-dish lighting producing controlled soft highlights and sculpted facial definition"
-    },
-    {
-        label: "Ring light",
-        value: "ring-light illumination producing even frontal light and characteristic catchlights"
-    },
-    {
-        label: "Strip light",
-        value: "vertical strip-light illumination creating controlled highlights along the subject"
-    },
-    {
-        label: "Overhead studio light",
-        value: "overhead studio lighting from above the subject"
-    },
-    {
-        label: "Floor-level uplighting",
-        value: "low-angle floor lighting casting illumination upward"
-    },
-    {
-        label: "Spotlight",
-        value: "focused spotlight isolating the subject against the background"
-    },
-    {
-        label: "Fresnel spotlight",
-        value: "focused Fresnel light with controlled directional illumination and cinematic falloff"
+        label: "Underlighting",
+        value: "dramatic low-angle lighting from below the subject"
     }
 ];
 
 
 // =========================================
-// LIGHTING • CINEMATIC / ATMOSPHERIC
+// LIGHTING • MOOD / CINEMATIC
 // =========================================
 
 const cinematicLightingPresets = [
     {
-        label: "Dramatic cinematic lighting",
+        label: "Cinematic",
         value: "dramatic cinematic lighting with controlled highlights and shadows"
     },
     {
-        label: "Moody lighting",
+        label: "Moody",
         value: "moody atmospheric lighting with subdued illumination and rich shadows"
     },
     {
-        label: "Soft cinematic lighting",
+        label: "Soft cinematic",
         value: "soft cinematic lighting with gentle contrast and natural falloff"
     },
     {
-        label: "Volumetric lighting",
+        label: "High-key",
+        value: "high-key lighting with bright even illumination, low contrast and minimal shadows"
+    },
+    {
+        label: "Low-key",
+        value: "low-key lighting with dramatic contrast, deep shadows and controlled highlights"
+    },
+    {
+        label: "Chiaroscuro",
+        value: "chiaroscuro lighting with strong contrast between light and shadow"
+    },
+    {
+        label: "Film noir",
+        value: "classic film-noir lighting with hard directional light and dramatic shadows"
+    },
+    {
+        label: "Volumetric light",
         value: "volumetric lighting with visible light rays through the atmosphere"
     },
     {
@@ -810,12 +964,8 @@ const cinematicLightingPresets = [
         value: "dramatic visible shafts of light cutting through the atmosphere"
     },
     {
-        label: "Hazy atmospheric light",
+        label: "Hazy atmosphere",
         value: "soft hazy atmospheric illumination with gentle diffusion"
-    },
-    {
-        label: "Strong light falloff",
-        value: "strong light falloff from the illuminated subject into darker surroundings"
     },
     {
         label: "Deep shadows",
@@ -826,16 +976,8 @@ const cinematicLightingPresets = [
         value: "long directional shadows cast across the environment"
     },
     {
-        label: "Silhouette lighting",
+        label: "Silhouette",
         value: "strong backlighting producing a dramatic partial silhouette"
-    },
-    {
-        label: "Chiaroscuro",
-        value: "chiaroscuro lighting with strong contrast between light and shadow"
-    },
-    {
-        label: "Film-noir lighting",
-        value: "classic film-noir lighting with hard directional light and dramatic shadows"
     }
 ];
 
@@ -846,15 +988,15 @@ const cinematicLightingPresets = [
 
 const colorLightingPresets = [
     {
-        label: "Warm lighting",
+        label: "Warm",
         value: "warm color temperature with golden amber illumination"
     },
     {
-        label: "Cool lighting",
+        label: "Cool",
         value: "cool color temperature with bluish illumination"
     },
     {
-        label: "Blue-toned lighting",
+        label: "Blue-toned",
         value: "blue-toned ambient illumination"
     },
     {
@@ -862,31 +1004,31 @@ const colorLightingPresets = [
         value: "cinematic complementary orange and blue lighting"
     },
     {
-        label: "Red ambient light",
+        label: "Red ambient",
         value: "subtle red ambient illumination"
     },
     {
-        label: "Blue ambient light",
+        label: "Blue ambient",
         value: "subtle blue ambient illumination"
     },
     {
-        label: "Purple ambient light",
+        label: "Purple ambient",
         value: "subtle purple ambient illumination"
     },
     {
-        label: "Colored practical lights",
+        label: "Colored practicals",
         value: "colored practical lights contributing visible ambient illumination"
     },
     {
-        label: "Neon rim lighting",
+        label: "Neon rim",
         value: "colored neon backlighting creating a vivid rim around the subject"
     },
     {
-        label: "Mixed-color lighting",
+        label: "Mixed colors",
         value: "mixed-color lighting with multiple contrasting light sources"
     },
     {
-        label: "Colored gel lighting",
+        label: "Colored gels",
         value: "colored gel lighting casting a controlled colored wash across the scene"
     }
 ];
@@ -981,7 +1123,7 @@ const tenebrismLightingPresets = [
 
 
 // =========================================
-// LIGHTING • EXPERIMENTAL / SPECIAL EFFECTS
+// LIGHTING • SPECIAL EFFECTS
 // =========================================
 
 const experimentalLightingPresets = [
@@ -998,32 +1140,8 @@ const experimentalLightingPresets = [
         value: "dappled sunlight creating irregular patches of light and shadow"
     },
     {
-        label: "Edge light",
-        value: "narrow edge light outlining the subject"
-    },
-    {
-        label: "Underlighting",
-        value: "dramatic low-angle underlighting from below"
-    },
-    {
-        label: "Top light",
-        value: "directional top lighting emphasizing the contours of the face and body"
-    },
-    {
         label: "Cross lighting",
         value: "cross-lighting from opposing directional sources"
-    },
-    {
-        label: "Hard backlight",
-        value: "hard backlight creating a crisp luminous edge"
-    },
-    {
-        label: "Soft backlight",
-        value: "soft backlight gently separating the subject from the background"
-    },
-    {
-        label: "Negative fill",
-        value: "negative fill absorbing ambient light to deepen shadows on one side"
     },
     {
         label: "Catchlights",
@@ -1038,7 +1156,7 @@ const experimentalLightingPresets = [
         value: "subtle photographic light leaks around bright areas"
     },
     {
-        label: "Prismatic rainbow reflections",
+        label: "Prismatic reflections",
         value: "subtle prismatic rainbow reflections from refracted light"
     },
     {
@@ -1056,76 +1174,84 @@ const experimentalLightingPresets = [
 // STEP 1 — BATCH SETUP
 // =========================================
 
-const setup = requestFromUser("Batch Setup", "Continue", function () {
+const setup = requestFromUser(
+    "Batch Setup",
+    "Continue",
+    function () {
 
-    return [
+        return [
 
-        this.section(
+            this.section(
 
-            "❖  Batch Configurations",
+                "❖  Batch Configurations",
 
-            "Define how many variants to generate per batch",
+                "Define how many variants to generate per batch",
 
-            [
+                [
 
-                this.menu(
-                    0,
-                    [
-                        "1 Subject",
-                        "2 Subjects",
-                        "3 Subjects",
-                        "4 Subjects",
-                        "5 Subjects"
-                    ]
-                ),
+                    this.menu(
+                        0,
+                        [
+                            "1 Subject",
+                            "2 Subjects",
+                            "3 Subjects",
+                            "4 Subjects",
+                            "5 Subjects"
+                        ]
+                    ),
 
-                this.menu(
-                    0,
-                    [
-                        "1 Outfit",
-                        "2 Outfits",
-                        "3 Outfits",
-                        "4 Outfits",
-                        "5 Outfits"
-                    ]
-                ),
+                    this.menu(
+                        0,
+                        [
+                            "1 Outfit",
+                            "2 Outfits",
+                            "3 Outfits",
+                            "4 Outfits",
+                            "5 Outfits"
+                        ]
+                    ),
 
-                this.menu(
-                    0,
-                    [
-                        "1 Action",
-                        "2 Actions",
-                        "3 Actions",
-                        "4 Actions",
-                        "5 Actions"
-                    ]
-                ),
+                    this.menu(
+                        0,
+                        [
+                            "1 Action",
+                            "2 Actions",
+                            "3 Actions",
+                            "4 Actions",
+                            "5 Actions"
+                        ]
+                    ),
 
-                this.segmented(
-                    0,
-                    [
-                        "1:1",
-                        "3:4 Portrait",
-                        "4:3 Landscape",
-                        "16:9"
-                    ]
-                )
-            ]
-        )
-    ];
-});
+                    this.segmented(
+                        0,
+                        [
+                            "1:1",
+                            "3:4 Portrait",
+                            "4:3 Landscape",
+                            "16:9"
+                        ]
+                    )
+                ]
+            )
+        ];
+    }
+);
 
 
 const setupData = setup[0];
 
+
 const subjectCount =
     setupData[0] + 1;
+
 
 const outfitCount =
     setupData[1] + 1;
 
+
 const actionCount =
     setupData[2] + 1;
+
 
 const aspectIndex =
     setupData[3];
@@ -1152,7 +1278,6 @@ const inputs = requestFromUser(
             i < subjectCount;
             i++
         ) {
-
 
             // ---------------------------------
             // IDENTITY
@@ -1474,9 +1599,15 @@ const inputs = requestFromUser(
             i++
         ) {
 
+            // ---------------------------------
+            // Display clean labels in the UI.
+            // ---------------------------------
+
             const outfitMenu = [
                 "No clothing selected",
-                ...clothingPresets
+                ...clothingPresets.map(
+                    c => getClothingLabel(c)
+                )
             ];
 
 
@@ -1485,7 +1616,7 @@ const inputs = requestFromUser(
                     c =>
                         this.switch(
                             false,
-                            `✡︎  ${c}`
+                            `✡︎  ${getClothingLabel(c)}`
                         )
                 );
 
@@ -1586,6 +1717,102 @@ const inputs = requestFromUser(
 
 
         // =====================================
+        // CAMERA
+        // =====================================
+
+        const cameraFramingControls =
+            cameraFramingPresets.map(
+                p =>
+                    this.switch(
+                        false,
+                        `✡︎  ${p.label}`
+                    )
+            );
+
+
+        const cameraPerspectiveControls =
+            cameraPerspectivePresets.map(
+                p =>
+                    this.switch(
+                        false,
+                        `✡︎  ${p.label}`
+                    )
+            );
+
+
+        const depthOfFieldControls =
+            depthOfFieldPresets.map(
+                p =>
+                    this.switch(
+                        false,
+                        `✡︎  ${p.label}`
+                    )
+            );
+
+
+        const cameraCompositionControls =
+            cameraCompositionPresets.map(
+                p =>
+                    this.switch(
+                        false,
+                        `✡︎  ${p.label}`
+                    )
+            );
+
+
+        fields.push(
+
+            this.section(
+
+                "❖  CAMERA • Framing",
+
+                "Control how much of the subject and environment appears in the image",
+
+                cameraFramingControls
+            )
+        );
+
+
+        fields.push(
+
+            this.section(
+
+                "❖  CAMERA • Perspective",
+
+                "Control the camera's viewing angle and spatial perspective",
+
+                cameraPerspectiveControls
+            )
+        );
+
+
+        fields.push(
+
+            this.section(
+
+                "❖  CAMERA • Depth of Field",
+
+                "Control background separation and focus depth",
+
+                depthOfFieldControls
+            )
+        );
+
+
+        fields.push(
+
+            this.section(
+
+                "❖  CAMERA • Composition",
+
+                "Control how the subject is arranged within the frame",
+
+                cameraCompositionControls
+            )
+        );
+
+
+        // =====================================
         // LIGHTING
         // =====================================
 
@@ -1601,10 +1828,6 @@ const inputs = requestFromUser(
         ];
 
 
-        // -------------------------------------
-        // Natural lighting
-        // -------------------------------------
-
         const naturalLightingControls =
             naturalLightingPresets.map(
                 p =>
@@ -1615,12 +1838,8 @@ const inputs = requestFromUser(
             );
 
 
-        // -------------------------------------
-        // Photographic / studio lighting
-        // -------------------------------------
-
-        const photographicLightingControls =
-            photographicLightingPresets.map(
+        const lightingQualityControls =
+            lightingQualityPresets.map(
                 p =>
                     this.switch(
                         false,
@@ -1628,10 +1847,6 @@ const inputs = requestFromUser(
                     )
             );
 
-
-        // -------------------------------------
-        // Cinematic / atmospheric lighting
-        // -------------------------------------
 
         const cinematicLightingControls =
             cinematicLightingPresets.map(
@@ -1643,10 +1858,6 @@ const inputs = requestFromUser(
             );
 
 
-        // -------------------------------------
-        // Color / creative lighting
-        // -------------------------------------
-
         const colorLightingControls =
             colorLightingPresets.map(
                 p =>
@@ -1657,10 +1868,6 @@ const inputs = requestFromUser(
             );
 
 
-        // -------------------------------------
-        // Tenebrism / dark lighting
-        // -------------------------------------
-
         const tenebrismLightingControls =
             tenebrismLightingPresets.map(
                 p =>
@@ -1670,10 +1877,6 @@ const inputs = requestFromUser(
                     )
             );
 
-
-        // -------------------------------------
-        // Experimental lighting
-        // -------------------------------------
 
         const experimentalLightingControls =
             experimentalLightingPresets.map(
@@ -1709,7 +1912,7 @@ const inputs = requestFromUser(
 
                 "❖  LIGHTING • Natural / Environmental",
 
-                "Independent natural and environmental light sources",
+                "Common natural and environmental light sources",
 
                 naturalLightingControls
             )
@@ -1720,11 +1923,11 @@ const inputs = requestFromUser(
 
             this.section(
 
-                "❖  LIGHTING • Photographic / Studio",
+                "❖  LIGHTING • Quality / Direction",
 
-                "Professional photographic and studio lighting techniques",
+                "High-impact controls for softness, direction, and shadow shape",
 
-                photographicLightingControls
+                lightingQualityControls
             )
         );
 
@@ -1733,9 +1936,9 @@ const inputs = requestFromUser(
 
             this.section(
 
-                "❖  LIGHTING • Cinematic / Atmospheric",
+                "❖  LIGHTING • Mood / Cinematic",
 
-                "Mood, contrast, atmosphere, and cinematic lighting",
+                "High-impact cinematic mood, contrast, and atmosphere",
 
                 cinematicLightingControls
             )
@@ -1748,7 +1951,7 @@ const inputs = requestFromUser(
 
                 "❖  LIGHTING • Color / Creative",
 
-                "Color temperature, colored sources, and creative illumination",
+                "Color temperature and colored illumination",
 
                 colorLightingControls
             )
@@ -1772,9 +1975,9 @@ const inputs = requestFromUser(
 
             this.section(
 
-                "❖  LIGHTING • Experimental / Special Effects",
+                "❖  LIGHTING • Special Effects",
 
-                "Unusual lighting patterns, optical effects, and creative techniques",
+                "Unusual patterns, optical effects, and atmospheric techniques",
 
                 experimentalLightingControls
             )
@@ -1804,9 +2007,9 @@ const inputs = requestFromUser(
 
             this.textField(
 
-                "A {cameraView}{artStyle} of {subject} wearing {clothing}, {action}, {timeOfDay}, {lighting}, Natural anatomy",
+                "A {cameraView}{artStyle} of {subject} wearing {clothing}, {action}, {timeOfDay}, {camera}, {lighting}, Natural anatomy",
 
-                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}, {timeOfDay}, {lighting}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {cameraView}, {camera}, {timeOfDay}, {lighting}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
 
                 false,
 
@@ -1821,7 +2024,7 @@ const inputs = requestFromUser(
 
                 "❖  Prompt Options & Template",
 
-                "Choose an art style, camera view, lighting, then customize the template with tags",
+                "Choose an art style, camera view, camera controls, lighting, then customize the template with tags",
 
                 promptControls
             )
@@ -1855,6 +2058,7 @@ function getGenderForm(gender) {
     if (
         /\b(man|male)\b/i.test(gender)
     ) {
+
         return "masculine";
     }
 
@@ -1862,6 +2066,7 @@ function getGenderForm(gender) {
     if (
         /\b(woman|female)\b/i.test(gender)
     ) {
+
         return "feminine";
     }
 
@@ -1879,6 +2084,7 @@ function matchCase(
         !source ||
         !replacement
     ) {
+
         return replacement;
     }
 
@@ -1887,6 +2093,7 @@ function matchCase(
         source ===
         source.toUpperCase()
     ) {
+
         return replacement.toUpperCase();
     }
 
@@ -2333,7 +2540,6 @@ for (
         bodyData[bodyIdx++];
 
 
-    // Overall build
     if (
         overallBuildIndex > 0
     ) {
@@ -2347,7 +2553,6 @@ for (
     }
 
 
-    // Height
     if (
         heightIndex > 0
     ) {
@@ -2361,7 +2566,6 @@ for (
     }
 
 
-    // Chest
     if (
         chestIndex > 0
     ) {
@@ -2375,7 +2579,6 @@ for (
     }
 
 
-    // Hips
     if (
         hipIndex > 0
     ) {
@@ -2389,7 +2592,6 @@ for (
     }
 
 
-    // Body shape
     if (
         bodyShapeIndex >= 0
     ) {
@@ -2412,7 +2614,6 @@ for (
     }
 
 
-    // Legs
     if (
         legIndex > 0
     ) {
@@ -2426,7 +2627,6 @@ for (
     }
 
 
-    // Ass size
     if (
         assSizeIndex > 0
     ) {
@@ -2440,7 +2640,6 @@ for (
     }
 
 
-    // Belly size
     if (
         bellySizeIndex > 0
     ) {
@@ -2454,7 +2653,6 @@ for (
     }
 
 
-    // Specific body characteristic
     if (
         specificBodyIndex >= 0
     ) {
@@ -2477,7 +2675,6 @@ for (
     }
 
 
-    // Custom body details
     if (
         customBodyDetails
     ) {
@@ -2499,7 +2696,6 @@ for (
     let appIdx = 0;
 
 
-    // Makeup
     for (
         let j = 0;
         j < makeupPresets.length;
@@ -2517,7 +2713,6 @@ for (
     }
 
 
-    // Tattoos
     for (
         let j = 0;
         j < tattooPresets.length;
@@ -2535,7 +2730,6 @@ for (
     }
 
 
-    // Hair color
     const hairColorIdx =
         appearanceData[appIdx++];
 
@@ -2564,7 +2758,6 @@ for (
     }
 
 
-    // Hair length
     const hairLengthIdx =
         appearanceData[appIdx++];
 
@@ -2593,7 +2786,6 @@ for (
     }
 
 
-    // Hairstyle
     const hairstyleIdx =
         appearanceData[appIdx++];
 
@@ -2622,7 +2814,6 @@ for (
     }
 
 
-    // Additional details
     const additionalDetails =
         appearanceData[appIdx++];
 
@@ -2671,12 +2862,18 @@ for (
     let outfitDataIdx = 0;
 
 
-    // Dropdown
     const selectedOutfitIdx =
         outfitData[
             outfitDataIdx++
         ];
 
+
+    // -------------------------------------
+    // Menu selection
+    //
+    // Use the preset's value rather than
+    // the UI label.
+    // -------------------------------------
 
     if (
         selectedOutfitIdx > 0
@@ -2684,14 +2881,23 @@ for (
 
         outfitParts.push(
 
-            clothingPresets[
-                selectedOutfitIdx - 1
-            ]
+            getClothingValue(
+
+                clothingPresets[
+                    selectedOutfitIdx - 1
+                ]
+            )
         );
     }
 
 
+    // -------------------------------------
     // Clothing switches
+    //
+    // Use the preset's value rather than
+    // the UI label.
+    // -------------------------------------
+
     for (
         let j = 0;
         j < clothingPresets.length;
@@ -2705,13 +2911,15 @@ for (
         ) {
 
             outfitParts.push(
-                clothingPresets[j]
+
+                getClothingValue(
+                    clothingPresets[j]
+                )
             );
         }
     }
 
 
-    // Custom outfit
     const customOutfit =
         outfitData[
             outfitDataIdx
@@ -2757,7 +2965,6 @@ for (
     let actionDataIdx = 0;
 
 
-    // Composite preset
     const selectedPresetIdx =
         actionData[
             actionDataIdx++
@@ -2777,7 +2984,6 @@ for (
     }
 
 
-    // Modular switches
     for (
         let j = 0;
         j < actionSwitchPresets.length;
@@ -2797,7 +3003,6 @@ for (
     }
 
 
-    // Custom action
     const customActionText =
         actionData[
             actionDataIdx
@@ -2818,6 +3023,142 @@ for (
         actionParts.join(", ")
     );
 }
+
+
+// =========================================
+// PARSE CAMERA
+// =========================================
+
+// -----------------------------------------
+// Framing
+// -----------------------------------------
+
+const cameraFramingData =
+    inputs[sectionIdx++];
+
+
+const cameraFraming = [];
+
+
+for (
+    let i = 0;
+    i < cameraFramingPresets.length;
+    i++
+) {
+
+    if (
+        cameraFramingData[i] === true
+    ) {
+
+        cameraFraming.push(
+            cameraFramingPresets[i].value
+        );
+    }
+}
+
+
+// -----------------------------------------
+// Perspective
+// -----------------------------------------
+
+const cameraPerspectiveData =
+    inputs[sectionIdx++];
+
+
+const cameraPerspective = [];
+
+
+for (
+    let i = 0;
+    i < cameraPerspectivePresets.length;
+    i++
+) {
+
+    if (
+        cameraPerspectiveData[i] === true
+    ) {
+
+        cameraPerspective.push(
+            cameraPerspectivePresets[i].value
+        );
+    }
+}
+
+
+// -----------------------------------------
+// Depth of field
+// -----------------------------------------
+
+const depthOfFieldData =
+    inputs[sectionIdx++];
+
+
+const depthOfField = [];
+
+
+for (
+    let i = 0;
+    i < depthOfFieldPresets.length;
+    i++
+) {
+
+    if (
+        depthOfFieldData[i] === true
+    ) {
+
+        depthOfField.push(
+            depthOfFieldPresets[i].value
+        );
+    }
+}
+
+
+// -----------------------------------------
+// Composition
+// -----------------------------------------
+
+const cameraCompositionData =
+    inputs[sectionIdx++];
+
+
+const cameraComposition = [];
+
+
+for (
+    let i = 0;
+    i < cameraCompositionPresets.length;
+    i++
+) {
+
+    if (
+        cameraCompositionData[i] === true
+    ) {
+
+        cameraComposition.push(
+            cameraCompositionPresets[i].value
+        );
+    }
+}
+
+
+// -----------------------------------------
+// Combine camera controls
+// -----------------------------------------
+
+const cameraParts = [
+
+    ...cameraFraming,
+
+    ...cameraPerspective,
+
+    ...depthOfField,
+
+    ...cameraComposition
+];
+
+
+const camera =
+    cameraParts.join(", ");
 
 
 // =========================================
@@ -2873,28 +3214,28 @@ for (
 
 
 // -----------------------------------------
-// Photographic / Studio
+// Quality / Direction
 // -----------------------------------------
 
-const photographicLightingData =
+const lightingQualityData =
     inputs[sectionIdx++];
 
 
-const photographicLighting = [];
+const lightingQuality = [];
 
 
 for (
     let i = 0;
-    i < photographicLightingPresets.length;
+    i < lightingQualityPresets.length;
     i++
 ) {
 
     if (
-        photographicLightingData[i] === true
+        lightingQualityData[i] === true
     ) {
 
-        photographicLighting.push(
-            photographicLightingPresets[i].value
+        lightingQuality.push(
+            lightingQualityPresets[i].value
         );
     }
 }
@@ -2985,7 +3326,7 @@ for (
 
 
 // -----------------------------------------
-// Experimental / Special Effects
+// Special Effects
 // -----------------------------------------
 
 const experimentalLightingData =
@@ -3020,7 +3361,7 @@ const lightingParts = [
 
     ...naturalLighting,
 
-    ...photographicLighting,
+    ...lightingQuality,
 
     ...cinematicLighting,
 
@@ -3075,6 +3416,7 @@ const promptTemplate =
 // =========================================
 
 let width = 1024;
+
 
 let height = 1024;
 
@@ -3158,6 +3500,11 @@ for (
                     .replace(
                         /{cameraView}/gi,
                         cameraView || ""
+                    )
+
+                    .replace(
+                        /{camera}/gi,
+                        camera || ""
                     )
 
                     .replace(
