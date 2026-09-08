@@ -1279,10 +1279,6 @@ const inputs = requestFromUser(
             i++
         ) {
 
-            // ---------------------------------
-            // IDENTITY
-            // ---------------------------------
-
             const genderMenu = [
                 "Choose gender",
                 ...genderPresets
@@ -1334,10 +1330,6 @@ const inputs = requestFromUser(
                 )
             );
 
-
-            // ---------------------------------
-            // BODY / PHYSIQUE
-            // ---------------------------------
 
             const overallBuildMenu = [
                 "No overall build selected",
@@ -1475,10 +1467,6 @@ const inputs = requestFromUser(
             );
 
 
-            // ---------------------------------
-            // APPEARANCE
-            // ---------------------------------
-
             const hairColorMenu = [
                 "No hair color",
                 ...hairColorPresets
@@ -1599,10 +1587,6 @@ const inputs = requestFromUser(
             i++
         ) {
 
-            // ---------------------------------
-            // Display clean labels in the UI.
-            // ---------------------------------
-
             const outfitMenu = [
                 "No clothing selected",
                 ...clothingPresets.map(
@@ -1720,6 +1704,16 @@ const inputs = requestFromUser(
         // CAMERA
         // =====================================
 
+        const cameraViewControls =
+            cameraViewPresets.map(
+                view =>
+                    this.switch(
+                        false,
+                        `✡︎  ${view}`
+                    )
+            );
+
+
         const cameraFramingControls =
             cameraFramingPresets.map(
                 p =>
@@ -1777,6 +1771,19 @@ const inputs = requestFromUser(
 
             this.section(
 
+                "❖  CAMERA • View",
+
+                "Choose the camera's basic viewing direction or shot type",
+
+                cameraViewControls
+            )
+        );
+
+
+        fields.push(
+
+            this.section(
+
                 "❖  CAMERA • Perspective",
 
                 "Control the camera's viewing angle and spatial perspective",
@@ -1815,10 +1822,6 @@ const inputs = requestFromUser(
         // =====================================
         // LIGHTING
         // =====================================
-
-        // -------------------------------------
-        // Time of day
-        // -------------------------------------
 
         const timeOfDayMenu = [
             "No time of day selected",
@@ -1996,15 +1999,6 @@ const inputs = requestFromUser(
             ),
 
 
-            ...cameraViewPresets.map(
-                view =>
-                    this.switch(
-                        false,
-                        view
-                    )
-            ),
-
-
             this.textField(
 
                 "A {cameraView}{artStyle} of {subject} wearing {clothing}, {action}, {timeOfDay}, {camera}, {lighting}, Natural anatomy",
@@ -2024,7 +2018,7 @@ const inputs = requestFromUser(
 
                 "❖  Prompt Options & Template",
 
-                "Choose an art style, camera view, camera controls, lighting, then customize the template with tags",
+                "Choose an art style and customize the template with tags",
 
                 promptControls
             )
@@ -2134,11 +2128,6 @@ function replaceToken(
 
 // -----------------------------------------
 // Gender-aware token replacement
-//
-// IMPORTANT:
-// This system does NOT remove pronouns.
-// It deliberately replaces the tokens with
-// the correct masculine/feminine forms.
 // -----------------------------------------
 
 function applyGenderTerms(
@@ -2199,10 +2188,6 @@ function applyGenderTerms(
     let result = prompt;
 
 
-    // -------------------------------------
-    // Replace explicit gender tokens first
-    // -------------------------------------
-
     result =
         replaceToken(
             result,
@@ -2242,11 +2227,6 @@ function applyGenderTerms(
             forms.noun
         );
 
-
-    // -------------------------------------
-    // Legacy / manually entered gender
-    // language
-    // -------------------------------------
 
     const replacements = [
 
@@ -2344,10 +2324,6 @@ function applyGenderTerms(
     }
 
 
-    // -------------------------------------
-    // Handle "her" carefully.
-    // -------------------------------------
-
     result =
         result.replace(
 
@@ -2399,10 +2375,6 @@ for (
 
     const subjectParts = [];
 
-
-    // -------------------------------------
-    // Identity section
-    // -------------------------------------
 
     const identityData =
         inputs[sectionIdx++];
@@ -2488,10 +2460,6 @@ for (
         );
     }
 
-
-    // -------------------------------------
-    // Body / Physique section
-    // -------------------------------------
 
     const bodyData =
         inputs[sectionIdx++];
@@ -2685,10 +2653,6 @@ for (
     }
 
 
-    // -------------------------------------
-    // Appearance section
-    // -------------------------------------
-
     const appearanceData =
         inputs[sectionIdx++];
 
@@ -2868,13 +2832,6 @@ for (
         ];
 
 
-    // -------------------------------------
-    // Menu selection
-    //
-    // Use the preset's value rather than
-    // the UI label.
-    // -------------------------------------
-
     if (
         selectedOutfitIdx > 0
     ) {
@@ -2890,13 +2847,6 @@ for (
         );
     }
 
-
-    // -------------------------------------
-    // Clothing switches
-    //
-    // Use the preset's value rather than
-    // the UI label.
-    // -------------------------------------
 
     for (
         let j = 0;
@@ -3058,6 +3008,28 @@ for (
 
 
 // -----------------------------------------
+// View
+// -----------------------------------------
+
+const cameraViewData =
+    inputs[sectionIdx++];
+
+
+const selectedCameraViews =
+    cameraViewPresets.filter(
+
+        (_, index) =>
+            cameraViewData[index] === true
+    );
+
+
+const cameraView =
+    selectedCameraViews.length
+        ? `${selectedCameraViews.join(", ")} `
+        : "";
+
+
+// -----------------------------------------
 // Perspective
 // -----------------------------------------
 
@@ -3165,10 +3137,6 @@ const camera =
 // PARSE LIGHTING
 // =========================================
 
-// -----------------------------------------
-// Time of day
-// -----------------------------------------
-
 const timeOfDayData =
     inputs[sectionIdx++];
 
@@ -3184,10 +3152,6 @@ const timeOfDay =
         ].value
         : "";
 
-
-// -----------------------------------------
-// Natural / Environmental
-// -----------------------------------------
 
 const naturalLightingData =
     inputs[sectionIdx++];
@@ -3213,10 +3177,6 @@ for (
 }
 
 
-// -----------------------------------------
-// Quality / Direction
-// -----------------------------------------
-
 const lightingQualityData =
     inputs[sectionIdx++];
 
@@ -3240,10 +3200,6 @@ for (
     }
 }
 
-
-// -----------------------------------------
-// Cinematic / Atmospheric
-// -----------------------------------------
 
 const cinematicLightingData =
     inputs[sectionIdx++];
@@ -3269,10 +3225,6 @@ for (
 }
 
 
-// -----------------------------------------
-// Color / Creative
-// -----------------------------------------
-
 const colorLightingData =
     inputs[sectionIdx++];
 
@@ -3296,10 +3248,6 @@ for (
     }
 }
 
-
-// -----------------------------------------
-// Dark / Tenebrism
-// -----------------------------------------
 
 const tenebrismLightingData =
     inputs[sectionIdx++];
@@ -3325,10 +3273,6 @@ for (
 }
 
 
-// -----------------------------------------
-// Special Effects
-// -----------------------------------------
-
 const experimentalLightingData =
     inputs[sectionIdx++];
 
@@ -3352,10 +3296,6 @@ for (
     }
 }
 
-
-// -----------------------------------------
-// Combine all lighting modifiers
-// -----------------------------------------
 
 const lightingParts = [
 
@@ -3391,24 +3331,8 @@ const artStyle =
     ];
 
 
-const selectedCameraViews =
-    cameraViewPresets.filter(
-
-        (_, index) =>
-            templateData[index + 1]
-    );
-
-
-const cameraView =
-    selectedCameraViews.length
-        ? `${selectedCameraViews.join(", ")} `
-        : "";
-
-
 const promptTemplate =
-    templateData[
-        cameraViewPresets.length + 1
-    ];
+    templateData[1];
 
 
 // =========================================
@@ -3488,10 +3412,6 @@ for (
 
                 promptTemplate
 
-                    // ---------------------------------
-                    // General template tags
-                    // ---------------------------------
-
                     .replace(
                         /{artStyle}/gi,
                         artStyle || ""
@@ -3538,10 +3458,6 @@ for (
                     );
 
 
-            // ---------------------------------
-            // Clean up empty template sections
-            // ---------------------------------
-
             constructedPrompt =
                 constructedPrompt
 
@@ -3572,14 +3488,6 @@ for (
 
                     .trim();
 
-
-            // ---------------------------------
-            // Apply gender terms AFTER all
-            // prompt components have been
-            // assembled.
-            //
-            // Pronouns are replaced, not removed.
-            // ---------------------------------
 
             constructedPrompt =
                 applyGenderTerms(
