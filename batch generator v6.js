@@ -323,6 +323,25 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
 // =========================================
 let sectionIdx = 0;
 const subjects = [];
+const subjectPronouns = [];
+
+function getPronouns(gender) {
+    if (/\b(man|boy|male)\b/i.test(gender)) {
+        return { subject: "he", possessive: "his", reflexive: "himself" };
+    }
+    if (/\b(woman|girl|female)\b/i.test(gender)) {
+        return { subject: "she", possessive: "her", reflexive: "herself" };
+    }
+    return { subject: "they", possessive: "their", reflexive: "themselves" };
+}
+
+function applySubjectPronouns(prompt, pronouns) {
+    return prompt
+        .replace(/\bherself\b/gi, pronouns.reflexive)
+        .replace(/\bhers\b/gi, pronouns.possessive)
+        .replace(/\bher\b/gi, pronouns.possessive)
+        .replace(/\bshe\b/gi, pronouns.subject);
+}
 
 // Parse Subject Data
 for (let i = 0; i < subjectCount; i++) {
@@ -343,6 +362,7 @@ for (let i = 0; i < subjectCount; i++) {
     let age = agePresets[ageIndex] || "";
     let skin = typedSkin !== "" ? typedSkin : (skinToneIndex > 0 ? skinTonePresets[skinToneIndex - 1] : "");
     let bodyType = typedBodyType !== "" ? typedBodyType : (bodyTypeIndex > 0 ? bodyTypePresets[bodyTypeIndex - 1] : "");
+    const pronouns = getPronouns(gender);
 
     if (nationality) subjectParts.push(nationality);
     if (gender) subjectParts.push(gender);
@@ -380,6 +400,7 @@ for (let i = 0; i < subjectCount; i++) {
     if (additionalDetails) subjectParts.push(additionalDetails);
 
     subjects.push(subjectParts.join(", "));
+    subjectPronouns.push(pronouns);
 }
 
 // Parse Outfits Data
@@ -452,7 +473,9 @@ if (aspectIndex === 3) { width = 1024; height = 576; }
 
 // Build Final Prompts
 const finalPrompts = [];
-for (const subject of subjects) {
+for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
+    const subject = subjects[subjectIndex];
+    const pronouns = subjectPronouns[subjectIndex];
     for (const outfit of outfits) {
         for (const action of actions) {
             let constructedPrompt = promptTemplate
@@ -464,6 +487,7 @@ for (const subject of subjects) {
                 .replace(/{action}/gi, action)
                 .replace(", ,", ",")
                 .replace("  ", " ");
+            constructedPrompt = applySubjectPronouns(constructedPrompt, pronouns);
             finalPrompts.push(constructedPrompt);
         }
     }
