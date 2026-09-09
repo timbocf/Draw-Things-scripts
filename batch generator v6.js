@@ -369,11 +369,18 @@ const hairstylePresets = [
     "ponytail",
     "messy ponytail",
     "French braid",
+    "loose braids",
+    "messy bun",
     "messy double buns",
 
     // Cut and styling details
     "with bangs",
+    "blown-out",
+    "faux hawk",
     "short boyish hairstyle",
+    "shaved on one side",
+    "shaved on both sides",
+    "spiked punk hairstyle",
     "Hollywood curls",
     "Victory curls"
 ];
@@ -655,6 +662,8 @@ const actionSwitchPresets = [
     "sitting",
     "laying",
     "on a bed",
+    "on {possessive} side",
+    "facedown",
     "on {possessive} back",
     "{possessive} butt at the edge of the bed",
     "standing in a doorway",
