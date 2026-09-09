@@ -453,7 +453,7 @@ const clothingGroups = [
     },
 
     {
-        title: "Details",
+        title: "Sets",
         description: "Specialty outfit presets",
         presets: [
             {
