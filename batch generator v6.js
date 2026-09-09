@@ -385,8 +385,12 @@ const hairstylePresets = [
         value: "high-volume, heavily sprayed, lacquered hairstyle"
     },
     {
-        label: "soft feathered 70s waves",
-        value: "soft feathered 1970s hairstyle with gentle waves, airy volume, and natural movement"
+        label: "soft feathered 70s blowout",
+        value: "soft feathered 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers"
+    },
+    {
+        label: "60s bouffant curls",
+        value: "1960s bouffant hairstyle with large rounded curls, high volume, and polished lift"
     },
     "faux hawk",
     "short boyish hairstyle",
