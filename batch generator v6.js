@@ -691,6 +691,10 @@ const complexActionPresets = [
     {
         label: "Standing in doorway (foot on frame)",
         value: "standing in a bedroom doorway. Her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face."
+    },
+    {
+        label: "Bending Forward, Hands on Knees",
+        value: "facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera"
     }
 ];
 
@@ -727,6 +731,8 @@ const actionSwitchPresets = [
     "one leg raised",
     "1 foot against door frame",
     "{possessive} ass high in the air",
+    "back arched",
+    "chest puffed out",
 
     // Arms and hands
     "arms raised high above {possessive} head",
@@ -750,6 +756,7 @@ const actionSwitchPresets = [
     "looking up",
     "facing camera",
     "facing away from camera",
+    "ass toward the camera",
     "eyes closed",
     "squinting",
 
@@ -764,7 +771,8 @@ const actionSwitchPresets = [
     "in the backseat of a car",
     "in a surgical theatre",
     "in a crowded city street",
-    "in a glade"
+    "in a glade",
+    "on an office desk"
 ];
 
 
