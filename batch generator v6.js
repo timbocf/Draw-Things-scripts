@@ -22,6 +22,7 @@ const nationalityPresets = [
     "Caucasian",
     "Black",
     "Mixed-race adult with a natural blend of African and European facial features",
+    "Mexican with prominent Indigenous Mesoamerican facial features",
     "Anne Hathaway",
     "Dolly Parton",
     "Sabrina Carpenter",
@@ -32,8 +33,7 @@ const nationalityPresets = [
     "Korean",
     "Filipina",
     "Brazilian",
-    "Italian",
-    "Mexican with prominent Indigenous Mesoamerican facial features"
+    "Italian"
 ];
 
 
