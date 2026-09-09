@@ -662,52 +662,112 @@ function getHairstyleValue(preset) {
 
 const complexActionPresets = [
     {
-        label: "Wall Pose (Back against wall)",
-        value: "standing with {possessive} back against a wall, {possessive} arms raised high above {possessive} head and hands clasped together with one knee bent and one foot on the wall"
+        label: "Wall Pose — back against wall, one knee bent",
+        value: "leaning back against a wall, with one knee bent and one foot on the wall"
     },
     {
-        label: "Leaning Over Edge of Bed (on elbows)",
+        label: "Bed Lean (on elbows) — elbows on bed, ass toward camera",
         value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing {possessive} ass toward the camera"
     },
     {
-        label: "Leaning Over Edge of Bed (face on mattress)",
+        label: "Bed Lean (face-down) — cheek on mattress, looking sideways",
         value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing {possessive} ass toward the camera"
     },
     {
-        label: "Leaning Forward (Ass Up)",
+        label: "Ass-Up Lean (on bed or floor) — on knees, face forward, back arched",
         value: "on {possessive} knees, leaning forward, {possessive} face in the foreground, back arched, ass high in the air, arms stretched out in front of {objectPronoun}"
     },
     {
-        label: "Squatting (from below)",
+        label: "Deep Squat, Viewed From Below — knees wide, toes pointed, hands on knees",
         value: "worms-eye view, squatting with {possessive} knees spread wide and on the tips of {possessive} toes, hands resting on {possessive} knees"
     },
     {
-        label: "Floor Pose (Cross-legged)",
+        label: "Cross-Legged Floor Sit — seated, leaning back, relaxed smile",
         value: "sitting cross-legged on the floor, leaning back slightly on {possessive} hands, looking directly into the camera with a relaxed smile"
     },
     {
-        label: "Spread Eagle",
+        label: "Spread Eagle (Lying Back) — lying back, legs spread wide, hands holding legs",
         value: "laying on {possessive} back with {possessive} legs raised and spread wide, feet wide apart, holding {possessive} legs in the air with {possessive} hands, looking through {possessive} open legs at the camera"
     },
     {
-        label: "On Back, Legs in the air)",
+        label: "Back-on-Bed (Legs Straight Up) — legs straight and elevated, knees locked",
         value: "laying on a bed on {possessive} back with {possessive} butt at the edge of the bed, {possessive} legs straight and elevated into the air, knees locked, bending at waist only"
     },
     {
-        label: "Bending Over (Legs Straight)",
+        label: "Deep Waist Bend — legs straight, hands on shelf, surprise look",
         value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with {possessive} hand covering {possessive} mouth and wide-eyed open-mouthed look of surprise"
     },
     {
-        label: "View in shower from below",
+        label: "Shower View (From Below) — camera below, looking up through water",
         value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up"
     },
     {
-        label: "Standing in doorway (foot on frame)",
+        label: "Shower View (From Above)",
+        value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down"
+    },
+    {
+        label: "Doorway Pose — foot on frame, knee near face",
         value: "standing in a bedroom doorway. Her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face."
     },
     {
-        label: "Bending Forward, Hands on Knees",
+        label: "Doorway Pose (Just Standing)",
+        value: "standing in a bedroom doorway."
+    },
+    {
+        label: "Forward Lean (hands on knees) - facing back, ass toward camera",
         value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera, legs straight, knees locked"
+    },
+    {
+        label: "Reclining back - resting on elbow, other hand touching crotch",
+        value: "lying on {possessive} side, with the top leg bent high, hand lightly between {possessive} thighs"
+    },
+    {
+        label: "Morning Stretch",
+        value: "standing, mid-stretch reaching both arms overhead while rising up on {possessive} toes, hands in {possessive} hair, back arched, chest pressed forward, shoulders pulled back."
+    },
+    {
+        label: "Lying in a Windowsill",
+        value: "lying on {possessive} stomach on a sunlit windowsill, chin resting on {possessive} hands, legs bent at the knees and crossed at the ankles in the air"
+    },
+    {
+        label: "Lying on a Couch (Foot on Backrest)",
+        value: "lying on {possessive} back on a sofa, one leg hooked over the backrest, other foot on the floor"
+    },
+    {
+        label: "Lying on a Couch (Foot on Armrest)",
+        value: "lying on {possessive} back on a sofa, one leg resting on opposite armrest, other foot on the floor"
+    },
+    {
+        label: "On Knees, Ass Spread",
+        value: "{subjectPronoun} is on {possessive} knees facing away, looking back over {possessive} shoulder while reaching back to spread {possessive} ass cheeks apart"
+    },
+    {
+        label: "Kneeling in Front of a Fireplace - wearing pearls and heels",
+        value: "kneeling on a soft rug in front of a fireplace, hands on {possessive} thighs, chest pushed forward, wearing a long pearl necklace and high heels"
+    },
+    {
+        label: "On All Fours",
+        value: "on all fours, head turned to the side, back arched hard, ass toward the camera"
+    },
+    {
+        label: "Crawling Toward Camera",
+        value: "crawling toward the camera on all fours"
+    },
+    {
+        label: "Leaning over Counter in Kitchen - in an Apron",
+        value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, wearing only a tiny apron."
+    },
+    {
+        label: "Bathroom Mirror Selfie",
+        value: "taking a selfie in a bathroom mirror"
+    },
+    {
+        label: "Full-Length Mirror Reflection {standing)",
+        value: "standing in front of a full-length mirror while pulling {possessive} hair up"
+    }
+    {
+        label: "Full-Length Mirror Reflection (sitting)",
+        value: "sitting in front of a full-length mirror looking at {possessive} reflection"
     }
 ];
 
