@@ -195,6 +195,10 @@ const bodyShapePresets = [
         value: ""
     },
     {
+        label: "Petite",
+        value: "small petite juvenile frame, with narrow shoulders, narrow hips, and a small flat boyish chest"
+    },
+    {
         label: "Hourglass",
         value: "hourglass body shape with balanced bust and hips and a clearly defined waist"
     },
@@ -335,7 +339,8 @@ const makeupPresets = [
 const tattooPresets = [
     "arm tattoo",
     "back tattoo",
-    "sleeve tattoo",
+    "neck tattoos",
+    "sleeve tattoos",
     "red & green rose tattoos that cover both arms"
 ];
 
@@ -375,7 +380,14 @@ const hairstylePresets = [
 
     // Cut and styling details
     "with bangs",
-    "blown-out",
+    {
+        label: "blown-out",
+        value: "high-volume, heavily sprayed, lacquered hairstyle"
+    },
+    {
+        label: "soft feathered 70s waves",
+        value: "soft feathered 1970s hairstyle with gentle waves, airy volume, and natural movement"
+    },
     "faux hawk",
     "short boyish hairstyle",
     "shaved on one side",
@@ -599,6 +611,34 @@ function getClothingValue(preset) {
 }
 
 
+function getHairstyleLabel(preset) {
+
+    if (
+        typeof preset === "object" &&
+        preset !== null
+    ) {
+
+        return preset.label;
+    }
+
+    return preset;
+}
+
+
+function getHairstyleValue(preset) {
+
+    if (
+        typeof preset === "object" &&
+        preset !== null
+    ) {
+
+        return preset.value;
+    }
+
+    return preset;
+}
+
+
 // =========================================
 // COMPOSITE POSES
 // =========================================
@@ -618,7 +658,7 @@ const complexActionPresets = [
     },
     {
         label: "Leaning Forward (Ass Up)",
-        value: "on {possessive} knees, leaning forward, back arched, ass high in the air, arms stretched out in front of {objectPronoun}"
+        value: "on {possessive} knees, leaning forward, {possessive} face in the foreground, back arched, ass high in the air, arms stretched out in front of {objectPronoun}"
     },
     {
         label: "Squatting (from below)",
@@ -662,8 +702,10 @@ const actionSwitchPresets = [
     "sitting",
     "laying",
     "on a bed",
+    "on a thick carpeted floor",
     "on {possessive} side",
     "facedown",
+    "{possessive} face in the foreground",
     "on {possessive} back",
     "{possessive} butt at the edge of the bed",
     "standing in a doorway",
@@ -680,11 +722,13 @@ const actionSwitchPresets = [
     "feet together",
     "one leg raised",
     "1 foot against door frame",
+    "{possessive} ass high in the air",
 
     // Arms and hands
     "arms raised high above {possessive} head",
     "arms stretched out in front of {objectPronoun}",
     "hands clasped together",
+    "on {possessive} elbows",
     "elbows resting on bed",
     "hands on hips",
     "hands on breasts",
@@ -711,6 +755,9 @@ const actionSwitchPresets = [
     // Setting
     "in the shower",
     "in a bedroom",
+    "in a kitchen",
+    "in the backseat of a car",
+    "in a surgical theatre",
     "in a crowded city street",
     "in a glade"
 ];
@@ -1685,7 +1732,9 @@ const inputs = requestFromUser(
 
             const hairstyleMenu = [
                 "No hairstyle",
-                ...hairstylePresets
+                ...hairstylePresets.map(
+                    p => getHairstyleLabel(p)
+                )
             ];
 
 
@@ -3012,9 +3061,11 @@ for (
             ? typedHairstyle
             : (
                 hairstyleIdx > 0
-                    ? hairstylePresets[
-                    hairstyleIdx - 1
-                    ]
+                    ? getHairstyleValue(
+                        hairstylePresets[
+                        hairstyleIdx - 1
+                        ]
+                    )
                     : ""
             );
 
