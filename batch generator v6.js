@@ -525,32 +525,32 @@ const clothingPresets = [
 const clothingGroups = [
     {
         title: "Tops",
-        description: "Top layers and upper-body styling",
+        description: "Upper-body styling",
         presets: clothingPresets.slice(0, 8)
     },
     {
         title: "Dresses",
-        description: "Dresses, rompers, and one-piece silhouettes",
+        description: "Dress and one-piece styles",
         presets: clothingPresets.slice(8, 11)
     },
     {
         title: "Bottoms",
-        description: "Bottoms, skirts, and legwear basics",
+        description: "Skirts, shorts, and bottoms",
         presets: clothingPresets.slice(11, 17)
     },
     {
         title: "Lingerie",
-        description: "Underlayers, lingerie, and intimatewear choices",
+        description: "Lingerie and underlayers",
         presets: clothingPresets.slice(17, 44)
     },
     {
         title: "Details",
-        description: "Specialty outfits and stylized wardrobe presets",
+        description: "Specialty outfit presets",
         presets: clothingPresets.slice(44, 47)
     },
     {
         title: "Footwear",
-        description: "Shoes, socks, and lower-body finishing pieces",
+        description: "Shoes, socks, and legwear",
         presets: clothingPresets.slice(47)
     }
 ];
@@ -710,32 +710,32 @@ const actionSwitchPresets = [
 const actionGroups = [
     {
         title: "Position",
-        description: "Primary pose and setup choices",
+        description: "Pose setup choices",
         presets: actionSwitchPresets.slice(0, 7)
     },
     {
         title: "Legs",
-        description: "Leg, torso, and alignment details",
+        description: "Leg and body alignment",
         presets: actionSwitchPresets.slice(7, 18)
     },
     {
         title: "Arms",
-        description: "Hand placement, arm positions, and gesture details",
+        description: "Hand and arm placement",
         presets: actionSwitchPresets.slice(18, 28)
     },
     {
         title: "Gaze",
-        description: "Camera direction, eye line, and facing choices",
+        description: "Looking and facing choices",
         presets: actionSwitchPresets.slice(28, 37)
     },
     {
         title: "Expression",
-        description: "Facial expression and mouth details",
+        description: "Face and expression",
         presets: actionSwitchPresets.slice(37, 39)
     },
     {
         title: "Setting",
-        description: "Location and environment modifiers",
+        description: "Scene and environment",
         presets: actionSwitchPresets.slice(39)
     }
 ];
