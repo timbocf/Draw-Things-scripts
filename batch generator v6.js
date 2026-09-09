@@ -433,12 +433,6 @@ const bodyHairPresets = [
 const clothingPresets = [
 
     // -------------------------------------
-    // Complete Ensembles
-    // -------------------------------------
-
-    "a lace bustier, garter belt and thigh-high stockings",
-
-    // -------------------------------------
     // Tops
     // -------------------------------------
 
@@ -516,6 +510,10 @@ const clothingPresets = [
     {
         label: "Champagne Silk Pajama Set",
         value: "champagne-colored silk pajama set with shorts that show ample thigh"
+    },
+    {
+        label: "a lace bustier, garter belt and thigh-high stockings",
+        value: "a lace bustier, garter belt and thigh-high stockings"
     },
 
 
