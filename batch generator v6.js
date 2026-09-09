@@ -737,6 +737,7 @@ const actionSwitchPresets = [
     "hands on hips",
     "hands on breasts",
     "hands in hair",
+    "hands on knees",
     "hands lightly touching upper chest area",
     "hands on ass",
     "hands spreading ass cheeks",
