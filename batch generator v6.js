@@ -539,6 +539,8 @@ const clothingPresets = [
 
     "barefoot",
     "white tube socks",
+    "knee-high Hello Kitty socks",
+    "knee-high Pokemon socks",
     "black fishnet stockings",
     "sheer lace stockings",
     "strappy heels",
