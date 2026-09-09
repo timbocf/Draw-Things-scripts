@@ -456,6 +456,27 @@ const clothingPresets = [
     "string bikini",
     "garter belt",
     "lace bustier",
+    "silk lingerie set",
+    "black lace lingerie set",
+    "red satin lingerie set",
+    "sheer lace teddy",
+    "transparent lace bra and panties",
+    "lace-up corset",
+    "satin chemise",
+    "sheer bodystocking",
+    "balconette bra and matching panties",
+    "lace garter set",
+    "leather lingerie set",
+    "silk robe and lingerie set",
+    "fishnet bodysuit",
+    "push-up bra and thong set",
+    "lace-up thigh-highs",
+    "strapless corset set",
+    "sheer robe with matching panties",
+    "satin slip dress",
+    "lace-up bustier set",
+    "transparent vinyl lingerie",
+    "corset over sheer stockings",
 
 
     // -------------------------------------
@@ -488,6 +509,12 @@ const clothingPresets = [
     // -------------------------------------
 
     "barefoot",
+    "white tube socks",
+    "black fishnet stockings",
+    "sheer lace stockings",
+    "strappy heels",
+    "lace-up knee boots",
+    "platform boots",
     "stiletto heels",
     "cowboy boots",
     "thigh-high stockings",
@@ -1198,6 +1225,74 @@ const experimentalLightingPresets = [
     {
         label: "Fog light",
         value: "directional light visibly diffused through light atmospheric fog"
+    }
+];
+
+
+const colorTreatmentPresets = [
+    {
+        label: "Black & white",
+        value: "black-and-white monochrome treatment"
+    },
+    {
+        label: "Sepia",
+        value: "sepia-toned treatment"
+    },
+    {
+        label: "High-contrast noir",
+        value: "high-contrast noir-style treatment"
+    },
+    {
+        label: "Soft monochrome",
+        value: "soft monochrome treatment"
+    },
+    {
+        label: "1970s Polaroid",
+        value: "1970s Polaroid film aesthetic with warm tones, soft contrast, and instant-photo color drift"
+    },
+    {
+        label: "1940s Kodachrome",
+        value: "1940s Kodachrome-inspired color treatment with rich saturated tones, gentle contrast, and nostalgic vintage color rendering"
+    },
+    {
+        label: "1960s slide film",
+        value: "1960s slide film aesthetic with vibrant saturated colors, slightly warm highlights, and crisp vintage transparency look"
+    },
+    {
+        label: "1950s magazine print",
+        value: "1950s magazine-print color treatment with polished glossy tones, soft bloom, and clean mid-century editorial color balance"
+    },
+    {
+        label: "1980s VHS",
+        value: "1980s VHS aesthetic with slightly washed-out color, magnetic noise, analog softness, and retro cassette-era warmth"
+    },
+    {
+        label: "1930s Agfacolor",
+        value: "1930s Agfacolor-inspired treatment with slightly muted early color film tones and classic pre-war photographic softness"
+    },
+    {
+        label: "1970s Technicolor",
+        value: "1970s Technicolor-inspired treatment with saturated cinematic color, rich contrast, and glossy studio-film look"
+    },
+    {
+        label: "2000s disposable camera",
+        value: "2000s disposable-camera aesthetic with soft focus, slight color cast, and nostalgic point-and-shoot film imperfections"
+    },
+    {
+        label: "1990s Fuji film",
+        value: "1990s Fuji film-inspired treatment with smooth color transitions, slightly warm highlights, and clean nostalgic analog tone"
+    },
+    {
+        label: "1960s Eastmancolor",
+        value: "1960s Eastmancolor-inspired treatment with rich yet soft color, gentle contrast, and mid-century studio warmth"
+    },
+    {
+        label: "1980s neon synthwave film",
+        value: "1980s neon synthwave film treatment with vivid synthetic colors, glossy contrast, and retro-futurist glow"
+    },
+    {
+        label: "1950s Anscochrome",
+        value: "1950s Anscochrome-inspired treatment with soft pastel tones, slightly hazy color, and warm editorial sweetness"
     }
 ];
 
@@ -2010,6 +2105,29 @@ const inputs = requestFromUser(
         );
 
 
+        const colorTreatmentControls =
+            colorTreatmentPresets.map(
+                p =>
+                    this.switch(
+                        false,
+                        `✡︎  ${p.label}`
+                    )
+            );
+
+
+        fields.push(
+
+            this.section(
+
+                "❖  COLOR TREATMENTS",
+
+                "Optional monochrome or stylized color treatment controls",
+
+                colorTreatmentControls
+            )
+        );
+
+
         // =====================================
         // PROMPT OPTIONS / TEMPLATE
         // =====================================
@@ -2024,9 +2142,9 @@ const inputs = requestFromUser(
 
             this.textField(
 
-                "A {artStyle} of {subject}, wearing {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, Natural anatomy",
+                "A {artStyle} of {subject}, wearing {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
 
-                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
 
                 false,
 
@@ -3314,6 +3432,30 @@ for (
 }
 
 
+const colorTreatmentData =
+    inputs[sectionIdx++];
+
+
+const colorTreatment = [];
+
+
+for (
+    let i = 0;
+    i < colorTreatmentPresets.length;
+    i++
+) {
+
+    if (
+        colorTreatmentData[i] === true
+    ) {
+
+        colorTreatment.push(
+            colorTreatmentPresets[i].value
+        );
+    }
+}
+
+
 const lightingParts = [
 
     ...naturalLighting,
@@ -3332,6 +3474,10 @@ const lightingParts = [
 
 const lighting =
     lightingParts.join(", ");
+
+
+const colorTreatmentText =
+    colorTreatment.join(", ");
 
 
 // =========================================
@@ -3467,6 +3613,11 @@ for (
                     .replace(
                         /{lighting}/gi,
                         lighting || ""
+                    )
+
+                    .replace(
+                        /{colorTreatment}/gi,
+                        colorTreatmentText || ""
                     );
 
 
