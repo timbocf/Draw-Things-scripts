@@ -371,6 +371,7 @@ const hairstylePresets = [
     "curly",
 
     // Pulled-back and braided styles
+    "wet hair",
     "ponytail",
     "messy ponytail",
     "French braid",
@@ -700,7 +701,7 @@ const complexActionPresets = [
     },
     {
         label: "Bending Forward, Hands on Knees",
-        value: "facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera"
+        value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera"
     }
 ];
 
