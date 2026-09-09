@@ -738,7 +738,7 @@ const cameraPerspectivePresets = [
         value: "compressed telephoto-style perspective with reduced apparent depth"
     },
     {
-        label! "Over-the-Shoulder",
+        label: "Over-the-Shoulder",
         value: "over-the-shoulder"
     }
 ];
