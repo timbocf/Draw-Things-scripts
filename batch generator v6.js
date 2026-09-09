@@ -577,12 +577,17 @@ const clothingGroups = [
     {
         title: "Details",
         description: "Specialty outfit presets",
-        presets: clothingPresets.slice(44, 47)
+        presets: clothingPresets.slice(44, 46)
+    },
+    {
+        title: "Uniforms",
+        description: "Uniform-style outfit presets",
+        presets: clothingPresets.slice(46, 48)
     },
     {
         title: "Footwear",
         description: "Shoes, socks, and legwear",
-        presets: clothingPresets.slice(47)
+        presets: clothingPresets.slice(48)
     }
 ];
 
@@ -801,32 +806,32 @@ const actionGroups = [
     {
         title: "Position",
         description: "Pose setup choices",
-        presets: actionSwitchPresets.slice(0, 7)
+        presets: actionSwitchPresets.slice(0, 13)
     },
     {
         title: "Legs",
         description: "Leg and body alignment",
-        presets: actionSwitchPresets.slice(7, 18)
+        presets: actionSwitchPresets.slice(13, 31)
     },
     {
         title: "Arms",
         description: "Hand and arm placement",
-        presets: actionSwitchPresets.slice(18, 28)
+        presets: actionSwitchPresets.slice(31, 44)
     },
     {
         title: "Gaze",
         description: "Looking and facing choices",
-        presets: actionSwitchPresets.slice(28, 37)
+        presets: actionSwitchPresets.slice(44, 57)
     },
     {
         title: "Expression",
         description: "Face and expression",
-        presets: actionSwitchPresets.slice(37, 39)
+        presets: actionSwitchPresets.slice(57, 62)
     },
     {
         title: "Setting",
         description: "Scene and environment",
-        presets: actionSwitchPresets.slice(39)
+        presets: actionSwitchPresets.slice(62)
     }
 ];
 
