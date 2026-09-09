@@ -522,6 +522,40 @@ const clothingPresets = [
 ];
 
 
+const clothingGroups = [
+    {
+        title: "Tops",
+        description: "Top layers and upper-body styling",
+        presets: clothingPresets.slice(0, 8)
+    },
+    {
+        title: "Dresses & One-piece Outfits",
+        description: "Dresses, rompers, and one-piece silhouettes",
+        presets: clothingPresets.slice(8, 11)
+    },
+    {
+        title: "Bottoms",
+        description: "Bottoms, skirts, and legwear basics",
+        presets: clothingPresets.slice(11, 17)
+    },
+    {
+        title: "Undergarments & Lingerie",
+        description: "Underlayers, lingerie, and intimatewear choices",
+        presets: clothingPresets.slice(17, 44)
+    },
+    {
+        title: "Detailed Clothing Presets",
+        description: "Specialty outfits and stylized wardrobe presets",
+        presets: clothingPresets.slice(44, 47)
+    },
+    {
+        title: "Footwear & Legwear",
+        description: "Shoes, socks, and lower-body finishing pieces",
+        presets: clothingPresets.slice(47)
+    }
+];
+
+
 // -----------------------------------------
 // Clothing helper functions
 //
@@ -670,6 +704,40 @@ const actionSwitchPresets = [
     "in a bedroom",
     "in a crowded city street",
     "in a glade"
+];
+
+
+const actionGroups = [
+    {
+        title: "Base Position",
+        description: "Primary pose and setup choices",
+        presets: actionSwitchPresets.slice(0, 7)
+    },
+    {
+        title: "Body & Leg Position",
+        description: "Leg, torso, and alignment details",
+        presets: actionSwitchPresets.slice(7, 18)
+    },
+    {
+        title: "Arms & Hands",
+        description: "Hand placement, arm positions, and gesture details",
+        presets: actionSwitchPresets.slice(18, 28)
+    },
+    {
+        title: "Gaze & Orientation",
+        description: "Camera direction, eye line, and facing choices",
+        presets: actionSwitchPresets.slice(28, 37)
+    },
+    {
+        title: "Expression",
+        description: "Facial expression and mouth details",
+        presets: actionSwitchPresets.slice(37, 39)
+    },
+    {
+        title: "Setting",
+        description: "Location and environment modifiers",
+        presets: actionSwitchPresets.slice(39)
+    }
 ];
 
 
@@ -1736,23 +1804,13 @@ const inputs = requestFromUser(
             ];
 
 
-            const clothingSwitches =
-                clothingPresets.map(
-                    c =>
-                        this.switch(
-                            false,
-                            `✡︎  ${getClothingLabel(c)}`
-                        )
-                );
-
-
             fields.push(
 
                 this.section(
 
-                    `❖  OUTFIT ${i + 1}`,
+                    `❖  OUTFIT ${i + 1} • Preset`,
 
-                    "Select presets, toggle clothing switches, or enter custom style",
+                    "Choose a preset or add custom outfit text",
 
                     [
 
@@ -1760,8 +1818,6 @@ const inputs = requestFromUser(
                             0,
                             outfitMenu
                         ),
-
-                        ...clothingSwitches,
 
                         this.textField(
                             "",
@@ -1772,6 +1828,30 @@ const inputs = requestFromUser(
                     ]
                 )
             );
+
+
+            for (
+                const group of clothingGroups
+            ) {
+
+                fields.push(
+
+                    this.section(
+
+                        `❖  OUTFIT ${i + 1} • ${group.title}`,
+
+                        group.description,
+
+                        group.presets.map(
+                            c =>
+                                this.switch(
+                                    false,
+                                    `✡︎  ${getClothingLabel(c)}`
+                                )
+                        )
+                    )
+                );
+            }
         }
 
 
@@ -1793,51 +1873,54 @@ const inputs = requestFromUser(
             i++
         ) {
 
-            const actionControls = [
-
-                this.menu(
-                    0,
-                    actionMenu
-                )
-            ];
-
-
-            actionSwitchPresets.forEach(
-                s => {
-
-                    actionControls.push(
-
-                        this.switch(
-                            false,
-                            `✡︎  ${s}`
-                        )
-                    );
-                }
-            );
-
-
-            actionControls.push(
-
-                this.textField(
-                    "",
-                    "Custom action / pose modifier",
-                    false,
-                    60
-                )
-            );
-
-
             fields.push(
 
                 this.section(
 
-                    `❖  ACTION / POSE ${i + 1}`,
+                    `❖  ACTION / POSE ${i + 1} • Preset`,
 
-                    "Choose a preset, toggle modular details, or add custom pose text",
+                    "Choose a preset or add custom pose text",
 
-                    actionControls
+                    [
+
+                        this.menu(
+                            0,
+                            actionMenu
+                        ),
+
+                        this.textField(
+                            "",
+                            "Custom action / pose modifier",
+                            false,
+                            60
+                        )
+                    ]
                 )
             );
+
+
+            for (
+                const group of actionGroups
+            ) {
+
+                fields.push(
+
+                    this.section(
+
+                        `❖  ACTION / POSE ${i + 1} • ${group.title}`,
+
+                        group.description,
+
+                        group.presets.map(
+                            s =>
+                                this.switch(
+                                    false,
+                                    `✡︎  ${s}`
+                                )
+                        )
+                    )
+                );
+            }
         }
 
 
@@ -2976,7 +3059,7 @@ for (
     const outfitParts = [];
 
 
-    const outfitData =
+    const outfitMetaData =
         inputs[sectionIdx++];
 
 
@@ -2984,7 +3067,7 @@ for (
 
 
     const selectedOutfitIdx =
-        outfitData[
+        outfitMetaData[
         outfitDataIdx++
         ];
 
@@ -3005,32 +3088,10 @@ for (
     }
 
 
-    for (
-        let j = 0;
-        j < clothingPresets.length;
-        j++
-    ) {
-
-        if (
-            outfitData[
-            outfitDataIdx++
-            ] === true
-        ) {
-
-            outfitParts.push(
-
-                getClothingValue(
-                    clothingPresets[j]
-                )
-            );
-        }
-    }
-
-
     const customOutfit =
-        outfitData[
+        outfitMetaData[
         outfitDataIdx
-        ];
+        ] || "";
 
 
     if (
@@ -3040,6 +3101,35 @@ for (
         outfitParts.push(
             customOutfit
         );
+    }
+
+
+    for (
+        const group of clothingGroups
+    ) {
+
+        const groupData =
+            inputs[sectionIdx++];
+
+
+        for (
+            let j = 0;
+            j < group.presets.length;
+            j++
+        ) {
+
+            if (
+                groupData[j] === true
+            ) {
+
+                outfitParts.push(
+
+                    getClothingValue(
+                        group.presets[j]
+                    )
+                );
+            }
+        }
     }
 
 
@@ -3065,7 +3155,7 @@ for (
     const actionParts = [];
 
 
-    const actionData =
+    const actionMetaData =
         inputs[sectionIdx++];
 
 
@@ -3073,7 +3163,7 @@ for (
 
 
     const selectedPresetIdx =
-        actionData[
+        actionMetaData[
         actionDataIdx++
         ];
 
@@ -3091,29 +3181,10 @@ for (
     }
 
 
-    for (
-        let j = 0;
-        j < actionSwitchPresets.length;
-        j++
-    ) {
-
-        if (
-            actionData[
-            actionDataIdx++
-            ] === true
-        ) {
-
-            actionParts.push(
-                actionSwitchPresets[j]
-            );
-        }
-    }
-
-
     const customActionText =
-        actionData[
+        actionMetaData[
         actionDataIdx
-        ];
+        ] || "";
 
 
     if (
@@ -3123,6 +3194,32 @@ for (
         actionParts.push(
             customActionText
         );
+    }
+
+
+    for (
+        const group of actionGroups
+    ) {
+
+        const groupData =
+            inputs[sectionIdx++];
+
+
+        for (
+            let j = 0;
+            j < group.presets.length;
+            j++
+        ) {
+
+            if (
+                groupData[j] === true
+            ) {
+
+                actionParts.push(
+                    group.presets[j]
+                );
+            }
+        }
     }
 
 
