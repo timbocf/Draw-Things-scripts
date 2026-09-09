@@ -157,6 +157,10 @@ const chestPresets = [
     {
         label: "Full chest",
         value: "full chest"
+    },
+    {
+        label: "Large breasts",
+        value: "large breasts"
     }
 ];
 
@@ -406,6 +410,10 @@ const clothingPresets = [
     "a fitted T-shirt",
     "a tank top",
     "a crop top",
+    {
+        label: "a short crop top",
+        value: "a crop-top t-shirt showing significant underboob"
+    },
     "a blouse",
     "an unbuttoned mens dress shirt",
     "a hoodie",
@@ -427,6 +435,9 @@ const clothingPresets = [
     "jeans",
     "shorts",
     "cutoff jean shorts",
+    "mini-skirt",
+    "pleated mini-skirt",
+    "spandex leggings",
 
 
     // -------------------------------------
@@ -558,6 +569,10 @@ const complexActionPresets = [
     {
         label: "View in shower from below",
         value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up"
+    },
+    {
+        label: "Standing in doorway (foot on frame)",
+        value: "standing in a bedroom doorway. Her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face."
     }
 ];
 
@@ -575,6 +590,7 @@ const actionSwitchPresets = [
     "on a bed",
     "on {possessive} back",
     "{possessive} butt at the edge of the bed",
+    "standing in a doorway",
 
     // Body and leg position
     "legs straight",
@@ -586,6 +602,8 @@ const actionSwitchPresets = [
     "one foot on the wall",
     "feet spread wide",
     "feet together",
+    "one leg raised",
+    "1 foot against door frame",
 
     // Arms and hands
     "arms raised high above {possessive} head",
@@ -607,6 +625,8 @@ const actionSwitchPresets = [
     "looking up",
     "facing camera",
     "facing away from camera",
+    "eyes closed",
+    "squinting",
 
     // Expression
     "lips parted",
@@ -716,6 +736,10 @@ const cameraPerspectivePresets = [
     {
         label: "Compressed perspective",
         value: "compressed telephoto-style perspective with reduced apparent depth"
+    },
+    {
+        label! "Over-the-Shoulder",
+        value: "over-the-shoulder"
     }
 ];
 
