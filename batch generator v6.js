@@ -60,14 +60,15 @@ const agePresets = [
 
 // --- SKIN TONE ---
 const skinTonePresets = [
-    "fair skin",
+    "porcelain skin",
     "pale skin",
+    "fair skin",
     "tanned skin",
     "cream skin",
     "olive skin",
     "caramel skin",
-    "dark skin",
     "warm brown skin",
+    "dark skin",
     "dark glossy skin"
 ];
 
