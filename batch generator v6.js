@@ -724,6 +724,7 @@ const actionSwitchPresets = [
     "on {possessive} back",
     "{possessive} butt at the edge of the bed",
     "standing in a doorway",
+    "crawling toward the camera",
 
     // Body and leg position
     "legs straight",
