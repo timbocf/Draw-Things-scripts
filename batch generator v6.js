@@ -2317,9 +2317,9 @@ const inputs = requestFromUser(
 
             this.textField(
 
-                "A {artStyle} of {subject}, {action}, wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
+                "A {artStyle} of {subjectLead} in {action}, {subjectDetails}, wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
 
-                "Prompt Template — tags: {artStyle}, {subject}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "Prompt Template — tags: {artStyle}, {subjectLead}, {subjectDetails}, {subject}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
 
                 false,
 
@@ -2354,6 +2354,12 @@ let sectionIdx = 0;
 
 
 const subjects = [];
+
+
+const subjectLeadTexts = [];
+
+
+const subjectDetailTexts = [];
 
 
 const subjectGenderForms = [];
@@ -3137,8 +3143,49 @@ for (
     }
 
 
+    const subjectLeadParts = [];
+
+
+    if (
+        nationality
+    ) {
+
+        subjectLeadParts.push(
+            nationality
+        );
+    }
+
+
+    if (
+        gender
+    ) {
+
+        subjectLeadParts.push(
+            gender
+        );
+    }
+
+
+    const subjectDetailsParts =
+        subjectParts.filter(
+            part =>
+                part !== nationality &&
+                part !== gender
+        );
+
+
     subjects.push(
         subjectParts.join(", ")
+    );
+
+
+    subjectLeadTexts.push(
+        subjectLeadParts.join(", ")
+    );
+
+
+    subjectDetailTexts.push(
+        subjectDetailsParts.join(", ")
     );
 
 
@@ -3759,6 +3806,18 @@ for (
         ];
 
 
+    const subjectLead =
+        subjectLeadTexts[
+        subjectIndex
+        ] || "";
+
+
+    const subjectDetails =
+        subjectDetailTexts[
+        subjectIndex
+        ] || "";
+
+
     const genderForm =
         subjectGenderForms[
         subjectIndex
@@ -3790,6 +3849,16 @@ for (
                     .replace(
                         /{subject}/gi,
                         subject || ""
+                    )
+
+                    .replace(
+                        /{subjectLead}/gi,
+                        subjectLead || ""
+                    )
+
+                    .replace(
+                        /{subjectDetails}/gi,
+                        subjectDetails || ""
                     )
 
                     .replace(
