@@ -358,7 +358,7 @@ const hairColorPresets = [
 
 const hairLengthPresets = [
     "short",
-    "medium length",
+    "medium-length",
     "long",
     "very long"
 ];
@@ -3045,14 +3045,6 @@ for (
             );
 
 
-    if (hairColor) {
-
-        subjectParts.push(
-            hairColor + " hair"
-        );
-    }
-
-
     const hairLengthIdx =
         appearanceData[appIdx++];
 
@@ -3071,14 +3063,6 @@ for (
                     ]
                     : ""
             );
-
-
-    if (hairLength) {
-
-        subjectParts.push(
-            hairLength
-        );
-    }
 
 
     const hairstyleIdx =
@@ -3103,10 +3087,37 @@ for (
             );
 
 
+    const hairDescriptionParts = [];
+
+
+    if (hairLength) {
+
+        hairDescriptionParts.push(
+            hairLength
+        );
+    }
+
+
     if (hairstyle) {
 
-        subjectParts.push(
+        hairDescriptionParts.push(
             hairstyle
+        );
+    }
+
+
+    if (hairColor) {
+
+        hairDescriptionParts.push(
+            hairColor + " hair"
+        );
+    }
+
+
+    if (hairDescriptionParts.length > 0) {
+
+        subjectParts.push(
+            hairDescriptionParts.join(" ")
         );
     }
 
