@@ -375,9 +375,15 @@ const hairstylePresets = [
     "with bangs",
     "short boyish hairstyle",
     "Hollywood curls",
-    "Victory curls",
+    "Victory curls"
+];
 
-    // Body hair
+
+// -----------------------------------------
+// Body hair
+// -----------------------------------------
+
+const bodyHairPresets = [
     "light body hair",
     "thick body hair"
 ];
@@ -559,7 +565,7 @@ const complexActionPresets = [
         value: "laying on {possessive} back with {possessive} legs raised and spread wide, feet wide apart, holding {possessive} legs in the air with {possessive} hands, looking through {possessive} open legs at the camera"
     },
     {
-        label: "On Back (Legs Straight)",
+        label: "On Back, Legs in the air)",
         value: "laying on a bed on {possessive} back with {possessive} butt at the edge of the bed, {possessive} legs straight and elevated into the air, knees locked, bending at waist only"
     },
     {
@@ -1529,17 +1535,34 @@ const inputs = requestFromUser(
 
 
             tattooPresets.forEach(
-                t => {
+    t => {
 
-                    appearanceControls.push(
+        appearanceControls.push(
 
-                        this.switch(
-                            false,
-                            `✡︎  ${t}`
-                        )
-                    );
-                }
-            );
+            this.switch(
+                false,
+                `✡︎  ${t}`
+            )
+        );
+    }
+);
+
+
+bodyHairPresets.forEach(
+    h => {
+
+        appearanceControls.push(
+
+            this.switch(
+                false,
+                `✡︎  ${h}`
+            )
+        );
+    }
+);
+
+
+appearanceControls.push(
 
 
             appearanceControls.push(
@@ -2681,25 +2704,41 @@ for (
 
 
     for (
-        let j = 0;
-        j < tattooPresets.length;
-        j++
+    let j = 0;
+    j < tattooPresets.length;
+    j++
+) {
+
+    if (
+        appearanceData[appIdx++]
     ) {
 
-        if (
-            appearanceData[appIdx++]
-        ) {
-
-            subjectParts.push(
-                tattooPresets[j]
-            );
-        }
+        subjectParts.push(
+            tattooPresets[j]
+        );
     }
+}
 
 
-    const hairColorIdx =
-        appearanceData[appIdx++];
+for (
+    let j = 0;
+    j < bodyHairPresets.length;
+    j++
+) {
 
+    if (
+        appearanceData[appIdx++]
+    ) {
+
+        subjectParts.push(
+            bodyHairPresets[j]
+        );
+    }
+}
+
+
+const hairColorIdx =
+    appearanceData[appIdx++];
 
     const typedHairColor =
         appearanceData[appIdx++];
