@@ -1,44 +1,47 @@
 //@api-1.0
-// "black woman with a round ass and short black hair", "curvy caucasian woman with large breasts and a large round ass with long curly black hair and red & green rose tattoos covering her arms", "tall athletic woman with olive skin", "petite woman with short spiked black hair, flat juvenile chest and narrow hips", 
 
 the_women = [
 
-"curvy caucasian woman with large breasts and a large round ass with long curly black hair and red & green rose tattoos covering her arms",
+"18-year-old tall thin Japanese woman with long straight black hair, a flat chest, narrow hips, long legs and a small ass"]
 
-"14-year-old girl with her hair in a loose bun", 
-
-"woman with long wavy blonde hair and hourglass figure", 
-
-"tall athletic woman with long straight blonde hair", 
-
-"black woman with a round ass and short black hair"]
-
-outfits = ["wearing a short champagne-colored silk pajama set that shows her upper thigh", 
-
-"wearing a loose-fitting t-shirt and white socks", 
-
-"wearing a lace bustier, bikini panties, lace garter belt, thigh-high stockings and stiletto heels", 
-
-"nude but wearing an unbuttoned men's dress shirt"]
+outfits = []
 
 actions = [
-"standing with her back against a wall, arms above her head, hands clasped, back arched, head tilted upward, lips parted, one knee bent and foot touching the wall",
+"standing in a bedroom with an arched back, shoulders pulled back, breasts pushed upward, her arms above her head and hands in her hair", 
 
-"standing in a bedroom with an arched back, shoulders pulled back, breasts pushed upward, one hand on her hip", 
+"Leaning back against a cool tiled shower wall, one knee bent, water running down her body, sheer white tank top clinging wet, tiny black thong", 
 
-"3/4 turn view over her shoulder, looking back at the camera, lips parted, hands on her breasts", 
+"Standing in front of a full-length mirror, twisting to look over her shoulder while pulling her hair up — silk robe completely open, nothing underneath",
 
-"birds-eye view, laying on a bed, with her arms above her head, hands clasped, looking up at the camera, one knee bent", 
+"One foot up on a chair, body arched, hands behind her head — oversized men’s dress shirt unbuttoned and slipping off one shoulder.",
 
-"standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera, looking back at the camera, lips parted", 
+"Pressed against a floor-to-ceiling window at night, city lights behind her, palms flat on the glass — black lace bodysuit with the crotch cutout.",
 
-"on hands & knees on a bed, facing the camera", "laying on her side on a bed, looking at the camera", 
+"Leaning over a kitchen counter, elbows down, ass out, looking back — tiny apron only, nothing else. Kneeling / On All Fours",
 
-"laying facedown on a bed, her face in the foreground, looking up toward the camera, smiling", 
+"On all fours on a rumpled white bed, head turned to the side, back arched hard — sheer black stockings + garter belt, no panties.",
 
-"standing at a 2-story bedroom window looking out and down at the camera. The camera is outside the house looking up at her in the window.",
+"Kneeling on the floor between a man’s legs (or empty chair), looking up with soft eyes while resting her cheek on his thigh — oversized sweater slipping off one shoulder, bare below.",
 
-"taking a bathroom mirror selfie"]
+"Kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward — only a long pearl necklace and high heels.",
+
+"On her knees facing away, looking back over her shoulder while reaching back to pull one cheek aside — red lace thong and matching thigh-highs. Lying / Reclining",
+
+"On her back on a dark leather couch, one leg hooked over the backrest, other foot on the floor — unbuttoned jeans pulled halfway down, no bra under a cropped hoodie.",
+
+"Lying on her side on silk sheets with the top leg bent high, hand lightly between her thighs — black satin slip riding up.",
+
+"On her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air — tiny white cotton panties only.",
+
+"Reclining in a bathtub with one leg draped over the edge, water lapping at her hips — wet white button-up shirt completely see-through. Dynamic / Movement",
+
+"Mid-stretch reaching both arms overhead while rising up on her toes — thin sports bra and tiny bike shorts, morning light from the side.",
+
+"Walking toward the camera down a hallway, one hand trailing along the wall, looking straight at the lens — only a long open coat and heels.",
+
+"Sitting on the edge of a desk and slowly sliding off it, legs parting as she does — tight pencil skirt pushed up, blouse half-unbuttoned.",
+
+"Catching herself mid-fall against a wall after slipping out of heels, one knee on the floor — lace teddy and garters."]
 
 async function generateBatch() {
    for (let i = 0; i < actions.length; i++) {
