@@ -2316,9 +2316,9 @@ const inputs = requestFromUser(
 
             this.textField(
 
-                "A {artStyle} of {subject}, wearing {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
+                "A {artStyle} of {subject}, {action}, wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
 
-                "Prompt Template — tags: {artStyle}, {subject}, {clothing}, {action}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "Prompt Template — tags: {artStyle}, {subject}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
 
                 false,
 
