@@ -1,6 +1,7 @@
 //@api-1.0
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
+// V6 — ORGANIZED / STABILIZED
 // PRESETS + BODY PHYSIQUE + GENDER-AWARE TERMS
 // + CAMERA + LIGHTING + TENEBRISM
 // =========================================
@@ -77,15 +78,6 @@ const skinTonePresets = [
 // BODY / PHYSIQUE
 // =========================================
 
-// Each option has:
-// label = what appears in the UI
-// value = what is actually sent to Krea
-
-
-// -----------------------------------------
-// Overall build
-// -----------------------------------------
-
 const overallBuildPresets = [
     {
         label: "Slim build",
@@ -118,10 +110,6 @@ const overallBuildPresets = [
 ];
 
 
-// -----------------------------------------
-// Height
-// -----------------------------------------
-
 const heightPresets = [
     {
         label: "Short",
@@ -137,10 +125,6 @@ const heightPresets = [
     }
 ];
 
-
-// -----------------------------------------
-// Chest
-// -----------------------------------------
 
 const chestPresets = [
     {
@@ -166,10 +150,6 @@ const chestPresets = [
 ];
 
 
-// -----------------------------------------
-// Hips
-// -----------------------------------------
-
 const hipPresets = [
     {
         label: "Narrow hips",
@@ -185,10 +165,6 @@ const hipPresets = [
     }
 ];
 
-
-// -----------------------------------------
-// Body shape
-// -----------------------------------------
 
 const bodyShapePresets = [
     {
@@ -222,10 +198,6 @@ const bodyShapePresets = [
 ];
 
 
-// -----------------------------------------
-// Legs
-// -----------------------------------------
-
 const legPresets = [
     {
         label: "Slim legs",
@@ -246,10 +218,6 @@ const legPresets = [
 ];
 
 
-// -----------------------------------------
-// Ass size
-// -----------------------------------------
-
 const assSizePresets = [
     {
         label: "Small",
@@ -269,10 +237,6 @@ const assSizePresets = [
     }
 ];
 
-
-// -----------------------------------------
-// Belly size
-// -----------------------------------------
 
 const bellySizePresets = [
     {
@@ -297,10 +261,6 @@ const bellySizePresets = [
     }
 ];
 
-
-// -----------------------------------------
-// Specific body characteristics
-// -----------------------------------------
 
 const specificBodyPresets = [
     {
@@ -366,12 +326,9 @@ const hairLengthPresets = [
 
 
 const hairstylePresets = [
-    // Texture
     "straight",
     "wavy",
     "curly",
-
-    // Pulled-back and braided styles
     "wet hair",
     "ponytail",
     "messy ponytail",
@@ -379,8 +336,6 @@ const hairstylePresets = [
     "loose braids",
     "messy bun",
     "messy double buns",
-
-    // Cut and styling details
     "with bangs",
     {
         label: "blown-out",
@@ -404,10 +359,6 @@ const hairstylePresets = [
 ];
 
 
-// -----------------------------------------
-// Body hair
-// -----------------------------------------
-
 const bodyHairPresets = [
     "light body hair",
     "thick body hair"
@@ -417,242 +368,193 @@ const bodyHairPresets = [
 // =========================================
 // CLOTHING
 // =========================================
-
-// Clothing presets can be either:
-//
-// 1. A simple string:
-//    "a tank top"
-//
-// 2. An object with:
-//    label = what appears in the UI
-//    value = what is actually sent to Krea
-//
-// This allows the UI to stay clean while
-// detailed clothing descriptions are sent
-// to the prompt generator.
-
-const clothingPresets = [
-
-    // -------------------------------------
-    // Tops
-    // -------------------------------------
-
-    "a loose fitting T-shirt",
-    "a fitted T-shirt",
-    "a tank top",
-    "a crop top",
-    {
-        label: "a short crop top",
-        value: "a crop-top t-shirt showing significant underboob"
-    },
-    "a blouse",
-    "an unbuttoned mens dress shirt",
-    "a hoodie",
-
-
-    // -------------------------------------
-    // Dresses and one-piece outfits
-    // -------------------------------------
-
-    "a short babydoll dress",
-    "a summer dress",
-    "one-piece swimsuit",
-
-
-    // -------------------------------------
-    // Bottoms
-    // -------------------------------------
-
-    "jeans",
-    "shorts",
-    "cutoff jean shorts",
-    "mini-skirt",
-    "pleated mini-skirt",
-    "spandex leggings",
-
-
-    // -------------------------------------
-    // Undergarments and lingerie
-    // -------------------------------------
-
-    "nude",
-    "bikini-style panties",
-    "thong",
-    "string bikini",
-    "garter belt",
-    "lace bustier",
-    "silk lingerie set",
-    "black lace lingerie set",
-    "red satin lingerie set",
-    "sheer lace teddy",
-    "transparent lace bra and panties",
-    "lace-up corset",
-    "satin chemise",
-    "sheer bodystocking",
-    "balconette bra and matching panties",
-    "lace garter set",
-    "leather lingerie set",
-    "silk robe and lingerie set",
-    "fishnet bodysuit",
-    "push-up bra and thong set",
-    "lace-up thigh-highs",
-    "strapless corset set",
-    "sheer robe with matching panties",
-    "satin slip dress",
-    "lace-up bustier set",
-    "transparent vinyl lingerie",
-    "corset over sheer stockings",
-
-
-    // -------------------------------------
-    // Detailed clothing presets
-    // -------------------------------------
-
-    {
-        label: "Champagne Silk Pajama Set",
-        value: "champagne-colored silk pajama set with shorts that show ample thigh"
-    },
-    {
-        label: "a lace bustier, garter belt and thigh-high stockings",
-        value: "a lace bustier, garter belt and thigh-high stockings"
-    },
-
-
-    // -------------------------------------
-    // Uniforms
-    // -------------------------------------
-
-    {
-        label: "French Maid Uniform",
-        value: "black French maid uniform with short pleated skirt and white collar"
-    },
-
-    {
-        label: "Hooters Uniform",
-        value: "Hooters uniform (tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts)"
-    },
-
-
-    // -------------------------------------
-    // Footwear and legwear
-    // -------------------------------------
-
-    "barefoot",
-    "white tube socks",
-    "knee-high Hello Kitty socks",
-    "knee-high Pokemon socks",
-    "black fishnet stockings",
-    "sheer lace stockings",
-    "strappy heels",
-    "lace-up knee boots",
-    "platform boots",
-    "stiletto heels",
-    "cowboy boots",
-    "thigh-high stockings",
-    "thigh-high leather boots"
-];
-
+// V6 CHANGE:
+// Clothing groups are now the source of truth.
+// No slice() ranges are used.
+// clothingPresets is generated from the groups so
+// the dropdown and grouped switches stay synchronized.
+// =========================================
 
 const clothingGroups = [
+
     {
         title: "Tops",
         description: "Upper-body styling",
-        presets: clothingPresets.slice(0, 8)
+        presets: [
+            "a loose fitting T-shirt",
+            "a fitted T-shirt",
+            "a tank top",
+            "a crop top",
+            {
+                label: "a short crop top",
+                value: "a crop-top t-shirt showing significant underboob"
+            },
+            "a blouse",
+            "an unbuttoned mens dress shirt",
+            "a hoodie"
+        ]
     },
+
     {
         title: "Dresses",
         description: "Dress and one-piece styles",
-        presets: clothingPresets.slice(8, 11)
+        presets: [
+            "a short babydoll dress",
+            "a summer dress",
+            "one-piece swimsuit"
+        ]
     },
+
     {
         title: "Bottoms",
         description: "Skirts, shorts, and bottoms",
-        presets: clothingPresets.slice(11, 17)
+        presets: [
+            "jeans",
+            "shorts",
+            "cutoff jean shorts",
+            "mini-skirt",
+            "pleated mini-skirt",
+            "spandex leggings"
+        ]
     },
+
     {
         title: "Lingerie",
         description: "Lingerie and underlayers",
-        presets: clothingPresets.slice(17, 44)
+        presets: [
+            "nude",
+            "bikini-style panties",
+            "thong",
+            "string bikini",
+            "garter belt",
+            "lace bustier",
+            "silk lingerie set",
+            "black lace lingerie set",
+            "red satin lingerie set",
+            "sheer lace teddy",
+            "transparent lace bra and panties",
+            "lace-up corset",
+            "satin chemise",
+            "sheer bodystocking",
+            "balconette bra and matching panties",
+            "lace garter set",
+            "leather lingerie set",
+            "silk robe and lingerie set",
+            "fishnet bodysuit",
+            "push-up bra and thong set",
+            "lace-up thigh-highs",
+            "strapless corset set",
+            "sheer robe with matching panties",
+            "satin slip dress",
+            "lace-up bustier set",
+            "transparent vinyl lingerie",
+            "corset over sheer stockings"
+        ]
     },
+
     {
         title: "Details",
         description: "Specialty outfit presets",
-        presets: clothingPresets.slice(44, 46)
+        presets: [
+            {
+                label: "Champagne Silk Pajama Set",
+                value: "champagne-colored silk pajama set with shorts that show ample thigh"
+            },
+            {
+                label: "a lace bustier, garter belt and thigh-high stockings",
+                value: "a lace bustier, garter belt and thigh-high stockings"
+            }
+        ]
     },
+
     {
         title: "Uniforms",
         description: "Uniform-style outfit presets",
-        presets: clothingPresets.slice(46, 48)
+        presets: [
+            {
+                label: "French Maid Uniform",
+                value: "black French maid uniform with short pleated skirt and white collar"
+            },
+            {
+                label: "Hooters Uniform",
+                value: "Hooters uniform (tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts)"
+            }
+        ]
     },
+
     {
         title: "Footwear",
         description: "Shoes, socks, and legwear",
-        presets: clothingPresets.slice(48)
+        presets: [
+            "barefoot",
+            "white tube socks",
+            "knee-high Hello Kitty socks",
+            "knee-high Pokemon socks",
+            "black fishnet stockings",
+            "sheer lace stockings",
+            "strappy heels",
+            "lace-up knee boots",
+            "platform boots",
+            "stiletto heels",
+            "cowboy boots",
+            "thigh-high stockings",
+            "thigh-high leather boots"
+        ]
     }
 ];
 
 
-// -----------------------------------------
-// Clothing helper functions
-//
-// These allow clothingPresets to contain
-// both simple strings and label/value
-// objects.
-// -----------------------------------------
+// Flat clothing list used by the main clothing menu.
+// Group definitions above remain the source of truth.
+const clothingPresets =
+    clothingGroups.flatMap(
+        group => group.presets
+    );
 
-function getClothingLabel(preset) {
 
-    if (
+// =========================================
+// GENERIC PRESET HELPERS
+// =========================================
+
+function getPresetLabel(preset) {
+
+    return (
         typeof preset === "object" &&
         preset !== null
-    ) {
-
-        return preset.label;
-    }
-
-    return preset;
+    )
+        ? preset.label
+        : preset;
 }
 
 
-function getClothingValue(preset) {
+function getPresetValue(preset) {
 
-    if (
+    return (
         typeof preset === "object" &&
         preset !== null
-    ) {
-
-        return preset.value;
-    }
-
-    return preset;
+    )
+        ? preset.value
+        : preset;
 }
 
 
-function getHairstyleLabel(preset) {
+function presetLabels(presets) {
 
-    if (
-        typeof preset === "object" &&
-        preset !== null
-    ) {
-
-        return preset.label;
-    }
-
-    return preset;
+    return presets.map(
+        preset => getPresetLabel(preset)
+    );
 }
 
 
-function getHairstyleValue(preset) {
+function presetSwitches(presets) {
 
-    if (
-        typeof preset === "object" &&
-        preset !== null
-    ) {
-
-        return preset.value;
-    }
-
-    return preset;
+    return presets.map(
+        preset =>
+            this.switch(
+                false,
+                `✡︎  ${getPresetLabel(preset)}`
+            )
+    );
 }
 
 
@@ -661,110 +563,137 @@ function getHairstyleValue(preset) {
 // =========================================
 
 const complexActionPresets = [
+
     {
         label: "Wall Pose — back against wall, one knee bent",
         value: "leaning back against a wall, with one knee bent and one foot on the wall"
     },
+
     {
         label: "Bed Lean (on elbows) — elbows on bed, ass toward camera",
         value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing {possessive} ass toward the camera"
     },
+
     {
         label: "Bed Lean (face-down) — cheek on mattress, looking sideways",
         value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing {possessive} ass toward the camera"
     },
+
     {
         label: "Ass-Up Lean (on bed or floor) — on knees, face forward, back arched",
         value: "on {possessive} knees, leaning forward, {possessive} face in the foreground, back arched, ass high in the air, arms stretched out in front of {objectPronoun}"
     },
+
     {
         label: "Deep Squat, Viewed From Below — knees wide, toes pointed, hands on knees",
         value: "worms-eye view, squatting with {possessive} knees spread wide and on the tips of {possessive} toes, hands resting on {possessive} knees"
     },
+
     {
         label: "Cross-Legged Floor Sit — seated, leaning back, relaxed smile",
         value: "sitting cross-legged on the floor, leaning back slightly on {possessive} hands, looking directly into the camera with a relaxed smile"
     },
+
     {
         label: "Spread Eagle (Lying Back) — lying back, legs spread wide, hands holding legs",
         value: "laying on {possessive} back with {possessive} legs raised and spread wide, feet wide apart, holding {possessive} legs in the air with {possessive} hands, looking through {possessive} open legs at the camera"
     },
+
     {
         label: "Back-on-Bed (Legs Straight Up) — legs straight and elevated, knees locked",
         value: "laying on a bed on {possessive} back with {possessive} butt at the edge of the bed, {possessive} legs straight and elevated into the air, knees locked, bending at waist only"
     },
+
     {
         label: "Deep Waist Bend — legs straight, hands on shelf, surprise look",
         value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with {possessive} hand covering {possessive} mouth and wide-eyed open-mouthed look of surprise"
     },
+
     {
         label: "Shower View (From Below) — camera below, looking up through water",
         value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up"
     },
+
     {
         label: "Shower View (From Above)",
         value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down"
     },
+
     {
         label: "Doorway Pose — foot on frame, knee near face",
         value: "standing in a bedroom doorway. Her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face."
     },
+
     {
         label: "Doorway Pose (Just Standing)",
         value: "standing in a bedroom doorway."
     },
+
     {
         label: "Forward Lean (hands on knees) - facing back, ass toward camera",
         value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera, legs straight, knees locked"
     },
+
     {
         label: "Reclining back - resting on elbow, other hand touching crotch",
         value: "lying on {possessive} side, with the top leg bent high, hand lightly between {possessive} thighs"
     },
+
     {
         label: "Morning Stretch",
         value: "standing, mid-stretch reaching both arms overhead while rising up on {possessive} toes, hands in {possessive} hair, back arched, chest pressed forward, shoulders pulled back."
     },
+
     {
         label: "Lying in a Windowsill",
         value: "lying on {possessive} stomach on a sunlit windowsill, chin resting on {possessive} hands, legs bent at the knees and crossed at the ankles in the air"
     },
+
     {
         label: "Lying on a Couch (Foot on Backrest)",
         value: "lying on {possessive} back on a sofa, one leg hooked over the backrest, other foot on the floor"
     },
+
     {
         label: "Lying on a Couch (Foot on Armrest)",
         value: "lying on {possessive} back on a sofa, one leg resting on opposite armrest, other foot on the floor"
     },
+
     {
         label: "On Knees, Ass Spread",
         value: "{subjectPronoun} is on {possessive} knees facing away, looking back over {possessive} shoulder while reaching back to spread {possessive} ass cheeks apart"
     },
+
     {
         label: "Kneeling in Front of a Fireplace - wearing pearls and heels",
         value: "kneeling on a soft rug in front of a fireplace, hands on {possessive} thighs, chest pushed forward, wearing a long pearl necklace and high heels"
     },
+
     {
         label: "On All Fours",
         value: "on all fours, head turned to the side, back arched hard, ass toward the camera"
     },
+
     {
         label: "Crawling Toward Camera",
         value: "crawling toward the camera on all fours"
     },
+
     {
         label: "Leaning over Counter in Kitchen - in an Apron",
         value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, wearing only a tiny apron."
     },
+
     {
         label: "Bathroom Mirror Selfie",
         value: "taking a selfie in a bathroom mirror"
     },
+
     {
-        label: "Full-Length Mirror Reflection {standing)",
+        label: "Full-Length Mirror Reflection (standing)",
         value: "standing in front of a full-length mirror while pulling {possessive} hair up"
-    }
+    },
+
     {
         label: "Full-Length Mirror Reflection (sitting)",
         value: "sitting in front of a full-length mirror looking at {possessive} reflection"
@@ -775,125 +704,133 @@ const complexActionPresets = [
 // =========================================
 // MODULAR POSE SWITCHES
 // =========================================
-
-const actionSwitchPresets = [
-
-    // Base position
-    "standing",
-    "sitting",
-    "laying",
-    "on a bed",
-    "on a thick carpeted floor",
-    "on {possessive} side",
-    "facedown",
-    "{possessive} face in the foreground",
-    "on {possessive} back",
-    "{possessive} butt at the edge of the bed",
-    "standing in a doorway",
-    "crawling toward the camera",
-    "on {possessive} hands and knees",
-
-    // Body and leg position
-    "legs straight",
-    "elevated into the air",
-    "knees locked",
-    "bending at waist only",
-    "leaning forward",
-    "one knee bent",
-    "knees bent",
-    "one foot on the wall",
-    "feet spread wide",
-    "feet together",
-    "feet crossed",
-    "one leg raised",
-    "1 foot against door frame",
-    "{possessive} ass high in the air",
-    "back arched",
-    "chest puffed out",
-    "knees together",
-    "shoulders back",
-
-    // Arms and hands
-    "arms raised high above {possessive} head",
-    "arms stretched out in front of {objectPronoun}",
-    "hands clasped together",
-    "on {possessive} elbows",
-    "elbows resting on bed",
-    "hands on hips",
-    "hands on waist",
-    "hands on breasts",
-    "hands in hair",
-    "hands on knees",
-    "hands lightly touching upper chest area",
-    "hands on ass",
-    "hands spreading ass cheeks",
-
-    // Gaze and orientation
-    "looking off to the side",
-    "looking away from camera",
-    "looking at camera",
-    "looking down",
-    "looking up",
-    "head tilted to the side",
-    "head turned to the side",
-    "looking over {possessive} shoulder",
-    "facing camera",
-    "facing away from camera",
-    "ass toward the camera",
-    "eyes closed",
-    "squinting",
-
-    // Expression
-    "lips parted",
-    "smiling",
-    "chin tilted up",
-    "head tilted up",
-    "head tilted down",
-
-    // Setting
-    "in the shower",
-    "in a bedroom",
-    "in a kitchen",
-    "in the backseat of a car",
-    "in a surgical theatre",
-    "in a crowded city street",
-    "in a glade",
-    "on an office desk"
-];
-
+// V6 CHANGE:
+// Action groups are explicitly defined instead
+// of relying on slice() index ranges.
+// =========================================
 
 const actionGroups = [
+
     {
         title: "Position",
         description: "Pose setup choices",
-        presets: actionSwitchPresets.slice(0, 13)
+        presets: [
+            "standing",
+            "sitting",
+            "laying",
+            "on a bed",
+            "on a thick carpeted floor",
+            "on {possessive} side",
+            "facedown",
+            "{possessive} face in the foreground",
+            "on {possessive} back",
+            "{possessive} butt at the edge of the bed",
+            "standing in a doorway",
+            "crawling toward the camera",
+            "on {possessive} hands and knees"
+        ]
     },
+
     {
         title: "Legs",
         description: "Leg and body alignment",
-        presets: actionSwitchPresets.slice(13, 31)
+        presets: [
+            "legs straight",
+            "elevated into the air",
+            "knees locked",
+            "bending at waist only",
+            "leaning forward",
+            "one knee bent",
+            "knees bent",
+            "one foot on the wall",
+            "feet spread wide",
+            "feet together",
+            "feet crossed",
+            "one leg raised",
+            "1 foot against door frame",
+            "{possessive} ass high in the air",
+            "back arched",
+            "chest puffed out",
+            "knees together",
+            "shoulders back"
+        ]
     },
+
     {
         title: "Arms",
         description: "Hand and arm placement",
-        presets: actionSwitchPresets.slice(31, 44)
+        presets: [
+            "arms raised high above {possessive} head",
+            "arms stretched out in front of {objectPronoun}",
+            "hands clasped together",
+            "on {possessive} elbows",
+            "elbows resting on bed",
+            "hands on hips",
+            "hands on waist",
+            "hands on breasts",
+            "hands in hair",
+            "hands on knees",
+            "hands lightly touching upper chest area",
+            "hands on ass",
+            "hands spreading ass cheeks"
+        ]
     },
+
     {
         title: "Gaze",
         description: "Looking and facing choices",
-        presets: actionSwitchPresets.slice(44, 57)
+        presets: [
+            "looking off to the side",
+            "looking away from camera",
+            "looking at camera",
+            "looking down",
+            "looking up",
+            "head tilted to the side",
+            "head turned to the side",
+            "looking over {possessive} shoulder",
+            "facing camera",
+            "facing away from camera",
+            "ass toward the camera",
+            "eyes closed",
+            "squinting"
+        ]
     },
+
     {
         title: "Expression",
         description: "Face and expression",
-        presets: actionSwitchPresets.slice(57, 62)
+        presets: [
+            "lips parted",
+            "smiling",
+            "chin tilted up",
+            "head tilted up",
+            "head tilted down"
+        ]
     },
+
     {
         title: "Setting",
         description: "Scene and environment",
-        presets: actionSwitchPresets.slice(62)
+        presets: [
+            "in the shower",
+            "in a bedroom",
+            "in a kitchen",
+            "in the backseat of a car",
+            "in a surgical theatre",
+            "in a crowded city street",
+            "in a glade",
+            "on an office desk"
+        ]
     }
 ];
+
+
+// Flat action list used internally only if needed.
+// Group definitions remain the source of truth.
+const actionSwitchPresets =
+    actionGroups.flatMap(
+        group => group.presets
+    );
 
 
 // =========================================
@@ -909,7 +846,7 @@ const artStylePresets = [
 
 
 // =========================================
-// CAMERA • FRAMING
+// CAMERA
 // =========================================
 
 const cameraFramingPresets = [
@@ -951,10 +888,6 @@ const cameraFramingPresets = [
     }
 ];
 
-
-// =========================================
-// CAMERA • PERSPECTIVE
-// =========================================
 
 const cameraPerspectivePresets = [
     {
@@ -1000,10 +933,6 @@ const cameraPerspectivePresets = [
 ];
 
 
-// =========================================
-// CAMERA • DEPTH OF FIELD
-// =========================================
-
 const depthOfFieldPresets = [
     {
         label: "Deep focus",
@@ -1023,10 +952,6 @@ const depthOfFieldPresets = [
     }
 ];
 
-
-// =========================================
-// CAMERA • COMPOSITION
-// =========================================
 
 const cameraCompositionPresets = [
     {
@@ -1065,7 +990,7 @@ const cameraCompositionPresets = [
 
 
 // =========================================
-// LIGHTING • TIME OF DAY
+// LIGHTING
 // =========================================
 
 const timeOfDayPresets = [
@@ -1111,10 +1036,6 @@ const timeOfDayPresets = [
     }
 ];
 
-
-// =========================================
-// LIGHTING • NATURAL / ENVIRONMENTAL
-// =========================================
 
 const naturalLightingPresets = [
     {
@@ -1164,10 +1085,6 @@ const naturalLightingPresets = [
 ];
 
 
-// =========================================
-// LIGHTING • QUALITY / DIRECTION
-// =========================================
-
 const lightingQualityPresets = [
     {
         label: "Soft light",
@@ -1203,10 +1120,6 @@ const lightingQualityPresets = [
     }
 ];
 
-
-// =========================================
-// LIGHTING • MOOD / CINEMATIC
-// =========================================
 
 const cinematicLightingPresets = [
     {
@@ -1264,10 +1177,6 @@ const cinematicLightingPresets = [
 ];
 
 
-// =========================================
-// LIGHTING • COLOR / CREATIVE
-// =========================================
-
 const colorLightingPresets = [
     {
         label: "Warm",
@@ -1315,10 +1224,6 @@ const colorLightingPresets = [
     }
 ];
 
-
-// =========================================
-// LIGHTING • DARK / TENEBRISM
-// =========================================
 
 const tenebrismLightingPresets = [
     {
@@ -1403,10 +1308,6 @@ const tenebrismLightingPresets = [
     }
 ];
 
-
-// =========================================
-// LIGHTING • SPECIAL EFFECTS
-// =========================================
 
 const experimentalLightingPresets = [
     {
@@ -1530,15 +1431,10 @@ const setup = requestFromUser(
     function () {
 
         return [
-
             this.section(
-
                 "❖  Batch Configurations",
-
                 "Define how many variants to generate per batch",
-
                 [
-
                     this.menu(
                         0,
                         [
@@ -1590,21 +1486,10 @@ const setup = requestFromUser(
 
 const setupData = setup[0];
 
-
-const subjectCount =
-    setupData[0] + 1;
-
-
-const outfitCount =
-    setupData[1] + 1;
-
-
-const actionCount =
-    setupData[2] + 1;
-
-
-const aspectIndex =
-    setupData[3];
+const subjectCount = setupData[0] + 1;
+const outfitCount = setupData[1] + 1;
+const actionCount = setupData[2] + 1;
+const aspectIndex = setupData[3];
 
 
 // =========================================
@@ -1629,42 +1514,26 @@ const inputs = requestFromUser(
             i++
         ) {
 
-            const genderMenu = [
-                "Choose gender",
-                ...genderPresets
-            ];
-
-
-            const nationalityMenu = [
-                "Choose nationality / ethnicity",
-                ...nationalityPresets
-            ];
-
-
-            const skinToneMenu = [
-                "Choose skin tone",
-                ...skinTonePresets
-            ];
-
-
             fields.push(
 
                 this.section(
-
                     `❖  SUBJECT ${i + 1} • Identity`,
-
                     "Gender, ethnicity, age, and skin tone",
-
                     [
-
                         this.menu(
                             0,
-                            genderMenu
+                            [
+                                "Choose gender",
+                                ...genderPresets
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            nationalityMenu
+                            [
+                                "Choose nationality / ethnicity",
+                                ...nationalityPresets
+                            ]
                         ),
 
                         this.menu(
@@ -1674,136 +1543,86 @@ const inputs = requestFromUser(
 
                         this.menu(
                             0,
-                            skinToneMenu
+                            [
+                                "Choose skin tone",
+                                ...skinTonePresets
+                            ]
                         )
                     ]
                 )
             );
 
 
-            const overallBuildMenu = [
-                "No overall build selected",
-                ...overallBuildPresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const heightMenu = [
-                "No height selected",
-                ...heightPresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const chestMenu = [
-                "No chest description",
-                ...chestPresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const hipMenu = [
-                "No hip description",
-                ...hipPresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const bodyShapeMenu = [
-                ...bodyShapePresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const legMenu = [
-                "No leg description",
-                ...legPresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const assSizeMenu = [
-                "No ass size selected",
-                ...assSizePresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const bellySizeMenu = [
-                "No belly size selected",
-                ...bellySizePresets.map(
-                    p => p.label
-                )
-            ];
-
-
-            const specificBodyMenu = [
-                ...specificBodyPresets.map(
-                    p => p.label
-                )
-            ];
-
-
             fields.push(
 
                 this.section(
-
                     `❖  SUBJECT ${i + 1} • Body / Physique`,
-
                     "Choose independent characteristics to control the subject's overall proportions and silhouette",
-
                     [
-
                         this.menu(
                             0,
-                            overallBuildMenu
+                            [
+                                "No overall build selected",
+                                ...presetLabels(overallBuildPresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            heightMenu
+                            [
+                                "No height selected",
+                                ...presetLabels(heightPresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            chestMenu
+                            [
+                                "No chest description",
+                                ...presetLabels(chestPresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            hipMenu
+                            [
+                                "No hip description",
+                                ...presetLabels(hipPresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            bodyShapeMenu
+                            presetLabels(bodyShapePresets)
                         ),
 
                         this.menu(
                             0,
-                            legMenu
+                            [
+                                "No leg description",
+                                ...presetLabels(legPresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            assSizeMenu
+                            [
+                                "No ass size selected",
+                                ...presetLabels(assSizePresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            bellySizeMenu
+                            [
+                                "No belly size selected",
+                                ...presetLabels(bellySizePresets)
+                            ]
                         ),
 
                         this.menu(
                             0,
-                            specificBodyMenu
+                            presetLabels(specificBodyPresets)
                         ),
 
                         this.textField(
@@ -1817,37 +1636,15 @@ const inputs = requestFromUser(
             );
 
 
-            const hairColorMenu = [
-                "No hair color",
-                ...hairColorPresets
-            ];
-
-
-            const hairLengthMenu = [
-                "No hair length",
-                ...hairLengthPresets
-            ];
-
-
-            const hairstyleMenu = [
-                "No hairstyle",
-                ...hairstylePresets.map(
-                    p => getHairstyleLabel(p)
-                )
-            ];
-
-
             const appearanceControls = [];
 
 
             makeupPresets.forEach(
-                m => {
-
+                item => {
                     appearanceControls.push(
-
                         this.switch(
                             false,
-                            `✡︎  ${m}`
+                            `✡︎  ${item}`
                         )
                     );
                 }
@@ -1855,13 +1652,11 @@ const inputs = requestFromUser(
 
 
             tattooPresets.forEach(
-                t => {
-
+                item => {
                     appearanceControls.push(
-
                         this.switch(
                             false,
-                            `✡︎  ${t}`
+                            `✡︎  ${item}`
                         )
                     );
                 }
@@ -1869,13 +1664,11 @@ const inputs = requestFromUser(
 
 
             bodyHairPresets.forEach(
-                h => {
-
+                item => {
                     appearanceControls.push(
-
                         this.switch(
                             false,
-                            `✡︎  ${h}`
+                            `✡︎  ${item}`
                         )
                     );
                 }
@@ -1886,7 +1679,10 @@ const inputs = requestFromUser(
 
                 this.menu(
                     0,
-                    hairColorMenu
+                    [
+                        "No hair color",
+                        ...hairColorPresets
+                    ]
                 ),
 
                 this.textField(
@@ -1898,7 +1694,10 @@ const inputs = requestFromUser(
 
                 this.menu(
                     0,
-                    hairLengthMenu
+                    [
+                        "No hair length",
+                        ...hairLengthPresets
+                    ]
                 ),
 
                 this.textField(
@@ -1910,7 +1709,10 @@ const inputs = requestFromUser(
 
                 this.menu(
                     0,
-                    hairstyleMenu
+                    [
+                        "No hairstyle",
+                        ...presetLabels(hairstylePresets)
+                    ]
                 ),
 
                 this.textField(
@@ -1932,11 +1734,8 @@ const inputs = requestFromUser(
             fields.push(
 
                 this.section(
-
                     `❖  SUBJECT ${i + 1} • Appearance`,
-
                     "Styling, features, and hair",
-
                     appearanceControls
                 )
             );
@@ -1953,27 +1752,18 @@ const inputs = requestFromUser(
             i++
         ) {
 
-            const outfitMenu = [
-                "No clothing selected",
-                ...clothingPresets.map(
-                    c => getClothingLabel(c)
-                )
-            ];
-
-
             fields.push(
 
                 this.section(
-
                     `❖  OUTFIT ${i + 1} • Preset`,
-
                     "Choose a preset or add custom outfit text",
-
                     [
-
                         this.menu(
                             0,
-                            outfitMenu
+                            [
+                                "No clothing selected",
+                                ...presetLabels(clothingPresets)
+                            ]
                         ),
 
                         this.textField(
@@ -1994,16 +1784,13 @@ const inputs = requestFromUser(
                 fields.push(
 
                     this.section(
-
                         `❖  OUTFIT ${i + 1} • ${group.title}`,
-
                         group.description,
-
                         group.presets.map(
-                            c =>
+                            preset =>
                                 this.switch(
                                     false,
-                                    `✡︎  ${getClothingLabel(c)}`
+                                    `✡︎  ${getPresetLabel(preset)}`
                                 )
                         )
                     )
@@ -2018,9 +1805,7 @@ const inputs = requestFromUser(
 
         const actionMenu = [
             "No pose preset selected",
-            ...complexActionPresets.map(
-                a => a.label
-            )
+            ...presetLabels(complexActionPresets)
         ];
 
 
@@ -2033,13 +1818,9 @@ const inputs = requestFromUser(
             fields.push(
 
                 this.section(
-
                     `❖  ACTION / POSE ${i + 1} • Preset`,
-
                     "Choose a preset or add custom pose text",
-
                     [
-
                         this.menu(
                             0,
                             actionMenu
@@ -2063,16 +1844,13 @@ const inputs = requestFromUser(
                 fields.push(
 
                     this.section(
-
                         `❖  ACTION / POSE ${i + 1} • ${group.title}`,
-
                         group.description,
-
                         group.presets.map(
-                            s =>
+                            preset =>
                                 this.switch(
                                     false,
-                                    `✡︎  ${s}`
+                                    `✡︎  ${preset}`
                                 )
                         )
                     )
@@ -2085,94 +1863,54 @@ const inputs = requestFromUser(
         // CAMERA
         // =====================================
 
-        const cameraFramingControls =
-            cameraFramingPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const cameraPerspectiveControls =
-            cameraPerspectivePresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const depthOfFieldControls =
-            depthOfFieldPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const cameraCompositionControls =
-            cameraCompositionPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
         fields.push(
 
             this.section(
-
                 "❖  CAMERA • Framing",
-
                 "Control how much of the subject and environment appears in the image",
-
-                cameraFramingControls
-            )
-        );
-
-
-        fields.push(
+                cameraFramingPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  CAMERA • Perspective",
-
                 "Control the camera's viewing angle, direction, and spatial perspective",
-
-                cameraPerspectiveControls
-            )
-        );
-
-
-        fields.push(
+                cameraPerspectivePresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  CAMERA • Depth of Field",
-
                 "Control background separation and focus depth",
-
-                depthOfFieldControls
-            )
-        );
-
-
-        fields.push(
+                depthOfFieldPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  CAMERA • Composition",
-
                 "Control how the subject is arranged within the frame",
-
-                cameraCompositionControls
+                cameraCompositionPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
             )
         );
 
@@ -2181,189 +1919,104 @@ const inputs = requestFromUser(
         // LIGHTING
         // =====================================
 
-        const timeOfDayMenu = [
-            "No time of day selected",
-            ...timeOfDayPresets.map(
-                p => p.label
-            )
-        ];
-
-
-        const naturalLightingControls =
-            naturalLightingPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const lightingQualityControls =
-            lightingQualityPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const cinematicLightingControls =
-            cinematicLightingPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const colorLightingControls =
-            colorLightingPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const tenebrismLightingControls =
-            tenebrismLightingPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        const experimentalLightingControls =
-            experimentalLightingPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
         fields.push(
 
             this.section(
-
                 "❖  LIGHTING • Time of Day",
-
                 "Choose the environmental time and quality of ambient light",
-
                 [
                     this.menu(
                         0,
-                        timeOfDayMenu
+                        [
+                            "No time of day selected",
+                            ...presetLabels(timeOfDayPresets)
+                        ]
                     )
                 ]
-            )
-        );
-
-
-        fields.push(
+            ),
 
             this.section(
-
                 "❖  LIGHTING • Natural / Environmental",
-
                 "Common natural and environmental light sources",
-
-                naturalLightingControls
-            )
-        );
-
-
-        fields.push(
+                naturalLightingPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  LIGHTING • Quality / Direction",
-
                 "High-impact controls for softness, direction, and shadow shape",
-
-                lightingQualityControls
-            )
-        );
-
-
-        fields.push(
+                lightingQualityPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  LIGHTING • Mood / Cinematic",
-
                 "High-impact cinematic mood, contrast, and atmosphere",
-
-                cinematicLightingControls
-            )
-        );
-
-
-        fields.push(
+                cinematicLightingPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  LIGHTING • Color / Creative",
-
                 "Color temperature and colored illumination",
-
-                colorLightingControls
-            )
-        );
-
-
-        fields.push(
+                colorLightingPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  LIGHTING • Dark / Tenebrism",
-
                 "Extreme darkness, selective illumination, moonlight, dawn darkness, and old-master-style shadow",
-
-                tenebrismLightingControls
-            )
-        );
-
-
-        fields.push(
+                tenebrismLightingPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  LIGHTING • Special Effects",
-
                 "Unusual patterns, optical effects, and atmospheric techniques",
-
-                experimentalLightingControls
-            )
-        );
-
-
-        const colorTreatmentControls =
-            colorTreatmentPresets.map(
-                p =>
-                    this.switch(
-                        false,
-                        `✡︎  ${p.label}`
-                    )
-            );
-
-
-        fields.push(
+                experimentalLightingPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
+            ),
 
             this.section(
-
                 "❖  COLOR TREATMENTS",
-
                 "Optional monochrome or stylized color treatment controls",
-
-                colorTreatmentControls
+                colorTreatmentPresets.map(
+                    preset =>
+                        this.switch(
+                            false,
+                            `✡︎  ${preset.label}`
+                        )
+                )
             )
         );
 
@@ -2372,36 +2025,24 @@ const inputs = requestFromUser(
         // PROMPT OPTIONS / TEMPLATE
         // =====================================
 
-        const promptControls = [
-
-            this.menu(
-                0,
-                artStylePresets
-            ),
-
-
-            this.textField(
-
-                "A {artStyle} of {subject}, {action}, wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
-
-                "Prompt Template — tags: {artStyle}, {subject}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
-
-                false,
-
-                80
-            )
-        ];
-
-
         fields.push(
 
             this.section(
-
                 "❖  Prompt Options & Template",
-
                 "Choose an art style and customize the template with tags",
+                [
+                    this.menu(
+                        0,
+                        artStylePresets
+                    ),
 
-                promptControls
+                    this.textField(
+                        "A {artStyle} of {subject}, {action}, wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
+                        "Prompt Template — tags: {artStyle}, {subject}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                        false,
+                        80
+                    )
+                ]
             )
         );
 
@@ -2417,16 +2058,9 @@ const inputs = requestFromUser(
 
 let sectionIdx = 0;
 
-
 const subjects = [];
-
-
 const subjectLeadTexts = [];
-
-
 const subjectDetailTexts = [];
-
-
 const subjectGenderForms = [];
 
 
@@ -2439,18 +2073,14 @@ function getGenderForm(gender) {
     if (
         /\b(man|male)\b/i.test(gender)
     ) {
-
         return "masculine";
     }
-
 
     if (
         /\b(woman|female)\b/i.test(gender)
     ) {
-
         return "feminine";
     }
-
 
     return "neutral";
 }
@@ -2465,31 +2095,25 @@ function matchCase(
         !source ||
         !replacement
     ) {
-
         return replacement;
     }
-
 
     if (
         source ===
         source.toUpperCase()
     ) {
-
         return replacement.toUpperCase();
     }
-
 
     if (
         source[0] ===
         source[0].toUpperCase()
     ) {
-
         return (
             replacement[0].toUpperCase() +
             replacement.slice(1)
         );
     }
-
 
     return replacement;
 }
@@ -2502,20 +2126,18 @@ function replaceToken(
 ) {
 
     return text.replace(
-
         new RegExp(
             `\\{${token}\\}`,
             "gi"
         ),
-
         replacement
     );
 }
 
 
-// -----------------------------------------
-// Gender-aware token replacement
-// -----------------------------------------
+// =========================================
+// GENDER-AWARE TOKEN REPLACEMENT
+// =========================================
 
 function applyGenderTerms(
     prompt,
@@ -2525,43 +2147,26 @@ function applyGenderTerms(
     const genderTerms = {
 
         masculine: {
-
             subject: "he",
-
             object: "him",
-
             possessive: "his",
-
             reflexive: "himself",
-
             noun: "man"
         },
 
-
         feminine: {
-
             subject: "she",
-
             object: "her",
-
             possessive: "her",
-
             reflexive: "herself",
-
             noun: "woman"
         },
 
-
         neutral: {
-
             subject: "they",
-
             object: "them",
-
             possessive: "their",
-
             reflexive: "themselves",
-
             noun: "person"
         }
     };
@@ -2582,14 +2187,12 @@ function applyGenderTerms(
             forms.subject
         );
 
-
     result =
         replaceToken(
             result,
             "objectPronoun",
             forms.object
         );
-
 
     result =
         replaceToken(
@@ -2598,14 +2201,12 @@ function applyGenderTerms(
             forms.possessive
         );
 
-
     result =
         replaceToken(
             result,
             "reflexive",
             forms.reflexive
         );
-
 
     result =
         replaceToken(
@@ -2696,12 +2297,10 @@ function applyGenderTerms(
 
         result =
             result.replace(
-
                 new RegExp(
                     `\\b${source}\\b`,
                     "gi"
                 ),
-
                 match =>
                     matchCase(
                         match,
@@ -2713,9 +2312,7 @@ function applyGenderTerms(
 
     result =
         result.replace(
-
             /\bher\b/gi,
-
             (
                 match,
                 offset,
@@ -2735,9 +2332,7 @@ function applyGenderTerms(
 
 
                 return matchCase(
-
                     match,
-
                     isPossessive
                         ? forms.possessive
                         : forms.object
@@ -2763,6 +2358,10 @@ for (
     const subjectParts = [];
 
 
+    // -----------------------------------------
+    // Identity
+    // -----------------------------------------
+
     const identityData =
         inputs[sectionIdx++];
 
@@ -2770,14 +2369,11 @@ for (
     const genderIndex =
         identityData[0];
 
-
     const nationalityIndex =
         identityData[1];
 
-
     const ageIndex =
         identityData[2];
-
 
     const skinToneIndex =
         identityData[3];
@@ -2786,7 +2382,7 @@ for (
     const gender =
         genderIndex > 0
             ? genderPresets[
-            genderIndex - 1
+                genderIndex - 1
             ]
             : "";
 
@@ -2794,7 +2390,7 @@ for (
     const nationality =
         nationalityIndex > 0
             ? nationalityPresets[
-            nationalityIndex - 1
+                nationalityIndex - 1
             ]
             : "";
 
@@ -2807,7 +2403,7 @@ for (
     const skin =
         skinToneIndex > 0
             ? skinTonePresets[
-            skinToneIndex - 1
+                skinToneIndex - 1
             ]
             : "";
 
@@ -2817,36 +2413,27 @@ for (
 
 
     if (nationality) {
-
-        subjectParts.push(
-            nationality
-        );
+        subjectParts.push(nationality);
     }
-
 
     if (gender) {
-
-        subjectParts.push(
-            gender
-        );
+        subjectParts.push(gender);
     }
-
 
     if (age) {
-
-        subjectParts.push(
-            age
-        );
+        subjectParts.push(age);
     }
 
-
     if (skin) {
-
         subjectParts.push(
             "with " + skin
         );
     }
 
+
+    // -----------------------------------------
+    // Body / Physique
+    // -----------------------------------------
 
     const bodyData =
         inputs[sectionIdx++];
@@ -2858,110 +2445,102 @@ for (
     const overallBuildIndex =
         bodyData[bodyIdx++];
 
-
     const heightIndex =
         bodyData[bodyIdx++];
-
 
     const chestIndex =
         bodyData[bodyIdx++];
 
-
     const hipIndex =
         bodyData[bodyIdx++];
-
 
     const bodyShapeIndex =
         bodyData[bodyIdx++];
 
-
     const legIndex =
         bodyData[bodyIdx++];
-
 
     const assSizeIndex =
         bodyData[bodyIdx++];
 
-
     const bellySizeIndex =
         bodyData[bodyIdx++];
 
-
     const specificBodyIndex =
         bodyData[bodyIdx++];
-
 
     const customBodyDetails =
         bodyData[bodyIdx++];
 
 
-    if (
-        overallBuildIndex > 0
+    const bodySelections = [
+
+        [
+            overallBuildIndex,
+            overallBuildPresets
+        ],
+
+        [
+            heightIndex,
+            heightPresets
+        ],
+
+        [
+            chestIndex,
+            chestPresets
+        ],
+
+        [
+            hipIndex,
+            hipPresets
+        ],
+
+        [
+            legIndex,
+            legPresets
+        ],
+
+        [
+            assSizeIndex,
+            assSizePresets
+        ],
+
+        [
+            bellySizeIndex,
+            bellySizePresets
+        ]
+    ];
+
+
+    for (
+        const [
+            index,
+            presets
+        ] of bodySelections
     ) {
 
-        subjectParts.push(
+        if (index > 0) {
 
-            overallBuildPresets[
-                overallBuildIndex - 1
-            ].value
-        );
+            subjectParts.push(
+                getPresetValue(
+                    presets[index - 1]
+                )
+            );
+        }
     }
 
 
-    if (
-        heightIndex > 0
-    ) {
-
-        subjectParts.push(
-
-            heightPresets[
-                heightIndex - 1
-            ].value
-        );
-    }
-
-
-    if (
-        chestIndex > 0
-    ) {
-
-        subjectParts.push(
-
-            chestPresets[
-                chestIndex - 1
-            ].value
-        );
-    }
-
-
-    if (
-        hipIndex > 0
-    ) {
-
-        subjectParts.push(
-
-            hipPresets[
-                hipIndex - 1
-            ].value
-        );
-    }
-
-
-    if (
-        bodyShapeIndex >= 0
-    ) {
+    if (bodyShapeIndex >= 0) {
 
         const bodyShape =
             bodyShapePresets[
-            bodyShapeIndex
+                bodyShapeIndex
             ];
-
 
         if (
             bodyShape &&
             bodyShape.value
         ) {
-
             subjectParts.push(
                 bodyShape.value
             );
@@ -2969,60 +2548,17 @@ for (
     }
 
 
-    if (
-        legIndex > 0
-    ) {
-
-        subjectParts.push(
-
-            legPresets[
-                legIndex - 1
-            ].value
-        );
-    }
-
-
-    if (
-        assSizeIndex > 0
-    ) {
-
-        subjectParts.push(
-
-            assSizePresets[
-                assSizeIndex - 1
-            ].value
-        );
-    }
-
-
-    if (
-        bellySizeIndex > 0
-    ) {
-
-        subjectParts.push(
-
-            bellySizePresets[
-                bellySizeIndex - 1
-            ].value
-        );
-    }
-
-
-    if (
-        specificBodyIndex >= 0
-    ) {
+    if (specificBodyIndex >= 0) {
 
         const specificBody =
             specificBodyPresets[
-            specificBodyIndex
+                specificBodyIndex
             ];
-
 
         if (
             specificBody &&
             specificBody.value
         ) {
-
             subjectParts.push(
                 specificBody.value
             );
@@ -3030,15 +2566,17 @@ for (
     }
 
 
-    if (
-        customBodyDetails
-    ) {
+    if (customBodyDetails) {
 
         subjectParts.push(
             customBodyDetails
         );
     }
 
+
+    // -----------------------------------------
+    // Appearance
+    // -----------------------------------------
 
     const appearanceData =
         inputs[sectionIdx++];
@@ -3047,59 +2585,37 @@ for (
     let appIdx = 0;
 
 
-    for (
-        let j = 0;
-        j < makeupPresets.length;
-        j++
-    ) {
-
-        if (
-            appearanceData[appIdx++]
-        ) {
-
-            subjectParts.push(
-                makeupPresets[j]
-            );
-        }
-    }
+    const appearancePresets = [
+        makeupPresets,
+        tattooPresets,
+        bodyHairPresets
+    ];
 
 
     for (
-        let j = 0;
-        j < tattooPresets.length;
-        j++
+        const presets of appearancePresets
     ) {
 
-        if (
-            appearanceData[appIdx++]
+        for (
+            let j = 0;
+            j < presets.length;
+            j++
         ) {
 
-            subjectParts.push(
-                tattooPresets[j]
-            );
-        }
-    }
-
-
-    for (
-        let j = 0;
-        j < bodyHairPresets.length;
-        j++
-    ) {
-
-        if (
-            appearanceData[appIdx++]
-        ) {
-
-            subjectParts.push(
-                bodyHairPresets[j]
-            );
+            if (
+                appearanceData[appIdx++]
+            ) {
+                subjectParts.push(
+                    presets[j]
+                );
+            }
         }
     }
 
 
     const hairColorIdx =
         appearanceData[appIdx++];
+
 
     const typedHairColor =
         appearanceData[appIdx++];
@@ -3111,7 +2627,7 @@ for (
             : (
                 hairColorIdx > 0
                     ? hairColorPresets[
-                    hairColorIdx - 1
+                        hairColorIdx - 1
                     ]
                     : ""
             );
@@ -3131,7 +2647,7 @@ for (
             : (
                 hairLengthIdx > 0
                     ? hairLengthPresets[
-                    hairLengthIdx - 1
+                        hairLengthIdx - 1
                     ]
                     : ""
             );
@@ -3150,9 +2666,9 @@ for (
             ? typedHairstyle
             : (
                 hairstyleIdx > 0
-                    ? getHairstyleValue(
+                    ? getPresetValue(
                         hairstylePresets[
-                        hairstyleIdx - 1
+                            hairstyleIdx - 1
                         ]
                     )
                     : ""
@@ -3163,31 +2679,27 @@ for (
 
 
     if (hairLength) {
-
         hairDescriptionParts.push(
             hairLength
         );
     }
 
-
     if (hairstyle) {
-
         hairDescriptionParts.push(
             hairstyle
         );
     }
 
-
     if (hairColor) {
-
         hairDescriptionParts.push(
             hairColor + " hair"
         );
     }
 
 
-    if (hairDescriptionParts.length > 0) {
-
+    if (
+        hairDescriptionParts.length > 0
+    ) {
         subjectParts.push(
             hairDescriptionParts.join(" ")
         );
@@ -3198,33 +2710,27 @@ for (
         appearanceData[appIdx++];
 
 
-    if (
-        additionalDetails
-    ) {
-
+    if (additionalDetails) {
         subjectParts.push(
             additionalDetails
         );
     }
 
 
+    // -----------------------------------------
+    // Subject text variants
+    // -----------------------------------------
+
     const subjectLeadParts = [];
 
 
-    if (
-        nationality
-    ) {
-
+    if (nationality) {
         subjectLeadParts.push(
             nationality
         );
     }
 
-
-    if (
-        gender
-    ) {
-
+    if (gender) {
         subjectLeadParts.push(
             gender
         );
@@ -3276,6 +2782,10 @@ for (
     const outfitParts = [];
 
 
+    // -----------------------------------------
+    // Main preset + custom text
+    // -----------------------------------------
+
     const outfitMetaData =
         inputs[sectionIdx++];
 
@@ -3285,7 +2795,7 @@ for (
 
     const selectedOutfitIdx =
         outfitMetaData[
-        outfitDataIdx++
+            outfitDataIdx++
         ];
 
 
@@ -3294,11 +2804,9 @@ for (
     ) {
 
         outfitParts.push(
-
-            getClothingValue(
-
+            getPresetValue(
                 clothingPresets[
-                selectedOutfitIdx - 1
+                    selectedOutfitIdx - 1
                 ]
             )
         );
@@ -3307,19 +2815,20 @@ for (
 
     const customOutfit =
         outfitMetaData[
-        outfitDataIdx
+            outfitDataIdx
         ] || "";
 
 
-    if (
-        customOutfit !== ""
-    ) {
-
+    if (customOutfit !== "") {
         outfitParts.push(
             customOutfit
         );
     }
 
+
+    // -----------------------------------------
+    // Clothing groups
+    // -----------------------------------------
 
     for (
         const group of clothingGroups
@@ -3340,8 +2849,7 @@ for (
             ) {
 
                 outfitParts.push(
-
-                    getClothingValue(
+                    getPresetValue(
                         group.presets[j]
                     )
                 );
@@ -3372,6 +2880,10 @@ for (
     const actionParts = [];
 
 
+    // -----------------------------------------
+    // Composite preset + custom text
+    // -----------------------------------------
+
     const actionMetaData =
         inputs[sectionIdx++];
 
@@ -3381,7 +2893,7 @@ for (
 
     const selectedPresetIdx =
         actionMetaData[
-        actionDataIdx++
+            actionDataIdx++
         ];
 
 
@@ -3390,29 +2902,31 @@ for (
     ) {
 
         actionParts.push(
-
-            complexActionPresets[
-                selectedPresetIdx - 1
-            ].value
+            getPresetValue(
+                complexActionPresets[
+                    selectedPresetIdx - 1
+                ]
+            )
         );
     }
 
 
     const customActionText =
         actionMetaData[
-        actionDataIdx
+            actionDataIdx
         ] || "";
 
 
-    if (
-        customActionText !== ""
-    ) {
-
+    if (customActionText !== "") {
         actionParts.push(
             customActionText
         );
     }
 
+
+    // -----------------------------------------
+    // Modular action groups
+    // -----------------------------------------
 
     for (
         const group of actionGroups
@@ -3450,132 +2964,43 @@ for (
 // PARSE CAMERA
 // =========================================
 
-// -----------------------------------------
-// Framing
-// -----------------------------------------
-
-const cameraFramingData =
-    inputs[sectionIdx++];
-
-
-const cameraFraming = [];
-
-
-for (
-    let i = 0;
-    i < cameraFramingPresets.length;
-    i++
-) {
-
-    if (
-        cameraFramingData[i] === true
-    ) {
-
-        cameraFraming.push(
-            cameraFramingPresets[i].value
-        );
-    }
-}
-
-
-// -----------------------------------------
-// Perspective
-// -----------------------------------------
-
-const cameraPerspectiveData =
-    inputs[sectionIdx++];
-
-
-const cameraPerspective = [];
-
-
-for (
-    let i = 0;
-    i < cameraPerspectivePresets.length;
-    i++
-) {
-
-    if (
-        cameraPerspectiveData[i] === true
-    ) {
-
-        cameraPerspective.push(
-            cameraPerspectivePresets[i].value
-        );
-    }
-}
-
-
-// -----------------------------------------
-// Depth of field
-// -----------------------------------------
-
-const depthOfFieldData =
-    inputs[sectionIdx++];
-
-
-const depthOfField = [];
-
-
-for (
-    let i = 0;
-    i < depthOfFieldPresets.length;
-    i++
-) {
-
-    if (
-        depthOfFieldData[i] === true
-    ) {
-
-        depthOfField.push(
-            depthOfFieldPresets[i].value
-        );
-    }
-}
-
-
-// -----------------------------------------
-// Composition
-// -----------------------------------------
-
-const cameraCompositionData =
-    inputs[sectionIdx++];
-
-
-const cameraComposition = [];
-
-
-for (
-    let i = 0;
-    i < cameraCompositionPresets.length;
-    i++
-) {
-
-    if (
-        cameraCompositionData[i] === true
-    ) {
-
-        cameraComposition.push(
-            cameraCompositionPresets[i].value
-        );
-    }
-}
-
-
-// -----------------------------------------
-// Combine camera controls
-// -----------------------------------------
-
-const cameraParts = [
-
-    ...cameraFraming,
-
-    ...cameraPerspective,
-
-    ...depthOfField,
-
-    ...cameraComposition
+const cameraGroups = [
+    cameraFramingPresets,
+    cameraPerspectivePresets,
+    depthOfFieldPresets,
+    cameraCompositionPresets
 ];
+
+
+const cameraParts = [];
+
+
+for (
+    const presets of cameraGroups
+) {
+
+    const groupData =
+        inputs[sectionIdx++];
+
+
+    for (
+        let i = 0;
+        i < presets.length;
+        i++
+    ) {
+
+        if (
+            groupData[i] === true
+        ) {
+
+            cameraParts.push(
+                getPresetValue(
+                    presets[i]
+                )
+            );
+        }
+    }
+}
 
 
 const camera =
@@ -3596,154 +3021,57 @@ const timeOfDayIndex =
 
 const timeOfDay =
     timeOfDayIndex > 0
-        ? timeOfDayPresets[
-            timeOfDayIndex - 1
-        ].value
+        ? getPresetValue(
+            timeOfDayPresets[
+                timeOfDayIndex - 1
+            ]
+        )
         : "";
 
 
-const naturalLightingData =
-    inputs[sectionIdx++];
+const lightingGroups = [
+    naturalLightingPresets,
+    lightingQualityPresets,
+    cinematicLightingPresets,
+    colorLightingPresets,
+    tenebrismLightingPresets,
+    experimentalLightingPresets
+];
 
 
-const naturalLighting = [];
+const lightingParts = [];
 
 
 for (
-    let i = 0;
-    i < naturalLightingPresets.length;
-    i++
+    const presets of lightingGroups
 ) {
 
-    if (
-        naturalLightingData[i] === true
+    const groupData =
+        inputs[sectionIdx++];
+
+
+    for (
+        let i = 0;
+        i < presets.length;
+        i++
     ) {
 
-        naturalLighting.push(
-            naturalLightingPresets[i].value
-        );
+        if (
+            groupData[i] === true
+        ) {
+
+            lightingParts.push(
+                getPresetValue(
+                    presets[i]
+                )
+            );
+        }
     }
 }
 
 
-const lightingQualityData =
-    inputs[sectionIdx++];
-
-
-const lightingQuality = [];
-
-
-for (
-    let i = 0;
-    i < lightingQualityPresets.length;
-    i++
-) {
-
-    if (
-        lightingQualityData[i] === true
-    ) {
-
-        lightingQuality.push(
-            lightingQualityPresets[i].value
-        );
-    }
-}
-
-
-const cinematicLightingData =
-    inputs[sectionIdx++];
-
-
-const cinematicLighting = [];
-
-
-for (
-    let i = 0;
-    i < cinematicLightingPresets.length;
-    i++
-) {
-
-    if (
-        cinematicLightingData[i] === true
-    ) {
-
-        cinematicLighting.push(
-            cinematicLightingPresets[i].value
-        );
-    }
-}
-
-
-const colorLightingData =
-    inputs[sectionIdx++];
-
-
-const colorLighting = [];
-
-
-for (
-    let i = 0;
-    i < colorLightingPresets.length;
-    i++
-) {
-
-    if (
-        colorLightingData[i] === true
-    ) {
-
-        colorLighting.push(
-            colorLightingPresets[i].value
-        );
-    }
-}
-
-
-const tenebrismLightingData =
-    inputs[sectionIdx++];
-
-
-const tenebrismLighting = [];
-
-
-for (
-    let i = 0;
-    i < tenebrismLightingPresets.length;
-    i++
-) {
-
-    if (
-        tenebrismLightingData[i] === true
-    ) {
-
-        tenebrismLighting.push(
-            tenebrismLightingPresets[i].value
-        );
-    }
-}
-
-
-const experimentalLightingData =
-    inputs[sectionIdx++];
-
-
-const experimentalLighting = [];
-
-
-for (
-    let i = 0;
-    i < experimentalLightingPresets.length;
-    i++
-) {
-
-    if (
-        experimentalLightingData[i] === true
-    ) {
-
-        experimentalLighting.push(
-            experimentalLightingPresets[i].value
-        );
-    }
-}
+const lighting =
+    lightingParts.join(", ");
 
 
 const colorTreatmentData =
@@ -3764,30 +3092,12 @@ for (
     ) {
 
         colorTreatment.push(
-            colorTreatmentPresets[i].value
+            getPresetValue(
+                colorTreatmentPresets[i]
+            )
         );
     }
 }
-
-
-const lightingParts = [
-
-    ...naturalLighting,
-
-    ...lightingQuality,
-
-    ...cinematicLighting,
-
-    ...colorLighting,
-
-    ...tenebrismLighting,
-
-    ...experimentalLighting
-];
-
-
-const lighting =
-    lightingParts.join(", ");
 
 
 const colorTreatmentText =
@@ -3804,7 +3114,7 @@ const templateData =
 
 const artStyle =
     artStylePresets[
-    templateData[0]
+        templateData[0]
     ];
 
 
@@ -3817,8 +3127,6 @@ const promptTemplate =
 // =========================================
 
 let width = 1024;
-
-
 let height = 1024;
 
 
@@ -3827,7 +3135,6 @@ if (
 ) {
 
     width = 768;
-
     height = 1024;
 }
 
@@ -3837,7 +3144,6 @@ if (
 ) {
 
     width = 1024;
-
     height = 768;
 }
 
@@ -3847,8 +3153,39 @@ if (
 ) {
 
     width = 1024;
-
     height = 576;
+}
+
+
+// =========================================
+// PROMPT CLEANUP
+// =========================================
+
+function cleanPrompt(prompt) {
+
+    return prompt
+
+        .replace(
+            /,\s*,/g,
+            ","
+        )
+
+        .replace(
+            /^\s*,\s*/g,
+            ""
+        )
+
+        .replace(
+            /\s*,\s*$/g,
+            ""
+        )
+
+        .replace(
+            /\s{2,}/g,
+            " "
+        )
+
+        .trim();
 }
 
 
@@ -3867,25 +3204,25 @@ for (
 
     const subject =
         subjects[
-        subjectIndex
+            subjectIndex
         ];
 
 
     const subjectLead =
         subjectLeadTexts[
-        subjectIndex
+            subjectIndex
         ] || "";
 
 
     const subjectDetails =
         subjectDetailTexts[
-        subjectIndex
+            subjectIndex
         ] || "";
 
 
     const genderForm =
         subjectGenderForms[
-        subjectIndex
+            subjectIndex
         ];
 
 
@@ -3898,7 +3235,6 @@ for (
         ) {
 
             let constructedPrompt =
-
                 promptTemplate
 
                     .replace(
@@ -3958,34 +3294,9 @@ for (
 
 
             constructedPrompt =
-                constructedPrompt
-
-                    .replace(
-                        /,\s*,/g,
-                        ","
-                    )
-
-                    .replace(
-                        /,\s*,/g,
-                        ","
-                    )
-
-                    .replace(
-                        /^\s*,\s*/g,
-                        ""
-                    )
-
-                    .replace(
-                        /\s*,\s*$/g,
-                        ""
-                    )
-
-                    .replace(
-                        /\s{2,}/g,
-                        " "
-                    )
-
-                    .trim();
+                cleanPrompt(
+                    constructedPrompt
+                );
 
 
             constructedPrompt =
@@ -4009,7 +3320,7 @@ for (
 
 async function generateBatch() {
 
-    let config =
+    const config =
         JSON.parse(
             JSON.stringify(
                 pipeline.configuration
