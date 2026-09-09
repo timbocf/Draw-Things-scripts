@@ -701,7 +701,7 @@ const complexActionPresets = [
     },
     {
         label: "Bending Forward, Hands on Knees",
-        value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera"
+        value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera, legs straight, knees locked"
     }
 ];
 
@@ -732,14 +732,18 @@ const actionSwitchPresets = [
     "bending at waist only",
     "leaning forward",
     "one knee bent",
+    "knees bent",
     "one foot on the wall",
     "feet spread wide",
     "feet together",
+    "feet crossed",
     "one leg raised",
     "1 foot against door frame",
     "{possessive} ass high in the air",
     "back arched",
     "chest puffed out",
+    "knees together",
+    "shoulders back",
 
     // Arms and hands
     "arms raised high above {possessive} head",
@@ -748,6 +752,7 @@ const actionSwitchPresets = [
     "on {possessive} elbows",
     "elbows resting on bed",
     "hands on hips",
+    "hands on waist",
     "hands on breasts",
     "hands in hair",
     "hands on knees",
@@ -761,6 +766,9 @@ const actionSwitchPresets = [
     "looking at camera",
     "looking down",
     "looking up",
+    "head tilted to the side",
+    "head turned to the side",
+    "looking over {possessive} shoulder",
     "facing camera",
     "facing away from camera",
     "ass toward the camera",
@@ -770,6 +778,9 @@ const actionSwitchPresets = [
     // Expression
     "lips parted",
     "smiling",
+    "chin tilted up",
+    "head tilted up",
+    "head tilted down",
 
     // Setting
     "in the shower",
