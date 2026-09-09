@@ -432,6 +432,12 @@ const bodyHairPresets = [
 const clothingPresets = [
 
     // -------------------------------------
+    // Complete Ensembles
+    // -------------------------------------
+
+    "a lace bustier, garter belt and thigh-high stockings",
+
+    // -------------------------------------
     // Tops
     // -------------------------------------
 
