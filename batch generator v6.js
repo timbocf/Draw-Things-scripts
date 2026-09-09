@@ -1535,34 +1535,31 @@ const inputs = requestFromUser(
 
 
             tattooPresets.forEach(
-    t => {
+                t => {
 
-        appearanceControls.push(
+                    appearanceControls.push(
 
-            this.switch(
-                false,
-                `✡︎  ${t}`
-            )
-        );
-    }
-);
-
-
-bodyHairPresets.forEach(
-    h => {
-
-        appearanceControls.push(
-
-            this.switch(
-                false,
-                `✡︎  ${h}`
-            )
-        );
-    }
-);
+                        this.switch(
+                            false,
+                            `✡︎  ${t}`
+                        )
+                    );
+                }
+            );
 
 
-appearanceControls.push(
+            bodyHairPresets.forEach(
+                h => {
+
+                    appearanceControls.push(
+
+                        this.switch(
+                            false,
+                            `✡︎  ${h}`
+                        )
+                    );
+                }
+            );
 
 
             appearanceControls.push(
@@ -2425,7 +2422,7 @@ for (
     const gender =
         genderIndex > 0
             ? genderPresets[
-                genderIndex - 1
+            genderIndex - 1
             ]
             : "";
 
@@ -2433,7 +2430,7 @@ for (
     const nationality =
         nationalityIndex > 0
             ? nationalityPresets[
-                nationalityIndex - 1
+            nationalityIndex - 1
             ]
             : "";
 
@@ -2446,7 +2443,7 @@ for (
     const skin =
         skinToneIndex > 0
             ? skinTonePresets[
-                skinToneIndex - 1
+            skinToneIndex - 1
             ]
             : "";
 
@@ -2592,7 +2589,7 @@ for (
 
         const bodyShape =
             bodyShapePresets[
-                bodyShapeIndex
+            bodyShapeIndex
             ];
 
 
@@ -2653,7 +2650,7 @@ for (
 
         const specificBody =
             specificBodyPresets[
-                specificBodyIndex
+            specificBodyIndex
             ];
 
 
@@ -2704,41 +2701,41 @@ for (
 
 
     for (
-    let j = 0;
-    j < tattooPresets.length;
-    j++
-) {
-
-    if (
-        appearanceData[appIdx++]
+        let j = 0;
+        j < tattooPresets.length;
+        j++
     ) {
 
-        subjectParts.push(
-            tattooPresets[j]
-        );
+        if (
+            appearanceData[appIdx++]
+        ) {
+
+            subjectParts.push(
+                tattooPresets[j]
+            );
+        }
     }
-}
 
 
-for (
-    let j = 0;
-    j < bodyHairPresets.length;
-    j++
-) {
-
-    if (
-        appearanceData[appIdx++]
+    for (
+        let j = 0;
+        j < bodyHairPresets.length;
+        j++
     ) {
 
-        subjectParts.push(
-            bodyHairPresets[j]
-        );
+        if (
+            appearanceData[appIdx++]
+        ) {
+
+            subjectParts.push(
+                bodyHairPresets[j]
+            );
+        }
     }
-}
 
 
-const hairColorIdx =
-    appearanceData[appIdx++];
+    const hairColorIdx =
+        appearanceData[appIdx++];
 
     const typedHairColor =
         appearanceData[appIdx++];
@@ -2750,7 +2747,7 @@ const hairColorIdx =
             : (
                 hairColorIdx > 0
                     ? hairColorPresets[
-                        hairColorIdx - 1
+                    hairColorIdx - 1
                     ]
                     : ""
             );
@@ -2778,7 +2775,7 @@ const hairColorIdx =
             : (
                 hairLengthIdx > 0
                     ? hairLengthPresets[
-                        hairLengthIdx - 1
+                    hairLengthIdx - 1
                     ]
                     : ""
             );
@@ -2806,7 +2803,7 @@ const hairColorIdx =
             : (
                 hairstyleIdx > 0
                     ? hairstylePresets[
-                        hairstyleIdx - 1
+                    hairstyleIdx - 1
                     ]
                     : ""
             );
@@ -2870,7 +2867,7 @@ for (
 
     const selectedOutfitIdx =
         outfitData[
-            outfitDataIdx++
+        outfitDataIdx++
         ];
 
 
@@ -2883,7 +2880,7 @@ for (
             getClothingValue(
 
                 clothingPresets[
-                    selectedOutfitIdx - 1
+                selectedOutfitIdx - 1
                 ]
             )
         );
@@ -2898,7 +2895,7 @@ for (
 
         if (
             outfitData[
-                outfitDataIdx++
+            outfitDataIdx++
             ] === true
         ) {
 
@@ -2914,7 +2911,7 @@ for (
 
     const customOutfit =
         outfitData[
-            outfitDataIdx
+        outfitDataIdx
         ];
 
 
@@ -2959,7 +2956,7 @@ for (
 
     const selectedPresetIdx =
         actionData[
-            actionDataIdx++
+        actionDataIdx++
         ];
 
 
@@ -2984,7 +2981,7 @@ for (
 
         if (
             actionData[
-                actionDataIdx++
+            actionDataIdx++
             ] === true
         ) {
 
@@ -2997,7 +2994,7 @@ for (
 
     const customActionText =
         actionData[
-            actionDataIdx
+        actionDataIdx
         ];
 
 
@@ -3347,7 +3344,7 @@ const templateData =
 
 const artStyle =
     artStylePresets[
-        templateData[0]
+    templateData[0]
     ];
 
 
@@ -3410,13 +3407,13 @@ for (
 
     const subject =
         subjects[
-            subjectIndex
+        subjectIndex
         ];
 
 
     const genderForm =
         subjectGenderForms[
-            subjectIndex
+        subjectIndex
         ];
 
 
