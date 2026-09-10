@@ -2327,6 +2327,20 @@ const inputs = requestFromUser(
 let sectionIdx = 0;
 
 
+function assertInputArray(
+    name,
+    value
+) {
+    if (
+        !Array.isArray(value)
+    ) {
+        throw new Error(
+            `Input parsing sanity check failed: ${name} was not returned as an array.`
+        );
+    }
+}
+
+
 // =========================================
 // GENDER SYSTEM
 // =========================================
@@ -2715,8 +2729,31 @@ for (
     // Identity
     // -----------------------------------------
 
+    const celebrityData =
+        inputs[sectionIdx++];
+
+
+    assertInputArray(
+        "celebrityData",
+        celebrityData
+    );
+
+
+    const celebrity =
+        selectedPresetValue(
+            celebrityData[0],
+            celebrityPresets
+        );
+
+
     const identityData =
         inputs[sectionIdx++];
+
+
+    assertInputArray(
+        "identityData",
+        identityData
+    );
 
 
     const gender =
@@ -2745,17 +2782,6 @@ for (
         selectedPresetValue(
             identityData[3],
             skinTonePresets
-        );
-
-
-    const celebrityData =
-        inputs[sectionIdx++];
-
-
-    const celebrity =
-        selectedPresetValue(
-            celebrityData[0],
-            celebrityPresets
         );
 
 
@@ -2801,6 +2827,12 @@ for (
 
     const bodyData =
         inputs[sectionIdx++];
+
+
+    assertInputArray(
+        "bodyData",
+        bodyData
+    );
 
 
     const bodySelections = [
@@ -2929,6 +2961,12 @@ for (
         inputs[sectionIdx++];
 
 
+    assertInputArray(
+        "hairTypeData",
+        hairTypeData
+    );
+
+
     let hairTypeIdx = 0;
 
 
@@ -2954,6 +2992,12 @@ for (
 
     const hairData =
         inputs[sectionIdx++];
+
+
+    assertInputArray(
+        "hairData",
+        hairData
+    );
 
 
     let hairIdx = 0;
@@ -3155,6 +3199,12 @@ for (
         inputs[sectionIdx++];
 
 
+    assertInputArray(
+        "outfitMetaData",
+        outfitMetaData
+    );
+
+
     const selectedOutfit =
         selectedPresetValue(
             outfitMetaData[0],
@@ -3231,6 +3281,12 @@ for (
         inputs[sectionIdx++];
 
 
+    assertInputArray(
+        "actionMetaData",
+        actionMetaData
+    );
+
+
     const selectedAction =
         selectedPresetValue(
             actionMetaData[0],
@@ -3291,6 +3347,12 @@ const cameraData =
     inputs[sectionIdx++];
 
 
+assertInputArray(
+    "cameraData",
+    cameraData
+);
+
+
 const cameraChoices =
     Array.from(
         { length: cameraCount },
@@ -3308,6 +3370,12 @@ const cameraChoices =
 
 const timeOfDayData =
     inputs[sectionIdx++];
+
+
+assertInputArray(
+    "timeOfDayData",
+    timeOfDayData
+);
 
 
 const timeOfDay =
@@ -3359,6 +3427,12 @@ const colorTreatmentData =
     inputs[sectionIdx++];
 
 
+assertInputArray(
+    "colorTreatmentData",
+    colorTreatmentData
+);
+
+
 const colorTreatment =
     selectedSwitchValues(
         colorTreatmentData,
@@ -3376,6 +3450,12 @@ const colorTreatmentText =
 
 const templateData =
     inputs[sectionIdx++];
+
+
+assertInputArray(
+    "templateData",
+    templateData
+);
 
 
 const artStyles =
