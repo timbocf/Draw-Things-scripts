@@ -1058,7 +1058,7 @@ const actionGroups = [
         presets: [
             {
                 label: "in the shower",
-                value: "in the shower, water cascading down {possessive} wet body"
+                value: "in a walk-in shower, with wet hair and wet body, water cascading down {possessive} wet body"
             },
             "in a bedroom",
             "in a kitchen",
