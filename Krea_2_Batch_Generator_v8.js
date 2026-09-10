@@ -1225,6 +1225,11 @@ const cameraCompositionPresets = [
 ];
 
 
+const cameraOptionsPresets = [
+    ...cameraPerspectivePresets
+];
+
+
 // =========================================
 // LIGHTING
 // =========================================
@@ -2167,39 +2172,25 @@ const inputs = requestFromUser(
         // CAMERA
         // =====================================
 
-        addPresetSwitchSection.call(
-            this,
-            fields,
-            "❖  CAMERA • Framing",
-            "Control how much of the subject and environment appears in the image",
-            cameraFramingPresets
-        );
+        fields.push(
 
-
-        addPresetSwitchSection.call(
-            this,
-            fields,
-            "❖  CAMERA • Perspective",
-            "Control the camera's viewing angle, direction, and spatial perspective",
-            cameraPerspectivePresets
-        );
-
-
-        addPresetSwitchSection.call(
-            this,
-            fields,
-            "❖  CAMERA • Depth of Field",
-            "Control background separation and focus depth",
-            depthOfFieldPresets
-        );
-
-
-        addPresetSwitchSection.call(
-            this,
-            fields,
-            "❖  CAMERA • Composition",
-            "Control how the subject is arranged within the frame",
-            cameraCompositionPresets
+            this.section(
+                "❖  CAMERA • Options",
+                `Choose up to ${cameraCount} camera angles from the perspective section`,
+                [
+                    ...Array.from(
+                        { length: cameraCount },
+                        () =>
+                            this.menu(
+                                0,
+                                menuWithPlaceholder(
+                                    "No camera option selected",
+                                    cameraOptionsPresets
+                                )
+                            )
+                    )
+                ]
+            )
         );
 
 
@@ -3293,38 +3284,19 @@ for (
 // CAMERA PARSING
 // =========================================
 
-const cameraGroups = [
-    cameraFramingPresets,
-    cameraPerspectivePresets,
-    depthOfFieldPresets,
-    cameraCompositionPresets
-];
-
-
-const cameraParts = [];
-
-
-for (
-    const presets of cameraGroups
-) {
-
-    const groupData =
-        inputs[sectionIdx++];
-
-
-    cameraParts.push(
-        ...selectedSwitchValues(
-            groupData,
-            presets
-        )
-    );
-}
+const cameraData =
+    inputs[sectionIdx++];
 
 
 const cameraChoices =
-    cameraParts.length > 0
-        ? cameraParts.slice(0, cameraCount)
-        : [""];
+    Array.from(
+        { length: cameraCount },
+        (_, index) =>
+            selectedPresetValue(
+                cameraData[index],
+                cameraOptionsPresets
+            )
+    ).filter(Boolean);
 
 
 // =========================================
