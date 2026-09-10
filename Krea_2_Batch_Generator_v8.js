@@ -21,12 +21,14 @@ const NONE_SELECTED = 0;
 // How many constructed prompts to show verbatim on the review screen.
 const PREVIEW_SAMPLE_SIZE = 8;
 
-const ASPECT_DIMENSIONS = [
-    [1024, 1024], // 1:1
-    [768, 1024],  // 3:4 Portrait
-    [1024, 768],  // 4:3 Landscape
-    [1024, 576]   // 16:9
+const ASPECT_OPTIONS = [
+    { label: "1:1", width: 1024, height: 1024 },
+    { label: "3:4 Portrait", width: 768, height: 1024 },
+    { label: "4:3 Landscape", width: 1024, height: 768 },
+    { label: "16:9", width: 1024, height: 576 }
 ];
+
+const ASPECT_DIMENSIONS = ASPECT_OPTIONS.map(({ width, height }) => [width, height]);
 
 // =========================================
 // PRESETS
@@ -739,7 +741,7 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
                 this.menu(NONE_SELECTED, countOptions("Action", "Actions")),
                 this.menu(NONE_SELECTED, countOptions("Camera Angle", "Camera Angles")),
                 this.menu(NONE_SELECTED, countOptions("Art Style", "Art Styles")),
-                this.segmented(NONE_SELECTED, ["1:1", "3:4 Portrait", "4:3 Landscape", "16:9"])
+                ...ASPECT_OPTIONS.map((option, index) => this.switch(index === 0, option.label))
             ]
         )
     ];
@@ -752,7 +754,17 @@ const outfitCount = setupData[1] + 1;
 const actionCount = setupData[2] + 1;
 const cameraCount = setupData[3] + 1;
 const artStyleCount = setupData[4] + 1;
-const aspectIndex = setupData[5];
+const aspectSelections = setupData[5] || [];
+
+function getSelectedAspectOptions(selections) {
+    const rawSelections = Array.isArray(selections)
+        ? selections
+        : ASPECT_OPTIONS.map((_, index) => index === Number(selections));
+
+    const selectedOptions = ASPECT_OPTIONS.filter((_, index) => rawSelections[index] === true);
+
+    return selectedOptions.length > 0 ? selectedOptions : [ASPECT_OPTIONS[0]];
+}
 
 // =========================================
 // STEP 2 — INPUT SCREEN
@@ -1186,7 +1198,7 @@ const promptTemplate = templateData[artStyleCount] || "";
 // CALCULATE DIMENSIONS
 // =========================================
 
-const [width, height] = ASPECT_DIMENSIONS[aspectIndex] || ASPECT_DIMENSIONS[0];
+const selectedAspectOptions = getSelectedAspectOptions(aspectSelections);
 
 // =========================================
 // PROMPT HELPERS
@@ -1216,38 +1228,45 @@ function cleanPrompt(prompt) {
 const finalPrompts = [];
 const artStyleChoices = artStyles.length > 0 ? artStyles : [""];
 
-for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
-    const subject = subjects[subjectIndex] || "";
-    const subjectLead = subjectLeadTexts[subjectIndex] || "";
-    const subjectDetails = subjectDetailTexts[subjectIndex] || "";
-    const genderForm = subjectGenderForms[subjectIndex] || "neutral";
+for (const aspectOption of selectedAspectOptions) {
+    for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
+        const subject = subjects[subjectIndex] || "";
+        const subjectLead = subjectLeadTexts[subjectIndex] || "";
+        const subjectDetails = subjectDetailTexts[subjectIndex] || "";
+        const genderForm = subjectGenderForms[subjectIndex] || "neutral";
 
-    for (const outfit of outfits) {
-        for (const action of actions) {
-            for (const camera of cameraChoices) {
-                for (const artStyle of artStyleChoices) {
-                    const templateValues = {
-                        artStyle,
-                        camera,
-                        subject,
-                        subjects: subject,
-                        subjectLead,
-                        subjectDetails,
-                        clothing: outfit,
-                        action,
-                        timeOfDay,
-                        lighting,
-                        colorTreatment: colorTreatmentText
-                    };
+        for (const outfit of outfits) {
+            for (const action of actions) {
+                for (const camera of cameraChoices) {
+                    for (const artStyle of artStyleChoices) {
+                        const templateValues = {
+                            artStyle,
+                            camera,
+                            subject,
+                            subjects: subject,
+                            subjectLead,
+                            subjectDetails,
+                            clothing: outfit,
+                            action,
+                            timeOfDay,
+                            lighting,
+                            colorTreatment: colorTreatmentText
+                        };
 
-                    let constructedPrompt = fillTemplate(promptTemplate, templateValues);
+                        let constructedPrompt = fillTemplate(promptTemplate, templateValues);
 
-                    // Gender tags are resolved after template expansion so
-                    // that tags embedded inside presets get filled too.
-                    constructedPrompt = applyGenderTerms(constructedPrompt, genderForm);
-                    constructedPrompt = cleanPrompt(constructedPrompt);
+                        // Gender tags are resolved after template expansion so
+                        // that tags embedded inside presets get filled too.
+                        constructedPrompt = applyGenderTerms(constructedPrompt, genderForm);
+                        constructedPrompt = cleanPrompt(constructedPrompt);
 
-                    finalPrompts.push(constructedPrompt);
+                        finalPrompts.push({
+                            prompt: constructedPrompt,
+                            width: aspectOption.width,
+                            height: aspectOption.height,
+                            aspectLabel: aspectOption.label
+                        });
+                    }
                 }
             }
         }
@@ -1264,7 +1283,7 @@ for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
 
 function buildPreviewText(prompts) {
     const sample = prompts.slice(0, PREVIEW_SAMPLE_SIZE);
-    const numbered = sample.map((prompt, index) => `${index + 1}. ${prompt}`);
+    const numbered = sample.map((promptData, index) => `${index + 1}. [${promptData.aspectLabel}] ${promptData.prompt}`);
 
     if (prompts.length > sample.length) {
         numbered.push(`… and ${prompts.length - sample.length} more prompt(s) not shown {possessive}e.`);
@@ -1274,10 +1293,12 @@ function buildPreviewText(prompts) {
 }
 
 const review = requestFromUser("Review Prompts", "Generate", function () {
+    const aspectSummary = selectedAspectOptions.map(option => option.label).join(", ");
+
     return [
         this.section(
             "❖  Batch Summary",
-            `This batch will generate ${finalPrompts.length} image(s) at ${width}×${height}.`,
+            `This batch will generate ${finalPrompts.length} image(s) using ${aspectSummary}.`,
             [this.switch(true, `Confirm and generate all ${finalPrompts.length} prompt(s)`)]
         ),
 
@@ -1303,20 +1324,23 @@ async function generateBatch() {
         return;
     }
 
-    const config = JSON.parse(JSON.stringify(pipeline.configuration));
+    const baseConfig = JSON.parse(JSON.stringify(pipeline.configuration));
 
-    config.model = "krea_2_turbo_i8x.ckpt";
-    config.width = width;
-    config.height = height;
-    config.batchCount = 1;
-    config.batchSize = 1;
-    config.seed = -1;
+    baseConfig.model = "krea_2_turbo_i8x.ckpt";
+    baseConfig.batchCount = 1;
+    baseConfig.batchSize = 1;
+    baseConfig.seed = -1;
 
     canvas.clear();
 
-    for (const prompt of finalPrompts) {
-        console.log("Generating Prompt:", prompt);
-        await pipeline.run({ configuration: config, prompt: prompt });
+    for (const promptData of finalPrompts) {
+        const config = JSON.parse(JSON.stringify(baseConfig));
+
+        config.width = promptData.width;
+        config.height = promptData.height;
+
+        console.log(`Generating ${promptData.aspectLabel} prompt:`, promptData.prompt);
+        await pipeline.run({ configuration: config, prompt: promptData.prompt });
     }
 }
 
