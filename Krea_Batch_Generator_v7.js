@@ -361,7 +361,8 @@ const hairstylePresets = [
 
 const bodyHairPresets = [
     "light body hair",
-    "thick body hair"
+    "thick body hair",
+    "freckles"
 ];
 
 
