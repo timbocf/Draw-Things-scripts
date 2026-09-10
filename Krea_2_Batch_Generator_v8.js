@@ -110,7 +110,7 @@ const overallBuildPresets = [
     },
     {
         label: "Petite build",
-        value: "petite build with a small overall frame"
+        value: "petite build with a small overall frame, flat chest, narrow hips, short stature, narrow shoulders, thin legs, and flat belly"
     },
     {
         label: "Curvy build",
