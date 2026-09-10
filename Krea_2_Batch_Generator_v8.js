@@ -435,13 +435,8 @@ const actionGroups = [
         description: "POV Sexual Positions",
         presets: [
             {
-<<<<<<< HEAD
-                label: "Cowgirl",
-                value: "pov, straddling a nude man, riding him in cowgirl position, his penis is deep inside her vagina"
-=======
                 label: "POV/Cowgirl",
-                value: "pov, straddling a nude man, riding him in cowgirl position, penis-in-vagina sex"
->>>>>>> f5804ac (Fix possessive form typos in hairstyle, clothing, and lighting presets)
+                value: "pov, straddling a nude man, riding him in cowgirl position, his penis is deep inside {subjectPronoun}"
             },
             {
                 label: "POV/Blowjob",
