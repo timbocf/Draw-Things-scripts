@@ -96,7 +96,7 @@ const hipPresets = [
 
 const bodyShapePresets = [
     { label: "No specific shape", value: "" },
-    { label: "Petite adult frame", value: "petite adult frame with narrow shoulders, narrow hips, and a small chest" },
+    { label: "Petite frame", value: "petite frame with narrow shoulders, narrow hips, and a small chest" },
     { label: "Hourglass", value: "hourglass body shape with balanced bust and hips and a clearly defined waist" },
     { label: "Pear-shaped", value: "pear-shaped body with narrower shoulders and upper body and proportionally wider hips and thighs" },
     { label: "Rectangle", value: "rectangle body shape with relatively similar shoulder, waist and hip widths" },
