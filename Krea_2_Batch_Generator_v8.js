@@ -26,10 +26,6 @@ const nationalityPresets = [
     "Black",
     "Mixed-race adult with a natural blend of African and European facial features",
     "Mexican with prominent Indigenous Mesoamerican facial features",
-    "Anne Hathaway",
-    "Dolly Parton",
-    "Sabrina Carpenter",
-    "Marilyn Monroe",
     "Indian",
     "Thai",
     "Japanese",
@@ -37,6 +33,26 @@ const nationalityPresets = [
     "Filipina",
     "Brazilian",
     "Italian"
+];
+
+
+const celebrityPresets = [
+    {
+        label: "Anne Hathaway",
+        value: "Anne Hathaway with straight black hair and a tall slim build with shadowy eyes and heavy mascara"
+    },
+    {
+        label: "Dolly Parton",
+        value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs"
+    },
+    {
+        label: "Sabrina Carpenter",
+        value: "Sabrina Carpenter with shoulder length blonde hair"
+    },
+    {
+        label: "Marilyn Monroe",
+        value: "Marilyn Monroe with shoulder length blonde Hollywood curls"
+    }
 ];
 
 
@@ -384,35 +400,70 @@ const hairLengthPresets = [
 ];
 
 
-const hairstylePresets = [
+const hairTypePresets = [
     "straight",
     "wavy",
     "curly",
-    "wet hair",
-    "ponytail",
-    "messy ponytail",
-    "French braid",
-    "loose braids",
-    "messy bun",
-    "messy double buns",
-    "with bangs",
+    "kinky",
+    "afro-textured",
+    "frizzy"
+];
+
+
+const hairstyleGroups = [
     {
-        label: "blown-out",
-        value: "high-volume, heavily sprayed, lacquered hairstyle"
+        title: "Updos and braided styles",
+        description: "Classic updos and braided hair styling choices",
+        presets: [
+            "wet hair",
+            "ponytail",
+            "messy ponytail",
+            "French braid",
+            "loose braids",
+            "cornrows",
+            "box braids",
+            "micro braids",
+            "dreadlocks",
+            "messy bun",
+            "messy double buns",
+            "with bangs"
+        ]
     },
     {
-        label: "soft feathered 70s blowout",
-        value: "soft feathered 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers"
+        title: "Voluminous and retro styling",
+        description: "Big-volume and retro-inspired hair silhouettes",
+        presets: [
+            {
+                label: "blown-out",
+                value: "high-volume, heavily sprayed, lacquered hairstyle"
+            },
+            {
+                label: "soft feathered 70s blowout",
+                value: "soft feathered 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers"
+            },
+            {
+                label: "60s bouffant curls",
+                value: "1960s bouffant hairstyle with large rounded curls, high volume, and polished lift"
+            }
+        ]
     },
     {
-        label: "60s bouffant curls",
-        value: "1960s bouffant hairstyle with large rounded curls, high volume, and polished lift"
+        title: "Edgy and stylized cuts",
+        description: "More fashion-forward and stylized hair cuts",
+        presets: [
+            "faux hawk",
+            "short boyish hairstyle",
+            "spiked punk hairstyle"
+        ]
     },
-    "faux hawk",
-    "short boyish hairstyle",
-    "spiked punk hairstyle",
-    "Hollywood curls",
-    "Victory curls"
+    {
+        title: "Iconic curl styles",
+        description: "Signature curl and wave-inspired styling choices",
+        presets: [
+            "Hollywood curls",
+            "Victory curls"
+        ]
+    }
 ];
 
 
@@ -1693,6 +1744,28 @@ const setup = requestFromUser(
                         ]
                     ),
 
+                    this.menu(
+                        0,
+                        [
+                            "1 Camera Angle",
+                            "2 Camera Angles",
+                            "3 Camera Angles",
+                            "4 Camera Angles",
+                            "5 Camera Angles"
+                        ]
+                    ),
+
+                    this.menu(
+                        0,
+                        [
+                            "1 Art Style",
+                            "2 Art Styles",
+                            "3 Art Styles",
+                            "4 Art Styles",
+                            "5 Art Styles"
+                        ]
+                    ),
+
                     this.segmented(
                         0,
                         [
@@ -1714,7 +1787,9 @@ const setupData = setup[0];
 const subjectCount = setupData[0] + 1;
 const outfitCount = setupData[1] + 1;
 const actionCount = setupData[2] + 1;
-const aspectIndex = setupData[3];
+const cameraCount = setupData[3] + 1;
+const artStyleCount = setupData[4] + 1;
+const aspectIndex = setupData[5];
 
 
 // =========================================
@@ -1738,6 +1813,24 @@ const inputs = requestFromUser(
             i < subjectCount;
             i++
         ) {
+
+            fields.push(
+
+                this.section(
+                    `❖  SUBJECT ${i + 1} • Celebrity/Reference Face`,
+                    "Optional celebrity-inspired identity presets",
+                    [
+                        this.menu(
+                            0,
+                            menuWithPlaceholder(
+                                "No celebrity preset selected",
+                                celebrityPresets
+                            )
+                        )
+                    ]
+                )
+            );
+
 
             fields.push(
 
@@ -1874,6 +1967,35 @@ const inputs = requestFromUser(
 
 
             // =====================================
+            // HAIR TYPE
+            // =====================================
+
+            fields.push(
+
+                this.section(
+                    `❖  SUBJECT ${i + 1} • Appearance • Hair Type`,
+                    "Hair texture choices",
+                    [
+                        this.menu(
+                            0,
+                            menuWithPlaceholder(
+                                "No hair type",
+                                hairTypePresets
+                            )
+                        ),
+
+                        this.textField(
+                            "",
+                            "Custom hair type",
+                            false,
+                            40
+                        )
+                    ]
+                )
+            );
+
+
+            // =====================================
             // HAIR
             // =====================================
 
@@ -1914,14 +2036,6 @@ const inputs = requestFromUser(
                             40
                         ),
 
-                        this.menu(
-                            0,
-                            menuWithPlaceholder(
-                                "No hairstyle",
-                                hairstylePresets
-                            )
-                        ),
-
                         this.textField(
                             "",
                             "Custom hairstyle",
@@ -1937,6 +2051,14 @@ const inputs = requestFromUser(
                         )
                     ]
                 )
+            );
+
+
+            addGroupedSections.call(
+                this,
+                fields,
+                `❖  SUBJECT ${i + 1} • Appearance • Hair`,
+                hairstyleGroups
             );
 
 
@@ -2174,11 +2296,18 @@ const inputs = requestFromUser(
 
             this.section(
                 "❖  Prompt Options & Template",
-                "Choose an art style and customize the template with tags",
+                "Choose up to 5 art styles and customize the template with tags",
                 [
-                    this.menu(
-                        0,
-                        artStylePresets
+                    ...Array.from(
+                        { length: artStyleCount },
+                        () =>
+                            this.menu(
+                                0,
+                                menuWithPlaceholder(
+                                    "No art style selected",
+                                    artStylePresets
+                                )
+                            )
                     ),
 
                     this.textField(
@@ -2625,6 +2754,17 @@ for (
         );
 
 
+    const celebrityData =
+        inputs[sectionIdx++];
+
+
+    const celebrity =
+        selectedPresetValue(
+            celebrityData[0],
+            celebrityPresets
+        );
+
+
     const genderForm =
         getGenderForm(gender);
 
@@ -2650,6 +2790,13 @@ for (
     if (skin) {
         subjectParts.push(
             "with " + skin
+        );
+    }
+
+
+    if (celebrity) {
+        subjectParts.push(
+            celebrity
         );
     }
 
@@ -2781,6 +2928,33 @@ for (
 
 
     // -----------------------------------------
+    // Hair Type
+    // -----------------------------------------
+
+    const hairTypeData =
+        inputs[sectionIdx++];
+
+
+    let hairTypeIdx = 0;
+
+
+    const hairTypeIndex =
+        hairTypeData[hairTypeIdx++];
+
+
+    const customHairType =
+        hairTypeData[hairTypeIdx++];
+
+
+    const hairType =
+        customHairType !== ""
+            ? customHairType
+            : selectedPresetValue(
+                hairTypeIndex,
+                hairTypePresets
+            );
+
+
     // Hair
     // -----------------------------------------
 
@@ -2825,21 +2999,37 @@ for (
             );
 
 
-    const hairstyleIndex =
-        hairData[hairIdx++];
-
-
     const customHairstyle =
         hairData[hairIdx++];
 
 
+    const hairstyleParts = [];
+
+
+    for (
+        const group of hairstyleGroups
+    ) {
+
+        const groupData =
+            inputs[sectionIdx++];
+
+
+        hairstyleParts.push(
+            ...selectedSwitchValues(
+                groupData,
+                group.presets
+            )
+        );
+    }
+
+
     const hairstyle =
-        customHairstyle !== ""
-            ? customHairstyle
-            : selectedPresetValue(
-                hairstyleIndex,
-                hairstylePresets
-            );
+        joinParts(
+            [
+                ...hairstyleParts,
+                customHairstyle
+            ]
+        );
 
 
     const hairColorText =
@@ -2854,6 +3044,7 @@ for (
         joinParts(
             [
                 hairLength,
+                hairType,
                 hairstyle,
                 hairColorText
             ]
@@ -3130,8 +3321,10 @@ for (
 }
 
 
-const camera =
-    joinParts(cameraParts);
+const cameraChoices =
+    cameraParts.length > 0
+        ? cameraParts.slice(0, cameraCount)
+        : [""];
 
 
 // =========================================
@@ -3210,14 +3403,19 @@ const templateData =
     inputs[sectionIdx++];
 
 
-const artStyle =
-    artStylePresets[
-        templateData[0]
-    ] || "";
+const artStyles =
+    Array.from(
+        { length: artStyleCount },
+        (_, index) =>
+            selectedPresetValue(
+                templateData[index],
+                artStylePresets
+            )
+    ).filter(Boolean);
 
 
 const promptTemplate =
-    templateData[1] || "";
+    templateData[artStyleCount] || "";
 
 
 // =========================================
@@ -3242,12 +3440,12 @@ if (
 
     width =
         aspectDimensions[
-            aspectIndex
+        aspectIndex
         ][0];
 
     height =
         aspectDimensions[
-            aspectIndex
+        aspectIndex
         ][1];
 }
 
@@ -3319,6 +3517,12 @@ function cleanPrompt(prompt) {
 const finalPrompts = [];
 
 
+const artStyleChoices =
+    artStyles.length > 0
+        ? artStyles
+        : [""];
+
+
 for (
     let subjectIndex = 0;
     subjectIndex < subjects.length;
@@ -3331,19 +3535,19 @@ for (
 
     const subjectLead =
         subjectLeadTexts[
-            subjectIndex
+        subjectIndex
         ] || "";
 
 
     const subjectDetails =
         subjectDetailTexts[
-            subjectIndex
+        subjectIndex
         ] || "";
 
 
     const genderForm =
         subjectGenderForms[
-            subjectIndex
+        subjectIndex
         ] || "neutral";
 
 
@@ -3355,70 +3559,80 @@ for (
             const action of actions
         ) {
 
-            const templateValues = {
+            for (
+                const camera of cameraChoices
+            ) {
 
-                artStyle:
-                    artStyle,
+                for (
+                    const artStyle of artStyleChoices
+                ) {
 
-                camera:
-                    camera,
+                    const templateValues = {
 
-                subject:
-                    subject,
+                        artStyle:
+                            artStyle,
 
-                subjects:
-                    subject,
+                        camera:
+                            camera,
 
-                subjectLead:
-                    subjectLead,
+                        subject:
+                            subject,
 
-                subjectDetails:
-                    subjectDetails,
+                        subjects:
+                            subject,
 
-                clothing:
-                    outfit,
+                        subjectLead:
+                            subjectLead,
 
-                action:
-                    action,
+                        subjectDetails:
+                            subjectDetails,
 
-                timeOfDay:
-                    timeOfDay,
+                        clothing:
+                            outfit,
 
-                lighting:
-                    lighting,
+                        action:
+                            action,
 
-                colorTreatment:
-                    colorTreatmentText
-            };
+                        timeOfDay:
+                            timeOfDay,
 
+                        lighting:
+                            lighting,
 
-            let constructedPrompt =
-                fillTemplate(
-                    promptTemplate,
-                    templateValues
-                );
-
-
-            // Gender terms are intentionally
-            // applied after template expansion.
-            // This allows gender tokens appearing
-            // inside presets to be resolved too.
-            constructedPrompt =
-                applyGenderTerms(
-                    constructedPrompt,
-                    genderForm
-                );
+                        colorTreatment:
+                            colorTreatmentText
+                    };
 
 
-            constructedPrompt =
-                cleanPrompt(
-                    constructedPrompt
-                );
+                    let constructedPrompt =
+                        fillTemplate(
+                            promptTemplate,
+                            templateValues
+                        );
 
 
-            finalPrompts.push(
-                constructedPrompt
-            );
+                    // Gender terms are intentionally
+                    // applied after template expansion.
+                    // This allows gender tokens appearing
+                    // inside presets to be resolved too.
+                    constructedPrompt =
+                        applyGenderTerms(
+                            constructedPrompt,
+                            genderForm
+                        );
+
+
+                    constructedPrompt =
+                        cleanPrompt(
+                            constructedPrompt
+                        );
+
+
+                    finalPrompts.push(
+                        constructedPrompt
+                    );
+                }
+            }
         }
     }
 }
