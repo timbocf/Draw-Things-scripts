@@ -443,7 +443,7 @@ const actionGroups = [
             "languid, affectionate pose",
             "slow, tender interaction"
         ]
-    }
+    },
     {
         title: "Legs",
         description: "Leg and body alignment",
