@@ -351,8 +351,6 @@ const hairstylePresets = [
     },
     "faux hawk",
     "short boyish hairstyle",
-    "shaved on one side",
-    "shaved on both sides",
     "spiked punk hairstyle",
     "Hollywood curls",
     "Victory curls"
@@ -362,7 +360,9 @@ const hairstylePresets = [
 const bodyHairPresets = [
     "light body hair",
     "thick body hair",
-    "freckles"
+    "freckles",
+    "shaved on one side",
+    "shaved on both sides"
 ];
 
 
