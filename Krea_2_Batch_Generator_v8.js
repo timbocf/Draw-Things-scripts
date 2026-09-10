@@ -184,7 +184,7 @@ const hairstyleGroups = [
         description: "Big-volume and retro-inspired hair silhouettes",
         presets: [
             { label: "blown-out", value: "high-volume, heavily sprayed, lacquered hairstyle" },
-            { label: "soft feathered 70s blowout", value: "soft feathered 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers" },
+            { label: "soft feat{possessive}ed 70s blowout", value: "soft feat{possessive}ed 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers" },
             { label: "60s bouffant curls", value: "1960s bouffant hairstyle with large rounded curls, high volume, and polished lift" }
         ]
     },
@@ -276,7 +276,7 @@ function selectedValueWithPlaceholder(index, presets) {
     return getPresetValue(presets[actualIndex]) || "";
 }
 
-// Reads a menu selection where every index maps directly to a preset
+// Reads a menu selection w{possessive}e every index maps directly to a preset
 // (no leading placeholder option).
 function selectedValueNoPlaceholder(index, presets) {
     if (index < 0 || index >= presets.length) return "";
@@ -327,7 +327,7 @@ const clothingGroups = [
             "lace bustier", "silk lingerie set", "black lace lingerie set", "red satin lingerie set",
             "sheer lace teddy", "transparent lace bra and panties", "lace-up corset", "satin chemise",
             "sheer bodystocking", "balconette bra and matching panties", "lace garter set",
-            "leather lingerie set", "silk robe and lingerie set", "fishnet bodysuit",
+            "leat{possessive} lingerie set", "silk robe and lingerie set", "fishnet bodysuit",
             "push-up bra and thong set", "lace-up thigh-highs", "strapless corset set",
             "sheer robe with matching panties", "satin slip dress", "lace-up bustier set",
             "transparent vinyl lingerie", "corset over sheer stockings"
@@ -355,7 +355,7 @@ const clothingGroups = [
         presets: [
             "barefoot", "white tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
             "black fishnet stockings", "sheer lace stockings", "strappy heels", "lace-up knee boots",
-            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots"
+            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leat{possessive} boots"
         ]
     }
 ];
@@ -366,8 +366,8 @@ const clothingPresets = [
         value: "a lace bustier, a garter belt, and thigh-high stockings"
     },
     {
-        label: "Leather Punk Lingerie",
-        value: "leather lingerie, a fishnet bodysuit, and thigh-high leather boots"
+        label: "Leat{possessive} Punk Lingerie",
+        value: "leat{possessive} lingerie, a fishnet bodysuit, and thigh-high leat{possessive} boots"
     },
     {
         label: "French Maid Uniform",
@@ -393,16 +393,16 @@ const complexActionPresets = [
     { label: "Spread Eagle (Lying Back) — lying back, legs spread wide, hands holding legs", value: "laying on {possessive} back with {possessive} legs raised and spread wide, feet wide apart, holding {possessive} legs in the air with {possessive} hands, looking through {possessive} open legs at the camera" },
     { label: "Back-on-Bed (Legs Straight Up) — legs straight and elevated, knees locked", value: "laying on a bed on {possessive} back with {possessive} butt at the edge of the bed, {possessive} legs straight and elevated into the air, knees locked, bending at waist only" },
     { label: "Deep Waist Bend — legs straight, hands on shelf, surprise look", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with {possessive} hand covering {possessive} mouth and wide-eyed open-mouthed look of surprise" },
-    { label: "Shower View (From Below) — camera below, looking up through water", value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up" },
-    { label: "Shower View (From Above)", value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down" },
+    { label: "Shower View (From Below) — camera below, looking up through water", value: "standing and rubbing soapy lat{possessive} all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up" },
+    { label: "Shower View (From Above)", value: "standing and rubbing soapy lat{possessive} all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down" },
     { label: "Doorway Pose — foot on frame, knee near face", value: "standing in a bedroom doorway. {possessive} back is against one side of the door frame, and one of {possessive} feet is elevated to eye-level and the sole of {possessive} shoe is pressing against the opposite door frame, putting {possessive} knee close to {possessive} face." },
     { label: "Doorway Pose (Just Standing)", value: "standing in a bedroom doorway." },
     { label: "Forward Lean (hands on knees) - facing back, ass toward camera", value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera, legs straight, knees locked" },
-    { label: "Reclining back - resting on elbow, other hand touching crotch", value: "lying on {possessive} side, with the top leg bent high, hand lightly between {possessive} thighs" },
+    { label: "Reclining back - resting on elbow, ot{possessive} hand touching crotch", value: "lying on {possessive} side, with the top leg bent high, hand lightly between {possessive} thighs" },
     { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on {possessive} toes, hands in {possessive} hair, back arched, chest pressed forward, shoulders pulled back." },
     { label: "Lying in a Windowsill", value: "lying on {possessive} stomach on a sunlit windowsill, chin resting on {possessive} hands, legs bent at the knees and crossed at the ankles in the air" },
-    { label: "Lying on a Couch (Foot on Backrest)", value: "lying on {possessive} back on a sofa, one leg hooked over the backrest, other foot on the floor" },
-    { label: "Lying on a Couch (Foot on Armrest)", value: "lying on {possessive} back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
+    { label: "Lying on a Couch (Foot on Backrest)", value: "lying on {possessive} back on a sofa, one leg hooked over the backrest, ot{possessive} foot on the floor" },
+    { label: "Lying on a Couch (Foot on Armrest)", value: "lying on {possessive} back on a sofa, one leg resting on opposite armrest, ot{possessive} foot on the floor" },
     { label: "On Knees, Ass Spread", value: "{subjectPronoun} is on {possessive} knees facing away, looking back over {possessive} shoulder while reaching back to spread {possessive} ass cheeks apart" },
     { label: "Kneeling in Front of a Fireplace - wearing pearls and heels", value: "kneeling on a soft rug in front of a fireplace, hands on {possessive} thighs, chest pushed forward, wearing a long pearl necklace and high heels" },
     { label: "On All Fours", value: "on all fours, head turned to the side, back arched hard, ass toward the camera" },
@@ -433,18 +433,22 @@ const actionGroups = [
         description: "POV Sexual Positions",
         presets: [
             {
+<<<<<<< HEAD
                 label: "Cowgirl",
                 value: "pov, straddling a nude man, riding him in cowgirl position, his penis is deep inside her vagina"
+=======
+                label: "POV/Cowgirl",
+                value: "pov, straddling a nude man, riding him in cowgirl position, penis-in-vagina sex"
+>>>>>>> f5804ac (Fix possessive form typos in hairstyle, clothing, and lighting presets)
             },
             {
-                label: "Blowjob",
-                value: "pov, between a nude man's legs, giving him a passionate blowjob, his penis deep inside her mouth, sucking the penis, sunken cheeks"
+                label: "POV/Blowjob",
+                value: "pov, between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
             },
-            "close, intimate eye contact",
-            "soft romantic tension",
-            "bedroom intimacy scene",
-            "languid, affectionate pose",
-            "slow, tender interaction"
+            {
+                label: "POV/Missionary",
+                value: "{subjectPronoun} is laying on {possessive} back looking up at the camera"
+            }
         ]
     },
     {
@@ -453,9 +457,9 @@ const actionGroups = [
         presets: [
             "legs straight", "elevated into the air", "knees locked", "bending at waist only",
             "leaning forward", "one knee bent", "knees bent", "one foot on the wall",
-            "feet spread wide", "feet together", "feet crossed", "one leg raised",
+            "feet spread wide", "feet toget{possessive}", "feet crossed", "one leg raised",
             "1 foot against door frame", "{possessive} ass high in the air", "back arched",
-            "chest puffed out", "knees together", "shoulders back"
+            "chest puffed out", "knees toget{possessive}", "shoulders back"
         ]
     },
     {
@@ -463,7 +467,7 @@ const actionGroups = [
         description: "Hand and arm placement",
         presets: [
             "arms raised high above {possessive} head", "arms stretched out in front of {objectPronoun}",
-            "hands clasped together", "on {possessive} elbows", "elbows resting on bed",
+            "hands clasped toget{possessive}", "on {possessive} elbows", "elbows resting on bed",
             "hands on hips", "hands on waist", "hands on breasts", "hands in hair",
             "hands on knees", "hands lightly touching upper chest area", "hands on ass", "hands spreading ass cheeks"
         ]
@@ -508,7 +512,7 @@ const artStylePresets = [
 // =========================================
 // CAMERA
 // Perspective, framing, composition, and depth of field are all
-// offered together in the "Camera" section so none of these lists
+// offered toget{possessive} in the "Camera" section so none of these lists
 // go unused.
 // =========================================
 
@@ -608,15 +612,15 @@ const lightingQualityPresets = [
 
 const cinematicLightingPresets = [
     { label: "Cinematic", value: "dramatic cinematic lighting with controlled highlights and shadows" },
-    { label: "Moody", value: "moody atmospheric lighting with subdued illumination and rich shadows" },
+    { label: "Moody", value: "moody atmosp{possessive}ic lighting with subdued illumination and rich shadows" },
     { label: "Soft cinematic", value: "soft cinematic lighting with gentle contrast and natural falloff" },
     { label: "High-key", value: "high-key lighting with bright even illumination, low contrast and minimal shadows" },
     { label: "Low-key", value: "low-key lighting with dramatic contrast, deep shadows and controlled highlights" },
     { label: "Chiaroscuro", value: "chiaroscuro lighting with strong contrast between light and shadow" },
     { label: "Film noir", value: "classic film-noir lighting with hard directional light and dramatic shadows" },
-    { label: "Volumetric light", value: "volumetric lighting with visible light rays through the atmosphere" },
-    { label: "God rays", value: "dramatic visible shafts of light cutting through the atmosphere" },
-    { label: "Hazy atmosphere", value: "soft hazy atmospheric illumination with gentle diffusion" },
+    { label: "Volumetric light", value: "volumetric lighting with visible light rays through the atmosp{possessive}e" },
+    { label: "God rays", value: "dramatic visible shafts of light cutting through the atmosp{possessive}e" },
+    { label: "Hazy atmosp{possessive}e", value: "soft hazy atmosp{possessive}ic illumination with gentle diffusion" },
     { label: "Deep shadows", value: "deep pronounced shadows with strong tonal separation" },
     { label: "Long shadows", value: "long directional shadows cast across the environment" },
     { label: "Silhouette", value: "strong backlighting producing a dramatic partial silhouette" }
@@ -645,18 +649,18 @@ const tenebrismLightingPresets = [
     { label: "Moonlight through window", value: "faint cool moonlight streaming through a window, illuminating only portions of the subject while the rest of the room remains deeply shadowed" },
     { label: "Faint dawn light", value: "extremely dim pre-dawn illumination with the environment barely visible and subtle highlights gradually revealing the subject" },
     { label: "Pre-sunrise darkness", value: "deep pre-sunrise darkness with only faint ambient light outlining the subject and environment" },
-    { label: "Dark fisherman dawn", value: "extremely dim early-morning light on a fishing boat, with the fisherman and surroundings barely visible against deep blue-black shadows" },
+    { label: "Dark fis{possessive}man dawn", value: "extremely dim early-morning light on a fishing boat, with the fis{possessive}man and surroundings barely visible against deep blue-black shadows" },
     { label: "Foggy dawn darkness", value: "dim pre-dawn illumination diffused through mist and fog, with only faint shapes and highlights emerging from darkness" },
     { label: "Single light source", value: "a single small directional light source illuminating only part of the subject while the surrounding scene falls into deep darkness" },
     { label: "Face emerging from darkness", value: "the subject's face subtly emerging from near-black surroundings, illuminated by a narrow controlled light" },
     { label: "Partial illumination", value: "very limited directional illumination revealing only selected portions of the subject while most of the body disappears into shadow" },
     { label: "Black-background lighting", value: "the subject emerging from an almost completely black background with minimal controlled illumination" },
     { label: "Deep shadow falloff", value: "extremely rapid falloff from illuminated areas into nearly black shadow" },
-    { label: "Dark atmospheric lighting", value: "very low ambient illumination with atmospheric darkness surrounding isolated pools of light" },
+    { label: "Dark atmosp{possessive}ic lighting", value: "very low ambient illumination with atmosp{possessive}ic darkness surrounding isolated pools of light" },
     { label: "Candle in darkness", value: "a single dim candle providing the primary illumination while the surrounding environment disappears into deep shadow" },
     { label: "Lantern in darkness", value: "a lone dim lantern illuminating the immediate area while the surrounding environment remains almost completely dark" },
     { label: "Boat lantern", value: "a faint warm lantern illuminating a small area aboard a fishing boat surrounded by deep pre-dawn darkness" },
-    { label: "Light barely revealing details", value: "extremely restrained illumination where details are only visible after close inspection, with most of the scene concealed in darkness" }
+    { label: "Light barely revealing details", value: "extremely restrained illumination w{possessive}e details are only visible after close inspection, with most of the scene concealed in darkness" }
 ];
 
 const experimentalLightingPresets = [
@@ -669,7 +673,7 @@ const experimentalLightingPresets = [
     { label: "Light leaks", value: "subtle photographic light leaks around bright areas" },
     { label: "Prismatic reflections", value: "subtle prismatic rainbow reflections from refracted light" },
     { label: "Water caustics", value: "moving water-caustic patterns of light projected across the scene" },
-    { label: "Fog light", value: "directional light visibly diffused through light atmospheric fog" }
+    { label: "Fog light", value: "directional light visibly diffused through light atmosp{possessive}ic fog" }
 ];
 
 const colorTreatmentPresets = [
@@ -883,10 +887,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
 
     addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Natural / Environmental", "Common natural and environmental light sources", naturalLightingPresets);
     addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Quality / Direction", "High-impact controls for softness, direction, and shadow shape", lightingQualityPresets);
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Mood / Cinematic", "High-impact cinematic mood, contrast, and atmosphere", cinematicLightingPresets);
+    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Mood / Cinematic", "High-impact cinematic mood, contrast, and atmosp{possessive}e", cinematicLightingPresets);
     addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Color / Creative", "Color temperature and colored illumination", colorLightingPresets);
     addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Dark / Tenebrism", "Extreme darkness, selective illumination, moonlight, dawn darkness, and old-master-style shadow", tenebrismLightingPresets);
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Special Effects", "Unusual patterns, optical effects, and atmospheric techniques", experimentalLightingPresets);
+    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Special Effects", "Unusual patterns, optical effects, and atmosp{possessive}ic techniques", experimentalLightingPresets);
     addPresetSwitchSection.call(this, fields, "❖  COLOR TREATMENTS", "Optional monochrome or stylized color treatment controls", colorTreatmentPresets);
 
     // -----------------------------------------
@@ -943,7 +947,7 @@ function parseGroupedSwitches(groups) {
 
 const GENDER_TERMS = {
     masculine: { subject: "he", object: "him", possessive: "his", reflexive: "himself", noun: "man" },
-    feminine: { subject: "she", object: "her", possessive: "her", reflexive: "herself", noun: "woman" },
+    feminine: { subject: "she", object: "{possessive}", possessive: "{possessive}", reflexive: "{possessive}self", noun: "woman" },
     neutral: { subject: "they", object: "them", possessive: "their", reflexive: "themselves", noun: "person" }
 };
 
@@ -960,7 +964,7 @@ function replaceToken(text, token, replacement) {
 // Fills the explicit gender/pronoun tags ({subjectPronoun}, {possessive},
 // etc.) used throughout the pose and action presets. This only touches
 // the named template tags — it deliberately does NOT do blind word-level
-// substitution of "he"/"she"/"her"/etc. across the whole prompt, since
+// substitution of "he"/"she"/"{possessive}"/etc. across the whole prompt, since
 // that risked mangling custom free-text fields and preset wording that
 // happened to contain those words for unrelated reasons.
 function applyGenderTerms(prompt, genderForm) {
@@ -1263,7 +1267,7 @@ function buildPreviewText(prompts) {
     const numbered = sample.map((prompt, index) => `${index + 1}. ${prompt}`);
 
     if (prompts.length > sample.length) {
-        numbered.push(`… and ${prompts.length - sample.length} more prompt(s) not shown here.`);
+        numbered.push(`… and ${prompts.length - sample.length} more prompt(s) not shown {possessive}e.`);
     }
 
     return numbered.join("\n\n");
