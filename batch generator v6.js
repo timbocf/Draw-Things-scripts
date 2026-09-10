@@ -1,7 +1,8 @@
 //@api-1.0
+// version 6
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
-// V6 — ORGANIZED / STABILIZED
+// V7 — REFACTORED / ORGANIZED / STABILIZED
 // PRESETS + BODY PHYSIQUE + GENDER-AWARE TERMS
 // + CAMERA + LIGHTING + TENEBRISM
 // =========================================
@@ -39,7 +40,6 @@ const nationalityPresets = [
 
 
 // --- AGE ---
-// Adults only
 const agePresets = [
     "18 years old",
     "20 years old",
@@ -366,13 +366,124 @@ const bodyHairPresets = [
 
 
 // =========================================
-// CLOTHING
+// GENERIC PRESET HELPERS
 // =========================================
-// V6 CHANGE:
-// Clothing groups are now the source of truth.
-// No slice() ranges are used.
-// clothingPresets is generated from the groups so
-// the dropdown and grouped switches stay synchronized.
+
+function getPresetLabel(preset) {
+    return (
+        typeof preset === "object" &&
+        preset !== null
+    )
+        ? preset.label
+        : preset;
+}
+
+
+function getPresetValue(preset) {
+    return (
+        typeof preset === "object" &&
+        preset !== null
+    )
+        ? preset.value
+        : preset;
+}
+
+
+function presetLabels(presets) {
+    return presets.map(
+        preset => getPresetLabel(preset)
+    );
+}
+
+
+function menuWithPlaceholder(
+    placeholder,
+    presets
+) {
+    return [
+        placeholder,
+        ...presetLabels(presets)
+    ];
+}
+
+
+function presetSwitches(presets) {
+    return presets.map(
+        preset =>
+            this.switch(
+                false,
+                `✡︎  ${getPresetLabel(preset)}`
+            )
+    );
+}
+
+
+function selectedPresetValue(
+    index,
+    presets,
+    placeholder = true
+) {
+    if (
+        placeholder &&
+        index <= 0
+    ) {
+        return "";
+    }
+
+    const actualIndex =
+        placeholder
+            ? index - 1
+            : index;
+
+    if (
+        actualIndex < 0 ||
+        actualIndex >= presets.length
+    ) {
+        return "";
+    }
+
+    return getPresetValue(
+        presets[actualIndex]
+    ) || "";
+}
+
+
+function selectedSwitchValues(
+    data,
+    presets
+) {
+    const values = [];
+
+    for (
+        let i = 0;
+        i < presets.length;
+        i++
+    ) {
+        if (data[i] === true) {
+            values.push(
+                getPresetValue(presets[i])
+            );
+        }
+    }
+
+    return values;
+}
+
+
+function joinParts(parts) {
+    return parts
+        .filter(
+            part =>
+                part !== undefined &&
+                part !== null &&
+                part !== ""
+        )
+        .join(", ");
+}
+
+
+// =========================================
+// CLOTHING
 // =========================================
 
 const clothingGroups = [
@@ -504,58 +615,10 @@ const clothingGroups = [
 ];
 
 
-// Flat clothing list used by the main clothing menu.
-// Group definitions above remain the source of truth.
 const clothingPresets =
     clothingGroups.flatMap(
         group => group.presets
     );
-
-
-// =========================================
-// GENERIC PRESET HELPERS
-// =========================================
-
-function getPresetLabel(preset) {
-
-    return (
-        typeof preset === "object" &&
-        preset !== null
-    )
-        ? preset.label
-        : preset;
-}
-
-
-function getPresetValue(preset) {
-
-    return (
-        typeof preset === "object" &&
-        preset !== null
-    )
-        ? preset.value
-        : preset;
-}
-
-
-function presetLabels(presets) {
-
-    return presets.map(
-        preset => getPresetLabel(preset)
-    );
-}
-
-
-function presetSwitches(presets) {
-
-    return presets.map(
-        preset =>
-            this.switch(
-                false,
-                `✡︎  ${getPresetLabel(preset)}`
-            )
-    );
-}
 
 
 // =========================================
@@ -704,10 +767,6 @@ const complexActionPresets = [
 // =========================================
 // MODULAR POSE SWITCHES
 // =========================================
-// V6 CHANGE:
-// Action groups are explicitly defined instead
-// of relying on slice() index ranges.
-// =========================================
 
 const actionGroups = [
 
@@ -823,14 +882,6 @@ const actionGroups = [
         ]
     }
 ];
-
-
-// Flat action list used internally only if needed.
-// Group definitions remain the source of truth.
-const actionSwitchPresets =
-    actionGroups.flatMap(
-        group => group.presets
-    );
 
 
 // =========================================
@@ -1422,6 +1473,49 @@ const colorTreatmentPresets = [
 
 
 // =========================================
+// UI HELPERS
+// =========================================
+
+function addPresetSwitchSection(
+    fields,
+    title,
+    description,
+    presets
+) {
+    fields.push(
+        this.section(
+            title,
+            description,
+            presets.map(
+                preset =>
+                    this.switch(
+                        false,
+                        `✡︎  ${getPresetLabel(preset)}`
+                    )
+            )
+        )
+    );
+}
+
+
+function addGroupedSections(
+    fields,
+    titlePrefix,
+    groups
+) {
+    for (const group of groups) {
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            `${titlePrefix} • ${group.title}`,
+            group.description,
+            group.presets
+        );
+    }
+}
+
+
+// =========================================
 // STEP 1 — BATCH SETUP
 // =========================================
 
@@ -1522,18 +1616,18 @@ const inputs = requestFromUser(
                     [
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "Choose gender",
-                                ...genderPresets
-                            ]
+                                genderPresets
+                            )
                         ),
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "Choose nationality / ethnicity",
-                                ...nationalityPresets
-                            ]
+                                nationalityPresets
+                            )
                         ),
 
                         this.menu(
@@ -1543,10 +1637,10 @@ const inputs = requestFromUser(
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "Choose skin tone",
-                                ...skinTonePresets
-                            ]
+                                skinTonePresets
+                            )
                         )
                     ]
                 )
@@ -1561,34 +1655,34 @@ const inputs = requestFromUser(
                     [
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No overall build selected",
-                                ...presetLabels(overallBuildPresets)
-                            ]
+                                overallBuildPresets
+                            )
                         ),
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No height selected",
-                                ...presetLabels(heightPresets)
-                            ]
+                                heightPresets
+                            )
                         ),
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No chest description",
-                                ...presetLabels(chestPresets)
-                            ]
+                                chestPresets
+                            )
                         ),
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No hip description",
-                                ...presetLabels(hipPresets)
-                            ]
+                                hipPresets
+                            )
                         ),
 
                         this.menu(
@@ -1598,26 +1692,26 @@ const inputs = requestFromUser(
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No leg description",
-                                ...presetLabels(legPresets)
-                            ]
+                                legPresets
+                            )
                         ),
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No ass size selected",
-                                ...presetLabels(assSizePresets)
-                            ]
+                                assSizePresets
+                            )
                         ),
 
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No belly size selected",
-                                ...presetLabels(bellySizePresets)
-                            ]
+                                bellySizePresets
+                            )
                         ),
 
                         this.menu(
@@ -1639,50 +1733,34 @@ const inputs = requestFromUser(
             const appearanceControls = [];
 
 
-            makeupPresets.forEach(
-                item => {
-                    appearanceControls.push(
-                        this.switch(
-                            false,
-                            `✡︎  ${item}`
-                        )
-                    );
-                }
-            );
+            for (
+                const presets of [
+                    makeupPresets,
+                    tattooPresets,
+                    bodyHairPresets
+                ]
+            ) {
 
-
-            tattooPresets.forEach(
-                item => {
-                    appearanceControls.push(
-                        this.switch(
-                            false,
-                            `✡︎  ${item}`
-                        )
-                    );
-                }
-            );
-
-
-            bodyHairPresets.forEach(
-                item => {
-                    appearanceControls.push(
-                        this.switch(
-                            false,
-                            `✡︎  ${item}`
-                        )
-                    );
-                }
-            );
+                appearanceControls.push(
+                    ...presets.map(
+                        item =>
+                            this.switch(
+                                false,
+                                `✡︎  ${getPresetLabel(item)}`
+                            )
+                    )
+                );
+            }
 
 
             appearanceControls.push(
 
                 this.menu(
                     0,
-                    [
+                    menuWithPlaceholder(
                         "No hair color",
-                        ...hairColorPresets
-                    ]
+                        hairColorPresets
+                    )
                 ),
 
                 this.textField(
@@ -1694,10 +1772,10 @@ const inputs = requestFromUser(
 
                 this.menu(
                     0,
-                    [
+                    menuWithPlaceholder(
                         "No hair length",
-                        ...hairLengthPresets
-                    ]
+                        hairLengthPresets
+                    )
                 ),
 
                 this.textField(
@@ -1709,10 +1787,10 @@ const inputs = requestFromUser(
 
                 this.menu(
                     0,
-                    [
+                    menuWithPlaceholder(
                         "No hairstyle",
-                        ...presetLabels(hairstylePresets)
-                    ]
+                        hairstylePresets
+                    )
                 ),
 
                 this.textField(
@@ -1760,10 +1838,10 @@ const inputs = requestFromUser(
                     [
                         this.menu(
                             0,
-                            [
+                            menuWithPlaceholder(
                                 "No clothing selected",
-                                ...presetLabels(clothingPresets)
-                            ]
+                                clothingPresets
+                            )
                         ),
 
                         this.textField(
@@ -1777,37 +1855,18 @@ const inputs = requestFromUser(
             );
 
 
-            for (
-                const group of clothingGroups
-            ) {
-
-                fields.push(
-
-                    this.section(
-                        `❖  OUTFIT ${i + 1} • ${group.title}`,
-                        group.description,
-                        group.presets.map(
-                            preset =>
-                                this.switch(
-                                    false,
-                                    `✡︎  ${getPresetLabel(preset)}`
-                                )
-                        )
-                    )
-                );
-            }
+            addGroupedSections.call(
+                this,
+                fields,
+                `❖  OUTFIT ${i + 1}`,
+                clothingGroups
+            );
         }
 
 
         // =====================================
         // ACTIONS / POSES
         // =====================================
-
-        const actionMenu = [
-            "No pose preset selected",
-            ...presetLabels(complexActionPresets)
-        ];
-
 
         for (
             let i = 0;
@@ -1823,7 +1882,10 @@ const inputs = requestFromUser(
                     [
                         this.menu(
                             0,
-                            actionMenu
+                            menuWithPlaceholder(
+                                "No pose preset selected",
+                                complexActionPresets
+                            )
                         ),
 
                         this.textField(
@@ -1837,25 +1899,12 @@ const inputs = requestFromUser(
             );
 
 
-            for (
-                const group of actionGroups
-            ) {
-
-                fields.push(
-
-                    this.section(
-                        `❖  ACTION / POSE ${i + 1} • ${group.title}`,
-                        group.description,
-                        group.presets.map(
-                            preset =>
-                                this.switch(
-                                    false,
-                                    `✡︎  ${preset}`
-                                )
-                        )
-                    )
-                );
-            }
+            addGroupedSections.call(
+                this,
+                fields,
+                `❖  ACTION / POSE ${i + 1}`,
+                actionGroups
+            );
         }
 
 
@@ -1863,55 +1912,39 @@ const inputs = requestFromUser(
         // CAMERA
         // =====================================
 
-        fields.push(
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  CAMERA • Framing",
+            "Control how much of the subject and environment appears in the image",
+            cameraFramingPresets
+        );
 
-            this.section(
-                "❖  CAMERA • Framing",
-                "Control how much of the subject and environment appears in the image",
-                cameraFramingPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
 
-            this.section(
-                "❖  CAMERA • Perspective",
-                "Control the camera's viewing angle, direction, and spatial perspective",
-                cameraPerspectivePresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  CAMERA • Perspective",
+            "Control the camera's viewing angle, direction, and spatial perspective",
+            cameraPerspectivePresets
+        );
 
-            this.section(
-                "❖  CAMERA • Depth of Field",
-                "Control background separation and focus depth",
-                depthOfFieldPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
 
-            this.section(
-                "❖  CAMERA • Composition",
-                "Control how the subject is arranged within the frame",
-                cameraCompositionPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            )
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  CAMERA • Depth of Field",
+            "Control background separation and focus depth",
+            depthOfFieldPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  CAMERA • Composition",
+            "Control how the subject is arranged within the frame",
+            cameraCompositionPresets
         );
 
 
@@ -1927,97 +1960,76 @@ const inputs = requestFromUser(
                 [
                     this.menu(
                         0,
-                        [
+                        menuWithPlaceholder(
                             "No time of day selected",
-                            ...presetLabels(timeOfDayPresets)
-                        ]
+                            timeOfDayPresets
+                        )
                     )
                 ]
-            ),
-
-            this.section(
-                "❖  LIGHTING • Natural / Environmental",
-                "Common natural and environmental light sources",
-                naturalLightingPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
-
-            this.section(
-                "❖  LIGHTING • Quality / Direction",
-                "High-impact controls for softness, direction, and shadow shape",
-                lightingQualityPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
-
-            this.section(
-                "❖  LIGHTING • Mood / Cinematic",
-                "High-impact cinematic mood, contrast, and atmosphere",
-                cinematicLightingPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
-
-            this.section(
-                "❖  LIGHTING • Color / Creative",
-                "Color temperature and colored illumination",
-                colorLightingPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
-
-            this.section(
-                "❖  LIGHTING • Dark / Tenebrism",
-                "Extreme darkness, selective illumination, moonlight, dawn darkness, and old-master-style shadow",
-                tenebrismLightingPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
-
-            this.section(
-                "❖  LIGHTING • Special Effects",
-                "Unusual patterns, optical effects, and atmospheric techniques",
-                experimentalLightingPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
-            ),
-
-            this.section(
-                "❖  COLOR TREATMENTS",
-                "Optional monochrome or stylized color treatment controls",
-                colorTreatmentPresets.map(
-                    preset =>
-                        this.switch(
-                            false,
-                            `✡︎  ${preset.label}`
-                        )
-                )
             )
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  LIGHTING • Natural / Environmental",
+            "Common natural and environmental light sources",
+            naturalLightingPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  LIGHTING • Quality / Direction",
+            "High-impact controls for softness, direction, and shadow shape",
+            lightingQualityPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  LIGHTING • Mood / Cinematic",
+            "High-impact cinematic mood, contrast, and atmosphere",
+            cinematicLightingPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  LIGHTING • Color / Creative",
+            "Color temperature and colored illumination",
+            colorLightingPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  LIGHTING • Dark / Tenebrism",
+            "Extreme darkness, selective illumination, moonlight, dawn darkness, and old-master-style shadow",
+            tenebrismLightingPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  LIGHTING • Special Effects",
+            "Unusual patterns, optical effects, and atmospheric techniques",
+            experimentalLightingPresets
+        );
+
+
+        addPresetSwitchSection.call(
+            this,
+            fields,
+            "❖  COLOR TREATMENTS",
+            "Optional monochrome or stylized color treatment controls",
+            colorTreatmentPresets
         );
 
 
@@ -2057,11 +2069,6 @@ const inputs = requestFromUser(
 // =========================================
 
 let sectionIdx = 0;
-
-const subjects = [];
-const subjectLeadTexts = [];
-const subjectDetailTexts = [];
-const subjectGenderForms = [];
 
 
 // =========================================
@@ -2180,41 +2187,35 @@ function applyGenderTerms(
     let result = prompt;
 
 
-    result =
-        replaceToken(
-            result,
-            "subjectPronoun",
-            forms.subject
-        );
+    // -----------------------------------------
+    // Explicit template tags
+    // -----------------------------------------
 
-    result =
-        replaceToken(
-            result,
-            "objectPronoun",
-            forms.object
-        );
+    const tokenValues = {
+        subjectPronoun: forms.subject,
+        objectPronoun: forms.object,
+        possessive: forms.possessive,
+        reflexive: forms.reflexive,
+        personNoun: forms.noun
+    };
 
-    result =
-        replaceToken(
-            result,
-            "possessive",
-            forms.possessive
-        );
 
-    result =
-        replaceToken(
-            result,
-            "reflexive",
-            forms.reflexive
-        );
+    for (
+        const token in tokenValues
+    ) {
 
-    result =
-        replaceToken(
-            result,
-            "personNoun",
-            forms.noun
-        );
+        result =
+            replaceToken(
+                result,
+                token,
+                tokenValues[token]
+            );
+    }
 
+
+    // -----------------------------------------
+    // Explicit gendered words
+    // -----------------------------------------
 
     const replacements = [
 
@@ -2229,12 +2230,22 @@ function applyGenderTerms(
         ],
 
         [
+            "themselves",
+            forms.reflexive
+        ],
+
+        [
             "he",
             forms.subject
         ],
 
         [
             "she",
+            forms.subject
+        ],
+
+        [
+            "they",
             forms.subject
         ],
 
@@ -2310,6 +2321,11 @@ function applyGenderTerms(
     }
 
 
+    // -----------------------------------------
+    // "her" requires context:
+    // object vs possessive
+    // -----------------------------------------
+
     result =
         result.replace(
             /\bher\b/gi,
@@ -2327,7 +2343,7 @@ function applyGenderTerms(
 
 
                 const isPossessive =
-                    /^\s+(body|back|legs|feet|hands|arms|hair|face|mouth|eyes|head|breasts|ass|butt|knees|fingers|shoulders|toes|thighs|hips|chest|waist|skin|belly|abdomen)\b/i
+                    /^\s+(body|back|legs|feet|hands|arms|hair|face|mouth|eyes|head|breasts|ass|butt|knees|fingers|shoulders|toes|thighs|hips|chest|waist|skin|belly|abdomen|stomach|reflection|shoulder|side|toes|fingers)\b/i
                         .test(after);
 
 
@@ -2346,8 +2362,14 @@ function applyGenderTerms(
 
 
 // =========================================
-// PARSE SUBJECT DATA
+// SUBJECT PARSING
 // =========================================
+
+const subjects = [];
+const subjectLeadTexts = [];
+const subjectDetailTexts = [];
+const subjectGenderForms = [];
+
 
 for (
     let i = 0;
@@ -2366,46 +2388,33 @@ for (
         inputs[sectionIdx++];
 
 
-    const genderIndex =
-        identityData[0];
-
-    const nationalityIndex =
-        identityData[1];
-
-    const ageIndex =
-        identityData[2];
-
-    const skinToneIndex =
-        identityData[3];
-
-
     const gender =
-        genderIndex > 0
-            ? genderPresets[
-                genderIndex - 1
-            ]
-            : "";
+        selectedPresetValue(
+            identityData[0],
+            genderPresets
+        );
 
 
     const nationality =
-        nationalityIndex > 0
-            ? nationalityPresets[
-                nationalityIndex - 1
-            ]
-            : "";
+        selectedPresetValue(
+            identityData[1],
+            nationalityPresets
+        );
 
 
     const age =
-        agePresets[ageIndex] ||
-        "";
+        selectedPresetValue(
+            identityData[2],
+            agePresets,
+            false
+        );
 
 
     const skin =
-        skinToneIndex > 0
-            ? skinTonePresets[
-                skinToneIndex - 1
-            ]
-            : "";
+        selectedPresetValue(
+            identityData[3],
+            skinTonePresets
+        );
 
 
     const genderForm =
@@ -2413,15 +2422,21 @@ for (
 
 
     if (nationality) {
-        subjectParts.push(nationality);
+        subjectParts.push(
+            nationality
+        );
     }
 
     if (gender) {
-        subjectParts.push(gender);
+        subjectParts.push(
+            gender
+        );
     }
 
     if (age) {
-        subjectParts.push(age);
+        subjectParts.push(
+            age
+        );
     }
 
     if (skin) {
@@ -2439,74 +2454,40 @@ for (
         inputs[sectionIdx++];
 
 
-    let bodyIdx = 0;
-
-
-    const overallBuildIndex =
-        bodyData[bodyIdx++];
-
-    const heightIndex =
-        bodyData[bodyIdx++];
-
-    const chestIndex =
-        bodyData[bodyIdx++];
-
-    const hipIndex =
-        bodyData[bodyIdx++];
-
-    const bodyShapeIndex =
-        bodyData[bodyIdx++];
-
-    const legIndex =
-        bodyData[bodyIdx++];
-
-    const assSizeIndex =
-        bodyData[bodyIdx++];
-
-    const bellySizeIndex =
-        bodyData[bodyIdx++];
-
-    const specificBodyIndex =
-        bodyData[bodyIdx++];
-
-    const customBodyDetails =
-        bodyData[bodyIdx++];
-
-
     const bodySelections = [
 
         [
-            overallBuildIndex,
+            bodyData[0],
             overallBuildPresets
         ],
 
         [
-            heightIndex,
+            bodyData[1],
             heightPresets
         ],
 
         [
-            chestIndex,
+            bodyData[2],
             chestPresets
         ],
 
         [
-            hipIndex,
+            bodyData[3],
             hipPresets
         ],
 
         [
-            legIndex,
+            bodyData[5],
             legPresets
         ],
 
         [
-            assSizeIndex,
+            bodyData[6],
             assSizePresets
         ],
 
         [
-            bellySizeIndex,
+            bodyData[7],
             bellySizePresets
         ]
     ];
@@ -2519,57 +2500,53 @@ for (
         ] of bodySelections
     ) {
 
-        if (index > 0) {
+        const value =
+            selectedPresetValue(
+                index,
+                presets
+            );
 
+        if (value) {
             subjectParts.push(
-                getPresetValue(
-                    presets[index - 1]
-                )
+                value
             );
         }
     }
 
 
-    if (bodyShapeIndex >= 0) {
-
-        const bodyShape =
-            bodyShapePresets[
-                bodyShapeIndex
-            ];
-
-        if (
-            bodyShape &&
-            bodyShape.value
-        ) {
-            subjectParts.push(
-                bodyShape.value
-            );
-        }
-    }
+    const bodyShape =
+        selectedPresetValue(
+            bodyData[4],
+            bodyShapePresets,
+            false
+        );
 
 
-    if (specificBodyIndex >= 0) {
-
-        const specificBody =
-            specificBodyPresets[
-                specificBodyIndex
-            ];
-
-        if (
-            specificBody &&
-            specificBody.value
-        ) {
-            subjectParts.push(
-                specificBody.value
-            );
-        }
-    }
-
-
-    if (customBodyDetails) {
-
+    if (bodyShape) {
         subjectParts.push(
-            customBodyDetails
+            bodyShape
+        );
+    }
+
+
+    const specificBody =
+        selectedPresetValue(
+            bodyData[8],
+            specificBodyPresets,
+            false
+        );
+
+
+    if (specificBody) {
+        subjectParts.push(
+            specificBody
+        );
+    }
+
+
+    if (bodyData[9]) {
+        subjectParts.push(
+            bodyData[9]
         );
     }
 
@@ -2585,15 +2562,12 @@ for (
     let appIdx = 0;
 
 
-    const appearancePresets = [
-        makeupPresets,
-        tattooPresets,
-        bodyHairPresets
-    ];
-
-
     for (
-        const presets of appearancePresets
+        const presets of [
+            makeupPresets,
+            tattooPresets,
+            bodyHairPresets
+        ]
     ) {
 
         for (
@@ -2605,103 +2579,83 @@ for (
             if (
                 appearanceData[appIdx++]
             ) {
+
                 subjectParts.push(
-                    presets[j]
+                    getPresetValue(
+                        presets[j]
+                    )
                 );
             }
         }
     }
 
 
-    const hairColorIdx =
+    const hairColorIndex =
         appearanceData[appIdx++];
 
 
-    const typedHairColor =
+    const customHairColor =
         appearanceData[appIdx++];
 
 
     const hairColor =
-        typedHairColor !== ""
-            ? typedHairColor
-            : (
-                hairColorIdx > 0
-                    ? hairColorPresets[
-                        hairColorIdx - 1
-                    ]
-                    : ""
+        customHairColor !== ""
+            ? customHairColor
+            : selectedPresetValue(
+                hairColorIndex,
+                hairColorPresets
             );
 
 
-    const hairLengthIdx =
+    const hairLengthIndex =
         appearanceData[appIdx++];
 
 
-    const typedHairLength =
+    const customHairLength =
         appearanceData[appIdx++];
 
 
     const hairLength =
-        typedHairLength !== ""
-            ? typedHairLength
-            : (
-                hairLengthIdx > 0
-                    ? hairLengthPresets[
-                        hairLengthIdx - 1
-                    ]
-                    : ""
+        customHairLength !== ""
+            ? customHairLength
+            : selectedPresetValue(
+                hairLengthIndex,
+                hairLengthPresets
             );
 
 
-    const hairstyleIdx =
+    const hairstyleIndex =
         appearanceData[appIdx++];
 
 
-    const typedHairstyle =
+    const customHairstyle =
         appearanceData[appIdx++];
 
 
     const hairstyle =
-        typedHairstyle !== ""
-            ? typedHairstyle
-            : (
-                hairstyleIdx > 0
-                    ? getPresetValue(
-                        hairstylePresets[
-                            hairstyleIdx - 1
-                        ]
-                    )
-                    : ""
+        customHairstyle !== ""
+            ? customHairstyle
+            : selectedPresetValue(
+                hairstyleIndex,
+                hairstylePresets
             );
 
 
-    const hairDescriptionParts = [];
-
-
-    if (hairLength) {
-        hairDescriptionParts.push(
-            hairLength
+    const hairDescription =
+        joinParts(
+            [
+                hairLength,
+                hairstyle,
+                hairColor
+                    ? hairColor + " hair"
+                    : ""
+            ].filter(Boolean)
         );
-    }
-
-    if (hairstyle) {
-        hairDescriptionParts.push(
-            hairstyle
-        );
-    }
-
-    if (hairColor) {
-        hairDescriptionParts.push(
-            hairColor + " hair"
-        );
-    }
 
 
-    if (
-        hairDescriptionParts.length > 0
-    ) {
+    if (hairDescription) {
         subjectParts.push(
-            hairDescriptionParts.join(" ")
+            hairDescription
         );
     }
 
@@ -2767,7 +2721,7 @@ for (
 
 
 // =========================================
-// PARSE OUTFITS
+// OUTFIT PARSING
 // =========================================
 
 const outfits = [];
@@ -2790,36 +2744,25 @@ for (
         inputs[sectionIdx++];
 
 
-    let outfitDataIdx = 0;
+    const selectedOutfit =
+        selectedPresetValue(
+            outfitMetaData[0],
+            clothingPresets
+        );
 
 
-    const selectedOutfitIdx =
-        outfitMetaData[
-            outfitDataIdx++
-        ];
-
-
-    if (
-        selectedOutfitIdx > 0
-    ) {
-
+    if (selectedOutfit) {
         outfitParts.push(
-            getPresetValue(
-                clothingPresets[
-                    selectedOutfitIdx - 1
-                ]
-            )
+            selectedOutfit
         );
     }
 
 
     const customOutfit =
-        outfitMetaData[
-            outfitDataIdx
-        ] || "";
+        outfitMetaData[1] || "";
 
 
-    if (customOutfit !== "") {
+    if (customOutfit) {
         outfitParts.push(
             customOutfit
         );
@@ -2838,34 +2781,23 @@ for (
             inputs[sectionIdx++];
 
 
-        for (
-            let j = 0;
-            j < group.presets.length;
-            j++
-        ) {
-
-            if (
-                groupData[j] === true
-            ) {
-
-                outfitParts.push(
-                    getPresetValue(
-                        group.presets[j]
-                    )
-                );
-            }
-        }
+        outfitParts.push(
+            ...selectedSwitchValues(
+                groupData,
+                group.presets
+            )
+        );
     }
 
 
     outfits.push(
-        outfitParts.join(", ")
+        joinParts(outfitParts)
     );
 }
 
 
 // =========================================
-// PARSE ACTIONS
+// ACTION PARSING
 // =========================================
 
 const actions = [];
@@ -2888,38 +2820,27 @@ for (
         inputs[sectionIdx++];
 
 
-    let actionDataIdx = 0;
+    const selectedAction =
+        selectedPresetValue(
+            actionMetaData[0],
+            complexActionPresets
+        );
 
 
-    const selectedPresetIdx =
-        actionMetaData[
-            actionDataIdx++
-        ];
-
-
-    if (
-        selectedPresetIdx > 0
-    ) {
-
+    if (selectedAction) {
         actionParts.push(
-            getPresetValue(
-                complexActionPresets[
-                    selectedPresetIdx - 1
-                ]
-            )
+            selectedAction
         );
     }
 
 
-    const customActionText =
-        actionMetaData[
-            actionDataIdx
-        ] || "";
+    const customAction =
+        actionMetaData[1] || "";
 
 
-    if (customActionText !== "") {
+    if (customAction) {
         actionParts.push(
-            customActionText
+            customAction
         );
     }
 
@@ -2936,32 +2857,23 @@ for (
             inputs[sectionIdx++];
 
 
-        for (
-            let j = 0;
-            j < group.presets.length;
-            j++
-        ) {
-
-            if (
-                groupData[j] === true
-            ) {
-
-                actionParts.push(
-                    group.presets[j]
-                );
-            }
-        }
+        actionParts.push(
+            ...selectedSwitchValues(
+                groupData,
+                group.presets
+            )
+        );
     }
 
 
     actions.push(
-        actionParts.join(", ")
+        joinParts(actionParts)
     );
 }
 
 
 // =========================================
-// PARSE CAMERA
+// CAMERA PARSING
 // =========================================
 
 const cameraGroups = [
@@ -2983,50 +2895,32 @@ for (
         inputs[sectionIdx++];
 
 
-    for (
-        let i = 0;
-        i < presets.length;
-        i++
-    ) {
-
-        if (
-            groupData[i] === true
-        ) {
-
-            cameraParts.push(
-                getPresetValue(
-                    presets[i]
-                )
-            );
-        }
-    }
+    cameraParts.push(
+        ...selectedSwitchValues(
+            groupData,
+            presets
+        )
+    );
 }
 
 
 const camera =
-    cameraParts.join(", ");
+    joinParts(cameraParts);
 
 
 // =========================================
-// PARSE LIGHTING
+// LIGHTING PARSING
 // =========================================
 
 const timeOfDayData =
     inputs[sectionIdx++];
 
 
-const timeOfDayIndex =
-    timeOfDayData[0];
-
-
 const timeOfDay =
-    timeOfDayIndex > 0
-        ? getPresetValue(
-            timeOfDayPresets[
-                timeOfDayIndex - 1
-            ]
-        )
-        : "";
+    selectedPresetValue(
+        timeOfDayData[0],
+        timeOfDayPresets
+    );
 
 
 const lightingGroups = [
@@ -3050,62 +2944,40 @@ for (
         inputs[sectionIdx++];
 
 
-    for (
-        let i = 0;
-        i < presets.length;
-        i++
-    ) {
-
-        if (
-            groupData[i] === true
-        ) {
-
-            lightingParts.push(
-                getPresetValue(
-                    presets[i]
-                )
-            );
-        }
-    }
+    lightingParts.push(
+        ...selectedSwitchValues(
+            groupData,
+            presets
+        )
+    );
 }
 
 
 const lighting =
-    lightingParts.join(", ");
+    joinParts(lightingParts);
 
+
+// =========================================
+// COLOR TREATMENT PARSING
+// =========================================
 
 const colorTreatmentData =
     inputs[sectionIdx++];
 
 
-const colorTreatment = [];
-
-
-for (
-    let i = 0;
-    i < colorTreatmentPresets.length;
-    i++
-) {
-
-    if (
-        colorTreatmentData[i] === true
-    ) {
-
-        colorTreatment.push(
-            getPresetValue(
-                colorTreatmentPresets[i]
-            )
-        );
-    }
-}
+const colorTreatment =
+    selectedSwitchValues(
+        colorTreatmentData,
+        colorTreatmentPresets
+    );
 
 
 const colorTreatmentText =
-    colorTreatment.join(", ");
+    joinParts(colorTreatment);
 
 
 // =========================================
-// PARSE PROMPT TEMPLATE
+// PROMPT TEMPLATE
 // =========================================
 
 const templateData =
@@ -3115,11 +2987,11 @@ const templateData =
 const artStyle =
     artStylePresets[
         templateData[0]
-    ];
+    ] || "";
 
 
 const promptTemplate =
-    templateData[1];
+    templateData[1] || "";
 
 
 // =========================================
@@ -3130,36 +3002,61 @@ let width = 1024;
 let height = 1024;
 
 
-if (
-    aspectIndex === 1
-) {
-
-    width = 768;
-    height = 1024;
-}
-
-
-if (
-    aspectIndex === 2
-) {
-
-    width = 1024;
-    height = 768;
-}
+const aspectDimensions = [
+    [1024, 1024],
+    [768, 1024],
+    [1024, 768],
+    [1024, 576]
+];
 
 
 if (
-    aspectIndex === 3
+    aspectDimensions[aspectIndex]
 ) {
 
-    width = 1024;
-    height = 576;
+    width =
+        aspectDimensions[
+            aspectIndex
+        ][0];
+
+    height =
+        aspectDimensions[
+            aspectIndex
+        ][1];
 }
 
 
 // =========================================
-// PROMPT CLEANUP
+// PROMPT HELPERS
 // =========================================
+
+function fillTemplate(
+    template,
+    values
+) {
+
+    let result =
+        template;
+
+
+    for (
+        const key in values
+    ) {
+
+        result =
+            result.replace(
+                new RegExp(
+                    `\\{${key}\\}`,
+                    "gi"
+                ),
+                values[key] || ""
+            );
+    }
+
+
+    return result;
+}
+
 
 function cleanPrompt(prompt) {
 
@@ -3203,9 +3100,7 @@ for (
 ) {
 
     const subject =
-        subjects[
-            subjectIndex
-        ];
+        subjects[subjectIndex] || "";
 
 
     const subjectLead =
@@ -3223,7 +3118,7 @@ for (
     const genderForm =
         subjectGenderForms[
             subjectIndex
-        ];
+        ] || "neutral";
 
 
     for (
@@ -3234,75 +3129,64 @@ for (
             const action of actions
         ) {
 
+            const templateValues = {
+
+                artStyle:
+                    artStyle,
+
+                camera:
+                    camera,
+
+                subject:
+                    subject,
+
+                subjects:
+                    subject,
+
+                subjectLead:
+                    subjectLead,
+
+                subjectDetails:
+                    subjectDetails,
+
+                clothing:
+                    outfit,
+
+                action:
+                    action,
+
+                timeOfDay:
+                    timeOfDay,
+
+                lighting:
+                    lighting,
+
+                colorTreatment:
+                    colorTreatmentText
+            };
+
+
             let constructedPrompt =
-                promptTemplate
+                fillTemplate(
+                    promptTemplate,
+                    templateValues
+                );
 
-                    .replace(
-                        /{artStyle}/gi,
-                        artStyle || ""
-                    )
 
-                    .replace(
-                        /{camera}/gi,
-                        camera || ""
-                    )
-
-                    .replace(
-                        /{subject}/gi,
-                        subject || ""
-                    )
-
-                    .replace(
-                        /{subjectLead}/gi,
-                        subjectLead || ""
-                    )
-
-                    .replace(
-                        /{subjectDetails}/gi,
-                        subjectDetails || ""
-                    )
-
-                    .replace(
-                        /{subjects}/gi,
-                        subject || ""
-                    )
-
-                    .replace(
-                        /{clothing}/gi,
-                        outfit || ""
-                    )
-
-                    .replace(
-                        /{action}/gi,
-                        action || ""
-                    )
-
-                    .replace(
-                        /{timeOfDay}/gi,
-                        timeOfDay || ""
-                    )
-
-                    .replace(
-                        /{lighting}/gi,
-                        lighting || ""
-                    )
-
-                    .replace(
-                        /{colorTreatment}/gi,
-                        colorTreatmentText || ""
-                    );
+            // Gender terms are intentionally
+            // applied after template expansion.
+            // This allows gender tokens appearing
+            // inside presets to be resolved too.
+            constructedPrompt =
+                applyGenderTerms(
+                    constructedPrompt,
+                    genderForm
+                );
 
 
             constructedPrompt =
                 cleanPrompt(
                     constructedPrompt
-                );
-
-
-            constructedPrompt =
-                applyGenderTerms(
-                    constructedPrompt,
-                    genderForm
                 );
 
 
@@ -3315,7 +3199,7 @@ for (
 
 
 // =========================================
-// STEP 4 — GENERATION LOGIC
+// STEP 4 — GENERATION
 // =========================================
 
 async function generateBatch() {
