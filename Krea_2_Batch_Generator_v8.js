@@ -51,7 +51,7 @@ const nationalityPresets = [
 ];
 
 const celebrityPresets = [
-    { label: "Anne Hathaway", value: "Anne Hathaway with straight black hair and a tall slim build with shadowy eyes and heavy mascara" },
+    { label: "Anne Hathaway", value: "Anne Hathaway with a tall slim build with shadowy eyes and heavy mascara" },
     { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
     { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
     { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" }
@@ -434,9 +434,12 @@ const actionGroups = [
         presets: [
             {
                 label: "Cowgirl",
-                value: "pov, straddling a nude man, riding him in cowgirl position"
+                value: "pov, straddling a nude man, riding him in cowgirl position, penis-in-vagina sex"
             },
-            "gentle affectionate embrace",
+            {
+                label: "Blowjob",
+                value: "pov, between a nude man's legs, giving him a passionate blowjob, his penis deep inside her mouth, sucking the penis, sunken cheeks"
+            },
             "close, intimate eye contact",
             "soft romantic tension",
             "bedroom intimacy scene",
