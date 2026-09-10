@@ -368,6 +368,14 @@ const clothingPresets = [
     {
         label: "Leather Punk Lingerie",
         value: "leather lingerie, a fishnet bodysuit, and thigh-high leather boots"
+    },
+    {
+        label: "French Maid Uniform",
+        value: "black French maid uniform with short pleated skirt and white collar"
+    },
+    {
+        label: "Hooters Uniform",
+        value: "Hooters uniform (tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts)"
     }
 ];
 
