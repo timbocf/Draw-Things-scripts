@@ -1,8 +1,15 @@
 //@api-1.0
-// version 9
+// version 10
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
-// V9 — CONSOLIDATED HELPERS / LEANER PARSING
+// V10 — ADDS LIVE PROMPT PREVIEW BEFORE GENERATION
+//
+// Changes from v9:
+// - After prompts are constructed, a "Review Prompts" screen shows
+//   the total image count and a sample of the actual constructed
+//   prompt strings before generation starts, so template mistakes
+//   or unexpected combinations are caught up front instead of only
+//   showing up in the console log mid-run.
 // =========================================
 
 // =========================================
@@ -10,6 +17,9 @@
 // =========================================
 
 const NONE_SELECTED = 0;
+
+// How many constructed prompts to show verbatim on the review screen.
+const PREVIEW_SAMPLE_SIZE = 8;
 
 const ASPECT_DIMENSIONS = [
     [1024, 1024], // 1:1
@@ -96,7 +106,7 @@ const hipPresets = [
 
 const bodyShapePresets = [
     { label: "No specific shape", value: "" },
-    { label: "Petite frame", value: "petite frame with narrow shoulders, narrow hips, and a small chest" },
+    { label: "Petite adult frame", value: "petite adult frame with narrow shoulders, narrow hips, and a small chest" },
     { label: "Hourglass", value: "hourglass body shape with balanced bust and hips and a clearly defined waist" },
     { label: "Pear-shaped", value: "pear-shaped body with narrower shoulders and upper body and proportionally wider hips and thighs" },
     { label: "Rectangle", value: "rectangle body shape with relatively similar shoulder, waist and hip widths" },
@@ -1205,10 +1215,54 @@ for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
 }
 
 // =========================================
-// STEP 4 — GENERATION
+// STEP 4 — REVIEW / PREVIEW SCREEN
+// =========================================
+// Shows the total prompt count and a sample of the actual constructed
+// prompt strings before anything is generated, so template mistakes
+// or unexpected combinations are visible up front instead of only
+// showing up in the console log after generation has already started.
+
+function buildPreviewText(prompts) {
+    const sample = prompts.slice(0, PREVIEW_SAMPLE_SIZE);
+    const numbered = sample.map((prompt, index) => `${index + 1}. ${prompt}`);
+
+    if (prompts.length > sample.length) {
+        numbered.push(`… and ${prompts.length - sample.length} more prompt(s) not shown here.`);
+    }
+
+    return numbered.join("\n\n");
+}
+
+const review = requestFromUser("Review Prompts", "Generate", function () {
+    return [
+        this.section(
+            "❖  Batch Summary",
+            `This batch will generate ${finalPrompts.length} image(s) at ${width}×${height}.`,
+            [this.switch(true, `Confirm and generate all ${finalPrompts.length} prompt(s)`)]
+        ),
+
+        this.section(
+            "❖  Sample Prompts",
+            finalPrompts.length > PREVIEW_SAMPLE_SIZE
+                ? `Showing the first ${PREVIEW_SAMPLE_SIZE} of ${finalPrompts.length} constructed prompts`
+                : "The full set of constructed prompts",
+            [this.textField(buildPreviewText(finalPrompts), "Constructed prompt preview (read-only)", true, 4000)]
+        )
+    ];
+});
+
+const confirmed = review[0][0] === true;
+
+// =========================================
+// STEP 5 — GENERATION
 // =========================================
 
 async function generateBatch() {
+    if (!confirmed) {
+        console.log("Batch generation cancelled by user on the review screen.");
+        return;
+    }
+
     const config = JSON.parse(JSON.stringify(pipeline.configuration));
 
     config.model = "krea_2_turbo_i8x.ckpt";
