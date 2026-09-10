@@ -429,6 +429,22 @@ const actionGroups = [
         ]
     },
     {
+        title: "Intimate / Romantic",
+        description: "POV Sexual Positions",
+        presets: [
+            {
+                label: "Cowgirl",
+                value: "pov, straddling a nude man, riding him in cowgirl position"
+            },
+            "gentle affectionate embrace",
+            "close, intimate eye contact",
+            "soft romantic tension",
+            "bedroom intimacy scene",
+            "languid, affectionate pose",
+            "slow, tender interaction"
+        ]
+    }
+    {
         title: "Legs",
         description: "Leg and body alignment",
         presets: [
