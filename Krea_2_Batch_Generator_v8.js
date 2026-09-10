@@ -434,7 +434,7 @@ const actionGroups = [
         presets: [
             {
                 label: "Cowgirl",
-                value: "pov, straddling a nude man, riding him in cowgirl position, penis-in-vagina sex"
+                value: "pov, straddling a nude man, riding him in cowgirl position, his penis is deep inside her vagina"
             },
             {
                 label: "Blowjob",
