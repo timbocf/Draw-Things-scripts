@@ -1056,7 +1056,10 @@ const actionGroups = [
         title: "Setting",
         description: "Scene and environment",
         presets: [
-            "in the shower",
+            {
+                label: "in the shower",
+                value: "in the shower, water cascading down {possessive} wet body"
+            },
             "in a bedroom",
             "in a kitchen",
             "in the backseat of a car",
