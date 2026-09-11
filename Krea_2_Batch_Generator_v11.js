@@ -1,15 +1,8 @@
 //@api-1.0
-// version 10
+// version 11
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
-// V10 — ADDS LIVE PROMPT PREVIEW BEFORE GENERATION
-//
-// Changes from v9:
-// - After prompts are constructed, a "Review Prompts" screen shows
-//   the total image count and a sample of the actual constructed
-//   prompt strings before generation starts, so template mistakes
-//   or unexpected combinations are caught up front instead of only
-//   showing up in the console log mid-run.
+// Version 11
 // =========================================
 
 // =========================================
