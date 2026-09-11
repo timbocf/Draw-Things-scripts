@@ -954,7 +954,6 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         "Choose a lighting style that combines color and balance for the scene",
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting style selected", lightingStylePresets))]
     ));
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Atmospheric / Optical Effects", "Unusual patterns, optical effects, and atmosp{possessive}ic techniques", experimentalLightingPresets);
     fields.push(this.section(
         "❖  COLOR TREATMENTS",
         "Optional monochrome or stylized color treatment controls",
