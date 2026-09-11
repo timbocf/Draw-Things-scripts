@@ -306,20 +306,31 @@ const clothingGroups = [
         title: "Tops",
         description: "Upper-body styling",
         presets: [
-            "a loose fitting T-shirt", "a fitted T-shirt", "a tank top", "a crop top",
+            "a loose fitting T-shirt",
+            "a fitted T-shirt",
+            "a tank top",
             { label: "a short crop top", value: "a crop-top t-shirt showing significant underboob" },
-            "a blouse", "an unbuttoned mens dress shirt", "a hoodie"
+            "a blouse",
+            "an unbuttoned mens dress shirt",
+            "a hoodie"
+        ]
+    },
+    {
+        title: "Bottoms",
+        description: "Skirts, shorts, and bottoms",
+        presets: [
+            "jeans",
+            "shorts",
+            "cutoff jean shorts",
+            "spandex leggings",
+            "mini-skirt",
+            "pleated mini-skirt"
         ]
     },
     {
         title: "Dresses",
         description: "Dress and one-piece styles",
         presets: ["a short babydoll dress", "a summer dress", "one-piece swimsuit"]
-    },
-    {
-        title: "Bottoms",
-        description: "Skirts, shorts, and bottoms",
-        presets: ["jeans", "shorts", "cutoff jean shorts", "mini-skirt", "pleated mini-skirt", "spandex leggings"]
     },
     {
         title: "Lingerie",
@@ -424,15 +435,26 @@ const actionGroups = [
         title: "Position",
         description: "Pose setup choices",
         presets: [
-            "standing", "sitting", "laying", "on a bed", "on a thick carpeted floor",
-            "on {possessive} side", "facedown", "{possessive} face in the foreground",
-            "on {possessive} back", "{possessive} butt at the edge of the bed",
-            "standing in a doorway", "crawling toward the camera", "on {possessive} hands and knees"
+            "standing",
+            "standing in a doorway",
+            "sitting",
+            "laying",
+            "on {possessive} back",
+            "on {possessive} side",
+            "facedown",
+            "on a bed",
+            "on a thick carpeted floor",
+            "on {possessive} hands and knees",
+            "crawling toward the camera",
+            "{possessive} butt at the edge of the bed",
+            "{possessive} face in the foreground"
         ]
     },
     {
-        title: "Intimate / Romantic",
-        description: "POV Sexual Positions",
+        title: "Signature Poses",
+        description: "POV sexual positions and notable scene presets",
+        type: "menu",
+        placeholder: "No signature pose selected",
         presets: [
             {
                 label: "POV/Cowgirl",
@@ -445,6 +467,22 @@ const actionGroups = [
             {
                 label: "POV/Missionary",
                 value: "{subjectPronoun} is laying on {possessive} back looking up at the camera"
+            },
+            {
+                label: "Bathroom Mirror Selfie",
+                value: "taking a selfie in a bathroom mirror"
+            },
+            {
+                label: "Full-Length Mirror Reflection (standing)",
+                value: "standing in front of a full-length mirror while pulling {possessive} hair up"
+            },
+            {
+                label: "Full-Length Mirror Reflection (sitting)",
+                value: "sitting in front of a full-length mirror looking at {possessive} reflection"
+            },
+            {
+                label: "Morning Stretch",
+                value: "standing, mid-stretch reaching both arms overhead while rising up on {possessive} toes, hands in {possessive} hair, back arched, chest pressed forward, shoulders pulled back."
             }
         ]
     },
@@ -452,31 +490,62 @@ const actionGroups = [
         title: "Legs",
         description: "Leg and body alignment",
         presets: [
-            "legs straight", "elevated into the air", "knees locked", "bending at waist only",
-            "leaning forward", "one knee bent", "knees bent", "one foot on the wall",
-            "feet spread wide", "feet toget{possessive}", "feet crossed", "one leg raised",
-            "1 foot against door frame", "{possessive} ass high in the air", "back arched",
-            "chest puffed out", "knees toget{possessive}", "shoulders back"
+            "legs straight",
+            "elevated into the air",
+            "knees locked",
+            "knees bent",
+            "one knee bent",
+            "one leg raised",
+            "one foot on the wall",
+            "feet spread wide",
+            "feet toget{possessive}",
+            "feet crossed",
+            "1 foot against door frame",
+            "{possessive} ass high in the air",
+            "back arched",
+            "chest puffed out",
+            "knees toget{possessive}",
+            "shoulders back",
+            "leaning forward",
+            "bending at waist only"
         ]
     },
     {
         title: "Arms",
         description: "Hand and arm placement",
         presets: [
-            "arms raised high above {possessive} head", "arms stretched out in front of {objectPronoun}",
-            "hands clasped toget{possessive}", "on {possessive} elbows", "elbows resting on bed",
-            "hands on hips", "hands on waist", "hands on breasts", "hands in hair",
-            "hands on knees", "hands lightly touching upper chest area", "hands on ass", "hands spreading ass cheeks"
+            "arms raised high above {possessive} head",
+            "arms stretched out in front of {objectPronoun}",
+            "hands clasped toget{possessive}",
+            "on {possessive} elbows",
+            "elbows resting on bed",
+            "hands on hips",
+            "hands on waist",
+            "hands on breasts",
+            "hands in hair",
+            "hands on knees",
+            "hands lightly touching upper chest area",
+            "hands on ass",
+            "hands spreading ass cheeks"
         ]
     },
     {
         title: "Gaze",
         description: "Looking and facing choices",
         presets: [
-            "looking off to the side", "looking away from camera", "looking at camera",
-            "looking down", "looking up", "head tilted to the side", "head turned to the side",
-            "looking over {possessive} shoulder", "facing camera", "facing away from camera",
-            "ass toward the camera", "eyes closed", "squinting"
+            "looking at camera",
+            "looking away from camera",
+            "looking off to the side",
+            "looking down",
+            "looking up",
+            "looking over {possessive} shoulder",
+            "head tilted to the side",
+            "head turned to the side",
+            "facing camera",
+            "facing away from camera",
+            "ass toward the camera",
+            "eyes closed",
+            "squinting"
         ]
     },
     {
@@ -489,8 +558,13 @@ const actionGroups = [
         description: "Scene and environment",
         presets: [
             { label: "in the shower", value: "in a walk-in shower, with wet hair and wet body, water cascading down {possessive} wet body" },
-            "in a bedroom", "in a kitchen", "in the backseat of a car", "in a surgical theatre",
-            "in a crowded city street", "in a glade", "on an office desk"
+            "in a bedroom",
+            "in a kitchen",
+            "in the backseat of a car",
+            "in a surgical theatre",
+            "in a crowded city street",
+            "in a glade",
+            "on an office desk"
         ]
     }
 ];
@@ -657,10 +731,30 @@ function addPresetSwitchSection(fields, title, description, presets) {
     fields.push(this.section(title, description, presetSwitches.call(this, presets)));
 }
 
+function addPresetMenuSection(fields, title, description, presets, placeholder) {
+    fields.push(this.section(
+        title,
+        description,
+        [this.menu(NONE_SELECTED, menuWithPlaceholder(placeholder, presets))]
+    ));
+}
+
 // Adds one section per group in `groups`, each named
 // "<titlePrefix> • <group.title>".
 function addGroupedSections(fields, titlePrefix, groups) {
     for (const group of groups) {
+        if (group.type === "menu") {
+            addPresetMenuSection.call(
+                this,
+                fields,
+                sectionTitle(titlePrefix, group.title),
+                group.description,
+                group.presets,
+                group.placeholder || "No option selected"
+            );
+            continue;
+        }
+
         addPresetSwitchSection.call(
             this,
             fields,
@@ -761,10 +855,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             ]
         ));
 
-        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Appearance"), appearanceSwitchGroups);
+        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media"), appearanceSwitchGroups);
 
         fields.push(this.section(
-            sectionTitle(subjectPrefix, "Appearance", "Hair Type"),
+            sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media", "Hair Type"),
             "Hair texture choices",
             [
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No hair type", hairTypePresets)),
@@ -773,7 +867,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         ));
 
         fields.push(this.section(
-            sectionTitle(subjectPrefix, "Appearance", "Hair"),
+            sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media", "Hair"),
             "Hair color, length, hairstyle, and additional subject details",
             [
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No hair color", hairColorPresets)),
@@ -785,7 +879,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             ]
         ));
 
-        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Appearance", "Hair"), hairstyleGroups);
+        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media", "Hair"), hairstyleGroups);
         addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Accessories"), accessoryGroups);
     }
 
@@ -851,7 +945,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No natural/environmental lighting selected", naturalLightingPresets))]
     ));
     fields.push(this.section(
-        "❖  LIGHTING • Direction / Quality",
+        "❖  LIGHTING • Direction",
         "Choose the main quality and direction of the light",
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting direction selected", lightingDirectionPresets))]
     ));
@@ -860,8 +954,12 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         "Choose a lighting style that combines color and balance for the scene",
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting style selected", lightingStylePresets))]
     ));
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Special Effects", "Unusual patterns, optical effects, and atmosp{possessive}ic techniques", experimentalLightingPresets);
-    addPresetSwitchSection.call(this, fields, "❖  COLOR TREATMENTS", "Optional monochrome or stylized color treatment controls", colorTreatmentPresets);
+    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Atmospheric / Optical Effects", "Unusual patterns, optical effects, and atmosp{possessive}ic techniques", experimentalLightingPresets);
+    fields.push(this.section(
+        "❖  COLOR TREATMENTS",
+        "Optional monochrome or stylized color treatment controls",
+        [this.menu(NONE_SELECTED, menuWithPlaceholder("No color treatment selected", colorTreatmentPresets))]
+    ));
 
     // -----------------------------------------
     // PROMPT OPTIONS / TEMPLATE
@@ -906,7 +1004,15 @@ function nextSection() {
 function parseGroupedSwitches(groups) {
     const values = [];
     for (const group of groups) {
-        values.push(...selectedSwitchValues(nextSection(), group.presets));
+        const data = nextSection();
+
+        if (group.type === "menu") {
+            const value = selectedValueWithPlaceholder(data[0], group.presets);
+            if (value) values.push(value);
+            continue;
+        }
+
+        values.push(...selectedSwitchValues(data, group.presets));
     }
     return values;
 }
@@ -1146,7 +1252,7 @@ const lighting = joinParts(lightingParts);
 // =========================================
 
 const colorTreatmentData = nextSection();
-const colorTreatmentText = joinParts(selectedSwitchValues(colorTreatmentData, colorTreatmentPresets));
+const colorTreatmentText = selectedValueWithPlaceholder(colorTreatmentData[0], colorTreatmentPresets);
 
 // =========================================
 // PROMPT TEMPLATE
