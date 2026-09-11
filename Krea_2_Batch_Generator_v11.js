@@ -224,7 +224,7 @@ const accessoryGroups = [
     {
         title: "Body Piercings",
         description: "Select visible body piercing details",
-        presets: ["nose piercing", "septum piercing", "eyebrow piercing", "lip piercing", "multiple ear piercings", "navel piercing"]
+        presets: ["nose piercing", "septum piercing", "eyebrow piercing", "lip piercing", "multiple ear piercings", "nipple piercings", "navel piercing"]
     },
     {
         title: "Headwear",
