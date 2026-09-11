@@ -680,11 +680,11 @@ const lightingDirectionPresets = [
 ];
 
 const lightingStylePresets = [
-    { label: "Neutral and natural", value: "soft directional light, balanced exposure, and ambient fill" },
-    { label: "Dramatic contrast", value: "low-key lighting, chiaroscuro, and deep shadows" },
-    { label: "Atmospheric raise", value: "volumetric light, god rays, and hazy atmosphere" },
-    { label: "Cinematic blockbuster", value: "cinematic lighting, teal-and-orange color grade, and rim lighting" },
-    { label: "Sun Dappled", value: "dappled sunlight, soft shadows, and warm natural light" }
+    { label: "Neutral and Natural (soft directional light, balanced exposure, and ambient fill)", value: "soft directional light, balanced exposure, and ambient fill" },
+    { label: "Dramatic Contrast (low-key lighting, chiaroscuro, and deep shadows)", value: "low-key lighting, chiaroscuro, and deep shadows" },
+    { label: "Atmospheric Rays (volumetric light, god rays, and hazy atmosphere)", value: "volumetric light, god rays, and hazy atmosphere" },
+    { label: "Cinematic Blockbuster (cinematic lighting, teal-and-orange color grade, and rim lighting)", value: "cinematic lighting, teal-and-orange color grade, and rim lighting" },
+    { label: "Sun Dappled (dappled sunlight, soft shadows, and warm natural light)", value: "dappled sunlight, soft shadows, and warm natural light" }
 ];
 
 const colorTreatmentPresets = [
