@@ -1015,7 +1015,7 @@ function parseGroupedSwitches(groups) {
 
 const GENDER_TERMS = {
     masculine: { subject: "he", object: "him", possessive: "his", reflexive: "himself", noun: "man" },
-    feminine: { subject: "she", object: "{possessive}", possessive: "{possessive}", reflexive: "{possessive}self", noun: "woman" },
+    feminine: { subject: "she", object: "her", possessive: "her", reflexive: "herself", noun: "woman" },
     neutral: { subject: "they", object: "them", possessive: "their", reflexive: "themselves", noun: "person" }
 };
 
@@ -1371,7 +1371,7 @@ function buildPreviewText(prompts) {
     const numbered = sample.map((promptData, index) => `${index + 1}. [${promptData.aspectLabel}] ${promptData.prompt}`);
 
     if (prompts.length > sample.length) {
-        numbered.push(`… and ${prompts.length - sample.length} more prompt(s) not shown {possessive}e.`);
+        numbered.push(`… and ${prompts.length - sample.length} more prompt(s) not shown here.`);
     }
 
     return numbered.join("\n\n");
