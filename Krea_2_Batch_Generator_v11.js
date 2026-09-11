@@ -597,6 +597,7 @@ const cameraFramingPresets = [
 ];
 
 const cameraPerspectivePresets = [
+    { label: "Candid", value: "candid" },
     { label: "Eye level", value: "natural eye-level perspective" },
     { label: "Low angle", value: "low-angle perspective looking upward toward the subject" },
     { label: "High angle", value: "high-angle perspective looking downward toward the subject" },
@@ -961,8 +962,8 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
             ),
             this.textField(
-                "A {artStyle} of {subject}, {nationality}, {action}. {subjectPronoun} is {description}, wearing {clothing}. {camera}, {timeOfDay}, {lighting}. Natural anatomy",
-                "Prompt Template — tags: {artStyle}, {subject}, {nationality}, {description}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
+                "Prompt Template — tags: {descriptor}, {artStyle}, {gender}, {nationality}, {description}, {action}, {clothing}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
                 false,
                 80
             )
@@ -1057,6 +1058,8 @@ function applyGenderTerms(prompt, genderForm) {
 const subjects = [];
 const subjectLeadTexts = [];
 const subjectDetailTexts = [];
+const subjectGenderTexts = [];
+const subjectNationalityTexts = [];
 const subjectGenderForms = [];
 
 for (let i = 0; i < subjectCount; i++) {
@@ -1150,6 +1153,8 @@ for (let i = 0; i < subjectCount; i++) {
     subjects.push(subjectParts.join(", "));
     subjectLeadTexts.push(subjectLeadParts.join(", "));
     subjectDetailTexts.push(subjectDetailsParts.join(", "));
+    subjectGenderTexts.push(gender || "");
+    subjectNationalityTexts.push(nationality || "");
     subjectGenderForms.push(genderForm);
 }
 
@@ -1304,6 +1309,8 @@ for (const aspectOption of selectedAspectOptions) {
         const subject = subjects[subjectIndex] || "";
         const subjectLead = subjectLeadTexts[subjectIndex] || "";
         const subjectDetails = subjectDetailTexts[subjectIndex] || "";
+        const gender = subjectGenderTexts[subjectIndex] || "";
+        const nationality = subjectNationalityTexts[subjectIndex] || "";
         const genderForm = subjectGenderForms[subjectIndex] || "neutral";
 
         for (const outfit of outfits) {
@@ -1320,11 +1327,16 @@ for (const aspectOption of selectedAspectOptions) {
                         const safeColorTreatment = ensureTextContent(colorTreatmentText, "");
 
                         const templateValues = {
+                            descriptor: joinParts([
+                                safeColorTreatment,
+                                safeCamera
+                            ]),
                             artStyle: safeArtStyle,
                             camera: safeCamera,
                             subject: safeSubject,
                             subjects: safeSubject,
-                            nationality: ensureTextContent(subjectLead, ""),
+                            gender: ensureTextContent(gender, ""),
+                            nationality: ensureTextContent(nationality, ""),
                             subjectLead: ensureTextContent(subjectLead, ""),
                             description: ensureTextContent(subjectDetails, ""),
                             subjectDetails: ensureTextContent(subjectDetails, ""),
