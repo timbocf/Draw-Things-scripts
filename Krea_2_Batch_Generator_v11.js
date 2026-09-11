@@ -34,7 +34,7 @@ const genderPresets = ["woman", "man"];
 const nationalityPresets = [
     "Caucasian",
     "Black",
-    "Mixed-race adult with a natural blend of African and European facial features",
+    "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, and a straight natural nose bridge, and thick dark brown hair with thick wavy curls, and a round ass",
     "Mexican with prominent Indigenous Mesoamerican facial features",
     "Indian",
     "Thai",
@@ -51,8 +51,9 @@ const celebrityPresets = [
     { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
     { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
     { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
-    { label: "Curvy Black Woman with Box Braids", value: "a curvy 35-year-old black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
-    { label: "Curvy 25-year-old Mexican woman", value: "a curvy 25-year-old Mexican woman with prominent Indigenous Mesoamerican features, olive skin, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" }
+    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
+    { label: "Curvy Mexican woman", value: "a curvy 25-year-old Mexican woman with prominent Indigenous Mesoamerican features, olive skin, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
+{ label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." }
 ];
 
 // --- AGE ---
@@ -960,8 +961,8 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
             ),
             this.textField(
-                "A {artStyle} of {subject}, {action}, wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, Natural anatomy",
-                "Prompt Template — tags: {artStyle}, {subject}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "A {artStyle} of {subject}, {action}. {subjectPronoun} is wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}. Natural anatomy",
+                "Prompt Template — tags: {artStyle}, {subject}, {nationality}. {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
                 false,
                 80
             )
@@ -1274,9 +1275,9 @@ function cleanPrompt(prompt) {
 }
 
 const DEFAULT_PROMPT_FALLBACKS = {
-    subject: "the subject",
-    outfit: "minimal clothing",
-    action: "posing naturally",
+    subject: "a woman",
+    outfit: "t-shirt and jeans",
+    action: "smiling",
     camera: "natural eye-level perspective",
     timeOfDay: "natural daytime illumination",
     lighting: "soft directional light, balanced exposure, and ambient fill",
