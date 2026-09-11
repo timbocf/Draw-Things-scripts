@@ -1293,12 +1293,28 @@ function cleanPrompt(prompt) {
         .trim();
 }
 
+const DEFAULT_PROMPT_FALLBACKS = {
+    subject: "the subject",
+    outfit: "minimal clothing",
+    action: "posing naturally",
+    camera: "natural eye-level perspective",
+    timeOfDay: "natural daytime illumination",
+    lighting: "soft directional light, balanced exposure, and ambient fill",
+    artStyle: "photo",
+    genericPrompt: "a portrait of the subject"
+};
+
+function ensureTextContent(value, fallback) {
+    const cleaned = typeof value === "string" ? cleanPrompt(value) : "";
+    return cleaned || fallback;
+}
+
 // =========================================
 // BUILD FINAL PROMPTS
 // =========================================
 
 const finalPrompts = [];
-const artStyleChoices = artStyles.length > 0 ? artStyles : [""];
+const artStyleChoices = artStyles.length > 0 ? artStyles : [DEFAULT_PROMPT_FALLBACKS.artStyle];
 
 for (const aspectOption of selectedAspectOptions) {
     for (let subjectIndex = 0; subjectIndex < subjects.length; subjectIndex++) {
@@ -1311,18 +1327,27 @@ for (const aspectOption of selectedAspectOptions) {
             for (const action of actions) {
                 for (const camera of cameraChoices) {
                     for (const artStyle of artStyleChoices) {
+                        const safeSubject = ensureTextContent(subject, DEFAULT_PROMPT_FALLBACKS.subject);
+                        const safeOutfit = ensureTextContent(outfit, DEFAULT_PROMPT_FALLBACKS.outfit);
+                        const safeAction = ensureTextContent(action, DEFAULT_PROMPT_FALLBACKS.action);
+                        const safeCamera = ensureTextContent(camera, DEFAULT_PROMPT_FALLBACKS.camera);
+                        const safeArtStyle = ensureTextContent(artStyle, DEFAULT_PROMPT_FALLBACKS.artStyle);
+                        const safeTimeOfDay = ensureTextContent(timeOfDay, DEFAULT_PROMPT_FALLBACKS.timeOfDay);
+                        const safeLighting = ensureTextContent(lighting, DEFAULT_PROMPT_FALLBACKS.lighting);
+                        const safeColorTreatment = ensureTextContent(colorTreatmentText, "");
+
                         const templateValues = {
-                            artStyle,
-                            camera,
-                            subject,
-                            subjects: subject,
-                            subjectLead,
-                            subjectDetails,
-                            clothing: outfit,
-                            action,
-                            timeOfDay,
-                            lighting,
-                            colorTreatment: colorTreatmentText
+                            artStyle: safeArtStyle,
+                            camera: safeCamera,
+                            subject: safeSubject,
+                            subjects: safeSubject,
+                            subjectLead: ensureTextContent(subjectLead, ""),
+                            subjectDetails: ensureTextContent(subjectDetails, ""),
+                            clothing: safeOutfit,
+                            action: safeAction,
+                            timeOfDay: safeTimeOfDay,
+                            lighting: safeLighting,
+                            colorTreatment: safeColorTreatment
                         };
 
                         let constructedPrompt = fillTemplate(promptTemplate, templateValues);
@@ -1331,6 +1356,10 @@ for (const aspectOption of selectedAspectOptions) {
                         // that tags embedded inside presets get filled too.
                         constructedPrompt = applyGenderTerms(constructedPrompt, genderForm);
                         constructedPrompt = cleanPrompt(constructedPrompt);
+
+                        if (!constructedPrompt) {
+                            constructedPrompt = DEFAULT_PROMPT_FALLBACKS.genericPrompt;
+                        }
 
                         finalPrompts.push({
                             prompt: constructedPrompt,
