@@ -583,20 +583,18 @@ const timeOfDayPresets = [
 ];
 
 const naturalLightingPresets = [
-    { label: "Window light", value: "soft natural light entering from a nearby window" },
-    { label: "Direct sunlight", value: "direct sunlight with defined highlights and shadows" },
-    { label: "Diffused sunlight", value: "diffused sunlight with soft natural shadows" },
-    { label: "Sunlight through curtains", value: "soft sunlight filtered through curtains" },
-    { label: "Sunbeams", value: "visible shafts of sunlight entering the scene" },
-    { label: "Moonlight", value: "cool natural moonlight" },
-    { label: "Streetlights", value: "ambient streetlight illumination spilling into the scene" },
-    { label: "Neon", value: "colorful neon illumination from nearby signs" },
-    { label: "Candlelight", value: "warm flickering candlelight illuminating the subject" },
-    { label: "Fireplace", value: "warm flickering firelight from a nearby fireplace" },
-    { label: "Practical lamps", value: "warm illumination from visible practical lamps" }
+    { label: "Direct sunlight", value: "direct harsh sunlight with hard shadows" },
+    { label: "Overcast/soft daylight", value: "diffused daylight with soft ambient light" },
+    { label: "Window daylight", value: "soft window light with indoor natural lighting" },
+    { label: "Curtains/sheers", value: "sunlight filtered through sheer curtains, creating soft diffused window light" },
+    { label: "Golden hour rays", value: "warm sunbeams, golden hour light, and subtle volumetric glow" },
+    { label: "Moonlight/night", value: "cool moonlight with deep night ambience" },
+    { label: "Urban night (street/neon)", value: "neon glow, street lamp lighting, and urban night atmosphere" },
+    { label: "Warm flame (candle/fire)", value: "warm candlelight glow and fireplace ambient light" },
+    { label: "Practical lamps (indoor lamps)", value: "warm practical lamp lighting and interior ambient lights" }
 ];
 
-const lightingQualityPresets = [
+const lightingDirectionPresets = [
     { label: "Soft light", value: "soft flattering illumination with gentle shadows" },
     { label: "Hard light", value: "hard directional illumination with crisp defined shadows" },
     { label: "Front lighting", value: "frontal lighting illuminating the subject evenly" },
@@ -607,57 +605,12 @@ const lightingQualityPresets = [
     { label: "Underlighting", value: "dramatic low-angle lighting from below the subject" }
 ];
 
-const cinematicLightingPresets = [
-    { label: "Cinematic", value: "dramatic cinematic lighting with controlled highlights and shadows" },
-    { label: "Moody", value: "moody atmosp{possessive}ic lighting with subdued illumination and rich shadows" },
-    { label: "Soft cinematic", value: "soft cinematic lighting with gentle contrast and natural falloff" },
-    { label: "High-key", value: "high-key lighting with bright even illumination, low contrast and minimal shadows" },
-    { label: "Low-key", value: "low-key lighting with dramatic contrast, deep shadows and controlled highlights" },
-    { label: "Chiaroscuro", value: "chiaroscuro lighting with strong contrast between light and shadow" },
-    { label: "Film noir", value: "classic film-noir lighting with hard directional light and dramatic shadows" },
-    { label: "Volumetric light", value: "volumetric lighting with visible light rays through the atmosp{possessive}e" },
-    { label: "God rays", value: "dramatic visible shafts of light cutting through the atmosp{possessive}e" },
-    { label: "Hazy atmosp{possessive}e", value: "soft hazy atmosp{possessive}ic illumination with gentle diffusion" },
-    { label: "Deep shadows", value: "deep pronounced shadows with strong tonal separation" },
-    { label: "Long shadows", value: "long directional shadows cast across the environment" },
-    { label: "Silhouette", value: "strong backlighting producing a dramatic partial silhouette" }
-];
-
-const colorLightingPresets = [
-    { label: "Warm", value: "warm color temperature with golden amber illumination" },
-    { label: "Cool", value: "cool color temperature with bluish illumination" },
-    { label: "Blue-toned", value: "blue-toned ambient illumination" },
-    { label: "Orange-and-blue cinematic", value: "cinematic complementary orange and blue lighting" },
-    { label: "Red ambient", value: "subtle red ambient illumination" },
-    { label: "Blue ambient", value: "subtle blue ambient illumination" },
-    { label: "Purple ambient", value: "subtle purple ambient illumination" },
-    { label: "Colored practicals", value: "colored practical lights contributing visible ambient illumination" },
-    { label: "Neon rim", value: "colored neon backlighting creating a vivid rim around the subject" },
-    { label: "Mixed colors", value: "mixed-color lighting with multiple contrasting light sources" },
-    { label: "Colored gels", value: "colored gel lighting casting a controlled colored wash across the scene" }
-];
-
-const tenebrismLightingPresets = [
-    { label: "Tenebrism", value: "tenebristic lighting with an extremely dark environment, a small area of intense illumination and most of the scene disappearing into deep shadow" },
-    { label: "Extreme tenebrism", value: "extreme tenebrism with very limited illumination, deep black shadows and only the essential portions of the subject emerging from darkness" },
-    { label: "Subtle tenebrism", value: "subtle tenebristic lighting with most of the scene obscured in darkness while delicate highlights reveal the subject" },
-    { label: "Near-total darkness", value: "near-total darkness with only faint illumination revealing the subject and immediate surroundings" },
-    { label: "Dim moonlight", value: "very dim cool moonlight entering the scene, leaving most of the environment in deep shadow" },
-    { label: "Moonlight through window", value: "faint cool moonlight streaming through a window, illuminating only portions of the subject while the rest of the room remains deeply shadowed" },
-    { label: "Faint dawn light", value: "extremely dim pre-dawn illumination with the environment barely visible and subtle highlights gradually revealing the subject" },
-    { label: "Pre-sunrise darkness", value: "deep pre-sunrise darkness with only faint ambient light outlining the subject and environment" },
-    { label: "Dark fis{possessive}man dawn", value: "extremely dim early-morning light on a fishing boat, with the fis{possessive}man and surroundings barely visible against deep blue-black shadows" },
-    { label: "Foggy dawn darkness", value: "dim pre-dawn illumination diffused through mist and fog, with only faint shapes and highlights emerging from darkness" },
-    { label: "Single light source", value: "a single small directional light source illuminating only part of the subject while the surrounding scene falls into deep darkness" },
-    { label: "Face emerging from darkness", value: "the subject's face subtly emerging from near-black surroundings, illuminated by a narrow controlled light" },
-    { label: "Partial illumination", value: "very limited directional illumination revealing only selected portions of the subject while most of the body disappears into shadow" },
-    { label: "Black-background lighting", value: "the subject emerging from an almost completely black background with minimal controlled illumination" },
-    { label: "Deep shadow falloff", value: "extremely rapid falloff from illuminated areas into nearly black shadow" },
-    { label: "Dark atmosp{possessive}ic lighting", value: "very low ambient illumination with atmosp{possessive}ic darkness surrounding isolated pools of light" },
-    { label: "Candle in darkness", value: "a single dim candle providing the primary illumination while the surrounding environment disappears into deep shadow" },
-    { label: "Lantern in darkness", value: "a lone dim lantern illuminating the immediate area while the surrounding environment remains almost completely dark" },
-    { label: "Boat lantern", value: "a faint warm lantern illuminating a small area aboard a fishing boat surrounded by deep pre-dawn darkness" },
-    { label: "Light barely revealing details", value: "extremely restrained illumination w{possessive}e details are only visible after close inspection, with most of the scene concealed in darkness" }
+const lightingStylePresets = [
+    { label: "Neutral and natural", value: "soft directional light, balanced exposure, and ambient fill" },
+    { label: "Dramatic contrast", value: "low-key lighting, chiaroscuro, and deep shadows" },
+    { label: "Atmospheric raise", value: "volumetric light, god rays, and hazy atmosphere" },
+    { label: "Cinematic blockbuster", value: "cinematic lighting, teal-and-orange color grade, and rim lighting" },
+    { label: "Sun Dappled", value: "dappled sunlight, soft shadows, and warm natural light" }
 ];
 
 const experimentalLightingPresets = [
@@ -892,11 +845,21 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No time of day selected", timeOfDayPresets))]
     ));
 
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Natural / Environmental", "Common natural and environmental light sources", naturalLightingPresets);
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Quality / Direction", "High-impact controls for softness, direction, and shadow shape", lightingQualityPresets);
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Mood / Cinematic", "High-impact cinematic mood, contrast, and atmosp{possessive}e", cinematicLightingPresets);
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Color / Creative", "Color temperature and colored illumination", colorLightingPresets);
-    addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Dark / Tenebrism", "Extreme darkness, selective illumination, moonlight, dawn darkness, and old-master-style shadow", tenebrismLightingPresets);
+    fields.push(this.section(
+        "❖  LIGHTING • Natural / Environmental",
+        "Select a natural or environmental light source",
+        [this.menu(NONE_SELECTED, menuWithPlaceholder("No natural/environmental lighting selected", naturalLightingPresets))]
+    ));
+    fields.push(this.section(
+        "❖  LIGHTING • Direction / Quality",
+        "Choose the main quality and direction of the light",
+        [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting direction selected", lightingDirectionPresets))]
+    ));
+    fields.push(this.section(
+        "❖  LIGHTING • Style / Balance",
+        "Choose a lighting style that combines color and balance for the scene",
+        [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting style selected", lightingStylePresets))]
+    ));
     addPresetSwitchSection.call(this, fields, "❖  LIGHTING • Special Effects", "Unusual patterns, optical effects, and atmosp{possessive}ic techniques", experimentalLightingPresets);
     addPresetSwitchSection.call(this, fields, "❖  COLOR TREATMENTS", "Optional monochrome or stylized color treatment controls", colorTreatmentPresets);
 
@@ -1155,15 +1118,23 @@ const timeOfDayData = nextSection();
 const timeOfDay = selectedValueWithPlaceholder(timeOfDayData[0], timeOfDayPresets);
 
 const lightingPresetGroups = [
-    naturalLightingPresets,
-    lightingQualityPresets,
-    cinematicLightingPresets,
-    colorLightingPresets,
-    tenebrismLightingPresets,
     experimentalLightingPresets
 ];
 
 const lightingParts = [];
+
+const naturalLightingData = nextSection();
+const naturalLighting = selectedValueWithPlaceholder(naturalLightingData[0], naturalLightingPresets);
+if (naturalLighting) lightingParts.push(naturalLighting);
+
+const lightingDirectionData = nextSection();
+const lightingDirection = selectedValueWithPlaceholder(lightingDirectionData[0], lightingDirectionPresets);
+if (lightingDirection) lightingParts.push(lightingDirection);
+
+const lightingStyleData = nextSection();
+const lightingStyle = selectedValueWithPlaceholder(lightingStyleData[0], lightingStylePresets);
+if (lightingStyle) lightingParts.push(lightingStyle);
+
 for (const presets of lightingPresetGroups) {
     lightingParts.push(...selectedSwitchValues(nextSection(), presets));
 }
