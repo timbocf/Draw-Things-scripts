@@ -53,7 +53,7 @@ const celebrityPresets = [
     { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
     { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
     { label: "Curvy Mexican woman", value: "a curvy 25-year-old Mexican woman with prominent Indigenous Mesoamerican features, olive skin, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
-{ label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." }
+    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." }
 ];
 
 // --- AGE ---
@@ -65,7 +65,7 @@ const agePresets = [
 
 // --- SKIN TONE ---
 const skinTonePresets = [
-    "porcelain skin", "pale skin", "fair skin", "tanned skin", "cream skin",
+    "porcelain skin", "pale skin", "fair skin", { label: "tanned skin", value: "tanned sun-kissed skin" }, "cream skin",
     "olive skin", "caramel skin", "warm brown skin", "dark skin", "dark glossy skin"
 ];
 
@@ -961,8 +961,8 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
             ),
             this.textField(
-                "A {artStyle} of {subject}, {action}. {subjectPronoun} is wearing {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}. Natural anatomy",
-                "Prompt Template — tags: {artStyle}, {subject}, {nationality}. {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                "A {artStyle} of {subject}, {nationality}, {action}. {subjectPronoun} is {description}, wearing {clothing}. {camera}, {timeOfDay}, {lighting}. Natural anatomy",
+                "Prompt Template — tags: {artStyle}, {subject}, {nationality}, {description}, {action}, {clothing}, {camera}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
                 false,
                 80
             )
@@ -1324,7 +1324,9 @@ for (const aspectOption of selectedAspectOptions) {
                             camera: safeCamera,
                             subject: safeSubject,
                             subjects: safeSubject,
+                            nationality: ensureTextContent(subjectLead, ""),
                             subjectLead: ensureTextContent(subjectLead, ""),
+                            description: ensureTextContent(subjectDetails, ""),
                             subjectDetails: ensureTextContent(subjectDetails, ""),
                             clothing: safeOutfit,
                             action: safeAction,
