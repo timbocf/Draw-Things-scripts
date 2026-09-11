@@ -687,19 +687,6 @@ const lightingStylePresets = [
     { label: "Sun Dappled", value: "dappled sunlight, soft shadows, and warm natural light" }
 ];
 
-const experimentalLightingPresets = [
-    { label: "Projector light", value: "projected patterned light falling across the subject" },
-    { label: "Venetian blinds", value: "strong bands of light and shadow cast through window blinds" },
-    { label: "Dappled light", value: "dappled sunlight creating irregular patches of light and shadow" },
-    { label: "Cross lighting", value: "cross-lighting from opposing directional sources" },
-    { label: "Catchlights", value: "distinct natural catchlights visible in the eyes" },
-    { label: "Lens flare", value: "subtle cinematic lens flare from a bright light source" },
-    { label: "Light leaks", value: "subtle photographic light leaks around bright areas" },
-    { label: "Prismatic reflections", value: "subtle prismatic rainbow reflections from refracted light" },
-    { label: "Water caustics", value: "moving water-caustic patterns of light projected across the scene" },
-    { label: "Fog light", value: "directional light visibly diffused through light atmosp{possessive}ic fog" }
-];
-
 const colorTreatmentPresets = [
     { label: "Black & white", value: "black-and-white monochrome treatment" },
     { label: "Sepia", value: "sepia-toned treatment" },
@@ -783,7 +770,13 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
                 this.menu(NONE_SELECTED, countOptions("Action", "Actions")),
                 this.menu(NONE_SELECTED, countOptions("Camera Angle", "Camera Angles")),
                 this.menu(NONE_SELECTED, countOptions("Art Style", "Art Styles")),
-                ...ASPECT_OPTIONS.map((option, index) => this.switch(index === 0, option.label))
+                ...ASPECT_OPTIONS.map((option) => this.switch(false, option.label)),
+                this.textField(
+                    "Select one or more aspect ratios. Each checked ratio will generate a separate image set.",
+                    "Aspect ratios",
+                    true,
+                    100
+                )
             ]
         )
     ];
@@ -1222,10 +1215,6 @@ const cameraChoices = Array.from({ length: cameraCount }, (_, index) =>
 const timeOfDayData = nextSection();
 const timeOfDay = selectedValueWithPlaceholder(timeOfDayData[0], timeOfDayPresets);
 
-const lightingPresetGroups = [
-    experimentalLightingPresets
-];
-
 const lightingParts = [];
 
 const naturalLightingData = nextSection();
@@ -1239,10 +1228,6 @@ if (lightingDirection) lightingParts.push(lightingDirection);
 const lightingStyleData = nextSection();
 const lightingStyle = selectedValueWithPlaceholder(lightingStyleData[0], lightingStylePresets);
 if (lightingStyle) lightingParts.push(lightingStyle);
-
-for (const presets of lightingPresetGroups) {
-    lightingParts.push(...selectedSwitchValues(nextSection(), presets));
-}
 
 const lighting = joinParts(lightingParts);
 
