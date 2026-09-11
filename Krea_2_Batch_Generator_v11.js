@@ -186,7 +186,7 @@ const hairstyleGroups = [
         description: "Big-volume and retro-inspired hair silhouettes",
         presets: [
             { label: "blown-out", value: "high-volume, heavily sprayed, lacquered hairstyle" },
-            { label: "soft feat{possessive}ed 70s blowout", value: "soft feat{possessive}ed 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers" },
+            { label: "soft feathered 70s blowout", value: "soft feathered 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers" },
             { label: "60s bouffant curls", value: "1960s bouffant hairstyle with large rounded curls, high volume, and polished lift" }
         ]
     },
@@ -278,7 +278,7 @@ function selectedValueWithPlaceholder(index, presets) {
     return getPresetValue(presets[actualIndex]) || "";
 }
 
-// Reads a menu selection w{possessive}e every index maps directly to a preset
+// Reads a menu selection where every index maps directly to a preset
 // (no leading placeholder option).
 function selectedValueNoPlaceholder(index, presets) {
     if (index < 0 || index >= presets.length) return "";
@@ -340,7 +340,7 @@ const clothingGroups = [
             "lace bustier", "silk lingerie set", "black lace lingerie set", "red satin lingerie set",
             "sheer lace teddy", "transparent lace bra and panties", "lace-up corset", "satin chemise",
             "sheer bodystocking", "balconette bra and matching panties", "lace garter set",
-            "leat{possessive} lingerie set", "silk robe and lingerie set", "fishnet bodysuit",
+            "leather lingerie set", "silk robe and lingerie set", "fishnet bodysuit",
             "push-up bra and thong set", "lace-up thigh-highs", "strapless corset set",
             "sheer robe with matching panties", "satin slip dress", "lace-up bustier set",
             "transparent vinyl lingerie", "corset over sheer stockings"
@@ -368,7 +368,7 @@ const clothingGroups = [
         presets: [
             "barefoot", "white tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
             "black fishnet stockings", "sheer lace stockings", "strappy heels", "lace-up knee boots",
-            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leat{possessive} boots"
+            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots"
         ]
     }
 ];
@@ -379,8 +379,8 @@ const clothingPresets = [
         value: "a lace bustier, a garter belt, and thigh-high stockings"
     },
     {
-        label: "Leat{possessive} Punk Lingerie",
-        value: "leat{possessive} lingerie, a fishnet bodysuit, and thigh-high leat{possessive} boots"
+        label: "Leather Punk Lingerie",
+        value: "leather lingerie, a fishnet bodysuit, and thigh-high leather boots"
     },
     {
         label: "French Maid Uniform",
@@ -406,16 +406,16 @@ const complexActionPresets = [
     { label: "Spread Eagle (Lying Back) — lying back, legs spread wide, hands holding legs", value: "laying on {possessive} back with {possessive} legs raised and spread wide, feet wide apart, holding {possessive} legs in the air with {possessive} hands, looking through {possessive} open legs at the camera" },
     { label: "Back-on-Bed (Legs Straight Up) — legs straight and elevated, knees locked", value: "laying on a bed on {possessive} back with {possessive} butt at the edge of the bed, {possessive} legs straight and elevated into the air, knees locked, bending at waist only" },
     { label: "Deep Waist Bend — legs straight, hands on shelf, surprise look", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with {possessive} hand covering {possessive} mouth and wide-eyed open-mouthed look of surprise" },
-    { label: "Shower View (From Below) — camera below, looking up through water", value: "standing and rubbing soapy lat{possessive} all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up" },
-    { label: "Shower View (From Above)", value: "standing and rubbing soapy lat{possessive} all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down" },
+    { label: "Shower View (From Below) — camera below, looking up through water", value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up" },
+    { label: "Shower View (From Above)", value: "standing and rubbing soapy lather all over {possessive} body in the shower with a soapy loofah, water and soap cascading down {possessive} nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down" },
     { label: "Doorway Pose — foot on frame, knee near face", value: "standing in a bedroom doorway. {possessive} back is against one side of the door frame, and one of {possessive} feet is elevated to eye-level and the sole of {possessive} shoe is pressing against the opposite door frame, putting {possessive} knee close to {possessive} face." },
     { label: "Doorway Pose (Just Standing)", value: "standing in a bedroom doorway." },
     { label: "Forward Lean (hands on knees) - facing back, ass toward camera", value: "standing, facing away from the camera, leaning forward, {possessive} ass toward the camera, hands on {possessive} knees, looking back at the camera, legs straight, knees locked" },
-    { label: "Reclining back - resting on elbow, ot{possessive} hand touching crotch", value: "lying on {possessive} side, with the top leg bent high, hand lightly between {possessive} thighs" },
+    { label: "Reclining back - resting on elbow, other hand touching crotch", value: "lying on {possessive} side, with the top leg bent high, hand lightly between {possessive} thighs" },
     { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on {possessive} toes, hands in {possessive} hair, back arched, chest pressed forward, shoulders pulled back." },
     { label: "Lying in a Windowsill", value: "lying on {possessive} stomach on a sunlit windowsill, chin resting on {possessive} hands, legs bent at the knees and crossed at the ankles in the air" },
-    { label: "Lying on a Couch (Foot on Backrest)", value: "lying on {possessive} back on a sofa, one leg hooked over the backrest, ot{possessive} foot on the floor" },
-    { label: "Lying on a Couch (Foot on Armrest)", value: "lying on {possessive} back on a sofa, one leg resting on opposite armrest, ot{possessive} foot on the floor" },
+    { label: "Lying on a Couch (Foot on Backrest)", value: "lying on {possessive} back on a sofa, one leg hooked over the backrest, other foot on the floor" },
+    { label: "Lying on a Couch (Foot on Armrest)", value: "lying on {possessive} back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
     { label: "On Knees, Ass Spread", value: "{subjectPronoun} is on {possessive} knees facing away, looking back over {possessive} shoulder while reaching back to spread {possessive} ass cheeks apart" },
     { label: "Kneeling in Front of a Fireplace - wearing pearls and heels", value: "kneeling on a soft rug in front of a fireplace, hands on {possessive} thighs, chest pushed forward, wearing a long pearl necklace and high heels" },
     { label: "On All Fours", value: "on all fours, head turned to the side, back arched hard, ass toward the camera" },
@@ -498,13 +498,13 @@ const actionGroups = [
             "one leg raised",
             "one foot on the wall",
             "feet spread wide",
-            "feet toget{possessive}",
+            "feet together",
             "feet crossed",
             "1 foot against door frame",
             "{possessive} ass high in the air",
             "back arched",
             "chest puffed out",
-            "knees toget{possessive}",
+            "knees together",
             "shoulders back",
             "leaning forward",
             "bending at waist only"
@@ -516,7 +516,7 @@ const actionGroups = [
         presets: [
             "arms raised high above {possessive} head",
             "arms stretched out in front of {objectPronoun}",
-            "hands clasped toget{possessive}",
+            "hands clasped together",
             "on {possessive} elbows",
             "elbows resting on bed",
             "hands on hips",
@@ -583,7 +583,7 @@ const artStylePresets = [
 // =========================================
 // CAMERA
 // Perspective, framing, composition, and depth of field are all
-// offered toget{possessive} in the "Camera" section so none of these lists
+// offered together in the "Camera" section so none of these lists
 // go unused.
 // =========================================
 
