@@ -46,10 +46,13 @@ const nationalityPresets = [
 ];
 
 const celebrityPresets = [
-    { label: "Anne Hathaway", value: "Anne Hathaway with a tall slim build with shadowy eyes and heavy mascara" },
+    { label: "Anne Hathaway", value: "Anne Hathaway with a tall slim build with smokey eyes and heavy mascara" },
     { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
     { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
-    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" }
+    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
+    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
+    { label: "Curvy Black Woman with Box Braids", value: "a curvy 35-year-old black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
+    { label: "Curvy 25-year-old Mexican woman with prominent Indigenous Mesoamerican features, olive skin, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" }
 ];
 
 // --- AGE ---
@@ -808,9 +811,9 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         const subjectPrefix = `❖  SUBJECT ${i + 1}`;
 
         fields.push(this.section(
-            sectionTitle(subjectPrefix, "Celebrity/Reference Face"),
-            "Optional celebrity-inspired identity presets",
-            [this.menu(NONE_SELECTED, menuWithPlaceholder("No celebrity preset selected", celebrityPresets))]
+            sectionTitle(subjectPrefix, "Celebrity/Character Presets"),
+            "Optional celebrity-inspired and character presets",
+            [this.menu(NONE_SELECTED, menuWithPlaceholder("No celebrity/character preset selected", celebrityPresets))]
         ));
 
         fields.push(this.section(
