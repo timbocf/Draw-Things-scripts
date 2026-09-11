@@ -1293,6 +1293,8 @@ function ensureTextContent(value, fallback) {
     return cleaned || fallback;
 }
 
+const effectiveCameraChoices = cameraChoices.length > 0 ? cameraChoices : [DEFAULT_PROMPT_FALLBACKS.camera];
+
 // =========================================
 // BUILD FINAL PROMPTS
 // =========================================
@@ -1309,7 +1311,7 @@ for (const aspectOption of selectedAspectOptions) {
 
         for (const outfit of outfits) {
             for (const action of actions) {
-                for (const camera of cameraChoices) {
+                for (const camera of effectiveCameraChoices) {
                     for (const artStyle of artStyleChoices) {
                         const safeSubject = ensureTextContent(subject, DEFAULT_PROMPT_FALLBACKS.subject);
                         const safeOutfit = ensureTextContent(outfit, DEFAULT_PROMPT_FALLBACKS.outfit);
@@ -1423,6 +1425,8 @@ async function generateBatch() {
 
         config.width = promptData.width;
         config.height = promptData.height;
+
+        canvas.clear();
 
         console.log(`Generating ${promptData.aspectLabel} prompt:`, promptData.prompt);
         await pipeline.run({ configuration: config, prompt: promptData.prompt });
