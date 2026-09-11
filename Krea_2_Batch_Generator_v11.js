@@ -807,6 +807,45 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
     const fields = [];
 
     // -----------------------------------------
+    // PROMPT OPTIONS / TEMPLATE
+    // -----------------------------------------
+    fields.push(this.section(
+        "❖  Prompt Options & Template",
+        "Choose up to 5 art styles and customize the template with tags",
+        [
+            ...Array.from({ length: artStyleCount }, () =>
+                this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
+            ),
+            this.textField(
+                "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
+                "Prompt Template — tags: {descriptor}, {artStyle}, {gender}, {nationality}, {description}, {action}, {clothing}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                false,
+                80
+            )
+        ]
+    ));
+
+    // -----------------------------------------
+    // CAMERA
+    // -----------------------------------------
+    fields.push(this.section(
+        "❖  CAMERA • Options",
+        `Choose up to ${cameraCount} camera angles, framings, compositions, or depth-of-field looks`,
+        Array.from({ length: cameraCount }, () =>
+            this.menu(NONE_SELECTED, menuWithPlaceholder("No camera option selected", cameraOptionsPresets))
+        )
+    ));
+
+    // -----------------------------------------
+    // COLOR TREATMENTS
+    // -----------------------------------------
+    fields.push(this.section(
+        "❖  COLOR TREATMENTS",
+        "Optional monochrome or stylized color treatment controls",
+        [this.menu(NONE_SELECTED, menuWithPlaceholder("No color treatment selected", colorTreatmentPresets))]
+    ));
+
+    // -----------------------------------------
     // SUBJECTS
     // -----------------------------------------
     for (let i = 0; i < subjectCount; i++) {
@@ -911,17 +950,6 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
     }
 
     // -----------------------------------------
-    // CAMERA
-    // -----------------------------------------
-    fields.push(this.section(
-        "❖  CAMERA • Options",
-        `Choose up to ${cameraCount} camera angles, framings, compositions, or depth-of-field looks`,
-        Array.from({ length: cameraCount }, () =>
-            this.menu(NONE_SELECTED, menuWithPlaceholder("No camera option selected", cameraOptionsPresets))
-        )
-    ));
-
-    // -----------------------------------------
     // LIGHTING
     // -----------------------------------------
     fields.push(this.section(
@@ -945,37 +973,16 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         "Choose a lighting style that combines color and balance for the scene",
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting style selected", lightingStylePresets))]
     ));
-    fields.push(this.section(
-        "❖  COLOR TREATMENTS",
-        "Optional monochrome or stylized color treatment controls",
-        [this.menu(NONE_SELECTED, menuWithPlaceholder("No color treatment selected", colorTreatmentPresets))]
-    ));
-
-    // -----------------------------------------
-    // PROMPT OPTIONS / TEMPLATE
-    // -----------------------------------------
-    fields.push(this.section(
-        "❖  Prompt Options & Template",
-        "Choose up to 5 art styles and customize the template with tags",
-        [
-            ...Array.from({ length: artStyleCount }, () =>
-                this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
-            ),
-            this.textField(
-                "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
-                "Prompt Template — tags: {descriptor}, {artStyle}, {gender}, {nationality}, {description}, {action}, {clothing}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
-                false,
-                80
-            )
-        ]
-    ));
-
     return fields;
 });
 
 // =========================================
 // STEP 3 — PARSE INPUTS
 // =========================================
+
+const templateData = nextSection();
+const cameraData = nextSection();
+const colorTreatmentData = nextSection();
 
 let sectionIdx = 0;
 
@@ -1204,8 +1211,6 @@ for (let i = 0; i < actionCount; i++) {
 // CAMERA PARSING
 // =========================================
 
-const cameraData = nextSection();
-
 const cameraChoices = Array.from({ length: cameraCount }, (_, index) =>
     selectedValueWithPlaceholder(cameraData[index], cameraOptionsPresets)
 ).filter(Boolean);
@@ -1237,14 +1242,11 @@ const lighting = joinParts(lightingParts);
 // COLOR TREATMENT PARSING
 // =========================================
 
-const colorTreatmentData = nextSection();
 const colorTreatmentText = selectedValueWithPlaceholder(colorTreatmentData[0], colorTreatmentPresets);
 
 // =========================================
 // PROMPT TEMPLATE
 // =========================================
-
-const templateData = nextSection();
 
 const artStyles = Array.from({ length: artStyleCount }, (_, index) =>
     selectedValueWithPlaceholder(templateData[index], artStylePresets)
