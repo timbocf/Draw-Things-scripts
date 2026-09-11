@@ -789,7 +789,7 @@ const outfitCount = setupData[1] + 1;
 const actionCount = setupData[2] + 1;
 const cameraCount = setupData[3] + 1;
 const artStyleCount = setupData[4] + 1;
-const aspectSelections = setupData[5] || [];
+const aspectSelections = setupData.slice(5, 5 + ASPECT_OPTIONS.length);
 
 function getSelectedAspectOptions(selections) {
     const rawSelections = Array.isArray(selections)
