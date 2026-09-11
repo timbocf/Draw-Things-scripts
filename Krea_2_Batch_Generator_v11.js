@@ -807,45 +807,6 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
     const fields = [];
 
     // -----------------------------------------
-    // PROMPT OPTIONS / TEMPLATE
-    // -----------------------------------------
-    fields.push(this.section(
-        "❖  Prompt Options & Template",
-        "Choose up to 5 art styles and customize the template with tags",
-        [
-            ...Array.from({ length: artStyleCount }, () =>
-                this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
-            ),
-            this.textField(
-                "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
-                "Prompt Template — tags: {descriptor}, {artStyle}, {gender}, {nationality}, {description}, {action}, {clothing}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
-                false,
-                80
-            )
-        ]
-    ));
-
-    // -----------------------------------------
-    // CAMERA
-    // -----------------------------------------
-    fields.push(this.section(
-        "❖  CAMERA • Options",
-        `Choose up to ${cameraCount} camera angles, framings, compositions, or depth-of-field looks`,
-        Array.from({ length: cameraCount }, () =>
-            this.menu(NONE_SELECTED, menuWithPlaceholder("No camera option selected", cameraOptionsPresets))
-        )
-    ));
-
-    // -----------------------------------------
-    // COLOR TREATMENTS
-    // -----------------------------------------
-    fields.push(this.section(
-        "❖  COLOR TREATMENTS",
-        "Optional monochrome or stylized color treatment controls",
-        [this.menu(NONE_SELECTED, menuWithPlaceholder("No color treatment selected", colorTreatmentPresets))]
-    ));
-
-    // -----------------------------------------
     // SUBJECTS
     // -----------------------------------------
     for (let i = 0; i < subjectCount; i++) {
@@ -856,6 +817,47 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             "Optional celebrity-inspired and character presets",
             [this.menu(NONE_SELECTED, menuWithPlaceholder("No celebrity/character preset selected", celebrityPresets))]
         ));
+
+        if (i === 0) {
+            // -----------------------------------------
+            // PROMPT OPTIONS / TEMPLATE
+            // -----------------------------------------
+            fields.push(this.section(
+                "❖  Prompt Options & Template",
+                "Choose up to 5 art styles and customize the template with tags",
+                [
+                    ...Array.from({ length: artStyleCount }, () =>
+                        this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
+                    ),
+                    this.textField(
+                        "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
+                        "Prompt Template — tags: {descriptor}, {artStyle}, {gender}, {nationality}, {description}, {action}, {clothing}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
+                        false,
+                        80
+                    )
+                ]
+            ));
+
+            // -----------------------------------------
+            // CAMERA
+            // -----------------------------------------
+            fields.push(this.section(
+                "❖  CAMERA • Options",
+                `Choose up to ${cameraCount} camera angles, framings, compositions, or depth-of-field looks`,
+                Array.from({ length: cameraCount }, () =>
+                    this.menu(NONE_SELECTED, menuWithPlaceholder("No camera option selected", cameraOptionsPresets))
+                )
+            ));
+
+            // -----------------------------------------
+            // COLOR TREATMENTS
+            // -----------------------------------------
+            fields.push(this.section(
+                "❖  COLOR TREATMENTS",
+                "Optional monochrome or stylized color treatment controls",
+                [this.menu(NONE_SELECTED, menuWithPlaceholder("No color treatment selected", colorTreatmentPresets))]
+            ));
+        }
 
         fields.push(this.section(
             sectionTitle(subjectPrefix, "Identity"),
@@ -973,16 +975,13 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         "Choose a lighting style that combines color and balance for the scene",
         [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting style selected", lightingStylePresets))]
     ));
+
     return fields;
 });
 
 // =========================================
 // STEP 3 — PARSE INPUTS
 // =========================================
-
-const templateData = nextSection();
-const cameraData = nextSection();
-const colorTreatmentData = nextSection();
 
 let sectionIdx = 0;
 
@@ -1069,12 +1068,36 @@ const subjectGenderTexts = [];
 const subjectNationalityTexts = [];
 const subjectGenderForms = [];
 
+let cameraChoices = [];
+let colorTreatmentText = "";
+let artStyles = [];
+let promptTemplate = "";
+
 for (let i = 0; i < subjectCount; i++) {
     const subjectParts = [];
 
     // --- Identity ---
     const celebrityData = nextSection();
     const celebrity = selectedValueWithPlaceholder(celebrityData[0], celebrityPresets);
+
+    if (i === 0) {
+        // --- Prompt Options & Template ---
+        const templateData = nextSection();
+        artStyles = Array.from({ length: artStyleCount }, (_, index) =>
+            selectedValueWithPlaceholder(templateData[index], artStylePresets)
+        ).filter(Boolean);
+        promptTemplate = templateData[artStyleCount] || "";
+
+        // --- Camera Options ---
+        const cameraData = nextSection();
+        cameraChoices = Array.from({ length: cameraCount }, (_, index) =>
+            selectedValueWithPlaceholder(cameraData[index], cameraOptionsPresets)
+        ).filter(Boolean);
+
+        // --- Color Treatments ---
+        const colorTreatmentData = nextSection();
+        colorTreatmentText = selectedValueWithPlaceholder(colorTreatmentData[0], colorTreatmentPresets);
+    }
 
     const identityData = nextSection();
     const gender = selectedValueWithPlaceholder(identityData[0], genderPresets);
@@ -1208,14 +1231,6 @@ for (let i = 0; i < actionCount; i++) {
 }
 
 // =========================================
-// CAMERA PARSING
-// =========================================
-
-const cameraChoices = Array.from({ length: cameraCount }, (_, index) =>
-    selectedValueWithPlaceholder(cameraData[index], cameraOptionsPresets)
-).filter(Boolean);
-
-// =========================================
 // LIGHTING PARSING
 // =========================================
 
@@ -1237,22 +1252,6 @@ const lightingStyle = selectedValueWithPlaceholder(lightingStyleData[0], lightin
 if (lightingStyle) lightingParts.push(lightingStyle);
 
 const lighting = joinParts(lightingParts);
-
-// =========================================
-// COLOR TREATMENT PARSING
-// =========================================
-
-const colorTreatmentText = selectedValueWithPlaceholder(colorTreatmentData[0], colorTreatmentPresets);
-
-// =========================================
-// PROMPT TEMPLATE
-// =========================================
-
-const artStyles = Array.from({ length: artStyleCount }, (_, index) =>
-    selectedValueWithPlaceholder(templateData[index], artStylePresets)
-).filter(Boolean);
-
-const promptTemplate = templateData[artStyleCount] || "";
 
 // =========================================
 // CALCULATE DIMENSIONS
