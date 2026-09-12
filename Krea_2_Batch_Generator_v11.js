@@ -39,7 +39,7 @@ const DEFAULT_PROMPT_FALLBACKS = {
 // =========================================
 
 // --- GENDER ---
-const genderPresets = ["woman", "man"];
+const genderPresets = ["Woman", "Man"];
 
 // --- NATIONALITY / ETHNICITY ---
 const nationalityPresets = [
@@ -314,10 +314,29 @@ function joinParts(parts) {
 // CLOTHING
 // =========================================
 
+const clothingColorPresets = [
+    "black", "white", "red", "crimson", "burgundy", "emerald green", "forest green",
+    "olive green", "navy blue", "royal blue", "baby blue", "pastel pink", "hot pink",
+    "lavender", "purple", "yellow", "orange", "beige", "champagne", "brown", "gold", "silver"
+];
+
+function applyClothingColor(item, color) {
+    if (!color || !item) return item;
+    // Handle article prefixes gracefully: "a loose fitting T-shirt" -> "a black loose fitting T-shirt"
+    if (/^a\s+/i.test(item)) {
+        return item.replace(/^a\s+/i, `a ${color} `);
+    }
+    if (/^an\s+/i.test(item)) {
+        return item.replace(/^an\s+/i, `a ${color} `);
+    }
+    return `${color} ${item}`;
+}
+
 const clothingGroups = [
     {
         title: "Tops",
-        description: "Upper-body styling",
+        description: "Upper-body styling and color",
+        hasColorMenu: true,
         presets: [
             "a loose fitting T-shirt",
             "a fitted T-shirt",
@@ -330,7 +349,8 @@ const clothingGroups = [
     },
     {
         title: "Bottoms",
-        description: "Skirts, shorts, and bottoms",
+        description: "Skirts, shorts, bottoms, and color",
+        hasColorMenu: true,
         presets: [
             "jeans",
             "shorts",
@@ -342,12 +362,14 @@ const clothingGroups = [
     },
     {
         title: "Dresses",
-        description: "Dress and one-piece styles",
+        description: "Dress and one-piece styles and color",
+        hasColorMenu: true,
         presets: ["a short babydoll dress", "a summer dress", "one-piece swimsuit"]
     },
     {
         title: "Lingerie",
-        description: "Lingerie and underlayers",
+        description: "Lingerie, underlayers, and color",
+        hasColorMenu: true,
         presets: [
             "nude", "bikini-style panties", "thong", "string bikini", "garter belt",
             "lace bustier", "silk lingerie set", "black lace lingerie set", "red satin lingerie set",
@@ -377,7 +399,8 @@ const clothingGroups = [
     },
     {
         title: "Footwear",
-        description: "Shoes, socks, and legwear",
+        description: "Shoes, socks, legwear, and color",
+        hasColorMenu: true,
         presets: [
             "barefoot", "white tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
             "black fishnet stockings", "sheer lace stockings", "strappy heels", "lace-up knee boots",
@@ -589,10 +612,10 @@ const actionGroups = [
 // =========================================
 
 const artStylePresets = [
-    "photo",
+    "Photo",
     "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
     "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses",
-    "bathroom mirror selfie"
+    "Bathroom Mirror Selfie"
 ];
 
 // =========================================
@@ -730,8 +753,14 @@ function sectionTitle(prefix, ...parts) {
     return [prefix, ...parts].join(" • ");
 }
 
-function addPresetSwitchSection(fields, title, description, presets) {
-    fields.push(this.section(title, description, presetSwitches.call(this, presets)));
+function addPresetSwitchSection(fields, title, description, presets, colorMenu = false) {
+    const controls = [];
+    if (colorMenu) {
+        controls.push(this.menu(NONE_SELECTED, menuWithPlaceholder("Choose color (optional)", clothingColorPresets)));
+        controls.push(this.textField("", "Custom color / fabric (optional)", false, 30));
+    }
+    controls.push(...presetSwitches.call(this, presets));
+    fields.push(this.section(title, description, controls));
 }
 
 function addPresetMenuSection(fields, title, description, presets, placeholder) {
@@ -763,7 +792,8 @@ function addGroupedSections(fields, titlePrefix, groups) {
             fields,
             sectionTitle(titlePrefix, group.title),
             group.description,
-            group.presets
+            group.presets,
+            Boolean(group.hasColorMenu)
         );
     }
 }
@@ -1038,6 +1068,20 @@ function parseGroupedSwitches(groups) {
         if (group.type === "menu") {
             const value = selectedValueWithPlaceholder(data[0], group.presets);
             if (value) values.push(value);
+            continue;
+        }
+
+        if (group.hasColorMenu) {
+            const selectedColor = selectedValueWithPlaceholder(data[0], clothingColorPresets);
+            const customColor = typeof data[1] === "string" ? data[1].trim() : "";
+            const activeColor = customColor || selectedColor;
+
+            const switchData = data.slice(2);
+            const selectedItems = selectedSwitchValues(switchData, group.presets);
+
+            for (const item of selectedItems) {
+                values.push(applyClothingColor(item, activeColor));
+            }
             continue;
         }
 
