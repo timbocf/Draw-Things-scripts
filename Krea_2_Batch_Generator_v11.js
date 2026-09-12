@@ -160,7 +160,7 @@ const specificBodyPresets = [
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
 const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
-const bodyHairPresets = ["light body hair", "thick body hair", "freckles", "fingernails"];
+const bodyHairPresets = ["light body hair", "thick body hair", "freckles", "long painted fingernails"];
 
 const hairDetailPresets = [
     { label: "Shaved on one side", value: "one side of the head shaved" },
