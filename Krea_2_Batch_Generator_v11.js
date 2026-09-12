@@ -23,6 +23,17 @@ const ASPECT_OPTIONS = [
 
 const ASPECT_DIMENSIONS = ASPECT_OPTIONS.map(({ width, height }) => [width, height]);
 
+const DEFAULT_PROMPT_FALLBACKS = {
+    subject: "a woman",
+    outfit: "t-shirt and jeans",
+    action: "smiling",
+    camera: "natural eye-level perspective",
+    timeOfDay: "natural daytime illumination",
+    lighting: "soft directional light, balanced exposure, and ambient fill",
+    artStyle: "photo",
+    genericPrompt: "a portrait of the subject"
+};
+
 // =========================================
 // PRESETS
 // =========================================
@@ -149,7 +160,7 @@ const specificBodyPresets = [
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
 const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
-const bodyHairPresets = ["light body hair", "thick body hair", "freckles"];
+const bodyHairPresets = ["light body hair", "thick body hair", "freckles", "fingernails"];
 
 const hairDetailPresets = [
     { label: "Shaved on one side", value: "one side of the head shaved" },
@@ -209,7 +220,7 @@ const accessoryGroups = [
         description: "Select any jewelry accessories to add",
         presets: [
             "stud earrings", "hoop earrings", "large hoop earrings", "drop earrings",
-            "necklace", "layered necklaces", "choker", "pendant necklace",
+            "necklace", "layered necklaces", "choker", "pendant necklace", "pearl necklace",
             "bracelet", "stacked bracelets", "watch", "rings", "multiple rings"
         ]
     },
@@ -260,6 +271,11 @@ function presetLabels(presets) {
 
 function menuWithPlaceholder(placeholder, presets) {
     return [placeholder, ...presetLabels(presets)];
+}
+
+function findPresetMenuIndex(presets, targetValue) {
+    const idx = presets.findIndex(p => getPresetValue(p) === targetValue || getPresetLabel(p) === targetValue);
+    return idx >= 0 ? idx + 1 : NONE_SELECTED;
 }
 
 function presetSwitches(presets) {
@@ -336,11 +352,11 @@ const clothingGroups = [
             "nude", "bikini-style panties", "thong", "string bikini", "garter belt",
             "lace bustier", "silk lingerie set", "black lace lingerie set", "red satin lingerie set",
             "sheer lace teddy", "transparent lace bra and panties", "lace-up corset", "satin chemise",
-            "sheer bodystocking", "balconette bra and matching panties", "lace garter set",
-            "leather lingerie set", "silk robe and lingerie set", "fishnet bodysuit",
-            "push-up bra and thong set", "lace-up thigh-highs", "strapless corset set",
+            "balconette bra and matching panties", "lace garter set",
+            "leather lingerie set", "silk robe", "silk robe and lingerie set", "fishnet bodysuit",
+            "push-up bra and thong set", "strapless corset set",
             "sheer robe with matching panties", "satin slip dress", "lace-up bustier set",
-            "transparent vinyl lingerie", "corset over sheer stockings"
+            "corset over stockings"
         ]
     },
     {
@@ -365,7 +381,8 @@ const clothingGroups = [
         presets: [
             "barefoot", "white tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
             "black fishnet stockings", "sheer lace stockings", "strappy heels", "lace-up knee boots",
-            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots"
+            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots",
+            "lace-up thigh-highs"
         ]
     }
 ];
@@ -827,8 +844,11 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                 "❖  Prompt Options & Template",
                 "Choose up to 5 art styles and customize the template with tags",
                 [
-                    ...Array.from({ length: artStyleCount }, () =>
-                        this.menu(NONE_SELECTED, menuWithPlaceholder("No art style selected", artStylePresets))
+                    ...Array.from({ length: artStyleCount }, (_, idx) =>
+                        this.menu(
+                            idx === 0 ? findPresetMenuIndex(artStylePresets, DEFAULT_PROMPT_FALLBACKS.artStyle) : NONE_SELECTED,
+                            menuWithPlaceholder("No art style selected", artStylePresets)
+                        )
                     ),
                     this.textField(
                         "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
@@ -845,18 +865,21 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             fields.push(this.section(
                 "❖  CAMERA • Options",
                 `Choose up to ${cameraCount} camera angles, framings, compositions, or depth-of-field looks`,
-                Array.from({ length: cameraCount }, () =>
-                    this.menu(NONE_SELECTED, menuWithPlaceholder("No camera option selected", cameraOptionsPresets))
+                Array.from({ length: cameraCount }, (_, idx) =>
+                    this.menu(
+                        idx === 0 ? findPresetMenuIndex(cameraOptionsPresets, DEFAULT_PROMPT_FALLBACKS.camera) : NONE_SELECTED,
+                        menuWithPlaceholder("No camera option selected", cameraOptionsPresets)
+                    )
                 )
             ));
 
             // -----------------------------------------
-            // COLOR TREATMENTS
+            // MOOD / AESTHETIC / HISTORICAL MEDIA
             // -----------------------------------------
             fields.push(this.section(
-                "❖  COLOR TREATMENTS",
-                "Optional monochrome or stylized color treatment controls",
-                [this.menu(NONE_SELECTED, menuWithPlaceholder("No color treatment selected", colorTreatmentPresets))]
+                "❖  Mood / Aesthetic / Historical Media",
+                "Optional monochrome, film, or stylized aesthetic treatment controls",
+                [this.menu(NONE_SELECTED, menuWithPlaceholder("No mood/aesthetic/historical media selected", colorTreatmentPresets))]
             ));
         }
 
@@ -864,7 +887,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             sectionTitle(subjectPrefix, "Identity"),
             "Gender, ethnicity, age, and skin tone",
             [
-                this.menu(NONE_SELECTED, menuWithPlaceholder("Choose gender", genderPresets)),
+                this.menu(
+                    findPresetMenuIndex(genderPresets, "woman"),
+                    menuWithPlaceholder("Choose gender", genderPresets)
+                ),
                 this.menu(NONE_SELECTED, menuWithPlaceholder("Choose nationality / ethnicity", nationalityPresets)),
                 this.menu(agePresets.indexOf("30 years old"), agePresets),
                 this.menu(NONE_SELECTED, menuWithPlaceholder("Choose skin tone", skinTonePresets))
@@ -888,10 +914,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             ]
         ));
 
-        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media"), appearanceSwitchGroups);
+        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Appearance"), appearanceSwitchGroups);
 
         fields.push(this.section(
-            sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media", "Hair Type"),
+            sectionTitle(subjectPrefix, "Hair", "Hair Type"),
             "Hair texture choices",
             [
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No hair type", hairTypePresets)),
@@ -900,7 +926,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
         ));
 
         fields.push(this.section(
-            sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media", "Hair"),
+            sectionTitle(subjectPrefix, "Hair"),
             "Hair color, length, hairstyle, and additional subject details",
             [
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No hair color", hairColorPresets)),
@@ -912,7 +938,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             ]
         ));
 
-        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Mood / Aesthetic / Historical Media", "Hair"), hairstyleGroups);
+        addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Hair"), hairstyleGroups);
         addGroupedSections.call(this, fields, sectionTitle(subjectPrefix, "Accessories"), accessoryGroups);
     }
 
@@ -958,7 +984,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
     fields.push(this.section(
         "❖  LIGHTING • Time of Day",
         "Choose the environmental time and quality of ambient light",
-        [this.menu(NONE_SELECTED, menuWithPlaceholder("No time of day selected", timeOfDayPresets))]
+        [this.menu(
+            findPresetMenuIndex(timeOfDayPresets, DEFAULT_PROMPT_FALLBACKS.timeOfDay),
+            menuWithPlaceholder("No time of day selected", timeOfDayPresets)
+        )]
     ));
 
     fields.push(this.section(
@@ -974,7 +1003,10 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
     fields.push(this.section(
         "❖  LIGHTING • Style / Balance",
         "Choose a lighting style that combines color and balance for the scene",
-        [this.menu(NONE_SELECTED, menuWithPlaceholder("No lighting style selected", lightingStylePresets))]
+        [this.menu(
+            findPresetMenuIndex(lightingStylePresets, DEFAULT_PROMPT_FALLBACKS.lighting),
+            menuWithPlaceholder("No lighting style selected", lightingStylePresets)
+        )]
     ));
 
     return fields;
@@ -1095,7 +1127,7 @@ for (let i = 0; i < subjectCount; i++) {
             selectedValueWithPlaceholder(cameraData[index], cameraOptionsPresets)
         ).filter(Boolean);
 
-        // --- Color Treatments ---
+        // --- Mood / Aesthetic / Historical Media ---
         const colorTreatmentData = nextSection();
         colorTreatmentText = selectedValueWithPlaceholder(colorTreatmentData[0], colorTreatmentPresets);
     }
@@ -1280,17 +1312,6 @@ function cleanPrompt(prompt) {
         .replace(/\s{2,}/g, " ")
         .trim();
 }
-
-const DEFAULT_PROMPT_FALLBACKS = {
-    subject: "a woman",
-    outfit: "t-shirt and jeans",
-    action: "smiling",
-    camera: "natural eye-level perspective",
-    timeOfDay: "natural daytime illumination",
-    lighting: "soft directional light, balanced exposure, and ambient fill",
-    artStyle: "photo",
-    genericPrompt: "a portrait of the subject"
-};
 
 function ensureTextContent(value, fallback) {
     const cleaned = typeof value === "string" ? cleanPrompt(value) : "";
