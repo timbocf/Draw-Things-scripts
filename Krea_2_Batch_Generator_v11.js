@@ -39,7 +39,7 @@ const DEFAULT_PROMPT_FALLBACKS = {
 // =========================================
 
 // --- GENDER ---
-const genderPresets = ["Woman", "Man"];
+const genderPresets = ["woman", "man"];
 
 // --- NATIONALITY / ETHNICITY ---
 const nationalityPresets = [
@@ -612,7 +612,7 @@ const actionGroups = [
 // =========================================
 
 const artStylePresets = [
-    "Photo",
+    "photo",
     "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
     "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses",
     "Bathroom Mirror Selfie"
