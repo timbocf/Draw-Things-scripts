@@ -402,7 +402,7 @@ const clothingGroups = [
         description: "Shoes, socks, legwear, and color",
         hasColorMenu: true,
         presets: [
-            "barefoot", "white tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
+            "barefoot", "tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
             "black fishnet stockings", "sheer lace stockings", "strappy heels", "lace-up knee boots",
             "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots",
             "lace-up thigh-highs"
