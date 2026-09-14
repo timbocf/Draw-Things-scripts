@@ -434,7 +434,7 @@ const clothingPresets = [
 // =========================================
 
 const complexActionPresets = [
-    { label: "Wall Pose — back against wall, one knee bent", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped." },
+    { label: "Wall Pose — back against wall, one knee bent", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted." },
     { label: "Bed Lean (on elbows) — elbows on bed, ass toward camera", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing {possessive} ass toward the camera" },
     { label: "Bed Lean (face-down) — cheek on mattress, looking sideways", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing {possessive} ass toward the camera" },
     { label: "Ass-Up Lean (on bed or floor) — on knees, face forward, back arched", value: "on {possessive} knees, leaning forward, {possessive} face in the foreground, back arched, ass high in the air, arms stretched out in front of {objectPronoun}" },
