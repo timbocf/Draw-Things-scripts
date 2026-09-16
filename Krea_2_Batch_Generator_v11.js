@@ -676,7 +676,7 @@ const actionGroups = [
             },
             {
                 label: "69 (Side-View)",
-                value: "side-view, a nude {personNoun} and a man lying together in a 69 position, each pleasuring the other orally at the same time"
+                value: "side-view, a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between her legs."
             },
             {
                 label: "Cunnilingus (POV)",
