@@ -43,17 +43,28 @@ const genderPresets = ["woman", "man"];
 
 // --- NATIONALITY / ETHNICITY ---
 const nationalityPresets = [
-    "Caucasian",
-    "Black",
-    "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, and a straight natural nose bridge, and thick dark brown hair with thick wavy curls, and a round ass",
-    "Mexican with prominent Indigenous Mesoamerican facial features, plump lips",
-    "Indian",
-    "Thai",
-    "Japanese",
-    "Korean",
-    "Filipina",
-    "Brazilian",
-    "Italian"
+    { label: "Caucasian", value: "Caucasian with Western European facial features" },
+    { label: "Black", value: "Black with rich deep skin tone and classic African facial features" },
+    { label: "Mixed-Race", value: "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
+    { label: "Mexican", value: "Mexican with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick dark wavy hair, plump lips, and a curvy hourglass figure" },
+    { label: "Indian", value: "Indian with warm brown skin, dark eyes, and South Asian facial features" },
+    { label: "Thai", value: "Thai with golden-tan skin and Southeast Asian facial features" },
+    { label: "Japanese", value: "Japanese with fair skin and East Asian facial features" },
+    { label: "Korean", value: "Korean with fair porcelain skin and East Asian facial features" },
+    { label: "Filipina", value: "Filipina with warm tan skin and Southeast Asian facial features" },
+    { label: "Brazilian", value: "Brazilian with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
+    { label: "Italian", value: "Italian with olive skin and Mediterranean facial features" },
+    { label: "Scandinavian", value: "Scandinavian with fair skin, light hair, and Nordic facial features" },
+    { label: "Russian/Eastern European", value: "Russian/Eastern European with fair skin and Slavic facial features" },
+    { label: "Chinese", value: "Chinese with fair skin and East Asian facial features" },
+    { label: "Vietnamese", value: "Vietnamese with warm tan skin and Southeast Asian facial features" },
+    { label: "Middle Eastern", value: "Middle Eastern with olive skin, dark hair, and Middle Eastern facial features" },
+    { label: "French", value: "French with fair skin and classic Western European features" },
+    { label: "German", value: "German with fair skin and Central European facial features" },
+    { label: "Irish", value: "Irish with fair skin, freckles, and Celtic facial features" },
+    { label: "Native American", value: "Native American with warm bronze skin and Indigenous American facial features" },
+    { label: "Polynesian/Pacific Islander", value: "Polynesian/Pacific Islander with warm brown skin and Polynesian facial features" },
+    { label: "Ethiopian/East African", value: "Ethiopian/East African with deep brown skin and East African facial features" }
 ];
 
 const celebrityPresets = [
@@ -185,7 +196,10 @@ const specificBodyPresets = [
 // APPEARANCE
 // =========================================
 
-const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
+const makeupPresets = [
+    "light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara",
+    { label: "Lined lips (Chola/Chicana style)", value: "lips lined with a dark brown lip liner a shade darker than the lipstick, filled in with lighter lipstick" }
+];
 const makeupOdditiesPresets = [
     "full clown makeup", "edgy sexy clown makeup with streams of blood from {possessive} mouth and dark eyes",
     "porcelain doll makeup with rosy cheeks and a painted-on smile", "geisha-style white face makeup with red lips",
@@ -196,9 +210,15 @@ const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
 const bodyHairPresets = [
     "light body hair", "thick body hair", "light pubic hair", "thick pubic hair", "a full bush of thick pubic hair",
-    "freckles", "dimples", "long painted fingernails", "sun-kissed tan lines", "sweaty skin",
+    "freckles", "dimples", "sun-kissed tan lines", "sweaty skin",
     "prosthetic small horns", "pointed elf ears", "vampire fangs", "fake stitched scars",
-    "metallic/chrome body paint", "bioluminescent-style glowing paint accents"
+    "metallic/chrome body paint", "bioluminescent-style glowing paint accents",
+    "natural stretch marks", "cellulite texture", "visible veins", "beauty mark"
+];
+
+const nailPresets = [
+    "French tip manicure", "red nail polish", "black nail polish", "nude nail polish",
+    "glossy chrome nails", "long stiletto acrylics"
 ];
 
 const hairDetailPresets = [
@@ -218,10 +238,14 @@ const appearanceSwitchGroups = [
     { title: "Nose", description: "Nose bridge, tip, and nostril characteristics (multiple can combine)", presets: nosePresets },
     { title: "Tattoos", description: "Visible tattoo characteristics", presets: tattooPresets },
     { title: "Body / Skin Details", description: "Body hair and skin details", presets: bodyHairPresets },
+    { title: "Nails", description: "Manicure and nail styling", presets: nailPresets },
     { title: "Hair Details", description: "Additional hair-shaving and hair-structure details", presets: hairDetailPresets }
 ];
 
-const hairColorPresets = ["blonde", "brunette", "black", "red", "auburn", "salt & pepper", "silver"];
+const hairColorPresets = [
+    "blonde", "brunette", "black", "red", "auburn", "salt & pepper", "silver",
+    "platinum blonde", "copper/ginger", "chestnut brown", "ombre", "balayage", "pastel pink", "pastel blue/purple"
+];
 const hairLengthPresets = ["short", "medium-length", "long", "very long"];
 const hairTypePresets = ["straight", "wavy", "curly", "kinky", "afro-textured", "frizzy"];
 
@@ -446,6 +470,11 @@ const clothingGroups = [
         ]
     },
     {
+        title: "Robes / Loungewear",
+        description: "Robes and casual lounging outfits",
+        presets: ["kimono robe", "silk cami and shorts set"]
+    },
+    {
         title: "Sets",
         description: "Specialty outfit presets",
         presets: [
@@ -569,42 +598,106 @@ const actionGroups = [
         ]
     },
     {
-        title: "Signature Poses",
-        description: "POV sexual positions and notable scene presets",
+        title: "Sexual Positions",
+        description: "Sexual positions",
         type: "menu",
         placeholder: "No signature pose selected",
         presets: [
             {
-                label: "POV/Cowgirl (leaning back)",
-                value: "pov, straddling a nude man, riding him in cowgirl position, leaning back, his penis is deep inside {possessive}"
+                label: "Cowgirl (POV, leaning back)",
+                value: "POV, straddling a nude man, riding him in cowgirl position, leaning back, his penis is deep inside {possessive}"
             },
             {
-                label: "POV/Cowgirl (leaning forward)",
-                value: "pov, straddling a nude man, riding him in cowgirl position, leaning forward with her arms in front of her, his penis is deep inside {possessive}"
+                label: "Cowgirl (POV, leaning forward)",
+                value: "POV, straddling a nude man, riding him in cowgirl position, leaning forward with her arms in front of her, his penis is deep inside {possessive}"
             },
             {
-                label: "POV/Blowjob",
-                value: "pov, between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
+                label: "Blowjob (POV)",
+                value: "POV, between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
             },
             {
-                label: "POV/Missionary",
-                value: "pov, hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath the camera with {possessive} legs spread, his penis deep inside {possessive}"
+                label: "Blowjob (Side View)",
+                value: "side-view, between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
             },
             {
-                label: "Bathroom Mirror Selfie",
-                value: "taking a selfie in a bathroom mirror"
+                label: "Missionary (POV)",
+                value: "POV, hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath the camera with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
-                label: "Full-Length Mirror Reflection (standing)",
-                value: "standing in front of a full-length mirror while pulling {possessive} hair up"
+                label: "Missionary (Side-View)",
+                value: "side-view, a man is hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath him with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
-                label: "Full-Length Mirror Reflection (sitting)",
-                value: "sitting in front of a full-length mirror looking at {possessive} reflection"
+                label: "Doggystyle (POV)",
+                value: "POV, of a man behind the {personNoun} who is on all fours. His penis is deep inside {possessive}."
             },
             {
-                label: "Morning Stretch",
-                value: "standing, mid-stretch reaching both arms overhead while rising up on {possessive} toes, hands in {possessive} hair, back arched, chest pressed forward, shoulders pulled back."
+                label: "Doggystyle (Side View)",
+                value: "side-view, of the {personNoun} on all fours and a man is behind {possessive}. His penis is deep inside {possessive}."
+            },
+            {
+                label: "Intimate Embrace",
+                value: "a high-angle view looking at a man and {personNoun}, both nude, locked in a passionate embrace with their arms and legs intertwined, exploring each other's bodies."
+            },
+            {
+                label: "Reverse Cowgirl (POV)",
+                value: "POV, of a nude {personNoun} straddling a man in reverse cowgirl position, facing away from him with {possessive} back to the camera, riding him, his penis deep inside {possessive}"
+            },
+            {
+                label: "Reverse Cowgirl (Side-View)",
+                value: "side-view, a nude {personNoun} straddles a man in reverse cowgirl position, facing away from him, riding him with {possessive} back turned toward him, his penis deep inside {possessive}"
+            },
+            {
+                label: "Spooning (Side-View)",
+                value: "side-view, lying on {possessive} side with a man pressed behind {objectPronoun} in spooning position, his penis deep inside {possessive} from behind"
+            },
+            {
+                label: "Standing, Face-to-Face (POV)",
+                value: "POV, standing face-to-face with a nude {personNoun} pressed against the camera, one of {possessive} legs lifted and wrapped around the man's waist, his penis deep inside {possessive}"
+            },
+            {
+                label: "Standing, Face-to-Face (Side-View)",
+                value: "side-view, a nude {personNoun} stands face-to-face with a man, one leg lifted and wrapped around his waist, pressed against him, his penis deep inside {possessive}"
+            },
+            {
+                label: "69 (Side-View)",
+                value: "side-view, a nude {personNoun} and a man lying together in a 69 position, each pleasuring the other orally at the same time"
+            },
+            {
+                label: "Cunnilingus (POV)",
+                value: "POV, of a man kneeling between {possessive} spread legs, looking up at {objectPronoun} while performing oral sex on {objectPronoun}, {possessive} head tilted back in pleasure"
+            },
+            {
+                label: "Legs-on-Shoulders Missionary (POV)",
+                value: "POV, hovering over a nude {personNoun} whose legs are pushed back and resting on the man's shoulders, looking down at {objectPronoun} as his penis is deep inside {possessive}"
+            },
+            {
+                label: "Legs-on-Shoulders Missionary (Side-View)",
+                value: "side-view, a man hovers over a nude {personNoun} whose legs are pushed back and resting on his shoulders, his penis deep inside {possessive}"
+            },
+            {
+                label: "Against the Wall (POV)",
+                value: "POV, pressing a nude {personNoun} against a wall, one of {possessive} legs lifted around the man's waist, his penis deep inside {possessive}"
+            },
+            {
+                label: "Against the Wall (Side-View)",
+                value: "side-view, a man presses a nude {personNoun} against a wall, one of {possessive} legs lifted around his waist, his penis deep inside {possessive}"
+            },
+            {
+                label: "Bent Over Counter/Table (POV)",
+                value: "POV, of a man standing behind a nude {personNoun} who is bent over a counter, hands braced on the surface, his penis deep inside {possessive} from behind"
+            },
+            {
+                label: "Bent Over Counter/Table (Side-View)",
+                value: "side-view, a nude {personNoun} bent over a counter with a man standing behind {objectPronoun}, hands braced on the surface, his penis deep inside {possessive} from behind"
+            },
+            {
+                label: "Standing Doggystyle (POV)",
+                value: "POV, of a man standing behind a nude {personNoun} who is bent forward at the waist, hands braced on {possessive} knees, his penis deep inside {possessive} from behind"
+            },
+            {
+                label: "Standing Doggystyle (Side-View)",
+                value: "side-view, a nude {personNoun} bent forward at the waist, hands braced on {possessive} knees, with a man standing behind {objectPronoun}, his penis deep inside {possessive} from behind"
             }
         ]
     },
@@ -686,7 +779,15 @@ const actionGroups = [
             "in a surgical theatre",
             "in a crowded city street",
             "in a glade",
-            "on an office desk"
+            "on an office desk",
+            "at a poolside",
+            "on a beach at sunset",
+            "in a nightclub",
+            "in a hotel room",
+            "on a rooftop at night",
+            "in an elevator",
+            "in a library",
+            "in a locker room"
         ]
     }
 ];
@@ -731,7 +832,10 @@ const cameraPerspectivePresets = [
     { label: "3/4 view", value: "three-quarter camera perspective showing the subject from an oblique angle" },
     { label: "Wide-angle perspective", value: "pronounced wide-angle perspective with natural spatial exaggeration" },
     { label: "Compressed perspective", value: "compressed telephoto-style perspective with reduced apparent depth" },
-    { label: "Over-the-Shoulder", value: "over-the-shoulder" }
+    { label: "Over-the-Shoulder", value: "over-the-shoulder" },
+    { label: "Dutch angle", value: "tilted dutch-angle perspective" },
+    { label: "Drone/aerial shot", value: "aerial drone shot looking down from a significant height" },
+    { label: "Overhead flat-lay", value: "directly overhead flat-lay perspective" }
 ];
 
 const depthOfFieldPresets = [
@@ -749,7 +853,8 @@ const cameraCompositionPresets = [
     { label: "Negative space", value: "composition using deliberate negative space around the subject" },
     { label: "Leading lines", value: "composition using leading lines to draw attention toward the subject" },
     { label: "Foreground framing", value: "composition using foreground elements to naturally frame the subject" },
-    { label: "Dynamic diagonal", value: "dynamic diagonal composition creating a sense of movement and visual energy" }
+    { label: "Dynamic diagonal", value: "dynamic diagonal composition creating a sense of movement and visual energy" },
+    { label: "Motion blur", value: "dynamic motion blur conveying movement and energy" }
 ];
 
 // All camera-related pick lists combined into one flat menu of options,
