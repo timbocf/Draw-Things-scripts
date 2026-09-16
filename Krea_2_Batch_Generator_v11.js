@@ -588,7 +588,7 @@ const actionGroups = [
             },
             {
                 label: "POV/Missionary",
-                value: "{subjectPronoun} is laying on {possessive} back looking up at the camera"
+                value: "pov, hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath the camera with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
                 label: "Bathroom Mirror Selfie",
@@ -698,8 +698,7 @@ const actionGroups = [
 const artStylePresets = [
     "photo",
     "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
-    "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses",
-    "Bathroom Mirror Selfie"
+    "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses"
 ];
 
 // =========================================
