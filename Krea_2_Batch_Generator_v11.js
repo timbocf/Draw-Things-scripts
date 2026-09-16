@@ -1098,9 +1098,9 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
             fields.push(this.section(
                 "❖  CAMERA • Options",
                 `Choose up to ${cameraCount} camera angles, framings, compositions, or depth-of-field looks`,
-                Array.from({ length: cameraCount }, (_, idx) =>
+                Array.from({ length: cameraCount }, () =>
                     this.menu(
-                        idx === 0 ? findPresetMenuIndex(cameraOptionsPresets, DEFAULT_PROMPT_FALLBACKS.camera) : NONE_SELECTED,
+                        NONE_SELECTED,
                         menuWithPlaceholder("No camera option selected", cameraOptionsPresets)
                     )
                 )
