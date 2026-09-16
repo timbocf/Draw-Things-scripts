@@ -79,7 +79,7 @@ const agePresets = [
 // --- SKIN TONE ---
 const skinTonePresets = [
     "porcelain skin", "pale skin", "fair skin", { label: "tanned skin", value: "tanned sun-kissed skin" }, "cream skin",
-    "olive skin", "caramel skin", "golden-bronze skin", "warm brown skin", "dark skin", "dark glossy skin"
+    "olive skin", "caramel skin", "golden-bronze skin", "warm brown skin", "dark skin", "dark glossy skin", "dark black nubian skin with a glossy sheen"
 ];
 
 // --- EYE COLOR ---
