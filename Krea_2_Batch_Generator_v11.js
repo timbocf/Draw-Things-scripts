@@ -185,7 +185,7 @@ const specificBodyPresets = [
 // APPEARANCE
 // =========================================
 
-const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara", "full clown makeup"];
+const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara", "full clown makeup", "edgy sexy clown makeup with streams of blood from {possessive} mouth and dark eyes"];
 const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
 const bodyHairPresets = ["light body hair", "thick body hair", "light pubic hair", "thick pubic hair", "a full bush of thick pubic hair", "freckles", "dimples", "long painted fingernails", "sun-kissed tan lines", "sweaty skin"];
