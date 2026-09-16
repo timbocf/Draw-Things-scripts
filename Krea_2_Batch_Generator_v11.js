@@ -46,7 +46,7 @@ const nationalityPresets = [
     "Caucasian",
     "Black",
     "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, and a straight natural nose bridge, and thick dark brown hair with thick wavy curls, and a round ass",
-    "Mexican with prominent Indigenous Mesoamerican facial features",
+    "Mexican with prominent Indigenous Mesoamerican facial features, plump lips",
     "Indian",
     "Thai",
     "Japanese",
@@ -63,7 +63,7 @@ const celebrityPresets = [
     { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
     { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
     { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
-    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
+    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
     { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." }
 ];
 
@@ -77,7 +77,20 @@ const agePresets = [
 // --- SKIN TONE ---
 const skinTonePresets = [
     "porcelain skin", "pale skin", "fair skin", { label: "tanned skin", value: "tanned sun-kissed skin" }, "cream skin",
-    "olive skin", "caramel skin", "warm brown skin", "dark skin", "dark glossy skin"
+    "olive skin", "caramel skin", "golden-bronze skin", "warm brown skin", "dark skin", "dark glossy skin"
+];
+
+// --- EYE COLOR ---
+const eyeColorPresets = [
+    { label: "Blue", value: "blue eyes" },
+    { label: "Green", value: "green eyes" },
+    { label: "Hazel", value: "hazel eyes" },
+    { label: "Brown", value: "brown eyes" },
+    { label: "Dark brown", value: "dark brown eyes" },
+    { label: "Amber", value: "amber eyes" },
+    { label: "Gray", value: "gray eyes" },
+    { label: "Violet", value: "violet eyes" },
+    { label: "Heterochromia (blue/brown)", value: "eyes that have heterochromia, one eye blue, the other eye brown" }
 ];
 
 // =========================================
@@ -112,6 +125,19 @@ const hipPresets = [
     { label: "Narrow hips", value: "narrow hips" },
     { label: "Average hips", value: "average-width hips" },
     { label: "Wide hips", value: "wide hips with proportionally fuller hips and upper thighs" }
+];
+
+const lipsPresets = [
+    { label: "Thin lips", value: "thin lips" },
+    { label: "Average lips", value: "average lips" },
+    { label: "Full lips", value: "full lips" },
+    { label: "Plump lips", value: "plump lips" }
+];
+
+const eyelashPresets = [
+    { label: "Thin eyelashes", value: "thin eyelashes" },
+    { label: "Average eyelashes", value: "average eyelashes" },
+    { label: "Long eyelashes", value: "long eyelashes" }
 ];
 
 const bodyShapePresets = [
@@ -160,16 +186,22 @@ const specificBodyPresets = [
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
 const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
-const bodyHairPresets = ["light body hair", "thick body hair", "freckles", "long painted fingernails"];
+const bodyHairPresets = ["light body hair", "thick body hair", "freckles", "full lips", "long painted fingernails"];
 
 const hairDetailPresets = [
     { label: "Shaved on one side", value: "one side of the head shaved" },
     { label: "Shaved on both sides", value: "both sides of the head shaved" }
 ];
 
+const nosePresets = [
+    "straight bridge", "aquiline nose", "button nose", "upturned nose", "hooked nose",
+    "flared nostrils", "narrow nostrils", "wide nose", "small nose", "prominent nose"
+];
+
 const appearanceSwitchGroups = [
     { title: "Makeup", description: "Makeup and cosmetic styling", presets: makeupPresets },
     { title: "Facial Hair", description: "Facial hair characteristics", presets: facialHairPresets },
+    { title: "Nose", description: "Nose bridge, tip, and nostril characteristics (multiple can combine)", presets: nosePresets },
     { title: "Tattoos", description: "Visible tattoo characteristics", presets: tattooPresets },
     { title: "Body / Skin Details", description: "Body hair and skin details", presets: bodyHairPresets },
     { title: "Hair Details", description: "Additional hair-shaving and hair-structure details", presets: hairDetailPresets }
@@ -920,7 +952,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
 
         fields.push(this.section(
             sectionTitle(subjectPrefix, "Identity"),
-            "Gender, ethnicity, age, and skin tone",
+            "Gender, ethnicity, age, skin tone, and eye color",
             [
                 this.menu(
                     findPresetMenuIndex(genderPresets, "woman"),
@@ -928,7 +960,8 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                 ),
                 this.menu(NONE_SELECTED, menuWithPlaceholder("Choose nationality / ethnicity", nationalityPresets)),
                 this.menu(agePresets.indexOf("30 years old"), agePresets),
-                this.menu(NONE_SELECTED, menuWithPlaceholder("Choose skin tone", skinTonePresets))
+                this.menu(NONE_SELECTED, menuWithPlaceholder("Choose skin tone", skinTonePresets)),
+                this.menu(NONE_SELECTED, menuWithPlaceholder("Choose eye color", eyeColorPresets))
             ]
         ));
 
@@ -945,6 +978,8 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No ass size selected", assSizePresets)),
                 this.menu(NONE_SELECTED, menuWithPlaceholder("No belly size selected", bellySizePresets)),
                 this.menu(NONE_SELECTED, presetLabels(specificBodyPresets)),
+                this.menu(NONE_SELECTED, menuWithPlaceholder("No lips description", lipsPresets)),
+                this.menu(NONE_SELECTED, menuWithPlaceholder("No eyelashes description", eyelashPresets)),
                 this.textField("", "Custom body details", false, 60)
             ]
         ));
@@ -1186,12 +1221,14 @@ for (let i = 0; i < subjectCount; i++) {
     const nationality = selectedValueWithPlaceholder(identityData[1], nationalityPresets);
     const age = selectedValueNoPlaceholder(identityData[2], agePresets);
     const skin = selectedValueWithPlaceholder(identityData[3], skinTonePresets);
+    const eyeColor = selectedValueWithPlaceholder(identityData[4], eyeColorPresets);
     const genderForm = getGenderForm(gender);
 
     if (nationality) subjectParts.push(nationality);
     if (gender) subjectParts.push(gender);
     if (age) subjectParts.push(age);
     if (skin) subjectParts.push("with " + skin);
+    if (eyeColor) subjectParts.push(eyeColor);
     if (celebrity) subjectParts.push(celebrity);
 
     // --- Body / Physique ---
@@ -1204,7 +1241,9 @@ for (let i = 0; i < subjectCount; i++) {
         [bodyData[3], hipPresets],
         [bodyData[5], legPresets],
         [bodyData[6], assSizePresets],
-        [bodyData[7], bellySizePresets]
+        [bodyData[7], bellySizePresets],
+        [bodyData[9], lipsPresets],
+        [bodyData[10], eyelashPresets]
     ];
 
     for (const [index, presets] of bodySelections) {
@@ -1218,7 +1257,7 @@ for (let i = 0; i < subjectCount; i++) {
     const specificBody = selectedValueNoPlaceholder(bodyData[8], specificBodyPresets);
     if (specificBody) subjectParts.push(specificBody);
 
-    if (bodyData[9]) subjectParts.push(bodyData[9]);
+    if (bodyData[11]) subjectParts.push(bodyData[11]);
 
     // --- Appearance switch groups ---
     subjectParts.push(...parseGroupedSwitches(appearanceSwitchGroups));
