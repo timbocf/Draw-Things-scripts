@@ -64,7 +64,9 @@ const celebrityPresets = [
     { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
     { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
     { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
-    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." }
+    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." },
+    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair" },
+    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with short blonde hair in a textured pixie cut style" }
 ];
 
 // --- AGE ---
@@ -186,7 +188,7 @@ const specificBodyPresets = [
 const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
 const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
-const bodyHairPresets = ["light body hair", "thick body hair", "freckles", "full lips", "long painted fingernails"];
+const bodyHairPresets = ["light body hair", "thick body hair", "light pubic hair", "thick pubic hair", "a full bush of thick pubic hair", "freckles", "dimples", "long painted fingernails", "sun-kissed tan lines", "sweaty skin"];
 
 const hairDetailPresets = [
     { label: "Shaved on one side", value: "one side of the head shaved" },
@@ -233,7 +235,11 @@ const hairstyleGroups = [
     {
         title: "Edgy and stylized cuts",
         description: "More fashion-forward and stylized hair cuts",
-        presets: ["faux hawk", "short boyish hairstyle", "spiked punk hairstyle"]
+        presets: [
+            "Faux Hawk",
+            { label: "Pixie Cut", value: "in a textured pixie cut style" },
+            "spiked punk hairstyle"
+        ]
     },
     {
         title: "Iconic curl styles",
@@ -375,6 +381,8 @@ const clothingGroups = [
             "a tank top",
             { label: "a short crop top", value: "a crop-top t-shirt showing significant underboob" },
             "a blouse",
+            "a halter top",
+            "off-shoulder top",
             "an unbuttoned mens dress shirt",
             "a hoodie"
         ]
@@ -389,21 +397,27 @@ const clothingGroups = [
             "cutoff jean shorts",
             "spandex leggings",
             "mini-skirt",
-            "pleated mini-skirt"
+            "pleated mini-skirt",
+            "wrap-around skirt"
         ]
     },
     {
         title: "Dresses",
         description: "Dress and one-piece styles and color",
         hasColorMenu: true,
-        presets: ["a short babydoll dress", "a summer dress", "one-piece swimsuit"]
+        presets: [
+            "a short babydoll dress", "a summer dress", "a multicolored sari",
+            "a burqa", "a nun's habit", "a traditional wedding dress",
+            "an edgy racy wedding dress", "a full-length evening gown",
+            "a lowcut full-length sheer dress with side pockets", "cut-out dress with a side slit from her waist down"
+        ]
     },
     {
         title: "Lingerie",
         description: "Lingerie, underlayers, and color",
         hasColorMenu: true,
         presets: [
-            "nude", "bikini-style panties", "thong", "string bikini", "garter belt",
+            "nude", "bikini-style panties", "thong", "high-waisted thong bottoms", "garter belt",
             "lace bustier", "silk lingerie set", "black lace lingerie set", "red satin lingerie set",
             "sheer lace teddy", "transparent lace bra and panties", "lace-up corset", "satin chemise",
             "balconette bra and matching panties", "lace garter set",
@@ -411,6 +425,12 @@ const clothingGroups = [
             "push-up bra and thong set", "strapless corset set",
             "sheer robe with matching panties", "satin slip dress", "lace-up bustier set",
             "corset over stockings"
+        ]
+    },
+    {
+        title: "Swimwear",
+        presets: [
+            "one-piece swimsuit", "two-piece bikini", "micro bikini", "string bikini"
         ]
     },
     {
@@ -532,8 +552,12 @@ const actionGroups = [
         placeholder: "No signature pose selected",
         presets: [
             {
-                label: "POV/Cowgirl",
-                value: "pov, straddling a nude man, riding him in cowgirl position, his penis is deep inside {subjectPronoun}"
+                label: "POV/Cowgirl (leaning back)",
+                value: "pov, straddling a nude man, riding him in cowgirl position, leaning back, his penis is deep inside {possessive}"
+            },
+            {
+                label: "POV/Cowgirl (leaning forward)",
+                value: "pov, straddling a nude man, riding him in cowgirl position, leaning forward with her arms in front of her, his penis is deep inside {possessive}"
             },
             {
                 label: "POV/Blowjob",
@@ -918,7 +942,7 @@ const inputs = requestFromUser("Batch Prompts", "Generate", function () {
                         )
                     ),
                     this.textField(
-                        "{descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
+                        "A {descriptor} {artStyle} of {gender}, {nationality}, {action}, {description}. {subjectPronoun} is wearing {clothing}. {timeOfDay}, {lighting}. Natural anatomy",
                         "Prompt Template — tags: {descriptor}, {artStyle}, {gender}, {nationality}, {description}, {action}, {clothing}, {timeOfDay}, {lighting}, {colorTreatment}, {subjectPronoun}, {objectPronoun}, {possessive}, {reflexive}, {personNoun}.",
                         false,
                         80
