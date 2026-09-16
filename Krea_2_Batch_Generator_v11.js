@@ -112,7 +112,7 @@ const eyeColorPresets = [
 
 const overallBuildPresets = [
     { label: "Slim build", value: "slim build" },
-    { label: "Athletic build", value: "athletic build with a fit, naturally toned physique" },
+    { label: "Soft Fit Frame", value: "toned athletic frame softened by naturally feminine curves, visible but subtle muscle definition" },
     { label: "Average build", value: "average build" },
     { label: "Petite build", value: "petite build with a small overall frame, narrow hips, short stature, narrow shoulders, thin legs, and flat belly" },
     { label: "Curvy build", value: "curvy build with naturally pronounced feminine curves" },
