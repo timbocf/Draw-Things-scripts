@@ -504,6 +504,20 @@ const clothingGroups = [
         ]
     },
     {
+        title: "Period Fashion",
+        description: "1940s WWII-era and 1960s mid-century styling",
+        presets: [
+            { label: "1940s WWII Women's Ensemble", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
+            { label: "1940s WWII Flight Jacket", value: "1940s WWII-style leather flight jacket worn over a white dress" },
+            { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie" },
+            { label: "1960s Mod Shift Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem" },
+            { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves" },
+            { label: "1960s Turtleneck & Slacks", value: "1960s beatnik turtleneck paired with high-waisted slacks" },
+            { label: "1960s Go-Go Outfit", value: "1960s go-go dress with white go-go boots" },
+            { label: "1960s Pillbox Ensemble", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt" }
+        ]
+    },
+    {
         title: "Footwear",
         description: "Shoes, socks, legwear, and color",
         hasColorMenu: true,
