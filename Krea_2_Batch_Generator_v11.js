@@ -185,10 +185,21 @@ const specificBodyPresets = [
 // APPEARANCE
 // =========================================
 
-const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara", "full clown makeup", "edgy sexy clown makeup with streams of blood from {possessive} mouth and dark eyes"];
+const makeupPresets = ["light makeup", "heavy makeup", "red lipstick", "smokey eyes", "heavy mascara"];
+const makeupOdditiesPresets = [
+    "full clown makeup", "edgy sexy clown makeup with streams of blood from {possessive} mouth and dark eyes",
+    "porcelain doll makeup with rosy cheeks and a painted-on smile", "geisha-style white face makeup with red lips",
+    "sugar skull Dia de los Muertos face paint", "zombie/horror makeup with pale skin and dark sunken eyes",
+    "mime makeup with white face and black accents", "glitter rave face paint", "tribal face paint"
+];
 const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
-const bodyHairPresets = ["light body hair", "thick body hair", "light pubic hair", "thick pubic hair", "a full bush of thick pubic hair", "freckles", "dimples", "long painted fingernails", "sun-kissed tan lines", "sweaty skin"];
+const bodyHairPresets = [
+    "light body hair", "thick body hair", "light pubic hair", "thick pubic hair", "a full bush of thick pubic hair",
+    "freckles", "dimples", "long painted fingernails", "sun-kissed tan lines", "sweaty skin",
+    "prosthetic small horns", "pointed elf ears", "vampire fangs", "fake stitched scars",
+    "metallic/chrome body paint", "bioluminescent-style glowing paint accents"
+];
 
 const hairDetailPresets = [
     { label: "Shaved on one side", value: "one side of the head shaved" },
@@ -202,6 +213,7 @@ const nosePresets = [
 
 const appearanceSwitchGroups = [
     { title: "Makeup", description: "Makeup and cosmetic styling", presets: makeupPresets },
+    { title: "Makeup Oddities", description: "Unconventional and costume-style makeup looks", presets: makeupOdditiesPresets },
     { title: "Facial Hair", description: "Facial hair characteristics", presets: facialHairPresets },
     { title: "Nose", description: "Nose bridge, tip, and nostril characteristics (multiple can combine)", presets: nosePresets },
     { title: "Tattoos", description: "Visible tattoo characteristics", presets: tattooPresets },
@@ -447,7 +459,18 @@ const clothingGroups = [
         presets: [
             { label: "French Maid Uniform", value: "black French maid uniform with short pleated skirt and white collar" },
             { label: "Hooters Uniform", value: "Hooters uniform (tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts)" },
-            { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. {possessive} shirt is unbuttoned down to {possessive} navel, revealing deep cleavage." }
+            { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. {possessive} shirt is unbuttoned down to {possessive} navel, revealing deep cleavage." },
+            { label: "Sexy Nurse", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" }
+        ]
+    },
+    {
+        title: "Costume Oddities",
+        description: "Unconventional and surreal costume presets",
+        presets: [
+            "a gimp mask",
+            "a latex catsuit",
+            { label: "mascot-style animal onesie, unzipped", value: "a mascot-style animal onesie, unzipped" },
+            { label: "marionette/puppet aesthetic", value: "a marionette/puppet aesthetic with visible joint seams and strings" }
         ]
     },
     {
