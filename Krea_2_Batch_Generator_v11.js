@@ -66,7 +66,7 @@ const celebrityPresets = [
     { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
     { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." },
     { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair" },
-    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with short blonde hair in a textured pixie cut style" }
+    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" }
 ];
 
 // --- AGE ---
