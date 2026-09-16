@@ -117,7 +117,8 @@ const overallBuildPresets = [
     { label: "Petite build", value: "petite build with a small overall frame, narrow hips, short stature, narrow shoulders, thin legs, and flat belly" },
     { label: "Curvy build", value: "curvy build with naturally pronounced feminine curves" },
     { label: "Muscular build", value: "muscular build with clearly developed musculature" },
-    { label: "Chubby build", value: "chubby build with a softer, fuller physique" }
+    { label: "Chubby build", value: "chubby build with a softer, fuller physique" },
+    { label: "Large frame", value: "large frame with broad shoulders, thick limbs, and a tall, imposing build" }
 ];
 
 const heightPresets = [
