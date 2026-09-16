@@ -259,7 +259,7 @@ const accessoryGroups = [
         presets: [
             "stud earrings", "hoop earrings", "large hoop earrings", "drop earrings",
             "necklace", "layered necklaces", "choker", "pendant necklace", "pearl necklace",
-            "bracelet", "stacked bracelets", "watch", "rings", "multiple rings"
+            "bracelet", "stacked bracelets", "watch", "rings", "multiple rings", "diamond-studded silver anklet"
         ]
     },
     {
