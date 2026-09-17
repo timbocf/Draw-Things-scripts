@@ -641,7 +641,7 @@ const actionGroups = [
                 value: "POV, hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath the camera with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
-                label: "Missionary (Side-View)",
+                label: "Missionary (Side-View, Landscape)",
                 value: "side-view, a man is hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath him with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
@@ -657,11 +657,11 @@ const actionGroups = [
                 value: "a high-angle view looking at a man and {personNoun}, both nude, locked in a passionate embrace with their arms and legs intertwined, exploring each other's bodies."
             },
             {
-                label: "Reverse Cowgirl (POV)",
+                label: "Reverse Cowgirl (POV, Portrait)",
                 value: "POV, of a nude {personNoun} straddling a man in reverse cowgirl position, facing away from him with {possessive} back to the camera, riding him, his penis deep inside {possessive}"
             },
             {
-                label: "Reverse Cowgirl (Side-View)",
+                label: "Reverse Cowgirl (Side-View, Landscape)",
                 value: "side-view, a nude {personNoun} straddles a man in reverse cowgirl position, facing away from him, riding him with {possessive} back turned toward him, his penis deep inside {possessive}"
             },
             {
@@ -669,7 +669,7 @@ const actionGroups = [
                 value: "side-view, lying on {possessive} side with a man pressed behind {objectPronoun} in spooning position, his penis deep inside {possessive} from behind"
             },
             {
-                label: "Standing, Face-to-Face (Side-View)",
+                label: "Standing, Face-to-Face (Side-View, Portrait)",
                 value: "side-view, a nude {personNoun} stands face-to-face with a man, one leg lifted and wrapped around his waist, pressed against him, his penis deep inside {possessive}"
             },
             {
@@ -677,7 +677,7 @@ const actionGroups = [
                 value: "side-view, a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between her legs."
             },
             {
-                label: "Cunnilingus (From Above)",
+                label: "Cunnilingus (From Above, Portrait)",
                 value: "High-angle. She's laying on her back with her legs spread wide. A man is kneeling between her spread legs, looking up at her while performing oral sex on her, her head tilted back in pleasure"
             },
             {
