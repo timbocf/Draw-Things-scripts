@@ -662,7 +662,7 @@ const actionGroups = [
             },
             {
                 label: "69",
-                value: "a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between her legs."
+                value: "a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between {possessive} legs."
             },
             {
                 label: "Cunnilingus (From Above, Portrait)",
@@ -670,7 +670,7 @@ const actionGroups = [
             },
             {
                 label: "Legs-on-Shoulders Missionary",
-                value: "a man hovers over a nude {personNoun} whose legs are pushed back and resting on his shoulders, his penis deep inside {possessive}"
+                value: "a man hovering over a nude {personNoun} laying on a bed. {possessive} legs are high in the air and resting on the man's shoulders. He is looking down at {possessive} as his penis is deep inside {possessive}"
             },
             {
                 label: "Against the Wall",
