@@ -761,7 +761,8 @@ const actionGroups = [
         description: "Leg and body alignment",
         presets: [
             "legs straight",
-            "elevated into the air",
+            "legs elevated into the air",
+            "feet elevated into the air",
             "knees locked",
             "knees bent",
             "one knee bent",
