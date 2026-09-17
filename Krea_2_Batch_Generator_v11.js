@@ -621,92 +621,68 @@ const actionGroups = [
         placeholder: "No signature pose selected",
         presets: [
             {
-                label: "Cowgirl (POV, leaning back)",
-                value: "POV, straddling a nude man, riding him in cowgirl position, leaning back, his penis is deep inside {possessive}"
+                label: "Cowgirl (leaning back)",
+                value: "straddling a nude man, riding him in cowgirl position, leaning back, his penis is deep inside {possessive}"
             },
             {
-                label: "Cowgirl (POV, leaning forward)",
-                value: "POV, straddling a nude man, riding him in cowgirl position, leaning forward with her arms in front of her, his penis is deep inside {possessive}"
+                label: "Cowgirl (leaning forward)",
+                value: "straddling a nude man, riding him in cowgirl position, leaning forward with her arms in front of her, his penis is deep inside {possessive}"
             },
             {
-                label: "Blowjob (POV)",
-                value: "POV, between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
-            },
-            {
-                label: "Blowjob (Side View)",
-                value: "side-view, between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
+                label: "Blowjob",
+                value: "between a nude man's legs, giving him a passionate blowjob, his penis deep inside {possessive} mouth, sucking the penis, sunken cheeks"
             },
             {
                 label: "Missionary (POV)",
                 value: "POV, hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath the camera with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
-                label: "Missionary (Side-View, Landscape)",
-                value: "side-view, a man is hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath him with {possessive} legs spread, his penis deep inside {possessive}"
+                label: "Missionary (Landscape)",
+                value: "a man is hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath him with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
-                label: "Doggystyle (Side View)",
-                value: "side-view, of the {personNoun} on all fours and a man is behind {possessive}. His penis is deep inside {possessive}."
+                label: "Doggystyle",
+                value: "of the {personNoun} on all fours and a man is behind {possessive}. His penis is deep inside {possessive}."
             },
             {
                 label: "Intimate Embrace",
-                value: "a high-angle view looking at a man and {personNoun}, both nude, locked in a passionate embrace with their arms and legs intertwined, exploring each other's bodies."
+                value: "looking at a man and {personNoun}, both nude, locked in a passionate embrace with their arms and legs intertwined, exploring each other's bodies."
             },
             {
-                label: "Reverse Cowgirl (POV, Portrait)",
-                value: "POV, of a nude {personNoun} straddling a man in reverse cowgirl position, facing away from him with {possessive} back to the camera, riding him, his penis deep inside {possessive}"
+                label: "Reverse Cowgirl (Portrait)",
+                value: "of a nude {personNoun} straddling a man in reverse cowgirl position, facing away from him with {possessive} back to the camera, riding him, his penis deep inside {possessive}"
             },
             {
-                label: "Reverse Cowgirl (Side-View, Landscape)",
-                value: "side-view, a nude {personNoun} straddles a man in reverse cowgirl position, facing away from him, riding him with {possessive} back turned toward him, his penis deep inside {possessive}"
+                label: "Spooning (Portrait)",
+                value: "lying on {possessive} side with a man pressed behind {objectPronoun} in spooning position, his penis deep inside {possessive} from behind"
             },
             {
-                label: "Spooning (Side-View, Portrait)",
-                value: "side-view, lying on {possessive} side with a man pressed behind {objectPronoun} in spooning position, his penis deep inside {possessive} from behind"
+                label: "Standing, Face-to-Face (Portrait)",
+                value: "a nude {personNoun} stands face-to-face with a man, one leg lifted and wrapped around his waist, pressed against him, his penis deep inside {possessive}"
             },
             {
-                label: "Standing, Face-to-Face (Side-View, Portrait)",
-                value: "side-view, a nude {personNoun} stands face-to-face with a man, one leg lifted and wrapped around his waist, pressed against him, his penis deep inside {possessive}"
-            },
-            {
-                label: "69 (Side-View)",
-                value: "side-view, a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between her legs."
+                label: "69",
+                value: "a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between her legs."
             },
             {
                 label: "Cunnilingus (From Above, Portrait)",
                 value: "High-angle. She's laying on her back with her legs spread wide. A man is kneeling between her spread legs, looking up at her while performing oral sex on her, her head tilted back in pleasure"
             },
             {
-                label: "Legs-on-Shoulders Missionary (POV)",
-                value: "POV, hovering over a nude {personNoun} whose legs are pushed back and resting on the man's shoulders, looking down at {objectPronoun} as his penis is deep inside {possessive}"
+                label: "Legs-on-Shoulders Missionary",
+                value: "a man hovers over a nude {personNoun} whose legs are pushed back and resting on his shoulders, his penis deep inside {possessive}"
             },
             {
-                label: "Legs-on-Shoulders Missionary (Side-View)",
-                value: "side-view, a man hovers over a nude {personNoun} whose legs are pushed back and resting on his shoulders, his penis deep inside {possessive}"
+                label: "Against the Wall",
+                value: "a man presses a nude {personNoun} against a wall, one of {possessive} legs lifted around his waist, his penis deep inside {possessive}"
             },
             {
-                label: "Against the Wall (POV)",
-                value: "POV, pressing a nude {personNoun} against a wall, one of {possessive} legs lifted around the man's waist, his penis deep inside {possessive}"
+                label: "Bent Over Counter/Table (Landscape)",
+                value: "a nude {personNoun} bent over a counter with a man standing behind {objectPronoun}, hands braced on the surface, his penis deep inside {possessive} from behind"
             },
             {
-                label: "Against the Wall (Side-View)",
-                value: "side-view, a man presses a nude {personNoun} against a wall, one of {possessive} legs lifted around his waist, his penis deep inside {possessive}"
-            },
-            {
-                label: "Bent Over Counter/Table (POV)",
-                value: "POV, of a man standing behind a nude {personNoun} who is bent over a counter, hands braced on the surface, his penis deep inside {possessive} from behind"
-            },
-            {
-                label: "Bent Over Counter/Table (Side-View)",
-                value: "side-view, a nude {personNoun} bent over a counter with a man standing behind {objectPronoun}, hands braced on the surface, his penis deep inside {possessive} from behind"
-            },
-            {
-                label: "Standing Doggystyle (POV)",
-                value: "POV, of a man standing behind a nude {personNoun} who is bent forward at the waist, hands braced on {possessive} knees, his penis deep inside {possessive} from behind"
-            },
-            {
-                label: "Standing Doggystyle (Side-View)",
-                value: "side-view, a nude {personNoun} bent forward at the waist, hands braced on {possessive} knees, with a man standing behind {objectPronoun}, his penis deep inside {possessive} from behind"
+                label: "Standing Doggystyle",
+                value: "of a man standing behind a nude {personNoun} who is bent forward at the waist, hands braced on {possessive} knees, his penis deep inside {possessive} from behind"
             }
         ]
     },
@@ -833,6 +809,7 @@ const cameraFramingPresets = [
 const cameraPerspectivePresets = [
     { label: "Candid", value: "candid" },
     { label: "Eye level", value: "natural eye-level perspective" },
+    { label: "POV", value: "POV" },
     { label: "Low angle", value: "low-angle perspective looking upward toward the subject" },
     { label: "High angle", value: "high-angle perspective looking downward toward the subject" },
     { label: "Worm's-eye", value: "extreme low-angle worm's-eye perspective" },
