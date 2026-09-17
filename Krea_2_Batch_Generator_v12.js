@@ -45,6 +45,67 @@ const MODEL_OPTIONS = [
     { label: "Krea 2", file: "krea_2_turbo_i8x.ckpt" }
 ];
 
+// ---- PROMPT ENHANCER ----
+// Local language model used to refine each constructed prompt before
+// generation (same "Image Interpreter" mechanism as the standalone
+// Prompt Enhancer script). Must be downloaded in Draw Things.
+const ENHANCER_MODEL = "qwen_3.5_4b_i8x.ckpt";
+
+// Instruction given to the language model. It must preserve every
+// concrete choice made by the batch generator and only improve wording.
+const KREA2_REFINEMENT_TEMPLATE = `You are a Krea 2 image-generation prompt refinement specialist.
+
+Your job is to refine an already-constructed prompt for Krea 2.
+
+PRESERVE EXACTLY:
+- subject identity and gender
+- age
+- ethnicity
+- body physique
+- hair characteristics
+- clothing
+- action
+- pose
+- environment
+- camera position
+- camera angle
+- requested composition
+- lighting direction/style
+- any explicitly specified objects
+- any explicitly specified relationships between objects
+
+DO NOT:
+- change the subject
+- change gender
+- change age
+- add clothing
+- remove clothing
+- change the action
+- change the pose
+- invent additional people
+- replace selected preset choices
+- contradict camera instructions
+- introduce a different artistic style unless explicitly requested
+
+REFINE:
+- natural language flow
+- visual specificity
+- spatial relationships
+- anatomical coherence
+- scene coherence
+- camera/composition clarity
+- lighting consistency
+- material and environmental detail
+- reduction of redundant wording
+- removal of contradictory descriptions
+
+Prioritize the user's original prompt over your own assumptions.
+
+Return ONLY the final Krea 2 prompt.
+No explanation.
+No headings.
+No markdown.`;
+
 // =========================================
 // PRESETS
 // =========================================
@@ -996,6 +1057,11 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
             MODEL_OPTIONS.map(option => this.switch(option.label === "Krea 2", option.label))
         ),
         this.section(
+            "❖  Prompt Enhancement",
+            "Refine each constructed prompt with a local language model before the review screen. The enhancer preserves your subject, clothing, pose, camera, and lighting choices while improving flow and visual specificity. The review screen will show the enhanced prompts.",
+            [this.switch(true, "Enhance prompts for Krea 2 (Qwen 3.5 4B)")]
+        ),
+        this.section(
             "❖  Batch Configurations",
             "Define how many variants to generate per batch",
             [
@@ -1017,7 +1083,8 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
 });
 
 const modelSelections = setup[0];
-const setupData = setup[1];
+const enhancementEnabled = setup[1] && setup[1][0] === true;
+const setupData = setup[2];
 
 // If neither model is selected, fall back to Krea 2 so the batch still runs.
 const modelsToRun = MODEL_OPTIONS.filter((_, index) => modelSelections[index] === true);
@@ -1641,12 +1708,108 @@ for (const aspectOption of selectedAspectOptions) {
 }
 
 // =========================================
-// STEP 4 — REVIEW / PREVIEW SCREEN
+// STEP 4 — PROMPT ENHANCEMENT (OPTIONAL)
 // =========================================
-// Shows the total prompt count and a sample of the actual constructed
-// prompt strings before anything is generated, so template mistakes
-// or unexpected combinations are visible up front instead of only
-// showing up in the console log after generation has already started.
+// Runs each constructed prompt through a local language model (the same
+// canvas.answer "Image Interpreter" mechanism used by the standalone
+// Prompt Enhancer script) to refine wording for Krea 2. This runs BEFORE
+// the review screen so the preview shows the actual enhanced prompts
+// that will be generated. The refinement is model-agnostic, so each
+// prompt is enhanced once and reused for every selected model.
+
+function buildEnhancementInstruction(promptText) {
+    return `${KREA2_REFINEMENT_TEMPLATE}
+
+[PURE TEXT MODE — IGNORE THE CANVAS]
+The canvas image currently loaded is irrelevant to this task. Do not describe, reference, or adapt any visual elements from it. Process only the text prompt below.
+
+Prompt to refine:
+"${promptText}"`;
+}
+
+function stripCodeFences(text) {
+    let result = text.trim();
+    const fenceMatch = result.match(/```(?:markdown|json|text)?\s*([\s\S]*?)```/);
+    if (fenceMatch) result = fenceMatch[1].trim();
+    // Remove wrapping quotes the model sometimes adds.
+    if (result.length > 1 && result.startsWith('"') && result.endsWith('"')) {
+        result = result.substring(1, result.length - 1).trim();
+    }
+    return result;
+}
+
+async function enhancePrompts(prompts) {
+    if (!enhancementEnabled || prompts.length === 0) {
+        return prompts;
+    }
+
+    // Make sure the language model is available before doing any work.
+    if (pipeline.areModelsDownloaded && !pipeline.areModelsDownloaded([ENHANCER_MODEL])) {
+        console.log(`Enhancer model not downloaded: ${ENHANCER_MODEL} — downloading…`);
+        try {
+            pipeline.downloadBuiltins([ENHANCER_MODEL]);
+        } catch (downloadError) {
+            console.log(`Failed to download enhancer model: ${downloadError.message}. Using raw prompts.`);
+            return prompts;
+        }
+    }
+
+    // Isolate the canvas: load a 1x1 blank placeholder so the language
+    // model cannot pick up visual content from whatever is on the canvas.
+    const BLANK_CARRIER_SRC = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+    let originalCanvasSrc = "";
+    try {
+        originalCanvasSrc = canvas.saveImageSrc(false);
+    } catch (saveError) {
+        console.log(`Unable to back up canvas (it may be empty): ${saveError.message}`);
+    }
+    try {
+        canvas.clear();
+        canvas.loadImageSrc(BLANK_CARRIER_SRC);
+    } catch (blankError) {
+        console.log(`Unable to load blank placeholder: ${blankError.message}`);
+    }
+
+    let failures = 0;
+
+    for (let i = 0; i < prompts.length; i++) {
+        const original = prompts[i].prompt;
+        try {
+            const raw = canvas.answer(ENHANCER_MODEL, buildEnhancementInstruction(original));
+            const refined = raw ? stripCodeFences(String(raw)) : "";
+            if (refined) {
+                prompts[i].prompt = refined;
+                console.log(`[${i + 1}/${prompts.length}] Enhanced prompt.`);
+            } else {
+                failures++;
+                console.log(`[${i + 1}/${prompts.length}] Enhancer returned empty output — keeping original prompt.`);
+            }
+        } catch (enhanceError) {
+            failures++;
+            console.log(`[${i + 1}/${prompts.length}] Enhancement failed (${enhanceError.message}) — keeping original prompt.`);
+        }
+    }
+
+    // Restore whatever was on the canvas before enhancement.
+    try {
+        canvas.clear();
+        if (originalCanvasSrc) canvas.loadImageSrc(originalCanvasSrc);
+    } catch (restoreError) {
+        console.log(`Unable to restore original canvas: ${restoreError.message}`);
+    }
+
+    console.log(`Prompt enhancement complete: ${prompts.length - failures}/${prompts.length} enhanced, ${failures} kept as-is.`);
+    return prompts;
+}
+
+// =========================================
+// STEP 5 — REVIEW / PREVIEW SCREEN
+// =========================================
+// Shows the total prompt count and a sample of the final prompt strings
+// (enhanced when the enhancer is enabled) before anything is generated,
+// so template mistakes or unexpected combinations are visible up front
+// instead of only showing up in the console log after generation has
+// already started.
 
 function buildPreviewText(prompts) {
     const sample = prompts.slice(0, PREVIEW_SAMPLE_SIZE);
@@ -1659,35 +1822,36 @@ function buildPreviewText(prompts) {
     return numbered.join("\n\n");
 }
 
-const review = requestFromUser("Review Prompts", "Generate", function () {
-    const aspectSummary = selectedAspectOptions.map(option => option.label).join(", ");
-    const modelSummary = modelsToRun.map(option => option.label).join(" and ");
-    const totalImages = finalPrompts.length * modelsToRun.length;
+async function runBatch() {
+    // Enhance prompts before showing the review screen, so the preview
+    // reflects the actual text that will be sent to the models. Failures
+    // inside enhancePrompts fall back to the original prompt text.
+    await enhancePrompts(finalPrompts);
 
-    return [
-        this.section(
-            "❖  Batch Summary",
-            `This batch will generate ${totalImages} image(s) using ${aspectSummary} on ${modelSummary}.`,
-            [this.switch(true, `Confirm and generate all ${totalImages} image(s)`)]
-        ),
+    const review = requestFromUser("Review Prompts", "Generate", function () {
+        const aspectSummary = selectedAspectOptions.map(option => option.label).join(", ");
+        const modelSummary = modelsToRun.map(option => option.label).join(" and ");
+        const totalImages = finalPrompts.length * modelsToRun.length;
 
-        this.section(
-            "❖  Sample Prompts",
-            finalPrompts.length > PREVIEW_SAMPLE_SIZE
-                ? `Showing the first ${PREVIEW_SAMPLE_SIZE} of ${finalPrompts.length} constructed prompts`
-                : "The full set of constructed prompts",
-            [this.textField(buildPreviewText(finalPrompts), "Constructed prompt preview (read-only)", true, 4000)]
-        )
-    ];
-});
+        return [
+            this.section(
+                "❖  Batch Summary",
+                `This batch will generate ${totalImages} image(s) using ${aspectSummary} on ${modelSummary}.${enhancementEnabled ? " Prompts have been enhanced for Krea 2." : ""}`,
+                [this.switch(true, `Confirm and generate all ${totalImages} image(s)`)]
+            ),
 
-const confirmed = review[0][0] === true;
+            this.section(
+                "❖  Sample Prompts",
+                finalPrompts.length > PREVIEW_SAMPLE_SIZE
+                    ? `Showing the first ${PREVIEW_SAMPLE_SIZE} of ${finalPrompts.length} constructed prompts`
+                    : "The full set of constructed prompts",
+                [this.textField(buildPreviewText(finalPrompts), "Constructed prompt preview (read-only)", true, 4000)]
+            )
+        ];
+    });
 
-// =========================================
-// STEP 5 — GENERATION
-// =========================================
+    const confirmed = review[0][0] === true;
 
-async function generateBatch() {
     if (!confirmed) {
         console.log("Batch generation cancelled by user on the review screen.");
         return;
@@ -1717,4 +1881,4 @@ async function generateBatch() {
     }
 }
 
-generateBatch();
+runBatch();
