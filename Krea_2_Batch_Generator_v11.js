@@ -674,7 +674,7 @@ const actionGroups = [
             },
             {
                 label: "Against the Wall",
-                value: "a man presses a nude {personNoun} against a wall, one of {possessive} legs lifted around his waist, his penis deep inside {possessive}"
+                value: "a man presses a nude {personNoun} against a wall, both of {possessive} legs lifted around his waist, suspended in air as he holds {possessive} aloft. His penis is deep inside {possessive}"
             },
             {
                 label: "Bent Over Counter/Table (Landscape)",
