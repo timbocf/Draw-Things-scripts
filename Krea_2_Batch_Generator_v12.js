@@ -740,7 +740,7 @@ const actionGroups = [
             },
             {
                 label: "Legs-on-Shoulders Missionary",
-                value: "a man hovering over a nude {personNoun} laying on a bed. {possessive} legs are high in the air and resting on the man's shoulders. He is looking down at {possessive} as his penis is deep inside {possessive}"
+                value: "lying on her back with her legs raised high and resting on the shoulders of a man on his hands and knees hovering over {possessive}. The man is looking down at {possessive} as his penis is deep inside {possessive}"
             },
             {
                 label: "Against the Wall",
