@@ -27,7 +27,9 @@ const DEFAULT_PROMPT_FALLBACKS = {
     subject: "a woman",
     outfit: "t-shirt and jeans",
     action: "smiling",
-    camera: "natural eye-level perspective",
+    // No default camera perspective — when none is selected, the prompt
+    // simply omits any perspective clause instead of forcing eye-level.
+    camera: "",
     timeOfDay: "natural daytime illumination",
     lighting: "soft directional light, balanced exposure, and ambient fill",
     artStyle: "photo",
@@ -663,12 +665,8 @@ const actionGroups = [
                 value: "side-view, a nude {personNoun} straddles a man in reverse cowgirl position, facing away from him, riding him with {possessive} back turned toward him, his penis deep inside {possessive}"
             },
             {
-                label: "Spooning (Side-View)",
+                label: "Spooning (Side-View, Portrait)",
                 value: "side-view, lying on {possessive} side with a man pressed behind {objectPronoun} in spooning position, his penis deep inside {possessive} from behind"
-            },
-            {
-                label: "Standing, Face-to-Face (POV)",
-                value: "POV, standing face-to-face with a nude {personNoun} pressed against the camera, one of {possessive} legs lifted and wrapped around the man's waist, his penis deep inside {possessive}"
             },
             {
                 label: "Standing, Face-to-Face (Side-View)",
