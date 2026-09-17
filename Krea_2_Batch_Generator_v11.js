@@ -679,8 +679,8 @@ const actionGroups = [
                 value: "side-view, a nude {personNoun} and a man lying in opposite directions, feet to head, together in a 69 position, each pleasuring the other orally at the same time. His head is between her legs."
             },
             {
-                label: "Cunnilingus (POV)",
-                value: "POV, of a man kneeling between {possessive} spread legs, looking up at {objectPronoun} while performing oral sex on {objectPronoun}, {possessive} head tilted back in pleasure"
+                label: "Cunnilingus (From Above)",
+                value: "High-angle. She's laying on her back with her legs spread wide. A man is kneeling between her spread legs, looking up at her while performing oral sex on her, her head tilted back in pleasure"
             },
             {
                 label: "Legs-on-Shoulders Missionary (POV)",
