@@ -645,10 +645,6 @@ const actionGroups = [
                 value: "side-view, a man is hovering on top of a nude woman in missionary position, looking down at {objectPronoun} as {subjectPronoun} lies on {possessive} back beneath him with {possessive} legs spread, his penis deep inside {possessive}"
             },
             {
-                label: "Doggystyle (POV)",
-                value: "POV, of a man behind the {personNoun} who is on all fours. His penis is deep inside {possessive}."
-            },
-            {
                 label: "Doggystyle (Side View)",
                 value: "side-view, of the {personNoun} on all fours and a man is behind {possessive}. His penis is deep inside {possessive}."
             },
