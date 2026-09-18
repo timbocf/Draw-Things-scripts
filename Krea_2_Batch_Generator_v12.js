@@ -41,7 +41,7 @@ const DEFAULT_PROMPT_FALLBACKS = {
 // NOTE: "file" must exactly match the model's filename in Draw Things.
 // Adjust the Flux.2 Klein entry to match your installed checkpoint.
 const MODEL_OPTIONS = [
-    { label: "Flux.2 Klein", file: "flux_2_klein_q8p.ckpt" },
+    { label: "Flux.2 Klein", file: "flux_2_klein_9b_i8x.ckpt" },
     { label: "Krea 2", file: "krea_2_turbo_i8x.ckpt" }
 ];
 
