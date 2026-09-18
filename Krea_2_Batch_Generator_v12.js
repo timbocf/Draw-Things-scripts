@@ -39,10 +39,24 @@ const DEFAULT_PROMPT_FALLBACKS = {
 // Models offered on the setup screen. Selecting both generates one image
 // per model for every constructed prompt.
 // NOTE: "file" must exactly match the model's filename in Draw Things.
-// Adjust the Flux.2 Klein entry to match your installed checkpoint.
+// "loras" lists the LoRAs attached for that model, each with its file
+// (exact Draw Things filename) and strength ("weight").
 const MODEL_OPTIONS = [
-    { label: "Flux.2 Klein", file: "flux_2_klein_9b_i8x.ckpt" },
-    { label: "Krea 2", file: "krea_2_turbo_i8x.ckpt" }
+    {
+        label: "Flux.2 Klein",
+        file: "flux_2_klein_9b_i8x.ckpt",
+        loras: [
+            { file: "klein_snofs_v1_4_fixed_lora_lora_f16.ckpt", weight: 1.4 }
+        ]
+    },
+    {
+        label: "Krea 2",
+        file: "krea_2_turbo_i8x.ckpt",
+        loras: [
+            { file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt", weight: 1.0 },
+            { file: "mysticxxx_krea2_v3_lora_f16.ckpt", weight: 0.6 }
+        ]
+    }
 ];
 
 // ---- PROMPT ENHANCER ----
@@ -1874,6 +1888,7 @@ async function runBatch() {
             const config = JSON.parse(JSON.stringify(baseConfig));
 
             config.model = modelOption.file;
+            config.loras = modelOption.loras.map(lora => ({ ...lora }));
             config.width = promptData.width;
             config.height = promptData.height;
 
