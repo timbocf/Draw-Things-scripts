@@ -300,10 +300,10 @@ const facialHairPresets = ["short beard", "thick beard"];
 const tattooPresets = ["arm tattoo", "back tattoo", "neck tattoos", "sleeve tattoos", "red & green rose tattoos that cover both arms"];
 const bodyHairPresets = [
     "light body hair", "thick body hair", "light pubic hair", "thick pubic hair", "a full bush of thick pubic hair",
-    "freckles", "dimples", "sun-kissed tan lines", "sweaty skin",
+    "freckles", "dimples", "wrinkles", "sun-kissed tan lines", "sweaty skin",
     "prosthetic small horns", "pointed elf ears", "vampire fangs", "fake stitched scars",
     "metallic/chrome body paint", "bioluminescent-style glowing paint accents",
-    "natural stretch marks", "cellulite texture", "visible veins", "beauty mark"
+    "subtle natural stretch marks", "cellulite texture", "visible veins", "beauty mark"
 ];
 
 const nailPresets = [
@@ -333,7 +333,7 @@ const appearanceSwitchGroups = [
 ];
 
 const hairColorPresets = [
-    "blonde", "brunette", "black", "red", "auburn", "salt & pepper", "silver",
+    "blonde", "brunette", "black", "red", "auburn", "salt & pepper", "brown salt & pepper", "silver",
     "platinum blonde", "copper/ginger", "chestnut brown", "ombre", "balayage", "pastel pink", "pastel blue/purple"
 ];
 const hairLengthPresets = ["short", "medium-length", "long", "very long"];
