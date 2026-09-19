@@ -29,7 +29,7 @@ const DEFAULT_PROMPT_FALLBACKS = {
     action: "smiling",
     // No default camera perspective — when none is selected, the prompt
     // simply omits any perspective clause instead of forcing eye-level.
-    camera: "",
+    camera: "candid",
     timeOfDay: "natural daytime illumination",
     lighting: "soft directional light, balanced exposure, and ambient fill",
     artStyle: "photo",
@@ -871,8 +871,18 @@ const actionGroups = [
 
 const artStylePresets = [
     "photo",
-    "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
-    "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses"
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
+    { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
+    { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
+    { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
+    { label: "Modern Vector/Flat Illustration", value: "Sleek vector illustration, clean lines, minimalist shading, bold flat color palette, mid-century graphic poster art style" },
+    { label: "Cyberpunk Anime/Cell-Shaded", value: "90s hand-drawn anime style, classic cell-shading, vibrant neon rim lighting, retro sci-fi aesthetic, detailed line art" },
+    { label: "Vintage Pulp Fiction Cover", value: "1950s pulp magazine cover illustration, dramatic dramatic chiaroscuro lighting, painted gouache texture, vibrant retro paperback aesthetic" },
+    { label: "Oil Painting/Impressionism", value: "Impressionist oil painting, thick impasto brushstrokes, textured canvas, dramatic lighting, rich paint texture in the style of John Singer Sargent" },
+    { label: "Watercolors", value: "Soft watercolor painting, fluid ink wash, gentle color bleeding, painterly splatters, delicate lines on textured watercolor paper" },
+    { label: "Papercraft/Layered Paper", value: "Layered papercraft illustration, laser-cut paper art, soft drop shadows, clean geometric depth, tactile paper texture" },
+    { label: "3D Stylized Game Character", value: "Overwatch/Arcane stylized 3D render, smooth painted textures, dramatic cinematic lighting, semi-realistic proportions, clean character art" },
+    { label: "Chibi/Kawaii 3D", value: "Chibi 3D figurine, oversized head, expressive shiny eyes, smooth vinyl toy finish, soft studio lighting" }
 ];
 
 // =========================================
