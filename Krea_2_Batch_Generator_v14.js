@@ -543,3 +543,458 @@ const hairstyleGroups = [
 ];
 
 const ALL_HAIRSTYLE_PRESETS = hairstyleGroups.flatMap(group => group.presets);
+            { label: "soft feathered 70s blowout", value: "soft feathered 1970s blowout hairstyle with airy volume, gentle waves, and naturally lifted layers" },
+            { label: "big 80s hair", value: "large, heavily teased 1980s hairstyle with extreme volume and lots of hairspray" },
+            { label: "retro victory rolls", value: "1940s-inspired Victory Roll hairstyle with large rolled sections framing the face" },
+            { label: "beehive", value: "classic 1960s beehive hairstyle with dramatic height and volume" },
+            { label: "big curly afro", value: "large rounded natural curly afro with substantial volume" }
+        ]
+    },
+    {
+        title: "Short and edgy styles",
+        description: "Short cuts and unconventional hairstyles",
+        presets: [
+            "Faux Hawk", "spiked punk hairstyle", "short pixie cut", "textured pixie cut",
+            "shaved sides", "undercut", "short bob", "blunt bob", "asymmetrical bob"
+        ]
+    },
+    {
+        title: "Long and flowing styles",
+        description: "Long hair worn loose or with flowing movement",
+        presets: [
+            "long flowing hair", "long straight hair", "long wavy hair", "long curly hair",
+            "very long hair flowing down the back", "waist-length hair", "floor-length hair"
+        ]
+    }
+];
+
+const accessoryGroups = [
+    {
+        title: "Jewelry",
+        description: "Necklaces, earrings, bracelets, and rings",
+        presets: [
+            "hoop earrings", "stud earrings", "large earrings", "multiple earrings",
+            "necklace", "choker", "pearl necklace", "stacked bracelets", "bracelets",
+            "multiple rings", "large statement ring", "anklet"
+        ]
+    },
+    {
+        title: "Eyewear",
+        description: "Glasses and sunglasses",
+        presets: [
+            "reading glasses", "round glasses", "cat-eye glasses", "aviator sunglasses",
+            "round sunglasses", "oversized sunglasses", "dark sunglasses"
+        ]
+    },
+    {
+        title: "Body Piercings",
+        description: "Visible facial and body piercings",
+        presets: [
+            "nose piercing", "septum piercing", "eyebrow piercing", "lip piercing",
+            "navel piercing", "nipple piercings", "multiple ear piercings"
+        ]
+    },
+    {
+        title: "Headwear",
+        description: "Hats and head coverings",
+        presets: [
+            "baseball cap", "cowboy hat", "beanie", "fedora", "wide-brimmed hat",
+            "sun hat", "beret", "bucket hat"
+        ]
+    },
+    {
+        title: "Hair Accessories",
+        description: "Decorative accessories worn in the hair",
+        presets: [
+            "hair clips", "decorative hair pins", "headband", "hair ribbons",
+            "scrunchie", "flower tucked into the hair"
+        ]
+    }
+];
+
+// =========================================
+// CLOTHING
+// =========================================
+
+const clothingColorPresets = [
+    "black", "white", "red", "blue", "navy blue", "light blue", "green",
+    "olive green", "yellow", "orange", "pink", "purple", "lavender",
+    "brown", "beige", "cream", "gray", "silver", "gold", "multicolored"
+];
+
+const clothingGroups = [
+    {
+        title: "Tops",
+        description: "Shirts, tops, sweaters, jackets, and other upper-body clothing",
+        hasColorMenu: true,
+        presets: [
+            "t-shirt",
+            "fitted t-shirt",
+            "oversized t-shirt",
+            "tank top",
+            "crop-top t-shirt showing significant underboob",
+            "halter top",
+            "tube top",
+            "bandeau top",
+            "blouse",
+            "button-down shirt",
+            "dress shirt",
+            "off-shoulder top",
+            "long-sleeve shirt",
+            "turtleneck",
+            "sweater",
+            "hoodie",
+            "cardigan",
+            "denim jacket",
+            "leather jacket",
+            "bomber jacket",
+            "blazer",
+            "business suit jacket",
+            "sports jersey",
+            "football jersey",
+            "basketball jersey",
+            "baseball jersey"
+        ]
+    },
+    {
+        title: "Bottoms",
+        description: "Pants, shorts, skirts, and other lower-body clothing",
+        hasColorMenu: true,
+        presets: [
+            "jeans",
+            "skinny jeans",
+            "bootcut jeans",
+            "high-waisted jeans",
+            "low-rise jeans",
+            "cargo pants",
+            "dress pants",
+            "slacks",
+            "khaki pants",
+            "leggings",
+            "spandex leggings",
+            "yoga pants",
+            "shorts",
+            "denim shorts",
+            "short athletic shorts",
+            "cargo shorts",
+            "mini-skirt",
+            "pleated mini-skirt",
+            "pencil skirt",
+            "midi skirt",
+            "maxi skirt",
+            "wrap-around skirt"
+        ]
+    },
+    {
+        title: "Dresses",
+        description: "Casual, formal, and costume-style dresses",
+        hasColorMenu: true,
+        presets: [
+            "summer dress",
+            "sundress",
+            "cocktail dress",
+            "little black dress",
+            "evening gown",
+            "bodycon dress",
+            "mini dress",
+            "maxi dress",
+            "wrap dress",
+            "halter dress",
+            "off-shoulder dress",
+            "strapless dress",
+            "floral dress",
+            "denim dress",
+            "lace dress",
+            "silk dress",
+            "sequin dress"
+        ]
+    },
+    {
+        title: "Lingerie",
+        description: "Lingerie and intimate apparel",
+        hasColorMenu: true,
+        presets: [
+            "bra and panties",
+            "lace bra and panties",
+            "matching lingerie set",
+            "black lace lingerie",
+            "red lace lingerie",
+            "silk camisole",
+            "silk cami and shorts set",
+            "teddy lingerie",
+            "babydoll lingerie",
+            "corset",
+            "garter belt",
+            "thigh-high stockings",
+            "fishnet stockings"
+        ]
+    },
+    {
+        title: "Swimwear",
+        description: "Bikinis, one-piece suits, and beachwear",
+        hasColorMenu: true,
+        presets: [
+            "one-piece swimsuit",
+            "high-cut one-piece swimsuit",
+            "bikini",
+            "string bikini",
+            "high-waisted bikini",
+            "halter bikini",
+            "sport bikini",
+            "monokini",
+            "rash guard",
+            "board shorts"
+        ]
+    },
+    {
+        title: "Robes / Loungewear",
+        description: "Bathrobes, pajamas, and comfortable indoor clothing",
+        hasColorMenu: true,
+        presets: [
+            "silk robe",
+            "bathrobe",
+            "plush bathrobe",
+            "satin robe",
+            "pajamas",
+            "silk pajamas",
+            "tank top and pajama shorts",
+            "oversized sleep shirt",
+            "loungewear set"
+        ]
+    },
+    {
+        title: "Sets",
+        description: "Coordinated outfits and matching clothing sets",
+        hasColorMenu: true,
+        presets: [
+            "matching crop top and skirt set",
+            "matching top and shorts set",
+            "matching blazer and trousers set",
+            "matching sweater and pants set",
+            "matching athletic set",
+            "matching denim set",
+            "matching leather set"
+        ]
+    },
+    {
+        title: "Uniforms",
+        description: "Professional, school, service, and themed uniforms",
+        hasColorMenu: true,
+        presets: [
+            { label: "Hooters Uniform", value: "Hooters uniform (tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts)" },
+            { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. {possessive} shirt is unbuttoned down to {possessive} navel, revealing deep cleavage." },
+            { label: "Sexy Nurse", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
+            "nurse uniform",
+            "doctor's coat",
+            "surgeon's scrubs",
+            "police uniform",
+            "firefighter uniform",
+            "military uniform",
+            "flight attendant uniform",
+            "chef uniform",
+            "construction worker uniform",
+            "mechanic uniform",
+            "business uniform"
+        ]
+    },
+    {
+        title: "Costume Oddities",
+        description: "Unconventional and surreal costume presets",
+        presets: [
+            "a gimp mask",
+            "a latex catsuit",
+            { label: "mascot-style animal onesie, unzipped", value: "a mascot-style animal onesie, unzipped" },
+            { label: "marionette/puppet aesthetic", value: "a marionette/puppet aesthetic with visible joint seams and strings" }
+        ]
+    },
+    {
+        title: "Period Fashion",
+        description: "1940s WWII-era and 1960s mid-century styling",
+        presets: [
+            { label: "1940s WWII Women's Ensemble", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
+            { label: "1940s WWII Flight Jacket", value: "1940s WWII-style leather flight jacket worn over a white dress" },
+            { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie" },
+            { label: "1960s Mod Shift Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem" },
+            { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves" },
+            { label: "1960s Turtleneck & Slacks", value: "1960s beatnik turtleneck paired with high-waisted slacks" },
+            { label: "1960s Go-Go Outfit", value: "1960s go-go dress with white go-go boots" },
+            { label: "1960s Pillbox Ensemble", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt" }
+        ]
+    },
+    {
+        title: "Footwear",
+        description: "Shoes, socks, legwear, and color",
+        hasColorMenu: true,
+        presets: [
+            "barefoot", "tube socks", "knee-high Hello Kitty socks", "knee-high Pokemon socks",
+            "black fishnet stockings", "sheer lace stockings", "strappy heels", "lace-up knee boots",
+            "platform boots", "stiletto heels", "cowboy boots", "thigh-high stockings", "thigh-high leather boots",
+            "lace-up thigh-highs"
+        ]
+    }
+];
+
+// Combined clothing presets. These are complete outfit combinations that can
+// be selected as a single outfit instead of combining individual groups.
+const clothingPresets = [
+    { label: "Casual T-Shirt & Jeans", value: "a fitted t-shirt and jeans" },
+    { label: "Tank Top & Shorts", value: "a tank top and denim shorts" },
+    { label: "Blouse & Skirt", value: "a blouse and a knee-length skirt" },
+    { label: "Business Suit", value: "a tailored business suit with a button-down shirt" },
+    { label: "Summer Sundress", value: "a casual summer sundress" },
+    { label: "Little Black Dress", value: "a little black dress with strappy heels" },
+    { label: "Evening Gown", value: "an elegant evening gown" },
+    { label: "Yoga Outfit", value: "a fitted athletic tank top and yoga pants" },
+    { label: "Gym Outfit", value: "a fitted athletic shirt and short athletic shorts" },
+    { label: "Hoodie & Joggers", value: "an oversized hoodie and joggers" },
+    { label: "Leather Jacket & Jeans", value: "a leather jacket over a t-shirt with jeans and boots" },
+    { label: "Cowboy Outfit", value: "a western shirt, bootcut jeans, cowboy boots, and a cowboy hat" },
+    { label: "Bikini", value: "a bikini with a beach cover-up" },
+    { label: "Lingerie", value: "matching lace lingerie with thigh-high stockings" },
+    { label: "Silk Robe", value: "a silk robe loosely tied at the waist" }
+];
+
+// =========================================
+// ACTION / POSE
+// =========================================
+
+const complexActionPresets = [
+    { label: "Standing — natural", value: "standing naturally" },
+    { label: "Standing — hands at sides", value: "standing naturally with {possessive} arms relaxed at {possessive} sides" },
+    { label: "Standing — hand on hip", value: "standing with one hand resting on {possessive} hip" },
+    { label: "Walking toward camera", value: "walking toward the camera" },
+    { label: "Walking away", value: "walking away from the camera" },
+    { label: "Sitting on chair", value: "sitting naturally on a chair" },
+    { label: "Sitting cross-legged", value: "sitting cross-legged" },
+    { label: "Kneeling", value: "kneeling naturally" },
+    { label: "Lying down", value: "lying down naturally" },
+    { label: "Leaning against wall", value: "leaning casually against a wall" },
+    { label: "Hands in pockets", value: "standing with {possessive} hands in {possessive} pockets" },
+    { label: "Arms crossed", value: "standing with {possessive} arms crossed" },
+    { label: "Looking over shoulder", value: "looking over {possessive} shoulder toward the camera" },
+    { label: "Hair adjustment", value: "lifting one hand to adjust {possessive} hair" },
+    { label: "Phone", value: "looking at a smartphone held in one hand" },
+    { label: "Reading", value: "reading a book held in both hands" },
+    { label: "Drinking coffee", value: "holding and drinking from a coffee cup" },
+    { label: "Laughing", value: "laughing naturally" },
+    { label: "Smiling", value: "smiling naturally at the camera" },
+    { label: "Stretching", value: "stretching both arms overhead" },
+    { label: "Hands behind head", value: "standing with both hands behind {possessive} head" },
+    { label: "Bending forward", value: "bending forward at the waist" },
+    { label: "Hands on knees", value: "leaning forward with both hands resting on {possessive} knees" }
+];
+
+const actionGroups = [
+    {
+        title: "Position",
+        description: "Overall body position",
+        presets: [
+            "standing",
+            "sitting",
+            "kneeling",
+            "squatting",
+            "lying down",
+            "crouching",
+            "leaning against a wall"
+        ]
+    },
+    {
+        title: "Hands / Arms",
+        description: "Arm and hand placement",
+        presets: [
+            "arms at {possessive} sides",
+            "arms crossed",
+            "hands on {possessive} hips",
+            "hands behind {possessive} back",
+            "hands behind {possessive} head",
+            "one hand on {possessive} hip",
+            "one hand touching {possessive} hair",
+            "both hands touching {possessive} hair",
+            "hands in {possessive} pockets",
+            "one hand resting on a nearby surface"
+        ]
+    },
+    {
+        title: "Legs",
+        description: "Leg and foot positioning",
+        presets: [
+            "legs together",
+            "legs slightly apart",
+            "one leg crossed over the other",
+            "one foot slightly forward",
+            "one knee bent",
+            "both knees bent",
+            "one leg raised"
+        ]
+    },
+    {
+        title: "Looking and facing",
+        description: "Looking and facing choices",
+        presets: [
+            "looking at camera",
+            "looking away from camera",
+            "looking off to the side",
+            "looking down",
+            "looking up",
+            "looking over {possessive} shoulder",
+            "head tilted to the side",
+            "head turned to the side",
+            "facing camera",
+            "facing away from camera",
+            "ass toward the camera",
+            "eyes closed",
+            "squinting"
+        ]
+    },
+    {
+        title: "Expression",
+        description: "Face and expression",
+        presets: [
+            "lips parted",
+            "smiling",
+            "chin tilted up",
+            "head tilted up",
+            "head tilted down"
+        ]
+    },
+    {
+        title: "Setting",
+        description: "Scene and environment",
+        presets: [
+            { label: "in the shower", value: "in a walk-in shower, with wet hair and wet body, water cascading down {possessive} wet body" },
+            "in a bedroom",
+            "in a kitchen",
+            "in the backseat of a car",
+            "in a surgical theatre",
+            "in a crowded city street",
+            "in a glade",
+            "on an office desk",
+            "at a poolside",
+            "on a beach at sunset",
+            "in a nightclub",
+            "in a hotel room",
+            "on a rooftop at night",
+            "in an elevator",
+            "in a library",
+            "in a locker room"
+        ]
+    }
+];
+
+// =========================================
+// ART STYLE
+// =========================================
+
+const artStylePresets = [
+    "photo",
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
+    { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
+    { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
+    { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
+    { label: "Modern Vector/Flat Illustration", value: "Sleek vector illustration, clean lines, minimalist shading, bold flat color palette, mid-century graphic poster art style" },
+    { label: "Cyberpunk Anime/Cell-Shaded", value: "90s hand-drawn anime style, classic cell-shading, vibrant neon rim lighting, retro sci-fi aesthetic, detailed line art" },
+    { label: "Vintage Pulp Fiction Cover", value: "1950s pulp magazine cover illustration, dramatic dramatic chiaroscuro lighting, painted gouache texture, vibrant retro paperback aesthetic" },
+    { label: "Oil Painting/Impressionism", value: "Impressionist oil painting, thick impasto brushstrokes, textured canvas, dramatic lighting, rich paint texture in the style of John Singer Sargent" },
+    { label: "Watercolors", value: "Soft watercolor painting, fluid ink wash, gentle color bleeding, painterly splatters, delicate lines on textured watercolor paper" },
+    { label: "Papercraft/Layered Paper", value: "Layered papercraft illustration, laser-cut paper art, soft drop shadows, clean geometric depth, handcrafted paper texture" }
+];
