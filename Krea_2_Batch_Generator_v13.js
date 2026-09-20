@@ -161,29 +161,34 @@ No markdown.`;
 const genderPresets = ["woman", "man"];
 
 // --- NATIONALITY / ETHNICITY ---
+// "value" is the full hard-coded description used in manual mode.
+// "short" is the lightweight descriptor used in Randomization Mode, where
+// "profile" points at a weighted trait table (see TRAIT_PROFILES) that
+// picks skin tone, hair color/type, and eye color by real-world likelihood
+// for that nationality instead of the hard-coded combination.
 const nationalityPresets = [
-    { label: "Caucasian", value: "Caucasian with Western European facial features" },
-    { label: "Black", value: "Black with rich deep skin tone and classic African facial features" },
-    { label: "Mixed-Race", value: "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
-    { label: "Mexican", value: "Mexican with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick dark wavy hair, plump lips, and a curvy hourglass figure" },
-    { label: "Indian", value: "Indian with warm brown skin, dark eyes, and South Asian facial features" },
-    { label: "Thai", value: "Thai with golden-tan skin and Southeast Asian facial features" },
-    { label: "Japanese", value: "Japanese with fair skin and East Asian facial features" },
-    { label: "Korean", value: "Korean with fair porcelain skin and East Asian facial features" },
-    { label: "Filipina", value: "Filipina with warm tan skin and Southeast Asian facial features" },
-    { label: "Brazilian", value: "Brazilian with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
-    { label: "Italian", value: "Italian with olive skin and Mediterranean facial features" },
-    { label: "Scandinavian", value: "Scandinavian with fair skin, light hair, and Nordic facial features" },
-    { label: "Russian/Eastern European", value: "Russian/Eastern European with fair skin and Slavic facial features" },
-    { label: "Chinese", value: "Chinese with fair skin and East Asian facial features" },
-    { label: "Vietnamese", value: "Vietnamese with warm tan skin and Southeast Asian facial features" },
-    { label: "Middle Eastern", value: "Middle Eastern with olive skin, dark hair, and Middle Eastern facial features" },
-    { label: "French", value: "French with fair skin and classic Western European features" },
-    { label: "German", value: "German with fair skin and Central European facial features" },
-    { label: "Irish", value: "Irish with fair skin, freckles, and Celtic facial features" },
-    { label: "Native American", value: "Native American with warm bronze skin and Indigenous American facial features" },
-    { label: "Polynesian/Pacific Islander", value: "Polynesian/Pacific Islander with warm brown skin and Polynesian facial features" },
-    { label: "Ethiopian/East African", value: "Ethiopian/East African with deep brown skin and East African facial features" }
+    { label: "Caucasian", short: "Caucasian", profile: "westEuropean", value: "Caucasian with Western European facial features" },
+    { label: "Black", short: "Black", profile: "african", value: "Black with rich deep skin tone and classic African facial features" },
+    { label: "Mixed-Race", short: "Mixed-race", profile: "mixed", value: "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
+    { label: "Mexican", short: "Mexican", profile: "latina", value: "Mexican with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick dark wavy hair, plump lips, and a curvy hourglass figure" },
+    { label: "Indian", short: "Indian", profile: "southAsian", value: "Indian with warm brown skin, dark eyes, and South Asian facial features" },
+    { label: "Thai", short: "Thai", profile: "southeastAsian", value: "Thai with golden-tan skin and Southeast Asian facial features" },
+    { label: "Japanese", short: "Japanese", profile: "eastAsian", value: "Japanese with fair skin and East Asian facial features" },
+    { label: "Korean", short: "Korean", profile: "eastAsian", value: "Korean with fair porcelain skin and East Asian facial features" },
+    { label: "Filipina", short: "Filipina", profile: "southeastAsian", value: "Filipina with warm tan skin and Southeast Asian facial features" },
+    { label: "Brazilian", short: "Brazilian", profile: "brazilian", value: "Brazilian with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
+    { label: "Italian", short: "Italian", profile: "mediterranean", value: "Italian with olive skin and Mediterranean facial features" },
+    { label: "Scandinavian", short: "Scandinavian", profile: "nordic", value: "Scandinavian with fair skin, light hair, and Nordic facial features" },
+    { label: "Russian/Eastern European", short: "Russian", profile: "slavic", value: "Russian/Eastern European with fair skin and Slavic facial features" },
+    { label: "Chinese", short: "Chinese", profile: "eastAsian", value: "Chinese with fair skin and East Asian facial features" },
+    { label: "Vietnamese", short: "Vietnamese", profile: "southeastAsian", value: "Vietnamese with warm tan skin and Southeast Asian facial features" },
+    { label: "Middle Eastern", short: "Middle Eastern", profile: "middleEastern", value: "Middle Eastern with olive skin, dark hair, and Middle Eastern facial features" },
+    { label: "French", short: "French", profile: "westEuropean", value: "French with fair skin and classic Western European features" },
+    { label: "German", short: "German", profile: "westEuropean", value: "German with fair skin and Central European facial features" },
+    { label: "Irish", short: "Irish", profile: "celtic", value: "Irish with fair skin, freckles, and Celtic facial features" },
+    { label: "Native American", short: "Native American", profile: "nativeAmerican", value: "Native American with warm bronze skin and Indigenous American facial features" },
+    { label: "Polynesian/Pacific Islander", short: "Polynesian", profile: "polynesian", value: "Polynesian/Pacific Islander with warm brown skin and Polynesian facial features" },
+    { label: "Ethiopian/East African", short: "Ethiopian", profile: "eastAfrican", value: "Ethiopian/East African with deep brown skin and East African facial features" }
 ];
 
 const celebrityPresets = [
@@ -1120,7 +1125,7 @@ const setup = requestFromUser("Batch Setup", "Continue", function () {
         ),
         this.section(
             "❖  Randomization Mode",
-            "When enabled, every category is randomized from all available selections. Any option you manually select on the next screen is kept — everything left unselected is picked at random. Each image is one random combination.",
+            "When enabled, every category is randomized with weighted selection: nationality drives likely skin/hair/eye traits (e.g. Irish favors fair skin and red hair), and gender drives body, clothing, and appearance traits (men never get lingerie or hourglass figures, women never get beards). Any option you manually select on the next screen is kept — everything left unselected is picked at random. Each image is one random combination.",
             [
                 this.switch(false, "🎲  Enable Randomization Mode"),
                 this.menu(2, ["1 image", "2 images", "3 images", "4 images", "5 images", "10 images", "15 images", "20 images", "25 images", "50 images"])
@@ -1795,8 +1800,11 @@ const effectiveCameraChoices = cameraChoices.length > 0 ? cameraChoices : [DEFAU
 // RANDOMIZATION ENGINE
 // =========================================
 // Builds one random combination per image. Anything the user manually
-// pinned on the input screen is kept; everything else is picked at
-// random from the full preset lists.
+// pinned on the input screen is kept; everything else is picked with
+// weighted randomness: nationality profiles favor the skin/hair/eye
+// traits statistically common for that background, and gender tables
+// favor body/clothing/appearance traits typical for that gender while
+// excluding incompatible ones (no lingerie on men, no beards on women).
 
 // Returns a random index with `probability`, else -1.
 function chance(probability) {
@@ -1810,31 +1818,291 @@ function randomGroupSwitchValues(presets, probability, maxItems) {
     return randomSwitchValues(presets, count).filter(Boolean);
 }
 
-function randomColoredClothingValues(group, probability, maxItems) {
-    if (chance(probability) < 0) return [];
-    const count = 1 + randomInt(Math.max(1, maxItems));
-    const items = randomSwitchValues(group.presets, count).filter(Boolean);
-    // ~70% chance to apply a random color.
-    const color = Math.random() < 0.7 ? randomPresetValue(clothingColorPresets) : "";
-    return items.map(item => applyClothingColor(item, color));
+// Weighted pick from [{ value, weight }]. Zero-weight entries are excluded.
+function weightedPickWeighted(entries) {
+    const pool = entries.filter(e => e.value !== undefined && e.value !== null && e.value !== "" && e.weight > 0);
+    if (pool.length === 0) return "";
+    const total = pool.reduce((sum, e) => sum + e.weight, 0);
+    let roll = Math.random() * total;
+    for (const entry of pool) {
+        roll -= entry.weight;
+        if (roll <= 0) return entry.value;
+    }
+    return pool[pool.length - 1].value;
 }
 
-function randomHairColorText() {
-    const color = randomPresetValue(hairColorPresets);
-    return /\bhair\b/i.test(color) ? color : color + " hair";
+// Weighted pick from a preset list using a label→weight table. Presets
+// missing from the table get `defaultWeight`, so rare-but-possible traits
+// (violet eyes, pastel hair) still occasionally appear.
+function weightedPresetValue(presets, weightTable, defaultWeight = 0.05) {
+    return weightedPickWeighted(presets.map(p => ({
+        value: getPresetValue(p),
+        weight: (weightTable && weightTable[getPresetLabel(p)] !== undefined)
+            ? weightTable[getPresetLabel(p)]
+            : defaultWeight
+    })));
 }
+
+// Grays become more likely with age; vivid fashion colors fade out.
+function adjustHairColorForAge(weightTable, ageYears) {
+    if (!ageYears || ageYears <= 0) return weightTable;
+    const adjusted = { ...weightTable };
+    const grayFactor = ageYears < 30 ? 0.03 : ageYears < 45 ? 0.25 : ageYears < 60 ? 1.0 : 2.5;
+    for (const key of ["salt & pepper", "brown salt & pepper", "silver"]) {
+        adjusted[key] = (adjusted[key] !== undefined ? adjusted[key] : 0.3) * grayFactor;
+    }
+    if (ageYears >= 50) {
+        adjusted["pastel pink"] = 0.01;
+        adjusted["pastel blue/purple"] = 0.01;
+    }
+    return adjusted;
+}
+
+function findNationalityPreset(value) {
+    return nationalityPresets.find(p =>
+        getPresetValue(p) === value || getPresetLabel(p) === value || p.short === value
+    ) || null;
+}
+
+// =========================================
+// NATIONALITY TRAIT PROFILES
+// =========================================
+// Each profile weights skin tone, hair color, hair type, and eye color by
+// how commonly the trait occurs in that population. Traits not listed get
+// the small default weight (0.05), so nothing is truly impossible.
+
+const TRAIT_PROFILES = {
+    celtic: {
+        skin: { "porcelain skin": 5, "pale skin": 5, "fair skin": 4, "cream skin": 1, "tanned skin": 0.5 },
+        hairColor: { "red": 4, "copper/ginger": 3.5, "auburn": 3, "brunette": 3, "blonde": 2, "chestnut brown": 1.5, "black": 0.4 },
+        hairType: { "straight": 2, "wavy": 3.5, "curly": 2.5, "frizzy": 0.5 },
+        eyes: { "Blue": 4.5, "Green": 4, "Hazel": 2, "Gray": 1.5, "Brown": 1 }
+    },
+    nordic: {
+        skin: { "fair skin": 5, "porcelain skin": 4, "pale skin": 3, "cream skin": 1, "tanned skin": 0.5 },
+        hairColor: { "blonde": 5, "platinum blonde": 3, "chestnut brown": 1, "brunette": 1, "red": 0.8, "auburn": 0.5 },
+        hairType: { "straight": 3.5, "wavy": 2.5, "curly": 0.8 },
+        eyes: { "Blue": 5, "Green": 2, "Gray": 2, "Hazel": 1 }
+    },
+    westEuropean: {
+        skin: { "fair skin": 4, "cream skin": 2, "porcelain skin": 2, "tanned skin": 1.5, "olive skin": 1, "pale skin": 1.5 },
+        hairColor: { "brunette": 3, "blonde": 2.5, "chestnut brown": 2, "black": 1, "auburn": 1, "red": 0.5 },
+        hairType: { "straight": 3, "wavy": 2.5, "curly": 1 },
+        eyes: { "Blue": 3, "Green": 2, "Hazel": 2, "Brown": 2, "Gray": 1 }
+    },
+    mediterranean: {
+        skin: { "olive skin": 5, "tanned skin": 3, "cream skin": 2, "fair skin": 1.5, "golden-bronze skin": 1 },
+        hairColor: { "brunette": 4, "black": 3, "chestnut brown": 2, "auburn": 0.7 },
+        hairType: { "wavy": 3, "curly": 2, "straight": 2 },
+        eyes: { "Brown": 4, "Dark brown": 3, "Hazel": 2, "Green": 1, "Amber": 0.7 }
+    },
+    slavic: {
+        skin: { "fair skin": 4, "porcelain skin": 3, "pale skin": 2, "cream skin": 2, "tanned skin": 0.7 },
+        hairColor: { "blonde": 3, "brunette": 3, "chestnut brown": 2, "black": 1, "platinum blonde": 0.7 },
+        hairType: { "straight": 3.5, "wavy": 2, "curly": 0.8 },
+        eyes: { "Blue": 3, "Gray": 2, "Green": 2, "Hazel": 1.5, "Brown": 1.5 }
+    },
+    african: {
+        skin: { "dark skin": 4, "dark glossy skin": 3, "warm brown skin": 3, "dark black nubian skin with a glossy sheen": 2.5, "caramel skin": 1.5, "golden-bronze skin": 1 },
+        hairColor: { "black": 6, "brunette": 1 },
+        hairType: { "kinky": 4, "afro-textured": 4, "curly": 3, "frizzy": 1 },
+        eyes: { "Dark brown": 5, "Brown": 3, "Amber": 0.5, "Hazel": 0.3 }
+    },
+    eastAfrican: {
+        skin: { "warm brown skin": 4, "dark skin": 3, "dark glossy skin": 2, "golden-bronze skin": 1.5, "caramel skin": 1.5 },
+        hairColor: { "black": 6, "brunette": 0.5 },
+        hairType: { "curly": 3, "kinky": 3, "afro-textured": 2.5, "wavy": 1 },
+        eyes: { "Dark brown": 5, "Brown": 3, "Amber": 0.7, "Hazel": 0.3 }
+    },
+    mixed: {
+        skin: { "golden-bronze skin": 4, "caramel skin": 3, "warm brown skin": 2, "olive skin": 2, "tanned skin": 2, "cream skin": 1 },
+        hairColor: { "black": 3, "brunette": 3, "chestnut brown": 1.5, "auburn": 0.7 },
+        hairType: { "curly": 3.5, "wavy": 3, "kinky": 1, "straight": 1 },
+        eyes: { "Brown": 4, "Dark brown": 3, "Hazel": 2, "Green": 1, "Amber": 1 }
+    },
+    latina: {
+        skin: { "olive skin": 4, "warm brown skin": 3, "tanned skin": 3, "caramel skin": 2.5, "golden-bronze skin": 2, "cream skin": 1 },
+        hairColor: { "black": 4, "brunette": 3.5, "chestnut brown": 1.5, "auburn": 0.5 },
+        hairType: { "wavy": 3, "straight": 2, "curly": 2 },
+        eyes: { "Brown": 4, "Dark brown": 3.5, "Hazel": 1.5, "Amber": 1 }
+    },
+    brazilian: {
+        skin: { "olive skin": 3, "golden-bronze skin": 3, "tanned skin": 3, "caramel skin": 2, "warm brown skin": 1.5, "cream skin": 1.5, "fair skin": 1 },
+        hairColor: { "brunette": 3.5, "black": 3, "chestnut brown": 1.5, "blonde": 0.7 },
+        hairType: { "wavy": 3, "curly": 2, "straight": 2 },
+        eyes: { "Brown": 4, "Dark brown": 3, "Hazel": 2, "Green": 1, "Amber": 0.7 }
+    },
+    southAsian: {
+        skin: { "warm brown skin": 4, "caramel skin": 3, "golden-bronze skin": 2.5, "olive skin": 2, "dark skin": 1 },
+        hairColor: { "black": 5.5, "brunette": 2 },
+        hairType: { "straight": 3, "wavy": 2.5, "curly": 1.5 },
+        eyes: { "Dark brown": 5, "Brown": 3, "Amber": 0.5 }
+    },
+    eastAsian: {
+        skin: { "fair skin": 4, "porcelain skin": 3, "cream skin": 2.5, "pale skin": 1.5, "golden-bronze skin": 0.5 },
+        hairColor: { "black": 6, "brunette": 1.5 },
+        hairType: { "straight": 5, "wavy": 1.5, "curly": 0.3 },
+        eyes: { "Dark brown": 5, "Brown": 3, "Hazel": 0.3, "Amber": 0.2 }
+    },
+    southeastAsian: {
+        skin: { "tanned skin": 3.5, "warm brown skin": 3, "golden-bronze skin": 2.5, "caramel skin": 2, "olive skin": 1.5 },
+        hairColor: { "black": 6, "brunette": 1 },
+        hairType: { "straight": 4, "wavy": 2, "curly": 0.5 },
+        eyes: { "Dark brown": 5, "Brown": 2.5, "Amber": 0.3 }
+    },
+    middleEastern: {
+        skin: { "olive skin": 4, "golden-bronze skin": 3, "tanned skin": 2.5, "warm brown skin": 2, "caramel skin": 1.5 },
+        hairColor: { "black": 5, "brunette": 3, "chestnut brown": 0.7 },
+        hairType: { "wavy": 3, "curly": 2.5, "straight": 2 },
+        eyes: { "Brown": 3.5, "Dark brown": 3.5, "Hazel": 1.5, "Amber": 1.5, "Green": 0.5 }
+    },
+    nativeAmerican: {
+        skin: { "warm brown skin": 3.5, "golden-bronze skin": 3, "caramel skin": 2, "tanned skin": 2, "olive skin": 1.5 },
+        hairColor: { "black": 6, "brunette": 1 },
+        hairType: { "straight": 5, "wavy": 1, "curly": 0.3 },
+        eyes: { "Dark brown": 5, "Brown": 3, "Amber": 0.3 }
+    },
+    polynesian: {
+        skin: { "warm brown skin": 4, "golden-bronze skin": 3, "tanned skin": 2.5, "caramel skin": 2 },
+        hairColor: { "black": 5, "brunette": 1 },
+        hairType: { "wavy": 3, "curly": 2.5, "straight": 1.5 },
+        eyes: { "Dark brown": 4, "Brown": 4, "Amber": 0.3 }
+    },
+    // Fallback for custom/unrecognized nationalities: a balanced blend.
+    default: {
+        skin: { "fair skin": 2, "cream skin": 2, "olive skin": 2, "tanned skin": 2, "caramel skin": 1.5, "golden-bronze skin": 1.5, "warm brown skin": 1.5, "porcelain skin": 1, "dark skin": 1 },
+        hairColor: { "brunette": 3, "black": 3, "blonde": 2, "chestnut brown": 2, "auburn": 1, "red": 0.7 },
+        hairType: { "straight": 3, "wavy": 3, "curly": 2, "kinky": 0.7 },
+        eyes: { "Brown": 3, "Dark brown": 3, "Hazel": 2, "Blue": 2, "Green": 1.5, "Amber": 0.7, "Gray": 0.7 }
+    }
+};
+
+// =========================================
+// GENDER TRAIT WEIGHTS
+// =========================================
+// Body proportions, hair length, and appearance chances typical for each
+// gender. Zero weights hard-exclude incompatible traits (e.g. breasts or
+// hourglass shape on men, facial hair on women).
+
+const GENDER_WEIGHTS = {
+    feminine: {
+        build: { "Slim build": 3, "Soft Fit Frame": 2.5, "Average build": 2, "Petite build": 2.5, "Curvy build": 3, "Muscular build": 0.7, "Chubby build": 1.5, "Large frame": 0.3 },
+        height: { "Short": 2.5, "Average": 3, "Tall": 1.2 },
+        chest: { "Flat chest": 0.5, "Small chest": 2, "Average chest": 3, "Full chest": 3, "Large breasts": 2 },
+        hips: { "Narrow hips": 1, "Average hips": 3, "Wide hips": 3 },
+        bodyShape: { "Petite frame": 2, "Hourglass": 5, "Pear-shaped": 3, "Rectangle": 1, "Inverted triangle": 0.2, "Apple-shaped": 1 },
+        legs: { "Slim legs": 3, "Average legs": 3, "Thick legs": 1.5, "Toned legs": 2 },
+        ass: { "Small": 1, "Average": 3, "Large": 2.5, "Very large": 1.2 },
+        belly: { "Flat": 3, "Average": 2.5, "Soft": 1.5, "Large": 0.5, "Very large": 0.2 },
+        lips: { "Thin lips": 0.7, "Average lips": 2.5, "Full lips": 3, "Plump lips": 2.5 },
+        eyelashes: { "Thin eyelashes": 0.5, "Average eyelashes": 2, "Long eyelashes": 4 },
+        hairLength: { "short": 1, "medium-length": 2.5, "long": 3.5, "very long": 1.5 },
+        makeupChance: 0.5,
+        facialHairChance: 0,
+        nailsChance: 0.3,
+        hairstyleChance: 0.6,
+        hairstylePool: null, // null = draw from all hairstyle groups
+        accessoryChances: {},
+        bonusTraits: [{ value: "soft feminine facial features", chance: 0.2 }]
+    },
+    masculine: {
+        build: { "Slim build": 2, "Soft Fit Frame": 0.2, "Average build": 2.5, "Petite build": 0.1, "Curvy build": 0, "Muscular build": 3.5, "Chubby build": 1.5, "Large frame": 2.5 },
+        height: { "Short": 0.8, "Average": 3, "Tall": 2.5 },
+        chest: {}, // all zero — chest descriptions are omitted for men
+        hips: { "Narrow hips": 3, "Average hips": 2, "Wide hips": 0 },
+        bodyShape: { "Petite frame": 0, "Hourglass": 0, "Pear-shaped": 0, "Rectangle": 3, "Inverted triangle": 4, "Apple-shaped": 1.5 },
+        legs: { "Slim legs": 1.5, "Average legs": 3, "Thick legs": 1.5, "Toned legs": 3 },
+        ass: { "Small": 2, "Average": 3, "Large": 0.7, "Very large": 0.1 },
+        belly: { "Flat": 3, "Average": 2.5, "Soft": 1.5, "Large": 0.8, "Very large": 0.3 },
+        lips: { "Thin lips": 3, "Average lips": 3, "Full lips": 1, "Plump lips": 0.3 },
+        eyelashes: { "Thin eyelashes": 2, "Average eyelashes": 4, "Long eyelashes": 1 },
+        hairLength: { "short": 6, "medium-length": 1.5, "long": 0.3, "very long": 0.05 },
+        makeupChance: 0.02,
+        facialHairChance: 0.45,
+        nailsChance: 0.02,
+        hairstyleChance: 0.5,
+        hairstylePool: ["wet hair", "Faux Hawk", "spiked punk hairstyle", "dreadlocks", "cornrows"],
+        accessoryChances: { "Jewelry": 0.15, "Eyewear": 0.3, "Body Piercings": 0.1, "Headwear": 0.35, "Hair Accessories": 0.02 },
+        bonusTraits: [
+            { value: "a chiseled jawline", chance: 0.3 },
+            { value: "broad shoulders", chance: 0.3 }
+        ]
+    }
+};
+
+// =========================================
+// GENDER CLOTHING / POSE COMPATIBILITY
+// =========================================
+
+// Female-coded clothing groups are skipped entirely for men.
+const MASCULINE_CLOTHING_GROUP_CHANCES = {
+    "Tops": 0.8,
+    "Bottoms": 0.8,
+    "Dresses": 0,
+    "Lingerie": 0,
+    "Swimwear": 0,
+    "Robes / Loungewear": 0.3,
+    "Sets": 0,
+    "Uniforms": 0,
+    "Costume Oddities": 0.1,
+    "Period Fashion": 0,
+    "Footwear": 0.7
+};
+
+// Female-coded items inside otherwise unisex groups, excluded for men.
+const MASCULINE_CLOTHING_EXCLUSIONS = new Set([
+    "a crop-top t-shirt showing significant underboob",
+    "a blouse",
+    "a halter top",
+    "off-shoulder top",
+    "spandex leggings",
+    "mini-skirt",
+    "pleated mini-skirt",
+    "wrap-around skirt",
+    "silk cami and shorts set",
+    "knee-high Hello Kitty socks",
+    "knee-high Pokemon socks",
+    "black fishnet stockings",
+    "sheer lace stockings",
+    "strappy heels",
+    "stiletto heels",
+    "thigh-high stockings",
+    "thigh-high leather boots",
+    "lace-up thigh-highs"
+]);
+
+// Pose presets with explicitly female-coded styling, excluded for men.
+const MASCULINE_POSE_EXCLUSIONS = new Set([
+    "Kneeling in Front of a Fireplace - wearing pearls and heels",
+    "Leaning over Counter in Kitchen - in an Apron",
+    "Applying Lipstick in a Bathroom"
+]);
 
 // Resolves one randomized subject from the pinned config.
 function buildRandomSubject(cfg) {
     const parts = [];
 
     // --- Identity ---
-    const nationality = cfg.nationality || randomPresetValue(nationalityPresets);
+    // Nationality resolves to a preset so its trait profile can weight
+    // skin, hair, and eyes. A pinned nationality still uses its profile;
+    // only the hard-coded feature text is replaced by weighted picks.
+    const nationalityPreset = cfg.celebrity
+        ? null
+        : (cfg.nationality ? findNationalityPreset(cfg.nationality) : randomElement(nationalityPresets));
+    const nationality = cfg.celebrity
+        ? ""
+        : (nationalityPreset ? (nationalityPreset.short || getPresetLabel(nationalityPreset)) : (cfg.nationality || ""));
+    const profile = (nationalityPreset && TRAIT_PROFILES[nationalityPreset.profile]) || TRAIT_PROFILES.default;
+
     const gender = cfg.celebrity ? "" : (cfg.gender || randomPresetValue(genderPresets));
-    const age = cfg.celebrity ? "" : (cfg.age || randomElement(agePresets));
-    const skin = cfg.skin || (Math.random() < 0.8 ? randomPresetValue(skinTonePresets) : "");
-    const eyeColor = cfg.eyeColor || (Math.random() < 0.8 ? randomPresetValue(eyeColorPresets) : "");
     const genderForm = cfg.celebrity ? "feminine" : getGenderForm(gender);
+    const gw = GENDER_WEIGHTS[genderForm] || GENDER_WEIGHTS.feminine;
+
+    const age = cfg.celebrity ? "" : (cfg.age || randomElement(agePresets));
+    const ageYears = age ? parseInt(age, 10) || 0 : 0;
+
+    const skin = cfg.skin || weightedPresetValue(skinTonePresets, profile.skin);
+    const eyeColor = cfg.eyeColor || weightedPresetValue(eyeColorPresets, profile.eyes);
 
     if (nationality) parts.push(nationality);
     if (gender) parts.push(gender);
@@ -1843,40 +2111,50 @@ function buildRandomSubject(cfg) {
     if (eyeColor) parts.push(eyeColor);
     if (cfg.celebrity) parts.push(cfg.celebrity);
 
-    // --- Body / Physique ---
-    parts.push(cfg.pinnedBuild || randomPresetValue(overallBuildPresets));
-    parts.push(cfg.pinnedHeight || (Math.random() < 0.5 ? randomPresetValue(heightPresets) : ""));
-    parts.push(cfg.pinnedChest || (genderForm !== "masculine" && Math.random() < 0.8 ? randomPresetValue(chestPresets) : ""));
-    parts.push(cfg.pinnedHips || (genderForm !== "masculine" && Math.random() < 0.8 ? randomPresetValue(hipPresets) : ""));
-    parts.push(cfg.pinnedBodyShape || (Math.random() < 0.5 ? randomPresetValue(bodyShapePresets) : ""));
-    parts.push(cfg.pinnedLegs || (Math.random() < 0.5 ? randomPresetValue(legPresets) : ""));
-    parts.push(cfg.pinnedAssSize || (genderForm !== "masculine" && Math.random() < 0.8 ? randomPresetValue(assSizePresets) : ""));
-    parts.push(cfg.pinnedBellySize || (Math.random() < 0.5 ? randomPresetValue(bellySizePresets) : ""));
-    parts.push(cfg.pinnedSpecificBody || (Math.random() < 0.1 ? randomPresetValue(specificBodyPresets) : ""));
-    parts.push(cfg.pinnedLips || (Math.random() < 0.4 ? randomPresetValue(lipsPresets) : ""));
-    parts.push(cfg.pinnedEyelashes || (Math.random() < 0.3 ? randomPresetValue(eyelashPresets) : ""));
+    // --- Body / Physique (gender-weighted) ---
+    parts.push(cfg.pinnedBuild || weightedPresetValue(overallBuildPresets, gw.build));
+    parts.push(cfg.pinnedHeight || (Math.random() < 0.5 ? weightedPresetValue(heightPresets, gw.height) : ""));
+    parts.push(cfg.pinnedChest || (Math.random() < 0.8 ? weightedPresetValue(chestPresets, gw.chest, 0) : ""));
+    parts.push(cfg.pinnedHips || (Math.random() < 0.8 ? weightedPresetValue(hipPresets, gw.hips, 0) : ""));
+    parts.push(cfg.pinnedBodyShape || (Math.random() < 0.5 ? weightedPresetValue(bodyShapePresets, gw.bodyShape, 0) : ""));
+    parts.push(cfg.pinnedLegs || (Math.random() < 0.5 ? weightedPresetValue(legPresets, gw.legs) : ""));
+    parts.push(cfg.pinnedAssSize || (Math.random() < 0.8 ? weightedPresetValue(assSizePresets, gw.ass, 0) : ""));
+    parts.push(cfg.pinnedBellySize || (Math.random() < 0.5 ? weightedPresetValue(bellySizePresets, gw.belly, 0) : ""));
+    parts.push(cfg.pinnedSpecificBody || (genderForm !== "masculine" && Math.random() < 0.1 ? randomPresetValue(specificBodyPresets) : ""));
+    parts.push(cfg.pinnedLips || (Math.random() < 0.4 ? weightedPresetValue(lipsPresets, gw.lips, 0) : ""));
+    parts.push(cfg.pinnedEyelashes || (Math.random() < 0.3 ? weightedPresetValue(eyelashPresets, gw.eyelashes, 0) : ""));
     if (cfg.customBodyDetails) parts.push(cfg.customBodyDetails);
+
+    // Gender-typical bonus traits (chiseled jawline, soft features, …).
+    for (const bonus of gw.bonusTraits || []) {
+        if (Math.random() < bonus.chance) parts.push(bonus.value);
+    }
 
     // --- Appearance ---
     parts.push(...cfg.appearanceValues);
-    parts.push(...randomGroupSwitchValues(makeupPresets, 0.5, 2));
-    parts.push(...randomGroupSwitchValues(makeupOdditiesPresets, 0.08, 1));
-    parts.push(...randomGroupSwitchValues(facialHairPresets, genderForm === "masculine" ? 0.4 : 0, 1));
+    parts.push(...randomGroupSwitchValues(makeupPresets, gw.makeupChance, 2));
+    parts.push(...randomGroupSwitchValues(makeupOdditiesPresets, genderForm === "masculine" ? 0.03 : 0.08, 1));
+    parts.push(...randomGroupSwitchValues(facialHairPresets, gw.facialHairChance, 1));
     parts.push(...randomGroupSwitchValues(nosePresets, 0.2, 1));
     parts.push(...randomGroupSwitchValues(tattooPresets, 0.3, 1));
     parts.push(...randomGroupSwitchValues(bodyHairPresets, 0.25, 2));
-    parts.push(...randomGroupSwitchValues(nailPresets, genderForm === "masculine" ? 0.05 : 0.3, 1));
+    parts.push(...randomGroupSwitchValues(nailPresets, gw.nailsChance, 1));
     parts.push(...randomGroupSwitchValues(hairDetailPresets, 0.05, 1));
 
-    // --- Hair ---
-    const hairType = cfg.customHairType || cfg.pinnedHairType || randomPresetValue(hairTypePresets);
-    const hairColor = cfg.customHairColor || cfg.pinnedHairColor || randomHairColorText();
-    const hairLength = cfg.customHairLength || cfg.pinnedHairLength || randomPresetValue(hairLengthPresets);
+    // --- Hair (nationality-weighted, age-adjusted) ---
+    const hairColorWeights = adjustHairColorForAge(profile.hairColor, ageYears);
+    const hairType = cfg.customHairType || cfg.pinnedHairType || weightedPresetValue(hairTypePresets, profile.hairType);
+    const hairLength = cfg.customHairLength || cfg.pinnedHairLength || weightedPresetValue(hairLengthPresets, gw.hairLength);
+    const hairColorRaw = cfg.customHairColor || cfg.pinnedHairColor || weightedPresetValue(hairColorPresets, hairColorWeights);
+    const hairColor = hairColorRaw
+        ? (/\bhair\b/i.test(hairColorRaw) ? hairColorRaw : hairColorRaw + " hair")
+        : "";
+
     const hairstyleParts = [...cfg.hairstyleValues];
     if (cfg.customHairstyle) hairstyleParts.push(cfg.customHairstyle);
-    if (!cfg.customHairstyle && cfg.hairstyleValues.length === 0 && Math.random() < 0.6) {
-        const allHairstyles = hairstyleGroups.flatMap(g => g.presets);
-        hairstyleParts.push(randomPresetValue(allHairstyles));
+    if (!cfg.customHairstyle && cfg.hairstyleValues.length === 0 && Math.random() < gw.hairstyleChance) {
+        const hairstyleSource = gw.hairstylePool || hairstyleGroups.flatMap(g => g.presets);
+        hairstyleParts.push(randomPresetValue(hairstyleSource));
     }
     const hairstyle = joinParts(hairstyleParts);
 
@@ -1888,7 +2166,10 @@ function buildRandomSubject(cfg) {
     // --- Accessories ---
     parts.push(...cfg.accessoryValues);
     for (const group of accessoryGroups) {
-        parts.push(...randomGroupSwitchValues(group.presets, 0.3, 1));
+        const groupChance = gw.accessoryChances[group.title] !== undefined
+            ? gw.accessoryChances[group.title]
+            : 0.3;
+        parts.push(...randomGroupSwitchValues(group.presets, groupChance, 1));
     }
 
     // --- Text variants (same shape as manual mode) ---
@@ -1907,22 +2188,39 @@ function buildRandomSubject(cfg) {
     };
 }
 
-// Resolves one randomized outfit.
-function buildRandomOutfit(cfg) {
+// Resolves one randomized outfit, filtered for gender compatibility.
+function buildRandomOutfit(cfg, genderForm) {
     const parts = [];
+    const isMasculine = genderForm === "masculine";
 
     if (cfg.selectedOutfit) {
         parts.push(cfg.selectedOutfit);
     } else {
         // ~15% chance to use one of the combined clothing presets.
-        if (Math.random() < 0.15) {
+        // (All combined presets are female-coded, so skipped for men.)
+        if (!isMasculine && Math.random() < 0.15) {
             parts.push(randomPresetValue(clothingPresets));
         } else {
             for (const group of clothingGroups) {
+                const groupChance = isMasculine
+                    ? (MASCULINE_CLOTHING_GROUP_CHANCES[group.title] ?? 0.6)
+                    : 0.6;
+                if (groupChance <= 0 || chance(groupChance) < 0) continue;
+
+                const pool = isMasculine
+                    ? group.presets.filter(p => !MASCULINE_CLOTHING_EXCLUSIONS.has(getPresetValue(p)))
+                    : group.presets;
+                if (pool.length === 0) continue;
+
+                const maxItems = group.title === "Lingerie" ? 2 : 1;
+                const items = randomSwitchValues(pool, 1 + randomInt(Math.max(1, maxItems))).filter(Boolean);
+
                 if (group.hasColorMenu) {
-                    parts.push(...randomColoredClothingValues(group, 0.6, group.title === "Lingerie" ? 2 : 1));
+                    // ~70% chance to apply a random color.
+                    const color = Math.random() < 0.7 ? randomPresetValue(clothingColorPresets) : "";
+                    parts.push(...items.map(item => applyClothingColor(item, color)));
                 } else {
-                    parts.push(...randomGroupSwitchValues(group.presets, 0.6, 1));
+                    parts.push(...items);
                 }
             }
         }
@@ -1934,14 +2232,18 @@ function buildRandomOutfit(cfg) {
     return joinParts(parts);
 }
 
-// Resolves one randomized action/pose.
-function buildRandomAction(cfg) {
+// Resolves one randomized action/pose, filtered for gender compatibility.
+function buildRandomAction(cfg, genderForm) {
     const parts = [];
+    const isMasculine = genderForm === "masculine";
 
     if (cfg.selectedAction) {
         parts.push(cfg.selectedAction);
     } else if (Math.random() < 0.3) {
-        parts.push(randomPresetValue(complexActionPresets));
+        const pool = isMasculine
+            ? complexActionPresets.filter(p => !MASCULINE_POSE_EXCLUSIONS.has(getPresetLabel(p)))
+            : complexActionPresets;
+        if (pool.length > 0) parts.push(randomPresetValue(pool));
     }
 
     if (cfg.customAction) parts.push(cfg.customAction);
@@ -1949,8 +2251,9 @@ function buildRandomAction(cfg) {
 
     for (const group of actionGroups) {
         if (group.type === "menu") {
-            // Sexual Positions: rare unless explicitly pinned.
-            if (chance(0.1) === 0) {
+            // Sexual Positions: presets are written for a female subject
+            // with a male partner, so they're excluded for male subjects.
+            if (!isMasculine && chance(0.1) === 0) {
                 parts.push(randomPresetValue(group.presets));
             }
             continue;
@@ -1977,8 +2280,8 @@ if (randomizeEnabled) {
         const aspectOption = randomElement(selectedAspectOptions);
         const resolvedSubject = buildRandomSubject(randomSubjectConfig);
 
-        const outfit = buildRandomOutfit(randomOutfitConfig);
-        const action = buildRandomAction(randomActionConfig);
+        const outfit = buildRandomOutfit(randomOutfitConfig, resolvedSubject.genderForm);
+        const action = buildRandomAction(randomActionConfig, resolvedSubject.genderForm);
         const camera = cameraChoices.length > 0 ? randomElement(cameraChoices) : randomPresetValue(cameraOptionsPresets);
         const artStyle = artStyles.length > 0 ? randomElement(artStyles) : randomPresetValue(artStylePresets);
 
