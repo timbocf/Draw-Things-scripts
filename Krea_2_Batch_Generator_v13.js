@@ -2188,39 +2188,235 @@ function buildRandomSubject(cfg) {
     };
 }
 
-// Resolves one randomized outfit, filtered for gender compatibility.
+// =========================================
+// CLOTHING SLOTS
+// =========================================
+// Each group maps to a clothing slot. Random outfits are built by first
+// choosing an archetype (e.g. "dress + footwear", "top + bottom + heels"),
+// then picking ONE item per slot the archetype uses. Lingerie is worn as
+// an underlayer only when the outfit actually covers it (tops/bottoms),
+// and "nude" means no other clothing is worn at all.
+
+const CLOTHING_GROUP_SLOTS = {
+    "Tops": "top",
+    "Bottoms": "bottom",
+    "Dresses": "dress",
+    "Lingerie": "underwear",
+    "Swimwear": "swimwear",
+    "Robes / Loungewear": "robe",
+    "Sets": "set",
+    "Uniforms": "uniform",
+    "Costume Oddities": "costume",
+    "Period Fashion": "period",
+    "Footwear": "footwear"
+};
+
+// Slot that fills the outfit's coverage role, and whether an underwear
+// underlayer may accompany it. order = roughly how common the archetype
+// should feel; weight = relative pick probability (feminine / masculine).
+const OUTFIT_ARCHETYPES = [
+    {
+        label: "casual (top + bottom)",
+        slots: ["top", "bottom"],
+        underwearChance: 0.2,
+        weight: { feminine: 3.5, masculine: 6 }
+    },
+    {
+        label: "top only",
+        slots: ["top"],
+        underwearChance: 0.4,
+        weight: { feminine: 1.2, masculine: 2 }
+    },
+    {
+        label: "bottom only",
+        slots: ["bottom"],
+        underwearChance: 0.3,
+        weight: { feminine: 0.8, masculine: 1.5 }
+    },
+    {
+        label: "dress",
+        slots: ["dress"],
+        underwearChance: 0.15,
+        weight: { feminine: 3, masculine: 0 }
+    },
+    {
+        label: "period fashion",
+        slots: ["period"],
+        underwearChance: 0,
+        weight: { feminine: 0.8, masculine: 0 }
+    },
+    {
+        label: "uniform",
+        slots: ["uniform"],
+        underwearChance: 0.1,
+        weight: { feminine: 0.7, masculine: 0 }
+    },
+    {
+        label: "specialty set",
+        slots: ["set"],
+        underwearChance: 0,
+        weight: { feminine: 0.7, masculine: 0 }
+    },
+    {
+        label: "costume oddity",
+        slots: ["costume"],
+        underwearChance: 0,
+        weight: { feminine: 0.4, masculine: 0.4 }
+    },
+    {
+        label: "swimwear",
+        slots: ["swimwear"],
+        underwearChance: 0,
+        weight: { feminine: 1, masculine: 0 }
+    },
+    {
+        label: "robe / loungewear",
+        slots: ["robe"],
+        underwearChance: 0.3,
+        weight: { feminine: 0.8, masculine: 0.6 }
+    },
+    {
+        label: "lingerie only",
+        slots: ["underwear"],
+        underwearChance: 0, // the underwear IS the outfit
+        lingerieItems: 2,
+        weight: { feminine: 2, masculine: 0 }
+    },
+    {
+        label: "nude",
+        slots: [],
+        underwearChance: 0,
+        weight: { feminine: 0.8, masculine: 0.5 }
+    }
+];
+
+// Lingerie items that count as a complete underlayer on their own
+// (bodysuits/teddies) — when picked as the underlayer, no second item.
+const ONE_PIECE_LINGERIE = new Set([
+    "nude",
+    "fishnet bodysuit",
+    "sheer lace teddy"
+]);
+
+// Items excluded from the lingerie *underlayer* role because they read as
+// the whole outfit rather than something worn under clothing.
+const OUTFIT_LAYER_EXCLUSIONS = new Set([
+    "nude"
+]);
+
+// Picks one item from a clothing group, honoring gender exclusions and
+// optionally applying a random color.
+function pickClothingItem(group, genderForm) {
+    const isMasculine = genderForm === "masculine";
+    let pool = group.presets;
+    if (isMasculine) {
+        pool = pool.filter(p => !MASCULINE_CLOTHING_EXCLUSIONS.has(getPresetValue(p)));
+    }
+    if (group.title === "Lingerie") {
+        pool = pool.filter(p => !OUTFIT_LAYER_EXCLUSIONS.has(getPresetValue(p)));
+    }
+    if (pool.length === 0) return "";
+
+    let item = randomPresetValue(pool);
+    if (!item) return "";
+
+    if (group.hasColorMenu && Math.random() < 0.7) {
+        item = applyClothingColor(item, randomPresetValue(clothingColorPresets));
+    }
+    return item;
+}
+
+// Picks an underlayer: one lingerie item, or two compatible ones
+// (skipping one-piece bodysuits for the second pick).
+function pickUnderlayer(genderForm) {
+    const lingerieGroup = clothingGroups.find(g => CLOTHING_GROUP_SLOTS[g.title] === "underwear");
+    if (!lingerieGroup) return "";
+
+    const first = pickClothingItem(lingerieGroup, genderForm);
+    if (!first) return "";
+    if (ONE_PIECE_LINGERIE.has(first)) return first;
+
+    // 50% chance of a matching second piece (e.g. bra + panties).
+    if (Math.random() < 0.5) {
+        const second = pickClothingItem(lingerieGroup, genderForm);
+        if (second && second !== first && !ONE_PIECE_LINGERIE.has(second)) {
+            return first + " and " + second;
+        }
+    }
+    return first;
+}
+
+// Resolves one randomized outfit: exactly one item per clothing type,
+// with archetypes ensuring dresses/sets/uniforms are never stacked with
+// tops+bottoms and lingerie never overlaps jeans.
 function buildRandomOutfit(cfg, genderForm) {
     const parts = [];
     const isMasculine = genderForm === "masculine";
 
     if (cfg.selectedOutfit) {
         parts.push(cfg.selectedOutfit);
-    } else {
-        // ~15% chance to use one of the combined clothing presets.
+    } else if (!isMasculine && Math.random() < 0.1) {
+        // ~10% chance to use one of the combined clothing presets.
         // (All combined presets are female-coded, so skipped for men.)
-        if (!isMasculine && Math.random() < 0.15) {
-            parts.push(randomPresetValue(clothingPresets));
-        } else {
-            for (const group of clothingGroups) {
-                const groupChance = isMasculine
-                    ? (MASCULINE_CLOTHING_GROUP_CHANCES[group.title] ?? 0.6)
-                    : 0.6;
-                if (groupChance <= 0 || chance(groupChance) < 0) continue;
+        parts.push(randomPresetValue(clothingPresets));
+    } else {
+        // Choose an archetype weighted by gender.
+        const archetype = weightedPickWeighted(
+            OUTFIT_ARCHETYPES.map(a => ({
+                value: a,
+                weight: a.weight[isMasculine ? "masculine" : "feminine"] ?? 0
+            }))
+        );
 
-                const pool = isMasculine
-                    ? group.presets.filter(p => !MASCULINE_CLOTHING_EXCLUSIONS.has(getPresetValue(p)))
-                    : group.presets;
-                if (pool.length === 0) continue;
+        if (archetype && archetype.slots) {
+            // Underlayer first, only for outfits that can cover it.
+            if (archetype.underwearChance > 0 && Math.random() < archetype.underwearChance) {
+                const underlayer = pickUnderlayer(genderForm);
+                if (underlayer) parts.push(underlayer);
+            }
 
-                const maxItems = group.title === "Lingerie" ? 2 : 1;
-                const items = randomSwitchValues(pool, 1 + randomInt(Math.max(1, maxItems))).filter(Boolean);
+            for (const slot of archetype.slots) {
+                const group = clothingGroups.find(g => CLOTHING_GROUP_SLOTS[g.title] === slot);
+                if (!group) continue;
 
-                if (group.hasColorMenu) {
-                    // ~70% chance to apply a random color.
-                    const color = Math.random() < 0.7 ? randomPresetValue(clothingColorPresets) : "";
-                    parts.push(...items.map(item => applyClothingColor(item, color)));
-                } else {
-                    parts.push(...items);
+                if (slot === "underwear" && archetype.lingerieItems === 2) {
+                    // "Lingerie only" archetype: pick one statement piece or
+                    // a compatible pair, without the layer exclusions.
+                    const pool = isMasculine
+                        ? group.presets.filter(p => !MASCULINE_CLOTHING_EXCLUSIONS.has(getPresetValue(p)))
+                        : group.presets;
+                    let first = randomPresetValue(pool);
+                    if (first && group.hasColorMenu && Math.random() < 0.7) {
+                        first = applyClothingColor(first, randomPresetValue(clothingColorPresets));
+                    }
+                    if (first === "nude") {
+                        parts.push(first);
+                        continue;
+                    }
+                    if (first) parts.push(first);
+                    if (first && !ONE_PIECE_LINGERIE.has(first) && Math.random() < 0.5) {
+                        let second = randomPresetValue(pool);
+                        if (second && second !== first && second !== "nude" && !ONE_PIECE_LINGERIE.has(second)) {
+                            if (group.hasColorMenu && Math.random() < 0.7) {
+                                second = applyClothingColor(second, randomPresetValue(clothingColorPresets));
+                            }
+                            parts.push(second);
+                        }
+                    }
+                    continue;
+                }
+
+                const item = pickClothingItem(group, genderForm);
+                if (item) parts.push(item);
+            }
+
+            // Footwear accompanies most dressed outfits (not nude/swim/robe).
+            const dressedSlots = archetype.slots.filter(s => !["underwear", "swimwear", "robe"].includes(s));
+            if (dressedSlots.length > 0 && Math.random() < 0.7) {
+                const footwearGroup = clothingGroups.find(g => CLOTHING_GROUP_SLOTS[g.title] === "footwear");
+                if (footwearGroup) {
+                    const footwear = pickClothingItem(footwearGroup, genderForm);
+                    if (footwear) parts.push(footwear);
                 }
             }
         }
