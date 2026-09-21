@@ -7770,9 +7770,9 @@ function randomizeBody(
     ["chest", chestPresets],
     ["hips", hipsPresets],
     ["lips", lipsPresets],
-    ["eyelashes", eyelashesPresets],
+    ["eyelashes", eyelashPresets],
     ["bodyShape", bodyShapePresets],
-    ["legs", legsPresets],
+    ["legs", legPresets],
     ["buttocks", assSizePresets],
     ["belly", bellySizePresets],
     ["specificBody", specificBodyPresets]
@@ -31866,9 +31866,9 @@ const V14_PRESET_COLLECTIONS = {
   chest: chestPresets,
   hips: hipsPresets,
   lips: lipsPresets,
-  eyelashes: eyelashesPresets,
+  eyelashes: eyelashPresets,
   bodyShape: bodyShapePresets,
-  legs: legsPresets,
+  legs: legPresets,
   buttocks: buttocksPresets,
   belly: bellySizePresets,
   specificBody: specificBodyPresets,
@@ -37377,7 +37377,7 @@ function requestV14BodySection(
       ui.menu(
         "Eyelashes",
         v14UIOptionLabels(
-          eyelashesPresets
+          eyelashPresets
         ),
         0
       ),
@@ -37395,7 +37395,7 @@ function requestV14BodySection(
       ui.menu(
         "Legs",
         v14UIOptionLabels(
-          legsPresets
+          legPresets
         ),
         0
       ),
@@ -38040,7 +38040,7 @@ function buildV14ManualStateFromUI(
     manualState,
     "eyelashes",
     parseV14MenuPreset(
-      eyelashesPresets,
+      eyelashPresets,
       Number(body.eyelashes)
     )
   );
@@ -38058,7 +38058,7 @@ function buildV14ManualStateFromUI(
     manualState,
     "legs",
     parseV14MenuPreset(
-      legsPresets,
+      legPresets,
       Number(body.legs)
     )
   );
@@ -44210,9 +44210,9 @@ function runV14BodyStageSafe(
     ["chest", chestPresets],
     ["hips", hipsPresets],
     ["lips", lipsPresets],
-    ["eyelashes", eyelashesPresets],
+    ["eyelashes", eyelashPresets],
     ["bodyShape", bodyShapePresets],
-    ["legs", legsPresets],
+    ["legs", legPresets],
     ["buttocks", buttocksPresets],
     ["belly", bellySizePresets],
     ["specificBody", specificBodyPresets]
