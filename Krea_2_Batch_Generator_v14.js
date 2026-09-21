@@ -6428,6 +6428,7 @@ addCompatibilityRule(
         "Period Fashion",
         "Uniforms"
       ])
+    ]
   }
 );
 
@@ -22433,11 +22434,6 @@ if (
   typeof COMPATIBILITY_RULES !== "object" ||
   COMPATIBILITY_RULES === null
 ) {
-  // This should normally never be reached because Chunk 1
-  // already creates COMPATIBILITY_RULES.
-  //
-  // Kept here defensively.
-  var COMPATIBILITY_RULES = {};
 }
 
 
@@ -42692,10 +42688,8 @@ function runKrea2V14Final() {
 // FINAL GLOBAL API
 // ------------------------------------------------------------
 
-const KREA2_V14 = KREA2_V14_FINAL;
-
 // ============================================================
-// KREA 2 V14 — CHUNK 43
+// KREA 2 V14
 // IDENTITY OVERRIDES + EXACT AGE PRESETS + CELEBRITY LAYER
 // ============================================================
 
@@ -44765,29 +44759,6 @@ const V14_HARDENED_PIPELINE = {
 // It also restores the exact V13 age choices instead of the grouped
 // age ranges that were temporarily introduced during the V14 rewrite.
 // =========================================
-
-
-// -----------------------------------------
-// EXACT AGE PRESETS
-// -----------------------------------------
-
-const V14_EXACT_AGE_PRESETS = [
-  { id: "age.18", label: "18 years old", value: "18 years old", category: "age" },
-  { id: "age.20", label: "20 years old", value: "20 years old", category: "age" },
-  { id: "age.25", label: "25 years old", value: "25 years old", category: "age" },
-  { id: "age.30", label: "30 years old", value: "30 years old", category: "age" },
-  { id: "age.35", label: "35 years old", value: "35 years old", category: "age" },
-  { id: "age.40", label: "40 years old", value: "40 years old", category: "age" },
-  { id: "age.45", label: "45 years old", value: "45 years old", category: "age" },
-  { id: "age.50", label: "50 years old", value: "50 years old", category: "age" },
-  { id: "age.55", label: "55 years old", value: "55 years old", category: "age" },
-  { id: "age.60", label: "60 years old", value: "60 years old", category: "age" },
-  { id: "age.65", label: "65 years old", value: "65 years old", category: "age" },
-  { id: "age.70", label: "70 years old", value: "70 years old", category: "age" },
-  { id: "age.75", label: "75 years old", value: "75 years old", category: "age" },
-  { id: "age.80", label: "80 years old", value: "80 years old", category: "age" },
-  { id: "age.85", label: "85 years old", value: "85 years old", category: "age" }
-];
 
 
 // -----------------------------------------
@@ -49115,12 +49086,6 @@ function buildV14QwenInstruction(
 // without changing the generation engine.
 //
 
-var V14_QWEN_EXECUTE =
-  typeof V14_QWEN_EXECUTE !== "undefined"
-    ? V14_QWEN_EXECUTE
-    : null;
-
-
 // -----------------------------------------
 // QWEN AVAILABILITY
 // -----------------------------------------
@@ -50459,7 +50424,6 @@ if (
   typeof KREA2_V14 === "undefined" ||
   !KREA2_V14
 ) {
-  var KREA2_V14 = {};
 }
 
 KREA2_V14.version = 14;
