@@ -186,7 +186,9 @@ const inputs = requestFromUser(
 // READ THE FIELDS
 // =========================================
 
-let index = 0;
+const aspectIndex = inputs[0];
+
+let index = 1;
 
 
 // =========================================
@@ -199,7 +201,7 @@ for (let i = 0; i < subjectCount; i++) {
 
     const presetIndex = inputs[index++];
 
-    let subject = "";
+    const subject = subjectPresets[presetIndex - 1];
 
     subjects.push(subject);
 }
@@ -214,9 +216,8 @@ const outfits = [];
 for (let i = 0; i < outfitCount; i++) {
 
     const presetIndex = inputs[index++];
-    const typedOutfit = inputs[index++];
 
-    let outfit = "";
+    const outfit = outfitPresets[presetIndex - 1];
 
     outfits.push(outfit);
 }
@@ -231,9 +232,8 @@ const actions = [];
 for (let i = 0; i < actionCount; i++) {
 
     const presetIndex = inputs[index++];
-    const typedAction = inputs[index++];
 
-    let action = "";
+    const action = actionPresets[presetIndex - 1];
 
     actions.push(action);
 }
@@ -244,7 +244,6 @@ for (let i = 0; i < actionCount; i++) {
 // =========================================
 
 const promptTemplate = inputs[index];
-
 
 // =========================================
 // ASPECT RATIO
