@@ -200,10 +200,6 @@ for (let i = 0; i < subjectCount; i++) {
 
     let subject = "";
 
-    if (presetIndex > 0) {
-        subject = subjectPresets[presetIndex - 1];
-    }
-
     subjects.push(subject);
 }
 
@@ -221,10 +217,6 @@ for (let i = 0; i < outfitCount; i++) {
 
     let outfit = "";
 
-    if (presetIndex > 0) {
-        outfit = outfitPresets[presetIndex - 1];
-    }
-
     outfits.push(outfit);
 }
 
@@ -241,10 +233,6 @@ for (let i = 0; i < actionCount; i++) {
     const typedAction = inputs[index++];
 
     let action = "";
-
-    if (presetIndex > 0) {
-        action = actionPresets[presetIndex - 1];
-    }
 
     actions.push(action);
 }
