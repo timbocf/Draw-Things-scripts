@@ -9245,7 +9245,7 @@ function randomizeBody(state) {
 
   state.lips = chooseProfileAwarePreset(
     "lips",
-    lipPresets,
+    lipsPresets,
     state
   );
 
@@ -10709,7 +10709,7 @@ const PRESET_COLLECTIONS = {
   height: heightPresets,
   chest: chestPresets,
   hips: hipPresets,
-  lips: lipPresets,
+  lips: lipsPresets,
   eyelashes: eyelashPresets,
   bodyShape: bodyShapePresets,
   legs: legPresets,
@@ -20744,7 +20744,7 @@ function randomizeBodyManualSafe(
     ["height", heightPresets],
     ["chest", chestPresets],
     ["hips", hipsPresets],
-    ["lips", lipPresets],
+    ["lips", lipsPresets],
     ["eyelashes", eyelashPresets],
     ["bodyShape", bodyShapePresets],
     ["legs", legPresets],
@@ -51591,7 +51591,7 @@ function v14GetPresetCollection(category) {
     height: "heightPresets",
     chest: "chestPresets",
     hips: "hipPresets",
-    lips: "lipPresets",
+    lips: "lipsPresets",
     eyelashes: "eyelashPresets",
     bodyShape: "bodyShapePresets",
     legs: "legPresets",
