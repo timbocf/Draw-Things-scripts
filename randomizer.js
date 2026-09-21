@@ -94,11 +94,13 @@ const inputs = requestFromUser(
         const fields = [];
 
         // Aspect ratio
-        this.segmented(0, [
-            "1:1",
-            "3:4",
-            "4:3"
-        ])
+        fields.push(
+            this.segmented(0, [
+                "1:1",
+                "3:4",
+                "4:3"
+            ])
+        )
 
 
         // =====================================
