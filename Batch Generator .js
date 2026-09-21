@@ -13,19 +13,19 @@ const subjectPresets = [
     "woman with blonde hair",
     "woman with black hair",
     "Anne Hathaway",
-	  "Dolly Parton"
+    "Dolly Parton"
 ];
 
 const outfitPresets = [
     "a loose fitting T-shirt",
-		"a bikini top",
-	"a halter top"
+    "a bikini top",
+    "a halter top"
 ];
 
 const actionPresets = [
     "smiling",
-	"lips parted",
-	"looking away from the camera"
+    "lips parted",
+    "looking away from the camera"
 ];
 
 
@@ -65,13 +65,6 @@ const setup = requestFromUser(
                 "3 Actions / Positions",
                 "4 Actions / Positions",
                 "5 Actions / Positions"
-            ]),
-
-            // Aspect ratio
-            this.segmented(0, [
-                "1:1",
-                "3:4",
-                "4:3"
             ])
         ];
     }
@@ -100,6 +93,13 @@ const inputs = requestFromUser(
 
         const fields = [];
 
+        // Aspect ratio
+        this.segmented(0, [
+            "1:1",
+            "3:4",
+            "4:3"
+        ])
+
 
         // =====================================
         // SUBJECTS
@@ -108,7 +108,7 @@ const inputs = requestFromUser(
         for (let i = 0; i < subjectCount; i++) {
 
             const subjectMenu = [
-                "Choose a preset"
+                "Choose a subject"
             ];
 
             for (let j = 0; j < subjectPresets.length; j++) {
@@ -137,7 +137,7 @@ const inputs = requestFromUser(
         for (let i = 0; i < outfitCount; i++) {
 
             const outfitMenu = [
-                "Choose a preset"
+                "Choose clothing ensemble"
             ];
 
             for (let j = 0; j < outfitPresets.length; j++) {
@@ -166,7 +166,7 @@ const inputs = requestFromUser(
         for (let i = 0; i < actionCount; i++) {
 
             const actionMenu = [
-                "Choose a preset"
+                "Choose an action"
             ];
 
             for (let j = 0; j < actionPresets.length; j++) {
@@ -194,7 +194,7 @@ const inputs = requestFromUser(
 
         fields.push(
             this.textField(
-                "A photo of a {subject} {action} wearing {clothing}",
+                "A photo of {subject}, {action}, wearing {clothing}",
                 "Prompt Template",
                 false,
                 60
@@ -372,7 +372,6 @@ async function generateBatch() {
                 // =================================
 
                 config.model = "krea_2_turbo_i8x.ckpt";
-                config.mode = "txt2img";
 
                 config.width = width;
                 config.height = height;
