@@ -7774,7 +7774,7 @@ function randomizeBody(
     ["bodyShape", bodyShapePresets],
     ["legs", legsPresets],
     ["buttocks", assSizePresets],
-    ["belly", bellyPresets],
+    ["belly", bellySizePresets],
     ["specificBody", specificBodyPresets]
   ];
 
@@ -9258,7 +9258,7 @@ function randomizeBody(state) {
 
   state.belly = chooseProfileAwarePreset(
     "belly",
-    bellyPresets,
+    bellySizePresets,
     state
   );
 
@@ -10697,7 +10697,7 @@ const PRESET_COLLECTIONS = {
   bodyShape: bodyShapePresets,
   legs: legPresets,
   buttocks: buttocksPresets,
-  belly: bellyPresets,
+  belly: bellySizePresets,
   specificBody: specificBodyPresets,
 
   makeup: makeupPresets,
@@ -20732,7 +20732,7 @@ function randomizeBodyManualSafe(
     ["bodyShape", bodyShapePresets],
     ["legs", legPresets],
     ["buttocks", buttocksPresets],
-    ["belly", bellyPresets],
+    ["belly", bellySizePresets],
     ["specificBody", specificBodyPresets]
   ];
 
@@ -31870,7 +31870,7 @@ const V14_PRESET_COLLECTIONS = {
   bodyShape: bodyShapePresets,
   legs: legsPresets,
   buttocks: buttocksPresets,
-  belly: bellyPresets,
+  belly: bellySizePresets,
   specificBody: specificBodyPresets,
 
   makeup: makeupPresets,
@@ -37413,7 +37413,7 @@ function requestV14BodySection(
       ui.menu(
         "Belly",
         v14UIOptionLabels(
-          bellyPresets
+          bellySizePresets
         ),
         0
       ),
@@ -38076,7 +38076,7 @@ function buildV14ManualStateFromUI(
     manualState,
     "belly",
     parseV14MenuPreset(
-      bellyPresets,
+      bellySizePresets,
       Number(body.belly)
     )
   );
@@ -44214,7 +44214,7 @@ function runV14BodyStageSafe(
     ["bodyShape", bodyShapePresets],
     ["legs", legsPresets],
     ["buttocks", buttocksPresets],
-    ["belly", bellyPresets],
+    ["belly", bellySizePresets],
     ["specificBody", specificBodyPresets]
   ];
 
