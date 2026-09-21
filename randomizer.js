@@ -118,15 +118,6 @@ const inputs = requestFromUser(
             fields.push(
                 this.menu(0, subjectMenu)
             );
-
-            fields.push(
-                this.textField(
-                    "",
-                    "Or type your own subject",
-                    false,
-                    40
-                )
-            );
         }
 
 
@@ -147,15 +138,6 @@ const inputs = requestFromUser(
             fields.push(
                 this.menu(0, outfitMenu)
             );
-
-            fields.push(
-                this.textField(
-                    "",
-                    "Or type your own outfit",
-                    false,
-                    40
-                )
-            );
         }
 
 
@@ -175,15 +157,6 @@ const inputs = requestFromUser(
 
             fields.push(
                 this.menu(0, actionMenu)
-            );
-
-            fields.push(
-                this.textField(
-                    "",
-                    "Or type your own action",
-                    false,
-                    40
-                )
             );
         }
 
@@ -227,12 +200,7 @@ for (let i = 0; i < subjectCount; i++) {
 
     let subject = "";
 
-    if (typedSubject !== "") {
-
-        subject = typedSubject;
-
-    } else if (presetIndex > 0) {
-
+    if (presetIndex > 0) {
         subject = subjectPresets[presetIndex - 1];
     }
 
@@ -253,12 +221,7 @@ for (let i = 0; i < outfitCount; i++) {
 
     let outfit = "";
 
-    if (typedOutfit !== "") {
-
-        outfit = typedOutfit;
-
-    } else if (presetIndex > 0) {
-
+    if (presetIndex > 0) {
         outfit = outfitPresets[presetIndex - 1];
     }
 
@@ -279,12 +242,7 @@ for (let i = 0; i < actionCount; i++) {
 
     let action = "";
 
-    if (typedAction !== "") {
-
-        action = typedAction;
-
-    } else if (presetIndex > 0) {
-
+    if (presetIndex > 0) {
         action = actionPresets[presetIndex - 1];
     }
 
