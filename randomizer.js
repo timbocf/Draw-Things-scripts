@@ -1,7 +1,7 @@
 //@api-1.0
 
 // =========================================
-// KREA 2 BATCH GENERATOR
+// KREA 2 RANDOM GENERATOR
 // =========================================
 
 
@@ -28,280 +28,30 @@ const actionPresets = [
     "standing, looking away from the camera"
 ];
 
-
-// =========================================
-// STEP 1 — CHOOSE NUMBER OF FIELDS
-// =========================================
-
-const setup = requestFromUser(
-    "Batch Setup",
-    "Continue",
-    function () {
-
-        return [
-
-            // Number of subjects
-            this.menu(0, [
-                "1 Subject",
-                "2 Subjects",
-                "3 Subjects",
-                "4 Subjects",
-                "5 Subjects"
-            ]),
-
-            // Number of outfits
-            this.menu(0, [
-                "1 Outfit",
-                "2 Outfits",
-                "3 Outfits",
-                "4 Outfits",
-                "5 Outfits"
-            ]),
-
-            // Number of actions
-            this.menu(0, [
-                "1 Action / Position",
-                "2 Actions / Positions",
-                "3 Actions / Positions",
-                "4 Actions / Positions",
-                "5 Actions / Positions"
-            ]),
-					
-					this.switch(false, "Generate from random options")
-
-        ];
-    }
-);
-
-
-// =========================================
-// CONVERT MENU VALUES TO COUNTS
-// =========================================
-
-const subjectCount = setup[0] + 1;
-const outfitCount = setup[1] + 1;
-const actionCount = setup[2] + 1;
-const toRandom = setup[3];
-
-// =========================================
-// STEP 2 — CHOOSE OPTIONS
-// =========================================
-
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-const inputs = requestFromUser(
-    "Batch Prompts",
-    "Generate",
-    function () {
+var subject = randomize(subjectPresets);
+var outfit = randomize(outfitPresets);
+var action = randomize(actionPresets);
 
-        const fields = [];
-
-        // Aspect ratio
-        fields.push(
-            this.segmented(0, [
-                "1:1",
-                "3:4",
-                "4:3"
-            ])
-        )
-
-
-        // =====================================
-        // SUBJECTS
-        // =====================================
-
-        for (let i = 0; i < subjectCount; i++) {
-
-            const subjectMenu = [
-                "Choose a subject"
-            ];
-
-            for (let j = 0; j < subjectPresets.length; j++) {
-                subjectMenu.push(subjectPresets[j]);
-            }
-
-            fields.push(
-                this.menu(0, subjectMenu)
-            );
-        }
-
-
-        // =====================================
-        // OUTFITS
-        // =====================================
-
-        for (let i = 0; i < outfitCount; i++) {
-
-            const outfitMenu = [
-                "Choose clothing ensemble"
-            ];
-
-            for (let j = 0; j < outfitPresets.length; j++) {
-                outfitMenu.push(outfitPresets[j]);
-            }
-
-            fields.push(
-                this.menu(0, outfitMenu)
-            );
-        }
-
-
-        // =====================================
-        // ACTIONS
-        // =====================================
-
-        for (let i = 0; i < actionCount; i++) {
-
-            const actionMenu = [
-                "Choose an action"
-            ];
-
-            for (let j = 0; j < actionPresets.length; j++) {
-                actionMenu.push(actionPresets[j]);
-            }
-
-            fields.push(
-                this.menu(0, actionMenu)
-            );
-        }
-
-
-        // =====================================
-        // PROMPT TEMPLATE
-        // =====================================
-
-        fields.push(
-            this.textField(
-                "A photo of {subject}, {action}, wearing {clothing}",
-                "Prompt Template",
-                false,
-                60
-            )
-        );
-
-
-        return fields;
-    }
-);
-
-
-// =========================================
-// READ THE FIELDS
-// =========================================
-
-const aspectIndex = inputs[0];
-
-let index = 1;
-
-
-// =========================================
-// SUBJECTS
-// =========================================
-
-const subjects = [];
-
-for (let i = 0; i < subjectCount; i++) {
-
-    const presetIndex = inputs[index++];
-
-    const subject = subjectPresets[presetIndex - 1];
-
-    subjects.push(subject);
-}
-
-
-// =========================================
-// OUTFITS
-// =========================================
-
-const outfits = [];
-
-for (let i = 0; i < outfitCount; i++) {
-
-    const presetIndex = inputs[index++];
-
-    const outfit = outfitPresets[presetIndex - 1];
-
-    outfits.push(outfit);
-}
-
-
-// =========================================
-// ACTIONS
-// =========================================
-
-const actions = [];
-
-for (let i = 0; i < actionCount; i++) {
-
-    const presetIndex = inputs[index++];
-
-    const action = actionPresets[presetIndex - 1];
-
-    actions.push(action);
-}
-
-
-// =========================================
-// PROMPT TEMPLATE
-// =========================================
-
-const promptTemplate = inputs[index];
-
-// =========================================
-// ASPECT RATIO
-// =========================================
-
-let width = 1024;
-let height = 1024;
-
-if (aspectIndex === 1) {
-
-    // 3:4
-    width = 768;
-    height = 1024;
-}
-
-if (aspectIndex === 2) {
-
-    // 4:3
-    width = 1024;
-    height = 768;
-}
-
-
-// =========================================
-// GENERATE EVERY COMBINATION
-// =========================================
 
 async function generateBatch() {
 
-    for (let a = 0; a < actions.length; a++) {
-
-        for (let o = 0; o < outfits.length; o++) {
-
-            for (let s = 0; s < subjects.length; s++) {
-
-                const subject = subjects[s];
-                const clothing = outfits[o];
-                const action = actions[a];
+    const imagePrompt = promptTemplate
+        
+	   .replace(/\{subject\}/gi, subject)
+          
+	  .replace(/\{clothing\}/gi, clothing)
+    
+     .replace(/\{action\}/gi, action);
 
 
-                // =================================
-                // BUILD PROMPT
-                // =================================
-
-                const imagePrompt = promptTemplate
-                    .replace(/\{subject\}/gi, subject)
-                    .replace(/\{clothing\}/gi, clothing)
-                    .replace(/\{action\}/gi, action);
-
-
-                // =================================
-                // LOG PROMPT
-                // =================================
+ 
+// ============================
+// LOG PROMPT
+// ============================
 
                 console.log("=================================");
                 console.log("Generating:");
