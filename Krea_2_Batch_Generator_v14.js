@@ -9269,7 +9269,7 @@ function randomizeBody(state) {
 
   state.buttocks = chooseProfileAwarePreset(
     "buttocks",
-    buttockPresets,
+    buttocksPresets,
     state
   );
 
@@ -10713,7 +10713,7 @@ const PRESET_COLLECTIONS = {
   eyelashes: eyelashPresets,
   bodyShape: bodyShapePresets,
   legs: legPresets,
-  buttocks: buttockPresets,
+  buttocks: buttocksPresets,
   belly: bellyPresets,
   specificBody: specificBodyPresets,
 
@@ -20748,7 +20748,7 @@ function randomizeBodyManualSafe(
     ["eyelashes", eyelashPresets],
     ["bodyShape", bodyShapePresets],
     ["legs", legPresets],
-    ["buttocks", buttockPresets],
+    ["buttocks", buttocksPresets],
     ["belly", bellyPresets],
     ["specificBody", specificBodyPresets]
   ];
