@@ -24,8 +24,8 @@ const outfitPresets = [
 
 const actionPresets = [
     "smiling",
-    "lips parted",
-    "looking away from the camera"
+    "laying on a beach",
+    "standing, looking away from the camera"
 ];
 
 
