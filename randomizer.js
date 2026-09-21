@@ -79,9 +79,6 @@ const subjectCount = setup[0] + 1;
 const outfitCount = setup[1] + 1;
 const actionCount = setup[2] + 1;
 
-const aspectIndex = setup[2];
-
-
 // =========================================
 // STEP 2 — ENTER PROMPTS
 // =========================================
