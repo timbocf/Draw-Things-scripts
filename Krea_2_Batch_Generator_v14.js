@@ -51170,7 +51170,7 @@ async function v14RequestConfigurationFromDrawThings() {
         );
       }
     );
-  }
+  };
 
   return await this.requestFromUser(
     "KREA 2 V14",
