@@ -51365,12 +51365,6 @@ async function main() {
 }
 
 
-// ------------------------------------------------------------
-// FINAL SCRIPT ENTRY
-// ------------------------------------------------------------
-
-main();
-
 // ============================================================
 // KREA 2 V14 — CHUNK 53
 // COMPATIBILITY + DATA NORMALIZATION LAYER
@@ -52779,16 +52773,4 @@ if (
     v14GetFinalArchitectureStatus;
 }
 
-
-// ------------------------------------------------------------
-// IMPORTANT:
-//
-// Chunk 52 contained the original main() call.
-// We intentionally do NOT call main() here again.
-//
-// The final launch layer is already installed.
-// Calling main() a second time would open the UI twice.
-//
-// ============================================================
-// END CHUNK 54
-// ============================================================
+main();
