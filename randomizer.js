@@ -32,58 +32,40 @@ function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-var subject = randomize(subjectPresets);
-var outfit = randomize(outfitPresets);
-var action = randomize(actionPresets);
+const subject = randomize(subjectPresets);
+const outfit = randomize(outfitPresets);
+const action = randomize(actionPresets);
+
+const imagePrompt = "A photo of " + subject + ", " + action + ", wearing " + outfit + ". Natural anatomy."
 
 
 async function generateBatch() {
+										console.log("=================================");
+console.log("Generating:");
+console.log(imagePrompt);
+console.log("=================================");
 
-    const imagePrompt = promptTemplate
-        
-	   .replace(/\{subject\}/gi, subject)
-          
-	  .replace(/\{outfit\}/gi, outfit)
-    
-     .replace(/\{action\}/gi, action);
+// =================================
+// COPY CURRENT CONFIGURATION
+// =================================
 
+	let config = JSON.parse(
+      JSON.stringify(pipeline.configuration)
+   );
 
- 
-// ============================
-// LOG PROMPT
-// ============================
+// =================================
+// KREA 2 SETTINGS
+// =================================
 
-                console.log("=================================");
-                console.log("Generating:");
-                console.log(imagePrompt);
-                console.log("=================================");
+	config.model = "krea_2_turbo_i8x.ckpt";
+	config.width = 1024;
+	config.height = 1024;
+	config.batchCount = 1;
+	config.batchSize = 1;
 
-
-                // =================================
-                // COPY CURRENT CONFIGURATION
-                // =================================
-
-                let config = JSON.parse(
-                    JSON.stringify(pipeline.configuration)
-                );
-
-
-                // =================================
-                // KREA 2 SETTINGS
-                // =================================
-
-                config.model = "krea_2_turbo_i8x.ckpt";
-
-                config.width = width;
-                config.height = height;
-
-                config.batchCount = 1;
-                config.batchSize = 1;
-
-
-                // =================================
-                // FORCE SINGLE IMAGE
-                // =================================
+// =================================
+// FORCE SINGLE IMAGE
+// =================================
 
                 if (config.gridRows) {
                     config.gridRows = 1;
@@ -102,55 +84,47 @@ async function generateBatch() {
                 }
 
 
-                // =================================
-                // RANDOM SEED
-                // =================================
+// =================================
+// RANDOM SEED
+// =================================
+config.seed = -1;
 
-                config.seed = -1;
+// =================================
+// LORAS
+// =================================
 
-
-                // =================================
-                // LORAS
-                // =================================
-
-                config.loras = [
-                    {
-                        mode: "all",
-                        file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-                        weight: 1.0
-                    },
-                    {
-                        mode: "all",
-                        file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-                        weight: 0.6
-                    }
-                ];
-
-
-                // =================================
-                // GENERATE
-                // =================================
-
-                await pipeline.run({
-                    configuration: config,
-                    prompt: imagePrompt
-                });
-
-
-                console.log("Image complete.");
-            }
-        }
+config.loras = [
+    {
+      mode: "all",
+      file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+      weight: 1.0
+    },
+    {
+      mode: "all",
+      file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+      weight: 0.6
     }
+];
 
 
-    // =========================================
-    // FINISHED
-    // =========================================
+// =================================
+// GENERATE
+// =================================
+
+await pipeline.run({
+     configuration: config,
+     prompt: imagePrompt
+});
+
+console.log("Image complete.");
+
+// =========================================
+// FINISHED
+// =========================================
 
     console.log("=================================");
-    console.log("BATCH FINISHED SUCCESSFULLY!");
-    console.log("=================================");
+console.log("BATCH FINISHED SUCCESSFULLY!");
+console.log("=================================");
 }
-
 
 generateBatch();
