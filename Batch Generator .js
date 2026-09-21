@@ -13,15 +13,19 @@ const subjectPresets = [
     "woman with blonde hair",
     "woman with black hair",
     "Anne Hathaway",
-		"Dolly Parton"
+	  "Dolly Parton"
 ];
 
 const outfitPresets = [
-    "a loose fitting T-shirt"
+    "a loose fitting T-shirt",
+		"a bikini top",
+	"a halter top"
 ];
 
 const actionPresets = [
-    "smiling"
+    "smiling",
+	"lips parted",
+	"looking away from the camera"
 ];
 
 
