@@ -83,6 +83,10 @@ const actionCount = setup[2] + 1;
 // STEP 2 — CHOOSE OPTIONS
 // =========================================
 
+function randomize(array) {
+    return array(Math.floor[Math.random() * array.length)];
+}
+
 const inputs = requestFromUser(
     "Batch Prompts",
     "Generate",
