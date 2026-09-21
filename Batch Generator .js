@@ -17,9 +17,9 @@ const subjectPresets = [
 ];
 
 const outfitPresets = [
-    "a loose fitting T-shirt",
-    "a bikini top",
-    "a halter top"
+    "a loose fitting T-shirt and blue jeans",
+    "a bikini",
+    "a halter top and pleated shorts"
 ];
 
 const actionPresets = [
