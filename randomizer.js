@@ -88,7 +88,7 @@ const toRandom = setup[3];
 // =========================================
 
 function randomize(array) {
-    return array(Math.floor[Math.random() * array.length)];
+    return array[Math.floor(Math.random() * array.length)];
 }
 
 const inputs = requestFromUser(
