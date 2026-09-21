@@ -65,7 +65,10 @@ const setup = requestFromUser(
                 "3 Actions / Positions",
                 "4 Actions / Positions",
                 "5 Actions / Positions"
-            ])
+            ]),
+					
+					this.switch(false, "Generate from random options")
+
         ];
     }
 );
@@ -78,6 +81,7 @@ const setup = requestFromUser(
 const subjectCount = setup[0] + 1;
 const outfitCount = setup[1] + 1;
 const actionCount = setup[2] + 1;
+const toRandom = setup[3];
 
 // =========================================
 // STEP 2 — CHOOSE OPTIONS
