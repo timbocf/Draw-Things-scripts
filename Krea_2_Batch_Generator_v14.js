@@ -49990,7 +49990,8 @@ function v14GetActiveDrawThingsPipeline() {
 // ACTUAL IMAGE EXECUTION
 // ------------------------------------------------------------
 
-async function v14ExecuteDrawThingsRequest(request) {
+function v14ExecuteDrawThingsRequest(request) {
+  console.log("V14: ENTERED IMAGE EXECUTION")
   var normalized = v14NormalizeFinalDrawThingsRequest(request);
 
   if (!normalized.prompt) {
@@ -50011,7 +50012,7 @@ async function v14ExecuteDrawThingsRequest(request) {
     );
   }
 
-  return await activePipeline.run({
+  return activePipeline.run({
     configuration: normalized.configuration,
     prompt: normalized.prompt,
     negativePrompt: normalized.negativePrompt
