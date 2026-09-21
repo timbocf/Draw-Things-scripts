@@ -43,7 +43,7 @@ async function generateBatch() {
         
 	   .replace(/\{subject\}/gi, subject)
           
-	  .replace(/\{clothing\}/gi, clothing)
+	  .replace(/\{outfit\}/gi, outfit)
     
      .replace(/\{action\}/gi, action);
 
