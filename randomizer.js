@@ -80,7 +80,7 @@ const outfitCount = setup[1] + 1;
 const actionCount = setup[2] + 1;
 
 // =========================================
-// STEP 2 — ENTER PROMPTS
+// STEP 2 — CHOOSE OPTIONS
 // =========================================
 
 const inputs = requestFromUser(
