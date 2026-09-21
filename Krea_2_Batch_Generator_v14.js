@@ -50077,6 +50077,8 @@ async function v14GenerateOneFinalImage(
 ) {
   var input = generationInput || {};
 
+  console.log("V14 DEBUG 1: generateOneFinalImage entered");
+
   var generatedState;
 
   if (typeof generateV14State === "function") {
@@ -50104,6 +50106,8 @@ async function v14GenerateOneFinalImage(
     generatedState = generatedState.state;
   }
 
+  console.log("V14 DEBUG 2: state generation complete");
+
   var promptResult;
 
   if (typeof buildV14FinalPrompt === "function") {
@@ -50128,6 +50132,8 @@ async function v14GenerateOneFinalImage(
       : promptResult && promptResult.prompt
         ? promptResult.prompt
         : "";
+
+  console.log("V14 DEBUG 3: prompt generation complete");
 
   var qwenConfig =
     input.qwen ||
@@ -50158,6 +50164,8 @@ async function v14GenerateOneFinalImage(
     configuration:
       input.configuration || {}
   };
+
+  console.log("V14 DEBUG 4: about to execute image");
 
   return await v14ExecuteDrawThingsRequest(
     finalRequest
