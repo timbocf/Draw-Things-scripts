@@ -1550,7 +1550,7 @@ const chestPresets = [
 // HIPS
 // =========================================
 
-const hipPresets = [
+const hipsPresets = [
   {
     id: "hips.narrow",
     label: "Narrow",
@@ -9239,7 +9239,7 @@ function randomizeBody(state) {
 
   state.hips = chooseProfileAwarePreset(
     "hips",
-    hipPresets,
+    hipsPresets,
     state
   );
 
@@ -10708,7 +10708,7 @@ const PRESET_COLLECTIONS = {
   overallBuild: overallBuildPresets,
   height: heightPresets,
   chest: chestPresets,
-  hips: hipPresets,
+  hips: hipsPresets,
   lips: lipsPresets,
   eyelashes: eyelashPresets,
   bodyShape: bodyShapePresets,
@@ -51590,7 +51590,7 @@ function v14GetPresetCollection(category) {
     overallBuild: "overallBuildPresets",
     height: "heightPresets",
     chest: "chestPresets",
-    hips: "hipPresets",
+    hips: "hipsPresets",
     lips: "lipsPresets",
     eyelashes: "eyelashPresets",
     bodyShape: "bodyShapePresets",
