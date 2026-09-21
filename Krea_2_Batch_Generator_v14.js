@@ -50958,7 +50958,7 @@ function v14BuildUiGenerationInput(ui) {
 // UI REQUEST
 // ------------------------------------------------------------
 
-function v14RequestConfigurationFromDrawThings() {
+async function v14RequestConfigurationFromDrawThings() {
   if (
     typeof this === "undefined" ||
     !this ||
