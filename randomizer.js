@@ -79,7 +79,7 @@ const subjectCount = setup[0] + 1;
 const outfitCount = setup[1] + 1;
 const actionCount = setup[2] + 1;
 
-const aspectIndex = setup[3];
+const aspectIndex = setup[2];
 
 
 // =========================================
@@ -198,7 +198,6 @@ const subjects = [];
 for (let i = 0; i < subjectCount; i++) {
 
     const presetIndex = inputs[index++];
-    const typedSubject = inputs[index++];
 
     let subject = "";
 
