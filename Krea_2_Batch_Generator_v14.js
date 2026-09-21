@@ -684,11 +684,12 @@ function getCompatibilityRule(category, preset) {
 function isOptionAllowed(category, preset, state) {
   const rule = getCompatibilityRule(category, preset);
 
+  // No compatibility rule = allowed by default.
   if (!rule) {
     return true;
   }
 
-  // BLOCKED conditions always win.
+  // BLOCKED always wins.
   if (
     anyCompatibilityConditionMatches(
       rule.blockedWhen,
@@ -698,36 +699,16 @@ function isOptionAllowed(category, preset, state) {
     return false;
   }
 
-  // An allowedWhen rule means at least one of the
-  // listed conditions must be satisfied.
+  // If allowedWhen exists, at least one condition must match.
   if (
     Array.isArray(rule.allowedWhen) &&
-    rule.allowedWhen.length > 0
+    rule.allowedWhen.length > 0 &&
+    !anyCompatibilityConditionMatches(
+      rule.allowedWhen,
+      state
+    )
   ) {
-    if (
-      !anyCompatibilityConditionMatches(
-        rule.allowedWhen,
-        state
-      )
-    ) {
-      return false;
-    }
-  }
-
-  // allOfBlockedWhen allows a combination of
-  // conditions to block an option.
-  if (
-    Array.isArray(rule.blockedWhenAll) &&
-    rule.blockedWhenAll.length > 0
-  ) {
-    if (
-      allCompatibilityConditionsMatch(
-        rule.blockedWhenAll,
-        state
-      )
-    ) {
-      return false;
-    }
+    return false;
   }
 
   return true;
@@ -1733,6 +1714,8 @@ const assSizePresets = [
   }
 ];
 
+const buttocksPresets = assSizePresets;
+
 
 // =========================================
 // BELLY SIZE
@@ -2402,7 +2385,7 @@ function getProfileTraitWeight(
   profileName,
   traitCategory,
   preset,
-  defaultWeight = 0.05
+  defaultWeight = 1
 ) {
   const table = getProfileWeightTable(
     profileName,
@@ -51200,7 +51183,8 @@ async function v14RequestConfigurationFromDrawThings() {
           1,
           1,
           20,
-          1
+          1,
+          "Batch Size"
         ),
 
         this.section(
