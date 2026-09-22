@@ -191,6 +191,10 @@ async function generateBatch() {
     console.log("BATCH FINISHED SUCCESSFULLY!");
 }
 
-for (var i = 0; i < 3; i++) {
-    await generateBatch();
+async function runBatch() {
+    for (var i = 0; i < 3; i++) {
+        await generateBatch();
+    }
 }
+
+runBatch();
