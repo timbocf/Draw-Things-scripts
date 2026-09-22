@@ -18,17 +18,17 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["Blonde", "Brunette", "Black", "Ginger"]
+        hairColors: ["blonde", "brunette", "black", "ginger"]
     },
     {
         label: "Black",
         value: "with rich deep skin tone and classic African facial features",
-        hairColors: ["Dark Brown", "Black"]
+        hairColors: ["dark brown", "black"]
     },
     {
         label: "Mexican",
         value: "with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
-        hairColors: ["Dark Brown", "Black"]
+        hairColors: ["dark brown", "black"]
     }
     //    { label: "Mixed-Race", value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
     //    { label: "Indian", value: "with warm brown skin, dark eyes, and South Asian facial features" },
