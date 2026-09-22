@@ -73,10 +73,13 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "5 images",
             "10 images",
             "20 images"
-        ])
+        ]),
 
         // Subject-Nationality
-        this.menu(0, nationalityOptions),
+        this.menu(0, [
+            "Random Selection",
+            ...nationalityOptions
+        ]),
 
         // Outfit
         this.menu(0, [
