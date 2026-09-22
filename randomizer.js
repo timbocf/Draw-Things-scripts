@@ -131,27 +131,6 @@ async function generateBatch() {
     config.batchSize = 1;
 
     // =================================
-    // FORCE SINGLE IMAGE
-    // =================================
-
-    if (config.gridRows) {
-        config.gridRows = 1;
-    }
-
-    if (config.gridColumns) {
-        config.gridColumns = 1;
-    }
-
-    if (config.numFrames) {
-        config.numFrames = 1;
-    }
-
-    if (config.stride) {
-        config.stride = 0;
-    }
-
-
-    // =================================
     // RANDOM SEED
     // =================================
     config.seed = -1;
