@@ -4,6 +4,7 @@
 // KREA 2 RANDOM GENERATOR
 // =========================================
 
+var imageCount = 3;
 
 // =========================================
 // PRESET LISTS
@@ -64,6 +65,9 @@ const nationalityOptions = [
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
+        // Number of Images to Generate
+        this.menu(0, "3 images", "5 images", "10 images", "20 images")
+
         // Subject-Nationality
         this.menu(0, nationalityOptions),
 
@@ -91,21 +95,34 @@ async function generateBatch() {
     let action;
 
     if (promptSelections[0] === 0) {
-        nationality = randomize(nationalityPresets);
-    } else {
-        nationality = nationalityPresets[promptSelections[0] - 1];
+        imageCount = 3;
+    }
+    if (promptSelections[0] === 1) {
+        imageCount = 5;
+    }
+    if (promptSelections[0] === 2) {
+        imageCount = 10;
+    }
+    if (promptSelections[0] === 3) {
+        imageCount = 20;
     }
 
     if (promptSelections[1] === 0) {
-        outfit = randomize(outfitPresets);
+        nationality = randomize(nationalityPresets);
     } else {
-        outfit = outfitPresets[promptSelections[1] - 1];
+        nationality = nationalityPresets[promptSelections[1] - 1];
     }
 
     if (promptSelections[2] === 0) {
+        outfit = randomize(outfitPresets);
+    } else {
+        outfit = outfitPresets[promptSelections[2] - 1];
+    }
+
+    if (promptSelections[3] === 0) {
         action = randomize(actionPresets);
     } else {
-        action = actionPresets[promptSelections[2] - 1];
+        action = actionPresets[promptSelections[3] - 1];
     }
 
     const imagePrompt = "A photo of a " + nationality.label + " " + gender + " " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
@@ -171,7 +188,7 @@ async function generateBatch() {
 }
 
 async function runBatch() {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < imageCount; i++) {
         await generateBatch();
     }
 }
