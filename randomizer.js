@@ -18,7 +18,8 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger"]
+        hairColors: ["blonde", "brunette", "black", "ginger"],
+        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"]
     },
     {
         label: "Black",
@@ -184,15 +185,18 @@ async function generateBatch() {
 
     let nationality;
     let hairColor;
+    let skinTone;
     let outfit;
     let action;
 
     if (promptSelections[1] === 0) {
         nationality = randomize(nationalityPresets);
         hairColor = randomize(nationality.hairColors);
+        skinTone = randomize(nationality.skinTones);
     } else {
         nationality = nationalityPresets[promptSelections[1] - 1];
         hairColor = randomize(nationality.hairColors);
+        skinTone = randomize(nationality.skinTones);
     }
 
     if (promptSelections[2] === 0) {
@@ -207,7 +211,7 @@ async function generateBatch() {
         action = actionPresets[promptSelections[3] - 1];
     }
 
-    const imagePrompt = "A photo of a " + nationality.label + " " + gender + " with " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
+    const imagePrompt = "A photo of a " + nationality.label + " " + gender + " with " + skinTone + ", " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
     console.log("Generating:");
     console.log(imagePrompt);
 
