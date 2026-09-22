@@ -162,18 +162,18 @@ async function generateBatch() {
     // LORAS
     // =================================
 
-    config.loras = [
-        {
-            mode: "all",
-            file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-            weight: 1.0
-        },
-        {
-            mode: "all",
-            file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-            weight: 0.6
-        }
-    ];
+    //    config.loras = [
+    //        {
+    //            mode: "all",
+    //            file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+    //            weight: 1.0
+    //        },
+    //        {
+    //            mode: "all",
+    //            file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+    //            weight: 0.6
+    //        }
+    //    ];
 
     // =================================
     // GENERATE
