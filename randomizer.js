@@ -56,14 +56,16 @@ function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
+const nationalityOptions = [
+    "Random Selection",
+    ...nationalityPresets.map(item => item.label)
+];
+
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
-        // Subject
-        this.menu(0, [
-            "Random Selection",
-            ...nationalityPresets
-        ]),
+        // Subject-Nationality
+        this.menu(0, nationalityOptions),
 
         // Outfit
         this.menu(0, [
@@ -84,6 +86,7 @@ async function generateBatch() {
 
     canvas.clear();
 
+    let nationality;
     let outfit;
     let action;
 
