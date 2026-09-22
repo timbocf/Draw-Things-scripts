@@ -62,6 +62,8 @@ const nationalityOptions = [
     ...nationalityPresets.map(item => item.label)
 ];
 
+const imageCounts = [3, 5, 10, 20];
+
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
@@ -99,7 +101,6 @@ async function generateBatch() {
     let outfit;
     let action;
 
-    const imageCounts = [3, 5, 10, 20];
     imageCount = imageCounts[promptSelections[0]];
 
     if (promptSelections[1] === 0) {
