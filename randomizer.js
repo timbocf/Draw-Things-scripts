@@ -146,8 +146,16 @@ const nationalityPresets = [
         value: "with East African facial features",
         hairColors: ["dark brown", "black", "dark glossy black"],
         skinTones: ["deep brown", "black", "deep glossy black"]
-    }
+    },
 ];
+
+// --- AGE ---
+const agePresets = [
+    "18 years old", "20 years old", "25 years old", "30 years old", "35 years old",
+    "40 years old", "45 years old", "50 years old", "55 years old", "60 years old",
+    "65 years old", "70 years old", "75 years old", "80 years old", "85 years old"
+];
+
 
 const outfitPresets = [
     "a loose fitting T-shirt and blue jeans",
@@ -207,6 +215,7 @@ async function generateBatch() {
     let nationality;
     let hairColor;
     let skinTone;
+    let age;
     let outfit;
     let action;
 
@@ -232,7 +241,9 @@ async function generateBatch() {
         action = actionPresets[promptSelections[3] - 1];
     }
 
-    const imagePrompt = "A photo of a " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
+    age = randomize(agePresets);
+
+    const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
     console.log("Generating:");
     console.log(imagePrompt);
 
