@@ -24,107 +24,128 @@ const nationalityPresets = [
     {
         label: "Black",
         value: "with rich deep skin tone and classic African facial features",
-        hairColors: ["dark brown", "black"]
+        hairColors: ["dark brown", "black"],
+        skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"]
     },
     {
         label: "Mexican",
-        value: "with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
-        hairColors: ["dark brown", "black"]
+        value: "with prominent Indigenous Mesoamerican facial features, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["warm olive tan", "sun-darkened"]
     },
     {
         label: "Mixed-Race",
-        value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
-        hairColors: ["dark brown", "black"]
+        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["deep golden-bronze", "warm olive"]
     },
     {
         label: "Indian",
-        value: "with warm brown skin, dark eyes, and South Asian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with dark eyes, and South Asian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["deep golden-bronze", "dark tan", "warm brown"]
     },
     {
         label: "Thai",
-        value: "with golden-tan skin and Southeast Asian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Southeast Asian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["deep golden-bronze", "golden-tan"]
     },
     {
         label: "Japanese",
-        value: "with fair skin and East Asian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with East Asian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["fair", "light", "porcelain"]
     },
     {
         label: "Korean",
         value: "with fair porcelain skin and East Asian facial features",
-        hairColors: ["dark brown", "black"]
+        hairColors: ["dark brown", "black"],
+        skinTones: ["fair", "porcelain", "light"]
     },
     {
         label: "Filipina",
-        value: "with warm tan skin and Southeast Asian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Southeast Asian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["warm tan", "deep golden-bronze"]
     },
     {
         label: "Brazilian",
-        value: "with sun-kissed olive skin and a blend of European, African, and Indigenous features",
-        hairColors: ["light brown", "dark brown", "black"]
+        value: "with a blend of European, African, and Indigenous features",
+        hairColors: ["light brown", "dark brown", "black"],
+        skinTones: ["sun-kissed olive", "deep golden-bronze"]
     },
     {
         label: "Italian",
-        value: "with olive skin and Mediterranean facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Mediterranean facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["sun-kissed olive", "rich golden hue"]
     },
     {
         label: "Scandinavian",
-        value: "with fair skin and Nordic facial features",
-        hairColors: ["blonde"]
+        value: "with Nordic facial features",
+        hairColors: ["blonde"],
+        skinTones: ["fair", "light"]
     },
     {
         label: "Russian/Eastern European",
-        value: "with fair skin and Slavic facial features",
-        hairColors: ["blonde", "light brown", "dark brown", "black"]
+        value: "with Slavic facial features",
+        hairColors: ["blonde", "light brown", "dark brown", "black"],
+        skinTones: ["fair", "light", "sun-kissed tan"]
     },
     {
         label: "Chinese",
-        value: "with fair skin and East Asian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with East Asian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["fair", "light", "olive"]
     },
     {
         label: "Vietnamese",
-        value: "with warm tan skin and Southeast Asian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Southeast Asian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["warm tan", "olive", "sun-kissed tan"]
     },
     {
         label: "Middle Eastern",
-        value: "with olive skin and Middle Eastern facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Middle Eastern facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["olive", "dark"]
     },
     {
         label: "French",
-        value: "with fair skin and classic Western European features",
-        hairColors: ["light brown", "dark brown", "black"]
+        value: "with classic Western European features",
+        hairColors: ["light brown", "dark brown", "black"],
+        skinTones: ["fair", "light", "sun-kissed tan"]
     },
     {
         label: "German",
-        value: "with fair skin and Central European facial features",
-        hairColors: ["blonde", "light brown", "dark brown"]
+        value: "with Central European facial features",
+        hairColors: ["blonde", "light brown", "dark brown"],
+        skinTones: ["fair", "light", "porcelain"]
     },
     {
         label: "Irish",
-        value: "with fair skin, freckles, and Celtic facial features",
-        hairColors: ["ginger", "blonde", "light brown", "dark brown"]
+        value: "with freckles and Celtic facial features",
+        hairColors: ["ginger", "blonde", "light brown", "dark brown"],
+        skinTones: ["porcelain", "fair", "light"]
     },
     {
         label: "Native American",
-        value: "with warm bronze skin and Indigenous American facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Indigenous American facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["warm bronze", "sun-kissed olive"]
     },
     {
         label: "Polynesian/Pacific Islander",
-        value: "with warm brown skin and Polynesian facial features",
-        hairColors: ["dark brown", "black"]
+        value: "with Polynesian facial features",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["warm brown", "sun-kissed olive"]
     },
     {
         label: "Ethiopian/East African",
-        value: "with deep brown skin and East African facial features",
-        hairColors: ["dark brown", "black", "dark glossy black"]
+        value: "with East African facial features",
+        hairColors: ["dark brown", "black", "dark glossy black"],
+        skinTones: ["deep brown", "black", "deep glossy black"]
     }
 ];
 
