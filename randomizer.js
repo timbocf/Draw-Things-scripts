@@ -15,28 +15,28 @@ const gender = [
 
 // --- NATIONALITY / ETHNICITY ---
 const nationalityPresets = [
-    { label: "Caucasian", value: "Caucasian with Western European facial features" },
-    { label: "Black", value: "Black with rich deep skin tone and classic African facial features" },
-    { label: "Mixed-Race", value: "Mixed-race with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
-    { label: "Mexican", value: "Mexican with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick dark wavy hair, plump lips, and a curvy hourglass figure" },
-    { label: "Indian", value: "Indian with warm brown skin, dark eyes, and South Asian facial features" },
-    { label: "Thai", value: "Thai with golden-tan skin and Southeast Asian facial features" },
-    { label: "Japanese", value: "Japanese with fair skin and East Asian facial features" },
-    { label: "Korean", value: "Korean with fair porcelain skin and East Asian facial features" },
-    { label: "Filipina", value: "Filipina with warm tan skin and Southeast Asian facial features" },
-    { label: "Brazilian", value: "Brazilian with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
-    { label: "Italian", value: "Italian with olive skin and Mediterranean facial features" },
-    { label: "Scandinavian", value: "Scandinavian with fair skin, light hair, and Nordic facial features" },
-    { label: "Russian/Eastern European", value: "Russian/Eastern European with fair skin and Slavic facial features" },
-    { label: "Chinese", value: "Chinese with fair skin and East Asian facial features" },
-    { label: "Vietnamese", value: "Vietnamese with warm tan skin and Southeast Asian facial features" },
-    { label: "Middle Eastern", value: "Middle Eastern with olive skin, dark hair, and Middle Eastern facial features" },
-    { label: "French", value: "French with fair skin and classic Western European features" },
-    { label: "German", value: "German with fair skin and Central European facial features" },
-    { label: "Irish", value: "Irish with fair skin, freckles, and Celtic facial features" },
-    { label: "Native American", value: "Native American with warm bronze skin and Indigenous American facial features" },
-    { label: "Polynesian/Pacific Islander", value: "Polynesian/Pacific Islander with warm brown skin and Polynesian facial features" },
-    { label: "Ethiopian/East African", value: "Ethiopian/East African with deep brown skin and East African facial features" }
+    { label: "Caucasian", value: "with Western European facial features" },
+    { label: "Black", value: "with rich deep skin tone and classic African facial features" },
+    { label: "Mixed-Race", value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
+    { label: "Mexican", value: "with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick dark wavy hair, plump lips, and a curvy hourglass figure" },
+    { label: "Indian", value: "with warm brown skin, dark eyes, and South Asian facial features" },
+    { label: "Thai", value: "with golden-tan skin and Southeast Asian facial features" },
+    { label: "Japanese", value: "with fair skin and East Asian facial features" },
+    { label: "Korean", value: "with fair porcelain skin and East Asian facial features" },
+    { label: "Filipina", value: "with warm tan skin and Southeast Asian facial features" },
+    { label: "Brazilian", value: "with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
+    { label: "Italian", value: "with olive skin and Mediterranean facial features" },
+    { label: "Scandinavian", value: "with fair skin, light hair, and Nordic facial features" },
+    { label: "Russian/Eastern European", value: "with fair skin and Slavic facial features" },
+    { label: "Chinese", value: "with fair skin and East Asian facial features" },
+    { label: "Vietnamese", value: "with warm tan skin and Southeast Asian facial features" },
+    { label: "Middle Eastern", value: "with olive skin, dark hair, and Middle Eastern facial features" },
+    { label: "French", value: "with fair skin and classic Western European features" },
+    { label: "German", value: "with fair skin and Central European facial features" },
+    { label: "Irish", value: "with fair skin, freckles, and Celtic facial features" },
+    { label: "Native American", value: "with warm bronze skin and Indigenous American facial features" },
+    { label: "Polynesian/Pacific Islander", value: "with warm brown skin and Polynesian facial features" },
+    { label: "Ethiopian/East African", value: "with deep brown skin and East African facial features" }
 ];
 
 
@@ -58,11 +58,13 @@ function randomize(array) {
 
 async function generateBatch() {
 
+canvas.clear();
+
 const nationality = randomize(nationalityPresets);
 const outfit = randomize(outfitPresets);
 const action = randomize(actionPresets);
 
-const imagePrompt = "A photo of " + nationality.label + gender + "with " nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
+const imagePrompt = "A photo of a " + nationality.label + " " + gender + " " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
 										console.log("=================================");
 console.log("Generating:");
 console.log(imagePrompt);
@@ -127,7 +129,7 @@ config.loras = [
       file: "mysticxxx_krea2_v3_lora_f16.ckpt",
       weight: 0.6
     }
-];i
+];
 
 // =================================
 // GENERATE
