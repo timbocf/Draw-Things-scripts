@@ -13,31 +13,43 @@ const gender = [
 ];
 
 // --- NATIONALITY / ETHNICITY ---
-const nationalityPresets = [
-    { label: "Caucasian", value: "with Western European facial features" },
-    { label: "Black", value: "with rich deep skin tone and classic African facial features" },
-    { label: "Mixed-Race", value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
-    { label: "Mexican", value: "with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick dark wavy hair, plump lips, and a curvy hourglass figure" },
-    { label: "Indian", value: "with warm brown skin, dark eyes, and South Asian facial features" },
-    { label: "Thai", value: "with golden-tan skin and Southeast Asian facial features" },
-    { label: "Japanese", value: "with fair skin and East Asian facial features" },
-    { label: "Korean", value: "with fair porcelain skin and East Asian facial features" },
-    { label: "Filipina", value: "with warm tan skin and Southeast Asian facial features" },
-    { label: "Brazilian", value: "with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
-    { label: "Italian", value: "with olive skin and Mediterranean facial features" },
-    { label: "Scandinavian", value: "with fair skin, light hair, and Nordic facial features" },
-    { label: "Russian/Eastern European", value: "with fair skin and Slavic facial features" },
-    { label: "Chinese", value: "with fair skin and East Asian facial features" },
-    { label: "Vietnamese", value: "with warm tan skin and Southeast Asian facial features" },
-    { label: "Middle Eastern", value: "with olive skin, dark hair, and Middle Eastern facial features" },
-    { label: "French", value: "with fair skin and classic Western European features" },
-    { label: "German", value: "with fair skin and Central European facial features" },
-    { label: "Irish", value: "with fair skin, freckles, and Celtic facial features" },
-    { label: "Native American", value: "with warm bronze skin and Indigenous American facial features" },
-    { label: "Polynesian/Pacific Islander", value: "with warm brown skin and Polynesian facial features" },
-    { label: "Ethiopian/East African", value: "with deep brown skin and East African facial features" }
-];
 
+const nationalityPresets = [
+    {
+        label: "Caucasian",
+        value: "with Western European facial features",
+        hairColors: ["Blonde", "Brunette", "Black", "Ginger"]
+    },
+    {
+        label: "Black",
+        value: "with rich deep skin tone and classic African facial features",
+        hairColors: ["Dark Brown", "Black"]
+    },
+    {
+        label: "Mexican",
+        value: "with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
+        hairColors: ["Dark Brown", "Black"]
+    }
+    //    { label: "Mixed-Race", value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
+    //    { label: "Indian", value: "with warm brown skin, dark eyes, and South Asian facial features" },
+    //    { label: "Thai", value: "with golden-tan skin and Southeast Asian facial features" },
+    //    { label: "Japanese", value: "with fair skin and East Asian facial features" },
+    //    { label: "Korean", value: "with fair porcelain skin and East Asian facial features" },
+    //    { label: "Filipina", value: "with warm tan skin and Southeast Asian facial features" },
+    //    { label: "Brazilian", value: "with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
+    //    { label: "Italian", value: "with olive skin and Mediterranean facial features" },
+    //    { label: "Scandinavian", value: "with fair skin, light hair, and Nordic facial features" },
+    //    { label: "Russian/Eastern European", value: "with fair skin and Slavic facial features" },
+    //    { label: "Chinese", value: "with fair skin and East Asian facial features" },
+    //    { label: "Vietnamese", value: "with warm tan skin and Southeast Asian facial features" },
+    //    { label: "Middle Eastern", value: "with olive skin, dark hair, and Middle Eastern facial features" },
+    //    { label: "French", value: "with fair skin and classic Western European features" },
+    //    { label: "German", value: "with fair skin and Central European facial features" },
+    //    { label: "Irish", value: "with fair skin, freckles, and Celtic facial features" },
+    //    { label: "Native American", value: "with warm bronze skin and Indigenous American facial features" },
+    //    { label: "Polynesian/Pacific Islander", value: "with warm brown skin and Polynesian facial features" },
+    //    { label: "Ethiopian/East African", value: "with deep brown skin and East African facial features" }
+];
 
 const outfitPresets = [
     "a loose fitting T-shirt and blue jeans",
@@ -95,13 +107,16 @@ async function generateBatch() {
     canvas.clear();
 
     let nationality;
+    let hairColor;
     let outfit;
     let action;
 
     if (promptSelections[1] === 0) {
         nationality = randomize(nationalityPresets);
+        hairColor = randomize(nationality.hairColors);
     } else {
         nationality = nationalityPresets[promptSelections[1] - 1];
+        hairColor = randomize(nationality.hairColors);
     }
 
     if (promptSelections[2] === 0) {
@@ -116,7 +131,7 @@ async function generateBatch() {
         action = actionPresets[promptSelections[3] - 1];
     }
 
-    const imagePrompt = "A photo of a " + nationality.label + " " + gender + " " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
+    const imagePrompt = "A photo of a " + nationality.label + " " + gender + " with " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
     console.log("Generating:");
     console.log(imagePrompt);
 
