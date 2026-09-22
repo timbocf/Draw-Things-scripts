@@ -184,6 +184,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
     return [
 
         // Number of Images to Generate
+			this.plainText("Number of Images to Generate"),
         this.menu(0, [
             "3 images",
             "5 images",
@@ -192,15 +193,25 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
         ]),
 
         // Subject-Nationality
+			this.plainText("Nationality"),
         this.menu(0, nationalityOptions),
 
+			// Age
+			this.plainText("Age"),
+        this.menu(0, [
+					"Random Selection",
+					...agePresets
+			]),
+
         // Outfit
+			this.plainText("Outfit"),
         this.menu(0, [
             "Random Selection",
             ...outfitPresets
         ]),
 
         // Action
+			this.plainText("Action"),
         this.menu(0, [
             "Random Selection",
             ...actionPresets
@@ -212,36 +223,39 @@ async function generateBatch() {
 
     canvas.clear();
 
-    let nationality;
-    let hairColor;
-    let skinTone;
-    let age;
-    let outfit;
-    let action;
+let nationality;
+let hairColor;
+let skinTone;
+let age;
+let outfit;
+let action;
 
-    if (promptSelections[1] === 0) {
-        nationality = randomize(nationalityPresets);
-        hairColor = randomize(nationality.hairColors);
-        skinTone = randomize(nationality.skinTones);
-    } else {
-        nationality = nationalityPresets[promptSelections[1] - 1];
-        hairColor = randomize(nationality.hairColors);
-        skinTone = randomize(nationality.skinTones);
-    }
+if (promptSelections[3] === 0) {
+    nationality = randomize(nationalityPresets);
+} else {
+    nationality = nationalityPresets[promptSelections[3] - 1];
+}
 
-    if (promptSelections[2] === 0) {
-        outfit = randomize(outfitPresets);
-    } else {
-        outfit = outfitPresets[promptSelections[2] - 1];
-    }
+hairColor = randomize(nationality.hairColors);
+skinTone = randomize(nationality.skinTones);
 
-    if (promptSelections[3] === 0) {
-        action = randomize(actionPresets);
-    } else {
-        action = actionPresets[promptSelections[3] - 1];
-    }
-
+if (promptSelections[5] === 0) {
     age = randomize(agePresets);
+} else {
+    age = agePresets[promptSelections[5] - 1];
+}
+
+if (promptSelections[7] === 0) {
+    outfit = randomize(outfitPresets);
+} else {
+    outfit = outfitPresets[promptSelections[7] - 1];
+}
+
+if (promptSelections[9] === 0) {
+    action = randomize(actionPresets);
+} else {
+    action = actionPresets[promptSelections[9] - 1];
+}
 
     const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
     console.log("Generating:");
@@ -305,7 +319,7 @@ async function generateBatch() {
     console.log("Image Complete.");
 }
 
-const imageCount = imageCounts[promptSelections[0]];
+const imageCount = imageCounts[promptSelections[1]];
 
 async function runBatch() {
     for (var i = 0; i < imageCount; i++) {
