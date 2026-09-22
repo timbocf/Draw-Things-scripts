@@ -4,8 +4,6 @@
 // KREA 2 RANDOM GENERATOR
 // =========================================
 
-var imageCount = 3;
-
 // =========================================
 // PRESET LISTS
 // =========================================
@@ -92,7 +90,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
     ]
 })
 
-
 async function generateBatch() {
 
     canvas.clear();
@@ -100,8 +97,6 @@ async function generateBatch() {
     let nationality;
     let outfit;
     let action;
-
-    imageCount = imageCounts[promptSelections[0]];
 
     if (promptSelections[1] === 0) {
         nationality = randomize(nationalityPresets);
@@ -180,13 +175,16 @@ async function generateBatch() {
     // FINISHED
     // =========================================
 
-    console.log("BATCH FINISHED SUCCESSFULLY!");
+    console.log("Image Complete.");
 }
+
+const imageCount = imageCounts[promptSelections[0]];
 
 async function runBatch() {
     for (var i = 0; i < imageCount; i++) {
         await generateBatch();
     }
+    console.log("Batch Finished!");
 }
 
 runBatch();
