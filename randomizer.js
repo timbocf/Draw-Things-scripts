@@ -76,10 +76,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
         ]),
 
         // Subject-Nationality
-        this.menu(0, [
-            "Random Selection",
-            ...nationalityOptions
-        ]),
+        this.menu(0, nationalityOptions),
 
         // Outfit
         this.menu(0, [
