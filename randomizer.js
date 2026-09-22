@@ -66,7 +66,12 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
     return [
 
         // Number of Images to Generate
-        this.menu(0, "3 images", "5 images", "10 images", "20 images")
+        this.menu(0, [
+            "3 images",
+            "5 images",
+            "10 images",
+            "20 images"
+        ])
 
         // Subject-Nationality
         this.menu(0, nationalityOptions),
@@ -94,18 +99,8 @@ async function generateBatch() {
     let outfit;
     let action;
 
-    if (promptSelections[0] === 0) {
-        imageCount = 3;
-    }
-    if (promptSelections[0] === 1) {
-        imageCount = 5;
-    }
-    if (promptSelections[0] === 2) {
-        imageCount = 10;
-    }
-    if (promptSelections[0] === 3) {
-        imageCount = 20;
-    }
+    const imageCounts = [3, 5, 10, 20];
+    imageCount = imageCounts[promptSelections[0]];
 
     if (promptSelections[1] === 0) {
         nationality = randomize(nationalityPresets);
