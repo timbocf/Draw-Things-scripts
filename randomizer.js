@@ -84,9 +84,26 @@ async function generateBatch() {
 
     canvas.clear();
 
-    const nationality = randomize(nationalityPresets);
-    const outfit = randomize(outfitPresets);
-    const action = randomize(actionPresets);
+    let outfit;
+    let action;
+
+    if (promptSelections[0] === 0) {
+        nationality = randomize(nationalityPresets);
+    } else {
+        nationality = nationalityPresets[promptSelections[0] - 1];
+    }
+
+    if (promptSelections[1] === 0) {
+        outfit = randomize(outfitPresets);
+    } else {
+        outfit = outfitPresets[promptSelections[1] - 1];
+    }
+
+    if (promptSelections[2] === 0) {
+        action = randomize(actionPresets);
+    } else {
+        action = actionPresets[promptSelections[2] - 1];
+    }
 
     const imagePrompt = "A photo of a " + nationality.label + " " + gender + " " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
     console.log("=================================");
