@@ -32,14 +32,13 @@ function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
+async function generateBatch() {
+
 const subject = randomize(subjectPresets);
 const outfit = randomize(outfitPresets);
 const action = randomize(actionPresets);
 
 const imagePrompt = "A photo of " + subject + ", " + action + ", wearing " + outfit + ". Natural anatomy."
-
-
-async function generateBatch() {
 										console.log("=================================");
 console.log("Generating:");
 console.log(imagePrompt);
@@ -67,21 +66,21 @@ console.log("=================================");
 // FORCE SINGLE IMAGE
 // =================================
 
-                if (config.gridRows) {
-                    config.gridRows = 1;
-                }
+   if (config.gridRows) {
+       config.gridRows = 1;
+   }
 
-                if (config.gridColumns) {
-                    config.gridColumns = 1;
-                }
+   if (config.gridColumns) {
+       config.gridColumns = 1;
+   }
 
-                if (config.numFrames) {
-                    config.numFrames = 1;
-                }
+   if (config.numFrames) {
+       config.numFrames = 1;
+   }
 
-                if (config.stride) {
-                    config.stride = 0;
-                }
+   if (config.stride) {
+       config.stride = 0;
+   }
 
 
 // =================================
@@ -104,8 +103,7 @@ config.loras = [
       file: "mysticxxx_krea2_v3_lora_f16.ckpt",
       weight: 0.6
     }
-];
-
+];i
 
 // =================================
 // GENERATE
@@ -127,4 +125,6 @@ console.log("BATCH FINISHED SUCCESSFULLY!");
 console.log("=================================");
 }
 
-generateBatch();
+for (var i=0; i < 3; i++) {
+	generateBatch();
+}
