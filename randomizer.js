@@ -29,26 +29,102 @@ const nationalityPresets = [
         label: "Mexican",
         value: "with prominent Indigenous Mesoamerican facial features, warm olive-tan skin, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
         hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Mixed-Race",
+        value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Indian",
+        value: "with warm brown skin, dark eyes, and South Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Thai",
+        value: "with golden-tan skin and Southeast Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Japanese",
+        value: "with fair skin and East Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Korean",
+        value: "with fair porcelain skin and East Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Filipina",
+        value: "with warm tan skin and Southeast Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Brazilian",
+        value: "with sun-kissed olive skin and a blend of European, African, and Indigenous features",
+        hairColors: ["light brown", "dark brown", "black"]
+    },
+    {
+        label: "Italian",
+        value: "with olive skin and Mediterranean facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Scandinavian",
+        value: "with fair skin and Nordic facial features",
+        hairColors: ["blonde"]
+    },
+    {
+        label: "Russian/Eastern European",
+        value: "with fair skin and Slavic facial features",
+        hairColors: ["blonde", "light brown", "dark brown", "black"]
+    },
+    {
+        label: "Chinese",
+        value: "with fair skin and East Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Vietnamese",
+        value: "with warm tan skin and Southeast Asian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Middle Eastern",
+        value: "with olive skin and Middle Eastern facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "French",
+        value: "with fair skin and classic Western European features",
+        hairColors: ["light brown", "dark brown", "black"]
+    },
+    {
+        label: "German",
+        value: "with fair skin and Central European facial features",
+        hairColors: ["blonde", "light brown", "dark brown"]
+    },
+    {
+        label: "Irish",
+        value: "with fair skin, freckles, and Celtic facial features",
+        hairColors: ["ginger", "blonde", "light brown", "dark brown"]
+    },
+    {
+        label: "Native American",
+        value: "with warm bronze skin and Indigenous American facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Polynesian/Pacific Islander",
+        value: "with warm brown skin and Polynesian facial features",
+        hairColors: ["dark brown", "black"]
+    },
+    {
+        label: "Ethiopian/East African",
+        value: "with deep brown skin and East African facial features",
+        hairColors: ["dark brown", "black", "dark glossy black"]
     }
-    //    { label: "Mixed-Race", value: "with a natural blend of African and European facial features, deep golden-bronze skin, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick dark brown hair with thick wavy curls, a curvy hourglass figure, and a round ass" },
-    //    { label: "Indian", value: "with warm brown skin, dark eyes, and South Asian facial features" },
-    //    { label: "Thai", value: "with golden-tan skin and Southeast Asian facial features" },
-    //    { label: "Japanese", value: "with fair skin and East Asian facial features" },
-    //    { label: "Korean", value: "with fair porcelain skin and East Asian facial features" },
-    //    { label: "Filipina", value: "with warm tan skin and Southeast Asian facial features" },
-    //    { label: "Brazilian", value: "with sun-kissed olive skin and a blend of European, African, and Indigenous features" },
-    //    { label: "Italian", value: "with olive skin and Mediterranean facial features" },
-    //    { label: "Scandinavian", value: "with fair skin, light hair, and Nordic facial features" },
-    //    { label: "Russian/Eastern European", value: "with fair skin and Slavic facial features" },
-    //    { label: "Chinese", value: "with fair skin and East Asian facial features" },
-    //    { label: "Vietnamese", value: "with warm tan skin and Southeast Asian facial features" },
-    //    { label: "Middle Eastern", value: "with olive skin, dark hair, and Middle Eastern facial features" },
-    //    { label: "French", value: "with fair skin and classic Western European features" },
-    //    { label: "German", value: "with fair skin and Central European facial features" },
-    //    { label: "Irish", value: "with fair skin, freckles, and Celtic facial features" },
-    //    { label: "Native American", value: "with warm bronze skin and Indigenous American facial features" },
-    //    { label: "Polynesian/Pacific Islander", value: "with warm brown skin and Polynesian facial features" },
-    //    { label: "Ethiopian/East African", value: "with deep brown skin and East African facial features" }
 ];
 
 const outfitPresets = [
