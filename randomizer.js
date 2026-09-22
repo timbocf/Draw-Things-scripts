@@ -109,10 +109,8 @@ async function generateBatch() {
     }
 
     const imagePrompt = "A photo of a " + nationality.label + " " + gender + " " + nationality.value + ", " + action + ", wearing " + outfit + ". Natural anatomy.";
-    console.log("=================================");
     console.log("Generating:");
     console.log(imagePrompt);
-    console.log("=================================");
 
     // =================================
     // COPY CURRENT CONFIGURATION
@@ -190,11 +188,9 @@ async function generateBatch() {
     // FINISHED
     // =========================================
 
-    console.log("=================================");
     console.log("BATCH FINISHED SUCCESSFULLY!");
-    console.log("=================================");
 }
 
 for (var i = 0; i < 3; i++) {
-    generateBatch();
+    await generateBatch();
 }
