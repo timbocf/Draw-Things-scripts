@@ -12,6 +12,27 @@ const gender = [
     "woman"
 ];
 
+// Celebrity Presets
+
+const celebrityPresets = [
+    { label: "None Selected", value: "" },
+    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes" },
+    { label: "Anne Hathaway", value: "Anne Hathaway with a tall slim build with smokey eyes and heavy mascara" },
+    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
+    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
+    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
+    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
+    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
+    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
+    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." },
+    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair" },
+    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
+    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose" },
+    { label: "Michelle Obama", value: "Michelle Obama" },
+    { label: "Betty Boop", value: "Betty Boop" }
+];
+
+
 // --- NATIONALITY / ETHNICITY ---
 
 const nationalityPresets = [
@@ -227,7 +248,7 @@ const outfitPresets = [
     "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle",
     "1940s WWII-style leather flight jacket worn over a white dress",
 
-"1940s WWII-style leather flight jacket with leather bikini panties",
+    "1940s WWII-style leather flight jacket with leather bikini panties",
 
     "1940s-style navy sailor uniform with a white collar and navy tie",
     "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem",
@@ -298,6 +319,10 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "20 images"
         ]),
 
+        // Celebrity Presets
+        this.plainText("Celebrity Presets"),
+        this.menu(0, celebrityPresets.map(item => item.label)),
+
         // Subject-Nationality
         this.plainText("Nationality"),
         this.menu(0, nationalityOptions),
@@ -336,6 +361,8 @@ async function generateBatch() {
 
     canvas.clear();
 
+    let imagePrompt;
+    let celebrity;
     let nationality;
     let hairColor;
     let skinTone;
@@ -345,42 +372,50 @@ async function generateBatch() {
     let outfit;
     let action;
 
-    if (promptSelections[3] === 0) {
-        nationality = randomize(nationalityPresets);
+    if (promptSelections[3] > 0) {
+        celebrity = celebrityPresets[promptSelections[3] - 1].value;
     } else {
-        nationality = nationalityPresets[promptSelections[3] - 1];
-    }
 
-    hairColor = randomize(nationality.hairColors);
-    skinTone = randomize(nationality.skinTones);
-    eyeColor = randomize(nationality.eyeColors);
+        if (promptSelections[5] === 0) {
+            nationality = randomize(nationalityPresets);
+        } else {
+            nationality = nationalityPresets[promptSelections[5] - 1];
+        }
 
-    if (promptSelections[5] === 0) {
-        age = randomize(agePresets);
-    } else {
-        age = agePresets[promptSelections[5] - 1];
-    }
+        hairColor = randomize(nationality.hairColors);
+        skinTone = randomize(nationality.skinTones);
+        eyeColor = randomize(nationality.eyeColors);
 
-    if (promptSelections[7] === 0) {
-        overallBuild = randomize(overallBuildPresets);
-    } else {
-        overallBuild = overallBuildPresets[promptSelections[7] - 1];
-    }
+        if (promptSelections[7] === 0) {
+            age = randomize(agePresets);
+        } else {
+            age = agePresets[promptSelections[7] - 1];
+        }
 
-    if (promptSelections[9] === 0) {
-        outfit = randomize(outfitPresets);
-    } else {
-        outfit = outfitPresets[promptSelections[9] - 1];
+        if (promptSelections[9] === 0) {
+            overallBuild = randomize(overallBuildPresets);
+        } else {
+            overallBuild = overallBuildPresets[promptSelections[9] - 1];
+        }
     }
 
     if (promptSelections[11] === 0) {
-        action = randomize(actionPresets);
+        outfit = randomize(outfitPresets);
     } else {
-        action = actionPresets[promptSelections[11] - 1];
+        outfit = outfitPresets[promptSelections[11] - 1];
     }
 
+    if (promptSelections[13] === 0) {
+        action = randomize(actionPresets);
+    } else {
+        action = actionPresets[promptSelections[13] - 1];
+    }
 
-    const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes. Natural anatomy.";
+    if (celebrity) {
+        imagePrompt = "A photo of " + celebrity + ", " + action + ", wearing " + outfit + ". Natural anatomy."
+    } else {
+        imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes. Natural anatomy.";
+    }
     console.log("Generating:");
     console.log(imagePrompt);
 
