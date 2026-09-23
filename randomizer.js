@@ -31,21 +31,21 @@ const nationalityPresets = [
     },
     {
         label: "Mexican",
-        value: "with prominent Indigenous Mesoamerican facial features, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
+        value: "with prominent Indigenous Mesoamerican facial features, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
     },
     {
         label: "Mixed-Race",
-        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
+        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
         hairColors: ["dark brown", "black"],
         skinTones: ["deep golden-bronze", "warm olive"],
-        eyeColors: ["blue", "dark brown", " light brown", "hazel"]
+        eyeColors: ["blue", "dark brown", "light brown", "hazel"]
     },
     {
         label: "Indian",
-        value: "with dark eyes, and South Asian facial features",
+        value: "with South Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["deep golden-bronze", "dark tan", "warm brown"],
         eyeColors: ["black", "dark brown"]
