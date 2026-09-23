@@ -377,7 +377,7 @@ async function generateBatch() {
     }
 
 
-    const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor.value + ". Natural anatomy.";
+    const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + ". Natural anatomy.";
     console.log("Generating:");
     console.log(imagePrompt);
 
