@@ -342,6 +342,8 @@ async function generateBatch() {
     let hairColor;
     let skinTone;
     let age;
+    let eyeColor;
+    let overallBuild;
     let outfit;
     let action;
 
