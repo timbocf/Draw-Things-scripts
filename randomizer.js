@@ -310,7 +310,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
         this.plainText("Body Type"),
         this.menu(0, [
             "Random Selection",
-            ...overallBuildPresets
+            ...overallBuildPresets.map(item => item.label)
         ]),
 
         // Outfit
