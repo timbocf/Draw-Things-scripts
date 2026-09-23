@@ -304,6 +304,20 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ...agePresets
         ]),
 
+        // Eye Color
+        this.plainText("Eye Color"),
+        this.menu(0, [
+            "Random Selection",
+            ...eyeColorPresets
+        ]),
+
+        // Overall Build
+        this.plainText("Body Type"),
+        this.menu(0, [
+            "Random Selection",
+            ...overallBuildPresets
+        ]),
+
         // Outfit
         this.plainText("Outfit"),
         this.menu(0, [
@@ -347,19 +361,28 @@ async function generateBatch() {
     }
 
     if (promptSelections[7] === 0) {
-        outfit = randomize(outfitPresets);
+        eyeColor = randomize(eyeColorPresets);
     } else {
-        outfit = outfitPresets[promptSelections[7] - 1];
+        eyeColor = eyeColorPresets[promptSelections[7] - 1];
     }
 
     if (promptSelections[9] === 0) {
-        action = randomize(actionPresets);
+        overallBuild = randomize(overallBuildPresets);
     } else {
-        action = actionPresets[promptSelections[9] - 1];
+        overallBuild = overallBuildPresets[promptSelections[9] - 1];
     }
 
-    eyeColor = randomize(eyeColorPresets);
-    overallBuild = randomize(overallBuildPresets);
+    if (promptSelections[11] === 0) {
+        outfit = randomize(outfitPresets);
+    } else {
+        outfit = outfitPresets[promptSelections[11] - 1];
+    }
+
+    if (promptSelections[13] === 0) {
+        action = randomize(actionPresets);
+    } else {
+        action = actionPresets[promptSelections[13] - 1];
+    }
 
 
     const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild + " physique and " + eyeColor + " eyes. Natural anatomy.";
