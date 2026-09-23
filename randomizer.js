@@ -226,6 +226,9 @@ const outfitPresets = [
     "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap",
     "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle",
     "1940s WWII-style leather flight jacket worn over a white dress",
+
+"1940s WWII-style leather flight jacket with leather bikini panties",
+
     "1940s-style navy sailor uniform with a white collar and navy tie",
     "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem",
     "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves",
@@ -252,7 +255,7 @@ const actionPresets = [
     "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down",
     "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies",
     "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.",
-    "standing in a bedroom doorway.",
+    "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.",
     "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked",
     "lying on her side, with the top leg bent high, hand lightly between her thighs",
     "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
@@ -377,7 +380,7 @@ async function generateBatch() {
     }
 
 
-    const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + ". Natural anatomy.";
+    const imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes. Natural anatomy.";
     console.log("Generating:");
     console.log(imagePrompt);
 
