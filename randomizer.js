@@ -21,154 +21,154 @@ const nationalityPresets = [
         hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
-        ,
+    },
     {
         label: "Black",
         value: "with rich deep skin tone and classic African facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Mexican",
         value: "with prominent Indigenous Mesoamerican facial features, dark brown eyes, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
-        ,
+    },
     {
         label: "Mixed-Race",
         value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, dark brown eyes, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
         hairColors: ["dark brown", "black"],
         skinTones: ["deep golden-bronze", "warm olive"],
         eyeColors: ["blue", "dark brown", " light brown", "hazel"]
-        ,
+    },
     {
         label: "Indian",
         value: "with dark eyes, and South Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["deep golden-bronze", "dark tan", "warm brown"],
         eyeColors: ["black", "dark brown"]
-        ,
+    },
     {
         label: "Thai",
         value: "with Southeast Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["deep golden-bronze", "golden-tan"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Japanese",
         value: "with East Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["fair", "light", "porcelain"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Korean",
         value: "with fair porcelain skin and East Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["fair", "porcelain", "light"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Filipina",
         value: "with Southeast Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm tan", "deep golden-bronze"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Brazilian",
         value: "with a blend of European, African, and Indigenous features",
         hairColors: ["light brown", "dark brown", "black"],
         skinTones: ["sun-kissed olive", "deep golden-bronze"],
         eyeColors: ["dark brown", "black", "light brown", "hazel", "green"]
-        ,
+    },
     {
         label: "Italian",
         value: "with Mediterranean facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["sun-kissed olive", "rich golden hue"],
         eyeColors: ["brown", "blue", "green"]
-        ,
+    },
     {
         label: "Scandinavian",
         value: "with Nordic facial features",
         hairColors: ["blonde"],
         skinTones: ["fair", "light"],
         eyeColors: ["blue", "hazel"]
-        ,
+    },
     {
         label: "Russian/Eastern European",
         value: "with Slavic facial features",
         hairColors: ["blonde", "light brown", "dark brown", "black"],
         skinTones: ["fair", "light", "sun-kissed tan"],
         eyeColors: ["blue", "brown"]
-        ,
+    },
     {
         label: "Chinese",
         value: "with East Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["fair", "light", "olive"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Vietnamese",
         value: "with Southeast Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm tan", "olive", "sun-kissed tan"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Middle Eastern",
         value: "with Middle Eastern facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["olive", "dark"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "French",
         value: "with classic Western European features",
         hairColors: ["light brown", "dark brown", "black"],
         skinTones: ["fair", "light", "sun-kissed tan"],
         eyeColors: ["blue", "brown", "hazel"]
-        ,
+    },
     {
         label: "German",
         value: "with Central European facial features",
         hairColors: ["blonde", "light brown", "dark brown"],
         skinTones: ["fair", "light", "porcelain"],
         eyeColors: ["blue", "hazel", "brown"]
-        ,
+    },
     {
         label: "Irish",
         value: "with freckles and Celtic facial features",
         hairColors: ["ginger", "blonde", "light brown", "dark brown"],
         skinTones: ["porcelain", "fair", "light"],
         eyeColors: ["blue", "hazel", "brown"]
-        ,
+    },
     {
         label: "Native American",
         value: "with Indigenous American facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm bronze", "sun-kissed olive"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Polynesian/Pacific Islander",
         value: "with Polynesian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm brown", "sun-kissed olive"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
     {
         label: "Ethiopian/East African",
         value: "with East African facial features",
         hairColors: ["dark brown", "black", "dark glossy black"],
         skinTones: ["deep brown", "black", "deep glossy black"],
         eyeColors: ["dark brown", "black"]
-        ,
+    },
 ];
 
 // --- AGE ---
@@ -178,44 +178,31 @@ const agePresets = [
     "65 years old", "70 years old", "75 years old", "80 years old", "85 years old"
 ];
 
-// --- EYE COLOR ---
-const eyeColorPresets = [
-    { label: "Blue", value: "blue eyes",
-    { label: "Green", value: "green eyes",
-    { label: "Hazel", value: "hazel eyes",
-    { label: "Brown", value: "brown eyes",
-    { label: "Dark brown", value: "dark brown eyes",
-    { label: "Amber", value: "amber eyes",
-    { label: "Gray", value: "gray eyes",
-    { label: "Violet", value: "violet eyes",
-    { label: "Heterochromia (blue/brown)", value: "eyes that have heterochromia, one eye blue, the other eye brown" }
-];
-
 // =========================================
 // BODY / PHYSIQUE
 // =========================================
 
 const overallBuildPresets = [
-    { label: "Slim build", value: "slim build",
-    { label: "Soft Fit Frame", value: "toned athletic frame softened by naturally feminine curves, visible but subtle muscle definition",
-    { label: "Average build", value: "average build",
-    { label: "Petite build", value: "petite build with a small overall frame, narrow hips, short stature, narrow shoulders, thin legs, and flat belly",
-    { label: "Curvy build", value: "curvy build with naturally pronounced feminine curves",
-    { label: "Muscular build", value: "muscular build with clearly developed musculature",
-    { label: "Chubby build", value: "chubby build with a softer, fuller physique",
+    { label: "Slim build", value: "slim build" },
+    { label: "Soft Fit Frame", value: "toned athletic frame softened by naturally feminine curves, visible but subtle muscle definition" },
+    { label: "Average build", value: "average build" },
+    { label: "Petite build", value: "petite build with a small overall frame, narrow hips, short stature, narrow shoulders, thin legs, and flat belly" },
+    { label: "Curvy build", value: "curvy build with naturally pronounced feminine curves" },
+    { label: "Muscular build", value: "muscular build with clearly developed musculature" },
+    { label: "Chubby build", value: "chubby build with a softer, fuller physique" },
     { label: "Large frame", value: "large frame with broad shoulders, thick limbs, and a tall, imposing build" }
 ];
 
 const heightPresets = [
-    { label: "Short", value: "short stature with naturally proportioned overall body proportions",
-    { label: "Average", value: "average height and proportions",
+    { label: "Short", value: "short stature with naturally proportioned overall body proportions" },
+    { label: "Average", value: "average height and proportions" },
     { label: "Tall", value: "tall stature, noticeably above-average height, long legs and naturally elongated overall proportions" }
 ];
 
 const specificBodyPresets = [
-    { label: "No specific characteristic", value: "",
-    { label: "Adult with achondroplasia", value: "adult with achondroplasia, characteristic short stature and naturally proportioned body",
-    { label: "Pregnant", value: "pregnant adult with a visibly rounded pregnant belly",
+    { label: "No specific characteristic", value: "" },
+    { label: "Adult with achondroplasia", value: "adult with achondroplasia, characteristic short stature and naturally proportioned body" },
+    { label: "Pregnant", value: "pregnant adult with a visibly rounded pregnant belly" },
     { label: "Heavily pregnant", value: "heavily pregnant adult with a large, prominently rounded late-stage pregnancy belly" }
 ];
 
@@ -319,13 +306,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ...agePresets
         ]),
 
-        // Eye Color
-        this.plainText("Eye Color"),
-        this.menu(0, [
-            "Random Selection",
-            ...eyeColorPresets
-        ]),
-
         // Overall Build
         this.plainText("Body Type"),
         this.menu(0, [
@@ -370,6 +350,7 @@ async function generateBatch() {
 
     hairColor = randomize(nationality.hairColors);
     skinTone = randomize(nationality.skinTones);
+    eyeColor = randomize(nationality.eyeColors);
 
     if (promptSelections[5] === 0) {
         age = randomize(agePresets);
@@ -378,27 +359,21 @@ async function generateBatch() {
     }
 
     if (promptSelections[7] === 0) {
-        eyeColor = randomize(eyeColorPresets);
+        overallBuild = randomize(overallBuildPresets);
     } else {
-        eyeColor = eyeColorPresets[promptSelections[7] - 1];
+        overallBuild = overallBuildPresets[promptSelections[7] - 1];
     }
 
     if (promptSelections[9] === 0) {
-        overallBuild = randomize(overallBuildPresets);
+        outfit = randomize(outfitPresets);
     } else {
-        overallBuild = overallBuildPresets[promptSelections[9] - 1];
+        outfit = outfitPresets[promptSelections[9] - 1];
     }
 
     if (promptSelections[11] === 0) {
-        outfit = randomize(outfitPresets);
-    } else {
-        outfit = outfitPresets[promptSelections[11] - 1];
-    }
-
-    if (promptSelections[13] === 0) {
         action = randomize(actionPresets);
     } else {
-        action = actionPresets[promptSelections[13] - 1];
+        action = actionPresets[promptSelections[11] - 1];
     }
 
 
