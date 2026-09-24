@@ -578,16 +578,15 @@ async function generateBatch() {
         photographicLook
     ].filter(Boolean).join(", ");
 
-    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+    // let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
-    // let optionalPrompt;
+    let optionalPrompt;
 
-    /* if (cameraLightingPrompt) {
-            optionalPrompt = " " + cameraLightingPrompt + ".";
-        } else {
-            optionalPrompt = "";
-        } 
-    */
+    if (cameraLightingPrompt) {
+        optionalPrompt = " " + cameraLightingPrompt + ".";
+    } else {
+        optionalPrompt = "";
+    }
 
 
     if (promptSelections[1] > 0) {
