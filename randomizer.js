@@ -12,6 +12,22 @@ const gender = [
     "woman"
 ];
 
+const artStylePresets = [
+    { label: "Photo", value: "photo" },
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
+    { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
+    { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
+    { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
+    { label: "Modern Vector/Flat Illustration", value: "Sleek vector illustration, clean lines, minimalist shading, bold flat color palette, mid-century graphic poster art style" },
+    { label: "Cyberpunk Anime/Cell-Shaded", value: "90s hand-drawn anime style, classic cell-shading, vibrant neon rim lighting, retro sci-fi aesthetic, detailed line art" },
+    { label: "Vintage Pulp Fiction Cover", value: "1950s pulp magazine cover illustration, dramatic dramatic chiaroscuro lighting, painted gouache texture, vibrant retro paperback aesthetic" },
+    { label: "Oil Painting/Impressionism", value: "Impressionist oil painting, thick impasto brushstrokes, textured canvas, dramatic lighting, rich paint texture in the style of John Singer Sargent" },
+    { label: "Watercolors", value: "Soft watercolor painting, fluid ink wash, gentle color bleeding, painterly splatters, delicate lines on textured watercolor paper" },
+    { label: "Papercraft/Layered Paper", value: "Layered papercraft illustration, laser-cut paper art, soft drop shadows, clean geometric depth, tactile paper texture" },
+    { label: "3D Stylized Game Character", value: "Overwatch/Arcane stylized 3D render, smooth painted textures, dramatic cinematic lighting, semi-realistic proportions, clean character art" },
+    { label: "Chibi/Kawaii 3D", value: "Chibi 3D figurine, oversized head, expressive shiny eyes, smooth vinyl toy finish, soft studio lighting" }
+];
+
 // Celebrity Presets
 
 const celebrityPresets = [
@@ -444,6 +460,15 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
+        // Art Styles
+        this.section(
+            "Art Style",
+            "Select the artistic medium: ",
+            [
+                this.menu(0, artStylePresets.map(item => item.label))
+            ]
+        ),
+
         // Celebrity Presets
         this.section(
             "Celebrity Presets",
@@ -572,6 +597,7 @@ async function generateBatch() {
     canvas.clear();
 
     let imagePrompt;
+    let artStyle = artStylePresets[promptSelections[2][0]].value;
     let celebrity;
     let nationality;
     let hairColor;
@@ -581,11 +607,11 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[8][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[9][0]].value;
-    let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
-    let lighting = lightingPresets[promptSelections[11][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
+    let cameraFraming = cameraFramingPresets[promptSelections[9][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[10][0]].value;
+    let timeOfDay = timeOfDayPresets[promptSelections[11][0]].value;
+    let lighting = lightingPresets[promptSelections[12][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[13][0]].value;
 
     const cameraLightingPrompt = [
         cameraFraming,
@@ -597,49 +623,49 @@ async function generateBatch() {
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
-    if (promptSelections[2][0] > 0) {
-        celebrity = celebrityPresets[promptSelections[2][0]].value;
+    if (promptSelections[3][0] > 0) {
+        celebrity = celebrityPresets[promptSelections[3][0]].value;
     } else {
 
-        if (promptSelections[3][0] === 0) {
+        if (promptSelections[4][0] === 0) {
             nationality = randomize(nationalityPresets);
         } else {
-            nationality = nationalityPresets[promptSelections[3][0] - 1];
+            nationality = nationalityPresets[promptSelections[4][0] - 1];
         }
 
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
 
-        if (promptSelections[4][0] === 0) {
+        if (promptSelections[5][0] === 0) {
             age = randomize(agePresets);
         } else {
-            age = agePresets[promptSelections[4][0] - 1];
+            age = agePresets[promptSelections[5][0] - 1];
         }
 
-        if (promptSelections[5][0] === 0) {
+        if (promptSelections[6][0] === 0) {
             overallBuild = randomize(overallBuildPresets);
         } else {
-            overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
+            overallBuild = overallBuildPresets[promptSelections[6][0] - 1];
         }
     }
-    if (promptSelections[6][0] === 0) {
+    if (promptSelections[7][0] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
-        outfit = outfitPresets[promptSelections[6][0] - 1].value;
+        outfit = outfitPresets[promptSelections[7][0] - 1].value;
     }
 
-    if (promptSelections[7][0] === 0) {
+    if (promptSelections[8][0] === 0) {
         action = randomize(actionPresets).value;
     } else {
-        action = actionPresets[promptSelections[7][0] - 1].value;
+        action = actionPresets[promptSelections[8][0] - 1].value;
     }
 
     // PROMPT TEMPLATE
     if (celebrity) {
-        imagePrompt = "A photo of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle + " of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
     } else {
-        imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
 
     console.log("Generating:");
