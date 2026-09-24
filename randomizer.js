@@ -552,6 +552,8 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
 
 async function generateBatch() {
 
+    console.log("ENTERED generateBatch");
+
     canvas.clear();
 
     let imagePrompt;
@@ -710,5 +712,9 @@ async function runBatch() {
     }
     console.log("Batch Finished!");
 }
+
+console.log("ABOUT TO RUN BATCH");
+console.log("promptSelections:", promptSelections);
+console.log("imageCount:", imageCount);
 
 runBatch();
