@@ -698,9 +698,7 @@ async function generateBatch() {
     // LORAS
     // =================================
 
-    if (promptSelections[1][0] === 0) {
-        config.loras = [];
-    } else {
+    if (promptSelections[1][0]) {
         config.loras = [
             {
                 mode: "all",
@@ -713,7 +711,9 @@ async function generateBatch() {
                 weight: 0.6
             }
         ]
-    };
+    } else {
+        config.loras = [];
+    }
 
     // =================================
     // GENERATE
