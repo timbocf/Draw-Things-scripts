@@ -300,11 +300,6 @@ function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-const nationalityOptions = [
-    "Random Selection",
-    ...nationalityPresets.map(item => item.label)
-];
-
 const imageCounts = [3, 5, 10, 20];
 
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
@@ -325,7 +320,10 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
 
         // Subject-Nationality
         this.plainText("Nationality"),
-        this.menu(0, nationalityOptions),
+        this.menu(0, [
+            "Random Selection",
+            ...nationalityPresets.map(item => item.label)
+        ]),
 
         // Age
         this.plainText("Age"),
@@ -374,7 +372,6 @@ async function generateBatch() {
 
     if (promptSelections[3] > 0) {
         celebrity = celebrityPresets[promptSelections[3]].value;
-        console.log(celebrity);
     } else {
 
         if (promptSelections[5] === 0) {
