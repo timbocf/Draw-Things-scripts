@@ -8,6 +8,8 @@
 // PRESET LISTS
 // =========================================
 
+const imageCounts = [1, 3, 5, 10, 20];
+
 const gender = [
     "woman"
 ];
@@ -20,7 +22,7 @@ const artStylePresets = [
     { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
     { label: "Modern Vector/Flat Illustration", value: "Sleek vector illustration, clean lines, minimalist shading, bold flat color palette, mid-century graphic poster art style" },
     { label: "Cyberpunk Anime/Cell-Shaded", value: "90s hand-drawn anime style, classic cell-shading, vibrant neon rim lighting, retro sci-fi aesthetic, detailed line art" },
-    { label: "Vintage Pulp Fiction Cover", value: "1950s pulp magazine cover illustration, dramatic dramatic chiaroscuro lighting, painted gouache texture, vibrant retro paperback aesthetic" },
+    { label: "Vintage Pulp Fiction Cover", value: "1950s pulp magazine cover illustration, dramatic chiaroscuro lighting, painted gouache texture, vibrant retro paperback aesthetic" },
     { label: "Oil Painting/Impressionism", value: "Impressionist oil painting, thick impasto brushstrokes, textured canvas, dramatic lighting, rich paint texture in the style of John Singer Sargent" },
     { label: "Watercolors", value: "Soft watercolor painting, fluid ink wash, gentle color bleeding, painterly splatters, delicate lines on textured watercolor paper" },
     { label: "Papercraft/Layered Paper", value: "Layered papercraft illustration, laser-cut paper art, soft drop shadows, clean geometric depth, tactile paper texture" },
@@ -430,10 +432,6 @@ function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-const imageCounts = [3, 5, 10, 20];
-
-console.log("BEFORE requestfromuser");
-
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
@@ -592,8 +590,6 @@ console.log("AFTER requestfromuser");
 console.log(JSON.stringify(promptSelections));
 
 async function generateBatch() {
-
-    console.log("ENTERED generateBatch");
 
     canvas.clear();
 
