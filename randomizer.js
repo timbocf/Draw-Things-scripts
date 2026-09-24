@@ -564,30 +564,37 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[7]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[8]].value;
-    let timeOfDay = timeOfDayPresets[promptSelections[9]].value;
-    let lighting = lightingPresets[promptSelections[10]].value;
-    let photographicLook = photographicLookPresets[promptSelections[11]].value;
+    let cameraLightingPrompt = "";
 
-    const cameraLightingPrompt = [
-        cameraFraming,
-        cameraAngle,
-        timeOfDay,
-        lighting,
-        photographicLook
-    ].filter(Boolean).join(", ");
+    if (cameraFraming) {
+        cameraLightingPrompt = cameraFraming;
+    }
 
-    // let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+    if (cameraAngle) {
+        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
+        cameraLightingPrompt += cameraAngle;
+    }
 
-    let optionalPrompt;
+    if (timeOfDay) {
+        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
+        cameraLightingPrompt += timeOfDay;
+    }
+
+    if (lighting) {
+        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
+        cameraLightingPrompt += lighting;
+    }
+
+    if (photographicLook) {
+        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
+        cameraLightingPrompt += photographicLook;
+    }
+
+    let optionalPrompt = "";
 
     if (cameraLightingPrompt) {
         optionalPrompt = " " + cameraLightingPrompt + ".";
-    } else {
-        optionalPrompt = "";
     }
-
 
     if (promptSelections[1] > 0) {
         celebrity = celebrityPresets[promptSelections[1]].value;
