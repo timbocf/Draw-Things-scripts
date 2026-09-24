@@ -671,7 +671,7 @@ async function generateBatch() {
     // LORAS
     // =================================
 
-    if (promptSelections[7][0] === 0) {
+    if (promptSelections[12][0] === 0) {
         config.loras = [];
     } else {
         config.loras = [
