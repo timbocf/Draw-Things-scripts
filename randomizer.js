@@ -294,7 +294,7 @@ const actionPresets = [
     { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." }
 ];
 
-const settings = [
+const environments = [
     {
         title: "Setting",
         description: "Scene and environment",
@@ -317,7 +317,98 @@ const settings = [
             "in a locker room"
         ]
     }
-]
+];
+
+const cameraFramingPresets = [
+    { label: "None Selected", value: "" },
+    { label: "Close-Up", value: "close-up portrait framing" },
+    { label: "Head & Shoulders", value: "head-and-shoulders portrait framing" },
+    { label: "Chest-Up", value: "chest-up framing" },
+    { label: "Waist-Up", value: "waist-up framing" },
+    { label: "3/4 Body", value: "three-quarter body framing" },
+    { label: "Full Body", value: "full-body framing with the entire subject visible" },
+    { label: "Wide Shot", value: "wide shot showing the subject and surrounding environment" },
+    { label: "Environmental Portrait", value: "environmental portrait with the subject integrated into the surrounding scene" }
+];
+
+const cameraAnglePresets = [
+    { label: "None Selected", value: "" },
+
+    { label: "Eye Level", value: "natural eye-level camera angle" },
+    { label: "Low Angle", value: "low-angle view looking upward toward the subject" },
+    { label: "Worm's-Eye", value: "extreme low-angle worm's-eye view" },
+    { label: "High Angle", value: "high-angle view looking downward toward the subject" },
+    { label: "Overhead", value: "directly overhead camera view looking down at the subject" },
+
+    { label: "Side View", value: "side-view perspective" },
+    { label: "3/4 View", value: "three-quarter view of the subject from an oblique angle" },
+    { label: "Over-the-Shoulder", value: "over-the-shoulder camera view" },
+    { label: "POV", value: "first-person point-of-view perspective" },
+
+    { label: "Dutch Angle", value: "tilted Dutch-angle composition" }
+];
+
+const timeOfDayPresets = [
+    { label: "None Selected", value: "" },
+
+    { label: "Dawn", value: "soft early-morning dawn light" },
+    { label: "Morning", value: "soft natural morning light" },
+    { label: "Midday", value: "bright midday daylight with the sun high overhead" },
+    { label: "Late Afternoon", value: "warm late-afternoon daylight with lengthening shadows" },
+    { label: "Golden Hour", value: "warm golden-hour sunlight with a low sun and long soft shadows" },
+    { label: "Blue Hour", value: "cool blue-hour ambient light shortly after sunset" },
+    { label: "Night", value: "nighttime ambient lighting with dark surroundings" }
+];
+
+// =========================================
+// LIGHTING
+// Light source, diffusion and direction
+// =========================================
+
+const lightingPresets = [
+    { label: "None Selected", value: "" },
+
+    { label: "Soft Natural Light", value: "soft natural illumination with gentle shadows" },
+    { label: "Direct Sunlight", value: "direct sunlight with strong highlights and defined shadows" },
+    { label: "Overcast / Diffused", value: "broad diffused natural light with soft even illumination" },
+
+    { label: "Window Light", value: "soft directional natural light entering through a window" },
+    { label: "Window Light Through Sheer Curtains", value: "natural window light filtered through sheer curtains, creating soft diffused illumination and delicate shadows" },
+
+    { label: "Dappled Light", value: "dappled natural light creating irregular patches of light and shadow" },
+
+    { label: "Warm Indoor Lamps", value: "warm practical lamp lighting with natural interior ambience" },
+    { label: "Candlelight / Firelight", value: "warm flickering candlelight and firelight with soft surrounding shadows" },
+    { label: "Urban Neon", value: "colorful neon and street lighting with nighttime urban ambience" },
+
+    { label: "Soft Studio Light", value: "soft flattering studio illumination with gentle shadows" },
+    { label: "Hard Directional Light", value: "hard directional illumination with crisp defined shadows" },
+    { label: "Side Lighting", value: "directional side lighting emphasizing form and dimensionality" },
+    { label: "Backlighting", value: "strong backlighting with the primary light positioned behind the subject" },
+    { label: "Rim Lighting", value: "bright rim lighting outlining the subject against the background" },
+    { label: "Low-Key / Chiaroscuro", value: "dramatic low-key lighting with chiaroscuro and deep shadows" },
+    { label: "Volumetric Rays", value: "visible volumetric light rays passing through a subtly hazy atmosphere" }
+];
+
+const photographicLookPresets = [
+    { label: "None Selected", value: "" },
+
+    { label: "Black & White", value: "black-and-white photographic treatment" },
+    { label: "High-Contrast Noir", value: "high-contrast black-and-white noir photography with deep blacks and dramatic tonal separation" },
+    { label: "Soft Monochrome", value: "soft monochrome photographic treatment with gentle tonal transitions" },
+    { label: "Sepia", value: "warm sepia-toned photographic treatment" },
+
+    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness" },
+    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast" },
+    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color" },
+    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering" },
+    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift" },
+    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise" },
+    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character" },
+    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections" }
+];
+
+
 
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
@@ -410,6 +501,51 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
                     ...actionPresets.map(item => item.label)
                 ])
             ]
+        ),
+
+        // Camera Framing
+        this.section(
+            "Camera Framing",
+            "Choose how tightly the subject is framed:",
+            [
+                this.menu(0, cameraFramingPresets.map(item => item.label))
+            ]
+        ),
+
+        // Camera Angle
+        this.section(
+            "Camera Angle",
+            "Choose the camera position and viewing angle:",
+            [
+                this.menu(0, cameraAnglePresets.map(item => item.label))
+            ]
+        ),
+
+        // Time of Day
+        this.section(
+            "Time of Day",
+            "Choose an optional time of day:",
+            [
+                this.menu(0, timeOfDayPresets.map(item => item.label))
+            ]
+        ),
+
+        // Lighting
+        this.section(
+            "Lighting",
+            "Choose an optional lighting setup:",
+            [
+                this.menu(0, lightingPresets.map(item => item.label))
+            ]
+        ),
+
+        // Photographic Look
+        this.section(
+            "Photographic Look",
+            "Choose an optional film or photographic aesthetic:",
+            [
+                this.menu(0, photographicLookPresets.map(item => item.label))
+            ]
         )
     ]
 })
@@ -428,6 +564,30 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
+    let cameraFraming = cameraFramingPresets[promptSelections[7]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[8]].value;
+    let timeOfDay = timeOfDayPresets[promptSelections[9]].value;
+    let lighting = lightingPresets[promptSelections[10]].value;
+    let photographicLook = photographicLookPresets[promptSelections[11]].value;
+
+    const cameraLightingPrompt = [
+        cameraFraming,
+        cameraAngle,
+        timeOfDay,
+        lighting,
+        photographicLook
+    ].filter(Boolean).join(", ");
+
+    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+    // let optionalPrompt;
+
+    /* if (cameraLightingPrompt) {
+            optionalPrompt = " " + cameraLightingPrompt + ".";
+        } else {
+            optionalPrompt = "";
+        } 
+    */
+
 
     if (promptSelections[1] > 0) {
         celebrity = celebrityPresets[promptSelections[1]].value;
@@ -469,10 +629,11 @@ async function generateBatch() {
     }
 
     if (celebrity) {
-        imagePrompt = "A photo of " + celebrity + ", " + action + ", wearing " + outfit + ". Natural anatomy."
+        imagePrompt = "A photo of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
     } else {
-        imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes. Natural anatomy.";
+        imagePrompt = "A photo of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
+
     console.log("Generating:");
     console.log(imagePrompt);
 
