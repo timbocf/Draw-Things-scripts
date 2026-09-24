@@ -435,6 +435,15 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
+        // Lora or no Lora??
+        this.section(
+            "Loras",
+            "Select whether to use loras to bypass safety filters: ",
+            [
+                this.switch(false, "Use LoRAs")
+            ]
+        ),
+
         // Celebrity Presets
         this.section(
             "Celebrity Presets",
@@ -550,14 +559,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
-        // Lora or no Lora??
-        this.section(
-            "Loras",
-            "Select whether to use loras to bypass safety filters: ",
-            [
-                this.switch(false, "Use LoRAs")
-            ]
-        )
     ]
 });
 
@@ -580,11 +581,11 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[7][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[8][0]].value;
-    let timeOfDay = timeOfDayPresets[promptSelections[9][0]].value;
-    let lighting = lightingPresets[promptSelections[10][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[11][0]].value;
+    let cameraFraming = cameraFramingPresets[promptSelections[8][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[9][0]].value;
+    let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
+    let lighting = lightingPresets[promptSelections[11][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
 
     const cameraLightingPrompt = [
         cameraFraming,
@@ -596,42 +597,42 @@ async function generateBatch() {
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
-    if (promptSelections[1][0] > 0) {
-        celebrity = celebrityPresets[promptSelections[1][0]].value;
+    if (promptSelections[2][0] > 0) {
+        celebrity = celebrityPresets[promptSelections[2][0]].value;
     } else {
 
-        if (promptSelections[2][0] === 0) {
+        if (promptSelections[3][0] === 0) {
             nationality = randomize(nationalityPresets);
         } else {
-            nationality = nationalityPresets[promptSelections[2][0] - 1];
+            nationality = nationalityPresets[promptSelections[3][0] - 1];
         }
 
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
 
-        if (promptSelections[3][0] === 0) {
+        if (promptSelections[4][0] === 0) {
             age = randomize(agePresets);
         } else {
-            age = agePresets[promptSelections[3][0] - 1];
+            age = agePresets[promptSelections[4][0] - 1];
         }
 
-        if (promptSelections[4][0] === 0) {
+        if (promptSelections[5][0] === 0) {
             overallBuild = randomize(overallBuildPresets);
         } else {
-            overallBuild = overallBuildPresets[promptSelections[4][0] - 1];
+            overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
         }
     }
-    if (promptSelections[5][0] === 0) {
+    if (promptSelections[6][0] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
-        outfit = outfitPresets[promptSelections[5][0] - 1].value;
+        outfit = outfitPresets[promptSelections[6][0] - 1].value;
     }
 
-    if (promptSelections[6][0] === 0) {
+    if (promptSelections[7][0] === 0) {
         action = randomize(actionPresets).value;
     } else {
-        action = actionPresets[promptSelections[6][0] - 1].value;
+        action = actionPresets[promptSelections[7][0] - 1].value;
     }
 
     // PROMPT TEMPLATE
@@ -671,7 +672,7 @@ async function generateBatch() {
     // LORAS
     // =================================
 
-    if (promptSelections[12][0] === 0) {
+    if (promptSelections[1][0] === 0) {
         config.loras = [];
     } else {
         config.loras = [
