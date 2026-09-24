@@ -571,77 +571,59 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraLightingPrompt = "";
+    let cameraFraming = cameraFramingPresets[promptSelections[7][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[8][0]].value;
+    let timeOfDay = timeOfDayPresets[promptSelections[9][0]].value;
+    let lighting = lightingPresets[promptSelections[10][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[11][0]].value;
 
-    if (cameraFraming) {
-        cameraLightingPrompt = cameraFraming;
-    }
+    const cameraLightingPrompt = [
+        cameraFraming,
+        cameraAngle,
+        timeOfDay,
+        lighting,
+        photographicLook
+    ].filter(Boolean).join(", ");
 
-    if (cameraAngle) {
-        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
-        cameraLightingPrompt += cameraAngle;
-    }
+    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
-    if (timeOfDay) {
-        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
-        cameraLightingPrompt += timeOfDay;
-    }
-
-    if (lighting) {
-        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
-        cameraLightingPrompt += lighting;
-    }
-
-    if (photographicLook) {
-        if (cameraLightingPrompt) cameraLightingPrompt += ", ";
-        cameraLightingPrompt += photographicLook;
-    }
-
-    let optionalPrompt = "";
-
-    if (cameraLightingPrompt) {
-        optionalPrompt = " " + cameraLightingPrompt + ".";
-    }
-
-    if (promptSelections[1] > 0) {
-        celebrity = celebrityPresets[promptSelections[1]].value;
+    if (promptSelections[1][0] > 0) {
+        celebrity = celebrityPresets[promptSelections[1][0]].value;
     } else {
 
-        if (promptSelections[2] === 0) {
+        if (promptSelections[2][0] === 0) {
             nationality = randomize(nationalityPresets);
         } else {
-            nationality = nationalityPresets[promptSelections[2] - 1];
+            nationality = nationalityPresets[promptSelections[2][0] - 1];
         }
 
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
 
-        if (promptSelections[3] === 0) {
+        if (promptSelections[3][0] === 0) {
             age = randomize(agePresets);
         } else {
-            age = agePresets[promptSelections[3] - 1];
+            age = agePresets[promptSelections[3][0] - 1];
         }
 
-        if (promptSelections[4] === 0) {
+        if (promptSelections[4][0] === 0) {
             overallBuild = randomize(overallBuildPresets);
         } else {
-            overallBuild = overallBuildPresets[promptSelections[4] - 1];
+            overallBuild = overallBuildPresets[promptSelections[4][0] - 1];
         }
     }
-
-    if (promptSelections[5] === 0) {
+    if (promptSelections[5][0] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
-        outfit = outfitPresets[promptSelections[5] - 1].value;
+        outfit = outfitPresets[promptSelections[5][0] - 1].value;
     }
 
-    if (promptSelections[6] === 0) {
+    if (promptSelections[6][0] === 0) {
         action = randomize(actionPresets).value;
     } else {
-        action = actionPresets[promptSelections[6] - 1].value;
+        action = actionPresets[promptSelections[6][0] - 1].value;
     }
-
     if (celebrity) {
         imagePrompt = "A photo of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
     } else {
@@ -709,7 +691,7 @@ async function generateBatch() {
     console.log("Image Complete.");
 }
 
-const imageCount = imageCounts[promptSelections[0]];
+const imageCount = imageCounts[promptSelections[0][0]];
 
 async function runBatch() {
     for (var i = 0; i < imageCount; i++) {
