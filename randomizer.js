@@ -228,6 +228,7 @@ const specificBodyPresets = [
 ];
 
 const outfitPresets = [
+    { label: "Nude", value: "nude" },
     { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
     { label: "Bra, Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
