@@ -294,6 +294,31 @@ const actionPresets = [
     { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." }
 ];
 
+const settings = [
+    {
+        title: "Setting",
+        description: "Scene and environment",
+        presets: [
+            { label: "in the shower", value: "in a walk-in shower, with wet hair and wet body, water cascading down {possessive} wet body" },
+            "in a bedroom",
+            "in a kitchen",
+            "in the backseat of a car",
+            "in a surgical theatre",
+            "in a crowded city street",
+            "in a glade",
+            "on an office desk",
+            "at a poolside",
+            "on a beach at sunset",
+            "in a nightclub",
+            "in a hotel room",
+            "on a rooftop at night",
+            "in an elevator",
+            "in a library",
+            "in a locker room"
+        ]
+    }
+]
+
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
@@ -304,52 +329,88 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
     return [
 
         // Number of Images to Generate
-        this.plainText("Number of Images to Generate"),
-        this.menu(0, [
-            "3 images",
-            "5 images",
-            "10 images",
-            "20 images"
-        ]),
+        this.section(
+            "Number of Images to Generate",
+            "Select from the dropdown:",
+            [
+                this.menu(0, [
+                    "3 images",
+                    "5 images",
+                    "10 images",
+                    "20 images"
+                ])
+            ]
+        ),
 
         // Celebrity Presets
-        this.plainText("Celebrity Presets"),
-        this.menu(0, celebrityPresets.map(item => item.label)),
+        this.section(
+            "Celebrity Presets",
+            "Choose a celebrity or select options below:",
+            [
+                this.menu(0, celebrityPresets.map(item => item.label))
+            ]
+        ),
 
         // Subject-Nationality
-        this.plainText("Nationality"),
-        this.menu(0, [
-            "Random Selection",
-            ...nationalityPresets.map(item => item.label)
-        ]),
+        this.section(
+            "Nationality",
+            "Choose a nationality:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...nationalityPresets.map(item => item.label)
+                ]
+                )
+            ]
+        ),
 
         // Age
-        this.plainText("Age"),
-        this.menu(0, [
-            "Random Selection",
-            ...agePresets
-        ]),
+        this.section(
+            "Age",
+            "Select an age:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...agePresets
+                ])
+            ]
+        ),
 
         // Overall Build
-        this.plainText("Body Type"),
-        this.menu(0, [
-            "Random Selection",
-            ...overallBuildPresets.map(item => item.label)
-        ]),
+        this.section(
+            "Body Type",
+            "Select a body type:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...overallBuildPresets.map(item => item.label)
+                ])
+            ]
+        ),
 
         // Outfit
-        this.plainText("Outfit"),
-        this.menu(0, [
-            "Random Selection",
-            ...outfitPresets.map(item => item.label)
-        ]),
+        this.section(
+            "Outfit",
+            "Select a clothing ensemble:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...outfitPresets.map(item => item.label)
+                ])
+            ]
+        ),
 
         // Action
-        this.plainText("Action"),
-        this.menu(0, [
-            "Random Selection",
-            ...actionPresets.map(item => item.label)
-        ])
+        this.section(
+            "Action",
+            "Select an action:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...actionPresets.map(item => item.label)
+                ])
+            ]
+        )
     ]
 })
 
@@ -368,43 +429,43 @@ async function generateBatch() {
     let outfit;
     let action;
 
-    if (promptSelections[3] > 0) {
-        celebrity = celebrityPresets[promptSelections[3]].value;
+    if (promptSelections[1] > 0) {
+        celebrity = celebrityPresets[promptSelections[1]].value;
     } else {
 
-        if (promptSelections[5] === 0) {
+        if (promptSelections[2] === 0) {
             nationality = randomize(nationalityPresets);
         } else {
-            nationality = nationalityPresets[promptSelections[5] - 1];
+            nationality = nationalityPresets[promptSelections[2] - 1];
         }
 
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
 
-        if (promptSelections[7] === 0) {
+        if (promptSelections[3] === 0) {
             age = randomize(agePresets);
         } else {
-            age = agePresets[promptSelections[7] - 1];
+            age = agePresets[promptSelections[3] - 1];
         }
 
-        if (promptSelections[9] === 0) {
+        if (promptSelections[4] === 0) {
             overallBuild = randomize(overallBuildPresets);
         } else {
-            overallBuild = overallBuildPresets[promptSelections[9] - 1];
+            overallBuild = overallBuildPresets[promptSelections[4] - 1];
         }
     }
 
-    if (promptSelections[11] === 0) {
+    if (promptSelections[5] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
-        outfit = outfitPresets[promptSelections[11] - 1].value;
+        outfit = outfitPresets[promptSelections[5] - 1].value;
     }
 
-    if (promptSelections[13] === 0) {
+    if (promptSelections[6] === 0) {
         action = randomize(actionPresets).value;
     } else {
-        action = actionPresets[promptSelections[13] - 1].value;
+        action = actionPresets[promptSelections[6] - 1].value;
     }
 
     if (celebrity) {
@@ -473,7 +534,7 @@ async function generateBatch() {
     console.log("Image Complete.");
 }
 
-const imageCount = imageCounts[promptSelections[1]];
+const imageCount = imageCounts[promptSelections[0]];
 
 async function runBatch() {
     for (var i = 0; i < imageCount; i++) {
