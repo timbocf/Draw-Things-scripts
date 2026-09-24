@@ -443,6 +443,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Select from the dropdown:",
             [
                 this.menu(0, [
+                    "1 image",
                     "3 images",
                     "5 images",
                     "10 images",
