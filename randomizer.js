@@ -416,6 +416,8 @@ function randomize(array) {
 
 const imageCounts = [3, 5, 10, 20];
 
+console.log("BEFORE requestfromuser");
+
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
@@ -548,9 +550,9 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         )
     ]
-})
+});
 
-console.log("FULL promptSelections:");
+console.log("AFTER requestfromuser");
 console.log(JSON.stringify(promptSelections));
 
 async function generateBatch() {
