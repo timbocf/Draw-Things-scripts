@@ -373,8 +373,8 @@ async function generateBatch() {
     let action;
 
     if (promptSelections[3] > 0) {
-        celebrity = celebrityPresets[promptSelections[3] - 1].value;
-console.log(celebrity);
+        celebrity = celebrityPresets[promptSelections[3]].value;
+        console.log(celebrity);
     } else {
 
         if (promptSelections[5] === 0) {
