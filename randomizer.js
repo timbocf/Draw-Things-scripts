@@ -579,6 +579,7 @@ async function generateBatch() {
     ].filter(Boolean).join(", ");
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+
     // let optionalPrompt;
 
     /* if (cameraLightingPrompt) {
