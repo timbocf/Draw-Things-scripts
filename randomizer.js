@@ -46,9 +46,9 @@ const nationalityPresets = [
     {
         label: "Black",
         value: "with rich deep skin tone and classic African facial features",
-        hairColors: ["dark brown", "black", "black with blonde streaks"],
+        hairColors: ["dark brown", "black"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
-        eyeColors: ["dark brown", "black"]
+        eyeColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"]
     },
     {
         label: "Mexican",
@@ -372,30 +372,11 @@ async function generateBatch() {
     let outfit;
     let action;
 
-    console.log("Celebrity selection:");
-    console.log(promptSelections[3]);
-    console.log("Celebrity selection type:");
-    console.log(typeof promptSelections[3]);
-    console.log("Celebrity presets length:");
-    console.log(celebrityPresets.length);
-    console.log("Calculated index:");
-    console.log(promptSelections[3] - 1);
-
-    if (promptSelections[3] > 0) {
-        console.log("About to access celebrity preset");
-
-        celebrity = celebrityPresets[promptSelections[3] - 1].value;
-
-        console.log("Celebrity value:");
-        console.log(celebrity);
-    } else {
-        console.log("No celebrity selected");
-    }
-
     if (promptSelections[3] > 0) {
         celebrity = celebrityPresets[promptSelections[3] - 1].value;
-        console.log(celebrity);
+console.log(celebrity);
     } else {
+
         if (promptSelections[5] === 0) {
             nationality = randomize(nationalityPresets);
         } else {
