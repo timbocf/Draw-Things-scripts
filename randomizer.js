@@ -35,7 +35,8 @@ const artStylePresets = [
 const celebrityPresets = [
     { label: "None Selected", value: "" },
     { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes" },
-    { label: "Anne Hathaway", value: "Anne Hathaway with a tall slim build with smokey eyes and heavy mascara" },
+    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara" },
+    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara" },
     { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
     { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
     { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
