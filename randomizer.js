@@ -548,6 +548,15 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             [
                 this.menu(0, photographicLookPresets.map(item => item.label))
             ]
+        ),
+
+        // Lora or no Lora??
+        this.section(
+            "Loras",
+            "Select whether to use loras to bypass safety filters: ",
+            [
+                this.switch(false, "Use LoRAs")
+            ]
         )
     ]
 });
@@ -624,6 +633,8 @@ async function generateBatch() {
     } else {
         action = actionPresets[promptSelections[6][0] - 1].value;
     }
+
+    // PROMPT TEMPLATE
     if (celebrity) {
         imagePrompt = "A photo of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
     } else {
@@ -660,18 +671,22 @@ async function generateBatch() {
     // LORAS
     // =================================
 
-    //    config.loras = [
-    //        {
-    //            mode: "all",
-    //            file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-    //            weight: 1.0
-    //        ,
-    //        {
-    //            mode: "all",
-    //            file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-    //            weight: 0.6
-    //        }
-    //    ];
+    if (promptSelections[7][0] === 0) {
+        config.loras = [];
+    } else {
+        config.loras = [
+            {
+                mode: "all",
+                file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+                weight: 1.0
+            },
+            {
+                mode: "all",
+                file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+                weight: 0.6
+            }
+        ]
+    };
 
     // =================================
     // GENERATE
