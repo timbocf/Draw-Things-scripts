@@ -228,72 +228,69 @@ const specificBodyPresets = [
 ];
 
 const outfitPresets = [
-    "a loose fitting T-shirt and bikini panties",
-    "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks",
-    "a string bikini with thigh-high leather boots",
-    "a halter top and pleated shorts",
-    "a silk pajama short set",
-    "a lace bustier, garter belt, thigh-high stockings and stiletto heels",
-    "an unbuttoned mens dress shirt",
-    "a tank top and a wrap-around skirt",
-    "a short babydoll dress with cowboy boots",
-    "a racy sexy wedding dress",
-    "a full-length evening gown",
-    "a lowcut full-length sheer dress with side pockets",
-    "cut-out dress with a side slit from her waist down",
-    "black French maid uniform with short pleated skirt and white collar and stiletto heels",
-    "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts",
-    "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage.",
-    "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap",
-    "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle",
-    "1940s WWII-style leather flight jacket worn over a white dress",
-
-    "1940s WWII-style leather flight jacket with leather bikini panties",
-
-    "1940s-style navy sailor uniform with a white collar and navy tie",
-    "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem",
-    "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves",
-    "1960s beatnik turtleneck paired with high-waisted slacks",
-    "1960s go-go dress with white go-go boots",
-    "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt"
-
+    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
+    { label: "Bra, Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
+    { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
+    { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts" },
+    { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
+    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels" },
+    { label: "Unbuttoned Mens Dress Shirt", value: "an unbuttoned mens dress shirt" },
+    { label: "Tank Top, Wrap-Around Skirt", value: "a tank top and a wrap-around skirt" },
+    { label: "Short Babydoll Dress, Cowboy Boots", value: "a short babydoll dress with cowboy boots" },
+    { label: "Racy Sexy Wedding Dress", value: "a racy sexy wedding dress" },
+    { label: "Full-Length Wedding Gown", value: "a full-length evening gown" },
+    { label: "Lowcut Full-Length Sheer Dress with Side Pockets", value: "a lowcut full-length sheer dress with side pockets" },
+    { label: "Long Dress with a Slit Down the Side", value: "cut-out dress with a side slit from her waist down" },
+    { label: "French Maid Uniform", value: "black French maid uniform with short pleated skirt and white collar and stiletto heels" },
+    { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
+    { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
+    { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
+    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
+    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress" },
+    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties" },
+    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie" },
+    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem" },
+    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves" },
+    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks" },
+    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots" },
+    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt" }
 ];
 
 const actionPresets = [
-    "laying on a beach",
-    "standing, looking away from the camera",
-    "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted.",
-    "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.",
-    "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera",
-    "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera",
-    "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of {objectPronoun}",
-    "worms-eye view, squatting with her knees spread wide and on the tips of her toes, hands resting on her knees",
-    "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile",
-    "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera",
-    "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only",
-    "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise",
-    "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below {objectPronoun} looking up",
-    "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above {objectPronoun} looking down",
-    "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies",
-    "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.",
-    "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.",
-    "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked",
-    "lying on her side, with the top leg bent high, hand lightly between her thighs",
-    "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
-    "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
-    "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor",
-    "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
-    "She is on her knees facing away, looking back over her shoulder while reaching back to spread her ass cheeks apart",
-    "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace and high heels",
-    "on all fours, head turned to the side, back arched hard, ass toward the camera",
-    "crawling toward the camera on all fours",
-    "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, wearing only a tiny apron.",
-    "taking a selfie in a bathroom mirror",
-    "standing in front of a full-length mirror while pulling her hair up",
-    "sitting in front of a full-length mirror looking at her reflection",
-    "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.",
-    "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.",
-    "leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air."
+    { label: "laying on a beach", value: "laying on a beach" },
+    { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
+    { label: "Wall Pose, Arms Raised", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted." },
+    { label: "Wall Pose, Arms Down", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted." },
+    { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
+    { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
+    { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
+    { label: "Deep Squat, From Below", value: "worms-eye view, squatting with her knees spread wide and on the tips of her toes, hands resting on her knees" },
+    { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" },
+    { label: "Spread Eagle", value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" },
+    { label: "Laying on Back, Legs Straight Up", value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only" },
+    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise" },
+    { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up" },
+    { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly above her looking down" },
+    { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies" },
+    { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face." },
+    { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward." },
+    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked" },
+    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs" },
+    { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back." },
+    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air" },
+    { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor" },
+    { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
+    { label: "Ass Spread", value: "She is on her knees facing away, looking back over her shoulder while reaching back to spread her ass cheeks apart" },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace and high heels" },
+    { label: "Kneeling, Ass Toward Camera", value: "on all fours, head turned to the side, back arched hard, ass toward the camera" },
+    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours" },
+    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron." },
+    { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror" },
+    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up" },
+    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection" },
+    { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera." },
+    { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame." },
+    { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." }
 ];
 
 function randomize(array) {
@@ -343,14 +340,14 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
         this.plainText("Outfit"),
         this.menu(0, [
             "Random Selection",
-            ...outfitPresets
+            ...outfitPresets.map(item => item.label)
         ]),
 
         // Action
         this.plainText("Action"),
         this.menu(0, [
             "Random Selection",
-            ...actionPresets
+            ...actionPresets.map(item => item.label)
         ])
     ]
 })
@@ -398,15 +395,15 @@ async function generateBatch() {
     }
 
     if (promptSelections[11] === 0) {
-        outfit = randomize(outfitPresets);
+        outfit = randomize(outfitPresets).value;
     } else {
-        outfit = outfitPresets[promptSelections[11] - 1];
+        outfit = outfitPresets[promptSelections[11] - 1].value;
     }
 
     if (promptSelections[13] === 0) {
-        action = randomize(actionPresets);
+        action = randomize(actionPresets).value;
     } else {
-        action = actionPresets[promptSelections[13] - 1];
+        action = actionPresets[promptSelections[13] - 1].value;
     }
 
     if (celebrity) {
