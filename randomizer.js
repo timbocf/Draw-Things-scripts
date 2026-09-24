@@ -240,7 +240,7 @@ const outfitPresets = [
     { label: "Short Babydoll Dress, Cowboy Boots", value: "a short babydoll dress with cowboy boots" },
     { label: "Racy Sexy Wedding Dress", value: "a racy sexy wedding dress" },
     { label: "Full-Length Wedding Gown", value: "a full-length evening gown" },
-    { label: "Lowcut Full-Length Sheer Dress with Side Pockets", value: "a lowcut full-length sheer dress with side pockets" },
+    { label: "Lowcut Full-Length Chiffon Dress with Side Pockets", value: "a lowcut full-length chiffon dress with side pockets" },
     { label: "Long Dress with a Slit Down the Side", value: "cut-out dress with a side slit from her waist down" },
     { label: "French Maid Uniform", value: "black French maid uniform with short pleated skirt and white collar and stiletto heels" },
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
