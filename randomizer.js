@@ -550,6 +550,9 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
     ]
 })
 
+console.log("FULL promptSelections:");
+console.log(JSON.stringify(promptSelections));
+
 async function generateBatch() {
 
     console.log("ENTERED generateBatch");
