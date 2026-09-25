@@ -140,7 +140,6 @@ const nationalityPresets = [
         eyeColors: ["dark brown", "black"]
     },
     {
-    {
         label: "Middle Eastern",
         value: "with Middle Eastern facial features",
         hairColors: ["dark brown", "black"],
@@ -168,6 +167,23 @@ const nationalityPresets = [
         skinTones: ["porcelain", "fair", "light"],
         eyeColors: ["blue", "hazel", "brown"]
     },
+
+    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes" },
+    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara" },
+    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara" },
+    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
+    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
+    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
+    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
+    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
+    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
+    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." },
+    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair" },
+    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
+    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose" },
+    { label: "Michelle Obama", value: "Michelle Obama" },
+    { label: "Betty Boop", value: "Betty Boop" }
+
 ];
 
 // --- AGE ---
@@ -428,15 +444,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
-        // Celebrity Presets
-        this.section(
-            "Celebrity Presets",
-            "Choose a celebrity or select options below:",
-            [
-                this.menu(0, celebrityPresets.map(item => item.label))
-            ]
-        ),
-
         // Subject-Nationality
         this.section(
             "Nationality",
@@ -555,7 +562,6 @@ async function generateBatch() {
 
     let imagePrompt;
     let artStyle = artStylePresets[promptSelections[2][0]].value;
-    let celebrity;
     let nationality;
     let hairColor;
     let skinTone;
@@ -564,11 +570,11 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[9][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[10][0]].value;
-    let timeOfDay = timeOfDayPresets[promptSelections[11][0]].value;
-    let lighting = lightingPresets[promptSelections[12][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[13][0]].value;
+    let cameraFraming = cameraFramingPresets[promptSelections[8][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[9][0]].value;
+    let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
+    let lighting = lightingPresets[promptSelections[11][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
 
     const cameraLightingPrompt = [
         cameraFraming,
@@ -580,114 +586,106 @@ async function generateBatch() {
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
-    if (promptSelections[3][0] > 0) {
-        celebrity = celebrityPresets[promptSelections[3][0]].value;
+    if (promptSelections[3][0] === 0) {
+        nationality = randomize(nationalityPresets);
     } else {
+        nationality = nationalityPresets[promptSelections[3][0] - 1];
+    }
 
-        if (promptSelections[4][0] === 0) {
-            nationality = randomize(nationalityPresets);
-        } else {
-            nationality = nationalityPresets[promptSelections[4][0] - 1];
+    hairColor = randomize(nationality.hairColors);
+    skinTone = randomize(nationality.skinTones);
+    eyeColor = randomize(nationality.eyeColors);
+
+    if (promptSelections[4][0] === 0) {
+        age = randomize(agePresets);
+    } else {
+        age = agePresets[promptSelections[4][0] - 1];
+    }
+
+    if (promptSelections[5][0] === 0) {
+        overallBuild = randomize(overallBuildPresets);
+    } else {
+        overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
+    }
+}
+if (promptSelections[6][0] === 0) {
+    outfit = randomize(outfitPresets).value;
+} else {
+    outfit = outfitPresets[promptSelections[6][0] - 1].value;
+}
+
+if (promptSelections[7][0] === 0) {
+    action = randomize(actionPresets).value;
+} else {
+    action = actionPresets[promptSelections[7][0] - 1].value;
+}
+
+// PROMPT TEMPLATE
+imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+
+console.log("Generating:");
+console.log(imagePrompt);
+
+// =================================
+// COPY CURRENT CONFIGURATION
+// =================================
+
+let config = JSON.parse(
+    JSON.stringify(pipeline.configuration)
+);
+
+// =================================
+// KREA 2 SETTINGS
+// =================================
+
+config.model = "krea_2_turbo_i8x.ckpt";
+config.width = 1024;
+config.height = 1024;
+config.batchCount = 1;
+config.batchSize = 1;
+
+// =================================
+// RANDOM SEED
+// =================================
+config.seed = -1;
+
+// =================================
+// LORAS
+// =================================
+
+if (promptSelections[1][0]) {
+    config.loras = [
+        {
+            mode: "all",
+            file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+            weight: 1.0
+        },
+        {
+            mode: "all",
+            file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+            weight: 0.6
         }
+    ]
+} else {
+    config.loras = [];
+}
 
-        hairColor = randomize(nationality.hairColors);
-        skinTone = randomize(nationality.skinTones);
-        eyeColor = randomize(nationality.eyeColors);
+// =================================
+// GENERATE
+// =================================
 
-        if (promptSelections[5][0] === 0) {
-            age = randomize(agePresets);
-        } else {
-            age = agePresets[promptSelections[5][0] - 1];
-        }
+await pipeline.run({
+    configuration: config,
+    prompt: imagePrompt
+});
 
-        if (promptSelections[6][0] === 0) {
-            overallBuild = randomize(overallBuildPresets);
-        } else {
-            overallBuild = overallBuildPresets[promptSelections[6][0] - 1];
-        }
-    }
-    if (promptSelections[7][0] === 0) {
-        outfit = randomize(outfitPresets).value;
-    } else {
-        outfit = outfitPresets[promptSelections[7][0] - 1].value;
-    }
+console.log("Image complete.");
 
-    if (promptSelections[8][0] === 0) {
-        action = randomize(actionPresets).value;
-    } else {
-        action = actionPresets[promptSelections[8][0] - 1].value;
-    }
+// =========================================
+// FINISHED
+// =========================================
 
-    // PROMPT TEMPLATE
-    if (celebrity) {
-        imagePrompt = "A " + artStyle + " of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
-    } else {
-        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
-    }
-
-    console.log("Generating:");
-    console.log(imagePrompt);
-
-    // =================================
-    // COPY CURRENT CONFIGURATION
-    // =================================
-
-    let config = JSON.parse(
-        JSON.stringify(pipeline.configuration)
-    );
-
-    // =================================
-    // KREA 2 SETTINGS
-    // =================================
-
-    config.model = "krea_2_turbo_i8x.ckpt";
-    config.width = 1024;
-    config.height = 1024;
-    config.batchCount = 1;
-    config.batchSize = 1;
-
-    // =================================
-    // RANDOM SEED
-    // =================================
-    config.seed = -1;
-
-    // =================================
-    // LORAS
-    // =================================
-
-    if (promptSelections[1][0]) {
-        config.loras = [
-            {
-                mode: "all",
-                file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-                weight: 1.0
-            },
-            {
-                mode: "all",
-                file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-                weight: 0.6
-            }
-        ]
-    } else {
-        config.loras = [];
-    }
-
-    // =================================
-    // GENERATE
-    // =================================
-
-    await pipeline.run({
-        configuration: config,
-        prompt: imagePrompt
-    });
-
-    console.log("Image complete.");
-
-    // =========================================
-    // FINISHED
-    // =========================================
-
-    console.log("Image Complete.");
+console.log("Image Complete.");
 }
 
 const imageCount = imageCounts[promptSelections[0][0]];
