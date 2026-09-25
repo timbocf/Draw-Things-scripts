@@ -589,12 +589,6 @@ async function generateBatch() {
         nationality = nationalityPresets[promptSelections[3][0] - 1];
     }
 
-    if (predetermined === false) {
-        hairColor = randomize(nationality.hairColors);
-        skinTone = randomize(nationality.skinTones);
-        eyeColor = randomize(nationality.eyeColors);
-    }
-
     if (promptSelections[4][0] === 0) {
         age = randomize(agePresets);
     } else {
@@ -612,19 +606,25 @@ async function generateBatch() {
         outfit = outfitPresets[promptSelections[6][0] - 1].value;
     }
 
-    if (nudeRequired === true) {
-        outfit = "nude";
-    }
-
     if (promptSelections[7][0] === 0) {
         action = randomize(actionPresets).value;
     } else {
         action = actionPresets[promptSelections[7][0] - 1].value;
     }
 
-    // PROMPT TEMPLATE
-    imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+    if (action.nudeRequired === true) {
+        outfit = "nude";
+    }
 
+    // PROMPT TEMPLATE
+    if (nationality.predefined) {
+        imagePrompt = "A " + artStyle + " of " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+    } else {
+        hairColor = randomize(nationality.hairColors);
+        skinTone = randomize(nationality.skinTones);
+        eyeColor = randomize(nationality.eyeColors);
+        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+    }
     console.log("Generating:");
     console.log(imagePrompt);
 
