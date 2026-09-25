@@ -162,7 +162,7 @@ const nationalityPresets = [
     { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose", predefined: true },
     { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
     { label: "Betty Boop", value: "Betty Boop", predefined: true },
-    { label: "Woman with Achondroplasia", value: "woman with achondroplasia", predefined: true },
+    { label: "Woman with Achrondroplasia", value: "adult woman with achondroplasia, distinctly disproportionate dwarfism, average-length torso with substantially shortened arms and legs, especially shortened upper arms and thighs, large head relative to body, prominent forehead, short broad hands and fingers" },
     { label: "Pregnant Woman", value: "pregnant woman", predefined: true }
 
 ];
