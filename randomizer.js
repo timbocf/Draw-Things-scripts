@@ -48,7 +48,9 @@ const celebrityPresets = [
     { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
     { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose" },
     { label: "Michelle Obama", value: "Michelle Obama" },
-    { label: "Betty Boop", value: "Betty Boop" }
+    { label: "Betty Boop", value: "Betty Boop" },
+    { label: "Woman with Achondroplasia", value: "woman with achondroplasia" },
+    { label: "Pregnant Woman", value: "pregnant woman" }
 ];
 
 
