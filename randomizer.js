@@ -612,6 +612,8 @@ async function generateBatch() {
         action = actionPresets[promptSelections[7][0] - 1].value;
     }
 
+    console.log(action);
+
     if (action.nudeRequired === true) {
         outfit = "nude";
     }
