@@ -30,30 +30,6 @@ const artStylePresets = [
     { label: "Chibi/Kawaii 3D", value: "Chibi 3D figurine, oversized head, expressive shiny eyes, smooth vinyl toy finish, soft studio lighting" }
 ];
 
-// Celebrity Presets
-
-const celebrityPresets = [
-    { label: "None Selected", value: "" },
-    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes" },
-    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara" },
-    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara" },
-    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
-    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
-    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
-    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
-    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
-    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
-    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." },
-    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair" },
-    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
-    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose" },
-    { label: "Michelle Obama", value: "Michelle Obama" },
-    { label: "Betty Boop", value: "Betty Boop" },
-    { label: "Woman with Achondroplasia", value: "woman with achondroplasia" },
-    { label: "Pregnant Woman", value: "pregnant woman" }
-];
-
-
 // --- NATIONALITY / ETHNICITY ---
 
 const nationalityPresets = [
@@ -170,6 +146,7 @@ const nationalityPresets = [
         eyeColors: ["blue", "hazel", "brown"]
     },
 
+    // Celebrity/Character Presets
     { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes", predefined: true },
     { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara", predefined: true },
     { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara", predefined: true },
@@ -184,7 +161,9 @@ const nationalityPresets = [
     { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style", predefined: true },
     { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose", predefined: true },
     { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
-    { label: "Betty Boop", value: "Betty Boop", predefined: true }
+    { label: "Betty Boop", value: "Betty Boop", predefined: true },
+    { label: "Woman with Achondroplasia", value: "woman with achondroplasia" },
+    { label: "Pregnant Woman", value: "pregnant woman" }
 
 ];
 
