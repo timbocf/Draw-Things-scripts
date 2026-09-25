@@ -119,13 +119,6 @@ const nationalityPresets = [
         eyeColors: ["dark brown", "black"]
     },
     {
-        label: "Brazilian",
-        value: "with a blend of European, African, and Indigenous features",
-        hairColors: ["light brown", "dark brown", "black"],
-        skinTones: ["sun-kissed olive", "deep golden-bronze"],
-        eyeColors: ["dark brown", "black", "light brown", "hazel", "green"]
-    },
-    {
         label: "Italian",
         value: "with Mediterranean facial features",
         hairColors: ["dark brown", "black"],
@@ -140,13 +133,6 @@ const nationalityPresets = [
         eyeColors: ["blue", "hazel"]
     },
     {
-        label: "Russian/Eastern European",
-        value: "with Slavic facial features",
-        hairColors: ["blonde", "light brown", "dark brown", "black"],
-        skinTones: ["fair", "light", "sun-kissed tan"],
-        eyeColors: ["blue", "brown"]
-    },
-    {
         label: "Chinese",
         value: "with East Asian facial features",
         hairColors: ["dark brown", "black"],
@@ -154,12 +140,6 @@ const nationalityPresets = [
         eyeColors: ["dark brown", "black"]
     },
     {
-        label: "Vietnamese",
-        value: "with Southeast Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["warm tan", "olive", "sun-kissed tan"],
-        eyeColors: ["dark brown", "black"]
-    },
     {
         label: "Middle Eastern",
         value: "with Middle Eastern facial features",
@@ -187,27 +167,6 @@ const nationalityPresets = [
         hairColors: ["ginger", "blonde", "light brown", "dark brown"],
         skinTones: ["porcelain", "fair", "light"],
         eyeColors: ["blue", "hazel", "brown"]
-    },
-    {
-        label: "Native American",
-        value: "with Indigenous American facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["warm bronze", "sun-kissed olive"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Polynesian/Pacific Islander",
-        value: "with Polynesian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["warm brown", "sun-kissed olive"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Ethiopian/East African",
-        value: "with East African facial features",
-        hairColors: ["dark brown", "black", "dark glossy black"],
-        skinTones: ["deep brown", "black", "deep glossy black"],
-        eyeColors: ["dark brown", "black"]
     },
 ];
 
@@ -289,8 +248,8 @@ const actionPresets = [
     // { label: "Spread Eagle", value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" },
     { label: "Laying on Back, Legs Straight Up", value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only" },
     { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise" },
-    { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up" },
-    { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down" },
+    { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up", nudeRequired: true },
+    { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down", nudeRequired: true },
     { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies" },
     { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face." },
     { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward." },
