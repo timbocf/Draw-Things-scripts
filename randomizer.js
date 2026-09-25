@@ -607,87 +607,85 @@ async function generateBatch() {
     } else {
         overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
     }
+    if (promptSelections[6][0] === 0) {
+        outfit = randomize(outfitPresets).value;
+    } else {
+        outfit = outfitPresets[promptSelections[6][0] - 1].value;
+    }
+
+    if (promptSelections[7][0] === 0) {
+        action = randomize(actionPresets).value;
+    } else {
+        action = actionPresets[promptSelections[7][0] - 1].value;
+    }
+
+    // PROMPT TEMPLATE
+    imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+
+    console.log("Generating:");
+    console.log(imagePrompt);
+
+    // =================================
+    // COPY CURRENT CONFIGURATION
+    // =================================
+
+    let config = JSON.parse(
+        JSON.stringify(pipeline.configuration)
+    );
+
+    // =================================
+    // KREA 2 SETTINGS
+    // =================================
+
+    config.model = "krea_2_turbo_i8x.ckpt";
+    config.width = 1024;
+    config.height = 1024;
+    config.batchCount = 1;
+    config.batchSize = 1;
+
+    // =================================
+    // RANDOM SEED
+    // =================================
+    config.seed = -1;
+
+    // =================================
+    // LORAS
+    // =================================
+
+    if (promptSelections[1][0]) {
+        config.loras = [
+            {
+                mode: "all",
+                file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+                weight: 1.0
+            },
+            {
+                mode: "all",
+                file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+                weight: 0.6
+            }
+        ]
+    } else {
+        config.loras = [];
+    }
+
+    // =================================
+    // GENERATE
+    // =================================
+
+    await pipeline.run({
+        configuration: config,
+        prompt: imagePrompt
+    });
+
+    console.log("Image complete.");
+
+    // =========================================
+    // FINISHED
+    // =========================================
+
+    console.log("Image Complete.");
 }
-if (promptSelections[6][0] === 0) {
-    outfit = randomize(outfitPresets).value;
-} else {
-    outfit = outfitPresets[promptSelections[6][0] - 1].value;
-}
-
-if (promptSelections[7][0] === 0) {
-    action = randomize(actionPresets).value;
-} else {
-    action = actionPresets[promptSelections[7][0] - 1].value;
-}
-
-// PROMPT TEMPLATE
-imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
-
-console.log("Generating:");
-console.log(imagePrompt);
-
-// =================================
-// COPY CURRENT CONFIGURATION
-// =================================
-
-let config = JSON.parse(
-    JSON.stringify(pipeline.configuration)
-);
-
-// =================================
-// KREA 2 SETTINGS
-// =================================
-
-config.model = "krea_2_turbo_i8x.ckpt";
-config.width = 1024;
-config.height = 1024;
-config.batchCount = 1;
-config.batchSize = 1;
-
-// =================================
-// RANDOM SEED
-// =================================
-config.seed = -1;
-
-// =================================
-// LORAS
-// =================================
-
-if (promptSelections[1][0]) {
-    config.loras = [
-        {
-            mode: "all",
-            file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-            weight: 1.0
-        },
-        {
-            mode: "all",
-            file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-            weight: 0.6
-        }
-    ]
-} else {
-    config.loras = [];
-}
-
-// =================================
-// GENERATE
-// =================================
-
-await pipeline.run({
-    configuration: config,
-    prompt: imagePrompt
-});
-
-console.log("Image complete.");
-
-// =========================================
-// FINISHED
-// =========================================
-
-console.log("Image Complete.");
-}
-
 const imageCount = imageCounts[promptSelections[0][0]];
 
 async function runBatch() {
