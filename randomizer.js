@@ -162,8 +162,8 @@ const nationalityPresets = [
     { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose", predefined: true },
     { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
     { label: "Betty Boop", value: "Betty Boop", predefined: true },
-    { label: "Woman with Achondroplasia", value: "woman with achondroplasia" },
-    { label: "Pregnant Woman", value: "pregnant woman" }
+    { label: "Woman with Achondroplasia", value: "woman with achondroplasia", predefined: true },
+    { label: "Pregnant Woman", value: "pregnant woman", predefined: true }
 
 ];
 
