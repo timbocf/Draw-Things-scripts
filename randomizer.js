@@ -618,12 +618,13 @@ async function generateBatch() {
 
     // PROMPT TEMPLATE
     if (nationality.predefined) {
-        imagePrompt = "A " + artStyle + " of " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        // Celebrity
+        imagePrompt = "A " + artStyle + " of " + nationality.value + ", " + action + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
