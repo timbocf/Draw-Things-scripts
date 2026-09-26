@@ -235,7 +235,7 @@ const outfitPresets = [
 
 const actionPresets = [
     { label: "laying on a beach", value: "laying on a beach" },
-    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair." },
+    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
     { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
     { label: "Wall Pose, Arms Raised", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted." },
     { label: "Wall Pose, Arms Down", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted." },
@@ -541,7 +541,7 @@ async function generateBatch() {
     canvas.clear();
 
     let imagePrompt;
-    let artStyle = artStylePresets[promptSelections[2][0]].value;
+    let artStyle = artStylePresets[promptSelections[2][0]];
     let nationality;
     let hairColor;
     let skinTone;
@@ -601,15 +601,19 @@ async function generateBatch() {
         outfit = "nude";
     }
 
+    if (action.selfiePhoto === true) {
+        artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
+    }
+
     // PROMPT TEMPLATE
     if (nationality.predefined) {
         // Celebrity
-        imagePrompt = "A " + artStyle + " of " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
