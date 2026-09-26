@@ -16,6 +16,7 @@ const gender = [
 
 const artStylePresets = [
     { label: "Photo", value: "photo" },
+    { label: "Selfie Photo", value: "birds-eye selfie photo" },
     { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
@@ -234,6 +235,7 @@ const outfitPresets = [
 
 const actionPresets = [
     { label: "laying on a beach", value: "laying on a beach" },
+    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair." },
     { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
     { label: "Wall Pose, Arms Raised", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted." },
     { label: "Wall Pose, Arms Down", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted." },
