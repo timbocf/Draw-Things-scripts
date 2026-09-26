@@ -16,7 +16,7 @@ const gender = [
 
 const artStylePresets = [
     { label: "Photo", value: "photo" },
-    { label: "Selfie Photo", value: "birds-eye selfie photo" },
+    { label: "Selfie Photo", value: "birds-eye selfie photo looking down at" },
     { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
