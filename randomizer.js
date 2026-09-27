@@ -242,7 +242,7 @@ const actionPresets = [
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
-    { label: "Deep Squat, From Below", value: "worms-eye view, squatting with her knees spread wide and on the tips of her toes, hands resting on her knees" },
+    { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", lowAngleRequired: true },
     { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" },
     // { label: "Spread Eagle", value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" },
     { label: "Laying on Back, Legs Straight Up", value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only" },
@@ -551,14 +551,18 @@ async function generateBatch() {
     let outfit;
     let action;
     let cameraFraming = cameraFramingPresets[promptSelections[8][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[9][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[9][0]];
     let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
     let lighting = lightingPresets[promptSelections[11][0]].value;
     let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
 
+    if (lowAngleRequired === true) {
+        cameraAngle = cameraAnglePresets.find(style => style.label = "Low Angle");
+    }
+
     const cameraLightingPrompt = [
         cameraFraming,
-        cameraAngle,
+        cameraAngle.value,
         timeOfDay,
         lighting,
         photographicLook
