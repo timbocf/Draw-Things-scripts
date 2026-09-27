@@ -557,20 +557,6 @@ async function generateBatch() {
     let lighting = lightingPresets[promptSelections[11][0]].value;
     let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
 
-    if (lowAngleRequired === true) {
-        cameraAngle = cameraAnglePresets.find(style => style.label = "Low Angle");
-    }
-
-    const cameraLightingPrompt = [
-        cameraFraming,
-        cameraAngle.value,
-        timeOfDay,
-        lighting,
-        photographicLook
-    ].filter(Boolean).join(", ");
-
-    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
-
     if (promptSelections[3][0] === 0) {
         nationality = randomize(nationalityPresets);
     } else {
@@ -600,7 +586,9 @@ async function generateBatch() {
         action = actionPresets[promptSelections[7][0] - 1];
     }
 
-    console.log(action);
+    if (action.lowAngleRequired === true) {
+        cameraAngle = cameraAnglePresets.find(style => style.label === "Low Angle");
+    }
 
     if (action.nudeRequired === true) {
         outfit = "nude";
@@ -609,6 +597,18 @@ async function generateBatch() {
     if (action.selfiePhoto === true) {
         artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
     }
+
+const cameraLightingPrompt = [
+        cameraFraming,
+        cameraAngle.value,
+        timeOfDay,
+        lighting,
+        photographicLook
+    ].filter(Boolean).join(", ");
+
+    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+
+
 
     // PROMPT TEMPLATE
     if (nationality.predefined) {
