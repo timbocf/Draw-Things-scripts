@@ -17,7 +17,7 @@ const gender = [
 const artStylePresets = [
     { label: "Photo", value: "photo" },
     { label: "Selfie Photo", value: "birds-eye selfie photo looking down at" },
-    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: "1940s" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
     { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
@@ -208,6 +208,7 @@ const outfitPresets = [
     { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
     { label: "Bra, Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
+    { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt with one button fastened near her navel, very short cutoff jean shorts and cowboy boots" },
     { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts" },
     { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
     { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels" },
@@ -223,14 +224,14 @@ const outfitPresets = [
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
     { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
-    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress" },
-    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties" },
-    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie" },
-    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem" },
-    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves" },
-    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks" },
-    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots" },
-    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt" }
+    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: "1940s" },
+    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: "1940s" },
+    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: "1940s" },
+    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", era: "1960s" },
+    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", era: "1960s" },
+    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", era: "1960s" },
+    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", era: "1960s" },
+    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", era: "1960s" }
 ];
 
 const actionPresets = [
@@ -375,14 +376,14 @@ const photographicLookPresets = [
     { label: "Soft Monochrome", value: "soft monochrome photographic treatment with gentle tonal transitions" },
     { label: "Sepia", value: "warm sepia-toned photographic treatment" },
 
-    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness" },
-    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast" },
-    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color" },
-    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering" },
-    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift" },
-    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise" },
-    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character" },
-    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections" }
+    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", era: "1930s" },
+    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", era: "1940s" },
+    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", era: "1950s" },
+    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", era: "1960s" },
+    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", era: "1970s" },
+    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", era: "1980s" },
+    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", era: "1990s" },
+    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", era: "2000s" }
 ];
 
 
