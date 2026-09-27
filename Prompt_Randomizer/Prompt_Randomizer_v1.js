@@ -16,7 +16,8 @@ const gender = [
 
 const artStylePresets = [
     { label: "Photo", value: "photo" },
-    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas" },
+    { label: "Selfie Photo", value: "birds-eye selfie photo looking down at" },
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: "1940s" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
     { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
@@ -29,28 +30,6 @@ const artStylePresets = [
     { label: "3D Stylized Game Character", value: "Overwatch/Arcane stylized 3D render, smooth painted textures, dramatic cinematic lighting, semi-realistic proportions, clean character art" },
     { label: "Chibi/Kawaii 3D", value: "Chibi 3D figurine, oversized head, expressive shiny eyes, smooth vinyl toy finish, soft studio lighting" }
 ];
-
-// Celebrity Presets
-
-const celebrityPresets = [
-    { label: "None Selected", value: "" },
-    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes" },
-    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara" },
-    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara" },
-    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs" },
-    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair" },
-    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls" },
-    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings" },
-    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
-    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
-    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass." },
-    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair" },
-    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
-    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose" },
-    { label: "Michelle Obama", value: "Michelle Obama" },
-    { label: "Betty Boop", value: "Betty Boop" }
-];
-
 
 // --- NATIONALITY / ETHNICITY ---
 
@@ -140,7 +119,6 @@ const nationalityPresets = [
         eyeColors: ["dark brown", "black"]
     },
     {
-    {
         label: "Middle Eastern",
         value: "with Middle Eastern facial features",
         hairColors: ["dark brown", "black"],
@@ -168,6 +146,26 @@ const nationalityPresets = [
         skinTones: ["porcelain", "fair", "light"],
         eyeColors: ["blue", "hazel", "brown"]
     },
+
+    // Celebrity/Character Presets
+    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes", predefined: true },
+    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara", predefined: true },
+    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara", predefined: true },
+    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs", predefined: true },
+    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair", predefined: true },
+    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls", predefined: true },
+    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings", predefined: true },
+    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings", predefined: true },
+    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings", predefined: true },
+    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass.", predefined: true },
+    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair", predefined: true },
+    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style", predefined: true },
+    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose", predefined: true },
+    { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
+    { label: "Betty Boop", value: "Betty Boop", predefined: true },
+    { label: "Woman with Achrondroplasia", value: "adult woman with achondroplasia, distinctly disproportionate dwarfism, average-length torso with substantially shortened arms and legs, especially shortened upper arms and thighs, large head relative to body, short broad hands and fingers", predefined: true },
+    { label: "Pregnant Woman", value: "pregnant woman", predefined: true }
+
 ];
 
 // --- AGE ---
@@ -210,6 +208,7 @@ const outfitPresets = [
     { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
     { label: "Bra, Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
+    { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt with one button fastened near her navel, very short cutoff jean shorts and cowboy boots" },
     { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts" },
     { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
     { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels" },
@@ -225,32 +224,33 @@ const outfitPresets = [
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
     { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
-    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress" },
-    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties" },
-    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie" },
-    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem" },
-    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves" },
-    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks" },
-    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots" },
-    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt" }
+    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: "1940s" },
+    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: "1940s" },
+    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: "1940s" },
+    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", era: "1960s" },
+    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", era: "1960s" },
+    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", era: "1960s" },
+    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", era: "1960s" },
+    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", era: "1960s" }
 ];
 
 const actionPresets = [
     { label: "laying on a beach", value: "laying on a beach" },
+    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
     { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
     { label: "Wall Pose, Arms Raised", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted." },
     { label: "Wall Pose, Arms Down", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted." },
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
-    { label: "Deep Squat, From Below", value: "worms-eye view, squatting with her knees spread wide and on the tips of her toes, hands resting on her knees" },
+    { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", lowAngleRequired: true },
     { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" },
     // { label: "Spread Eagle", value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" },
     { label: "Laying on Back, Legs Straight Up", value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only" },
     { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise" },
     { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up", nudeRequired: true },
     { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down", nudeRequired: true },
-    { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies" },
+    { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies", nudeRequired: true },
     { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face." },
     { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward." },
     { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame." },
@@ -376,14 +376,14 @@ const photographicLookPresets = [
     { label: "Soft Monochrome", value: "soft monochrome photographic treatment with gentle tonal transitions" },
     { label: "Sepia", value: "warm sepia-toned photographic treatment" },
 
-    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness" },
-    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast" },
-    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color" },
-    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering" },
-    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift" },
-    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise" },
-    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character" },
-    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections" }
+    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", era: "1930s" },
+    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", era: "1940s" },
+    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", era: "1950s" },
+    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", era: "1960s" },
+    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", era: "1970s" },
+    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", era: "1980s" },
+    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", era: "1990s" },
+    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", era: "2000s" }
 ];
 
 
@@ -425,15 +425,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Select the artistic medium: ",
             [
                 this.menu(0, artStylePresets.map(item => item.label))
-            ]
-        ),
-
-        // Celebrity Presets
-        this.section(
-            "Celebrity Presets",
-            "Choose a celebrity or select options below:",
-            [
-                this.menu(0, celebrityPresets.map(item => item.label))
             ]
         ),
 
@@ -546,16 +537,12 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
     ]
 });
 
-console.log("AFTER requestfromuser");
-console.log(JSON.stringify(promptSelections));
-
 async function generateBatch() {
 
     canvas.clear();
 
     let imagePrompt;
-    let artStyle = artStylePresets[promptSelections[2][0]].value;
-    let celebrity;
+    let artStyle = artStylePresets[promptSelections[2][0]];
     let nationality;
     let hairColor;
     let skinTone;
@@ -564,15 +551,56 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[9][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[10][0]].value;
-    let timeOfDay = timeOfDayPresets[promptSelections[11][0]].value;
-    let lighting = lightingPresets[promptSelections[12][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[13][0]].value;
+    let cameraFraming = cameraFramingPresets[promptSelections[8][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[9][0]];
+    let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
+    let lighting = lightingPresets[promptSelections[11][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
 
-    const cameraLightingPrompt = [
+    if (promptSelections[3][0] === 0) {
+        nationality = randomize(nationalityPresets);
+    } else {
+        nationality = nationalityPresets[promptSelections[3][0] - 1];
+    }
+
+    if (promptSelections[4][0] === 0) {
+        age = randomize(agePresets);
+    } else {
+        age = agePresets[promptSelections[4][0] - 1];
+    }
+
+    if (promptSelections[5][0] === 0) {
+        overallBuild = randomize(overallBuildPresets);
+    } else {
+        overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
+    }
+    if (promptSelections[6][0] === 0) {
+        outfit = randomize(outfitPresets).value;
+    } else {
+        outfit = outfitPresets[promptSelections[6][0] - 1].value;
+    }
+
+    if (promptSelections[7][0] === 0) {
+        action = randomize(actionPresets);
+    } else {
+        action = actionPresets[promptSelections[7][0] - 1];
+    }
+
+    if (action.lowAngleRequired === true) {
+        cameraAngle = cameraAnglePresets.find(style => style.label === "Low Angle");
+    }
+
+    if (action.nudeRequired === true) {
+        outfit = "nude";
+    }
+
+    if (action.selfiePhoto === true) {
+        artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
+    }
+
+const cameraLightingPrompt = [
         cameraFraming,
-        cameraAngle,
+        cameraAngle.value,
         timeOfDay,
         lighting,
         photographicLook
@@ -580,51 +608,18 @@ async function generateBatch() {
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
-    if (promptSelections[3][0] > 0) {
-        celebrity = celebrityPresets[promptSelections[3][0]].value;
+
+
+    // PROMPT TEMPLATE
+    if (nationality.predefined) {
+        // Celebrity
+        imagePrompt = "A " + artStyle.value + " of " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
-
-        if (promptSelections[4][0] === 0) {
-            nationality = randomize(nationalityPresets);
-        } else {
-            nationality = nationalityPresets[promptSelections[4][0] - 1];
-        }
-
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-
-        if (promptSelections[5][0] === 0) {
-            age = randomize(agePresets);
-        } else {
-            age = agePresets[promptSelections[5][0] - 1];
-        }
-
-        if (promptSelections[6][0] === 0) {
-            overallBuild = randomize(overallBuildPresets);
-        } else {
-            overallBuild = overallBuildPresets[promptSelections[6][0] - 1];
-        }
+        imagePrompt = "A " + artStyle.value + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
-    if (promptSelections[7][0] === 0) {
-        outfit = randomize(outfitPresets).value;
-    } else {
-        outfit = outfitPresets[promptSelections[7][0] - 1].value;
-    }
-
-    if (promptSelections[8][0] === 0) {
-        action = randomize(actionPresets).value;
-    } else {
-        action = actionPresets[promptSelections[8][0] - 1].value;
-    }
-
-    // PROMPT TEMPLATE
-    if (celebrity) {
-        imagePrompt = "A " + artStyle + " of " + celebrity + ", " + action + ", wearing " + outfit + "." + optionalPrompt + " Natural anatomy.";
-    } else {
-        imagePrompt = "A " + artStyle + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
-    }
-
     console.log("Generating:");
     console.log(imagePrompt);
 
@@ -689,7 +684,6 @@ async function generateBatch() {
 
     console.log("Image Complete.");
 }
-
 const imageCount = imageCounts[promptSelections[0][0]];
 
 async function runBatch() {
@@ -699,7 +693,6 @@ async function runBatch() {
     console.log("Batch Finished!");
 }
 
-console.log("ABOUT TO RUN BATCH");
 console.log("promptSelections:", promptSelections);
 console.log("imageCount:", imageCount);
 
