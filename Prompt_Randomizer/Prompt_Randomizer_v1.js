@@ -424,9 +424,11 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Art Style",
             "Select the artistic medium: ",
             [
-                this.menu(0, artStylePresets.map(item => item.label))
-            ]
-        ),
+                this.menu(0, [
+                    "Random Selection",
+                    ...artStylePresets.map(item => item.label)
+                ])
+            ]),
 
         // Subject-Nationality
         this.section(
@@ -436,8 +438,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
                 this.menu(0, [
                     "Random Selection",
                     ...nationalityPresets.map(item => item.label)
-                ]
-                )
+                ])
             ]
         ),
 
@@ -557,6 +558,12 @@ async function generateBatch() {
     let lighting = lightingPresets[promptSelections[11][0]].value;
     let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
 
+    if (promptSelections[2][0] === 0) {
+        artStyle = randomize(artStylePresets);
+    } else {
+        artStyle = artStylePresets[promptSelections[2][0] - 1];
+    }
+
     if (promptSelections[3][0] === 0) {
         nationality = randomize(nationalityPresets);
     } else {
@@ -598,7 +605,7 @@ async function generateBatch() {
         artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
     }
 
-const cameraLightingPrompt = [
+    const cameraLightingPrompt = [
         cameraFraming,
         cameraAngle.value,
         timeOfDay,
