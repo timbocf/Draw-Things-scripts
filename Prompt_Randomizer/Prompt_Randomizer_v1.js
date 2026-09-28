@@ -169,9 +169,9 @@ const nationalityPresets = [
 
 // --- AGE ---
 const agePresets = [
-    "18 years old", "20 years old", "25 years old", "30 years old", "35 years old",
-    "40 years old", "45 years old", "50 years old", "55 years old", "60 years old",
-    "65 years old", "70 years old", "75 years old", "80 years old", "85 years old"
+    "18-year-old", "20-year-old", "25-year-old", "30-year-old", "35-year-old",
+    "40-year-old", "45-year-old", "50-year-old", "55-year-old", "60-year-old",
+    "65-year-old", "70-year-old", "75-year-old", "80-year-old", "85-year-old"
 ];
 
 // =========================================
@@ -179,9 +179,7 @@ const agePresets = [
 // =========================================
 
 const overallBuildPresets = [
-    { label: "Woman with Achrondroplasia", value: "achondroplasia, with distinctly disproportionate dwarfism, an average-length torso with substantially shortened arms and legs, especially shortened upper arms and thighs, large head relative to body, and short broad hands and fingers,", predefined: true },
-    { label: "Pregnant Woman", value: "pregnant woman", predefined: true },
-{ label: "Slim build", value: "slim build" },
+    { label: "Slim build", value: "slim build" },
     { label: "Soft Fit Frame", value: "toned athletic frame softened by naturally feminine curves, visible but subtle muscle definition" },
     { label: "Average build", value: "average build" },
     { label: "Petite build", value: "petite build with a small overall frame, narrow hips, short stature, narrow shoulders, thin legs, and flat belly" },
@@ -207,7 +205,7 @@ const specificBodyPresets = [
 const outfitPresets = [
     { label: "Nude", value: "nude" },
     { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
-		{ label: "Bra & Panties", value: "a bra and panties, barefoot" },
+    { label: "Bra & Panties", value: "a bra and panties, barefoot" },
     { label: "Bra, Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
     { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt with one button fastened near her navel, very short cutoff jean shorts and cowboy boots" },
@@ -456,6 +454,15 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
+        // Specific Body Presets
+        this.section(
+            "Special Body Types",
+            "Pregnant or Achondroplasia",
+            [
+                this.menu(0, specificBodyPresets.map(item = item.label)
+                )]
+        ),
+
         // Overall Build
         this.section(
             "Body Type",
@@ -554,11 +561,11 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[8][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[9][0]];
-    let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
-    let lighting = lightingPresets[promptSelections[11][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[12][0]].value;
+    let cameraFraming = cameraFramingPresets[promptSelections[9][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[10][0]];
+    let timeOfDay = timeOfDayPresets[promptSelections[11][0]].value;
+    let lighting = lightingPresets[promptSelections[12][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[13][0]].value;
 
     if (promptSelections[2][0] === 0) {
         artStyle = randomize(artStylePresets);
@@ -583,16 +590,16 @@ async function generateBatch() {
     } else {
         overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
     }
-    if (promptSelections[6][0] === 0) {
+    if (promptSelections[7][0] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
-        outfit = outfitPresets[promptSelections[6][0] - 1].value;
+        outfit = outfitPresets[promptSelections[7][0] - 1].value;
     }
 
-    if (promptSelections[7][0] === 0) {
+    if (promptSelections[8][0] === 0) {
         action = randomize(actionPresets);
     } else {
-        action = actionPresets[promptSelections[7][0] - 1];
+        action = actionPresets[promptSelections[8][0] - 1];
     }
 
     if (action.lowAngleRequired === true) {
@@ -621,13 +628,16 @@ async function generateBatch() {
 
     // PROMPT TEMPLATE
     if (nationality.predefined) {
+        if (promptSelections[6][0]) {
+            specialBodyType = promptSelections[6][0].value;
+        }
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + specialBodyType + " " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + specialBodyType + " " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
