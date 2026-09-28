@@ -6,7 +6,9 @@ const agePresets = [
     18, 20, 25, 30, 35, 40
 ]
 
-class Person {
+class Entity { }
+
+class Person extends Entity {
     constructor() {
         this.nationality = null;
         this.outfit = null;
@@ -28,17 +30,17 @@ class Person {
 
 class Scene {
     constructor() {
-        this.subjects = [];
+        this.entities = [];
     }
-    addSubject(subject) {
-        this.subjects.push(subject);
+    addEntity(entity) {
+        this.entities.push(entity);
     }
     describe() {
         const descriptions = [];
-        for (const subject of this.subjects) {
-            descriptions.push(subject);
+        for (const entity of this.entities) {
+            descriptions.push(entity.describe());
         }
-        console.log(descriptions);
+        return descriptions.join(" and ");
     }
 }
 
@@ -58,9 +60,6 @@ person2.randomize();
 scene1.addSubject(person1);
 scene1.addSubject(person2);
 
-console.log(scene1.subjects[0]);
-console.log(scene1.subjects[1]);
+var imagePrompt = `A photo of a ${scene1.describe()}`;
 
-for (const subject of this.subjects) {
-    console.log(subject.describe());
-}
+console.log(imagePrompt);
