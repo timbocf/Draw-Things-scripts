@@ -162,11 +162,10 @@ const nationalityPresets = [
     { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style", predefined: true },
     { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose", predefined: true },
     { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
-    { label: "Betty Boop", value: "Betty Boop", predefined: true },
-    { label: "Woman with Achrondroplasia", value: "adult woman with achondroplasia, distinctly disproportionate dwarfism, average-length torso with substantially shortened arms and legs, especially shortened upper arms and thighs, large head relative to body, short broad hands and fingers", predefined: true },
-    { label: "Pregnant Woman", value: "pregnant woman", predefined: true }
-
+    { label: "Betty Boop", value: "Betty Boop", predefined: true }
 ];
+
+
 
 // --- AGE ---
 const agePresets = [
@@ -180,7 +179,9 @@ const agePresets = [
 // =========================================
 
 const overallBuildPresets = [
-    { label: "Slim build", value: "slim build" },
+    { label: "Woman with Achrondroplasia", value: "achondroplasia, with distinctly disproportionate dwarfism, an average-length torso with substantially shortened arms and legs, especially shortened upper arms and thighs, large head relative to body, and short broad hands and fingers,", predefined: true },
+    { label: "Pregnant Woman", value: "pregnant woman", predefined: true },
+{ label: "Slim build", value: "slim build" },
     { label: "Soft Fit Frame", value: "toned athletic frame softened by naturally feminine curves, visible but subtle muscle definition" },
     { label: "Average build", value: "average build" },
     { label: "Petite build", value: "petite build with a small overall frame, narrow hips, short stature, narrow shoulders, thin legs, and flat belly" },
@@ -206,6 +207,7 @@ const specificBodyPresets = [
 const outfitPresets = [
     { label: "Nude", value: "nude" },
     { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
+		{ label: "Bra & Panties", value: "a bra and panties, barefoot" },
     { label: "Bra, Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
     { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt with one button fastened near her navel, very short cutoff jean shorts and cowboy boots" },
@@ -238,8 +240,8 @@ const actionPresets = [
     { label: "laying on a beach", value: "laying on a beach" },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
     { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
-    { label: "Wall Pose, Arms Raised", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms raised high above head and hands clasped, lips parted." },
-    { label: "Wall Pose, Arms Down", value: "leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted." },
+    { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted" },
+    { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted." },
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
@@ -262,7 +264,7 @@ const actionPresets = [
     { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
     { label: "Ass Spread", value: "She is on her knees facing away, looking back over her shoulder while reaching back to spread her ass cheeks apart" },
     { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace and high heels" },
-    { label: "Kneeling, Ass Toward Camera", value: "on all fours, head turned to the side, back arched hard, ass toward the camera" },
+    { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera" },
     { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours" },
     { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron." },
     { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror" },
