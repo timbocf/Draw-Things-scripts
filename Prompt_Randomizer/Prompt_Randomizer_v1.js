@@ -468,10 +468,8 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Body Type",
             "Select a body type:",
             [
-                this.menu(0, [
-                    "Random Selection",
-                    ...overallBuildPresets.map(item => item.label)
-                ])
+                this.switch(false, "Pregnant"),
+                this.switch(false, "Achondroplasia")
             ]
         ),
 
@@ -554,7 +552,7 @@ async function generateBatch() {
     let imagePrompt;
     let artStyle = artStylePresets[promptSelections[2][0]];
     let nationality;
-    let specialBodyType;
+    let specialBodyTypes = [];
     let hairColor;
     let skinTone;
     let age;
@@ -586,7 +584,14 @@ async function generateBatch() {
         age = agePresets[promptSelections[4][0] - 1];
     }
 
-    specialBodyType = specificBodyPresets[promptSelections[5][0]].value;
+    if (promptSelections[5][0]) {
+        specialBodyTypes.push("pregnant with a visibly rounded pregnant belly");
+    }
+    if (promptSelections[5][1]) {
+        specialBodyTypes.push("with achondroplasia, with characteristic short stature and naturally proportioned body");
+    }
+    let specialBodyType = specialBodyTypes.join(", ");
+
 
     if (promptSelections[6][0] === 0) {
         overallBuild = randomize(overallBuildPresets);
