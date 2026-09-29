@@ -70,52 +70,17 @@ const nationalityPresets = [
         eyeColors: ["black", "dark brown"]
     },
     {
-        label: "Thai",
-        value: "with Southeast Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["deep golden-bronze", "golden-tan"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Japanese",
+        label: "East Asian",
         value: "with East Asian facial features",
         hairColors: ["dark brown", "black"],
-        skinTones: ["fair", "light", "porcelain"],
+        skinTones: ["porcelain", "fair", "light", "olive"],
         eyeColors: ["dark brown", "black"]
     },
     {
-        label: "Korean",
-        value: "with fair porcelain skin and East Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["fair", "porcelain", "light"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Filipina",
+        label: "Southeast Asian",
         value: "with Southeast Asian facial features",
         hairColors: ["dark brown", "black"],
-        skinTones: ["warm tan", "deep golden-bronze"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Italian",
-        value: "with Mediterranean facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["sun-kissed olive", "rich golden hue"],
-        eyeColors: ["brown", "blue", "green"]
-    },
-    {
-        label: "Scandinavian",
-        value: "with Nordic facial features",
-        hairColors: ["blonde"],
-        skinTones: ["fair", "light"],
-        eyeColors: ["blue", "hazel"]
-    },
-    {
-        label: "Chinese",
-        value: "with East Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["fair", "light", "olive"],
+        skinTones: ["light", "warm tan", "golden-tan", "deep golden-bronze"],
         eyeColors: ["dark brown", "black"]
     },
     {
@@ -124,27 +89,6 @@ const nationalityPresets = [
         hairColors: ["dark brown", "black"],
         skinTones: ["olive", "dark"],
         eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "French",
-        value: "with classic Western European features",
-        hairColors: ["light brown", "dark brown", "black"],
-        skinTones: ["fair", "light", "sun-kissed tan"],
-        eyeColors: ["blue", "brown", "hazel"]
-    },
-    {
-        label: "German",
-        value: "with Central European facial features",
-        hairColors: ["blonde", "light brown", "dark brown"],
-        skinTones: ["fair", "light", "porcelain"],
-        eyeColors: ["blue", "hazel", "brown"]
-    },
-    {
-        label: "Irish",
-        value: "with freckles and Celtic facial features",
-        hairColors: ["ginger", "blonde", "light brown", "dark brown"],
-        skinTones: ["porcelain", "fair", "light"],
-        eyeColors: ["blue", "hazel", "brown"]
     },
 
     // Celebrity/Character Presets
@@ -157,8 +101,6 @@ const nationalityPresets = [
     { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings", predefined: true },
     { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings", predefined: true },
     { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings", predefined: true },
-    { label: "Mixed race", value: "mixed race with Afro European features, a deep golden-bronze complexion, softly flared nostrils, and a straight natural nose bridge, thick dark brown hair with thick wavy curls, and a round ass.", predefined: true },
-    { label: "Petite Korean", value: "small petite Korean woman with short stature, and short straight black hair", predefined: true },
     { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style", predefined: true },
     { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes and a tiny button nose", predefined: true },
     { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
