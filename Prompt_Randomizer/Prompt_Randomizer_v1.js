@@ -459,7 +459,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Special Body Types",
             "Pregnant or Achondroplasia",
             [
-                this.menu(0, ...specificBodyPresets)
+                this.menu(0, specificBodyPresets.map(item => item.label))
             ]
         ),
 
