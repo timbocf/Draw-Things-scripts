@@ -169,9 +169,9 @@ const nationalityPresets = [
 
 // --- AGE ---
 const agePresets = [
-    "18-year-old", "20-year-old", "25-year-old", "30-year-old", "35-year-old",
-    "40-year-old", "45-year-old", "50-year-old", "55-year-old", "60-year-old",
-    "65-year-old", "70-year-old", "75-year-old", "80-year-old", "85-year-old"
+    "16-year-old", "18-year-old", "20-year-old", "25-year-old", "30-year-old",
+    "35-year-old", "40-year-old", "45-year-old", "50-year-old", "60-year-old",
+    "70-year-old", "80-year-old", "90-year-old"
 ];
 
 // =========================================
@@ -235,7 +235,7 @@ const outfitPresets = [
 ];
 
 const actionPresets = [
-    { label: "laying on a beach", value: "laying on a beach" },
+    { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape" },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
     { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
@@ -243,31 +243,30 @@ const actionPresets = [
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
-    { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", lowAngleRequired: true },
+    { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", lowAngleRequired: true, aspectRatio: "landscape" },
     { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" },
-    // { label: "Spread Eagle", value: "laying on her back with her legs raised and spread wide, feet wide apart, holding her legs in the air with her hands, looking through her open legs at the camera" },
-    { label: "Laying on Back, Legs Straight Up", value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only" },
-    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise" },
+    { label: "Laying on Back, Legs Straight Up", value: "laying on a bed on her back with her butt at the edge of the bed, her legs straight and elevated into the air, knees locked, bending at waist only", aspectRatio: "square" },
+    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise", aspectRatio: "square" },
     { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up", nudeRequired: true },
     { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down", nudeRequired: true },
     { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies", nudeRequired: true },
     { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face." },
     { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward." },
     { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame." },
-    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked" },
-    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs" },
+    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked", aspectRatio: "square" },
+    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs", aspectRatio: "landscape" },
     { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back." },
-    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air" },
+    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatio: "landscape" },
     { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor" },
     { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
     { label: "Ass Spread", value: "She is on her knees facing away, looking back over her shoulder while reaching back to spread her ass cheeks apart" },
-    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace and high heels" },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace and high heels", nudeRequired: true, aspectRatio: "portrait" },
     { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera" },
-    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours" },
-    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron." },
+    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatio: "square" },
+    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true },
     { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror" },
-    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up" },
-    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection" },
+    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up", aspectRatio: "portrait" },
+    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection", aspectRatio: "square" },
     { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera." },
     { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." }
 ];
