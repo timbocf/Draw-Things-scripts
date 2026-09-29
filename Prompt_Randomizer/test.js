@@ -66,4 +66,5 @@ scene1.addEntity(person2);
 
 var imagePrompt = `A photo of a ${scene1.describe()}`;
 
-console.log(imagePrompt);
+console.log(person1 instanceof Person);
+console.log(person1 instanceof Entity);
