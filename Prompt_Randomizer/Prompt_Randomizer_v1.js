@@ -554,6 +554,7 @@ async function generateBatch() {
     let imagePrompt;
     let artStyle = artStylePresets[promptSelections[2][0]];
     let nationality;
+    let specialBodyType;
     let hairColor;
     let skinTone;
     let age;
@@ -585,11 +586,14 @@ async function generateBatch() {
         age = agePresets[promptSelections[4][0] - 1];
     }
 
-    if (promptSelections[5][0] === 0) {
+    specialBodyType = specificBodyPresets[promptSelections[5][0]].value;
+
+    if (promptSelections[6][0] === 0) {
         overallBuild = randomize(overallBuildPresets);
     } else {
-        overallBuild = overallBuildPresets[promptSelections[5][0] - 1];
+        overallBuild = overallBuildPresets[promptSelections[6][0] - 1];
     }
+
     if (promptSelections[7][0] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
@@ -628,9 +632,6 @@ async function generateBatch() {
 
     // PROMPT TEMPLATE
     if (nationality.predefined) {
-        if (promptSelections[6][0]) {
-            specialBodyType = promptSelections[6][0].value;
-        }
         // Celebrity
         imagePrompt = "A " + artStyle.value + " of a " + specialBodyType + " " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
