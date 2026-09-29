@@ -6,13 +6,17 @@ const agePresets = [
     18, 20, 25, 30, 35, 40
 ]
 
-class Entity { }
+class Entity {
+    constructor() {
+        this.action = null;
+    }
+}
 
 class Person extends Entity {
     constructor() {
+        super();
         this.nationality = null;
         this.outfit = null;
-        this.action = null;
         this.age = null;
     }
 
@@ -57,8 +61,8 @@ const scene1 = new Scene();
 person1.randomize();
 person2.randomize();
 
-scene1.addSubject(person1);
-scene1.addSubject(person2);
+scene1.addEntity(person1);
+scene1.addEntity(person2);
 
 var imagePrompt = `A photo of a ${scene1.describe()}`;
 
