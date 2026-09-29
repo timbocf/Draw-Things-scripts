@@ -460,89 +460,89 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Pregnant or Achondroplasia",
             [
                 this.menu(0, ...specificBodyPresets)
-                )]
+            ]
         ),
 
-// Overall Build
-this.section(
-    "Body Type",
-    "Select a body type:",
-    [
-        this.menu(0, [
-            "Random Selection",
-            ...overallBuildPresets.map(item => item.label)
-        ])
-    ]
-),
+        // Overall Build
+        this.section(
+            "Body Type",
+            "Select a body type:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...overallBuildPresets.map(item => item.label)
+                ])
+            ]
+        ),
 
-    // Outfit
-    this.section(
-        "Outfit",
-        "Select a clothing ensemble:",
-        [
-            this.menu(0, [
-                "Random Selection",
-                ...outfitPresets.map(item => item.label)
-            ])
-        ]
-    ),
+        // Outfit
+        this.section(
+            "Outfit",
+            "Select a clothing ensemble:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...outfitPresets.map(item => item.label)
+                ])
+            ]
+        ),
 
-    // Action
-    this.section(
-        "Action",
-        "Select an action:",
-        [
-            this.menu(0, [
-                "Random Selection",
-                ...actionPresets.map(item => item.label)
-            ])
-        ]
-    ),
+        // Action
+        this.section(
+            "Action",
+            "Select an action:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...actionPresets.map(item => item.label)
+                ])
+            ]
+        ),
 
-    // Camera Framing
-    this.section(
-        "Camera Framing",
-        "Choose how tightly the subject is framed:",
-        [
-            this.menu(0, cameraFramingPresets.map(item => item.label))
-        ]
-    ),
+        // Camera Framing
+        this.section(
+            "Camera Framing",
+            "Choose how tightly the subject is framed:",
+            [
+                this.menu(0, cameraFramingPresets.map(item => item.label))
+            ]
+        ),
 
-    // Camera Angle
-    this.section(
-        "Camera Angle",
-        "Choose the camera position and viewing angle:",
-        [
-            this.menu(0, cameraAnglePresets.map(item => item.label))
-        ]
-    ),
+        // Camera Angle
+        this.section(
+            "Camera Angle",
+            "Choose the camera position and viewing angle:",
+            [
+                this.menu(0, cameraAnglePresets.map(item => item.label))
+            ]
+        ),
 
-    // Time of Day
-    this.section(
-        "Time of Day",
-        "Choose an optional time of day:",
-        [
-            this.menu(0, timeOfDayPresets.map(item => item.label))
-        ]
-    ),
+        // Time of Day
+        this.section(
+            "Time of Day",
+            "Choose an optional time of day:",
+            [
+                this.menu(0, timeOfDayPresets.map(item => item.label))
+            ]
+        ),
 
-    // Lighting
-    this.section(
-        "Lighting",
-        "Choose an optional lighting setup:",
-        [
-            this.menu(0, lightingPresets.map(item => item.label))
-        ]
-    ),
+        // Lighting
+        this.section(
+            "Lighting",
+            "Choose an optional lighting setup:",
+            [
+                this.menu(0, lightingPresets.map(item => item.label))
+            ]
+        ),
 
-    // Photographic Look
-    this.section(
-        "Photographic Look",
-        "Choose an optional film or photographic aesthetic:",
-        [
-            this.menu(0, photographicLookPresets.map(item => item.label))
-        ]
-    ),
+        // Photographic Look
+        this.section(
+            "Photographic Look",
+            "Choose an optional film or photographic aesthetic:",
+            [
+                this.menu(0, photographicLookPresets.map(item => item.label))
+            ]
+        ),
 
     ]
 });
