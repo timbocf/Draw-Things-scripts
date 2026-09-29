@@ -459,7 +459,8 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Special Body Types",
             "Pregnant or Achondroplasia",
             [
-                this.menu(0, specificBodyPresets.map(item => item.label))
+                this.switch(false, "Pregnant"),
+						 this.switch(false, "achondroplasia")
             ]
         ),
 
@@ -468,8 +469,10 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Body Type",
             "Select a body type:",
             [
-                this.switch(false, "Pregnant"),
-                this.switch(false, "Achondroplasia")
+                this.menu(0, [
+                    "Random Selection",
+                    ...overallBuildPresets.map(item => item.label)
+                ])
             ]
         ),
 
@@ -584,14 +587,14 @@ async function generateBatch() {
         age = agePresets[promptSelections[4][0] - 1];
     }
 
-    if (promptSelections[5][0]) {
-        specialBodyTypes.push("pregnant with a visibly rounded pregnant belly");
-    }
-    if (promptSelections[5][1]) {
-        specialBodyTypes.push("with achondroplasia, with characteristic short stature and naturally proportioned body");
-    }
-    let specialBodyType = specialBodyTypes.join(", ");
+if (promptSelections[5][0]) {
+    specialBodyTypes.push("pregnant woman with a visibly rounded pregnant belly");
+}
+if (promptSelections[5][1]) {
+	specialBodyTypes.push("with achondroplasia, characteristic short stature and naturally proportioned body");
+}
 
+let specialBodyType = specialBodyTypes.join(", ");
 
     if (promptSelections[6][0] === 0) {
         overallBuild = randomize(overallBuildPresets);
