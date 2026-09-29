@@ -111,12 +111,10 @@ class Scene {
     }
     describe() {
         const descriptions = [];
-
-        /* for (const entity of this.entities) {
+        for (const entity of this.entities) {
             descriptions.push(entity.describe());
         }
         return descriptions.join(", ");
-        */
     }
 }
 
