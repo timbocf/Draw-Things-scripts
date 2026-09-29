@@ -44,9 +44,9 @@ const nationalityPresets = [
     {
         label: "Black",
         value: "with rich deep skin tone and classic African facial features",
-        hairColors: ["dark brown", "black"],
+        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
-        eyeColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"]
+        eyeColors: ["dark brown", "black"]
     },
     {
         label: "Mexican",
@@ -460,7 +460,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Pregnant or Achondroplasia",
             [
                 this.switch(false, "Pregnant"),
-						 this.switch(false, "achondroplasia")
+						 this.switch(false, "Achondroplasia")
             ]
         ),
 
@@ -555,7 +555,8 @@ async function generateBatch() {
     let imagePrompt;
     let artStyle = artStylePresets[promptSelections[2][0]];
     let nationality;
-    let specialBodyTypes = [];
+    let isPregnant;
+    let isMidget;
     let hairColor;
     let skinTone;
     let age;
@@ -588,13 +589,12 @@ async function generateBatch() {
     }
 
 if (promptSelections[5][0]) {
-    specialBodyTypes.push("pregnant woman with a visibly rounded pregnant belly");
-}
-if (promptSelections[5][1]) {
-	specialBodyTypes.push("with achondroplasia, characteristic short stature and naturally proportioned body");
-}
+    isPregnant = "pregnant ";
+} else { isPregnant = ""; }
 
-let specialBodyType = specialBodyTypes.join(", ");
+if (promptSelections[5][1]) {
+	isMidget = " with achondroplasia, characteristic short stature and naturally proportioned body,";
+} else { isMidget = ""; }
 
     if (promptSelections[6][0] === 0) {
         overallBuild = randomize(overallBuildPresets);
@@ -641,12 +641,12 @@ let specialBodyType = specialBodyTypes.join(", ");
     // PROMPT TEMPLATE
     if (nationality.predefined) {
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + specialBodyType + " " + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + specialBodyType + " " + age + " " + nationality.label + " " + gender + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
