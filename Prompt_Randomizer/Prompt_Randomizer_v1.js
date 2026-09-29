@@ -395,6 +395,18 @@ function randomize(array) {
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
+        this.section(
+            "Aspect Ratio",
+            "Select from below:",
+            [
+                this.menu(0, [
+                    "3:4 Portrait",
+                    "1:1 Square",
+                    "4:3 Landscape"
+                ])
+            ]
+        ),
+
         // Number of Images to Generate
         this.section(
             "Number of Images to Generate",
@@ -460,7 +472,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Pregnant or Achondroplasia",
             [
                 this.switch(false, "Pregnant"),
-						 this.switch(false, "Achondroplasia")
+                this.switch(false, "Achondroplasia")
             ]
         ),
 
@@ -553,7 +565,7 @@ async function generateBatch() {
     canvas.clear();
 
     let imagePrompt;
-    let artStyle = artStylePresets[promptSelections[2][0]];
+    let artStyle = artStylePresets[promptSelections[3][0]];
     let nationality;
     let isPregnant;
     let isMidget;
@@ -564,54 +576,54 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[9][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[10][0]];
-    let timeOfDay = timeOfDayPresets[promptSelections[11][0]].value;
-    let lighting = lightingPresets[promptSelections[12][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[13][0]].value;
-
-    if (promptSelections[2][0] === 0) {
-        artStyle = randomize(artStylePresets);
-    } else {
-        artStyle = artStylePresets[promptSelections[2][0] - 1];
-    }
+    let cameraFraming = cameraFramingPresets[promptSelections[10][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[11][0]];
+    let timeOfDay = timeOfDayPresets[promptSelections[12][0]].value;
+    let lighting = lightingPresets[promptSelections[13][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[14][0]].value;
 
     if (promptSelections[3][0] === 0) {
-        nationality = randomize(nationalityPresets);
+        artStyle = randomize(artStylePresets);
     } else {
-        nationality = nationalityPresets[promptSelections[3][0] - 1];
+        artStyle = artStylePresets[promptSelections[3][0] - 1];
     }
 
     if (promptSelections[4][0] === 0) {
+        nationality = randomize(nationalityPresets);
+    } else {
+        nationality = nationalityPresets[promptSelections[4][0] - 1];
+    }
+
+    if (promptSelections[5][0] === 0) {
         age = randomize(agePresets);
     } else {
-        age = agePresets[promptSelections[4][0] - 1];
+        age = agePresets[promptSelections[5][0] - 1];
     }
 
-if (promptSelections[5][0]) {
-    isPregnant = "pregnant ";
-} else { isPregnant = ""; }
+    if (promptSelections[6][0]) {
+        isPregnant = "pregnant ";
+    } else { isPregnant = ""; }
 
-if (promptSelections[5][1]) {
-	isMidget = " with achondroplasia, characteristic short stature and naturally proportioned body,";
-} else { isMidget = ""; }
-
-    if (promptSelections[6][0] === 0) {
-        overallBuild = randomize(overallBuildPresets);
-    } else {
-        overallBuild = overallBuildPresets[promptSelections[6][0] - 1];
-    }
+    if (promptSelections[6][1]) {
+        isMidget = " with achondroplasia, characteristic short stature and naturally proportioned body,";
+    } else { isMidget = ""; }
 
     if (promptSelections[7][0] === 0) {
-        outfit = randomize(outfitPresets).value;
+        overallBuild = randomize(overallBuildPresets);
     } else {
-        outfit = outfitPresets[promptSelections[7][0] - 1].value;
+        overallBuild = overallBuildPresets[promptSelections[7][0] - 1];
     }
 
     if (promptSelections[8][0] === 0) {
+        outfit = randomize(outfitPresets).value;
+    } else {
+        outfit = outfitPresets[promptSelections[8][0] - 1].value;
+    }
+
+    if (promptSelections[9][0] === 0) {
         action = randomize(actionPresets);
     } else {
-        action = actionPresets[promptSelections[8][0] - 1];
+        action = actionPresets[promptSelections[9][0] - 1];
     }
 
     if (action.lowAngleRequired === true) {
@@ -664,8 +676,19 @@ if (promptSelections[5][1]) {
     // =================================
 
     config.model = "krea_2_turbo_i8x.ckpt";
-    config.width = 1024;
-    config.height = 1024;
+
+    if (promptSelections[0][0] === 0) {
+        config.width = 768;
+        config.height = 1024;
+    }
+    if (promptSelections[0][0] === 1) {
+        config.width = 1024;
+        config.height = 1024;
+    }
+    if (promptSelections[0][0] === 2) {
+        config.width = 1024;
+        config.height = 768;
+    }
     config.batchCount = 1;
     config.batchSize = 1;
 
@@ -678,7 +701,7 @@ if (promptSelections[5][1]) {
     // LORAS
     // =================================
 
-    if (promptSelections[1][0]) {
+    if (promptSelections[2][0]) {
         config.loras = [
             {
                 mode: "all",
@@ -712,7 +735,7 @@ if (promptSelections[5][1]) {
 
     console.log("Image Complete.");
 }
-const imageCount = imageCounts[promptSelections[0][0]];
+const imageCount = imageCounts[promptSelections[1][0]];
 
 async function runBatch() {
     for (var i = 0; i < imageCount; i++) {
