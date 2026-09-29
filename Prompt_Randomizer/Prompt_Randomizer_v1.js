@@ -238,7 +238,8 @@ const outfitPresets = [
 const actionPresets = [
     { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape" },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
-    { label: "standing, looking away from the camera", value: "standing, looking away from the camera" },
+    { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
+    { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips" },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
     { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatio: "portrait" },
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
@@ -399,7 +400,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Aspect Ratio",
             "Select from below:",
             [
-                this.menu(0, [
+                this.menu(1, [
                     "3:4 Portrait",
                     "1:1 Square",
                     "4:3 Landscape"
