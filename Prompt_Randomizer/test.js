@@ -98,7 +98,7 @@ class Animal extends Entity {
     }
 
     describe() {
-        return this.color + " " + this.age + "-year-old " + this.breed;
+        return this.age + "-year-old " + this.color + " " + this.breed;
     }
 }
 
@@ -106,6 +106,13 @@ class Scene {
     constructor() {
         this.entities = [];
     }
+    checkEntities() {
+        for (const entity of this.entities)
+            if (entity instanceof Animal) {
+                console.log(entity);
+            }
+    }
+
     addEntity(entity) {
         this.entities.push(entity);
     }
@@ -114,7 +121,16 @@ class Scene {
         for (const entity of this.entities) {
             descriptions.push(entity.describe());
         }
-        return descriptions.join(", ");
+        if (descriptions.length === 1) {
+            return descriptions[0];
+        }
+        if (descriptions.length === 2) {
+            return descriptions[0] + " and " + descriptions[1];
+        }
+        if (descriptions.length > 2) {
+            const newDesc = descriptions.slice(0, (descriptions.length - 2));
+            return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 2] + " in a " + descriptions[descriptions.length - 1];
+        }
     }
 }
 
@@ -126,8 +142,8 @@ const nationalityPresets = [
 
 const person1 = new Person();
 const person2 = new Person();
-const vehicle1 = new Vehicle();
 const animal1 = new Animal();
+const vehicle1 = new Vehicle();
 const scene1 = new Scene();
 
 person1.randomize();
@@ -137,9 +153,10 @@ animal1.randomize();
 
 scene1.addEntity(person1);
 scene1.addEntity(person2);
-scene1.addEntity(vehicle1);
 scene1.addEntity(animal1);
+scene1.addEntity(vehicle1);
 
 var imagePrompt = `A photo of a ${scene1.describe()} `;
 
-console.log(imagePrompt);
+// console.log(imagePrompt);
+scene1.checkEntities(animal1);
