@@ -106,15 +106,25 @@ class Scene {
     constructor() {
         this.entities = [];
     }
-    checkEntities() {
-        for (const entity of this.entities)
-            if (entity instanceof Animal) {
-                console.log(entity);
-            }
-    }
-
     addEntity(entity) {
         this.entities.push(entity);
+    }
+    checkEntities() {
+        const subjects = [];
+        const vehicle = [];
+        const animals = [];
+
+        for (const entity of this.entities) {
+            if (entity instanceof Person) {
+                subjects.push(entity);
+            }
+            if (entity instanceof Vehicle) {
+                vehicle.push(entity);
+            }
+            if (entity instanceof Animal) {
+                animals.push(entity);
+            }
+        }
     }
     describe() {
         const descriptions = [];
