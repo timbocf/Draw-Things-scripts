@@ -1,6 +1,22 @@
+// Helper Functions
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 };
+
+function formatList(array) {
+    if (array.length === 0) {
+        return "";
+    }
+    if (array.length === 1) {
+        return array[0];
+    }
+    if (array.length === 2) {
+        return array[0] + " and " + array[1];
+    }
+    if (array.length > 2) {
+        return (array.slice(0, (array.length - 1))).join(", ") + ", and " + array[array.length - 1];
+    }
+}
 
 // Person Presets
 const personAgePresets = [
@@ -105,45 +121,53 @@ class Animal extends Entity {
 class Scene {
     constructor() {
         this.entities = [];
-        const subjects = [];
-        const vehicle = [];
-        const animals = [];
+        this.subjects = [];
+        this.vehicle = [];
+        this.animals = [];
     }
     addEntity(entity) {
         this.entities.push(entity);
     }
     checkEntities() {
+        this.subjects = [];
+        this.vehicle = [];
+        this.animals = [];
         for (const entity of this.entities) {
             if (entity instanceof Person) {
-                subjects.push(entity);
+                this.subjects.push(entity);
             }
             if (entity instanceof Vehicle) {
-                vehicle.push(entity);
+                this.vehicle.push(entity);
             }
             if (entity instanceof Animal) {
-                animals.push(entity);
+                this.animals.push(entity);
             }
         }
     }
     describe() {
-        const descriptions = [];
-
         this.checkEntities();
 
-        for (const entity of this.entities) {
-            descriptions.push(entity.describe());
+        const subjectDescriptions = [];
+        const animalDescriptions = [];
+        const vehicleDescriptions = [];
+
+        for (const subject of this.subjects) {
+            subjectDescriptions.push(subject.describe());
         }
-        if (descriptions.length === 1) {
-            return descriptions[0];
+
+        for (const animal of this.animals) {
+            animalDescriptions.push(animal.describe());
         }
-        if (descriptions.length === 2) {
-            return descriptions[0] + " and " + descriptions[1];
+
+        for (const vehicle of this.vehicle) {
+            vehicleDescriptions.push(vehicle.describe());
         }
-        if (descriptions.length > 2) {
-            const newDesc = descriptions.slice(0, (descriptions.length - 1));
-            return subjects;
-            // return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 1];
-        }
+
+        const subjectsText = formatList(subjectDescriptions);
+        const animalsText = formatList(animalDescriptions);
+        const vehicleText = formatList(vehicleDescriptions);
+
+        return subjectsText + " with a " + animalsText + " in a " + vehicleText;
     }
 }
 
