@@ -581,7 +581,9 @@ async function generateBatch() {
     } else {
         age = agePresets[promptSelections[5][0] - 1];
     }
-    gender = "girl" ? age < 18 : "woman";
+    if (age < 18) {
+        gender = "girl";
+    }
 
     if (promptSelections[6][0]) {
         isPregnant = "pregnant ";
