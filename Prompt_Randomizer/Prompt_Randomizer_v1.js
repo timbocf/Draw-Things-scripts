@@ -183,7 +183,7 @@ const actionPresets = [
     { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips" },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
     { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatio: "portrait" },
-    { label: "In a Gynecologist's Chair", value: "sitting with her legs spread wide in the stirrups of a gynecologist's exam chair in a well-lit gynecologist's office. A glass speculum is inside her vagina, spreading wide her vaginal cavity.", forcedEnvironment: "doctor" },
+    { label: "In a Gynecologist's Chair", value: "sitting with her legs spread wide in the stirrups of a gynecologist's exam chair in a well-lit gynecologist's office. A glass speculum is inside her vagina, spreading wide her vaginal cavity.", forcedEnvironment: "doctor", nudeRequired: true },
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
