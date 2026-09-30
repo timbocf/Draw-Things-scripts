@@ -151,23 +151,43 @@ class Scene {
         const animalDescriptions = [];
         const vehicleDescriptions = [];
 
-        for (const subject of this.subjects) {
-            subjectDescriptions.push(subject.describe());
+        if (this.subjects.length > 0) {
+            for (const subject of this.subjects) {
+                subjectDescriptions.push(subject.describe());
+            }
         }
 
-        for (const animal of this.animals) {
-            animalDescriptions.push(animal.describe());
+        if (this.animals.length > 0) {
+            for (const animal of this.animals) {
+                animalDescriptions.push(animal.describe());
+            }
         }
 
-        for (const vehicle of this.vehicle) {
-            vehicleDescriptions.push(vehicle.describe());
+        if (this.vehicle.length > 0) {
+            for (const vehicle of this.vehicle) {
+                vehicleDescriptions.push(vehicle.describe());
+            }
         }
 
         const subjectsText = formatList(subjectDescriptions);
         const animalsText = formatList(animalDescriptions);
         const vehicleText = formatList(vehicleDescriptions);
 
-        return subjectsText + " with a " + animalsText + " in a " + vehicleText;
+        var sceneDescription = [];
+
+        if (this.subjects.length > 0) {
+            sceneDescription += subjectsText;
+        }
+
+        if (this.animals.length > 0) {
+            sceneDescription += " with a " + animalsText;
+        }
+
+        if (this.vehicle.length > 0) {
+            sceneDescription += " in a " + vehicleText;
+        }
+
+        return sceneDescription;
     }
 }
 
@@ -179,18 +199,18 @@ const nationalityPresets = [
 
 const person1 = new Person();
 const person2 = new Person();
-const animal1 = new Animal();
+// const animal1 = new Animal();
 const vehicle1 = new Vehicle();
 const scene1 = new Scene();
 
 person1.randomize();
 person2.randomize();
 vehicle1.randomize();
-animal1.randomize();
+// animal1.randomize();
 
 scene1.addEntity(person1);
 scene1.addEntity(person2);
-scene1.addEntity(animal1);
+// scene1.addEntity(animal1);
 scene1.addEntity(vehicle1);
 
 var imagePrompt = `A photo of a ${scene1.describe()} `;
