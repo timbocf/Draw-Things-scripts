@@ -16,7 +16,8 @@ const gender = [
 
 const artStylePresets = [
     { label: "Photo", value: "photo" },
-    { label: "Selfie Photo", value: "birds-eye selfie photo looking down at" },
+    { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
+	{ label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
     { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: "1940s" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
@@ -36,7 +37,7 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
+        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     },
@@ -71,7 +72,7 @@ const nationalityPresets = [
     {
         label: "East Asian",
         value: "with East Asian facial features",
-        hairColors: ["dark brown", "black"],
+        hairColors: ["dark brown", "black", "pink hair in pigtails"],
         skinTones: ["porcelain", "fair", "light", "olive"],
         eyeColors: ["dark brown", "black"]
     },
@@ -177,6 +178,7 @@ const outfitPresets = [
 ];
 
 const actionPresets = [
+	{ label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body" }, 
     { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape" },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
     { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
@@ -614,12 +616,12 @@ async function generateBatch() {
     // PROMPT TEMPLATE
     if (nationality.predefined) {
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
