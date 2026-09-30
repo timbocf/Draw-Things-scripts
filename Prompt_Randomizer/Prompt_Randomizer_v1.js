@@ -105,7 +105,7 @@ const nationalityPresets = [
     // Generic Character Presets
     {
         label: `Black with Box Braids`,
-        value: `, black with long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings`,
+        value: `, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings`,
         hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
         eyeColors: ["dark brown", "black"]
@@ -113,7 +113,7 @@ const nationalityPresets = [
 
     {
         label: `Cholla Mexican`,
-        value: `, Mexican, with prominent Indigenous Mesoamerican features, plump lips, medium-length straight hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings`,
+        value: `, with prominent Indigenous Mesoamerican features, plump lips, medium-length straight hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings`,
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
@@ -121,7 +121,7 @@ const nationalityPresets = [
 
     {
         label: `White with Pixie Cut`,
-        value: `with short hair in a textured pixie cut style`,
+        value: `, with short hair in a textured pixie cut style`,
         hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
@@ -129,7 +129,7 @@ const nationalityPresets = [
 
     {
         label: "Oversized head/eyes, small nose",
-        value: "with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips",
+        value: ", with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips",
         hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
