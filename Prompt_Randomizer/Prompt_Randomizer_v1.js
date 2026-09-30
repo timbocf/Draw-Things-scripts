@@ -635,139 +635,140 @@ async function generateBatch() {
     environment = environments[promptSelections[10][0]];
 
     if (action.forcedEnvironment === "doctor") {
-        environment = "in a doctor's office";
+        environment = environments.find(
+            item => item.label === "in a doctor's office"
+        );
+
+        const cameraLightingPrompt = [
+            cameraFraming,
+            cameraAngle.value,
+            timeOfDay,
+            lighting,
+            photographicLook
+        ].filter(Boolean).join(", ");
+
+        let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+
+
+
+        // PROMPT TEMPLATE
+        if (nationality.named) {
+            // Celebrity
+            imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        } else {
+            hairColor = randomize(nationality.hairColors);
+            skinTone = randomize(nationality.skinTones);
+            eyeColor = randomize(nationality.eyeColors);
+            imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        }
+        console.log("Generating:");
+        console.log(imagePrompt);
+
+        // =================================
+        // COPY CURRENT CONFIGURATION
+        // =================================
+
+        let config = JSON.parse(
+            JSON.stringify(pipeline.configuration)
+        );
+
+        // =================================
+        // KREA 2 SETTINGS
+        // =================================
+
+        config.model = "krea_2_turbo_i8x.ckpt";
+
+        let aspectRatio;
+
+        if (promptSelections[0][0] === 0) {
+            aspectRatio = "portrait";
+        }
+        if (promptSelections[0][0] === 1) {
+            aspectRatio = "square";
+        }
+        if (promptSelections[0][0] === 2) {
+            aspectRatio = "landscape";
+        }
+
+        if (action.aspectRatio === "portrait") {
+            aspectRatio = "portrait";
+        }
+        if (action.aspectRatio === "square") {
+            aspectRatio = "square";
+        }
+        if (action.aspectRatio === "landscape") {
+            aspectRatio = "landscape";
+        }
+
+        if (aspectRatio === "portrait") {
+            config.width = 768;
+            config.height = 1024;
+        }
+        if (aspectRatio === "square") {
+            config.width = 1024;
+            config.height = 1024;
+        }
+        if (aspectRatio === "landscape") {
+            config.width = 1024;
+            config.height = 768;
+        }
+
+        config.batchCount = 1;
+        config.batchSize = 1;
+
+        // =================================
+        // RANDOM SEED
+        // =================================
+        config.seed = -1;
+
+        // =================================
+        // LORAS
+        // =================================
+
+        if (promptSelections[2][0]) {
+            config.loras = [
+                {
+                    mode: "all",
+                    file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+                    weight: 1.0
+                },
+                {
+                    mode: "all",
+                    file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+                    weight: 0.6
+                }
+            ]
+        } else {
+            config.loras = [];
+        }
+
+        // =================================
+        // GENERATE
+        // =================================
+
+        await pipeline.run({
+            configuration: config,
+            prompt: imagePrompt
+        });
+
+        console.log("Image complete.");
+
+        // =========================================
+        // FINISHED
+        // =========================================
+
+        console.log("Image Complete.");
+    }
+    const imageCount = imageCounts[promptSelections[1][0]];
+
+    async function runBatch() {
+        for (var i = 0; i < imageCount; i++) {
+            await generateBatch();
+        }
+        console.log("Batch Finished!");
     }
 
-    const cameraLightingPrompt = [
-        cameraFraming,
-        cameraAngle.value,
-        timeOfDay,
-        lighting,
-        photographicLook
-    ].filter(Boolean).join(", ");
+    console.log("promptSelections:", promptSelections);
+    console.log("imageCount:", imageCount);
 
-    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
-
-
-
-    // PROMPT TEMPLATE
-    if (nationality.named) {
-        // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
-    } else {
-        hairColor = randomize(nationality.hairColors);
-        skinTone = randomize(nationality.skinTones);
-        eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
-    }
-    console.log("Generating:");
-    console.log(imagePrompt);
-
-    // =================================
-    // COPY CURRENT CONFIGURATION
-    // =================================
-
-    let config = JSON.parse(
-        JSON.stringify(pipeline.configuration)
-    );
-
-    // =================================
-    // KREA 2 SETTINGS
-    // =================================
-
-    config.model = "krea_2_turbo_i8x.ckpt";
-
-    let aspectRatio;
-
-    if (promptSelections[0][0] === 0) {
-        aspectRatio = "portrait";
-    }
-    if (promptSelections[0][0] === 1) {
-        aspectRatio = "square";
-    }
-    if (promptSelections[0][0] === 2) {
-        aspectRatio = "landscape";
-    }
-
-    if (action.aspectRatio === "portrait") {
-        aspectRatio = "portrait";
-    }
-    if (action.aspectRatio === "square") {
-        aspectRatio = "square";
-    }
-    if (action.aspectRatio === "landscape") {
-        aspectRatio = "landscape";
-    }
-
-    if (aspectRatio === "portrait") {
-        config.width = 768;
-        config.height = 1024;
-    }
-    if (aspectRatio === "square") {
-        config.width = 1024;
-        config.height = 1024;
-    }
-    if (aspectRatio === "landscape") {
-        config.width = 1024;
-        config.height = 768;
-    }
-
-    config.batchCount = 1;
-    config.batchSize = 1;
-
-    // =================================
-    // RANDOM SEED
-    // =================================
-    config.seed = -1;
-
-    // =================================
-    // LORAS
-    // =================================
-
-    if (promptSelections[2][0]) {
-        config.loras = [
-            {
-                mode: "all",
-                file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-                weight: 1.0
-            },
-            {
-                mode: "all",
-                file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-                weight: 0.6
-            }
-        ]
-    } else {
-        config.loras = [];
-    }
-
-    // =================================
-    // GENERATE
-    // =================================
-
-    await pipeline.run({
-        configuration: config,
-        prompt: imagePrompt
-    });
-
-    console.log("Image complete.");
-
-    // =========================================
-    // FINISHED
-    // =========================================
-
-    console.log("Image Complete.");
-}
-const imageCount = imageCounts[promptSelections[1][0]];
-
-async function runBatch() {
-    for (var i = 0; i < imageCount; i++) {
-        await generateBatch();
-    }
-    console.log("Batch Finished!");
-}
-
-console.log("promptSelections:", promptSelections);
-console.log("imageCount:", imageCount);
-
-runBatch();
+    runBatch();
