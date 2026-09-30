@@ -78,7 +78,6 @@ class Person extends Entity {
         this.nationality = null;
         this.outfit = null;
         this.age = null;
-        this.action = null;
     }
 
     randomize() {
@@ -89,7 +88,7 @@ class Person extends Entity {
     }
 
     describe() {
-        return this.age + "-year-old " + this.nationality + " person, " + this.action;
+        return this.age + "-year-old " + this.nationality + " person";
     }
 };
 
@@ -118,7 +117,6 @@ class Animal extends Entity {
         this.color = null;
         this.age = null;
         this.breed = null;
-        this.action = null;
     }
 
     randomize() {
@@ -129,7 +127,7 @@ class Animal extends Entity {
     }
 
     describe() {
-        return this.age + "-year-old " + this.color + " " + this.breed + ", " + action;
+        return this.age + "-year-old " + this.color + " " + this.breed;
     }
 }
 
@@ -140,13 +138,28 @@ class Scene {
         this.vehicle = [];
         this.animals = [];
     }
+    generate() {
+        const entityTypes = [
+            Person,
+            Animal,
+            Vehicle
+        ]
+        for (var i = 0; i < 3; i++) {
+            const entityType = randomize(entityTypes);
+            const entity = new entityType();
+            entity.randomize();
+            this.addEntity(entity);
+        }
+    }
     addEntity(entity) {
         this.entities.push(entity);
     }
+
     checkEntities() {
         this.subjects = [];
         this.vehicle = [];
         this.animals = [];
+
         for (const entity of this.entities) {
             if (entity instanceof Person) {
                 this.subjects.push(entity);
@@ -220,21 +233,8 @@ const nationalityPresets = [
     "Black"
 ];
 
-const person1 = new Person();
-const person2 = new Person();
-// const animal1 = new Animal();
-const vehicle1 = new Vehicle();
-const scene1 = new Scene();
-
-person1.randomize();
-person2.randomize();
-vehicle1.randomize();
-// animal1.randomize();
-
-scene1.addEntity(person1);
-scene1.addEntity(person2);
-// scene1.addEntity(animal1);
-scene1.addEntity(vehicle1);
+const scene1 = new Scene;
+scene1.generate();
 
 var imagePrompt = `A photo of a ${scene1.describe()} `;
 
