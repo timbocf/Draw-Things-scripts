@@ -139,7 +139,7 @@ class Scene {
         }
         if (descriptions.length > 2) {
             const newDesc = descriptions.slice(0, (descriptions.length - 2));
-            return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 2] + " in a " + descriptions[descriptions.length - 1];
+            return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 1];
         }
     }
 }

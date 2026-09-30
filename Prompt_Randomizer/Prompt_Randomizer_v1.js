@@ -183,6 +183,7 @@ const actionPresets = [
     { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips" },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
     { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatio: "portrait" },
+    { label: "In a Gynecologist's Chair", value: "sitting with her legs spread wide in the stirrups of a gynecologist's exam chair in a well-lit gynecologist's office. A glass speculum is inside her vagina, spreading wide her vaginal cavity.", forcedEnvironment: "doctor" },
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
@@ -196,7 +197,7 @@ const actionPresets = [
     { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward." },
     { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame." },
     { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked", aspectRatio: "square" },
-    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs", aspectRatio: "landscape" },
+    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs" },
     { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back." },
     { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatio: "landscape" },
     { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor" },
@@ -229,7 +230,8 @@ const environments = [
     { label: "on a rooftop at night", value: "on the spacious roof of a Manhattan highrise apartment building" },
     { label: "in an elevator", value: "in an elevator" },
     { label: "in a library", value: "in a softly lit public library surrounded by tall racks of hardcover books" },
-    { label: "in a locker room", value: "in a locker room shower" }
+    { label: "in a locker room", value: "in a locker room shower" },
+    { label: "in a doctor's office", value: "in a doctor's office" }
 ];
 
 const cameraFramingPresets = [
@@ -590,6 +592,9 @@ async function generateBatch() {
         environment = randomize(environments);
     } else {
         environment = environments[promptSelections[10][0] - 1];
+    }
+    if (action.forcedEnvironment === "doctor") {
+        environment = "in a doctor's office";
     }
 
     const cameraLightingPrompt = [
