@@ -215,7 +215,6 @@ const actionPresets = [
 ];
 
 const environments = [
-    { label: "in the shower", value: "in a walk-in shower, with wet hair and wet body, water cascading down her wet body" },
     { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains." },
     { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains." },
     { label: "in the backseat of a car", value: "in the backseat of a car" },

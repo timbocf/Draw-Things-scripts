@@ -139,7 +139,7 @@ class Scene {
         }
         if (descriptions.length > 2) {
             const newDesc = descriptions.slice(0, (descriptions.length - 2));
-            return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 1];
+            return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 2] + " in a " + descriptions[descriptions.length - 1];
         }
     }
 }
@@ -168,5 +168,4 @@ scene1.addEntity(vehicle1);
 
 var imagePrompt = `A photo of a ${scene1.describe()} `;
 
-// console.log(imagePrompt);
-scene1.checkEntities(animal1);
+console.log(imagePrompt);
