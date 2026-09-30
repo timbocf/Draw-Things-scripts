@@ -27,6 +27,12 @@ const outfitPresets = [
     "an oversized hoodie and gym shorts",
     "a fitted black tuxedo"
 ]
+const personActionPresets = [
+    "standing",
+    "sitting",
+    "leaning against a wall",
+    "driving"
+]
 
 // Vehicle Presets
 const vehicleColorPresets = [
@@ -48,6 +54,12 @@ const animalColorPresets = [
 ]
 const animalBreedPresets = [
     "dog", "cat", "cow"
+]
+const animalActionPresets = [
+    "sitting",
+    "standing",
+    "running",
+    "jumping"
 ]
 
 
@@ -72,7 +84,7 @@ class Person extends Entity {
         this.age = randomize(personAgePresets);
         this.nationality = randomize(nationalityPresets);
         this.outfit = randomize(outfitPresets);
-        // this.action = randomize(actionPresets);
+        this.action = randomize(actionPresets);
     }
 
     describe() {
@@ -173,18 +185,26 @@ class Scene {
         const animalsText = formatList(animalDescriptions);
         const vehicleText = formatList(vehicleDescriptions);
 
-        var sceneDescription = [];
+        var sceneDescription = "";
 
         if (this.subjects.length > 0) {
             sceneDescription += subjectsText;
         }
 
-        if (this.animals.length > 0) {
+        if (this.subjects.length > 0 && this.animals.length > 0) {
             sceneDescription += " with a " + animalsText;
         }
 
-        if (this.vehicle.length > 0) {
+        if (this.subjects.length === 0 && this.animals.length > 0) {
+            sceneDescription += animalsText;
+        }
+
+        if (this.vehicle.length > 0 && (this.subjects.length > 0 || this.animals.length > 0)) {
             sceneDescription += " in a " + vehicleText;
+        }
+
+        if (this.subjects.length === 0 && this.animals.length === 0 && this.vehicle.length > 0) {
+            sceneDescription += vehicleText;
         }
 
         return sceneDescription;
