@@ -17,7 +17,7 @@ const gender = [
 const artStylePresets = [
     { label: "Photo", value: "photo" },
     { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
-	{ label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
+    { label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
     { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: "1940s" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
@@ -92,19 +92,19 @@ const nationalityPresets = [
     },
 
     // Celebrity/Character Presets
-    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes", predefined: true },
-    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara", predefined: true },
-    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara", predefined: true },
-    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs", predefined: true },
-    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair", predefined: true },
-    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls", predefined: true },
-    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings", predefined: true },
-    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings", predefined: true },
-    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings", predefined: true },
-    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style", predefined: true },
-    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips", predefined: true },
-    { label: "Michelle Obama", value: "Michelle Obama", predefined: true },
-    { label: "Betty Boop", value: "Betty Boop", predefined: true }
+    { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes", named: true },
+    { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara", named: true },
+    { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara", named: true },
+    { label: "Dolly Parton", value: "young 1970s era Dolly Parton with blown-out blonde hair and bangs", named: true },
+    { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair", named: true },
+    { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls", named: true },
+    { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings", named: true },
+    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
+    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
+    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
+    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips" },
+    { label: "Michelle Obama", value: "Michelle Obama", named: true },
+    { label: "Betty Boop", value: "Betty Boop", named: true }
 ];
 
 
@@ -178,7 +178,7 @@ const outfitPresets = [
 ];
 
 const actionPresets = [
-	{ label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body" }, 
+    { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body" },
     { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape" },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true },
     { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
@@ -614,7 +614,7 @@ async function generateBatch() {
 
 
     // PROMPT TEMPLATE
-    if (nationality.predefined) {
+    if (nationality.named) {
         // Celebrity
         imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
