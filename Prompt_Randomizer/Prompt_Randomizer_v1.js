@@ -211,7 +211,8 @@ const actionPresets = [
     { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up", aspectRatio: "portrait" },
     { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection", aspectRatio: "square" },
     { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera." },
-    { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." }
+    { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." },
+    { label: "Getting Poked in the Eye", value: "kneeling in front of a standing man's nude body. He is sticking the tip of his erect penis in her eye as she squints her eyes in an aggravated expression" }
 ];
 
 const environments = [

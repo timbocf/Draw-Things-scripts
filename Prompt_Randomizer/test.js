@@ -78,17 +78,18 @@ class Person extends Entity {
         this.nationality = null;
         this.outfit = null;
         this.age = null;
+        this.action = null;
     }
 
     randomize() {
         this.age = randomize(personAgePresets);
         this.nationality = randomize(nationalityPresets);
         this.outfit = randomize(outfitPresets);
-        this.action = randomize(actionPresets);
+        this.action = randomize(personActionPresets);
     }
 
     describe() {
-        return this.age + "-year-old " + this.nationality + " person";
+        return this.age + "-year-old " + this.nationality + " person, " + this.action;
     }
 };
 
@@ -117,16 +118,18 @@ class Animal extends Entity {
         this.color = null;
         this.age = null;
         this.breed = null;
+        this.action = null;
     }
 
     randomize() {
         this.color = randomize(animalColorPresets);
         this.age = randomize(animalAgePresets);
         this.breed = randomize(animalBreedPresets);
+        this.action = randomize(animalActionPresets);
     }
 
     describe() {
-        return this.age + "-year-old " + this.color + " " + this.breed;
+        return this.age + "-year-old " + this.color + " " + this.breed + ", " + action;
     }
 }
 
