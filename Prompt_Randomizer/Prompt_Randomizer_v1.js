@@ -638,6 +638,7 @@ async function generateBatch() {
         environment = environments.find(
             item => item.label === "in a doctor's office"
         );
+    }
 
         const cameraLightingPrompt = [
             cameraFraming,
