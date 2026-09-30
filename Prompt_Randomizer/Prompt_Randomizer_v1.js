@@ -215,6 +215,8 @@ const actionPresets = [
 ];
 
 const environments = [
+    { label: "None selected", value: "" },
+
     { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains." },
     { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains." },
     { label: "in the backseat of a car", value: "in the backseat of a car" },
@@ -454,7 +456,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Select an environment",
             [
                 this.menu(0, [
-                    "Random Selection",
                     ...environments.map(item => item.label)
                 ])
             ]
@@ -587,11 +588,8 @@ async function generateBatch() {
         artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
     }
 
-    if (promptSelections[10][0] === 0) {
-        environment = randomize(environments);
-    } else {
-        environment = environments[promptSelections[10][0] - 1];
-    }
+    environment = environments[promptSelections[10][0] - 1];
+
     if (action.forcedEnvironment === "doctor") {
         environment = "in a doctor's office";
     }
