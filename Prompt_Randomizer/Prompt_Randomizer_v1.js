@@ -221,19 +221,19 @@ const environments = [
             { label: "in the shower", value: "in a walk-in shower, with wet hair and wet body, water cascading down {possessive} wet body" },
             { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains." },
             { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains." },
-            "in the backseat of a car",
-            "in a surgical theatre",
-            "in a crowded city street",
-            "in a glade",
-            "on an office desk",
-            "at a poolside",
-            "on a beach at sunset",
-            "in a nightclub",
-            "in a hotel room",
-            "on a rooftop at night",
-            "in an elevator",
-            "in a library",
-            "in a locker room"
+            { label: "in the backseat of a car", value: "in the backseat of a car" },
+            { label: "in a surgical theatre", value: "in a well-lit surgical theater with two surgical tables covered in blue paper, a large overhead lamp and numerous surgical machines" },
+            { label: "in a crowded city street", value: "in a crowded city street with cars driving by and people walking along the sidewalks" },
+            { label: "in a glade", value: "in a lush glade with doppled sunlight through the canopy of trees" },
+            { label: "on an office desk", value: "on an office desk in a wood-paneled office. Papers are strewn about laying on top of the desk. A tall potted hibiscus sits in a corner of the office." },
+            { label: "at a poolside", value: "near a pool surrounded by lounge chairs" },
+            { label: "on a beach at sunset", value: "on a beach at sunset" },
+            { label: "in a nightclub", value: "in a crowded nightclub, dimly lit with bright neon spotlights" },
+            { label: "in a hotel room", value: "in a hotel room with smoke-stained walls and curtains" },
+            { label: "on a rooftop at night", value: "on the spacious roof of a Manhattan highrise apartment building" },
+            { label: "in an elevator", value: "in an elevator" },
+            { label: "in a library", value: "in a softly lit public library surrounded by tall racks of hardcover books" },
+            { label: "in a locker room", value: "in a locker room shower" }
         ]
     }
 ];
@@ -529,6 +529,7 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
+    let environment;
     let cameraFraming = cameraFramingPresets[promptSelections[11][0]].value;
     let cameraAngle = cameraAnglePresets[promptSelections[12][0]];
     let timeOfDay = timeOfDayPresets[promptSelections[13][0]].value;
@@ -612,12 +613,12 @@ async function generateBatch() {
     // PROMPT TEMPLATE
     if (nationality.predefined) {
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
