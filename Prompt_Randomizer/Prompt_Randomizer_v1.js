@@ -91,7 +91,7 @@ const nationalityPresets = [
         eyeColors: ["dark brown", "black"]
     },
 
-    // Celebrity/Character Presets
+    // Celebrity Presets
     { label: "My Baby", value: "curvy apple-shaped 35-year-old woman with large shapeless drooping breasts, a round ass, long curly 3a black hair, arms covered in red & green rose tattoos, hazel eyes", named: true },
     { label: "Anne Hathaway, Long Hair", value: "Anne Hathaway with a tall slim build with long straight black hair, smokey eyes and heavy mascara", named: true },
     { label: "Anne Hathaway, Short Hair", value: "Anne Hathaway with a tall slim build with short straight black hair in a textured pixie cut, smokey eyes and heavy mascara", named: true },
@@ -99,12 +99,42 @@ const nationalityPresets = [
     { label: "Sabrina Carpenter", value: "Sabrina Carpenter with shoulder length blonde hair", named: true },
     { label: "Marilyn Monroe", value: "Marilyn Monroe with shoulder length blonde Hollywood curls", named: true },
     { label: "Lisbeth Salander", value: "small petite woman with porcelain skin, a flat chest, narrow hips/shoulders, a short black spiked punk hairstyle shaved on one side, neck tattoos, back tattoos, light body hair, arm and leg tattoos, stacked bracelets, heavy mascara, smokey eyes, eyebrow/lip/septum/nipple/navel piercings, multiple earrings, multiple rings", named: true },
-    { label: "Curvy Black Woman with Box Braids", value: "a curvy black woman with warm brown skin, long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings" },
-    { label: "Curvy Mexican woman", value: "a curvy Mexican woman with prominent Indigenous Mesoamerican features, olive skin, plump lips, medium-length straight black hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings" },
-    { label: "Slim Blonde with Pixie Cut", value: "a slim-build woman with porcelain skin, short blonde hair in a textured pixie cut style" },
-    { label: "Oversized head/eyes, small nose", value: "with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips" },
     { label: "Michelle Obama", value: "Michelle Obama", named: true },
-    { label: "Betty Boop", value: "Betty Boop", named: true }
+    { label: "Betty Boop", value: "Betty Boop", named: true },
+
+    // Generic Character Presets
+    {
+        label: "Black Woman with Box Braids",
+        value: "a black woman with long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings",
+        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"],
+        skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
+        eyeColors: ["dark brown", "black"]
+    },
+
+    {
+        label: "Cholla Mexican woman",
+        value: "a Mexican woman with prominent Indigenous Mesoamerican features, plump lips, medium-length straight hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings",
+        hairColors: ["dark brown", "black"],
+        skinTones: ["warm olive tan", "sun-darkened"],
+        eyeColors: ["dark brown", "black", "light brown"]
+    },
+
+    {
+        label: "White Woman with Pixie Cut",
+        value: "a woman with short hair in a textured pixie cut style",
+        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
+        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
+        eyeColors: ["brown", "hazel", "green", "blue", "amber"]
+    },
+
+    {
+        label: "Oversized head/eyes, small nose",
+        value: "with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips",
+        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails"],
+        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
+        eyeColors: ["brown", "hazel", "green", "blue", "amber"]
+    }
+
 ];
 
 
