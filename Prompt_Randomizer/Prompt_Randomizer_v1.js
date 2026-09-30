@@ -141,9 +141,7 @@ const nationalityPresets = [
 
 // --- AGE ---
 const agePresets = [
-    "16-year-old", "18-year-old", "20-year-old", "25-year-old", "30-year-old",
-    "35-year-old", "40-year-old", "45-year-old", "50-year-old", "60-year-old",
-    "70-year-old", "80-year-old", "90-year-old"
+    16, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90
 ];
 
 // =========================================
@@ -583,6 +581,7 @@ async function generateBatch() {
     } else {
         age = agePresets[promptSelections[5][0] - 1];
     }
+    gender = "girl" ? age < 18 : "woman";
 
     if (promptSelections[6][0]) {
         isPregnant = "pregnant ";
@@ -652,7 +651,7 @@ async function generateBatch() {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
