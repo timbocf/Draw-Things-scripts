@@ -219,8 +219,8 @@ const environments = [
         description: "Scene and environment",
         presets: [
             { label: "in the shower", value: "in a walk-in shower, with wet hair and wet body, water cascading down {possessive} wet body" },
-            "in a bedroom",
-            "in a kitchen",
+            { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains." },
+            { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains." },
             "in the backseat of a car",
             "in a surgical theatre",
             "in a crowded city street",
@@ -453,6 +453,18 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
+        // Environment
+        this.section(
+            "Environment",
+            "Select an environment",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...environments.map(item => item.label)
+                ])
+            ]
+        ),
+
         // Camera Framing
         this.section(
             "Camera Framing",
@@ -517,11 +529,11 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let cameraFraming = cameraFramingPresets[promptSelections[10][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[11][0]];
-    let timeOfDay = timeOfDayPresets[promptSelections[12][0]].value;
-    let lighting = lightingPresets[promptSelections[13][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[14][0]].value;
+    let cameraFraming = cameraFramingPresets[promptSelections[11][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[12][0]];
+    let timeOfDay = timeOfDayPresets[promptSelections[13][0]].value;
+    let lighting = lightingPresets[promptSelections[14][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[15][0]].value;
 
     if (promptSelections[3][0] === 0) {
         artStyle = randomize(artStylePresets);
@@ -579,6 +591,12 @@ async function generateBatch() {
         artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
     }
 
+    if (promptSelections[10][0] === 0) {
+        environment = randomize(environments);
+    } else {
+        environment = environments[promptSelections[10][0] - 1];
+    }
+
     const cameraLightingPrompt = [
         cameraFraming,
         cameraAngle.value,
@@ -594,12 +612,12 @@ async function generateBatch() {
     // PROMPT TEMPLATE
     if (nationality.predefined) {
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment + ", wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + " " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment + ", wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
