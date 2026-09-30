@@ -430,7 +430,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             [
                 this.menu(0, [
                     "Random Selection",
-                    ...agePresets
+                    ...agePresets.map(age => age.toString())
                 ])
             ]
         ),
@@ -627,7 +627,7 @@ async function generateBatch() {
     }
 
     if (action.selfiePhoto === true) {
-        artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
+        artStyle = artStylePresets.find(style => style.label === "Selfie Photo, From Above");
     }
 
     environment = environments[promptSelections[10][0]];
@@ -651,12 +651,12 @@ async function generateBatch() {
     // PROMPT TEMPLATE
     if (nationality.named) {
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
