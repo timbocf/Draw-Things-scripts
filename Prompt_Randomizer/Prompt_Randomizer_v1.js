@@ -150,7 +150,7 @@ const outfitPresets = [
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels" },
     { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
-    { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt with one button fastened near her navel, very short cutoff jean shorts and cowboy boots" },
+    { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt tied around her torso, very short cutoff jean shorts and cowboy boots" },
     { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts" },
     { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
     { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels" },
