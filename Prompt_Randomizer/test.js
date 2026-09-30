@@ -105,15 +105,14 @@ class Animal extends Entity {
 class Scene {
     constructor() {
         this.entities = [];
+        const subjects = [];
+        const vehicle = [];
+        const animals = [];
     }
     addEntity(entity) {
         this.entities.push(entity);
     }
     checkEntities() {
-        const subjects = [];
-        const vehicle = [];
-        const animals = [];
-
         for (const entity of this.entities) {
             if (entity instanceof Person) {
                 subjects.push(entity);
@@ -128,6 +127,9 @@ class Scene {
     }
     describe() {
         const descriptions = [];
+
+        this.checkEntities();
+
         for (const entity of this.entities) {
             descriptions.push(entity.describe());
         }
@@ -139,7 +141,8 @@ class Scene {
         }
         if (descriptions.length > 2) {
             const newDesc = descriptions.slice(0, (descriptions.length - 1));
-            return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 1];
+            return subjects;
+            // return newDesc.join(", ") + ", and " + descriptions[descriptions.length - 1];
         }
     }
 }
