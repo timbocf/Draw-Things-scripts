@@ -365,7 +365,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Loras",
             "Select whether to use loras to bypass safety filters: ",
             [
-                this.switch(false, "Use LoRAs")
+                this.switch(true, "Use LoRAs")
             ]
         ),
 
@@ -588,7 +588,7 @@ async function generateBatch() {
         artStyle = artStylePresets.find(style => style.label === "Selfie Photo");
     }
 
-    environment = environments[promptSelections[10][0] - 1];
+    environment = environments[promptSelections[10][0]];
 
     if (action.forcedEnvironment === "doctor") {
         environment = "in a doctor's office";
