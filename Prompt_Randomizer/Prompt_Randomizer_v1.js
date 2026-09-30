@@ -585,7 +585,7 @@ async function generateBatch() {
     }
     if (action.pantiesPulledDown === true) {
         // outfit = "a bra, panties and thigh-high stockings";
-        outfit += "and panties pulled down to mid-thigh";
+        outfit += " and panties pulled down to mid-thigh";
     }
 
     if (action.selfiePhoto === true) {
