@@ -202,7 +202,7 @@ const actionPresets = [
     { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatio: "landscape" },
     { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor" },
     { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
-    { label: "Ass Spread", value: "She is on her knees facing away with her face down low, looking back while reaching back to spread her ass cheeks apart" },
+    { label: "Ass Spread", value: "She is on her knees facing away with her face down low, looking back while reaching back to spread her ass cheeks apart", pantiesPulledDown: true },
     { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace and high heels", nudeRequired: true, aspectRatio: "portrait" },
     { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera" },
     { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatio: "square" },
@@ -582,6 +582,10 @@ async function generateBatch() {
 
     if (action.nudeRequired === true) {
         outfit = "nude";
+    }
+    if (action.pantiesPulledDown === true) {
+        // outfit = "a bra, panties and thigh-high stockings";
+        outfit += "and panties pulled down to mid-thigh";
     }
 
     if (action.selfiePhoto === true) {
