@@ -104,24 +104,24 @@ const nationalityPresets = [
 
     // Generic Character Presets
     {
-        label: "Black Woman with Box Braids",
-        value: "a black woman with long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings",
+        label: `Black ${gender} with Box Braids`,
+        value: `a black ${gender} with long black box braids, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings`,
         hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
         eyeColors: ["dark brown", "black"]
     },
 
     {
-        label: "Cholla Mexican woman",
-        value: "a Mexican woman with prominent Indigenous Mesoamerican features, plump lips, medium-length straight hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings",
+        label: `Cholla Mexican ${gender}`,
+        value: `a Mexican ${gender} with prominent Indigenous Mesoamerican features, plump lips, medium-length straight hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings`,
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
     },
 
     {
-        label: "White Woman with Pixie Cut",
-        value: "a woman with short hair in a textured pixie cut style",
+        label: `White ${gender} with Pixie Cut`,
+        value: `a ${gender} with short hair in a textured pixie cut style`,
         hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
