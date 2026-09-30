@@ -10,9 +10,7 @@
 
 const imageCounts = [1, 3, 5, 10, 20];
 
-const gender = [
-    "woman"
-];
+let gender = "woman";
 
 const artStylePresets = [
     { label: "Photo", value: "photo" },
@@ -583,6 +581,8 @@ async function generateBatch() {
     } else {
         age = agePresets[promptSelections[5][0] - 1];
     }
+
+    console.log(gender);
     if (age < 18 && gender === "woman") {
         gender = "girl";
     }
