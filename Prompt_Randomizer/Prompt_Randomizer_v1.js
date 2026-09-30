@@ -209,7 +209,7 @@ const actionPresets = [
     { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor" },
     { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
     { label: "Ass Spread", value: "She is on her knees facing away with her face down low, looking back while reaching back to spread her ass cheeks apart", pantiesPulledDown: true },
-    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace and high heels", nudeRequired: true, aspectRatio: "portrait" },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace", nudeRequired: true, aspectRatio: "portrait" },
     { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera" },
     { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatio: "square" },
     { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true },
