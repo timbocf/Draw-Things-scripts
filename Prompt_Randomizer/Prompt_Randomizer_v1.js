@@ -48,20 +48,20 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails"],
+        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails", "textured pixie cut blonde"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     },
     {
         label: "Black",
-        value: "with rich deep skin tone and classic African facial features",
-        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"],
+        value: "with rich deep skin tone and classic African facial features, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings",
+        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde", "box braids black", "box braids and blonde streaks of hair braided in black"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
         eyeColors: ["dark brown", "black"]
     },
     {
         label: "Mexican",
-        value: "with prominent Indigenous Mesoamerican facial features, thick dark eyebrows, thick wavy hair, plump lips, and a curvy hourglass figure",
+        value: "with prominent Indigenous Mesoamerican features, plump lips, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
@@ -103,30 +103,6 @@ const nationalityPresets = [
     },
 
     // Generic Character Presets
-    {
-        label: "Black with Box Braids",
-        value: ", neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings",
-        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde"],
-        skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
-        eyeColors: ["dark brown", "black"]
-    },
-
-    {
-        label: "Cholla Mexican",
-        value: ", with prominent Indigenous Mesoamerican features, plump lips, medium-length straight hair, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["warm olive tan", "sun-darkened"],
-        eyeColors: ["dark brown", "black", "light brown"]
-    },
-
-    {
-        label: "White with Pixie Cut",
-        value: ", with short hair in a textured pixie cut style",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
-        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
-        eyeColors: ["brown", "hazel", "green", "blue", "amber"]
-    },
-
     {
         label: "Oversized head/eyes, small nose",
         value: ", with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips",
@@ -640,136 +616,136 @@ async function generateBatch() {
         );
     }
 
-        const cameraLightingPrompt = [
-            cameraFraming,
-            cameraAngle.value,
-            timeOfDay,
-            lighting,
-            photographicLook
-        ].filter(Boolean).join(", ");
+    const cameraLightingPrompt = [
+        cameraFraming,
+        cameraAngle.value,
+        timeOfDay,
+        lighting,
+        photographicLook
+    ].filter(Boolean).join(", ");
 
-        let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
 
 
-        // PROMPT TEMPLATE
-        if (nationality.named) {
-            // Celebrity
-            imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
-        } else {
-            hairColor = randomize(nationality.hairColors);
-            skinTone = randomize(nationality.skinTones);
-            eyeColor = randomize(nationality.eyeColors);
-            imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
-        }
-        console.log("Generating:");
-        console.log(imagePrompt);
-
-        // =================================
-        // COPY CURRENT CONFIGURATION
-        // =================================
-
-        let config = JSON.parse(
-            JSON.stringify(pipeline.configuration)
-        );
-
-        // =================================
-        // KREA 2 SETTINGS
-        // =================================
-
-        config.model = "krea_2_turbo_i8x.ckpt";
-
-        let aspectRatio;
-
-        if (promptSelections[0][0] === 0) {
-            aspectRatio = "portrait";
-        }
-        if (promptSelections[0][0] === 1) {
-            aspectRatio = "square";
-        }
-        if (promptSelections[0][0] === 2) {
-            aspectRatio = "landscape";
-        }
-
-        if (action.aspectRatio === "portrait") {
-            aspectRatio = "portrait";
-        }
-        if (action.aspectRatio === "square") {
-            aspectRatio = "square";
-        }
-        if (action.aspectRatio === "landscape") {
-            aspectRatio = "landscape";
-        }
-
-        if (aspectRatio === "portrait") {
-            config.width = 768;
-            config.height = 1024;
-        }
-        if (aspectRatio === "square") {
-            config.width = 1024;
-            config.height = 1024;
-        }
-        if (aspectRatio === "landscape") {
-            config.width = 1024;
-            config.height = 768;
-        }
-
-        config.batchCount = 1;
-        config.batchSize = 1;
-
-        // =================================
-        // RANDOM SEED
-        // =================================
-        config.seed = -1;
-
-        // =================================
-        // LORAS
-        // =================================
-
-        if (promptSelections[2][0]) {
-            config.loras = [
-                {
-                    mode: "all",
-                    file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-                    weight: 1.0
-                },
-                {
-                    mode: "all",
-                    file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-                    weight: 0.6
-                }
-            ]
-        } else {
-            config.loras = [];
-        }
-
-        // =================================
-        // GENERATE
-        // =================================
-
-        await pipeline.run({
-            configuration: config,
-            prompt: imagePrompt
-        });
-
-        console.log("Image complete.");
-
-        // =========================================
-        // FINISHED
-        // =========================================
-
-        console.log("Image Complete.");
+    // PROMPT TEMPLATE
+    if (nationality.named) {
+        // Celebrity
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+    } else {
+        hairColor = randomize(nationality.hairColors);
+        skinTone = randomize(nationality.skinTones);
+        eyeColor = randomize(nationality.eyeColors);
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
-    const imageCount = imageCounts[promptSelections[1][0]];
+    console.log("Generating:");
+    console.log(imagePrompt);
 
-    async function runBatch() {
-        for (var i = 0; i < imageCount; i++) {
-            await generateBatch();
-        }
-        console.log("Batch Finished!");
+    // =================================
+    // COPY CURRENT CONFIGURATION
+    // =================================
+
+    let config = JSON.parse(
+        JSON.stringify(pipeline.configuration)
+    );
+
+    // =================================
+    // KREA 2 SETTINGS
+    // =================================
+
+    config.model = "krea_2_turbo_i8x.ckpt";
+
+    let aspectRatio;
+
+    if (promptSelections[0][0] === 0) {
+        aspectRatio = "portrait";
+    }
+    if (promptSelections[0][0] === 1) {
+        aspectRatio = "square";
+    }
+    if (promptSelections[0][0] === 2) {
+        aspectRatio = "landscape";
     }
 
-    console.log("promptSelections:", promptSelections);
-    console.log("imageCount:", imageCount);
+    if (action.aspectRatio === "portrait") {
+        aspectRatio = "portrait";
+    }
+    if (action.aspectRatio === "square") {
+        aspectRatio = "square";
+    }
+    if (action.aspectRatio === "landscape") {
+        aspectRatio = "landscape";
+    }
 
-    runBatch();
+    if (aspectRatio === "portrait") {
+        config.width = 768;
+        config.height = 1024;
+    }
+    if (aspectRatio === "square") {
+        config.width = 1024;
+        config.height = 1024;
+    }
+    if (aspectRatio === "landscape") {
+        config.width = 1024;
+        config.height = 768;
+    }
+
+    config.batchCount = 1;
+    config.batchSize = 1;
+
+    // =================================
+    // RANDOM SEED
+    // =================================
+    config.seed = -1;
+
+    // =================================
+    // LORAS
+    // =================================
+
+    if (promptSelections[2][0]) {
+        config.loras = [
+            {
+                mode: "all",
+                file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+                weight: 1.0
+            },
+            {
+                mode: "all",
+                file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+                weight: 0.6
+            }
+        ]
+    } else {
+        config.loras = [];
+    }
+
+    // =================================
+    // GENERATE
+    // =================================
+
+    await pipeline.run({
+        configuration: config,
+        prompt: imagePrompt
+    });
+
+    console.log("Image complete.");
+
+    // =========================================
+    // FINISHED
+    // =========================================
+
+    console.log("Image Complete.");
+}
+const imageCount = imageCounts[promptSelections[1][0]];
+
+async function runBatch() {
+    for (var i = 0; i < imageCount; i++) {
+        await generateBatch();
+    }
+    console.log("Batch Finished!");
+}
+
+console.log("promptSelections:", promptSelections);
+console.log("imageCount:", imageCount);
+
+runBatch();
