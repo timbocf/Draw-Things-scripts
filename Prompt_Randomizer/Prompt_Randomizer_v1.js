@@ -572,7 +572,8 @@ async function generateBatch() {
     }
 
     if (promptSelections[4][0] === 0) {
-        nationality = randomize(nationalityPresets);
+        const randomPool = nationalityPresets.filter(item => !item.named);
+        nationality = randomize(randomPool);
     } else {
         nationality = nationalityPresets[promptSelections[4][0] - 1];
     }
