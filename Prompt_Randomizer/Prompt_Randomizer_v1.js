@@ -16,7 +16,7 @@ const artStylePresets = [
     { label: "Photo", value: "photo" },
     { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
     { label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
-    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: "1940s" },
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: ["1940s"] },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
     { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
@@ -166,27 +166,27 @@ const hairstylePresets = [
     {
         label: "1940s Victory Rolls",
         value: "hair styled in large polished Victory Rolls",
-        era: "1940s"
+        era: ["1940s"]
     },
     {
         label: "1940s Hollywood Curls",
         value: "shoulder-length hair styled in glamorous soft Hollywood curls",
-        era: "1940s"
+        era: ["1940s"]
     },
     {
         label: "1940s Side-Swept Waves",
         value: "shoulder-length hair styled in glossy side-swept waves with a deep side part",
-        era: "1940s"
+        era: ["1940s"]
     },
     {
         label: "1940s Pin Curls",
         value: "hair arranged in carefully sculpted pin curls",
-        era: "1940s"
+        era: ["1940s"]
     },
     {
         label: "1940s Rolled Updo",
         value: "hair swept up into a structured 1940s rolled updo",
-        era: "1940s"
+        era: ["1940s"]
     },
 
     // =========================================
@@ -195,27 +195,27 @@ const hairstylePresets = [
     {
         label: "1950s Poodle Cut",
         value: "short hair styled in a tightly curled 1950s poodle cut",
-        era: "1950s"
+        era: ["1950s"]
     },
     {
         label: "1950s Pageboy",
         value: "smooth shoulder-length pageboy hairstyle with curled-under ends",
-        era: "1950s"
+        era: ["1950s"]
     },
     {
         label: "1950s Short Curls",
         value: "short softly curled 1950s hairstyle",
-        era: "1950s"
+        era: ["1950s"]
     },
     {
         label: "1950s Ponytail",
         value: "hair pulled into a high 1950s ponytail with softly curled ends",
-        era: "1950s"
+        era: ["1950s"]
     },
     {
         label: "1950s Glamour Waves",
         value: "shoulder-length hair styled in polished glamorous waves",
-        era: "1950s"
+        era: ["1950s"]
     },
 
     // =========================================
@@ -224,27 +224,27 @@ const hairstylePresets = [
     {
         label: "1960s Beehive",
         value: "hair styled in a tall voluminous 1960s beehive",
-        era: "1960s"
+        era: ["1960s"]
     },
     {
         label: "1960s Bouffant",
         value: "hair styled in a full rounded bouffant with substantial crown volume",
-        era: "1960s"
+        era: ["1960s"]
     },
     {
         label: "1960s Flipped Bob",
         value: "short bob with smooth volume and dramatically flipped-out ends",
-        era: "1960s"
+        era: ["1960s"]
     },
     {
         label: "1960s Mod Bob",
         value: "sleek geometric 1960s mod bob",
-        era: "1960s"
+        era: ["1960s"]
     },
     {
         label: "1960s Long Straight Hair",
         value: "long straight center-parted hair in a late-1960s style",
-        era: "1960s"
+        era: ["1960s"]
     },
 
     // =========================================
@@ -253,27 +253,27 @@ const hairstylePresets = [
     {
         label: "1970s Feathered Hair",
         value: "voluminous feathered 1970s hair with layers swept away from the face",
-        era: "1970s"
+        era: ["1970s"]
     },
     {
         label: "1970s Shag",
         value: "layered 1970s shag haircut with textured feathered ends",
-        era: "1970s"
+        era: ["1970s"]
     },
     {
         label: "1970s Long Center-Parted Hair",
         value: "long naturally flowing hair with a straight center part",
-        era: "1970s"
+        era: ["1970s"]
     },
     {
         label: "1970s Afro",
         value: "full rounded natural 1970s Afro hairstyle",
-        era: "1970s"
+        era: ["1970s"]
     },
     {
         label: "1970s Disco Curls",
         value: "voluminous shoulder-length disco curls",
-        era: "1970s"
+        era: ["1970s"]
     },
 
     // =========================================
@@ -282,27 +282,27 @@ const hairstylePresets = [
     {
         label: "1980s Big Hair",
         value: "huge voluminous 1980s hair with teased roots and dramatic volume",
-        era: "1980s"
+        era: ["1980s"]
     },
     {
         label: "1980s Feathered Hair",
         value: "voluminous layered feathered hair swept dramatically away from the face",
-        era: "1980s"
+        era: ["1980s"]
     },
     {
         label: "1980s Side Ponytail",
         value: "high side ponytail with teased volume",
-        era: "1980s"
+        era: ["1980s"]
     },
     {
         label: "1980s Perm",
         value: "voluminous tightly permed shoulder-length hair",
-        era: "1980s"
+        era: ["1980s"]
     },
     {
         label: "1980s Crimped Hair",
         value: "long voluminous crimped hair with teased volume",
-        era: "1980s"
+        era: ["1980s"]
     },
 
     // =========================================
@@ -311,27 +311,27 @@ const hairstylePresets = [
     {
         label: "1990s Rachel Cut",
         value: "shoulder-length layered blowout with face-framing layers and flipped ends",
-        era: "1990s"
+        era: ["1990s"]
     },
     {
         label: "1990s Pixie Cut",
         value: "short textured 1990s pixie cut",
-        era: "1990s"
+        era: ["1950s", "1960s", "1990s", "2000s"]
     },
     {
         label: "1990s Face-Framing Layers",
         value: "medium-length hair with prominent face-framing layers",
-        era: "1990s"
+        era: ["1990s"]
     },
     {
         label: "1990s High Ponytail",
         value: "high ponytail with loose face-framing strands",
-        era: "1990s"
+        era: ["1990s"]
     },
     {
         label: "1990s Messy Updo",
         value: "casual messy updo with loose face-framing strands",
-        era: "1990s"
+        era: ["1990s"]
     },
 
     // =========================================
@@ -340,27 +340,27 @@ const hairstylePresets = [
     {
         label: "2000s Straight Layers",
         value: "long pin-straight layered hair with face-framing pieces",
-        era: "2000s"
+        era: ["2000s"]
     },
     {
         label: "2000s Side-Swept Bangs",
         value: "long layered hair with dramatic side-swept bangs",
-        era: "2000s"
+        era: ["2000s"]
     },
     {
         label: "2000s Chunky Layers",
         value: "long layered hair with chunky face-framing sections",
-        era: "2000s"
+        era: ["2000s"]
     },
     {
         label: "2000s Messy Bun",
         value: "casual messy bun with loose face-framing strands",
-        era: "2000s"
+        era: ["2000s"]
     },
     {
         label: "2000s Crimped Hair",
         value: "long partially crimped hair with pronounced textured waves",
-        era: "2000s"
+        era: ["2000s"]
     }
 ];
 
@@ -414,21 +414,21 @@ const outfitPresets = [
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
-    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle", era: "1940s" },
-    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: "1940s" },
-    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: "1940s" },
-    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: "1940s" },
-    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", era: "1960s" },
-    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", era: "1960s" },
-    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", era: "1960s" },
-    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", era: "1960s" },
-    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", era: "1960s" }
+    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle", era: ["1940s"] },
+    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: ["1940s"] },
+    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: ["1940s"] },
+    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: ["1940s"] },
+    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", era: ["1960s"] },
+    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", era: ["1960s"] },
+    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", era: ["1960s"] },
+    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", era: ["1960s"] },
+    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", era: ["1960s"] }
 ];
 
 const actionPresets = [
     { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body" },
     { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape" },
-    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, era: "2000s" },
+    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, era: ["2000s"] },
     { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
     { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips" },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
@@ -566,13 +566,13 @@ const photographicLookPresets = [
     { label: "Sepia", value: "warm sepia-toned photographic treatment" },
 
     { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", era: "1930s" },
-    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", era: "1940s" },
-    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", era: "1950s" },
-    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", era: "1960s" },
-    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", era: "1970s" },
-    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", era: "1980s" },
-    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", era: "1990s" },
-    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", era: "2000s" }
+    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", era: ["1940s"] },
+    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", era: ["1950s"] },
+    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", era: ["1960s"] },
+    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", era: ["1970s"] },
+    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", era: ["1980s"] },
+    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", era: ["1990s"] },
+    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", era: ["2000s"] }
 ];
 
 
@@ -882,7 +882,7 @@ async function generateBatch() {
 
     if (artStyle.era) {
         const eraHair = hairstylePresets.filter(
-            hair => hair.era === artStyle.era
+            hair => hair.era.includes(artStyle.era)
         );
 
         if (eraHair.length > 0) {
