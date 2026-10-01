@@ -188,7 +188,7 @@ const outfitPresets = [
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
-    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
+    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle", era: "1940s" },
     { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: "1940s" },
     { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: "1940s" },
     { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: "1940s" },
@@ -651,6 +651,16 @@ async function generateBatch() {
 
         if (eraOutfits.length > 0) {
             outfit = randomize(eraOutfits).value;
+        }
+    }
+
+    if (artStyle.era) {
+        const eraHair = hairstylePresets.filter(
+            hair => hair.era === artStyle.era
+        );
+
+        if (eraHair.length > 0) {
+            hairColor = randomize(eraHair).value;
         }
     }
 
