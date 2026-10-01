@@ -48,7 +48,7 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails", "textured pixie cut blonde"],
+        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     },
@@ -394,7 +394,7 @@ const specificBodyPresets = [
 
 const outfitPresets = [
     { label: "Nude", value: "nude" },
-    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" },
+    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" , era: ["1940s"]},
     { label: "Bra & Panties", value: "a bra and panties, barefoot" },
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels" },
@@ -433,7 +433,6 @@ const actionPresets = [
     { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips" },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
     { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatio: "portrait" },
-    { label: "In a Gynecologist's Chair", value: "sitting with her legs spread wide in the stirrups of a gynecologist's exam chair in a well-lit gynecologist's office. A glass speculum is inside her vagina, spreading wide her vaginal cavity.", forcedEnvironment: "doctor", nudeRequired: true },
     { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
     { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
     { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
@@ -841,9 +840,6 @@ async function generateBatch() {
         cameraAngle = cameraAnglePresets.find(style => style.label === "Low Angle");
     }
 
-    if (action.nudeRequired === true) {
-        outfit = "nude";
-    }
     if (action.pantiesPulledDown === true) {
         // outfit = "a bra, panties and thigh-high stockings";
         outfit += " and panties pulled down to mid-thigh";
@@ -895,6 +891,10 @@ async function generateBatch() {
         if (eraHairstyles.length > 0) {
             hairStyle = randomize(eraHairstyles).value;
         }
+    }
+
+if (action.nudeRequired === true) {
+        outfit = "nude";
     }
 
     // PROMPT TEMPLATE
