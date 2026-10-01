@@ -115,9 +115,27 @@ const nationalityPresets = [
 
 
 
-// --- AGE ---
+// =========================================
+// AGE
+// =========================================
 const agePresets = [
     16, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90
+];
+
+// =========================================
+// HAIR 
+// =========================================
+const hairstylePresets = [
+    {
+        label: "Hollywood Curls",
+        value: "shoulder-length Hollywood curls",
+        era: "1940s"
+    },
+    {
+        label: "Victory Rolls",
+        value: "1940s Victory Rolls",
+        era: "1940s"
+    }
 ];
 
 // =========================================
@@ -626,7 +644,15 @@ async function generateBatch() {
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
+    if (artStyle.era) {
+        const eraOutfits = outfitPresets.filter(
+            outfit => outfit.era === artStyle.era
+        );
 
+        if (eraOutfits.length > 0) {
+            outfit = randomize(eraOutfits).value;
+        }
+    }
 
     // PROMPT TEMPLATE
     if (nationality.named) {
