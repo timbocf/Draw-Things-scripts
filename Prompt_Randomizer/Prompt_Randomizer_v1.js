@@ -123,18 +123,244 @@ const agePresets = [
 ];
 
 // =========================================
-// HAIR 
+// HAIRSTYLE PRESETS
 // =========================================
 const hairstylePresets = [
+
+    // =========================================
+    // 1920s
+    // =========================================
     {
-        label: "Hollywood Curls",
-        value: "shoulder-length Hollywood curls",
+        label: "1920s Flapper Bob",
+        value: "chin-length 1920s flapper bob with sleek sculpted finger waves",
+        era: "1920s"
+    },
+
+    // =========================================
+    // 1930s
+    // =========================================
+    {
+        label: "1930s Finger Waves",
+        value: "short hair styled in sculpted finger waves",
+        era: "1930s"
+    },
+    {
+        label: "1930s Marcel Waves",
+        value: "shoulder-length hair styled in soft Marcel waves",
+        era: "1930s"
+    },
+    {
+        label: "1930s Side-Parted Waves",
+        value: "medium-length hair with a deep side part and smooth sculpted waves",
+        era: "1930s"
+    },
+    {
+        label: "1930s Wavy Bob",
+        value: "chin-length bob styled in soft polished waves",
+        era: "1930s"
+    },
+
+    // =========================================
+    // 1940s
+    // =========================================
+    {
+        label: "1940s Victory Rolls",
+        value: "hair styled in large polished Victory Rolls",
         era: "1940s"
     },
     {
-        label: "Victory Rolls",
-        value: "1940s Victory Rolls",
+        label: "1940s Hollywood Curls",
+        value: "shoulder-length hair styled in glamorous soft Hollywood curls",
         era: "1940s"
+    },
+    {
+        label: "1940s Side-Swept Waves",
+        value: "shoulder-length hair styled in glossy side-swept waves with a deep side part",
+        era: "1940s"
+    },
+    {
+        label: "1940s Pin Curls",
+        value: "hair arranged in carefully sculpted pin curls",
+        era: "1940s"
+    },
+    {
+        label: "1940s Rolled Updo",
+        value: "hair swept up into a structured 1940s rolled updo",
+        era: "1940s"
+    },
+
+    // =========================================
+    // 1950s
+    // =========================================
+    {
+        label: "1950s Poodle Cut",
+        value: "short hair styled in a tightly curled 1950s poodle cut",
+        era: "1950s"
+    },
+    {
+        label: "1950s Pageboy",
+        value: "smooth shoulder-length pageboy hairstyle with curled-under ends",
+        era: "1950s"
+    },
+    {
+        label: "1950s Short Curls",
+        value: "short softly curled 1950s hairstyle",
+        era: "1950s"
+    },
+    {
+        label: "1950s Ponytail",
+        value: "hair pulled into a high 1950s ponytail with softly curled ends",
+        era: "1950s"
+    },
+    {
+        label: "1950s Glamour Waves",
+        value: "shoulder-length hair styled in polished glamorous waves",
+        era: "1950s"
+    },
+
+    // =========================================
+    // 1960s
+    // =========================================
+    {
+        label: "1960s Beehive",
+        value: "hair styled in a tall voluminous 1960s beehive",
+        era: "1960s"
+    },
+    {
+        label: "1960s Bouffant",
+        value: "hair styled in a full rounded bouffant with substantial crown volume",
+        era: "1960s"
+    },
+    {
+        label: "1960s Flipped Bob",
+        value: "short bob with smooth volume and dramatically flipped-out ends",
+        era: "1960s"
+    },
+    {
+        label: "1960s Mod Bob",
+        value: "sleek geometric 1960s mod bob",
+        era: "1960s"
+    },
+    {
+        label: "1960s Long Straight Hair",
+        value: "long straight center-parted hair in a late-1960s style",
+        era: "1960s"
+    },
+
+    // =========================================
+    // 1970s
+    // =========================================
+    {
+        label: "1970s Feathered Hair",
+        value: "voluminous feathered 1970s hair with layers swept away from the face",
+        era: "1970s"
+    },
+    {
+        label: "1970s Shag",
+        value: "layered 1970s shag haircut with textured feathered ends",
+        era: "1970s"
+    },
+    {
+        label: "1970s Long Center-Parted Hair",
+        value: "long naturally flowing hair with a straight center part",
+        era: "1970s"
+    },
+    {
+        label: "1970s Afro",
+        value: "full rounded natural 1970s Afro hairstyle",
+        era: "1970s"
+    },
+    {
+        label: "1970s Disco Curls",
+        value: "voluminous shoulder-length disco curls",
+        era: "1970s"
+    },
+
+    // =========================================
+    // 1980s
+    // =========================================
+    {
+        label: "1980s Big Hair",
+        value: "huge voluminous 1980s hair with teased roots and dramatic volume",
+        era: "1980s"
+    },
+    {
+        label: "1980s Feathered Hair",
+        value: "voluminous layered feathered hair swept dramatically away from the face",
+        era: "1980s"
+    },
+    {
+        label: "1980s Side Ponytail",
+        value: "high side ponytail with teased volume",
+        era: "1980s"
+    },
+    {
+        label: "1980s Perm",
+        value: "voluminous tightly permed shoulder-length hair",
+        era: "1980s"
+    },
+    {
+        label: "1980s Crimped Hair",
+        value: "long voluminous crimped hair with teased volume",
+        era: "1980s"
+    },
+
+    // =========================================
+    // 1990s
+    // =========================================
+    {
+        label: "1990s Rachel Cut",
+        value: "shoulder-length layered blowout with face-framing layers and flipped ends",
+        era: "1990s"
+    },
+    {
+        label: "1990s Pixie Cut",
+        value: "short textured 1990s pixie cut",
+        era: "1990s"
+    },
+    {
+        label: "1990s Face-Framing Layers",
+        value: "medium-length hair with prominent face-framing layers",
+        era: "1990s"
+    },
+    {
+        label: "1990s High Ponytail",
+        value: "high ponytail with loose face-framing strands",
+        era: "1990s"
+    },
+    {
+        label: "1990s Messy Updo",
+        value: "casual messy updo with loose face-framing strands",
+        era: "1990s"
+    },
+
+    // =========================================
+    // 2000s
+    // =========================================
+    {
+        label: "2000s Straight Layers",
+        value: "long pin-straight layered hair with face-framing pieces",
+        era: "2000s"
+    },
+    {
+        label: "2000s Side-Swept Bangs",
+        value: "long layered hair with dramatic side-swept bangs",
+        era: "2000s"
+    },
+    {
+        label: "2000s Chunky Layers",
+        value: "long layered hair with chunky face-framing sections",
+        era: "2000s"
+    },
+    {
+        label: "2000s Messy Bun",
+        value: "casual messy bun with loose face-framing strands",
+        era: "2000s"
+    },
+    {
+        label: "2000s Crimped Hair",
+        value: "long partially crimped hair with pronounced textured waves",
+        era: "2000s"
     }
 ];
 
