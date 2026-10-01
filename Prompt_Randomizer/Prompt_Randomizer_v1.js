@@ -394,7 +394,7 @@ const specificBodyPresets = [
 
 const outfitPresets = [
     { label: "Nude", value: "nude" },
-    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties" , era: ["1940s"]},
+    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", era: ["1940s"] },
     { label: "Bra & Panties", value: "a bra and panties, barefoot" },
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels" },
@@ -893,7 +893,7 @@ async function generateBatch() {
         }
     }
 
-if (action.nudeRequired === true) {
+    if (action.nudeRequired === true) {
         outfit = "nude";
     }
 
