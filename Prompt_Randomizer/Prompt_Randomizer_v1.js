@@ -48,7 +48,7 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails", "textured pixie cut blonde"],
+        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     },
