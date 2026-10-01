@@ -16,7 +16,7 @@ const artStylePresets = [
     { label: "Photo", value: "photo" },
     { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
     { label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
-    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", era: ["1940s"] },
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", tags: ["1940s", "pinup"] },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
     { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
@@ -133,7 +133,7 @@ const hairstylePresets = [
     {
         label: "1920s Flapper Bob",
         value: "chin-length 1920s flapper bob with sleek sculpted finger waves",
-        era: ["1920s"]
+        tags: ["1920s"]
     },
 
     // =========================================
@@ -142,22 +142,22 @@ const hairstylePresets = [
     {
         label: "1930s Finger Waves",
         value: "short hair styled in sculpted finger waves",
-        era: ["1930s"]
+        tags: ["1930s"]
     },
     {
         label: "1930s Marcel Waves",
         value: "shoulder-length hair styled in soft Marcel waves",
-        era: ["1930s"]
+        tags: ["1930s"]
     },
     {
         label: "1930s Side-Parted Waves",
         value: "medium-length hair with a deep side part and smooth sculpted waves",
-        era: ["1930s"]
+        tags: ["1930s"]
     },
     {
         label: "1930s Wavy Bob",
         value: "chin-length bob styled in soft polished waves",
-        era: ["1930s"]
+        tags: ["1930s"]
     },
 
     // =========================================
@@ -166,27 +166,27 @@ const hairstylePresets = [
     {
         label: "1940s Victory Rolls",
         value: "hair styled in large polished Victory Rolls",
-        era: ["1940s"]
+        tags: ["1940s", "pinup"]
     },
     {
         label: "1940s Hollywood Curls",
         value: "shoulder-length hair styled in glamorous soft Hollywood curls",
-        era: ["1940s"]
+        tags: ["1940s", "pinup"]
     },
     {
         label: "1940s Side-Swept Waves",
         value: "shoulder-length hair styled in glossy side-swept waves with a deep side part",
-        era: ["1940s"]
+        tags: ["1940s", "pinup"]
     },
     {
         label: "1940s Pin Curls",
         value: "hair arranged in carefully sculpted pin curls",
-        era: ["1940s"]
+        tags: ["1940s", "pinup"]
     },
     {
         label: "1940s Rolled Updo",
         value: "hair swept up into a structured 1940s rolled updo",
-        era: ["1940s"]
+        tags: ["1940s", "pinup"]
     },
 
     // =========================================
@@ -195,27 +195,27 @@ const hairstylePresets = [
     {
         label: "1950s Poodle Cut",
         value: "short hair styled in a tightly curled 1950s poodle cut",
-        era: ["1950s"]
+        tags: ["1950s", "pinup"]
     },
     {
         label: "1950s Pageboy",
         value: "smooth shoulder-length pageboy hairstyle with curled-under ends",
-        era: ["1950s"]
+        tags: ["1950s", "pinup"]
     },
     {
         label: "1950s Short Curls",
         value: "short softly curled 1950s hairstyle",
-        era: ["1950s"]
+        tags: ["1950s", "pinup"]
     },
     {
         label: "1950s Ponytail",
         value: "hair pulled into a high 1950s ponytail with softly curled ends",
-        era: ["1950s"]
+        tags: ["1950s", "pinup"]
     },
     {
         label: "1950s Glamour Waves",
         value: "shoulder-length hair styled in polished glamorous waves",
-        era: ["1950s"]
+        tags: ["1950s", "pinup"]
     },
 
     // =========================================
@@ -224,27 +224,27 @@ const hairstylePresets = [
     {
         label: "1960s Beehive",
         value: "hair styled in a tall voluminous 1960s beehive",
-        era: ["1960s"]
+        tags: ["1960s"]
     },
     {
         label: "1960s Bouffant",
         value: "hair styled in a full rounded bouffant with substantial crown volume",
-        era: ["1960s"]
+        tags: ["1960s"]
     },
     {
         label: "1960s Flipped Bob",
         value: "short bob with smooth volume and dramatically flipped-out ends",
-        era: ["1960s"]
+        tags: ["1960s"]
     },
     {
         label: "1960s Mod Bob",
         value: "sleek geometric 1960s mod bob",
-        era: ["1960s"]
+        tags: ["1960s"]
     },
     {
         label: "1960s Long Straight Hair",
         value: "long straight center-parted hair in a late-1960s style",
-        era: ["1960s"]
+        tags: ["1960s"]
     },
 
     // =========================================
@@ -253,27 +253,27 @@ const hairstylePresets = [
     {
         label: "1970s Feathered Hair",
         value: "voluminous feathered 1970s hair with layers swept away from the face",
-        era: ["1970s"]
+        tags: ["1970s"]
     },
     {
         label: "1970s Shag",
         value: "layered 1970s shag haircut with textured feathered ends",
-        era: ["1970s"]
+        tags: ["1970s"]
     },
     {
         label: "1970s Long Center-Parted Hair",
         value: "long naturally flowing hair with a straight center part",
-        era: ["1970s"]
+        tags: ["1970s"]
     },
     {
         label: "1970s Afro",
         value: "full rounded natural 1970s Afro hairstyle",
-        era: ["1970s"]
+        tags: ["1970s"]
     },
     {
         label: "1970s Disco Curls",
         value: "voluminous shoulder-length disco curls",
-        era: ["1970s"]
+        tags: ["1970s"]
     },
 
     // =========================================
@@ -282,27 +282,27 @@ const hairstylePresets = [
     {
         label: "1980s Big Hair",
         value: "huge voluminous 1980s hair with teased roots and dramatic volume",
-        era: ["1980s"]
+        tags: ["1980s"]
     },
     {
         label: "1980s Feathered Hair",
         value: "voluminous layered feathered hair swept dramatically away from the face",
-        era: ["1980s"]
+        tags: ["1980s"]
     },
     {
         label: "1980s Side Ponytail",
         value: "high side ponytail with teased volume",
-        era: ["1980s"]
+        tags: ["1980s"]
     },
     {
         label: "1980s Perm",
         value: "voluminous tightly permed shoulder-length hair",
-        era: ["1980s"]
+        tags: ["1980s"]
     },
     {
         label: "1980s Crimped Hair",
         value: "long voluminous crimped hair with teased volume",
-        era: ["1980s"]
+        tags: ["1980s"]
     },
 
     // =========================================
@@ -311,27 +311,27 @@ const hairstylePresets = [
     {
         label: "1990s Rachel Cut",
         value: "shoulder-length layered blowout with face-framing layers and flipped ends",
-        era: ["1990s"]
+        tags: ["1990s"]
     },
     {
         label: "1990s Pixie Cut",
         value: "short textured 1990s pixie cut",
-        era: ["1950s", "1960s", "1990s", "2000s"]
+        tags: ["1950s", "1960s", "1990s", "2000s"]
     },
     {
         label: "1990s Face-Framing Layers",
         value: "medium-length hair with prominent face-framing layers",
-        era: ["1990s"]
+        tags: ["1990s"]
     },
     {
         label: "1990s High Ponytail",
         value: "high ponytail with loose face-framing strands",
-        era: ["1990s"]
+        tags: ["1990s"]
     },
     {
         label: "1990s Messy Updo",
         value: "casual messy updo with loose face-framing strands",
-        era: ["1990s"]
+        tags: ["1990s"]
     },
 
     // =========================================
@@ -340,27 +340,27 @@ const hairstylePresets = [
     {
         label: "2000s Straight Layers",
         value: "long pin-straight layered hair with face-framing pieces",
-        era: ["2000s"]
+        tags: ["2000s"]
     },
     {
         label: "2000s Side-Swept Bangs",
         value: "long layered hair with dramatic side-swept bangs",
-        era: ["2000s"]
+        tags: ["2000s"]
     },
     {
         label: "2000s Chunky Layers",
         value: "long layered hair with chunky face-framing sections",
-        era: ["2000s"]
+        tags: ["2000s"]
     },
     {
         label: "2000s Messy Bun",
         value: "casual messy bun with loose face-framing strands",
-        era: ["2000s"]
+        tags: ["2000s"]
     },
     {
         label: "2000s Crimped Hair",
         value: "long partially crimped hair with pronounced textured waves",
-        era: ["2000s"]
+        tags: ["2000s"]
     }
 ];
 
@@ -393,73 +393,73 @@ const specificBodyPresets = [
 ];
 
 const outfitPresets = [
-    { label: "Nude", value: "nude" },
-    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", era: ["1940s"] },
-    { label: "Bra & Panties", value: "a bra and panties, barefoot" },
+    { label: "Nude", value: "nude", tags: ["pinup", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s"] },
+    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", tags: ["1940s", "1990s", "2000s", "pinup"] },
+    { label: "Bra & Panties", value: "a bra and panties, barefoot", tags: ["pinup"] },
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
-    { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels" },
-    { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots" },
-    { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt tied around her torso, very short cutoff jean shorts and cowboy boots" },
-    { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts" },
+    { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels", tags: ["pinup"] },
+    { label: "Bikini, Leather Boots", value: "a string bikini with thigh-high leather boots", tags: ["1960s"] },
+    { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt tied around her torso, very short cutoff jean shorts and cowboy boots", tags: ["1980s", "1990s"] },
+    { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts", tags: ["pinup", "1940s", "1950s", "2000s"] },
     { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
-    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels" },
-    { label: "Unbuttoned Mens Dress Shirt", value: "an unbuttoned mens dress shirt" },
-    { label: "Tank Top, Wrap-Around Skirt", value: "a tank top and a wrap-around skirt" },
-    { label: "Short Babydoll Dress, Cowboy Boots", value: "a short babydoll dress with cowboy boots" },
-    { label: "Racy Sexy Wedding Dress", value: "a racy sexy wedding dress" },
-    { label: "Full-Length Wedding Gown", value: "a full-length evening gown" },
+    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels", tags: ["1930s", "1940s", "1950s", "2000s", "pinup"] },
+    { label: "Unbuttoned Mens Dress Shirt", value: "an unbuttoned mens dress shirt", tags: ["pinup", "1940s", "1950s", "1960s", "1990s", "2000s"] },
+    { label: "Tank Top, Wrap-Around Skirt", value: "a tank top and a wrap-around skirt", tags: ["1990s", "2000s"] },
+    { label: "Short Babydoll Dress, Cowboy Boots", value: "a short babydoll dress with cowboy boots", tags: ["2000s"] },
+    { label: "Racy Sexy Wedding Dress", value: "a racy sexy wedding dress", tags: ["2000s"] },
+    { label: "Full-Length Wedding Gown", value: "a full-length evening gown", tags: ["1920s", "1930s", "1940s", "1950s", "2000s"] },
     { label: "Lowcut Full-Length Chiffon Dress with Side Pockets", value: "a lowcut full-length chiffon dress with side pockets" },
     { label: "Long Dress with a Slit Down the Side", value: "cut-out dress with a side slit from her waist down" },
-    { label: "French Maid Uniform", value: "black French maid uniform with short pleated skirt and white collar and stiletto heels" },
+    { label: "French Maid Uniform", value: "black French maid uniform with short pleated skirt and white collar and stiletto heels", tags: ["pinup"] },
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
-    { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
-    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders", era: ["1940s"] },
-    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: ["1940s"] },
-    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: ["1940s"] },
-    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: ["1940s"] },
-    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", era: ["1960s"] },
-    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", era: ["1960s"] },
-    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", era: ["1960s"] },
-    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", era: ["1960s"] },
-    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", era: ["1960s"] }
+    { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap", tags: ["pinup"] },
+    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders", tags: ["1940s"] },
+    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", tags: ["1940s"] },
+    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", tags: ["1940s"] },
+    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", tags: ["1940s"] },
+    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", tags: ["1960s"] },
+    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", tags: ["1960s"] },
+    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", tags: ["1960s"] },
+    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", tags: ["1960s"] },
+    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", tags: ["1960s"] }
 ];
 
 const actionPresets = [
-    { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body" },
-    { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape" },
-    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, era: ["2000s"] },
+    { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body", tags: ["pinup"] },
+    { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape", tags: ["pinup"] },
+    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s"] },
     { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
-    { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips" },
-    { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait" },
-    { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatio: "portrait" },
-    { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera" },
-    { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera" },
-    { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her" },
+    { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips", tags: ["pinup"] },
+    { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatio: "portrait", tags: ["pinup", "boudoir"] },
+    { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatio: "portrait", tags: ["boudoir"] },
+    { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera", tags: ["pinup", "boudoir"] },
+    { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera", tags: ["pinup", "boudoir"] },
+    { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her", tags: ["boudoir"] },
     { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", lowAngleRequired: true, aspectRatio: "landscape" },
     { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" },
-    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise", aspectRatio: "square" },
+    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise", aspectRatio: "square", tags: ["pinup"] },
     { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up", nudeRequired: true },
     { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down", nudeRequired: true },
     { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies", nudeRequired: true },
-    { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face." },
-    { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward." },
-    { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame." },
-    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked", aspectRatio: "square" },
-    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs" },
-    { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back." },
-    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatio: "landscape" },
-    { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor" },
-    { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor" },
-    { label: "Ass Spread", value: "She is on her knees facing away with her face down low, looking back while reaching back to spread her ass cheeks apart", pantiesPulledDown: true },
-    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, nude, wearing a long pearl necklace", nudeRequired: true, aspectRatio: "portrait" },
-    { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera" },
-    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatio: "square" },
-    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true },
-    { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror" },
-    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up", aspectRatio: "portrait" },
-    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection", aspectRatio: "square" },
-    { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera." },
+    { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.", tags: ["boudoir"] },
+    { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.", tags: ["pinup", "boudoir"] },
+    { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.", tags: ["pinup", "boudoir"] },
+    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked", aspectRatio: "square", tags: ["pinup", "boudoir"] },
+    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs", tags: ["pinup", "boudoir"] },
+    { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.", tags: ["pinup", "boudoir"] },
+    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatio: "landscape", tags: ["pinup", "boudoir"] },
+    { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor", tags: ["pinup", "boudoir"] },
+    { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor", tags: ["pinup", "boudoir"] },
+    // { label: "Ass Spread", value: "She is on her knees facing away with her face down low, looking back while reaching back to spread her ass cheeks apart", pantiesPulledDown: true },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", tags: ["boudoir", "portrait"] },
+    { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera", tags: ["boudoir"] },
+    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatio: "square", tags: ["boudoir"] },
+    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true, tags: ["pinup", "boudoir"] },
+    { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror", tags: ["2000s"] },
+    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up", aspectRatio: "portrait", tags: ["pinup", "boudoir"] },
+    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection", aspectRatio: "square", tags: ["boudoir"] },
+    { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.", tags: ["pinup", "boudoir"] },
     { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." },
     { label: "Getting Poked in the Eye", value: "kneeling in front of a standing man's nude body. He is sticking the tip of his erect penis in her eye as she squints her eyes in an aggravated expression" }
 ];
@@ -467,22 +467,20 @@ const actionPresets = [
 const environments = [
     { label: "None selected", value: "" },
 
-    { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains" },
-    { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains" },
+    { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains", tags: ["pinup", "boudoir"] },
+    { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains", tags: ["pinup", "boudoir"] },
     { label: "in the backseat of a car", value: "in the backseat of a car" },
     { label: "in a surgical theatre", value: "in a well-lit surgical theater with two surgical tables covered in blue paper, a large overhead lamp and numerous surgical machines" },
     { label: "in a crowded city street", value: "in a crowded city street with cars driving by and people walking along the sidewalks" },
     { label: "in a glade", value: "in a lush glade with doppled sunlight through the canopy of trees" },
-    { label: "on an office desk", value: "on an office desk in a wood-paneled office. Papers are strewn about laying on top of the desk. A tall potted hibiscus sits in a corner of the office" },
-    { label: "at a poolside", value: "near a pool surrounded by lounge chairs" },
-    { label: "on a beach at sunset", value: "on a beach at sunset" },
-    { label: "in a nightclub", value: "in a crowded nightclub, dimly lit with bright neon spotlights" },
-    { label: "in a hotel room", value: "in a hotel room with smoke-stained walls and curtains" },
+    { label: "on an office desk", value: "on an office desk in a wood-paneled office. Papers are strewn about laying on top of the desk. A tall potted hibiscus sits in a corner of the office", tags: ["boudoir"] },
+    { label: "at a poolside", value: "near a pool surrounded by lounge chairs", tags: ["pinup"] },
+    { label: "on a beach at sunset", value: "on a beach at sunset", tags: ["pinup"] },
+    { label: "in a nightclub", value: "in a crowded nightclub, dimly lit with bright neon spotlights", tags: ["1990s", "2000s"] },
+    { label: "in a hotel room", value: "in a hotel room with smoke-stained walls and curtains", tags: ["pinup", "boudoir"] },
     { label: "on a rooftop at night", value: "on the spacious roof of a Manhattan highrise apartment building" },
     { label: "in an elevator", value: "in an elevator" },
-    { label: "in a library", value: "in a softly lit public library surrounded by tall racks of hardcover books" },
-    { label: "in a locker room", value: "in a locker room shower" },
-    { label: "in a doctor's office", value: "in a doctor's office" }
+    { label: "in a library", value: "in a softly lit public library surrounded by tall racks of hardcover books", tags: ["pinup"] }
 ];
 
 const cameraFramingPresets = [
@@ -564,14 +562,14 @@ const photographicLookPresets = [
     { label: "Soft Monochrome", value: "soft monochrome photographic treatment with gentle tonal transitions" },
     { label: "Sepia", value: "warm sepia-toned photographic treatment" },
 
-    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", era: "1930s" },
-    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", era: ["1940s"] },
-    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", era: ["1950s"] },
-    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", era: ["1960s"] },
-    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", era: ["1970s"] },
-    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", era: ["1980s"] },
-    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", era: ["1990s"] },
-    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", era: ["2000s"] }
+    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: "1930s" },
+    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", tags: ["1940s"] },
+    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", tags: ["1950s"] },
+    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", tags: ["1960s"] },
+    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", tags: ["1970s"] },
+    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", tags: ["1980s"] },
+    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", tags: ["1990s"] },
+    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", tags: ["2000s"] }
 ];
 
 
@@ -871,11 +869,11 @@ async function generateBatch() {
     // ERA COMPATIBILITY
     // =========================================
 
-    if (artStyle.era) {
+    if (artStyle.tags) {
 
         const eraOutfits = outfitPresets.filter(outfit =>
-            outfit.era &&
-            outfit.era.some(era => artStyle.era.includes(era))
+            outfit.tags &&
+            outfit.tags.some(era => artStyle.tags.includes(era))
         );
 
         if (eraOutfits.length > 0) {
@@ -884,8 +882,8 @@ async function generateBatch() {
 
 
         const eraHairstyles = hairstylePresets.filter(hair =>
-            hair.era &&
-            hair.era.some(era => artStyle.era.includes(era))
+            hair.tags &&
+            hair.tags.some(era => artStyle.era.includes(tags))
         );
 
         if (eraHairstyles.length > 0) {
