@@ -133,7 +133,7 @@ const hairstylePresets = [
     {
         label: "1920s Flapper Bob",
         value: "chin-length 1920s flapper bob with sleek sculpted finger waves",
-        era: "1920s"
+        era: ["1920s"]
     },
 
     // =========================================
@@ -142,22 +142,22 @@ const hairstylePresets = [
     {
         label: "1930s Finger Waves",
         value: "short hair styled in sculpted finger waves",
-        era: "1930s"
+        era: ["1930s"]
     },
     {
         label: "1930s Marcel Waves",
         value: "shoulder-length hair styled in soft Marcel waves",
-        era: "1930s"
+        era: ["1930s"]
     },
     {
         label: "1930s Side-Parted Waves",
         value: "medium-length hair with a deep side part and smooth sculpted waves",
-        era: "1930s"
+        era: ["1930s"]
     },
     {
         label: "1930s Wavy Bob",
         value: "chin-length bob styled in soft polished waves",
-        era: "1930s"
+        era: ["1930s"]
     },
 
     // =========================================
@@ -414,7 +414,7 @@ const outfitPresets = [
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap" },
-    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle", era: ["1940s"] },
+    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders", era: ["1940s"] },
     { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", era: ["1940s"] },
     { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", era: ["1940s"] },
     { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", era: ["1940s"] },
@@ -770,6 +770,7 @@ async function generateBatch() {
     let isPregnant;
     let isMidget;
     let hairColor;
+    let hairStyle;
     let skinTone;
     let age;
     let eyeColor;
@@ -870,23 +871,29 @@ async function generateBatch() {
 
     let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
 
+    // =========================================
+    // ERA COMPATIBILITY
+    // =========================================
+
     if (artStyle.era) {
-        const eraOutfits = outfitPresets.filter(
-            outfit => outfit.era === artStyle.era
+
+        const eraOutfits = outfitPresets.filter(outfit =>
+            outfit.era &&
+            outfit.era.some(era => artStyle.era.includes(era))
         );
 
         if (eraOutfits.length > 0) {
             outfit = randomize(eraOutfits).value;
         }
-    }
 
-    if (artStyle.era) {
-        const eraHair = hairstylePresets.filter(
-            hair => hair.era.includes(artStyle.era)
+
+        const eraHairstyles = hairstylePresets.filter(hair =>
+            hair.era &&
+            hair.era.some(era => artStyle.era.includes(era))
         );
 
-        if (eraHair.length > 0) {
-            hairColor = randomize(eraHair).value;
+        if (eraHairstyles.length > 0) {
+            hairStyle = randomize(eraHairstyles).value;
         }
     }
 
@@ -898,7 +905,9 @@ async function generateBatch() {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair in a " + eraHair + " style and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair, " +
+            (hairStyle ? hairStyle + ", " : "") +
+            nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
