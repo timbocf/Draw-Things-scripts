@@ -898,7 +898,7 @@ async function generateBatch() {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair in a " + eraHair.value + " style and " + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
     console.log(imagePrompt);
