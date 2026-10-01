@@ -16,7 +16,7 @@ const artStylePresets = [
     { label: "Photo", value: "photo" },
     { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
     { label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
-    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", tags: ["1940s", "pinup"] },
+    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", tags: ["1940s", "pinup"], concept: "pinup" },
     { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
     { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
     { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
@@ -166,27 +166,27 @@ const hairstylePresets = [
     {
         label: "1940s Victory Rolls",
         value: "hair styled in large polished Victory Rolls",
-        tags: ["1940s", "pinup"]
+        tags: ["1940s", "pinup"], concept: "pinup"
     },
     {
         label: "1940s Hollywood Curls",
         value: "shoulder-length hair styled in glamorous soft Hollywood curls",
-        tags: ["1940s", "pinup"]
+        tags: ["1940s", "pinup"], concept: "pinup"
     },
     {
         label: "1940s Side-Swept Waves",
         value: "shoulder-length hair styled in glossy side-swept waves with a deep side part",
-        tags: ["1940s", "pinup"]
+        tags: ["1940s", "pinup"], concept: "pinup"
     },
     {
         label: "1940s Pin Curls",
         value: "hair arranged in carefully sculpted pin curls",
-        tags: ["1940s", "pinup"]
+        tags: ["1940s", "pinup"], concept: "pinup"
     },
     {
         label: "1940s Rolled Updo",
         value: "hair swept up into a structured 1940s rolled updo",
-        tags: ["1940s", "pinup"]
+        tags: ["1940s", "pinup"], concept: "pinup"
     },
 
     // =========================================
@@ -195,27 +195,27 @@ const hairstylePresets = [
     {
         label: "1950s Poodle Cut",
         value: "short hair styled in a tightly curled 1950s poodle cut",
-        tags: ["1950s", "pinup"]
+        tags: ["1950s", "pinup"], concept: "pinup"
     },
     {
         label: "1950s Pageboy",
         value: "smooth shoulder-length pageboy hairstyle with curled-under ends",
-        tags: ["1950s", "pinup"]
+        tags: ["1950s", "pinup"], concept: "pinup"
     },
     {
         label: "1950s Short Curls",
         value: "short softly curled 1950s hairstyle",
-        tags: ["1950s", "pinup"]
+        tags: ["1950s", "pinup"], concept: "pinup"
     },
     {
         label: "1950s Ponytail",
         value: "hair pulled into a high 1950s ponytail with softly curled ends",
-        tags: ["1950s", "pinup"]
+        tags: ["1950s", "pinup"], concept: "pinup"
     },
     {
         label: "1950s Glamour Waves",
         value: "shoulder-length hair styled in polished glamorous waves",
-        tags: ["1950s", "pinup"]
+        tags: ["1950s", "pinup"], concept: "pinup"
     },
 
     // =========================================
@@ -394,7 +394,7 @@ const specificBodyPresets = [
 
 const outfitPresets = [
     { label: "Nude", value: "nude", tags: ["pinup", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s"] },
-    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", tags: ["1940s", "1990s", "2000s", "pinup"] },
+    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", tags: ["1940s", "1990s", "2000s", "pinup"], concept: "pinup" },
     { label: "Bra & Panties", value: "a bra and panties, barefoot", tags: ["pinup"] },
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels", tags: ["pinup"] },
@@ -402,7 +402,7 @@ const outfitPresets = [
     { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt tied around her torso, very short cutoff jean shorts and cowboy boots", tags: ["1980s", "1990s"] },
     { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts", tags: ["pinup", "1940s", "1950s", "2000s"] },
     { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
-    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels", tags: ["1930s", "1940s", "1950s", "2000s", "pinup"] },
+    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels", tags: ["1930s", "1940s", "1950s", "2000s", "pinup"], concept: "pinup" },
     { label: "Unbuttoned Mens Dress Shirt", value: "an unbuttoned mens dress shirt", tags: ["pinup", "1940s", "1950s", "1960s", "1990s", "2000s"] },
     { label: "Tank Top, Wrap-Around Skirt", value: "a tank top and a wrap-around skirt", tags: ["1990s", "2000s"] },
     { label: "Short Babydoll Dress, Cowboy Boots", value: "a short babydoll dress with cowboy boots", tags: ["2000s"] },
@@ -452,7 +452,7 @@ const actionPresets = [
     { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor", tags: ["pinup", "boudoir"] },
     { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor", tags: ["pinup", "boudoir"] },
     // { label: "Ass Spread", value: "She is on her knees facing away with her face down low, looking back while reaching back to spread her ass cheeks apart", pantiesPulledDown: true },
-    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", tags: ["boudoir", "portrait"] },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", aspectRatio: "portrait", tags: ["boudoir"] },
     { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera", tags: ["boudoir"] },
     { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatio: "square", tags: ["boudoir"] },
     { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true, tags: ["pinup", "boudoir"] },
@@ -562,7 +562,7 @@ const photographicLookPresets = [
     { label: "Soft Monochrome", value: "soft monochrome photographic treatment with gentle tonal transitions" },
     { label: "Sepia", value: "warm sepia-toned photographic treatment" },
 
-    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: "1930s" },
+    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: ["1930s"] },
     { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", tags: ["1940s"] },
     { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", tags: ["1950s"] },
     { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", tags: ["1960s"] },
@@ -834,26 +834,7 @@ async function generateBatch() {
         action = actionPresets[promptSelections[9][0] - 1];
     }
 
-    if (action.lowAngleRequired === true) {
-        cameraAngle = cameraAnglePresets.find(style => style.label === "Low Angle");
-    }
-
-    if (action.pantiesPulledDown === true) {
-        // outfit = "a bra, panties and thigh-high stockings";
-        outfit += " and panties pulled down to mid-thigh";
-    }
-
-    if (action.selfiePhoto === true) {
-        artStyle = artStylePresets.find(style => style.label === "Selfie Photo, from Above");
-    }
-
     environment = environments[promptSelections[10][0]];
-
-    if (action.forcedEnvironment === "doctor") {
-        environment = environments.find(
-            item => item.label === "in a doctor's office"
-        );
-    }
 
     const cameraLightingPrompt = [
         cameraFraming,
@@ -871,28 +852,58 @@ async function generateBatch() {
 
     if (artStyle.tags) {
 
-        const eraOutfits = outfitPresets.filter(outfit =>
+        const compatibleOutfits = outfitPresets.filter(outfit =>
             outfit.tags &&
-            outfit.tags.some(era => artStyle.tags.includes(era))
+            outfit.tags.includes(artStyle.concept)
         );
 
-        if (eraOutfits.length > 0) {
-            outfit = randomize(eraOutfits).value;
+        if (compatibleOutfits.length > 0) {
+            outfit = randomize(compatibleOutfits).value;
         }
 
 
-        const eraHairstyles = hairstylePresets.filter(hair =>
+        const compatibleHairstyles = hairstylePresets.filter(hair =>
             hair.tags &&
-            hair.tags.some(era => artStyle.era.includes(tags))
+            hair.tags.includes(artStyle.concept)
         );
 
-        if (eraHairstyles.length > 0) {
-            hairStyle = randomize(eraHairstyles).value;
+        if (compatibleHairstyles.length > 0) {
+            hairStyle = randomize(compatibleHairstyles).value;
         }
     }
 
-    if (action.nudeRequired === true) {
+    const compatibleActions = actionPresets.filter(action =>
+        action.tags &&
+        action.tags.includes(artStyle.concept)
+    )
+
+    if (compatibleActions.length > 0) {
+        action = randomize(compatibleActions).value;
+    }
+
+    const compatibleEnvironments = environments.filter(environment =>
+        environment.tags &&
+        environment.tags.includes(artStyle.concept)
+    )
+
+    if (compatibleEnvironments.length > 0) {
+        environment = randomize(compatibleEnvironments).value;
+    }
+
+    if (action.tags && action.tags.includes("nudeRequired")) {
         outfit = "nude";
+    }
+
+    if (action.tags && action.tags.includes("lowAngleRequired")) {
+        cameraAngle = cameraAnglePresets.find(
+            angle => angle.label === "Low Angle"
+        );
+    }
+
+    if (action.tags && action.tags.includes("selfiePhoto")) {
+        artStyle = artStylePresets.find(
+            style => style.label === "Selfie Photo, from Above"
+        );
     }
 
     // PROMPT TEMPLATE
