@@ -828,12 +828,11 @@ async function generateBatch() {
         outfit = outfitPresets[promptSelections[8][0] - 1].value;
     }
 
-    /*
     if (promptSelections[9][0] === 0) {
         action = randomize(actionPresets);
     } else {
         action = actionPresets[promptSelections[9][0] - 1];
-    }*/
+    }
 
     environment = environments[promptSelections[10][0]];
 
