@@ -452,7 +452,7 @@ const actionPresets = [
     { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatios: ["landscape", "square"], tags: ["pinup", "boudoir"] },
     { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor", tags: ["pinup", "boudoir"] },
     { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor", tags: ["pinup", "boudoir"] },
-    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", aspectRatio: ["portrait", "square"], tags: ["boudoir"] },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", aspectRatios: ["portrait", "square"], tags: ["boudoir"] },
     { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera", tags: ["boudoir"] },
     { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatios: ["square"], tags: ["boudoir"] },
     { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true, tags: ["pinup", "boudoir"], environmentTags: ["kitchen"] },
