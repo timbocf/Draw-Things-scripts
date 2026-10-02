@@ -426,6 +426,7 @@ const outfitPresets = [
 ];
 
 const actionPresets = [
+	{ label: "sitting on the floor, knees drawn up", value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.", tags: ["1940s", "pinup"], concept: "pinup" },
     { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body", tags: ["pinup"] },
     { label: "laying on a beach", value: "laying on a beach", aspectRatio: "landscape", tags: ["pinup"] },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s"] },
@@ -878,7 +879,7 @@ async function generateBatch() {
     )
 
     if (compatibleActions.length > 0) {
-        action = randomize(compatibleActions).value;
+        action = randomize(compatibleActions);
     }
 
     const compatibleEnvironments = environments.filter(environment =>
@@ -887,7 +888,7 @@ async function generateBatch() {
     )
 
     if (compatibleEnvironments.length > 0) {
-        environment = randomize(compatibleEnvironments).value;
+        environment = randomize(compatibleEnvironments);
     }
 
     if (action.tags && action.tags.includes("nudeRequired")) {
