@@ -828,11 +828,12 @@ async function generateBatch() {
         outfit = outfitPresets[promptSelections[8][0] - 1].value;
     }
 
+    /*
     if (promptSelections[9][0] === 0) {
         action = randomize(actionPresets);
     } else {
         action = actionPresets[promptSelections[9][0] - 1];
-    }
+    }*/
 
     environment = environments[promptSelections[10][0]];
 
@@ -872,6 +873,7 @@ async function generateBatch() {
         }
     }
 
+    /*
     const compatibleActions = actionPresets.filter(action =>
         action.tags &&
         action.tags.includes(artStyle.concept)
@@ -879,6 +881,17 @@ async function generateBatch() {
 
     if (compatibleActions.length > 0) {
         action = randomize(compatibleActions);
+    }*/
+    if (promptSelections[9][0] === 0 && artStyle.concept) {
+
+        const compatibleActions = actionPresets.filter(action =>
+            action.tags &&
+            action.tags.includes(artStyle.concept)
+        );
+
+        if (compatibleActions.length > 0) {
+            action = randomize(compatibleActions);
+        }
     }
 
     const compatibleEnvironments = environments.filter(environment =>
