@@ -393,7 +393,7 @@ const specificBodyPresets = [
 ];
 
 const outfitPresets = [
-    { label: "Nude", value: "nude", tags: ["pinup", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s"] },
+    { label: "Nude", value: "nude" },
     { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", tags: ["1940s", "1990s", "2000s", "pinup"], concept: "pinup" },
     { label: "Bra & Panties", value: "a bra and panties, barefoot", tags: ["pinup"] },
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
