@@ -882,9 +882,11 @@ async function generateBatch() {
     }
 
     const compatibleEnvironments = environments.filter(environment =>
-        environment.tags &&
-        environment.tags.includes(artStyle.concept)
-    )
+        environment.environmentTags &&
+        action.environmentTags.some(tag =>
+            environment.environmentTags.includes(tag)
+        )
+    );
 
     if (compatibleEnvironments.length > 0) {
         environment = randomize(compatibleEnvironments);
