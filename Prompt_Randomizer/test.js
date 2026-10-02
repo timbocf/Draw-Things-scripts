@@ -1,4 +1,6 @@
-// Helper Functions
+// ===============================
+// HELPER FUNCTIONS
+// ===============================
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
 };
@@ -18,10 +20,17 @@ function formatList(array) {
     }
 }
 
-// Person Presets
+// ===============================
+// PERSON PRESETS
+// ===============================
 const personAgePresets = [
     18, 20, 25, 30, 35, 40
 ]
+const nationalityPresets = [
+    "Japanese",
+    "Caucasian",
+    "Black"
+];
 const outfitPresets = [
     "an oversized t-shirt and faded blue jeans",
     "an oversized hoodie and gym shorts",
@@ -34,7 +43,9 @@ const personActionPresets = [
     "driving"
 ]
 
-// Vehicle Presets
+// ================================
+// VEHICLE PRESETS
+// ================================
 const vehicleColorPresets = [
     "Vantablack", "camo pattern", "candy apple red", "fire engine red", "royal blue"
 ]
@@ -45,7 +56,9 @@ const vehicleModelPresets = [
     "Tesla", "Ford Mustang", "Corvette", "Hummer"
 ]
 
-// Animal Presets
+// =================================
+// ANIMAL PRESETS
+// =================================
 const animalAgePresets = [
     1, 5, 8, 10, 15
 ]
@@ -62,7 +75,32 @@ const animalActionPresets = [
     "jumping"
 ]
 
+// =================================
+// ACTION PRESETS
+// =================================
+const scenarioPresets = [
+    {
+        value: "posing together in a parking lot",
+        requires: [Vehicle]
+    },
+    {
+        value: "driving down a highway",
+        requires: [Person, Vehicle]
+    },
+    {
+        value: "playing together in a grassy field",
+        requires: [Animal]
+    },
+    {
+        value: "walking a dog through a park",
+        requires: [Person, Animal]
+    }
+];
 
+
+// ==================================
+// CONSTRUCTOR CLASSES
+// ==================================
 class Entity {
     constructor() {
         this.action = null;
@@ -137,6 +175,7 @@ class Scene {
         this.subjects = [];
         this.vehicle = [];
         this.animals = [];
+        this.scenario = null;
     }
     generate() {
         const entityTypes = [
@@ -171,6 +210,9 @@ class Scene {
                 this.animals.push(entity);
             }
         }
+    }
+    chooseScenario() {
+
     }
     describe() {
         this.checkEntities();
@@ -226,12 +268,6 @@ class Scene {
         return sceneDescription;
     }
 }
-
-const nationalityPresets = [
-    "Japanese",
-    "Caucasian",
-    "Black"
-];
 
 const scene1 = new Scene;
 scene1.generate();
