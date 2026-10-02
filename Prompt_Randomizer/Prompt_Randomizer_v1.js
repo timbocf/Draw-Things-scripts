@@ -950,7 +950,7 @@ async function generateBatch() {
     }
 
     if (action.aspectRatios) {
-        aspectRatio = randomize(aspectRatios);
+        aspectRatio = randomize(action.aspectRatios);
     }
 
     if (aspectRatio === "portrait") {
