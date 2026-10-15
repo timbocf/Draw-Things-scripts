@@ -468,7 +468,19 @@ const scenePresets = [
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s", "festival"] },
     { label: "Bedroom, Early Morning", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.", tags: ["bedroom"] },
     { label: "Woodland Glade — Dappled Sunlight", value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere." },
-
+    { label: "Vintage Motel Pool — Blue Hour", value: "Beside a deserted roadside motel swimming pool just after sunset. Fading blue twilight, warm motel-room windows, reflections of a flickering neon sign across the water, nostalgic cinematic color grading." },
+    { label: "Golden-Hour Meadow", value: "Standing among tall wild grasses at sunset. Low golden sunlight shining through the grass, strong warm backlighting, delicate rim light around the subject's hair, long shadows and a softly glowing background." },
+    { label: "Rainy City Street — Neon Reflections", value: "On a rain-soaked downtown sidewalk at night. Colorful neon signs reflecting in puddles, wet pavement, blurred headlights in the distance, cool blue shadows contrasting with pink and red storefront lighting." },
+    { label: "Bedroom — Venetian Blind Shadows", value: "Inside a modest bedroom in the late afternoon. Strong sunlight passes through partially closed Venetian blinds, projecting narrow parallel bands of light and shadow across the walls, furniture, and subject. Dramatic directional lighting and warm muted colors." },
+    { label: "1950s Diner — After Midnight", value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette." },
+    { label: "Apartment Window — Soft Backlight", value: "Inside an old apartment beside a tall window covered with sheer white curtains. Bright overcast daylight diffuses through the fabric, softly backlighting the subject. Gentle shadows, pale neutral tones, intimate natural-light photography." },
+    { label: "Vintage Dressing Room — Vanity Bulbs", value: "Inside a vintage theater dressing room. An ornate vanity mirror surrounded by warm incandescent bulbs, cosmetics scattered across the tabletop, velvet curtains, soft golden light reflected in the mirror, classic Hollywood glamour photography." },
+    { label: "Dusty Attic — Sunbeams", value: "Shafts of sunlight entering through a small attic window, illuminating suspended dust particles and old wooden furniture." },
+    { label: "Greenhouse — Diffused Glass Light", value: "Dense tropical foliage, condensation on glass panes, soft filtered daylight and green reflections." },
+    { label: "Desert Highway — Twilight", value: "Empty roadside, distant mountains, dusty pink horizon, fading blue ambient light and cinematic wide-angle composition." },
+    { label: "Old Hotel Hallway - Tungsten Lighting", value: "Long narrow hallway, patterned carpet, warm wall sconces and dramatic perspective lines." },
+    { label: "Rooftop — Windy Overcast Day", value: "Urban skyline, windblown hair and clothing, soft gray directional daylight, subdued colors." },
+    { label: "Retro Laundromat — Fluorescent Lighting", value: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere." }
 ]
 
 const environments = [
