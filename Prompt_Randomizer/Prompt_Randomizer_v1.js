@@ -429,7 +429,6 @@ const actionPresets = [
     { label: "sitting on the floor, knees drawn up", value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.", tags: ["1940s", "pinup"], concept: "pinup" },
     { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body", tags: ["pinup"], environmentTags: ["bedroom"] },
     { label: "laying on a beach", value: "laying on a beach", aspectRatios: ["landscape", "square"], tags: ["pinup"], environmentTags: ["beach"] },
-    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s"] },
     { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
     { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips", tags: ["pinup"] },
     { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatios: ["portrait", "square"], tags: ["pinup", "boudoir"] },
@@ -463,6 +462,14 @@ const actionPresets = [
     { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." },
     { label: "Getting Poked in the Eye", value: "kneeling in front of a standing man's nude body. He is sticking the tip of his erect penis in her eye as she squints her eyes in an aggravated expression" }
 ];
+
+const scenePresets = [
+    { label: "None selected", value: "" },
+    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s", "festival"] },
+    { label: "Bedroom, Early Morning", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.", tags: ["bedroom"] },
+    { label: "in the backseat of a car", value: "in the backseat of a car. Deep shadows, minimal light, chiriascuro shading." },
+
+]
 
 const environments = [
     { label: "None selected", value: "" },
@@ -698,6 +705,18 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
+        // Scene Presets
+        this.section(
+            "Scene Presets",
+            "Select from preselected environment, camera and lighting controls:",
+            [
+                this.menu(0, [
+                    "Random Selection",
+                    ...scenePresets.map(item => item.label)
+                ])
+            ]
+        ),
+
         // Environment
         this.section(
             "Environment",
@@ -774,12 +793,13 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let environment;
-    let cameraFraming = cameraFramingPresets[promptSelections[11][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[12][0]];
-    let timeOfDay = timeOfDayPresets[promptSelections[13][0]].value;
-    let lighting = lightingPresets[promptSelections[14][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[15][0]].value;
+    let scenePreset = scenePresets[promptSelections[10][0] - 1];
+    let environment = environments[promptSelections[11][0]];
+    let cameraFraming = cameraFramingPresets[promptSelections[12][0]].value;
+    let cameraAngle = cameraAnglePresets[promptSelections[13][0]];
+    let timeOfDay = timeOfDayPresets[promptSelections[14][0]].value;
+    let lighting = lightingPresets[promptSelections[15][0]].value;
+    let photographicLook = photographicLookPresets[promptSelections[16][0]].value;
 
     if (promptSelections[3][0] === 0) {
         artStyle = randomize(artStylePresets);
@@ -834,17 +854,9 @@ async function generateBatch() {
         action = actionPresets[promptSelections[9][0] - 1];
     }
 
-    environment = environments[promptSelections[10][0]];
-
-    const cameraLightingPrompt = [
-        cameraFraming,
-        cameraAngle.value,
-        timeOfDay,
-        lighting,
-        photographicLook
-    ].filter(Boolean).join(", ");
-
-    let optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+    if (promptSelections[10][0] === 0) {
+        scenePreset = randomize(scenePresets);
+    }
 
     // =========================================
     // ERA COMPATIBILITY
@@ -872,15 +884,6 @@ async function generateBatch() {
         }
     }
 
-    /*
-    const compatibleActions = actionPresets.filter(action =>
-        action.tags &&
-        action.tags.includes(artStyle.concept)
-    )
-
-    if (compatibleActions.length > 0) {
-        action = randomize(compatibleActions);
-    }*/
     if (promptSelections[9][0] === 0 && artStyle.concept) {
 
         const compatibleActions = actionPresets.filter(action =>
@@ -893,20 +896,7 @@ async function generateBatch() {
         }
     }
 
-    const compatibleEnvironments = environments.filter(environment =>
-        environment.environmentTags &&
-        action.environmentTags.some(tag =>
-            environment.environmentTags.includes(tag)
-        )
-    );
-
-    if (compatibleEnvironments.length > 0) {
-        environment = randomize(compatibleEnvironments);
-    }
-
-    if (action.tags && action.tags.includes("nudeRequired")) {
-        outfit = "nude";
-    }
+    let optionalPrompt = "";
 
     if (action.tags && action.tags.includes("lowAngleRequired")) {
         cameraAngle = cameraAnglePresets.find(
@@ -914,7 +904,47 @@ async function generateBatch() {
         );
     }
 
-    if (action.tags && action.tags.includes("selfiePhoto")) {
+    const compatibleEnvironments = environments.filter(environment =>
+        action.environmentTags &&
+        environment.tags &&
+        action.environmentTags.some(tag =>
+            environment.tags.includes(tag)
+        )
+    );
+
+    if (compatibleEnvironments.length > 0) {
+        environment = randomize(compatibleEnvironments);
+    }
+
+    if (
+        scenePreset &&
+        (
+            !action.environmentTags ||
+            scenePreset.tags?.some(tag =>
+                action.environmentTags.includes(tag)
+            )
+        )
+    ) {
+        environment = scenePreset;
+    } else {
+
+        const cameraLightingPrompt = [
+            cameraFraming,
+            cameraAngle.value,
+            timeOfDay,
+            lighting,
+            photographicLook
+        ].filter(Boolean).join(", ");
+
+        optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
+
+    }
+
+    if (action.tags && action.tags.includes("nudeRequired")) {
+        outfit = "nude";
+    }
+
+    if (environment === scenePreset && scenePreset?.selfiePhoto) {
         artStyle = artStylePresets.find(
             style => style.label === "Selfie Photo, from Above"
         );
