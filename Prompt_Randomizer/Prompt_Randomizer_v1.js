@@ -465,6 +465,7 @@ const actionPresets = [
 
 const scenePresets = [
     { label: "None selected", value: "" },
+    { label: "Low Angle, Rim Lighting", value: "low-angle, side-view, crouching, looking at the camera, rim lighting" },
     { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s", "festival"] },
     { label: "Bedroom, Early Morning", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.", tags: ["bedroom"] },
     { label: "Woodland Glade — Dappled Sunlight", value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere." },
