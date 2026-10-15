@@ -75,29 +75,6 @@ const animalActionPresets = [
     "jumping"
 ]
 
-// =================================
-// ACTION PRESETS
-// =================================
-const scenarioPresets = [
-    {
-        value: "posing together in a parking lot",
-        requires: [Vehicle]
-    },
-    {
-        value: "driving down a highway",
-        requires: [Person, Vehicle]
-    },
-    {
-        value: "playing together in a grassy field",
-        requires: [Animal]
-    },
-    {
-        value: "walking a dog through a park",
-        requires: [Person, Animal]
-    }
-];
-
-
 // ==================================
 // CONSTRUCTOR CLASSES
 // ==================================
@@ -268,6 +245,28 @@ class Scene {
         return sceneDescription;
     }
 }
+
+// =================================
+// ACTION PRESETS
+// =================================
+const scenarioPresets = [
+    {
+        value: "posing together in a parking lot",
+        requires: [Vehicle]
+    },
+    {
+        value: "driving down a highway",
+        requires: [Person, Vehicle]
+    },
+    {
+        value: "playing together in a grassy field",
+        requires: [Animal]
+    },
+    {
+        value: "walking a dog through a park",
+        requires: [Person, Animal]
+    }
+];
 
 const scene1 = new Scene;
 scene1.generate();
