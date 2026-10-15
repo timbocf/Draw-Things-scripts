@@ -426,53 +426,89 @@ const outfitPresets = [
 ];
 
 const actionPresets = [
-    { label: "sitting on the floor, knees drawn up", value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.", tags: ["1940s", "pinup"], concept: "pinup" },
-    { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body", tags: ["pinup"], environmentTags: ["bedroom"] },
-    { label: "laying on a beach", value: "laying on a beach", aspectRatios: ["landscape", "square"], tags: ["pinup"], environmentTags: ["beach"] },
-    { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera" },
-    { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips", tags: ["pinup"] },
-    { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatios: ["portrait", "square"], tags: ["pinup", "boudoir"] },
-    { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatios: ["portrait", "square"], tags: ["boudoir"] },
-    { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera", tags: ["pinup", "boudoir"], environmentTags: ["bedroom"] },
-    { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera", tags: ["pinup", "boudoir"], environmentTags: ["bedroom"] },
-    { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her", tags: ["boudoir"] },
-    { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", tags: ["lowAngleRequired"], aspectRatios: ["landscape", "square"] },
-    { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile" },
-    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise", aspectRatios: ["square"], tags: ["pinup"] },
-    { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up", tags: ["nudeRequired"], environmentTags: ["shower"] },
-    { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down", tags: ["nudeRequired"], environmentTags: ["shower"] },
-    // { label: "Shower, with a Man", value: "standing and rubbing soapy lather all over a man's nude body in the shower with a soapy loofah, water streaming out of the showerhead onto their nude bodies", tags: ["nudeRequired"], environmentTags: ["shower"] },
-    { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.", tags: ["boudoir"], environmentTags: ["bedroom"] },
-    { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.", tags: ["pinup", "boudoir"], environmentTags: ["bedroom"] },
-    { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.", tags: ["pinup", "boudoir"], environmentTags: ["bedroom"] },
-    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked", aspectRatios: ["square"], tags: ["pinup", "boudoir"] },
-    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs", tags: ["pinup", "boudoir"] },
-    { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.", tags: ["pinup", "boudoir"] },
-    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatios: ["landscape", "square"], tags: ["pinup", "boudoir"] },
-    { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor", tags: ["pinup", "boudoir"] },
-    { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor", tags: ["pinup", "boudoir"] },
-    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", aspectRatios: ["portrait", "square"], tags: ["boudoir"] },
-    { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera", tags: ["boudoir"] },
-    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatios: ["square"], tags: ["boudoir"] },
-    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true, tags: ["pinup", "boudoir"], environmentTags: ["kitchen"] },
-    { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror", tags: ["2000s"], environmentTags: ["bathroom"] },
-    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up", aspectRatios: ["portrait", "square"], tags: ["pinup", "boudoir"], environmentTags: ["bedroom"] },
-    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection", aspectRatios: ["square"], tags: ["boudoir"], environmentTags: ["bedroom"] },
-    { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.", tags: ["pinup", "boudoir"], environmentTags: ["bathroom"] },
-    { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air." },
-    { label: "Getting Poked in the Eye", value: "kneeling in front of a standing man's nude body. He is sticking the tip of his erect penis in her eye as she squints her eyes in an aggravated expression" }
+    { label: "sitting on the floor, knees drawn up", value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.", aspectRatios: ["square", "portrait", "landscape"], tags: ["1940s", "pinup", "sitting"], concept: "pinup" },
+    { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body", tags: ["pinup", "laying"], environmentTags: ["bedroom"] },
+    { label: "laying on a beach", value: "laying on a beach", aspectRatios: ["landscape", "square"], tags: ["pinup", "laying"], environmentTags: ["beach"] },
+    { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera", tags: ["laying"] },
+    { label: "Standing, Hands on Hips", value: "standing with her feet shoulder-width apart, with her hands on her hips", tags: ["pinup", "standing"] },
+    { label: "Wall Pose, Arms Raised", value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted", aspectRatios: ["portrait", "square"], tags: ["pinup", "boudoir", "standing"] },
+    { label: "Wall Pose, Arms Down", value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.", aspectRatios: ["portrait", "square"], tags: ["boudoir", "standing"] },
+    { label: "Bed Lean, On Elbows", value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera", tags: ["pinup", "boudoir", "standing"], environmentTags: ["bedroom"] },
+    { label: "Bed Lean, Face Down", value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera", tags: ["pinup", "boudoir", "standing"], environmentTags: ["bedroom"] },
+    { label: "On Knees, Facing Camera", value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her", aspectRatios: ["square", "portrait"], tags: ["boudoir", "laying"] },
+    { label: "Deep Squat, From Below", value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees", tags: ["lowAngleRequired", "squatting", "crouching"], aspectRatios: ["landscape", "square"] },
+    { label: "Sitting Cross-Legged", value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile", tags: ["sitting"] },
+    { label: "Shy, Bending Over", value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise", aspectRatios: ["square"], tags: ["pinup", "standing"] },
+    { label: "Shower, From Below", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up", tags: ["nudeRequired", "standing"], environmentTags: ["shower"] },
+    { label: "Shower, From Above", value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down", tags: ["nudeRequired", "standing"], environmentTags: ["shower"] },
+    { label: "Doorway, Foot Up Against Frame", value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.", aspectRatios: ["square", "portrait"], tags: ["boudoir", "standing"], environmentTags: ["bedroom"] },
+    { label: "Doorway, Arms Raised", value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.", aspectRatios: ["square", "portrait"], tags: ["pinup", "boudoir", "standing"], environmentTags: ["bedroom"] },
+    { label: "Doorway, Shyly Touching Lip", value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.", aspectRatios: ["square", "portrait"], tags: ["pinup", "boudoir", "standing"], environmentTags: ["bedroom"] },
+    { label: "Bent Over, Ass Toward the Camera", value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked", aspectRatios: ["square"], tags: ["pinup", "boudoir", "standing"] },
+    { label: "Laying on Her Side", value: "lying on her side, with the top leg bent high, hand lightly between her thighs", tags: ["pinup", "boudoir", "laying"] },
+    { label: "Morning Stretch", value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.", aspectRatios: ["square", "portrait"], tags: ["pinup", "boudoir", "standing"] },
+    { label: "Lying in a Windowsill", value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air", aspectRatios: ["landscape", "square"], tags: ["pinup", "boudoir", "laying"] },
+    { label: "Lying on a Sofa, One Leg Up", value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor", aspectRatios: ["square", "landscape"], tags: ["pinup", "boudoir", "laying"] },
+    { label: "Lying on a Sofa, One Leg on Armrest", value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor", aspectRatios: ["square", "landscape"], tags: ["pinup", "boudoir", "laying"] },
+    { label: "Kneeling in Front of a Fireplace", value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace", aspectRatios: ["portrait", "square"], tags: ["boudoir", "kneeling", "crouching", "sitting"] },
+    { label: "On All Fours, Side View", value: "on all fours, head turned to the side, back arched hard, smiling at the camera", aspectRatios: ["square", "portrait"], tags: ["boudoir", "crouching", "laying"] },
+    { label: "Crawling Toward Camera", value: "crawling toward the camera on all fours", aspectRatios: ["square"], tags: ["boudoir", "crawling"] },
+    { label: "Leaning Over a Kitchen Counter", value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, nude, wearing only a tiny apron.", nudeRequired: true, aspectRatios: ["square", "portrait"], tags: ["pinup", "boudoir", "standing"], environmentTags: ["kitchen"] },
+    { label: "Bathroom Mirror Selfie", value: "taking a selfie in a bathroom mirror", aspectRatios: ["square", "portrait"], tags: ["2000s", "standing"], environmentTags: ["bathroom"] },
+    { label: "Standing, Mirror, Pulling Hair Up", value: "standing in front of a full-length mirror while pulling her hair up", aspectRatios: ["portrait", "square"], tags: ["pinup", "boudoir", "standing"], environmentTags: ["bedroom"] },
+    { label: "Sitting, Mirror", value: "sitting in front of a full-length mirror looking at her reflection", aspectRatios: ["square"], tags: ["boudoir", "sitting"], environmentTags: ["bedroom"] },
+    { label: "Putting on Lipstick, Bathroom", value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.", tags: ["pinup", "boudoir", "standing"], environmentTags: ["bathroom"] },
+    { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air.", aspectRatios: ["square", "portrait", "landscape"], tags: ["standing", "sitting", "crouching"] },
+    { label: "Getting Poked in the Eye", value: "kneeling in front of a standing man's nude body. He is sticking the tip of his erect penis in her eye as she squints her eyes in an aggravated expression", tags: ["kneeling"] }
 ];
 
 const scenePresets = [
     { label: "None selected", value: "" },
-    { label: "Low Angle, Rim Lighting", value: "low-angle, side-view, crouching, looking at the camera, rim lighting" },
-    { label: "Selfie at Coachella", value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.", selfiePhoto: true, tags: ["2000s", "festival"] },
-    { label: "Bedroom, Early Morning", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.", tags: ["bedroom"] },
+    {
+        label: "Low Angle, Rim Lighting",
+        value: "",
+        cameraAngle: ["Low Angle"],
+        cameraFraming: ["Full Body", "3/4 Body"],
+        lighting: ["Rim Lighting", "Backlighting"],
+        timeOfDay: [],
+        photographicLook: [],
+        aspectRatios: ["square"],
+        tags: ["standing", "sitting", "crouching", "kneeling"]
+    },
+    {
+        label: "Selfie at Coachella",
+        value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.",
+        selfiePhoto: true,
+        tags: ["2000s", "festival"]
+    },
+    {
+        label: "Bedroom, Early Morning",
+        value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+        tags: ["bedroom"]
+    },
     { label: "Woodland Glade — Dappled Sunlight", value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere." },
     { label: "Vintage Motel Pool — Blue Hour", value: "Beside a deserted roadside motel swimming pool just after sunset. Fading blue twilight, warm motel-room windows, reflections of a flickering neon sign across the water, nostalgic cinematic color grading." },
-    { label: "Golden-Hour Meadow", value: "Standing among tall wild grasses at sunset. Low golden sunlight shining through the grass, strong warm backlighting, delicate rim light around the subject's hair, long shadows and a softly glowing background." },
+    {
+        label: "Golden-Hour Meadow",
+        value: "Standing among tall wild grasses in a meadow.",
+        cameraAngle: ["Eye Level", "Low Angle"],
+        cameraFraming: ["Full Body", "3/4 Body", "Wide Shot"],
+        timeOfDay: ["Golden Hour"],
+        lighting: ["Backlighting", "Rim Lighting"],
+        photographicLook: [],
+        tags: ["standing", "sitting", "kneeling"]
+    },
     { label: "Rainy City Street — Neon Reflections", value: "On a rain-soaked downtown sidewalk at night. Colorful neon signs reflecting in puddles, wet pavement, blurred headlights in the distance, cool blue shadows contrasting with pink and red storefront lighting." },
-    { label: "Bedroom — Venetian Blind Shadows", value: "Inside a modest bedroom in the late afternoon. Strong sunlight passes through partially closed Venetian blinds, projecting narrow parallel bands of light and shadow across the walls, furniture, and subject. Dramatic directional lighting and warm muted colors." },
+    {
+        label: "Bedroom — Venetian Blind Shadows",
+        value: "Inside a modest bedroom with partially closed Venetian blinds casting narrow bands of sunlight and shadow across the walls and furniture",
+        cameraAngle: ["Eye Level", "3/4 View"],
+        cameraFraming: ["3/4 Body", "Full Body"],
+        timeOfDay: ["Late Afternoon"],
+        lighting: ["Hard Directional Light", "Side Lighting"],
+        photographicLook: [],
+        tags: ["standing", "sitting", "laying", "kneeling"]
+    },
     { label: "1950s Diner — After Midnight", value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette." },
     { label: "Apartment Window — Soft Backlight", value: "Inside an old apartment beside a tall window covered with sheer white curtains. Bright overcast daylight diffuses through the fabric, softly backlighting the subject. Gentle shadows, pale neutral tones, intimate natural-light photography." },
     { label: "Vintage Dressing Room — Vanity Bulbs", value: "Inside a vintage theater dressing room. An ornate vanity mirror surrounded by warm incandescent bulbs, cosmetics scattered across the tabletop, velvet curtains, soft golden light reflected in the mirror, classic Hollywood glamour photography." },
@@ -596,6 +632,18 @@ const photographicLookPresets = [
 
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)];
+}
+
+function getSceneSetting(options, presets) {
+    if (!options || options.length === 0) {
+        return null;
+    }
+
+    const selectedLabel = randomize(options);
+
+    return presets.find(preset =>
+        preset.label === selectedLabel
+    ) || null;
 }
 
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
@@ -806,7 +854,7 @@ async function generateBatch() {
     let overallBuild;
     let outfit;
     let action;
-    let scenePreset = scenePresets[promptSelections[10][0] - 1];
+    let scenePreset;
     let environment = environments[promptSelections[11][0]];
     let cameraFraming = cameraFramingPresets[promptSelections[12][0]].value;
     let cameraAngle = cameraAnglePresets[promptSelections[13][0]];
@@ -868,7 +916,60 @@ async function generateBatch() {
     }
 
     if (promptSelections[10][0] === 0) {
-        scenePreset = randomize(scenePresets);
+        scenePreset = randomize(scenePresets.slice(1));
+    } else {
+        scenePreset = scenePresets[promptSelections[10][0] - 1];
+    }
+
+    // =========================================
+    // SCENE CAMERA & LIGHTING SETTINGS
+    // =========================================
+
+    if (scenePreset) {
+        const sceneFraming = getSceneSetting(
+            scenePreset.cameraFraming,
+            cameraFramingPresets
+        );
+
+        const sceneAngle = getSceneSetting(
+            scenePreset.cameraAngle,
+            cameraAnglePresets
+        );
+
+        const sceneTime = getSceneSetting(
+            scenePreset.timeOfDay,
+            timeOfDayPresets
+        );
+
+        const sceneLighting = getSceneSetting(
+            scenePreset.lighting,
+            lightingPresets
+        );
+
+        const sceneLook = getSceneSetting(
+            scenePreset.photographicLook,
+            photographicLookPresets
+        );
+
+        if (sceneFraming) {
+            cameraFraming = sceneFraming.value;
+        }
+
+        if (sceneAngle) {
+            cameraAngle = sceneAngle;
+        }
+
+        if (sceneTime) {
+            timeOfDay = sceneTime.value;
+        }
+
+        if (sceneLighting) {
+            lighting = sceneLighting.value;
+        }
+
+        if (sceneLook) {
+            photographicLook = sceneLook.value;
+        }
     }
 
     // =========================================
@@ -929,32 +1030,37 @@ async function generateBatch() {
         environment = randomize(compatibleEnvironments);
     }
 
-    if (
-        scenePreset &&
-        (
-            !action.environmentTags ||
-            scenePreset.tags?.some(tag =>
-                action.environmentTags.includes(tag)
-            )
-        )
-    ) {
+    // ========================================
+    // SCENE ENVIRONMENT
+    // ========================================
+
+    if (scenePreset?.value) {
         environment = scenePreset;
-    } else {
-
-        const cameraLightingPrompt = [
-            cameraFraming,
-            cameraAngle.value,
-            timeOfDay,
-            lighting,
-            photographicLook
-        ].filter(Boolean).join(", ");
-
-        optionalPrompt = cameraLightingPrompt ? " " + cameraLightingPrompt + "." : "";
-
     }
+
+    // ========================================
+    // CAMERA & LIGHTING PROMPT
+    // ========================================
+
+    const cameraLightingPrompt = [
+        cameraFraming,
+        cameraAngle?.value,
+        timeOfDay,
+        lighting,
+        photographicLook
+    ].filter(Boolean).join(", ");
+
+    optionalPrompt = cameraLightingPrompt
+        ? " " + cameraLightingPrompt + "."
+        : "";
 
     if (action.tags && action.tags.includes("nudeRequired")) {
         outfit = "nude";
+    }
+
+    // sitting, kneeling, crouching, laying, standing
+    if (action.tags === scenePreset.tags) {
+
     }
 
     if (environment === scenePreset && scenePreset?.selfiePhoto) {
