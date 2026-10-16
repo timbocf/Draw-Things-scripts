@@ -690,7 +690,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Art Style",
             "Select the artistic medium: ",
             [
-                this.menu(0, [
+                this.menu(1, [
                     "Random Selection",
                     ...artStylePresets.map(item => item.label)
                 ])
