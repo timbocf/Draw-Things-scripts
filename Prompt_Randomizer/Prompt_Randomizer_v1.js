@@ -12,7 +12,7 @@ const imageCounts = [1, 3, 5, 10, 20];
 
 let gender = "woman";
 
-const artStylePresets = [
+const visualPresets = [
     { label: "Photo", value: "photo" },
     { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
     { label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },

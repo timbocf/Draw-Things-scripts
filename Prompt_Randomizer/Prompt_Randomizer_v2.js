@@ -12,22 +12,145 @@ const imageCounts = [1, 3, 5, 10, 20];
 
 let gender = "woman";
 
+
+// ART STYLE
 const artStylePresets = [
     { label: "Photo", value: "photo" },
-    { label: "Selfie Photo, from Above", value: "birds-eye selfie photo looking down at" },
-    { label: "Selfie Photo, Eye Level", value: "dutch angle selfie photo" },
-    { label: "1940s Pinup", value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas", tags: ["1940s", "pinup"], concept: "pinup" },
-    { label: "Disney/Pixar Animation", value: "Disney-Pixar style animation with exaggerated features and expressions: large expressive eyes, small noses" },
-    { label: "Claymation", value: "Claymation style, sculpted polymer clay figure, soft tactile texture, fingerprint details, handcrafted stop-motion aesthetic, tilt-shift depth of field" },
-    { label: "Pop Art/Comic Book", value: "1960s Pop Art style, Roy Lichtenstein aesthetic, bold black ink outlines, sharp Ben-Day dots, vibrant primary colors, graphic retro comic illustration" },
-    { label: "Modern Vector/Flat Illustration", value: "Sleek vector illustration, clean lines, minimalist shading, bold flat color palette, mid-century graphic poster art style" },
-    { label: "Cyberpunk Anime/Cell-Shaded", value: "90s hand-drawn anime style, classic cell-shading, vibrant neon rim lighting, retro sci-fi aesthetic, detailed line art" },
-    { label: "Vintage Pulp Fiction Cover", value: "1950s pulp magazine cover illustration, dramatic chiaroscuro lighting, painted gouache texture, vibrant retro paperback aesthetic" },
-    { label: "Oil Painting/Impressionism", value: "Impressionist oil painting, thick impasto brushstrokes, textured canvas, dramatic lighting, rich paint texture in the style of John Singer Sargent" },
-    { label: "Watercolors", value: "Soft watercolor painting, fluid ink wash, gentle color bleeding, painterly splatters, delicate lines on textured watercolor paper" },
-    { label: "Papercraft/Layered Paper", value: "Layered papercraft illustration, laser-cut paper art, soft drop shadows, clean geometric depth, tactile paper texture" },
-    { label: "3D Stylized Game Character", value: "Overwatch/Arcane stylized 3D render, smooth painted textures, dramatic cinematic lighting, semi-realistic proportions, clean character art" }
+    {
+        label: "1940s Pinup",
+        value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
+        tags: ["1940s", "pinup"],
+        concept: "pinup"
+    }
 ];
+
+// ERA PRESETS
+const eraPresets = {
+    "1940s": {
+        outfits: [
+            {
+                label: "1940s A-line Tea Dress",
+                value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders"
+            },
+            {
+                label: "1940s Leather Flight Jacket, White Dress",
+                value: "1940s WWII-style leather flight jacket worn over a white dress"
+            },
+            {
+                label: "1940s Leather Flight Jacket, Panties",
+                value: "1940s WWII-style leather flight jacket with leather bikini panties"
+            },
+            {
+                label: "1940s Sailor Uniform",
+                value: "1940s WWII-style Navy sailor uniform with a white collar and navy tie"
+            }
+        ],
+        hairstyles: [
+            {
+                label: "1940s Victory Rolls",
+                value: "hair styled in large polished Victory Rolls"
+            },
+            {
+                label: "1940s Hollywood Curls",
+                value: "shoulder-length hair styled in glamorous soft Hollywood curls"
+            },
+            {
+                label: "1940s Side-Swept Waves",
+                value: "shoulder-length hair styled in glossy side-swept waves with a deep side part"
+            },
+            {
+                label: "1940s Pin Curls",
+                value: "hair arranged in carefully sculpted pin curls"
+            },
+            {
+                label: "1940s Rolled Updo",
+                value: "hair swept up into a structured 1940s rolled updo"
+            }
+        ],
+        visualStyle: [
+            "vintage pinup illustration",
+            "warm painterly colors"
+        ]
+    },
+
+    "1950s": {
+        outfits: [
+
+        ],
+        hairstyles: [
+            "short hair styled in a tightly curled 1950s poodle cut",
+            "smooth shoulder-length pageboy hairstyle with curled-under ends",
+            "short softly curled 1950s hairstyle",
+            "hair pulled into a high 1950s ponytail with softly curled ends",
+            "shoulder-length hair styled in polished glamorous waves"
+        ],
+        visualStyle: [
+            "mid-century magazine illustration",
+            "soft pastel colors"
+        ]
+    }
+};
+
+
+// SCENE PRESETS
+const scenePresets = [
+    { label: "None selected", value: "" },
+    {
+        label: "Low Angle, Rim Lighting",
+        value: "",
+        cameraAngle: ["Low Angle"],
+        cameraFraming: ["Full Body", "3/4 Body"],
+        lighting: ["Rim Lighting", "Backlighting"],
+        timeOfDay: [],
+        photographicLook: [],
+        aspectRatios: ["square"],
+        tags: ["standing", "sitting", "crouching", "kneeling"]
+    },
+    {
+        label: "Selfie at Coachella",
+        value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.",
+        selfiePhoto: true,
+        tags: ["2000s", "festival"]
+    },
+    {
+        label: "Bedroom, Early Morning",
+        value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+        tags: ["bedroom"]
+    },
+    { label: "Woodland Glade — Dappled Sunlight", value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere." },
+    { label: "Vintage Motel Pool — Blue Hour", value: "Beside a deserted roadside motel swimming pool just after sunset. Fading blue twilight, warm motel-room windows, reflections of a flickering neon sign across the water, nostalgic cinematic color grading." },
+    {
+        label: "Golden-Hour Meadow",
+        value: "Standing among tall wild grasses in a meadow.",
+        cameraAngle: ["Eye Level", "Low Angle"],
+        cameraFraming: ["Full Body", "3/4 Body", "Wide Shot"],
+        timeOfDay: ["Golden Hour"],
+        lighting: ["Backlighting", "Rim Lighting"],
+        photographicLook: [],
+        tags: ["standing", "sitting", "kneeling"]
+    },
+    { label: "Rainy City Street — Neon Reflections", value: "On a rain-soaked downtown sidewalk at night. Colorful neon signs reflecting in puddles, wet pavement, blurred headlights in the distance, cool blue shadows contrasting with pink and red storefront lighting." },
+    {
+        label: "Bedroom — Venetian Blind Shadows",
+        value: "Inside a modest bedroom with partially closed Venetian blinds casting narrow bands of sunlight and shadow across the walls and furniture",
+        cameraAngle: ["Eye Level", "3/4 View"],
+        cameraFraming: ["3/4 Body", "Full Body"],
+        timeOfDay: ["Late Afternoon"],
+        lighting: ["Hard Directional Light", "Side Lighting"],
+        photographicLook: [],
+        tags: ["standing", "sitting", "laying", "kneeling"]
+    },
+    { label: "1950s Diner — After Midnight", value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette." },
+    { label: "Apartment Window — Soft Backlight", value: "Inside an old apartment beside a tall window covered with sheer white curtains. Bright overcast daylight diffuses through the fabric, softly backlighting the subject. Gentle shadows, pale neutral tones, intimate natural-light photography." },
+    { label: "Vintage Dressing Room — Vanity Bulbs", value: "Inside a vintage theater dressing room. An ornate vanity mirror surrounded by warm incandescent bulbs, cosmetics scattered across the tabletop, velvet curtains, soft golden light reflected in the mirror, classic Hollywood glamour photography." },
+    { label: "Dusty Attic — Sunbeams", value: "Shafts of sunlight entering through a small attic window, illuminating suspended dust particles and old wooden furniture." },
+    { label: "Greenhouse — Diffused Glass Light", value: "Dense tropical foliage, condensation on glass panes, soft filtered daylight and green reflections." },
+    { label: "Desert Highway — Twilight", value: "Empty roadside, distant mountains, dusty pink horizon, fading blue ambient light and cinematic wide-angle composition." },
+    { label: "Old Hotel Hallway - Tungsten Lighting", value: "Long narrow hallway, patterned carpet, warm wall sconces and dramatic perspective lines." },
+    { label: "Rooftop — Windy Overcast Day", value: "Urban skyline, windblown hair and clothing, soft gray directional daylight, subdued colors." },
+    { label: "Retro Laundromat — Fluorescent Lighting", value: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere." }
+]
+
 
 // --- NATIONALITY / ETHNICITY ---
 
@@ -100,17 +223,7 @@ const nationalityPresets = [
         hairColors: ["dark brown", "black"],
         skinTones: ["olive", "dark"],
         eyeColors: ["dark brown", "black"]
-    },
-
-    // Generic Character Presets
-    {
-        label: "Oversized head/eyes, small nose",
-        value: ", with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails"],
-        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
-        eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     }
-
 ];
 
 
@@ -119,7 +232,7 @@ const nationalityPresets = [
 // AGE
 // =========================================
 const agePresets = [
-    18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90
+    18, 20, 25, 30, 35, 40, 45, 50
 ];
 
 // =========================================
@@ -158,64 +271,6 @@ const hairstylePresets = [
         label: "1930s Wavy Bob",
         value: "chin-length bob styled in soft polished waves",
         tags: ["1930s"]
-    },
-
-    // =========================================
-    // 1940s
-    // =========================================
-    {
-        label: "1940s Victory Rolls",
-        value: "hair styled in large polished Victory Rolls",
-        tags: ["1940s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1940s Hollywood Curls",
-        value: "shoulder-length hair styled in glamorous soft Hollywood curls",
-        tags: ["1940s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1940s Side-Swept Waves",
-        value: "shoulder-length hair styled in glossy side-swept waves with a deep side part",
-        tags: ["1940s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1940s Pin Curls",
-        value: "hair arranged in carefully sculpted pin curls",
-        tags: ["1940s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1940s Rolled Updo",
-        value: "hair swept up into a structured 1940s rolled updo",
-        tags: ["1940s", "pinup"], concept: "pinup"
-    },
-
-    // =========================================
-    // 1950s
-    // =========================================
-    {
-        label: "1950s Poodle Cut",
-        value: "short hair styled in a tightly curled 1950s poodle cut",
-        tags: ["1950s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1950s Pageboy",
-        value: "smooth shoulder-length pageboy hairstyle with curled-under ends",
-        tags: ["1950s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1950s Short Curls",
-        value: "short softly curled 1950s hairstyle",
-        tags: ["1950s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1950s Ponytail",
-        value: "hair pulled into a high 1950s ponytail with softly curled ends",
-        tags: ["1950s", "pinup"], concept: "pinup"
-    },
-    {
-        label: "1950s Glamour Waves",
-        value: "shoulder-length hair styled in polished glamorous waves",
-        tags: ["1950s", "pinup"], concept: "pinup"
     },
 
     // =========================================
@@ -414,10 +469,6 @@ const outfitPresets = [
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap", tags: ["pinup"] },
-    { label: "1940s Dress", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders", tags: ["1940s"] },
-    { label: "1940s Flight Jacket, White Dress", value: "1940s WWII-style leather flight jacket worn over a white dress", tags: ["1940s"] },
-    { label: "1940s Flight Jacket, Leather Panties", value: "1940s WWII-style leather flight jacket with leather bikini panties", tags: ["1940s"] },
-    { label: "1940s Sailor Uniform", value: "1940s-style navy sailor uniform with a white collar and navy tie", tags: ["1940s"] },
     { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", tags: ["1960s"] },
     { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", tags: ["1960s"] },
     { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", tags: ["1960s"] },
@@ -461,64 +512,6 @@ const actionPresets = [
     { label: "Smoking Outside", value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air.", aspectRatios: ["square", "portrait", "landscape"], tags: ["standing", "sitting", "crouching"] },
     { label: "Getting Poked in the Eye", value: "kneeling in front of a standing man's nude body. He is sticking the tip of his erect penis in her eye as she squints her eyes in an aggravated expression", tags: ["kneeling"] }
 ];
-
-const scenePresets = [
-    { label: "None selected", value: "" },
-    {
-        label: "Low Angle, Rim Lighting",
-        value: "",
-        cameraAngle: ["Low Angle"],
-        cameraFraming: ["Full Body", "3/4 Body"],
-        lighting: ["Rim Lighting", "Backlighting"],
-        timeOfDay: [],
-        photographicLook: [],
-        aspectRatios: ["square"],
-        tags: ["standing", "sitting", "crouching", "kneeling"]
-    },
-    {
-        label: "Selfie at Coachella",
-        value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.",
-        selfiePhoto: true,
-        tags: ["2000s", "festival"]
-    },
-    {
-        label: "Bedroom, Early Morning",
-        value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
-        tags: ["bedroom"]
-    },
-    { label: "Woodland Glade — Dappled Sunlight", value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere." },
-    { label: "Vintage Motel Pool — Blue Hour", value: "Beside a deserted roadside motel swimming pool just after sunset. Fading blue twilight, warm motel-room windows, reflections of a flickering neon sign across the water, nostalgic cinematic color grading." },
-    {
-        label: "Golden-Hour Meadow",
-        value: "Standing among tall wild grasses in a meadow.",
-        cameraAngle: ["Eye Level", "Low Angle"],
-        cameraFraming: ["Full Body", "3/4 Body", "Wide Shot"],
-        timeOfDay: ["Golden Hour"],
-        lighting: ["Backlighting", "Rim Lighting"],
-        photographicLook: [],
-        tags: ["standing", "sitting", "kneeling"]
-    },
-    { label: "Rainy City Street — Neon Reflections", value: "On a rain-soaked downtown sidewalk at night. Colorful neon signs reflecting in puddles, wet pavement, blurred headlights in the distance, cool blue shadows contrasting with pink and red storefront lighting." },
-    {
-        label: "Bedroom — Venetian Blind Shadows",
-        value: "Inside a modest bedroom with partially closed Venetian blinds casting narrow bands of sunlight and shadow across the walls and furniture",
-        cameraAngle: ["Eye Level", "3/4 View"],
-        cameraFraming: ["3/4 Body", "Full Body"],
-        timeOfDay: ["Late Afternoon"],
-        lighting: ["Hard Directional Light", "Side Lighting"],
-        photographicLook: [],
-        tags: ["standing", "sitting", "laying", "kneeling"]
-    },
-    { label: "1950s Diner — After Midnight", value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette." },
-    { label: "Apartment Window — Soft Backlight", value: "Inside an old apartment beside a tall window covered with sheer white curtains. Bright overcast daylight diffuses through the fabric, softly backlighting the subject. Gentle shadows, pale neutral tones, intimate natural-light photography." },
-    { label: "Vintage Dressing Room — Vanity Bulbs", value: "Inside a vintage theater dressing room. An ornate vanity mirror surrounded by warm incandescent bulbs, cosmetics scattered across the tabletop, velvet curtains, soft golden light reflected in the mirror, classic Hollywood glamour photography." },
-    { label: "Dusty Attic — Sunbeams", value: "Shafts of sunlight entering through a small attic window, illuminating suspended dust particles and old wooden furniture." },
-    { label: "Greenhouse — Diffused Glass Light", value: "Dense tropical foliage, condensation on glass panes, soft filtered daylight and green reflections." },
-    { label: "Desert Highway — Twilight", value: "Empty roadside, distant mountains, dusty pink horizon, fading blue ambient light and cinematic wide-angle composition." },
-    { label: "Old Hotel Hallway - Tungsten Lighting", value: "Long narrow hallway, patterned carpet, warm wall sconces and dramatic perspective lines." },
-    { label: "Rooftop — Windy Overcast Day", value: "Urban skyline, windblown hair and clothing, soft gray directional daylight, subdued colors." },
-    { label: "Retro Laundromat — Fluorescent Lighting", value: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere." }
-]
 
 const environments = [
     { label: "None selected", value: "" },
@@ -789,24 +782,6 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             ]
         ),
 
-        // Camera Framing
-        this.section(
-            "Camera Framing",
-            "Choose how tightly the subject is framed:",
-            [
-                this.menu(0, cameraFramingPresets.map(item => item.label))
-            ]
-        ),
-
-        // Camera Angle
-        this.section(
-            "Camera Angle",
-            "Choose the camera position and viewing angle:",
-            [
-                this.menu(0, cameraAnglePresets.map(item => item.label))
-            ]
-        ),
-
         // Time of Day
         this.section(
             "Time of Day",
@@ -814,26 +789,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             [
                 this.menu(0, timeOfDayPresets.map(item => item.label))
             ]
-        ),
-
-        // Lighting
-        this.section(
-            "Lighting",
-            "Choose an optional lighting setup:",
-            [
-                this.menu(0, lightingPresets.map(item => item.label))
-            ]
-        ),
-
-        // Photographic Look
-        this.section(
-            "Photographic Look",
-            "Choose an optional film or photographic aesthetic:",
-            [
-                this.menu(0, photographicLookPresets.map(item => item.label))
-            ]
-        ),
-
+        )
     ]
 });
 
@@ -856,18 +812,20 @@ async function generateBatch() {
     let action;
     let scenePreset;
     let environment = environments[promptSelections[11][0]];
-    let cameraFraming = cameraFramingPresets[promptSelections[12][0]].value;
-    let cameraAngle = cameraAnglePresets[promptSelections[13][0]];
-    let timeOfDay = timeOfDayPresets[promptSelections[14][0]].value;
-    let lighting = lightingPresets[promptSelections[15][0]].value;
-    let photographicLook = photographicLookPresets[promptSelections[16][0]].value;
+    let cameraFraming;
+    let cameraAngle;
+    let timeOfDay = timeOfDayPresets[promptSelections[12][0]].value;
+    let lighting;
+    let photographicLook;
 
+    // ART STYLE
     if (promptSelections[3][0] === 0) {
         artStyle = randomize(artStylePresets);
     } else {
         artStyle = artStylePresets[promptSelections[3][0] - 1];
     }
 
+    // NATIONALITY
     if (promptSelections[4][0] === 0) {
         const randomPool = nationalityPresets.filter(item => !item.named);
         nationality = randomize(randomPool);
@@ -875,6 +833,7 @@ async function generateBatch() {
         nationality = nationalityPresets[promptSelections[4][0] - 1];
     }
 
+    // AGE
     if (promptSelections[5][0] === 0) {
         age = randomize(agePresets);
     } else {
@@ -889,32 +848,38 @@ async function generateBatch() {
         gender = "boy";
     }
 
+    // PREGNANT OR NOT
     if (promptSelections[6][0]) {
         isPregnant = "pregnant ";
     } else { isPregnant = ""; }
 
+    // MIDGET OR NOT
     if (promptSelections[6][1]) {
         isMidget = " with achondroplasia, characteristic short stature and naturally proportioned body,";
     } else { isMidget = ""; }
 
+    // BODY TYPE
     if (promptSelections[7][0] === 0) {
         overallBuild = randomize(overallBuildPresets);
     } else {
         overallBuild = overallBuildPresets[promptSelections[7][0] - 1];
     }
 
+    // OUTFIT
     if (promptSelections[8][0] === 0) {
         outfit = randomize(outfitPresets).value;
     } else {
         outfit = outfitPresets[promptSelections[8][0] - 1].value;
     }
 
+    // ACTION/POSE
     if (promptSelections[9][0] === 0) {
         action = randomize(actionPresets);
     } else {
         action = actionPresets[promptSelections[9][0] - 1];
     }
 
+    // SCENE PRESETS
     if (promptSelections[10][0] === 0) {
         scenePreset = randomize(scenePresets.slice(1));
     } else {
