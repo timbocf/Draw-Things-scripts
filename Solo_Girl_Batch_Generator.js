@@ -20,73 +20,31 @@ const theGirls = [
     // Nationality Presets
     {
         label: "Caucasian",
-        value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
-        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
-        eyeColors: ["brown", "hazel", "green", "blue", "amber"]
+        value: "with Western European facial features"
     },
     {
         label: "Black",
-        value: "with rich deep skin tone and classic African facial features, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings",
-        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde", "box braids black", "box braids and blonde streaks of hair braided in black"],
-        skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
-        eyeColors: ["dark brown", "black"]
+        value: "with box braids and blonde streaks braided into black hair, rich deep skin tone and classic African facial features, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings"
     },
     {
         label: "Mexican",
-        value: "with prominent Indigenous Mesoamerican features, plump lips, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["warm olive tan", "sun-darkened"],
-        eyeColors: ["dark brown", "black", "light brown"]
+        value: "with prominent Indigenous Mesoamerican features, plump lips, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings"
     },
     {
         label: "Mixed-Race",
-        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["deep golden-bronze", "warm olive"],
-        eyeColors: ["blue", "dark brown", "light brown", "hazel"]
+        value: "with a natural blend of African and European facial features, lightly colored eyes, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass"
     },
     {
         label: "Indian",
-        value: "with South Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["deep golden-bronze", "dark tan", "warm brown"],
-        eyeColors: ["black", "dark brown"]
+        value: "with South Asian facial features, olive skin and black hair",
     },
     {
         label: "East Asian",
-        value: "with East Asian facial features",
-        hairColors: ["dark brown", "black", "pink hair in pigtails"],
-        skinTones: ["porcelain", "fair", "light", "olive"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Southeast Asian",
-        value: "with Southeast Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["light", "warm tan", "golden-tan", "deep golden-bronze"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Middle Eastern",
-        value: "with Middle Eastern facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["olive", "dark"],
-        eyeColors: ["dark brown", "black"]
-    },
-
-    // Generic Character Presets
-    {
-        label: "Oversized head/eyes, small nose",
-        value: ", with an unnaturally large head with large eyes, a tiny nose, exaggerated ears and a small mouth with plump lips",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage", "pink hair in pigtails"],
-        skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
-        eyeColors: ["brown", "hazel", "green", "blue", "amber"]
+        value: "with East Asian facial features, porcelain skin and black hair",
     }
-
 ];
 
-const promptSelections = requestFromUser("Enter a prompt here. The script will generate one image for each nationality.", "Generate", function () {
+const promptSelections = requestFromUser("Enter a prompt here. The script will generate one image for each subject.", "Generate", function () {
     return [
         this.section(
             "Custom Prompt",
@@ -96,4 +54,66 @@ const promptSelections = requestFromUser("Enter a prompt here. The script will g
             ]
         )
     ]
-})
+});
+
+async function generateBatch() {
+    canvas.clear();
+
+    let userPrompt = promptSelections[0][0];
+
+    let config = JSON.parse(
+        JSON.stringify(pipeline.configuration)
+    );
+
+    config.model = "krea_2_turbo_i8x.ckpt";
+    config.width = 1024;
+    config.height = 1024;
+
+    config.batchCount = 1;
+    config.batchSize = 1;
+
+    config.seed = -1;
+
+    config.loras = [
+        {
+            mode: "all",
+            file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
+            weight: 1.0
+        },
+        {
+            mode: "all",
+            file: "mysticxxx_krea2_v3_lora_f16.ckpt",
+            weight: 0.6
+        }
+    ]
+
+    // =================================
+    // GENERATE
+    // =================================
+
+    for (const girl of theGirls) {
+        const imagePrompt =
+            "A photo of " +
+            (girl.named ? girl.value : "a woman " + girl.value) +
+            ", " + userPrompt +
+            ". Natural anatomy.";
+
+        console.log("Generating: " + girl.label);
+        console.log(imagePrompt);
+
+        await pipeline.run({
+            configuration: config,
+            prompt: imagePrompt
+        });
+
+        console.log("Completed: " + girl.label);
+    }
+
+    // =========================================
+    // FINISHED
+    // =========================================
+
+}
+
+await generateBatch();
+console.log("Batch Finished!");
