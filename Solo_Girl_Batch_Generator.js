@@ -44,7 +44,7 @@ const theGirls = [
     }
 ];
 
-const promptSelections = requestFromUser("Enter a prompt here. The script will generate one image for each subject.", "Generate", function () {
+const promptSelections = requestFromUser("Enter a prompt here, including pose, environment, lighting, clothing, etc. The script will generate one image for each subject, with a base prompt of 'A photo of {subject}' then whatever you enter here.", "Generate", function () {
     return [
         this.section(
             "Custom Prompt",
