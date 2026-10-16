@@ -113,7 +113,11 @@ async function generateBatch() {
     // FINISHED
     // =========================================
 
+};
+
+async function runBatch() {
+    await generateBatch();
+    console.log("Batch Finished!");
 }
 
-await generateBatch();
-console.log("Batch Finished!");
+runBatch();
