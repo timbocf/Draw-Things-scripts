@@ -998,19 +998,22 @@ async function generateBatch() {
 
     // =========================================
     // ERA COMPATIBILITY
-    // =========================================
+    // ===========================================
 
-    if (visualConcept.tags) {
-
-        const compatibleOutfits = outfitPresets.filter(outfit =>
-            outfit.tags &&
-            outfit.tags.includes(artStyle.concept)
+    if (promptSelections[8][0] === 0) {
+        const compatibleOutfits = outfitPresets.filter(item =>
+            item.tags?.includes(visualConcept.era) ||
+            item.tags?.includes(visualConcept.concept)
         );
 
-        if (compatibleOutfits.length > 0) {
-            outfit = randomize(compatibleOutfits).value;
-        }
+        const outfitOptions = [
+            ...era.outfits,
+            ...compatibleOutfits
+        ];
 
+        if (outfitOptions.length > 0) {
+            outfit = randomize(outfitOptions).value;
+        }
     }
 
     if (promptSelections[9][0] === 0 && artStyle.concept) {
