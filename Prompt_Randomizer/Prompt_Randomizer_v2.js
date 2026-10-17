@@ -696,7 +696,8 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             "Aspect Ratio",
             "Select from below:",
             [
-                this.menu(1, [
+                this.menu(0, [
+                    "Random Selection",
                     "3:4 Portrait",
                     "1:1 Square",
                     "4:3 Landscape"
@@ -862,7 +863,7 @@ async function generateBatch() {
     let outfit;
     let action;
     let scenePreset;
-    let environment = environments[promptSelections[11][0]];
+    let environment = environments[promptSelections[11][0]] || environments[0];
     let cameraFraming;
     let cameraAngle;
     let timeOfDay = timeOfDayPresets[promptSelections[12][0]].value;
@@ -938,7 +939,7 @@ async function generateBatch() {
 
     // SCENE PRESETS
     if (promptSelections[10][0] === 0) {
-        scenePreset = randomize(scenePresets.slice(1));
+        scenePreset = randomize(scenePresets);
     } else {
         scenePreset = scenePresets[promptSelections[10][0]];
     }
@@ -1028,10 +1029,10 @@ async function generateBatch() {
 
     let optionalPrompt = "";
 
-    if (action.tags && action.tags.includes("lowAngleRequired")) {
+    if (action.tags?.includes("lowAngleRequired")) {
         cameraAngle = cameraAnglePresets.find(
             angle => angle.label === "Low Angle"
-        );
+        )?.value;
     }
 
     const compatibleEnvironments = environments.filter(environment =>
@@ -1042,7 +1043,9 @@ async function generateBatch() {
         )
     );
 
-    if (compatibleEnvironments.length > 0) {
+    if (promptSelections[11][0] === 0 &&
+        compatibleEnvironments.length > 0
+    ) {
         environment = randomize(compatibleEnvironments);
     }
 
@@ -1050,7 +1053,9 @@ async function generateBatch() {
     // SCENE ENVIRONMENT
     // ========================================
 
-    if (scenePreset?.value) {
+    if (promptSelections[11][0] === 0 &&
+        scenePreset?.value
+    ) {
         environment = scenePreset;
     }
 
@@ -1106,17 +1111,19 @@ async function generateBatch() {
     let aspectRatio;
 
     if (promptSelections[0][0] === 0) {
-        aspectRatio = "portrait";
-    }
-    if (promptSelections[0][0] === 1) {
-        aspectRatio = "square";
-    }
-    if (promptSelections[0][0] === 2) {
-        aspectRatio = "landscape";
-    }
+        // Random selection
+        aspectRatio = action.aspectRatios?.length
+            ? randomize(action.aspectRatios)
+            : randomize(["portrait", "square", "landscape"]);
+    } else {
+        // Explicit selection
+        const aspectRatioOptions = [
+            "portrait",
+            "square",
+            "landscape"
+        ];
 
-    if (action.aspectRatios) {
-        aspectRatio = randomize(action.aspectRatios);
+        aspectRatio = aspectRatioOptions[promptSelections[0][0] - 1];
     }
 
     if (aspectRatio === "portrait") {
