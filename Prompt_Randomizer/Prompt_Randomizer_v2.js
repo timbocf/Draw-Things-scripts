@@ -1081,12 +1081,6 @@ async function generateBatch() {
 
     }
 
-    if (environment === scenePreset && scenePreset?.selfiePhoto) {
-        artStyle = visualPresets.find(
-            style => style.label === "Selfie Photo, from Above"
-        );
-    }
-
     // PROMPT TEMPLATE
     if (nationality.named) {
         // Celebrity
