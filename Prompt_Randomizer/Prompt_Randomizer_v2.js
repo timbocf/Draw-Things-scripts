@@ -942,7 +942,7 @@ async function generateBatch() {
     if (promptSelections[10][0] === 0) {
         scenePreset = randomize(scenePresets.slice(1));
     } else {
-        scenePreset = scenePresets[promptSelections[10][0] - 1];
+        scenePreset = scenePresets[promptSelections[10][0]];
     }
 
     // =========================================
@@ -980,7 +980,7 @@ async function generateBatch() {
         }
 
         if (sceneAngle) {
-            cameraAngle = sceneAngle;
+            cameraAngle = sceneAngle.value;
         }
 
         if (sceneTime) {
@@ -1062,7 +1062,7 @@ async function generateBatch() {
 
     const cameraLightingPrompt = [
         cameraFraming,
-        cameraAngle?.value,
+        cameraAngle,
         timeOfDay,
         lighting,
         photographicLook
@@ -1074,11 +1074,6 @@ async function generateBatch() {
 
     if (action.tags && action.tags.includes("nudeRequired")) {
         outfit = "nude";
-    }
-
-    // sitting, kneeling, crouching, laying, standing
-    if (action.tags === scenePreset.tags) {
-
     }
 
     // PROMPT TEMPLATE
