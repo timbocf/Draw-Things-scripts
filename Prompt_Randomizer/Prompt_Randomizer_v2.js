@@ -925,9 +925,7 @@ async function generateBatch() {
     }
 
     // OUTFIT
-    if (promptSelections[8][0] === 0) {
-        outfit = randomize(outfitPresets).value;
-    } else {
+    if (promptSelections[8][0] !== 0) {
         outfit = outfitPresets[promptSelections[8][0] - 1].value;
     }
 
