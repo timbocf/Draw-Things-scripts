@@ -18,7 +18,6 @@ const visualPresets = {
     pinup1940s: {
         label: "1940s Pinup",
         era: "1940s",
-        concept: "pinup",
 
         variants: {
 
@@ -44,7 +43,11 @@ const visualPresets = {
         ],
 
         lighting: [
-            "Soft Directional Light"
+            "Soft Studio Light"
+        ],
+
+        photographicLook: [
+            "1940s Kodachrome"
         ],
 
         scenes: [],
@@ -504,7 +507,7 @@ const specificBodyPresets = [
 
 const outfitPresets = [
     { label: "Nude", value: "nude" },
-    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", tags: ["1940s", "1990s", "2000s", "pinup"], concept: "pinup" },
+    { label: "Loose T-Shirt & Panties", value: "a loose fitting T-shirt and bikini panties", tags: ["1940s", "1990s", "2000s", "pinup"] },
     { label: "Bra & Panties", value: "a bra and panties, barefoot", tags: ["pinup"] },
     { label: "Bra & Panties, Hello Kitty Socks", value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks" },
     { label: "Bra & Panties, Stiletto Heels", value: "a bra and panties with stiletto heels", tags: ["pinup"] },
@@ -512,7 +515,7 @@ const outfitPresets = [
     { label: "Daisy Dukes", value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt tied around her torso, very short cutoff jean shorts and cowboy boots", tags: ["1980s", "1990s"] },
     { label: "Halter Top, Pleated Shorts", value: "a halter top and pleated shorts", tags: ["pinup", "1940s", "1950s", "2000s"] },
     { label: "Silk Pajama Short Set", value: "a silk pajama short set" },
-    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels", tags: ["1930s", "1940s", "1950s", "2000s", "pinup"], concept: "pinup" },
+    { label: "Lace Bustier, Garter Belt, Stockings, Heels", value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels", tags: ["1930s", "1940s", "1950s", "2000s", "pinup"] },
     { label: "Unbuttoned Mens Dress Shirt", value: "an unbuttoned mens dress shirt", tags: ["pinup", "1940s", "1950s", "1960s", "1990s", "2000s"] },
     { label: "Tank Top, Wrap-Around Skirt", value: "a tank top and a wrap-around skirt", tags: ["1990s", "2000s"] },
     { label: "Short Babydoll Dress, Cowboy Boots", value: "a short babydoll dress with cowboy boots", tags: ["2000s"] },
@@ -527,7 +530,7 @@ const outfitPresets = [
 ];
 
 const actionPresets = [
-    { label: "sitting on the floor, knees drawn up", value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.", aspectRatios: ["square", "portrait", "landscape"], tags: ["1940s", "pinup", "sitting"], concept: "pinup" },
+    { label: "sitting on the floor, knees drawn up", value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.", aspectRatios: ["square", "portrait", "landscape"], tags: ["1940s", "pinup", "sitting"] },
     { label: "Facedown Selfie, on a Bed", value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body", tags: ["pinup", "laying"], environmentTags: ["bedroom"] },
     { label: "laying on a beach", value: "laying on a beach", aspectRatios: ["landscape", "square"], tags: ["pinup", "laying"], environmentTags: ["beach"] },
     { label: "Standing, Looking Away from the Camera", value: "standing, looking away from the camera", tags: ["laying"] },
@@ -883,8 +886,6 @@ async function generateBatch() {
     const variantOptions = Object.values(visualConcept.variants);
     visualVariant = randomize(variantOptions);
 
-    hairStyle = randomize(era.hairstyles).value;
-
     // NATIONALITY
     if (promptSelections[4][0] === 0) {
         const randomPool = nationalityPresets.filter(item => !item.named);
@@ -931,9 +932,7 @@ async function generateBatch() {
     }
 
     // ACTION/POSE
-    if (promptSelections[9][0] === 0) {
-        action = randomize(actionPresets);
-    } else {
+    if (promptSelections[9][0] !== 0) {
         action = actionPresets[promptSelections[9][0] - 1];
     }
 
@@ -947,6 +946,48 @@ async function generateBatch() {
     // =========================================
     // SCENE CAMERA & LIGHTING SETTINGS
     // =========================================
+
+    // VISUAL CONCEPT CAMERA ANGLE
+    const conceptAngle = getSceneSetting(
+        visualConcept.cameraAngles,
+        cameraAnglePresets
+    );
+
+    if (conceptAngle) {
+        cameraAngle = conceptAngle.value;
+    }
+
+    // VISUAL CONCEPT CAMERA FRAMING
+    const conceptFraming = getSceneSetting(
+        visualConcept.cameraFraming,
+        cameraFramingPresets
+    );
+
+    if (conceptFraming) {
+        cameraFraming = conceptFraming.value;
+    }
+
+    // VISUAL CONCEPT LIGHTING
+    const conceptLighting = getSceneSetting(
+        visualConcept.lighting,
+        lightingPresets
+    );
+
+    if (conceptLighting) {
+        lighting = conceptLighting.value;
+    }
+
+    // VISUAL CONCEPT PHOTOGRAPHIC LOOK
+    if (visualVariant === visualConcept.variants.photo) {
+        const conceptLook = getSceneSetting(
+            visualConcept.photographicLook,
+            photographicLookPresets
+        );
+
+        if (conceptLook) {
+            photographicLook = conceptLook.value;
+        }
+    }
 
     if (scenePreset) {
         const sceneFraming = getSceneSetting(
@@ -990,14 +1031,14 @@ async function generateBatch() {
             lighting = sceneLighting.value;
         }
 
-        if (sceneLook) {
+        if (sceneLook && visualVariant === visualConcept.variants.photo) {
             photographicLook = sceneLook.value;
         }
     }
 
     // =========================================
     // ERA COMPATIBILITY
-    // ===========================================
+    // =========================================
 
     if (promptSelections[8][0] === 0) {
         const compatibleOutfits = outfitPresets.filter(item =>
@@ -1024,6 +1065,8 @@ async function generateBatch() {
 
         if (compatibleActions.length > 0) {
             action = randomize(compatibleActions);
+        } else {
+            action = randomize(actionPresets);
         }
     }
 
@@ -1054,7 +1097,8 @@ async function generateBatch() {
     // ========================================
 
     if (promptSelections[11][0] === 0 &&
-        scenePreset?.value
+        scenePreset?.value &&
+        !environment.value
     ) {
         environment = scenePreset;
     }
@@ -1084,11 +1128,14 @@ async function generateBatch() {
         // Celebrity
         imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
+        hairStyle = era.hairstyles?.length
+            ? randomize(era.hairstyles).value
+            : "";
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair, " +
-            (hairStyle ? hairStyle + ", " : "") +
+        imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " +
+            (hairStyle ? hairColor + " " + hairStyle + ", " : hairColor + " hair, ") +
             nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
     console.log("Generating:");
