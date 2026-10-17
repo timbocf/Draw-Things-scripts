@@ -1016,11 +1016,11 @@ async function generateBatch() {
         }
     }
 
-    if (promptSelections[9][0] === 0 && artStyle.concept) {
+    if (promptSelections[9][0] === 0 && visualConcept.concept) {
 
-        const compatibleActions = actionPresets.filter(action =>
-            action.tags &&
-            action.tags.includes(artStyle.concept)
+        const compatibleActions = actionPresets.filter(item =>
+            item.tags?.includes(visualConcept.concept) ||
+            item.tags?.includes(visualConcept.era)
         );
 
         if (compatibleActions.length > 0) {
@@ -1090,12 +1090,12 @@ async function generateBatch() {
     // PROMPT TEMPLATE
     if (nationality.named) {
         // Celebrity
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
+        imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
     } else {
         hairColor = randomize(nationality.hairColors);
         skinTone = randomize(nationality.skinTones);
         eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + artStyle.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair, " +
+        imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " + hairColor + " hair, " +
             (hairStyle ? hairStyle + ", " : "") +
             nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
     }
