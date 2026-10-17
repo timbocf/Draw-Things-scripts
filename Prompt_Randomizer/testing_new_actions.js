@@ -87,7 +87,4 @@ async function runBatch() {
     console.log("Batch Finished!");
 };
 
-console.log("promptSelections:", promptSelections);
-console.log("imageCount:", imageCount);
-
 runBatch();
