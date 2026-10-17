@@ -14,18 +14,78 @@ let gender = "woman";
 
 
 // ART STYLE
-const artStylePresets = [
-    { label: "Photo", value: "photo" },
-    {
+const visualPresets = {
+    pinup1940s: {
         label: "1940s Pinup",
-        value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
-        tags: ["1940s", "pinup"],
-        concept: "pinup"
+        era: "1940s",
+        concept: "pinup",
+
+        variants: {
+
+            painting: {
+                label: "Oil Painting",
+                value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas"
+            },
+
+            photo: {
+                label: "Photography",
+                value: "1940s vintage pinup photograph"
+            }
+        },
+
+        cameraAngles: [
+            "Eye Level",
+            "Low Angle"
+        ],
+
+        cameraFraming: [
+            "Full Body",
+            "3/4 Body"
+        ],
+
+        lighting: [
+            "Soft Directional Light"
+        ],
+
+        scenes: [],
+        environments: []
     }
-];
+};
 
 // ERA PRESETS
 const eraPresets = {
+    "1920s": {
+        outfits: [],
+        hairstyles: [
+            {
+                label: "1920s Flapper Bob",
+                value: "chin-length 1920s flapper bob with sleek sculpted finger waves"
+            }
+        ]
+    },
+
+    "1930s": {
+        outfits: [],
+        hairstyles: [
+            {
+                label: "1930s Finger Waves",
+                value: "short hair styled in sculpted finger waves",
+            },
+            {
+                label: "1930s Marcel Waves",
+                value: "shoulder-length hair styled in soft Marcel waves",
+            },
+            {
+                label: "1930s Side-Parted Waves",
+                value: "medium-length hair with a deep side part and smooth sculpted waves",
+            },
+            {
+                label: "1930s Wavy Bob",
+                value: "chin-length bob styled in soft polished waves",
+            }
+        ]
+    },
+
     "1940s": {
         outfits: [
             {
@@ -67,10 +127,6 @@ const eraPresets = {
                 value: "hair swept up into a structured 1940s rolled updo"
             }
         ],
-        visualStyle: [
-            "vintage pinup illustration",
-            "warm painterly colors"
-        ]
     },
 
     "1950s": {
@@ -78,19 +134,210 @@ const eraPresets = {
 
         ],
         hairstyles: [
-            "short hair styled in a tightly curled 1950s poodle cut",
-            "smooth shoulder-length pageboy hairstyle with curled-under ends",
-            "short softly curled 1950s hairstyle",
-            "hair pulled into a high 1950s ponytail with softly curled ends",
-            "shoulder-length hair styled in polished glamorous waves"
+            {
+                label: "Pixie Cut",
+                value: "short textured pixie cut",
+            },
+            {
+                label: "1950s Poodle Cut",
+                value: "short hair styled in a tightly curled 1950s poodle cut"
+            },
+            {
+                label: "1950s Pageboy",
+                value: "smooth shoulder-length pageboy hairstyle with curled-under ends"
+            },
+            {
+                label: "1950s Short Softly Curled",
+                value: "short softly curled 1950s hairstyle"
+            },
+            {
+                label: "1950s Ponytail with Softly Curled Ends",
+                value: "hair pulled into a high 1950s ponytail with softly curled ends"
+            },
+            {
+                label: "1950s Polished Glamorous Waves",
+                value: "shoulder-length hair styled in polished glamorous waves"
+            }
         ],
-        visualStyle: [
-            "mid-century magazine illustration",
-            "soft pastel colors"
+        scenePresets: [
+            {
+                label: "1950s Diner — After Midnight",
+                value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette."
+            },
+            {
+                label: "Retro Laundromat — Fluorescent Lighting",
+                value: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere."
+            }
+        ]
+    },
+
+    "1960s": {
+        outfits: [
+            {
+                label: "1960s Mod Dress",
+                value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem",
+            },
+            {
+                label: "1960s Cocktail Dress",
+                value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves"
+            },
+            {
+                label: "1960s Beatnik Turtleneck",
+                value: "1960s beatnik turtleneck paired with high-waisted slacks"
+            },
+            {
+                label: "1960s Go-Go Dress, White Boots",
+                value: "1960s go-go dress with white go-go boots"
+            },
+            {
+                label: "1960s Suit & Skirt",
+                value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt"
+            }
+        ],
+        hairstyles: [
+            {
+                label: "Pixie Cut",
+                value: "short textured pixie cut",
+            },
+            {
+                label: "1960s Beehive",
+                value: "hair styled in a tall voluminous 1960s beehive",
+            },
+            {
+                label: "1960s Bouffant",
+                value: "hair styled in a full rounded bouffant with substantial crown volume",
+            },
+            {
+                label: "1960s Flipped Bob",
+                value: "short bob with smooth volume and dramatically flipped-out ends",
+            },
+            {
+                label: "1960s Mod Bob",
+                value: "sleek geometric 1960s mod bob",
+            },
+            {
+                label: "1960s Long Straight Hair",
+                value: "long straight center-parted hair in a late-1960s style",
+            }
+        ]
+    },
+
+    "1970s": {
+        outfits: [],
+        hairstyles: [
+            {
+                label: "1970s Feathered Hair",
+                value: "voluminous feathered 1970s hair with layers swept away from the face",
+            },
+            {
+                label: "1970s Shag",
+                value: "layered 1970s shag haircut with textured feathered ends",
+            },
+            {
+                label: "1970s Long Center-Parted Hair",
+                value: "long naturally flowing hair with a straight center part",
+            },
+            {
+                label: "1970s Afro",
+                value: "full rounded natural 1970s Afro hairstyle",
+            },
+            {
+                label: "1970s Disco Curls",
+                value: "voluminous shoulder-length disco curls",
+            }
+        ]
+    },
+
+    "1980s": {
+        outfits: [],
+        hairstyles: [
+            {
+                label: "1980s Big Hair",
+                value: "huge voluminous 1980s hair with teased roots and dramatic volume",
+            },
+            {
+                label: "1980s Feathered Hair",
+                value: "voluminous layered feathered hair swept dramatically away from the face",
+            },
+            {
+                label: "1980s Side Ponytail",
+                value: "high side ponytail with teased volume",
+            },
+            {
+                label: "1980s Perm",
+                value: "voluminous tightly permed shoulder-length hair",
+            },
+            {
+                label: "1980s Crimped Hair",
+                value: "long voluminous crimped hair with teased volume",
+            }
+        ]
+    },
+
+    "1990s": {
+        outfits: [],
+        hairstyles: [
+            {
+                label: "1990s Rachel Cut",
+                value: "shoulder-length layered blowout with face-framing layers and flipped ends",
+            },
+            {
+                label: "1990s Pixie Cut",
+                value: "short textured 1990s pixie cut",
+            },
+            {
+                label: "1990s Face-Framing Layers",
+                value: "medium-length hair with prominent face-framing layers",
+            },
+            {
+                label: "1990s High Ponytail",
+                value: "high ponytail with loose face-framing strands",
+            },
+            {
+                label: "1990s Messy Updo",
+                value: "casual messy updo with loose face-framing strands",
+            }
+        ]
+    },
+
+    "2000s": {
+        outfits: [],
+        hairstyles: [
+            {
+                label: "Pixie Cut",
+                value: "short textured pixie cut",
+            },
+            {
+                label: "2000s Straight Layers",
+                value: "long pin-straight layered hair with face-framing pieces",
+            },
+            {
+                label: "2000s Side-Swept Bangs",
+                value: "long layered hair with dramatic side-swept bangs",
+            },
+            {
+                label: "2000s Chunky Layers",
+                value: "long layered hair with chunky face-framing sections",
+            },
+            {
+                label: "2000s Messy Bun",
+                value: "casual messy bun with loose face-framing strands",
+            },
+            {
+                label: "2000s Crimped Hair",
+                value: "long partially crimped hair with pronounced textured waves",
+            }
+        ],
+        scenePresets: [
+            {
+                label: "Selfie at Coachella",
+                value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.",
+                selfiePhoto: true,
+                tags: ["2000s", "festival"]
+            }
         ]
     }
 };
-
 
 // SCENE PRESETS
 const scenePresets = [
@@ -105,12 +352,6 @@ const scenePresets = [
         photographicLook: [],
         aspectRatios: ["square"],
         tags: ["standing", "sitting", "crouching", "kneeling"]
-    },
-    {
-        label: "Selfie at Coachella",
-        value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.",
-        selfiePhoto: true,
-        tags: ["2000s", "festival"]
     },
     {
         label: "Bedroom, Early Morning",
@@ -140,7 +381,6 @@ const scenePresets = [
         photographicLook: [],
         tags: ["standing", "sitting", "laying", "kneeling"]
     },
-    { label: "1950s Diner — After Midnight", value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette." },
     { label: "Apartment Window — Soft Backlight", value: "Inside an old apartment beside a tall window covered with sheer white curtains. Bright overcast daylight diffuses through the fabric, softly backlighting the subject. Gentle shadows, pale neutral tones, intimate natural-light photography." },
     { label: "Vintage Dressing Room — Vanity Bulbs", value: "Inside a vintage theater dressing room. An ornate vanity mirror surrounded by warm incandescent bulbs, cosmetics scattered across the tabletop, velvet curtains, soft golden light reflected in the mirror, classic Hollywood glamour photography." },
     { label: "Dusty Attic — Sunbeams", value: "Shafts of sunlight entering through a small attic window, illuminating suspended dust particles and old wooden furniture." },
@@ -148,7 +388,6 @@ const scenePresets = [
     { label: "Desert Highway — Twilight", value: "Empty roadside, distant mountains, dusty pink horizon, fading blue ambient light and cinematic wide-angle composition." },
     { label: "Old Hotel Hallway - Tungsten Lighting", value: "Long narrow hallway, patterned carpet, warm wall sconces and dramatic perspective lines." },
     { label: "Rooftop — Windy Overcast Day", value: "Urban skyline, windblown hair and clothing, soft gray directional daylight, subdued colors." },
-    { label: "Retro Laundromat — Fluorescent Lighting", value: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere." }
 ]
 
 
@@ -236,190 +475,6 @@ const agePresets = [
 ];
 
 // =========================================
-// HAIRSTYLE PRESETS
-// =========================================
-const hairstylePresets = [
-
-    // =========================================
-    // 1920s
-    // =========================================
-    {
-        label: "1920s Flapper Bob",
-        value: "chin-length 1920s flapper bob with sleek sculpted finger waves",
-        tags: ["1920s"]
-    },
-
-    // =========================================
-    // 1930s
-    // =========================================
-    {
-        label: "1930s Finger Waves",
-        value: "short hair styled in sculpted finger waves",
-        tags: ["1930s"]
-    },
-    {
-        label: "1930s Marcel Waves",
-        value: "shoulder-length hair styled in soft Marcel waves",
-        tags: ["1930s"]
-    },
-    {
-        label: "1930s Side-Parted Waves",
-        value: "medium-length hair with a deep side part and smooth sculpted waves",
-        tags: ["1930s"]
-    },
-    {
-        label: "1930s Wavy Bob",
-        value: "chin-length bob styled in soft polished waves",
-        tags: ["1930s"]
-    },
-
-    // =========================================
-    // 1960s
-    // =========================================
-    {
-        label: "1960s Beehive",
-        value: "hair styled in a tall voluminous 1960s beehive",
-        tags: ["1960s"]
-    },
-    {
-        label: "1960s Bouffant",
-        value: "hair styled in a full rounded bouffant with substantial crown volume",
-        tags: ["1960s"]
-    },
-    {
-        label: "1960s Flipped Bob",
-        value: "short bob with smooth volume and dramatically flipped-out ends",
-        tags: ["1960s"]
-    },
-    {
-        label: "1960s Mod Bob",
-        value: "sleek geometric 1960s mod bob",
-        tags: ["1960s"]
-    },
-    {
-        label: "1960s Long Straight Hair",
-        value: "long straight center-parted hair in a late-1960s style",
-        tags: ["1960s"]
-    },
-
-    // =========================================
-    // 1970s
-    // =========================================
-    {
-        label: "1970s Feathered Hair",
-        value: "voluminous feathered 1970s hair with layers swept away from the face",
-        tags: ["1970s"]
-    },
-    {
-        label: "1970s Shag",
-        value: "layered 1970s shag haircut with textured feathered ends",
-        tags: ["1970s"]
-    },
-    {
-        label: "1970s Long Center-Parted Hair",
-        value: "long naturally flowing hair with a straight center part",
-        tags: ["1970s"]
-    },
-    {
-        label: "1970s Afro",
-        value: "full rounded natural 1970s Afro hairstyle",
-        tags: ["1970s"]
-    },
-    {
-        label: "1970s Disco Curls",
-        value: "voluminous shoulder-length disco curls",
-        tags: ["1970s"]
-    },
-
-    // =========================================
-    // 1980s
-    // =========================================
-    {
-        label: "1980s Big Hair",
-        value: "huge voluminous 1980s hair with teased roots and dramatic volume",
-        tags: ["1980s"]
-    },
-    {
-        label: "1980s Feathered Hair",
-        value: "voluminous layered feathered hair swept dramatically away from the face",
-        tags: ["1980s"]
-    },
-    {
-        label: "1980s Side Ponytail",
-        value: "high side ponytail with teased volume",
-        tags: ["1980s"]
-    },
-    {
-        label: "1980s Perm",
-        value: "voluminous tightly permed shoulder-length hair",
-        tags: ["1980s"]
-    },
-    {
-        label: "1980s Crimped Hair",
-        value: "long voluminous crimped hair with teased volume",
-        tags: ["1980s"]
-    },
-
-    // =========================================
-    // 1990s
-    // =========================================
-    {
-        label: "1990s Rachel Cut",
-        value: "shoulder-length layered blowout with face-framing layers and flipped ends",
-        tags: ["1990s"]
-    },
-    {
-        label: "1990s Pixie Cut",
-        value: "short textured 1990s pixie cut",
-        tags: ["1950s", "1960s", "1990s", "2000s"]
-    },
-    {
-        label: "1990s Face-Framing Layers",
-        value: "medium-length hair with prominent face-framing layers",
-        tags: ["1990s"]
-    },
-    {
-        label: "1990s High Ponytail",
-        value: "high ponytail with loose face-framing strands",
-        tags: ["1990s"]
-    },
-    {
-        label: "1990s Messy Updo",
-        value: "casual messy updo with loose face-framing strands",
-        tags: ["1990s"]
-    },
-
-    // =========================================
-    // 2000s
-    // =========================================
-    {
-        label: "2000s Straight Layers",
-        value: "long pin-straight layered hair with face-framing pieces",
-        tags: ["2000s"]
-    },
-    {
-        label: "2000s Side-Swept Bangs",
-        value: "long layered hair with dramatic side-swept bangs",
-        tags: ["2000s"]
-    },
-    {
-        label: "2000s Chunky Layers",
-        value: "long layered hair with chunky face-framing sections",
-        tags: ["2000s"]
-    },
-    {
-        label: "2000s Messy Bun",
-        value: "casual messy bun with loose face-framing strands",
-        tags: ["2000s"]
-    },
-    {
-        label: "2000s Crimped Hair",
-        value: "long partially crimped hair with pronounced textured waves",
-        tags: ["2000s"]
-    }
-];
-
-// =========================================
 // BODY / PHYSIQUE
 // =========================================
 
@@ -469,11 +524,6 @@ const outfitPresets = [
     { label: "Hooters Uniform", value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts" },
     { label: "Schoolgirl Uniform", value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage." },
     { label: "Sexy Nurse Uniform", value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap", tags: ["pinup"] },
-    { label: "1960s Mod Dress", value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem", tags: ["1960s"] },
-    { label: "1960s Cocktail Dress", value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves", tags: ["1960s"] },
-    { label: "1960s Beatnik Turtleneck", value: "1960s beatnik turtleneck paired with high-waisted slacks", tags: ["1960s"] },
-    { label: "1960s Go-Go Dress, White Boots", value: "1960s go-go dress with white go-go boots", tags: ["1960s"] },
-    { label: "1960s Suit & Skirt", value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt", tags: ["1960s"] }
 ];
 
 const actionPresets = [
@@ -680,12 +730,12 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
 
         // Art Styles
         this.section(
-            "Art Style",
-            "Select the artistic medium: ",
+            "Visual Concept",
+            "Select the visual concept: ",
             [
-                this.menu(1, [
+                this.menu(0, [
                     "Random Selection",
-                    ...artStylePresets.map(item => item.label)
+                    ...Object.values(visualPresets).map(item => item.label)
                 ])
             ]),
 
@@ -798,7 +848,8 @@ async function generateBatch() {
     canvas.clear();
 
     let imagePrompt;
-    let artStyle = artStylePresets[promptSelections[3][0]];
+    let visualConcept;
+    let visualVariant;
     let nationality;
     let isPregnant;
     let isMidget;
@@ -818,12 +869,20 @@ async function generateBatch() {
     let lighting;
     let photographicLook;
 
-    // ART STYLE
+    // VISUAL CONCEPT
+    const visualOptions = Object.values(visualPresets);
+
     if (promptSelections[3][0] === 0) {
-        artStyle = randomize(artStylePresets);
+        visualConcept = randomize(visualOptions);
     } else {
-        artStyle = artStylePresets[promptSelections[3][0] - 1];
+        visualConcept = visualOptions[promptSelections[3][0] - 1];
     }
+
+    const era = eraPresets[visualConcept.era];
+    const variantOptions = Object.values(visualConcept.variants);
+    visualVariant = randomize(variantOptions);
+
+    hairStyle = randomize(era.hairstyles).value;
 
     // NATIONALITY
     if (promptSelections[4][0] === 0) {
@@ -941,7 +1000,7 @@ async function generateBatch() {
     // ERA COMPATIBILITY
     // =========================================
 
-    if (artStyle.tags) {
+    if (visualConcept.tags) {
 
         const compatibleOutfits = outfitPresets.filter(outfit =>
             outfit.tags &&
@@ -1029,7 +1088,7 @@ async function generateBatch() {
     }
 
     if (environment === scenePreset && scenePreset?.selfiePhoto) {
-        artStyle = artStylePresets.find(
+        artStyle = visualPresets.find(
             style => style.label === "Selfie Photo, from Above"
         );
     }
