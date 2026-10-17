@@ -1011,15 +1011,8 @@ async function generateBatch() {
             outfit = randomize(compatibleOutfits).value;
         }
 
+        hairStyle = randomize(era.hairstyles).value;
 
-        const compatibleHairstyles = hairstylePresets.filter(hair =>
-            hair.tags &&
-            hair.tags.includes(artStyle.concept)
-        );
-
-        if (compatibleHairstyles.length > 0) {
-            hairStyle = randomize(compatibleHairstyles).value;
-        }
     }
 
     if (promptSelections[9][0] === 0 && artStyle.concept) {
