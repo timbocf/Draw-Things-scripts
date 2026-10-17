@@ -1011,8 +1011,6 @@ async function generateBatch() {
             outfit = randomize(compatibleOutfits).value;
         }
 
-        hairStyle = randomize(era.hairstyles).value;
-
     }
 
     if (promptSelections[9][0] === 0 && artStyle.concept) {
