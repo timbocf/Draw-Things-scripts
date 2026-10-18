@@ -692,6 +692,13 @@ function getSceneSetting(options, presets) {
     ) || null;
 }
 
+function hasMatchingTags(tagsA, tagsB) {
+    if (!tagsA?.length || !tagsB?.length) {
+        return false;
+    }
+    return tagsA.some(tag => tagsB.includes(tag));
+}
+
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
@@ -882,7 +889,10 @@ async function generateBatch() {
         visualConcept = visualOptions[promptSelections[3][0] - 1];
     }
 
-    const era = eraPresets[visualConcept.era];
+    const era = eraPresets[visualConcept.era] || {
+        outfits: [],
+        hairstyles: []
+    };
     const variantOptions = Object.values(visualConcept.variants);
     visualVariant = randomize(variantOptions);
 
@@ -934,13 +944,6 @@ async function generateBatch() {
     // ACTION/POSE
     if (promptSelections[9][0] !== 0) {
         action = actionPresets[promptSelections[9][0] - 1];
-    }
-
-    // SCENE PRESETS
-    if (promptSelections[10][0] === 0) {
-        scenePreset = randomize(scenePresets);
-    } else {
-        scenePreset = scenePresets[promptSelections[10][0]];
     }
 
     // =========================================
@@ -1036,6 +1039,26 @@ async function generateBatch() {
         }
     }
 
+    // ========================================
+    // SCENE PRESETS
+    // ========================================
+    if (promptSelections[10][0] === 0) {
+        const conceptScenes = scenePresets.filter(item =>
+            visualConcept.scenes?.includes(item.label)
+        );
+
+        const sceneOptions = conceptScenes.length > 0
+            ? [
+                scenePresets[0],
+                ...conceptScenes.filter(item => item !== scenePresets[0])
+            ]
+            : scenePresets;
+
+        scenePreset = randomize(sceneOptions);
+    } else {
+        scenePreset = scenePresets[promptSelections[10][0]];
+    }
+
     // =========================================
     // ERA COMPATIBILITY
     // =========================================
@@ -1047,12 +1070,20 @@ async function generateBatch() {
         );
 
         const outfitOptions = [
-            ...era.outfits,
+            ...(era.outfits || []),
             ...compatibleOutfits
-        ];
+        ].filter((item, index, array) =>
+            array.findIndex(other => other.value === item.value) === index
+        );
 
         if (outfitOptions.length > 0) {
             outfit = randomize(outfitOptions).value;
+        } else {
+            const fallbackOutfits = outfitPresets.filter(item => item.value);
+
+            if (fallbackOutfits.length > 0) {
+                outfit = randomize(fallbackOutfits).value;
+            }
         }
     }
 
@@ -1063,8 +1094,20 @@ async function generateBatch() {
             item.tags?.includes(visualConcept.era)
         );
 
-        if (compatibleActions.length > 0) {
+        const sceneCompatibleActions = actionPresets.filter(item =>
+            hasMatchingTags(item.tags, scenePreset?.tags)
+        );
+
+        const matchingBoth = compatibleActions.filter(item =>
+            sceneCompatibleActions.includes(item)
+        );
+
+        if (matchingBoth.length > 0) {
+            action = randomize(matchingBoth);
+        } else if (compatibleActions.length > 0) {
             action = randomize(compatibleActions);
+        } else if (sceneCompatibleActions.length > 0) {
+            action = randomize(sceneCompatibleActions);
         } else {
             action = randomize(actionPresets);
         }
@@ -1078,6 +1121,13 @@ async function generateBatch() {
         )?.value;
     }
 
+    // VISUAL CONCEPT ENVIRONMENT COMPATIBILITY
+    const conceptEnvironments = environments.filter(item =>
+        item.tags?.includes(visualConcept.concept) ||
+        item.tags?.includes(visualConcept.era) ||
+        visualConcept.environments?.includes(item.label)
+    );
+
     const compatibleEnvironments = environments.filter(environment =>
         action.environmentTags &&
         environment.tags &&
@@ -1086,10 +1136,21 @@ async function generateBatch() {
         )
     );
 
-    if (promptSelections[11][0] === 0 &&
-        compatibleEnvironments.length > 0
+    if (
+        promptSelections[11][0] === 0 &&
+        !scenePreset?.value
     ) {
-        environment = randomize(compatibleEnvironments);
+        const matchingBoth = compatibleEnvironments.filter(item =>
+            conceptEnvironments.includes(item)
+        );
+
+        if (matchingBoth.length > 0) {
+            environment = randomize(matchingBoth);
+        } else if (compatibleEnvironments.length > 0) {
+            environment = randomize(compatibleEnvironments);
+        } else if (conceptEnvironments.length > 0) {
+            environment = randomize(conceptEnvironments);
+        }
     }
 
     // ========================================
