@@ -50,8 +50,143 @@ const visualPresets = {
             "1940s Kodachrome"
         ],
 
-        scenes: [],
-        environments: []
+        scenes: [
+            {
+                label: "Bedroom, Early Morning",
+                value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                tags: ["bedroom"]
+            }
+        ],
+
+        environments: [
+            "Kitchen",
+            "Living Room",
+            "Studio",
+            "WWII Airfield",
+            "Bedroom"
+        ],
+
+        actions: [
+            {
+                label: "laying on a beach",
+                value: "laying on a beach",
+                aspectRatios: ["landscape", "square"],
+                tags: ["pinup", "laying", "beach"]
+            },
+            {
+                label: "Leaning Over a Kitchen Counter",
+                value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, wearing an apron.",
+                aspectRatios: ["square", "portrait"],
+                tags: ["pinup", "boudoir", "standing", "kitchen"]
+            },
+            {
+                label: "sitting on the floor, knees drawn up",
+                value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.",
+                aspectRatios: ["square", "portrait", "landscape"],
+                tags: ["1940s", "pinup", "sitting"]
+            },
+            {
+                label: "Laying on Her Side",
+                value: "lying on her side, with the top leg bent high, hand lightly between her thighs",
+                tags: ["pinup", "boudoir", "laying"]
+            },
+            {
+                label: "Morning Stretch",
+                value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
+                aspectRatios: ["square", "portrait"],
+                tags: ["pinup", "boudoir", "standing"]
+            },
+            {
+                label: "Lying in a Windowsill",
+                value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
+                aspectRatios: ["landscape", "square"],
+                tags: ["pinup", "boudoir", "laying"]
+            },
+            {
+                label: "Lying on a Sofa, One Leg Up",
+                value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor",
+                aspectRatios: ["square", "landscape"],
+                tags: ["pinup", "boudoir", "laying"]
+            },
+            {
+                label: "Lying on a Sofa, One Leg on Armrest",
+                value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
+                aspectRatios: ["square", "landscape"],
+                tags: ["pinup", "boudoir", "laying"]
+            },
+            {
+                label: "Putting on Lipstick, Bathroom",
+                value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.",
+                tags: ["pinup", "boudoir", "standing"]
+            },
+            {
+                label: "Standing, Hands on Hips",
+                value: "standing with her feet shoulder-width apart, with her hands on her hips",
+                tags: ["pinup", "standing"]
+            },
+            {
+                label: "Shy, Bending Over",
+                value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise",
+                aspectRatios: ["square"],
+                tags: ["pinup", "standing"]
+            }
+        ]
+    },
+    boudoir: {
+        label: "Boudoir",
+        era: "2000s",
+
+        variants: {
+            photo: {
+                label: "photography",
+                value: "photo"
+            }
+        },
+
+        cameraAngles: [
+            "Eye Level",
+            "High Angle",
+            "Low Angle"
+        ],
+
+        cameraFraming: [
+            "Full Body",
+            "3/4 Body"
+        ],
+
+        lighting: [
+            "Soft Studio Light"
+        ],
+
+        photographicLook: [
+            "2000s disposable camera",
+            "iPhone 16 Pro Max"
+        ],
+
+        scenes: [
+            {
+                label: "Bedroom, Early Morning",
+                value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                tags: ["bedroom"]
+            },
+            {
+                label: "Low Angle, Rim Lighting",
+                value: "",
+                cameraAngle: ["Low Angle"],
+                cameraFraming: ["Full Body", "3/4 Body"],
+                lighting: ["Rim Lighting", "Backlighting"],
+                timeOfDay: [],
+                photographicLook: [],
+                aspectRatios: ["square"],
+                tags: ["standing", "sitting", "crouching", "kneeling"]
+            }
+        ],
+        environments: [
+            "Kitchen",
+            "Living Room",
+            "Studio",
+            "Bedroom"
+        ]
     }
 };
 
@@ -184,71 +319,6 @@ const eraPresets = {
             }
         ],
         hairstyles: [],
-        actions: [
-            {
-                label: "laying on a beach",
-                value: "laying on a beach",
-                aspectRatios: ["landscape", "square"],
-                tags: ["pinup", "laying", "beach"]
-            },
-            {
-                label: "Leaning Over a Kitchen Counter",
-                value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, wearing an apron.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["pinup", "boudoir", "standing", "kitchen"]
-            },
-            {
-                label: "sitting on the floor, knees drawn up",
-                value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.",
-                aspectRatios: ["square", "portrait", "landscape"],
-                tags: ["1940s", "pinup", "sitting"]
-            },
-            {
-                label: "Laying on Her Side",
-                value: "lying on her side, with the top leg bent high, hand lightly between her thighs",
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Morning Stretch",
-                value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["pinup", "boudoir", "standing"]
-            },
-            {
-                label: "Lying in a Windowsill",
-                value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
-                aspectRatios: ["landscape", "square"],
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Lying on a Sofa, One Leg Up",
-                value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor",
-                aspectRatios: ["square", "landscape"],
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Lying on a Sofa, One Leg on Armrest",
-                value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
-                aspectRatios: ["square", "landscape"],
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Putting on Lipstick, Bathroom",
-                value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.",
-                tags: ["pinup", "boudoir", "standing"]
-            },
-            {
-                label: "Standing, Hands on Hips",
-                value: "standing with her feet shoulder-width apart, with her hands on her hips",
-                tags: ["pinup", "standing"]
-            },
-            {
-                label: "Shy, Bending Over",
-                value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise",
-                aspectRatios: ["square"],
-                tags: ["pinup", "standing"]
-            }
-        ]
     },
 
     "1950s": {
@@ -648,23 +718,6 @@ const eraPresets = {
 
 // SCENE PRESETS
 const scenePresets = [
-    { label: "None selected", value: "" },
-    {
-        label: "Low Angle, Rim Lighting",
-        value: "",
-        cameraAngle: ["Low Angle"],
-        cameraFraming: ["Full Body", "3/4 Body"],
-        lighting: ["Rim Lighting", "Backlighting"],
-        timeOfDay: [],
-        photographicLook: [],
-        aspectRatios: ["square"],
-        tags: ["standing", "sitting", "crouching", "kneeling"]
-    },
-    {
-        label: "Bedroom, Early Morning",
-        value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
-        tags: ["bedroom"]
-    },
     {
         label: "Woodland Glade — Dappled Sunlight",
         value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere."
