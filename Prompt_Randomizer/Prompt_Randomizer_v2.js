@@ -4026,7 +4026,10 @@ async function generateBatch() {
 
     const subjectMode = scene.subjectMode ?? concept.subjectMode ?? "single";
 
-    const subject = subjectMode === "single"
+    const includeSubject = subjectMode === "single" ||
+        (subjectMode === "optional" && Math.random() < 0.5);
+
+    const subject = includeSubject
         ? buildSingleSubject(concept)
         : null;
 
