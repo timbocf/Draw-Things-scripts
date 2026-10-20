@@ -1,5 +1,7 @@
 //@api-1.0
 
+const DEBUG = true;
+
 // =========================================
 // KREA 2 RANDOM GENERATOR
 // =========================================
@@ -3813,31 +3815,6 @@ const photographicLookPresets = {
     "earlyDigitalCamera": "Early Digital Camera",
 };
 
-
-
-function randomize(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
-
-function getSceneSetting(options, presets) {
-    if (!options || options.length === 0) {
-        return null;
-    }
-
-    const selectedLabel = randomize(options);
-
-    return presets.find(preset =>
-        preset.label === selectedLabel
-    ) || null;
-}
-
-function hasMatchingTags(tagsA, tagsB) {
-    if (!tagsA?.length || !tagsB?.length) {
-        return false;
-    }
-    return tagsA.some(tag => tagsB.includes(tag));
-}
-
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
 
@@ -3933,390 +3910,144 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
                     ...overallBuildPresets.map(item => item.label)
                 ])
             ]
-        ),
-
-        // Outfit
-        this.section(
-            "Outfit",
-            "Select a clothing ensemble:",
-            [
-                this.menu(0, [
-                    "Random Selection",
-                    ...outfitPresets.map(item => item.label)
-                ])
-            ]
-        ),
-
-        // Action
-        this.section(
-            "Action",
-            "Select an action:",
-            [
-                this.menu(0, [
-                    "Random Selection",
-                    ...actionPresets.map(item => item.label)
-                ])
-            ]
-        ),
-
-        // Time of Day
-        this.section(
-            "Time of Day",
-            "Choose an optional time of day:",
-            [
-                this.menu(0, timeOfDayPresets.map(item => item.label))
-            ]
         )
     ]
 });
+
+function randomize(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+function randomObjectValue(object) {
+    return randomize(Object.values(object));
+}
+
+function resolvePreset(key, presets) {
+    return presets[key] ?? key;
+}
+
+function selectVisualProperty(scene, variant, property, presets) {
+    const options = scene[property] ?? variant[property] ?? [];
+
+    if (options.length === 0) {
+        return "";
+    }
+
+    return resolvePreset(randomize(options), presets);
+}
+
+function buildSingleSubject(concept) {
+
+    // NATIONALITY
+    const nationalityOptions = nationalityPresets.filter(
+        item => !item.named
+    );
+
+    const nationality = promptSelections[4][0] === 0
+        ? randomize(nationalityOptions)
+        : nationalityPresets[promptSelections[4][0] - 1];
+
+    // AGE
+    const age = promptSelections[5][0] === 0
+        ? randomize(agePresets)
+        : agePresets[promptSelections[5][0] - 1];
+
+    // BODY TYPE
+    const overallBuild = promptSelections[7][0] === 0
+        ? randomize(overallBuildPresets)
+        : overallBuildPresets[promptSelections[7][0] - 1];
+
+    // HAIR
+    const hairstyle = randomize(concept.hairstyles ?? []);
+    const hairColor = randomize(nationality.hairColors ?? []);
+
+    // APPEARANCE
+    const skinTone = randomize(nationality.skinTones ?? []);
+    const eyeColor = randomize(nationality.eyeColors ?? []);
+
+    // OUTFIT
+    const outfit = randomize(concept.outfits ?? []);
+
+    return {
+        nationality,
+        age,
+        overallBuild,
+        hairstyle,
+        hairColor,
+        skinTone,
+        eyeColor,
+        outfit
+    };
+}
 
 async function generateBatch() {
 
     canvas.clear();
 
     let imagePrompt;
-    let visualConcept;
-    let visualVariant;
-    let nationality;
-    let isPregnant;
-    let isMidget;
-    let hairColor;
-    let hairStyle;
-    let skinTone;
-    let age;
-    let eyeColor;
-    let overallBuild;
-    let outfit;
-    let action;
-    let scenePreset;
-    let environment;
-    let cameraFraming;
-    let cameraAngle;
-    let timeOfDay = timeOfDayPresets[promptSelections[10][0]].value;
-    let lighting;
-    let photographicLook;
 
-    // VISUAL CONCEPT
-    const visualOptions = Object.values(visualPresets);
+    const conceptOptions = Object.values(visualPresets);
 
-    if (promptSelections[3][0] === 0) {
-        visualConcept = randomize(visualOptions);
-    } else {
-        visualConcept = visualOptions[promptSelections[3][0] - 1];
-    }
+    const concept = promptSelections[3][0] === 0
+        ? randomize(conceptOptions)
+        : conceptOptions[promptSelections[3][0] - 1];
 
-    const era = eraPresets[visualConcept.era] || {
-        outfits: [],
-        hairstyles: []
-    };
-    const variantOptions = Object.values(visualConcept.variants);
-    visualVariant = randomize(variantOptions);
+    const variant = randomObjectValue(concept.variants);
+    const scene = randomize(concept.scenes);
+    const action = randomize(scene.actions ?? []);
 
-    // NATIONALITY
-    if (promptSelections[4][0] === 0) {
-        const randomPool = nationalityPresets.filter(item => !item.named);
-        nationality = randomize(randomPool);
-    } else {
-        nationality = nationalityPresets[promptSelections[4][0] - 1];
-    }
-
-    // AGE
-    if (promptSelections[5][0] === 0) {
-        age = randomize(agePresets);
-    } else {
-        age = agePresets[promptSelections[5][0] - 1];
-    }
-
-    console.log(gender);
-    if (age < 18 && gender === "woman") {
-        gender = "girl";
-    }
-    if (age < 18 && gender === "man") {
-        gender = "boy";
-    }
-
-    // PREGNANT OR NOT
-    if (promptSelections[6][0]) {
-        isPregnant = "pregnant ";
-    } else { isPregnant = ""; }
-
-    // MIDGET OR NOT
-    if (promptSelections[6][1]) {
-        isMidget = " with achondroplasia, characteristic short stature and naturally proportioned body,";
-    } else { isMidget = ""; }
-
-    // BODY TYPE
-    if (promptSelections[7][0] === 0) {
-        overallBuild = randomize(overallBuildPresets);
-    } else {
-        overallBuild = overallBuildPresets[promptSelections[7][0] - 1];
-    }
-
-    // OUTFIT
-    if (promptSelections[8][0] !== 0) {
-        outfit = outfitPresets[promptSelections[8][0] - 1].value;
-    }
-
-    // ACTION/POSE
-    if (promptSelections[9][0] !== 0) {
-        action = actionPresets[promptSelections[9][0] - 1];
-    }
-
-    // =========================================
-    // SCENE CAMERA & LIGHTING SETTINGS
-    // =========================================
-
-    // VISUAL CONCEPT CAMERA ANGLE
-    const conceptAngle = getSceneSetting(
-        visualConcept.cameraAngles,
+    const cameraAngle = selectVisualProperty(
+        scene,
+        variant,
+        "cameraAngles",
         cameraAnglePresets
     );
 
-    if (conceptAngle) {
-        cameraAngle = conceptAngle.value;
-    }
-
-    // VISUAL CONCEPT CAMERA FRAMING
-    const conceptFraming = getSceneSetting(
-        visualConcept.cameraFraming,
+    const cameraFraming = selectVisualProperty(
+        scene,
+        variant,
+        "cameraFraming",
         cameraFramingPresets
     );
 
-    if (conceptFraming) {
-        cameraFraming = conceptFraming.value;
-    }
-
-    // VISUAL CONCEPT LIGHTING
-    const conceptLighting = getSceneSetting(
-        visualConcept.lighting,
+    const lighting = selectVisualProperty(
+        scene,
+        variant,
+        "lighting",
         lightingPresets
     );
 
-    if (conceptLighting) {
-        lighting = conceptLighting.value;
-    }
-
-    // VISUAL CONCEPT PHOTOGRAPHIC LOOK
-    if (visualVariant === visualConcept.variants.photo) {
-        const conceptLook = getSceneSetting(
-            visualConcept.photographicLook,
-            photographicLookPresets
-        );
-
-        if (conceptLook) {
-            photographicLook = conceptLook.value;
-        }
-    }
-
-    if (scenePreset) {
-        const sceneFraming = getSceneSetting(
-            scenePreset.cameraFraming,
-            cameraFramingPresets
-        );
-
-        const sceneAngle = getSceneSetting(
-            scenePreset.cameraAngle,
-            cameraAnglePresets
-        );
-
-        const sceneTime = getSceneSetting(
-            scenePreset.timeOfDay,
-            timeOfDayPresets
-        );
-
-        const sceneLighting = getSceneSetting(
-            scenePreset.lighting,
-            lightingPresets
-        );
-
-        const sceneLook = getSceneSetting(
-            scenePreset.photographicLook,
-            photographicLookPresets
-        );
-
-        if (sceneFraming) {
-            cameraFraming = sceneFraming.value;
-        }
-
-        if (sceneAngle) {
-            cameraAngle = sceneAngle.value;
-        }
-
-        if (sceneTime) {
-            timeOfDay = sceneTime.value;
-        }
-
-        if (sceneLighting) {
-            lighting = sceneLighting.value;
-        }
-
-        if (sceneLook && visualVariant === visualConcept.variants.photo) {
-            photographicLook = sceneLook.value;
-        }
-    }
-
-    // ========================================
-    // SCENE PRESETS
-    // ========================================
-    if (promptSelections[10][0] === 0) {
-        const conceptScenes = scenePresets.filter(item =>
-            visualConcept.scenes?.includes(item.label)
-        );
-
-        const sceneOptions = conceptScenes.length > 0
-            ? [
-                scenePresets[0],
-                ...conceptScenes.filter(item => item !== scenePresets[0])
-            ]
-            : scenePresets;
-
-        scenePreset = randomize(sceneOptions);
-    } else {
-        scenePreset = scenePresets[promptSelections[10][0]];
-    }
-
-    // =========================================
-    // ERA COMPATIBILITY
-    // =========================================
-
-    if (promptSelections[8][0] === 0) {
-        const compatibleOutfits = outfitPresets.filter(item =>
-            item.tags?.includes(visualConcept.era) ||
-            item.tags?.includes(visualConcept.concept)
-        );
-
-        const outfitOptions = [
-            ...(era.outfits || []),
-            ...compatibleOutfits
-        ].filter((item, index, array) =>
-            array.findIndex(other => other.value === item.value) === index
-        );
-
-        if (outfitOptions.length > 0) {
-            outfit = randomize(outfitOptions).value;
-        } else {
-            const fallbackOutfits = outfitPresets.filter(item => item.value);
-
-            if (fallbackOutfits.length > 0) {
-                outfit = randomize(fallbackOutfits).value;
-            }
-        }
-    }
-
-    if (promptSelections[9][0] === 0 && visualConcept.concept) {
-
-        const compatibleActions = actionPresets.filter(item =>
-            item.tags?.includes(visualConcept.concept) ||
-            item.tags?.includes(visualConcept.era)
-        );
-
-        const sceneCompatibleActions = actionPresets.filter(item =>
-            hasMatchingTags(item.tags, scenePreset?.tags)
-        );
-
-        const matchingBoth = compatibleActions.filter(item =>
-            sceneCompatibleActions.includes(item)
-        );
-
-        if (matchingBoth.length > 0) {
-            action = randomize(matchingBoth);
-        } else if (compatibleActions.length > 0) {
-            action = randomize(compatibleActions);
-        } else if (sceneCompatibleActions.length > 0) {
-            action = randomize(sceneCompatibleActions);
-        } else {
-            action = randomize(actionPresets);
-        }
-    }
-
-    let optionalPrompt = "";
-
-    if (action.tags?.includes("lowAngleRequired")) {
-        cameraAngle = cameraAnglePresets.find(
-            angle => angle.label === "Low Angle"
-        )?.value;
-    }
-
-    // VISUAL CONCEPT ENVIRONMENT COMPATIBILITY
-    const conceptEnvironments = environments.filter(item =>
-        item.tags?.includes(visualConcept.concept) ||
-        item.tags?.includes(visualConcept.era) ||
-        visualConcept.environments?.includes(item.label)
+    const photographicLook = selectVisualProperty(
+        scene,
+        variant,
+        "photographicLook",
+        photographicLookPresets
     );
 
-    const compatibleEnvironments = environments.filter(environment =>
-        action.environmentTags &&
-        environment.tags &&
-        action.environmentTags.some(tag =>
-            environment.tags.includes(tag)
-        )
-    );
+    const subjectMode = scene.subjectMode ?? concept.subjectMode ?? "single";
 
-    if (
-        promptSelections[11][0] === 0 &&
-        !scenePreset?.value
-    ) {
-        const matchingBoth = compatibleEnvironments.filter(item =>
-            conceptEnvironments.includes(item)
-        );
+    const subject = subjectMode === "single"
+        ? buildSingleSubject(concept)
+        : null;
 
-        if (matchingBoth.length > 0) {
-            environment = randomize(matchingBoth);
-        } else if (compatibleEnvironments.length > 0) {
-            environment = randomize(compatibleEnvironments);
-        } else if (conceptEnvironments.length > 0) {
-            environment = randomize(conceptEnvironments);
-        }
-    }
+    console.log("Concept:", concept.label);
+    console.log("Variant:", variant.label);
+    console.log("Scene:", scene.label);
+    console.log("Subject Mode:", subjectMode);
+    console.log("Subject:", JSON.stringify(subject, null, 2));
 
-    // ========================================
-    // SCENE ENVIRONMENT
-    // ========================================
-
-    if (promptSelections[11][0] === 0 &&
-        scenePreset?.value &&
-        !environment.value
-    ) {
-        environment = scenePreset;
-    }
-
-    // ========================================
-    // CAMERA & LIGHTING PROMPT
-    // ========================================
-
-    const cameraLightingPrompt = [
+    imagePrompt = [
+        `A ${variant.value}`,
+        action,
+        scene.setting,
         cameraFraming,
         cameraAngle,
-        timeOfDay,
         lighting,
         photographicLook
-    ].filter(Boolean).join(", ");
+    ].filter(Boolean).join(", ") + ".";
 
-    optionalPrompt = cameraLightingPrompt
-        ? " " + cameraLightingPrompt + "."
-        : "";
-
-    if (action.tags && action.tags.includes("nudeRequired")) {
-        outfit = "nude";
-    }
-
-    // PROMPT TEMPLATE
-    if (nationality.named) {
-        // Celebrity
-        imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". " + optionalPrompt + " Natural anatomy.";
-    } else {
-        hairStyle = era.hairstyles?.length
-            ? randomize(era.hairstyles).value
-            : "";
-        hairColor = randomize(nationality.hairColors);
-        skinTone = randomize(nationality.skinTones);
-        eyeColor = randomize(nationality.eyeColors);
-        imagePrompt = "A " + visualVariant.value + " of a " + isPregnant + age + "-year-old " + nationality.label + " " + gender + isMidget + " with " + skinTone + " skin, " +
-            (hairStyle ? hairColor + " " + hairStyle + ", " : hairColor + " hair, ") +
-            nationality.value + ", " + action.value + " " + environment.value + ". She is wearing " + outfit + ". She has a " + overallBuild.value + " and " + eyeColor + " eyes." + optionalPrompt + " Natural anatomy.";
-    }
-    console.log("Generating:");
-    console.log(imagePrompt);
+    // console.log("Generating:");
+    // console.log(imagePrompt);
 
     // =================================
     // COPY CURRENT CONFIGURATION
@@ -4336,9 +4067,15 @@ async function generateBatch() {
 
     if (promptSelections[0][0] === 0) {
         // Random selection
-        aspectRatio = action.aspectRatios?.length
-            ? randomize(action.aspectRatios)
-            : randomize(["portrait", "square", "landscape"]);
+        const aspectRatioOptions = [
+            "portrait",
+            "square",
+            "landscape"
+        ];
+
+        const aspectRatio = promptSelections[0][0] === 0
+            ? randomize(aspectRatioOptions)
+            : aspectRatioOptions[promptSelections[0][0] - 1];
     } else {
         // Explicit selection
         const aspectRatioOptions = [
@@ -4396,18 +4133,14 @@ async function generateBatch() {
     // GENERATE
     // =================================
 
-    await pipeline.run({
-        configuration: config,
-        prompt: imagePrompt
-    });
+    if (!DEBUG) {
+        await pipeline.run({
+            configuration: config,
+            prompt: imagePrompt
+        });
+    }
 
     console.log("Image complete.");
-
-    // =========================================
-    // FINISHED
-    // =========================================
-
-    console.log("Image Complete.");
 }
 const imageCount = imageCounts[promptSelections[1][0]];
 
