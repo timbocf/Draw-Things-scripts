@@ -4009,8 +4009,6 @@ async function generateBatch() {
 
     canvas.clear();
 
-    let imagePrompt;
-
     const conceptOptions = Object.values(visualPresets);
 
     const concept = promptSelections[3][0] === 0
@@ -4052,7 +4050,15 @@ async function generateBatch() {
     const subject = buildSingleSubject(concept);
     const subjectDescription = formatSingleSubject(subject);
 
-    console.log("SUBJECT:\n" + subjectDescription);
+    const imagePrompt = [
+        `A ${variant.value} of ${subjectDescription}`,
+        action,
+        scene.setting,
+        cameraFraming,
+        cameraAngle,
+        lighting,
+        photographicLook
+    ].filter(Boolean).join(", ") + ".";
 
     imagePrompt = [
         `A ${variant.value}`,
@@ -4063,6 +4069,8 @@ async function generateBatch() {
         lighting,
         photographicLook
     ].filter(Boolean).join(", ") + ".";
+
+    console.log("GENERATED PROMPT:\n" + imagePrompt);
 
     // console.log("Generating:");
     // console.log(imagePrompt);
