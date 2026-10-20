@@ -117,37 +117,39 @@ const visualPresets = {
 
             painting: {
                 label: "Oil Painting",
-                value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas"
+                value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
+                cameraAngles: ["Eye Level", "Low Angle", "High Angle"],
+                cameraFraming: ["Full Body", "3/4 Body"],
+                lighting: ["Soft Studio Light", "Soft Natural Light"]
+            },
+
+            illustration: {
+                label: "Vintage Magazine Illustration",
+                value: "vintage magazine advertising illustration",
+                cameraAngles: ["Eye Level", "Low Angle", "High Angle"],
+                cameraFraming: ["Full Body", "3/4 Body"],
+                lighting: ["Soft Studio Light", "Soft Natural Light"]
             },
 
             photo: {
                 label: "Photography",
                 value: "1940s vintage pinup photograph",
-                photographicLook: ["1940s Kodachrome"]
+                photographicLook: ["1940s Kodachrome"],
+                cameraAngles: ["Eye Level", "Low Angle", "High Angle"],
+                cameraFraming: ["Full Body", "3/4 Body"],
+                lighting: ["Soft Studio Light", "Window Light"]
             }
         },
 
-        cameraAngles: [
-            "Eye Level",
-            "Low Angle",
-            "High Angle"
-        ],
 
-        cameraFraming: [
-            "Full Body",
-            "3/4 Body"
-        ],
 
-        lighting: [
-            "Soft Studio Light"
-        ],
 
         scenes: [
             {
                 label: "Vintage Car Garage",
                 setting: "in a vintage car garage with greasy tools, large red toolboxes and pinup posters on the walls promoting the war effort",
                 actions: [
-                    "leaning against a two-toned 1958 Ford Fairlane"
+                    "leaning against a two-toned 1948 Buick Roadmaster Convertible"
                 ]
             },
             {
@@ -214,7 +216,7 @@ const visualPresets = {
             },
             {
                 label: "WWII Airfield",
-                setting: "in a WWII airfield with B-52 bomber airplanes in the background",
+                setting: "in a WWII airfield with B-17 bomber airplanes in the background",
                 actions: [
                     "leaning against the side of a plane with one foot raised and pressed against the plane",
                     "standing with her feet shoulder-width apart, with her hands on her hips"
@@ -223,7 +225,7 @@ const visualPresets = {
             },
             {
                 label: "On a Beach",
-                setting: "on a beach",
+                setting: "on a beach at a vintage beach resort",
                 actions: [
                     "reclining on a beach towel",
                     "running toward the water"
@@ -250,7 +252,7 @@ const visualPresets = {
                     "looking over one shoulder with a playful smile",
                     "sitting in a highback chair, leaning forward toward a vanity mirror applying lipstick"
                 ]
-            }
+            },
             {
                 label: "Bathroom",
                 setting: "in a bathroom with a large mirror over a countertop and sink. Various bathroom items are cluttered on the countertop.",
@@ -263,6 +265,9 @@ const visualPresets = {
     },
 
     glamourShots1940s: {
+        label: "1940s Glamour Shots",
+        era: "1940s",
+
         hairstyles: [
             {
                 label: "1940s Victory Rolls",
@@ -313,7 +318,17 @@ const visualPresets = {
             photo: {
                 label: "1940s Glamour Photo",
                 value: "1940s glamour photo",
-                photographicLook: "1940s Kodachrome"
+                photographicLook: ["1940s Kodachrome"],
+                cameraAngles: ["Eye Level", "Low Angle"],
+                cameraFraming: ["3/4 Body", "Full Body", "Waist-Up"],
+                lighting: ["Soft Studio Light", "Window Light"]
+            },
+            illustration: {
+                label: "Vintage Magazine Illustration",
+                value: "vintage magazine advertising illustration",
+                cameraAngles: ["Eye Level", "Low Angle"],
+                cameraFraming: ["3/4 Body", "Full Body"],
+                lighting: ["Soft Studio Light", "Soft Natural Light"]
             }
         },
 
@@ -334,7 +349,8 @@ const visualPresets = {
                     "sitting in a baby-blue upholstered wingback chair reading a large magazine",
                     "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera",
                     "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
-                    "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise"
+                    "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise",
+                    "adjusting her hat in a mirror"
                 ],
                 lighting: [
                     "soft studio lighting",
@@ -343,7 +359,7 @@ const visualPresets = {
             },
             {
                 label: "WWII Airfield",
-                setting: "in a WWII airfield with B-52 bomber airplanes in the background",
+                setting: "in a WWII airfield with B-17 bomber airplanes in the background",
                 actions: [
                     "leaning against the side of a plane with one foot raised and pressed against the plane",
                     "standing with her feet shoulder-width apart, with her hands on her hips"
@@ -352,7 +368,7 @@ const visualPresets = {
             },
             {
                 label: "On a Beach",
-                setting: "on a beach",
+                setting: "on a beach at a vintage beach resort",
                 actions: [
                     "laying on her side",
                     "running toward the water"
@@ -370,6 +386,27 @@ const visualPresets = {
                     "rim lighting",
                     "backlighting"
                 ]
+            },
+            {
+                label: "Art Deco Hotel Suite",
+                setting: "in a 1940s Art Deco hotel suite with a made bed, a nightstand with a bedside lamp, and a window with sheer curtains",
+                actions: [
+                    "sitting on a suitcase preparing for a trip"
+                ]
+            },
+            {
+                label: "Train Station Platform",
+                setting: "on a train station platform",
+                actions: [
+                    "looking past the camera, leaning forward, waiting on a train"
+                ]
+            },
+            {
+                label: "Classic Roadside Diner",
+                setting: "in a classic roadside diner, with bright vivid colors and neon signs, white leather upholstery on each booth bench seat and bar stool",
+                actions: [
+                    "sitting in a booth looking out the window as the rain cascades down the glass. A waitress in an A-line tea dress and a dainty apron that covers her lower torso is pouring coffee into the woman's coffee mug from a glass carafe."
+                ]
             }
         ]
     },
@@ -381,29 +418,17 @@ const visualPresets = {
         variants: {
             photo: {
                 label: "photography",
-                value: "photo"
+                value: "photo",
+                cameraAngles: ["Eye Level", "High Angle", "Low Angle"],
+                cameraFraming: ["Full Body", "3/4 Body"],
+                lighting: ["Soft Studio Light"],
+                photographicLook: ["2000s Disposable Camera"]
             }
         },
 
-        cameraAngles: [
-            "Eye Level",
-            "High Angle",
-            "Low Angle"
-        ],
 
-        cameraFraming: [
-            "Full Body",
-            "3/4 Body"
-        ],
 
-        lighting: [
-            "Soft Studio Light"
-        ],
 
-        photographicLook: [
-            "2000s disposable camera",
-            "iPhone 16 Pro Max"
-        ],
 
         scenes: [
             {
@@ -425,52 +450,42 @@ const visualPresets = {
         era: "Victorian",
 
         hairstyles: [
-            "dark hair parted in the center and gathered into a low bun",
-            "long hair styled in tight Victorian ringlets",
-            "an elaborate braided updo with pinned curls",
-            "a smooth center-parted hairstyle with a braided crown",
-            "a voluminous Gibson Girl pompadour updo",
-            "soft curls framing the face with hair pinned at the back",
-            "a neatly coiled chignon at the nape of the neck",
-            "long wavy hair cascading over the shoulders",
-            "an intricate Victorian hairstyle with braided loops",
-            "a high Victorian updo decorated with delicate ribbons",
-            "a center-parted hairstyle with sausage curls beside the cheeks",
-            "a loose Victorian updo with wispy curls around the temples",
-            "a polished braided bun with a center part",
-            "a Victorian hairstyle with a rolled fringe and pinned curls"
+            { label: "Dark hair parted in the center and gathered into a low bun", value: "dark hair parted in the center and gathered into a low bun" },
+            { label: "Long hair styled in tight Victorian ringlets", value: "long hair styled in tight Victorian ringlets" },
+            { label: "An elaborate braided updo with pinned curls", value: "an elaborate braided updo with pinned curls" },
+            { label: "A smooth center-parted hairstyle with a braided crown", value: "a smooth center-parted hairstyle with a braided crown" },
+            { label: "A voluminous Gibson Girl pompadour updo", value: "a voluminous Gibson Girl pompadour updo" },
+            { label: "Soft curls framing the face with hair pinned at the back", value: "soft curls framing the face with hair pinned at the back" },
+            { label: "A neatly coiled chignon at the nape of the neck", value: "a neatly coiled chignon at the nape of the neck" },
+            { label: "Long wavy hair cascading over the shoulders", value: "long wavy hair cascading over the shoulders" },
+            { label: "An intricate Victorian hairstyle with braided loops", value: "an intricate Victorian hairstyle with braided loops" },
+            { label: "A high Victorian updo decorated with delicate ribbons", value: "a high Victorian updo decorated with delicate ribbons" },
+            { label: "A center-parted hairstyle with sausage curls beside the cheeks", value: "a center-parted hairstyle with sausage curls beside the cheeks" },
+            { label: "A loose Victorian updo with wispy curls around the temples", value: "a loose Victorian updo with wispy curls around the temples" },
+            { label: "A polished braided bun with a center part", value: "a polished braided bun with a center part" },
+            { label: "A Victorian hairstyle with a rolled fringe and pinned curls", value: "a Victorian hairstyle with a rolled fringe and pinned curls" }
         ],
 
         variants: {
             tinType: {
                 label: "Tin Type",
-                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections"
+                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections",
+                cameraAngles: ["Eye Level"],
+                cameraFraming: ["Waist-Up", "3/4 Body", "Full Body"],
+                lighting: ["Window Light", "Soft Natural Light"]
             },
             oilPainting: {
                 label: "Victorian Oil Painting",
-                value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism."
+                value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism.",
+                cameraAngles: ["Eye Level", "Low Angle"],
+                cameraFraming: ["3/4 Body", "Full Body", "Environmental Portrait"],
+                lighting: ["Window Light", "Candlelight / Firelight", "Low-Key / Chiaroscuro"]
             }
         },
 
-        cameraAngles: [
-            "Eye Level",
-            "High Angle",
-            "Low Angle"
-        ],
 
-        cameraFraming: [
-            "Full Body",
-            "3/4 Body"
-        ],
 
-        lighting: [
-            "Soft Studio Light"
-        ],
 
-        photographicLook: [
-            "2000s disposable camera",
-            "iPhone 16 Pro Max"
-        ],
 
         scenes: [
             {
@@ -492,71 +507,61 @@ const visualPresets = {
         era: "Victorian",
 
         hairstyles: [
-            "dark hair parted in the center and gathered into a low bun",
-            "long hair styled in tight Victorian ringlets",
-            "an elaborate braided updo with pinned curls",
-            "a smooth center-parted hairstyle with a braided crown",
-            "a voluminous Gibson Girl pompadour updo",
-            "soft curls framing the face with hair pinned at the back",
-            "a neatly coiled chignon at the nape of the neck",
-            "long wavy hair cascading over the shoulders",
-            "an intricate Victorian hairstyle with braided loops",
-            "a high Victorian updo decorated with delicate ribbons",
-            "a center-parted hairstyle with sausage curls beside the cheeks",
-            "a loose Victorian updo with wispy curls around the temples",
-            "a polished braided bun with a center part",
-            "a Victorian hairstyle with a rolled fringe and pinned curls"
+            { label: "Dark hair parted in the center and gathered into a low bun", value: "dark hair parted in the center and gathered into a low bun" },
+            { label: "Long hair styled in tight Victorian ringlets", value: "long hair styled in tight Victorian ringlets" },
+            { label: "An elaborate braided updo with pinned curls", value: "an elaborate braided updo with pinned curls" },
+            { label: "A smooth center-parted hairstyle with a braided crown", value: "a smooth center-parted hairstyle with a braided crown" },
+            { label: "A voluminous Gibson Girl pompadour updo", value: "a voluminous Gibson Girl pompadour updo" },
+            { label: "Soft curls framing the face with hair pinned at the back", value: "soft curls framing the face with hair pinned at the back" },
+            { label: "A neatly coiled chignon at the nape of the neck", value: "a neatly coiled chignon at the nape of the neck" },
+            { label: "Long wavy hair cascading over the shoulders", value: "long wavy hair cascading over the shoulders" },
+            { label: "An intricate Victorian hairstyle with braided loops", value: "an intricate Victorian hairstyle with braided loops" },
+            { label: "A high Victorian updo decorated with delicate ribbons", value: "a high Victorian updo decorated with delicate ribbons" },
+            { label: "A center-parted hairstyle with sausage curls beside the cheeks", value: "a center-parted hairstyle with sausage curls beside the cheeks" },
+            { label: "A loose Victorian updo with wispy curls around the temples", value: "a loose Victorian updo with wispy curls around the temples" },
+            { label: "A polished braided bun with a center part", value: "a polished braided bun with a center part" },
+            { label: "A Victorian hairstyle with a rolled fringe and pinned curls", value: "a Victorian hairstyle with a rolled fringe and pinned curls" }
         ],
 
         outfits: [
-            "a high-necked Victorian dress with a fitted bodice and full skirt",
-            "an elegant silk ball gown with an off-the-shoulder neckline",
-            "a modest cotton day dress with long sleeves and a lace collar",
-            "a dark velvet Victorian evening gown with intricate embroidery",
-            "a fitted riding habit with a long skirt and tailored jacket",
-            "a simple working-class dress with a white apron",
-            "a Victorian mourning dress made of black crepe with a high collar",
-            "a floral-print muslin summer dress with puffed sleeves",
-            "a luxurious satin gown with lace trim and a bustle",
-            "a Victorian walking dress with a fitted jacket and floor-length skirt",
-            "a high-collared blouse with a long dark wool skirt",
-            "a Victorian tea gown with flowing fabric and lace detailing",
-            "a striped Victorian seaside dress with a high neckline",
-            "a Victorian wedding gown with lace sleeves and a fitted waist",
-            "a simple linen chemise with delicate lace trim",
-            "a late-Victorian shirtwaist blouse with leg-of-mutton sleeves and a long skirt"
+            { label: "A high-necked Victorian dress with a fitted bodice and full skirt", value: "a high-necked Victorian dress with a fitted bodice and full skirt" },
+            { label: "An elegant silk ball gown with an off-the-shoulder neckline", value: "an elegant silk ball gown with an off-the-shoulder neckline" },
+            { label: "A modest cotton day dress with long sleeves and a lace collar", value: "a modest cotton day dress with long sleeves and a lace collar" },
+            { label: "A dark velvet Victorian evening gown with intricate embroidery", value: "a dark velvet Victorian evening gown with intricate embroidery" },
+            { label: "A fitted riding habit with a long skirt and tailored jacket", value: "a fitted riding habit with a long skirt and tailored jacket" },
+            { label: "A simple working-class dress with a white apron", value: "a simple working-class dress with a white apron" },
+            { label: "A Victorian mourning dress made of black crepe with a high collar", value: "a Victorian mourning dress made of black crepe with a high collar" },
+            { label: "A floral-print muslin summer dress with puffed sleeves", value: "a floral-print muslin summer dress with puffed sleeves" },
+            { label: "A luxurious satin gown with lace trim and a bustle", value: "a luxurious satin gown with lace trim and a bustle" },
+            { label: "A Victorian walking dress with a fitted jacket and floor-length skirt", value: "a Victorian walking dress with a fitted jacket and floor-length skirt" },
+            { label: "A high-collared blouse with a long dark wool skirt", value: "a high-collared blouse with a long dark wool skirt" },
+            { label: "A Victorian tea gown with flowing fabric and lace detailing", value: "a Victorian tea gown with flowing fabric and lace detailing" },
+            { label: "A striped Victorian seaside dress with a high neckline", value: "a striped Victorian seaside dress with a high neckline" },
+            { label: "A Victorian wedding gown with lace sleeves and a fitted waist", value: "a Victorian wedding gown with lace sleeves and a fitted waist" },
+            { label: "A simple linen chemise with delicate lace trim", value: "a simple linen chemise with delicate lace trim" },
+            { label: "A late-Victorian shirtwaist blouse with leg-of-mutton sleeves and a long skirt", value: "a late-Victorian shirtwaist blouse with leg-of-mutton sleeves and a long skirt" }
         ],
 
         variants: {
             tinType: {
                 label: "Tin Type",
-                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections"
+                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections",
+                cameraAngles: ["Eye Level"],
+                cameraFraming: ["Waist-Up", "3/4 Body", "Full Body"],
+                lighting: ["Window Light", "Soft Natural Light"]
             },
             oilPainting: {
                 label: "Victorian Oil Painting",
-                value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism."
+                value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism.",
+                cameraAngles: ["Eye Level", "Low Angle"],
+                cameraFraming: ["3/4 Body", "Full Body", "Environmental Portrait"],
+                lighting: ["Window Light", "Candlelight / Firelight", "Low-Key / Chiaroscuro"]
             }
         },
 
-        cameraAngles: [
-            "Eye Level",
-            "High Angle",
-            "Low Angle"
-        ],
 
-        cameraFraming: [
-            "Full Body",
-            "3/4 Body"
-        ],
 
-        lighting: [
-            "Soft Studio Light"
-        ],
 
-        photographicLook: [
-            "2000s disposable camera",
-            "iPhone 16 Pro Max"
-        ],
 
 
         scenes: [
@@ -881,7 +886,7 @@ const eraPresets = {
             },
             {
                 label: "Bedroom",
-                value: "in a cozy bedroom on a bed with crumpled slept-in sheets. Beside the bed is a nightstand with a bedside lamp.",
+                setting: "in a cozy bedroom on a bed with crumpled slept-in sheets. Beside the bed is a nightstand with a bedside lamp.",
                 actions: [
                     "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body",
                     "standing, looking away from the camera",
@@ -904,7 +909,7 @@ const eraPresets = {
             },
             {
                 label: "Walk-in Shower",
-                value: "nude, in a bathroom walk-in shower. Water is cascading down her head and body. Her hair is wet and plastered to the sides of her face.",
+                setting: "nude, in a bathroom walk-in shower. Water is cascading down her head and body. Her hair is wet and plastered to the sides of her face.",
                 actions: [
                     "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up",
                     "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down",
@@ -913,14 +918,14 @@ const eraPresets = {
             },
             {
                 label: "Bathroom Selfie",
-                value: "in a bathroom facing a full-size mirror",
+                setting: "in a bathroom facing a full-size mirror",
                 actions: [
                     "taking a selfie in her reflection in the mirror"
                 ]
             },
             {
                 label: "Smoking on the Balcony",
-                value: "on the balcony of a Manhattan apartment",
+                setting: "on the balcony of a Manhattan apartment",
                 actions: [
                     "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air."
                 ]
