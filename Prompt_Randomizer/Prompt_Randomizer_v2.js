@@ -4024,14 +4024,7 @@ async function generateBatch() {
         photographicLookPresets
     );
 
-    const subjectMode = scene.subjectMode ?? concept.subjectMode ?? "single";
-
-    const includeSubject = subjectMode === "single" ||
-        (subjectMode === "optional" && Math.random() < 0.5);
-
-    const subject = includeSubject
-        ? buildSingleSubject(concept)
-        : null;
+    const subject = buildSingleSubject(concept);
 
     // console.log("Concept:", concept.label);
     // console.log("Variant:", variant.label);
