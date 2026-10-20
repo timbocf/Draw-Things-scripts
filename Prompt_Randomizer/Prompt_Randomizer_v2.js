@@ -3705,14 +3705,12 @@ const heightPresets = [
 ];
 
 const specificBodyPresets = [
-    { label: "No specific characteristic", value: "" },
     { label: "Adult with achondroplasia", value: "adult with achondroplasia, characteristic short stature and naturally proportioned body" },
     { label: "Pregnant", value: "pregnant adult with a visibly rounded pregnant belly" },
     { label: "Heavily pregnant", value: "heavily pregnant adult with a large, prominently rounded late-stage pregnancy belly" }
 ];
 
 const cameraFramingPresets = {
-    "noneSelected": "",
     "closeUp": "close-up portrait framing",
     "headShoulders": "head-and-shoulders portrait framing",
     "chestUp": "chest-up framing",
@@ -3724,7 +3722,6 @@ const cameraFramingPresets = {
 };
 
 const cameraAnglePresets = {
-    "noneSelected": "",
     "eyeLevel": "natural eye-level camera angle",
     "lowAngle": "low-angle view looking upward toward the subject",
     "wormSEye": "extreme low-angle worm's-eye view",
@@ -3738,8 +3735,6 @@ const cameraAnglePresets = {
 };
 
 const timeOfDayPresets = [
-    { label: "None Selected", value: "" },
-
     { label: "Dawn", value: "soft early-morning dawn light" },
     { label: "Morning", value: "soft natural morning light" },
     { label: "Midday", value: "bright midday daylight with the sun high overhead" },
@@ -3755,7 +3750,6 @@ const timeOfDayPresets = [
 // =========================================
 
 const lightingPresets = {
-    "noneSelected": "",
     "softNaturalLight": "soft natural illumination with gentle shadows",
     "directSunlight": "direct sunlight with strong highlights and defined shadows",
     "overcastDiffused": "broad diffused natural light with soft even illumination",
@@ -3793,7 +3787,6 @@ const lightingPresets = {
 };
 
 const photographicLookPresets = {
-    "noneSelected": "",
     "blackWhite": "black-and-white photographic treatment",
     "highContrastNoir": "high-contrast black-and-white noir photography with deep blacks and dramatic tonal separation",
     "softMonochrome": "soft monochrome photographic treatment with gentle tonal transitions",
