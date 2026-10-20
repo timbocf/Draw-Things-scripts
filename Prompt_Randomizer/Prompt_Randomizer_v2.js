@@ -4032,20 +4032,7 @@ async function generateBatch() {
     // console.log("Subject Mode:", subjectMode);
     // console.log("Subject:", JSON.stringify(subject, null, 2));
 
-    console.log("DEBUG TEST");
-
-    console.log(JSON.stringify({
-        concept: concept?.label ?? "MISSING",
-        variant: variant?.label ?? "MISSING",
-        scene: scene?.label ?? "MISSING",
-        subjectMode: subjectMode ?? "MISSING",
-        subject: subject
-    }, null, 2));
-    console.log(JSON.stringify({
-        subjectMode,
-        includeSubject,
-        subject
-    }, null, 2));
+    console.log("DEBUG TEST\n" + JSON.stringify(subject, null, 2));
 
     imagePrompt = [
         `A ${variant.value}`,
