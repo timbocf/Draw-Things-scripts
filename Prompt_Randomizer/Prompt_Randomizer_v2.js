@@ -149,7 +149,7 @@ const visualPresets = {
                 label: "Vintage Car Garage",
                 setting: "in a vintage car garage with greasy tools, large red toolboxes and pinup posters on the walls promoting the war effort",
                 actions: [
-                    "leaning against a two-toned 1948 Buick Roadmaster Convertible"
+                    "leaning against a cherry-red 1948 Buick Roadmaster convertible with sweeping fenders and gleaming chrome trim"
                 ]
             },
             {
@@ -587,347 +587,2999 @@ const visualPresets = {
                 lighting: ["Window Light", "Warm Indoor Lamps"]
             }
         ]
-    }
-};
-
-// ERA PRESETS
-const eraPresets = {
-
-
-    "1920s": {
-        outfits: [],
-        hairstyles: [
-            {
-                label: "1920s Flapper Bob",
-                value: "chin-length 1920s flapper bob with sleek sculpted finger waves"
-            }
-        ]
     },
 
-    "1930s": {
-        outfits: [],
-        hairstyles: [
+    spaceAge1960s: {
+        "label": "1960s Space Age / Space Mod",
+        "era": "1960s",
+        "subjectMode": "required",
+        "hairstyles": [
             {
-                label: "1930s Finger Waves",
-                value: "short hair styled in sculpted finger waves",
+                "label": "sleek geometric bob with blunt bangs",
+                "value": "sleek geometric bob with blunt bangs"
             },
             {
-                label: "1930s Marcel Waves",
-                value: "shoulder-length hair styled in soft Marcel waves",
+                "label": "high bouffant beehive",
+                "value": "high bouffant beehive"
             },
             {
-                label: "1930s Side-Parted Waves",
-                value: "medium-length hair with a deep side part and smooth sculpted waves",
+                "label": "short sculpted mod pixie cut",
+                "value": "short sculpted mod pixie cut"
             },
             {
-                label: "1930s Wavy Bob",
-                value: "chin-length bob styled in soft polished waves",
-            }
-        ]
-    },
-
-    "1950s": {
-        outfits: [],
-        hairstyles: [
-            {
-                label: "Pixie Cut",
-                value: "short textured pixie cut",
+                "label": "smooth flipped-end bob",
+                "value": "smooth flipped-end bob"
             },
             {
-                label: "1950s Poodle Cut",
-                value: "short hair styled in a tightly curled 1950s poodle cut"
-            },
-            {
-                label: "1950s Pageboy",
-                value: "smooth shoulder-length pageboy hairstyle with curled-under ends"
-            },
-            {
-                label: "1950s Short Softly Curled",
-                value: "short softly curled 1950s hairstyle"
-            },
-            {
-                label: "1950s Ponytail with Softly Curled Ends",
-                value: "hair pulled into a high 1950s ponytail with softly curled ends"
-            },
-            {
-                label: "1950s Polished Glamorous Waves",
-                value: "shoulder-length hair styled in polished glamorous waves"
-            },
-            {
-                label: "Full-Length Wedding Gown",
-                value: "a full-length evening gown"
-            }
-
-        ],
-        scenes: [
-            {
-                label: "1950s Diner — After Midnight",
-                setting: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette."
-            },
-            {
-                label: "Retro Laundromat — Fluorescent Lighting",
-                setting: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere."
-            }
-        ]
-    },
-
-    "1960s": {
-        outfits: [
-            {
-                label: "1960s Mod Dress",
-                value: "1960s Mod shift dress with a geometric pattern, bold graphic print, and knee-length hem",
-            },
-            {
-                label: "1960s Cocktail Dress",
-                value: "1960s cocktail dress with a fitted bodice, flared A-line skirt, and elbow-length gloves"
-            },
-            {
-                label: "1960s Beatnik Turtleneck",
-                value: "1960s beatnik turtleneck paired with high-waisted slacks"
-            },
-            {
-                label: "1960s Go-Go Dress, White Boots",
-                value: "1960s go-go dress with white go-go boots"
-            },
-            {
-                label: "1960s Suit & Skirt",
-                value: "1960s pillbox hat and tailored suit ensemble with a boxy jacket and pencil skirt"
-            },
-            {
-                label: "Bikini, Leather Boots",
-                value: "a string bikini with thigh-high leather boots"
+                "label": "long straight hair with a center part",
+                "value": "long straight hair with a center part"
             }
         ],
-        hairstyles: [
+        "outfits": [
             {
-                label: "Pixie Cut",
-                value: "short textured pixie cut",
+                "label": "metallic silver A-line minidress and white go-go boots",
+                "value": "metallic silver A-line minidress and white go-go boots"
             },
             {
-                label: "1960s Beehive",
-                value: "hair styled in a tall voluminous 1960s beehive",
+                "label": "color-blocked geometric shift dress with a high collar",
+                "value": "color-blocked geometric shift dress with a high collar"
             },
             {
-                label: "1960s Bouffant",
-                value: "hair styled in a full rounded bouffant with substantial crown volume",
+                "label": "white vinyl minidress with circular cutouts",
+                "value": "white vinyl minidress with circular cutouts"
             },
             {
-                label: "1960s Flipped Bob",
-                value: "short bob with smooth volume and dramatically flipped-out ends",
+                "label": "retro-futurist jumpsuit with contrasting piping",
+                "value": "retro-futurist jumpsuit with contrasting piping"
             },
             {
-                label: "1960s Mod Bob",
-                value: "sleek geometric 1960s mod bob",
+                "label": "structured tunic with a broad disc collar and white tights",
+                "value": "structured tunic with a broad disc collar and white tights"
             },
             {
-                label: "1960s Long Straight Hair",
-                value: "long straight center-parted hair in a late-1960s style",
-            }
-        ]
-    },
-
-    "1970s": {
-        outfits: [],
-        hairstyles: [
-            {
-                label: "1970s Feathered Hair",
-                value: "voluminous feathered 1970s hair with layers swept away from the face",
-            },
-            {
-                label: "1970s Shag",
-                value: "layered 1970s shag haircut with textured feathered ends",
-            },
-            {
-                label: "1970s Long Center-Parted Hair",
-                value: "long naturally flowing hair with a straight center part",
-            },
-            {
-                label: "1970s Afro",
-                value: "full rounded natural 1970s Afro hairstyle",
-            },
-            {
-                label: "1970s Disco Curls",
-                value: "voluminous shoulder-length disco curls",
-            }
-        ]
-    },
-
-    "1980s": {
-        outfits: [
-            {
-                label: "Daisy Dukes",
-                value: "a string bikini top with a pattern resembling the Confederate flag, a flannel pattern shirt tied around her torso, very short cutoff jean shorts and cowboy boots"
+                "label": "chrome-accented spaceflight uniform",
+                "value": "chrome-accented spaceflight uniform"
             }
         ],
-        hairstyles: [
-            {
-                label: "1980s Big Hair",
-                value: "huge voluminous 1980s hair with teased roots and dramatic volume",
-            },
-            {
-                label: "1980s Feathered Hair",
-                value: "voluminous layered feathered hair swept dramatically away from the face",
-            },
-            {
-                label: "1980s Side Ponytail",
-                value: "high side ponytail with teased volume",
-            },
-            {
-                label: "1980s Perm",
-                value: "voluminous tightly permed shoulder-length hair",
-            },
-            {
-                label: "1980s Crimped Hair",
-                value: "long voluminous crimped hair with teased volume",
-            }
-        ]
-    },
-
-    "1990s": {
-        outfits: [],
-        hairstyles: [
-            {
-                label: "1990s Rachel Cut",
-                value: "shoulder-length layered blowout with face-framing layers and flipped ends",
-            },
-            {
-                label: "1990s Pixie Cut",
-                value: "short textured 1990s pixie cut",
-            },
-            {
-                label: "1990s Face-Framing Layers",
-                value: "medium-length hair with prominent face-framing layers",
-            },
-            {
-                label: "1990s High Ponytail",
-                value: "high ponytail with loose face-framing strands",
-            },
-            {
-                label: "1990s Messy Updo",
-                value: "casual messy updo with loose face-framing strands",
-            }
-        ]
-    },
-
-    "2000s": {
-        outfits: [
-            {
-                label: "Hooters Uniform",
-                value: "Hooters uniform with a tight-fitting white T-shirt with the Hooters logo across the chest and short tight-fitting orange shorts"
-            },
-            {
-                label: "Bra & Panties, Hello Kitty Socks",
-                value: "a pushup bra, bikini panties, and thigh-high Hello Kitty tube socks"
-            },
-            {
-                label: "Short Babydoll Dress, Cowboy Boots",
-                value: "a short babydoll dress with cowboy boots"
-            },
-            {
-                label: "Racy Sexy Wedding Dress",
-                value: "a racy sexy wedding dress"
-            },
-            {
-                label: "Unbuttoned Mens Dress Shirt",
-                value: "an unbuttoned mens dress shirt"
-            },
-            {
-                label: "Full-Length Wedding Gown",
-                value: "a full-length evening gown"
-            },
-            {
-                label: "Tank Top, Wrap-Around Skirt",
-                value: "a tank top and a wrap-around skirt"
-            },
-            {
-                label: "Lowcut Full-Length Chiffon Dress with Side Pockets",
-                value: "a lowcut full-length chiffon dress with side pockets"
-            },
-            {
-                label: "Long Dress with a Slit Down the Side",
-                value: "cut-out dress with a side slit from her waist down"
-            }
-        ],
-        hairstyles: [
-            {
-                label: "Pixie Cut",
-                value: "short textured pixie cut",
-            },
-            {
-                label: "2000s Straight Layers",
-                value: "long pin-straight layered hair with face-framing pieces",
-            },
-            {
-                label: "2000s Side-Swept Bangs",
-                value: "long layered hair with dramatic side-swept bangs",
-            },
-            {
-                label: "2000s Chunky Layers",
-                value: "long layered hair with chunky face-framing sections",
-            },
-            {
-                label: "2000s Messy Bun",
-                value: "casual messy bun with loose face-framing strands",
-            },
-            {
-                label: "2000s Crimped Hair",
-                value: "long partially crimped hair with pronounced textured waves",
-            }
-        ],
-        scenes: [
-            {
-                label: "Selfie at Coachella",
-                setting: "at the Coachella Music Festival in front of a stage with a live band. A crowd of people are between the subject and the stage, all watching the band play.",
-                actions: [
-                    "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair."
+        "variants": {
+            "editorial": {
+                "label": "Space-Age Fashion Editorial",
+                "value": "1960s space-age fashion editorial, crisp retro-futurist styling, saturated color film",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
                 ],
-                selfiePhoto: true,
-                tags: ["2000s", "festival"]
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "High-Key Lighting"
+                ],
+                "photographicLook": [
+                    "1960s Color Film"
+                ]
             },
+            "pulp": {
+                "label": "Retro Science Fiction Illustration",
+                "value": "1960s pulp science-fiction magazine illustration with bold flat colors and airbrushed chrome",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Dramatic Colored Lighting",
+                    "Soft Studio Light"
+                ]
+            },
+            "technicolor": {
+                "label": "Technicolor Film Still",
+                "value": "1960s Technicolor retro-futurist cinema still with practical miniature-set atmosphere",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "Colored Practical Lights"
+                ],
+                "photographicLook": [
+                    "Technicolor"
+                ]
+            }
+        },
+        "scenes": [
             {
-                label: "Bedroom",
-                setting: "in a cozy bedroom on a bed with crumpled slept-in sheets. Beside the bed is a nightstand with a bedside lamp.",
-                actions: [
-                    "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body",
-                    "standing, looking away from the camera",
-                    "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted",
-                    "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.",
-                    "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera",
-                    "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera",
-                    "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her",
-                    "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees",
-                    "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile",
-                    "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.",
-                    "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.",
-                    "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.",
-                    "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked",
-                    "on all fours, head turned to the side, back arched hard, smiling at the camera",
-                    "crawling toward the camera on all fours",
-                    "standing in front of a full-length mirror while pulling her hair up",
-                    "sitting in front of a full-length mirror looking at her reflection"
+                "label": "Spaceship Control Deck",
+                "setting": "aboard a spotless 1960s imagined spacecraft with round portholes, illuminated analog controls, and curved white consoles",
+                "actions": [
+                    "studying a blinking control console",
+                    "standing before a circular observation window",
+                    "reaching for a large red toggle switch"
                 ]
             },
             {
-                label: "Walk-in Shower",
-                setting: "nude, in a bathroom walk-in shower. Water is cascading down her head and body. Her hair is wet and plastered to the sides of her face.",
-                actions: [
-                    "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up",
-                    "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down",
-                    "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace"
+                "label": "Lunar Colony Lounge",
+                "setting": "inside a bubble-domed lunar lounge with spherical chairs and a panoramic view of the gray moon",
+                "actions": [
+                    "reclining in a spherical chair",
+                    "gazing out at the lunar horizon",
+                    "walking past a row of glowing floor panels"
                 ]
             },
             {
-                label: "Bathroom Selfie",
-                setting: "in a bathroom facing a full-size mirror",
-                actions: [
-                    "taking a selfie in her reflection in the mirror"
+                "label": "Atomic Research Lab",
+                "setting": "inside a gleaming atomic-age research laboratory with glass cylinders and oversized dials",
+                "actions": [
+                    "examining a glowing specimen",
+                    "writing readings on a clipboard",
+                    "adjusting a chrome control dial"
                 ]
             },
             {
-                label: "Smoking on the Balcony",
-                setting: "on the balcony of a Manhattan apartment",
+                "label": "Alien Landscape",
+                "setting": "on a brightly colored alien landscape with bulbous rock formations and two moons",
+                "actions": [
+                    "stepping cautiously down a landing ramp",
+                    "surveying the strange horizon",
+                    "holding a translucent mineral sample"
+                ]
+            }
+        ]
+    },
+
+    victorianGothic: {
+        "label": "Victorian Gothic",
+        "era": "Victorian",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "dark ringlets pinned behind the ears",
+                "value": "dark ringlets pinned behind the ears"
+            },
+            {
+                "label": "center-parted braided chignon",
+                "value": "center-parted braided chignon"
+            },
+            {
+                "label": "long loose windswept curls",
+                "value": "long loose windswept curls"
+            },
+            {
+                "label": "severe smooth low bun",
+                "value": "severe smooth low bun"
+            },
+            {
+                "label": "loose waves spilling from a lace bonnet",
+                "value": "loose waves spilling from a lace bonnet"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "black crepe mourning dress with jet-bead trim",
+                "value": "black crepe mourning dress with jet-bead trim"
+            },
+            {
+                "label": "deep burgundy velvet gown with high collar",
+                "value": "deep burgundy velvet gown with high collar"
+            },
+            {
+                "label": "dark bustle dress with lace cuffs",
+                "value": "dark bustle dress with lace cuffs"
+            },
+            {
+                "label": "heavy traveling cloak over a fitted day dress",
+                "value": "heavy traveling cloak over a fitted day dress"
+            },
+            {
+                "label": "tailored black frock coat and waistcoat",
+                "value": "tailored black frock coat and waistcoat"
+            },
+            {
+                "label": "embroidered silk gown with a cameo brooch",
+                "value": "embroidered silk gown with a cameo brooch"
+            }
+        ],
+        "variants": {
+            "painting": {
+                "label": "Dark Romantic Oil Painting",
+                "value": "19th-century dark romantic oil painting, textured canvas, gothic atmosphere",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Candlelight / Firelight",
+                    "Low-Key / Chiaroscuro",
+                    "Moonlight"
+                ]
+            },
+            "photograph": {
+                "label": "Gothic Period Photograph",
+                "value": "moody Victorian photographic portrait, restrained sepia tones and antique lens softness",
+                "cameraAngles": [
+                    "Eye Level"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Window Light",
+                    "Low-Key / Chiaroscuro"
+                ],
+                "photographicLook": [
+                    "Sepia Photograph"
+                ]
+            },
+            "illustration": {
+                "label": "Gothic Book Illustration",
+                "value": "engraved Victorian gothic book illustration with dense crosshatching and ominous shadows",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Moonlight",
+                    "Candlelight / Firelight"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Abandoned Conservatory",
+                "setting": "in an overgrown glass conservatory with cracked panes, climbing ivy and rain-streaked windows",
+                "actions": [
+                    "holding a candle beside an overgrown fountain",
+                    "examining a dead rose",
+                    "standing silhouetted beneath broken glass"
+                ]
+            },
+            {
+                "label": "Ancestral Library",
+                "setting": "in a gloomy Victorian manor library with floor-to-ceiling bookshelves and a dying fireplace",
+                "actions": [
+                    "reading an unopened letter by firelight",
+                    "standing beside a tall arched window",
+                    "pulling a dusty book from a shelf"
+                ]
+            },
+            {
+                "label": "Fogbound Cemetery",
+                "setting": "among leaning Victorian gravestones and wrought-iron gates beneath thick evening fog",
+                "actions": [
+                    "kneeling beside a weathered headstone",
+                    "holding a black lace parasol",
+                    "walking along a narrow stone path"
+                ]
+            },
+            {
+                "label": "Grand Staircase",
+                "setting": "on the carved staircase of a decaying Gothic mansion beneath a tarnished chandelier",
+                "actions": [
+                    "looking back over one shoulder",
+                    "descending with a flickering candle",
+                    "holding a sealed letter against the chest"
+                ]
+            }
+        ]
+    },
+
+    gangster1920s: {
+        "label": "1920s Gangster Portraits",
+        "era": "1920s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "slicked-back hair with a sharp side part",
+                "value": "slicked-back hair with a sharp side part"
+            },
+            {
+                "label": "finger waves close to the scalp",
+                "value": "finger waves close to the scalp"
+            },
+            {
+                "label": "short flapper bob with blunt fringe",
+                "value": "short flapper bob with blunt fringe"
+            },
+            {
+                "label": "neatly waved pompadour",
+                "value": "neatly waved pompadour"
+            },
+            {
+                "label": "cloche hat over a short bob",
+                "value": "cloche hat over a short bob"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "dark pinstripe three-piece suit and fedora",
+                "value": "dark pinstripe three-piece suit and fedora"
+            },
+            {
+                "label": "double-breasted suit with suspenders and two-tone shoes",
+                "value": "double-breasted suit with suspenders and two-tone shoes"
+            },
+            {
+                "label": "beaded drop-waist flapper dress with a feather headband",
+                "value": "beaded drop-waist flapper dress with a feather headband"
+            },
+            {
+                "label": "silk evening gown with a long pearl necklace",
+                "value": "silk evening gown with a long pearl necklace"
+            },
+            {
+                "label": "white shirt with rolled sleeves, vest and tie",
+                "value": "white shirt with rolled sleeves, vest and tie"
+            },
+            {
+                "label": "long wool overcoat and felt fedora",
+                "value": "long wool overcoat and felt fedora"
+            }
+        ],
+        "variants": {
+            "crimePhoto": {
+                "label": "Archival Crime Photograph",
+                "value": "grainy 1920s black-and-white crime press photograph with period film grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Waist-Up",
+                    "3/4 Body",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Hard Side Lighting",
+                    "Window Light"
+                ],
+                "photographicLook": [
+                    "Black and White Film"
+                ]
+            },
+            "cinema": {
+                "label": "Silent-Era Film Still",
+                "value": "1920s silent-era gangster film still, monochrome silver-gelatin texture",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Low-Key / Chiaroscuro",
+                    "Hard Side Lighting"
+                ],
+                "photographicLook": [
+                    "Black and White Film"
+                ]
+            },
+            "poster": {
+                "label": "Pulp Crime Illustration",
+                "value": "vintage pulp crime magazine illustration with bold shadows and hand-painted color",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Dramatic Colored Lighting",
+                    "Low-Key / Chiaroscuro"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Speakeasy Back Room",
+                "setting": "inside a smoky Prohibition-era speakeasy with green felt card tables and a hidden bar",
+                "actions": [
+                    "shuffling a deck of cards",
+                    "sitting beside a half-empty whiskey glass",
+                    "leaning across a card table"
+                ]
+            },
+            {
+                "label": "Chicago Street",
+                "setting": "on a rain-darkened 1920s Chicago street beside a boxy period automobile",
+                "actions": [
+                    "stepping out of a vintage touring car",
+                    "standing under a streetlamp",
+                    "glancing over a shoulder beside a brick wall"
+                ]
+            },
+            {
+                "label": "Gangster Office",
+                "setting": "in a wood-paneled 1920s office with a rotary telephone, ledger books and venetian blinds",
+                "actions": [
+                    "sitting behind a cluttered desk",
+                    "holding a telephone receiver",
+                    "studying a folded newspaper"
+                ]
+            },
+            {
+                "label": "Police Mugshot",
+                "setting": "against a marked police identification wall in a 1920s station",
+                "actions": [
+                    "facing forward holding a numbered placard",
+                    "standing in profile with hands at sides",
+                    "looking directly into the camera"
+                ]
+            }
+        ]
+    },
+
+    filmNoir1940s: {
+        "label": "1940s Film Noir",
+        "era": "1940s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "glossy side-swept Hollywood waves",
+                "value": "glossy side-swept Hollywood waves"
+            },
+            {
+                "label": "short sculpted finger waves",
+                "value": "short sculpted finger waves"
+            },
+            {
+                "label": "neat side-parted hair under a fedora",
+                "value": "neat side-parted hair under a fedora"
+            },
+            {
+                "label": "soft shoulder-length curls",
+                "value": "soft shoulder-length curls"
+            },
+            {
+                "label": "slicked-back hair",
+                "value": "slicked-back hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "dark trench coat over a tailored suit",
+                "value": "dark trench coat over a tailored suit"
+            },
+            {
+                "label": "double-breasted suit with a tilted fedora",
+                "value": "double-breasted suit with a tilted fedora"
+            },
+            {
+                "label": "satin evening gown with long gloves",
+                "value": "satin evening gown with long gloves"
+            },
+            {
+                "label": "pencil skirt and fitted jacket",
+                "value": "pencil skirt and fitted jacket"
+            },
+            {
+                "label": "dark overcoat with a narrow tie",
+                "value": "dark overcoat with a narrow tie"
+            },
+            {
+                "label": "silk blouse with a high-waisted skirt",
+                "value": "silk blouse with a high-waisted skirt"
+            }
+        ],
+        "variants": {
+            "film": {
+                "label": "Black-and-White Film Still",
+                "value": "1940s black-and-white film noir still, deep blacks, luminous highlights, smoky atmosphere",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Low-Key / Chiaroscuro",
+                    "Hard Side Lighting",
+                    "Venetian Blind Shadows"
+                ],
+                "photographicLook": [
+                    "Black and White Film"
+                ]
+            },
+            "publicity": {
+                "label": "Studio Publicity Portrait",
+                "value": "1940s Hollywood publicity portrait with dramatic sculpted monochrome studio lighting",
+                "cameraAngles": [
+                    "Eye Level"
+                ],
+                "cameraFraming": [
+                    "Waist-Up",
+                    "3/4 Body"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "Hard Side Lighting"
+                ],
+                "photographicLook": [
+                    "Black and White Film"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Detective Office",
+                "setting": "inside a cramped detective office with venetian blinds, cigarette smoke and a rain-speckled window",
+                "actions": [
+                    "sitting at a desk reading a mysterious letter",
+                    "standing in a shaft of light from the blinds",
+                    "holding a telephone receiver"
+                ]
+            },
+            {
+                "label": "Rainy Alley",
+                "setting": "in a narrow rain-soaked city alley reflecting neon signage",
+                "actions": [
+                    "walking beneath a streetlamp",
+                    "looking back toward a shadowed doorway",
+                    "standing beside a vintage sedan"
+                ]
+            },
+            {
+                "label": "Nightclub",
+                "setting": "inside a shadowy 1940s nightclub with a tiny stage and round tables",
+                "actions": [
+                    "leaning against a piano",
+                    "sitting alone at a candlelit table",
+                    "watching the entrance through a veil of smoke"
+                ]
+            },
+            {
+                "label": "Rooftop at Midnight",
+                "setting": "on a wet rooftop overlooking a dense city skyline at midnight",
+                "actions": [
+                    "standing beside a brick parapet",
+                    "holding a folded note",
+                    "looking toward a distant illuminated window"
+                ]
+            }
+        ]
+    },
+
+    artNouveau: {
+        "label": "Art Nouveau",
+        "era": "1890s-1910s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "long flowing waves threaded with flowers",
+                "value": "long flowing waves threaded with flowers"
+            },
+            {
+                "label": "braided updo with curling tendrils",
+                "value": "braided updo with curling tendrils"
+            },
+            {
+                "label": "soft center-parted hair cascading down the back",
+                "value": "soft center-parted hair cascading down the back"
+            },
+            {
+                "label": "loose romantic curls crowned with leaves",
+                "value": "loose romantic curls crowned with leaves"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "flowing silk gown with botanical embroidery",
+                "value": "flowing silk gown with botanical embroidery"
+            },
+            {
+                "label": "long draped dress with a high empire waist",
+                "value": "long draped dress with a high empire waist"
+            },
+            {
+                "label": "sheer layered gown with embroidered irises",
+                "value": "sheer layered gown with embroidered irises"
+            },
+            {
+                "label": "ornate robe with stylized peacock-feather motifs",
+                "value": "ornate robe with stylized peacock-feather motifs"
+            },
+            {
+                "label": "high-necked Edwardian gown with lace panels",
+                "value": "high-necked Edwardian gown with lace panels"
+            }
+        ],
+        "variants": {
+            "lithograph": {
+                "label": "Decorative Lithographic Poster",
+                "value": "Art Nouveau color lithograph poster, flowing organic linework, flat decorative colors, ornate floral border",
+                "cameraAngles": [
+                    "Eye Level"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body"
+                ],
+                "lighting": [
+                    "Soft Natural Light"
+                ]
+            },
+            "watercolor": {
+                "label": "Art Nouveau Watercolor",
+                "value": "delicate Art Nouveau watercolor and ink illustration with curling botanical ornament",
+                "cameraAngles": [
+                    "Eye Level"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Natural Light",
+                    "Window Light"
+                ]
+            },
+            "oil": {
+                "label": "Symbolist Oil Painting",
+                "value": "turn-of-the-century Symbolist oil painting with decorative botanical forms and luminous muted colors",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Natural Light",
+                    "Golden Hour"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Iris Garden",
+                "setting": "amid towering irises and curling vines arranged in ornamental symmetry",
+                "actions": [
+                    "holding a single iris",
+                    "standing beneath an arch of flowers",
+                    "tracing the edge of a leaf"
+                ]
+            },
+            {
+                "label": "Decorative Fountain",
+                "setting": "beside a mosaic fountain with flowing water and stylized lilies",
+                "actions": [
+                    "sitting on a carved stone ledge",
+                    "reaching toward the water",
+                    "holding a trailing silk scarf"
+                ]
+            },
+            {
+                "label": "Botanical Conservatory",
+                "setting": "inside a glass botanical conservatory filled with lilies and climbing roses",
+                "actions": [
+                    "standing between tall flowering stems",
+                    "examining a delicate blossom",
+                    "leaning against an ornate railing"
+                ]
+            },
+            {
+                "label": "Ornate Music Room",
+                "setting": "inside an elegant salon with stained glass, carved wood and a gilded harp",
+                "actions": [
+                    "resting one hand on a harp",
+                    "reading a folded sheet of music",
+                    "standing beside an arched stained-glass window"
+                ]
+            }
+        ]
+    },
+
+    scienceFiction1970s: {
+        "label": "1970s Science Fiction",
+        "era": "1970s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "feathered shoulder-length hair",
+                "value": "feathered shoulder-length hair"
+            },
+            {
+                "label": "shag haircut with long fringe",
+                "value": "shag haircut with long fringe"
+            },
+            {
+                "label": "rounded natural Afro",
+                "value": "rounded natural Afro"
+            },
+            {
+                "label": "long straight center-parted hair",
+                "value": "long straight center-parted hair"
+            },
+            {
+                "label": "short utilitarian crop",
+                "value": "short utilitarian crop"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "quilted retro astronaut jumpsuit with mission patches",
+                "value": "quilted retro astronaut jumpsuit with mission patches"
+            },
+            {
+                "label": "cream-colored utility tunic and tall boots",
+                "value": "cream-colored utility tunic and tall boots"
+            },
+            {
+                "label": "padded spaceflight suit with ribbed panels",
+                "value": "padded spaceflight suit with ribbed panels"
+            },
+            {
+                "label": "retro-futurist jumpsuit with a wide belt",
+                "value": "retro-futurist jumpsuit with a wide belt"
+            },
+            {
+                "label": "weathered expedition jacket and cargo trousers",
+                "value": "weathered expedition jacket and cargo trousers"
+            },
+            {
+                "label": "high-collared metallic space uniform",
+                "value": "high-collared metallic space uniform"
+            }
+        ],
+        "variants": {
+            "cinema": {
+                "label": "1970s Science Fiction Film Still",
+                "value": "1970s practical-effects science-fiction film still, tactile sets, subtle film grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Colored Practical Lights",
+                    "Low-Key / Chiaroscuro"
+                ],
+                "photographicLook": [
+                    "1970s Color Film"
+                ]
+            },
+            "paperback": {
+                "label": "Vintage Paperback Cover",
+                "value": "1970s science-fiction paperback cover painting with painterly cosmic vistas",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Dramatic Colored Lighting",
+                    "Golden Hour"
+                ]
+            },
+            "airbrush": {
+                "label": "Retro Airbrush Concept Art",
+                "value": "1970s retro-futurist airbrushed concept art with soft gradients and industrial detail",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Colored Practical Lights",
+                    "Soft Studio Light"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Analog Starship Bridge",
+                "setting": "on a rugged starship bridge filled with CRT screens, toggle switches and exposed conduit",
+                "actions": [
+                    "consulting an analog navigation console",
+                    "watching a distant planet through the viewport",
+                    "speaking into a wall-mounted communicator"
+                ]
+            },
+            {
+                "label": "Alien Desert",
+                "setting": "on a barren alien desert beneath a ringed planet and enormous rust-colored cliffs",
+                "actions": [
+                    "examining a strange stone artifact",
+                    "walking toward an abandoned rover",
+                    "standing on a ridge scanning the horizon"
+                ]
+            },
+            {
+                "label": "Space Station Corridor",
+                "setting": "inside a worn orbital station with ribbed walls, pipes and amber indicator lights",
+                "actions": [
+                    "carrying a metal equipment case",
+                    "peering through a circular hatch",
+                    "checking a pressure gauge"
+                ]
+            },
+            {
+                "label": "Ancient Alien Temple",
+                "setting": "inside a colossal alien ruin with angular stone monoliths and unfamiliar symbols",
+                "actions": [
+                    "approaching a glowing relic",
+                    "holding a lantern toward a carved wall",
+                    "standing dwarfed beneath a stone arch"
+                ]
+            }
+        ]
+    },
+
+    darkFantasy1980s: {
+        "label": "1980s Dark Fantasy",
+        "era": "1980s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "long windblown hair",
+                "value": "long windblown hair"
+            },
+            {
+                "label": "wild shoulder-length curls",
+                "value": "wild shoulder-length curls"
+            },
+            {
+                "label": "thick warrior braids",
+                "value": "thick warrior braids"
+            },
+            {
+                "label": "long silver-white hair",
+                "value": "long silver-white hair"
+            },
+            {
+                "label": "roughly tied-back hair",
+                "value": "roughly tied-back hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "weathered plate armor and a fur-lined cloak",
+                "value": "weathered plate armor and a fur-lined cloak"
+            },
+            {
+                "label": "leather adventurer tunic with a broad belt",
+                "value": "leather adventurer tunic with a broad belt"
+            },
+            {
+                "label": "dark sorcerer robes with embroidered runes",
+                "value": "dark sorcerer robes with embroidered runes"
+            },
+            {
+                "label": "chainmail shirt beneath a travel cloak",
+                "value": "chainmail shirt beneath a travel cloak"
+            },
+            {
+                "label": "velvet ceremonial gown with a jeweled clasp",
+                "value": "velvet ceremonial gown with a jeweled clasp"
+            },
+            {
+                "label": "heavy traveling cloak over worn leather armor",
+                "value": "heavy traveling cloak over worn leather armor"
+            }
+        ],
+        "variants": {
+            "cover": {
+                "label": "Fantasy Paperback Cover",
+                "value": "1980s dark fantasy paperback cover painting, dramatic hand-painted brushwork and heroic composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Dramatic Colored Lighting",
+                    "Moonlight",
+                    "Candlelight / Firelight"
+                ]
+            },
+            "oil": {
+                "label": "Dark Fantasy Oil Illustration",
+                "value": "richly textured fantasy oil illustration, misty ruins, monumental scale",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Low-Key / Chiaroscuro",
+                    "Moonlight"
+                ]
+            },
+            "film": {
+                "label": "Practical-Effects Fantasy Film",
+                "value": "1980s practical-effects dark fantasy film still, atmospheric smoke and tactile sets",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Candlelight / Firelight",
+                    "Moonlight"
+                ],
+                "photographicLook": [
+                    "1980s Color Film"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Ruined Fortress",
+                "setting": "in the courtyard of a ruined stone fortress beneath gathering storm clouds",
+                "actions": [
+                    "holding a sword pointed toward the ground",
+                    "climbing broken steps",
+                    "standing beside a weathered stone statue"
+                ]
+            },
+            {
+                "label": "Torchlit Cavern",
+                "setting": "inside a vast cavern with ancient pillars and a dark underground pool",
+                "actions": [
+                    "lifting a torch to examine a carving",
+                    "kneeling beside a strange relic",
+                    "walking across a narrow stone bridge"
+                ]
+            },
+            {
+                "label": "Mountain Pass",
+                "setting": "on a wind-scoured mountain pass overlooking a distant ruined citadel",
+                "actions": [
+                    "standing on a rocky ledge with cloak billowing",
+                    "looking toward the far-off citadel",
+                    "resting one hand on a sheathed sword"
+                ]
+            },
+            {
+                "label": "Forgotten Temple",
+                "setting": "in an overgrown temple with giant carved faces and roots winding through the masonry",
+                "actions": [
+                    "reaching toward an illuminated altar",
+                    "studying a broken statue",
+                    "standing at the base of monumental stairs"
+                ]
+            }
+        ]
+    },
+
+    fashionEditorial1970s: {
+        "label": "1970s Fashion Editorial",
+        "era": "1970s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "feathered Farrah-style waves",
+                "value": "feathered Farrah-style waves"
+            },
+            {
+                "label": "layered shag haircut",
+                "value": "layered shag haircut"
+            },
+            {
+                "label": "rounded natural Afro",
+                "value": "rounded natural Afro"
+            },
+            {
+                "label": "voluminous disco curls",
+                "value": "voluminous disco curls"
+            },
+            {
+                "label": "long center-parted straight hair",
+                "value": "long center-parted straight hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "high-waisted bell-bottom trousers and fitted blouse",
+                "value": "high-waisted bell-bottom trousers and fitted blouse"
+            },
+            {
+                "label": "wide-collar jumpsuit with a broad belt",
+                "value": "wide-collar jumpsuit with a broad belt"
+            },
+            {
+                "label": "suede fringe jacket and flared jeans",
+                "value": "suede fringe jacket and flared jeans"
+            },
+            {
+                "label": "sequined disco dress and platform shoes",
+                "value": "sequined disco dress and platform shoes"
+            },
+            {
+                "label": "silk halter-neck dress",
+                "value": "silk halter-neck dress"
+            },
+            {
+                "label": "bold patterned shirt with wide-leg trousers",
+                "value": "bold patterned shirt with wide-leg trousers"
+            }
+        ],
+        "variants": {
+            "magazine": {
+                "label": "Vintage Fashion Magazine",
+                "value": "1970s fashion magazine editorial, warm film grain, tactile styling",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "Golden Hour",
+                    "Warm Indoor Lamps"
+                ],
+                "photographicLook": [
+                    "1970s Color Film"
+                ]
+            },
+            "flash": {
+                "label": "Direct-Flash Fashion Photo",
+                "value": "1970s direct-flash fashion photography, punchy contrast and candid composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Direct Flash",
+                    "Warm Indoor Lamps"
+                ],
+                "photographicLook": [
+                    "1970s Color Film"
+                ]
+            },
+            "advert": {
+                "label": "Retro Advertising Illustration",
+                "value": "1970s commercial fashion illustration with warm saturated palette and stylized brushwork",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "Golden Hour"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Disco Lounge",
+                "setting": "in a 1970s disco lounge with mirrored panels, velvet booths and a glittering disco ball",
+                "actions": [
+                    "leaning against a velvet booth",
+                    "standing beneath the disco ball",
+                    "turning toward the dance floor"
+                ]
+            },
+            {
+                "label": "Desert Highway Editorial",
+                "setting": "beside a vintage coupe on an empty desert highway at golden hour",
+                "actions": [
+                    "leaning on the car hood",
+                    "walking along the road shoulder",
+                    "adjusting oversized sunglasses"
+                ]
+            },
+            {
+                "label": "Sunken Living Room",
+                "setting": "inside a 1970s modernist living room with a sunken seating area and sculptural lamps",
+                "actions": [
+                    "reclining on a low modular sofa",
+                    "sitting in a sculptural chair",
+                    "standing beside a geometric floor lamp"
+                ]
+            },
+            {
+                "label": "Rooftop Fashion Shoot",
+                "setting": "on a city rooftop with an urban skyline and a portable fashion backdrop",
+                "actions": [
+                    "posing beside a folding reflector",
+                    "turning into the breeze",
+                    "standing with hands in trouser pockets"
+                ]
+            }
+        ]
+    },
+
+    cyberpunkAnime1990s: {
+        "label": "1990s Cyberpunk Anime",
+        "era": "1990s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "angular asymmetrical bob",
+                "value": "angular asymmetrical bob"
+            },
+            {
+                "label": "short spiky hair with shaved sides",
+                "value": "short spiky hair with shaved sides"
+            },
+            {
+                "label": "straight black hair cut to the jaw",
+                "value": "straight black hair cut to the jaw"
+            },
+            {
+                "label": "long hair tied in a high ponytail",
+                "value": "long hair tied in a high ponytail"
+            },
+            {
+                "label": "short textured pixie with colored streaks",
+                "value": "short textured pixie with colored streaks"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "armored motorcycle suit with neon piping",
+                "value": "armored motorcycle suit with neon piping"
+            },
+            {
+                "label": "oversized technical streetwear jacket and cargo pants",
+                "value": "oversized technical streetwear jacket and cargo pants"
+            },
+            {
+                "label": "futuristic trench coat over a utility harness",
+                "value": "futuristic trench coat over a utility harness"
+            },
+            {
+                "label": "sleek tactical bodysuit with padded panels",
+                "value": "sleek tactical bodysuit with padded panels"
+            },
+            {
+                "label": "layered urban streetwear with a high collar",
+                "value": "layered urban streetwear with a high collar"
+            }
+        ],
+        "variants": {
+            "cel": {
+                "label": "1990s Hand-Drawn Anime",
+                "value": "1990s hand-drawn cyberpunk anime cel, detailed painted backgrounds, sharp inked outlines",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Neon Lighting",
+                    "Colored Practical Lights"
+                ]
+            },
+            "ova": {
+                "label": "Retro Cyberpunk OVA Still",
+                "value": "1990s original-video-animation cyberpunk still with gritty film texture and dense urban detail",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Neon Lighting",
+                    "Low-Key / Chiaroscuro"
+                ]
+            },
+            "poster": {
+                "label": "Anime Film Poster",
+                "value": "1990s Japanese cyberpunk anime poster illustration, dynamic composition and bold graphic silhouettes",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Dramatic Colored Lighting",
+                    "Neon Lighting"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Neon Alley",
+                "setting": "in a dense rain-soaked futuristic city alley beneath layered Japanese neon signs",
+                "actions": [
+                    "standing beside a parked motorcycle",
+                    "looking up toward an elevated train",
+                    "walking through puddles reflecting neon"
+                ]
+            },
+            {
+                "label": "Megacity Rooftop",
+                "setting": "on the rooftop of a colossal cyberpunk megacity with antenna arrays and holographic billboards",
+                "actions": [
+                    "crouching near a ventilation unit",
+                    "looking down toward the streets",
+                    "holding a motorcycle helmet"
+                ]
+            },
+            {
+                "label": "Underground Terminal",
+                "setting": "inside a crowded underground transit terminal with fluorescent panels and flickering monitors",
+                "actions": [
+                    "checking a handheld terminal",
+                    "waiting beneath a departure board",
+                    "walking past vending machines"
+                ]
+            },
+            {
+                "label": "Industrial Laboratory",
+                "setting": "inside a futuristic laboratory filled with cables, tanks and glowing diagnostic screens",
+                "actions": [
+                    "studying a holographic display",
+                    "reaching toward a sealed containment tank",
+                    "standing beside an android repair station"
+                ]
+            }
+        ]
+    },
+
+    midnightLaundromat: {
+        "label": "Midnight Laundromat",
+        "era": "Contemporary",
+        "subjectMode": "optional",
+        "hairstyles": [
+            {
+                "label": "messy bun with loose strands",
+                "value": "messy bun with loose strands"
+            },
+            {
+                "label": "short unstyled hair",
+                "value": "short unstyled hair"
+            },
+            {
+                "label": "shoulder-length natural waves",
+                "value": "shoulder-length natural waves"
+            },
+            {
+                "label": "hair tucked under a knit beanie",
+                "value": "hair tucked under a knit beanie"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "oversized hoodie and faded jeans",
+                "value": "oversized hoodie and faded jeans"
+            },
+            {
+                "label": "plain work uniform with a name patch",
+                "value": "plain work uniform with a name patch"
+            },
+            {
+                "label": "worn denim jacket over a T-shirt",
+                "value": "worn denim jacket over a T-shirt"
+            },
+            {
+                "label": "loose sweater and comfortable trousers",
+                "value": "loose sweater and comfortable trousers"
+            }
+        ],
+        "variants": {
+            "film": {
+                "label": "Cinematic Night Photography",
+                "value": "cinematic 35mm night photography, lonely urban atmosphere and natural film grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Fluorescent Lighting",
+                    "Neon Lighting"
+                ],
+                "photographicLook": [
+                    "35mm Color Film"
+                ]
+            },
+            "surreal": {
+                "label": "Surreal Documentary Photograph",
+                "value": "subtly surreal documentary photography, uncanny stillness and meticulously ordinary details",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Fluorescent Lighting",
+                    "Neon Lighting"
+                ],
+                "photographicLook": [
+                    "35mm Color Film"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Empty Laundromat",
+                "setting": "inside an almost empty twenty-four-hour laundromat with rows of circular washer doors and humming fluorescent ceiling panels",
+                "actions": [
+                    "sitting alone on a plastic chair watching a washer",
+                    "folding a shirt on a scratched counter",
+                    "standing beside a spinning washing machine"
+                ]
+            },
+            {
+                "label": "Laundromat Window",
+                "setting": "inside a late-night laundromat beside a broad window overlooking a deserted strip mall",
+                "actions": [
+                    "looking out at the rain-soaked parking lot",
+                    "holding a laundry basket",
+                    "leaning against a row of dryers"
+                ]
+            },
+            {
+                "label": "Neon Parking Lot",
+                "setting": "outside a laundromat in a nearly deserted strip-mall parking lot beneath a buzzing OPEN sign",
+                "actions": [
+                    "carrying a basket toward the entrance",
+                    "standing beside a flickering vending machine",
+                    "watching headlights pass in the distance"
+                ]
+            },
+            {
+                "label": "Empty Machines",
+                "setting": "inside a deserted laundromat with one brightly lit washer spinning and no people present",
+                "actions": [
+                    "a single red sock rotates behind the washer glass",
+                    "the far row of machines glows beneath buzzing fluorescent tubes",
+                    "an unattended laundry basket sits in the center aisle"
+                ],
+                "subjectMode": "none"
+            }
+        ]
+    },
+
+    desertRoadSurrealism: {
+        "label": "Desert Road Surrealism",
+        "era": "Contemporary",
+        "subjectMode": "optional",
+        "hairstyles": [
+            {
+                "label": "windswept shoulder-length hair",
+                "value": "windswept shoulder-length hair"
+            },
+            {
+                "label": "loose natural curls",
+                "value": "loose natural curls"
+            },
+            {
+                "label": "hair tucked under a sun-faded cap",
+                "value": "hair tucked under a sun-faded cap"
+            },
+            {
+                "label": "short tousled hair",
+                "value": "short tousled hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "faded denim jacket and jeans",
+                "value": "faded denim jacket and jeans"
+            },
+            {
+                "label": "plain white T-shirt and work trousers",
+                "value": "plain white T-shirt and work trousers"
+            },
+            {
+                "label": "worn western shirt and boots",
+                "value": "worn western shirt and boots"
+            },
+            {
+                "label": "light cotton sundress with a wide-brim hat",
+                "value": "light cotton sundress with a wide-brim hat"
+            },
+            {
+                "label": "dusty mechanic coveralls",
+                "value": "dusty mechanic coveralls"
+            }
+        ],
+        "variants": {
+            "film": {
+                "label": "Surreal Road Cinema",
+                "value": "surreal widescreen road-movie photograph, unsettling empty space and grounded realism",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "Environmental Portrait",
+                    "Wide Shot"
+                ],
+                "lighting": [
+                    "Golden Hour",
+                    "Harsh Midday Sun",
+                    "Moonlight"
+                ],
+                "photographicLook": [
+                    "35mm Color Film"
+                ]
+            },
+            "painting": {
+                "label": "Hyperreal Desert Painting",
+                "value": "hyperreal surrealist painting of an impossible roadside landscape, meticulous detail and vast negative space",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Environmental Portrait",
+                    "Wide Shot"
+                ],
+                "lighting": [
+                    "Golden Hour",
+                    "Harsh Midday Sun"
+                ]
+            },
+            "retro": {
+                "label": "Faded Roadside Postcard",
+                "value": "faded mid-century roadside color postcard with subtly impossible architecture",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Environmental Portrait",
+                    "Wide Shot"
+                ],
+                "lighting": [
+                    "Golden Hour",
+                    "Harsh Midday Sun"
+                ],
+                "photographicLook": [
+                    "Vintage Postcard"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Endless Highway",
+                "setting": "on a ruler-straight desert highway vanishing into the horizon beneath an enormous cloudless sky",
+                "actions": [
+                    "standing alone beside a parked car",
+                    "walking toward a distant road sign",
+                    "watching an impossible second sun above the horizon"
+                ]
+            },
+            {
+                "label": "Abandoned Gas Station",
+                "setting": "at an abandoned roadside gas station surrounded by empty desert and faded advertising signs",
+                "actions": [
+                    "standing beside a silent fuel pump",
+                    "examining an unlit OPEN sign",
+                    "looking toward a distant dust plume"
+                ]
+            },
+            {
+                "label": "Impossible Motel",
+                "setting": "outside a lonely desert motel whose corridor appears to extend farther than the building itself",
+                "actions": [
+                    "standing beside a room door",
+                    "walking past identical motel doors",
+                    "staring at a glowing vacancy sign"
+                ]
+            },
+            {
+                "label": "Empty Desert Road",
+                "setting": "an empty desert highway with a solitary telephone booth, distant mesas and no people anywhere",
+                "actions": [
+                    "a single phone rings in an empty glass booth",
+                    "the road stretches toward a horizon that bends upward",
+                    "a floating roadside sign casts a long shadow"
+                ],
+                "subjectMode": "none"
+            },
+            {
+                "label": "Dry Lakebed",
+                "setting": "on a vast cracked dry lakebed beneath a gigantic suspended geometric shape",
+                "actions": [
+                    "standing dwarfed beneath the hovering shape",
+                    "walking across the cracked earth",
+                    "watching a distant mirage"
+                ],
+                "subjectMode": "optional"
+            }
+        ]
+    },
+
+    roadsideMotel1950s: {
+        "label": "1950s Roadside Motel",
+        "era": "1950s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "short curled pageboy",
+                "value": "short curled pageboy"
+            },
+            {
+                "label": "high ponytail tied with a ribbon",
+                "value": "high ponytail tied with a ribbon"
+            },
+            {
+                "label": "soft shoulder-length pin curls",
+                "value": "soft shoulder-length pin curls"
+            },
+            {
+                "label": "neatly combed pompadour",
+                "value": "neatly combed pompadour"
+            },
+            {
+                "label": "short rolled fringe",
+                "value": "short rolled fringe"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "1950s summer sundress with a fitted waist",
+                "value": "1950s summer sundress with a fitted waist"
+            },
+            {
+                "label": "high-waisted shorts and a tucked-in blouse",
+                "value": "high-waisted shorts and a tucked-in blouse"
+            },
+            {
+                "label": "bowling shirt and cuffed trousers",
+                "value": "bowling shirt and cuffed trousers"
+            },
+            {
+                "label": "knit cardigan over a circle skirt",
+                "value": "knit cardigan over a circle skirt"
+            },
+            {
+                "label": "1950s swimsuit with a halter neckline",
+                "value": "1950s swimsuit with a halter neckline"
+            },
+            {
+                "label": "short-sleeved camp-collar shirt and slacks",
+                "value": "short-sleeved camp-collar shirt and slacks"
+            }
+        ],
+        "variants": {
+            "kodachrome": {
+                "label": "Kodachrome Roadside Photograph",
+                "value": "1950s Kodachrome roadside travel photograph, rich vintage color and gentle film grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Golden Hour",
+                    "Harsh Midday Sun",
+                    "Neon Lighting"
+                ],
+                "photographicLook": [
+                    "1950s Kodachrome"
+                ]
+            },
+            "postcard": {
+                "label": "Vintage Motel Postcard",
+                "value": "1950s linen-finish roadside motel postcard illustration, saturated optimistic colors",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Golden Hour",
+                    "Soft Natural Light"
+                ],
+                "photographicLook": [
+                    "Vintage Postcard"
+                ]
+            },
+            "advert": {
+                "label": "Mid-Century Advertising Art",
+                "value": "1950s American roadside advertising illustration with clean painted shapes and bright color",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "Golden Hour"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Motel Courtyard",
+                "setting": "in a 1950s motor-court motel with pastel room doors, metal lawn chairs and a glowing VACANCY sign",
+                "actions": [
+                    "carrying a small suitcase toward a room",
+                    "sitting on a metal lawn chair",
+                    "leaning against a parked two-tone sedan"
+                ]
+            },
+            {
+                "label": "Roadside Pool",
+                "setting": "beside a turquoise motel swimming pool with striped umbrellas and desert mountains beyond",
+                "actions": [
+                    "sitting on the pool edge with feet in the water",
+                    "adjusting sunglasses on a lounge chair",
+                    "standing beneath a striped umbrella"
+                ]
+            },
+            {
+                "label": "Motel Room",
+                "setting": "inside a modest 1950s motel room with patterned bedspread, wooden television and bedside lamps",
+                "actions": [
+                    "sitting on the edge of the bed reading a postcard",
+                    "looking out through half-open curtains",
+                    "setting a suitcase on a luggage rack"
+                ]
+            },
+            {
+                "label": "Neon Diner",
+                "setting": "outside a chrome-trimmed roadside diner beside a motel parking lot",
+                "actions": [
+                    "standing next to a jukebox visible through the window",
+                    "walking toward the diner entrance",
+                    "leaning against a pastel-colored vintage car"
+                ]
+            }
+        ]
+    },
+    prohibitionSpeakeasy1920s: {
+        "label": "1920s Prohibition Speakeasy",
+        "era": "1920s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "sleek finger-wave bob",
+                "value": "sleek finger-wave bob"
+            },
+            {
+                "label": "short shingled bob",
+                "value": "short shingled bob"
+            },
+            {
+                "label": "jeweled headband over Marcel waves",
+                "value": "jeweled headband over Marcel waves"
+            },
+            {
+                "label": "soft Marcel waves pinned beneath a cloche hat",
+                "value": "soft Marcel waves pinned beneath a cloche hat"
+            },
+            {
+                "label": "slick side-parted hair",
+                "value": "slick side-parted hair"
+            },
+            {
+                "label": "neatly combed short hair",
+                "value": "neatly combed short hair"
+            },
+            {
+                "label": "finger waves with a feathered headpiece",
+                "value": "finger waves with a feathered headpiece"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "fringed beaded flapper dress with T-strap heels",
+                "value": "fringed beaded flapper dress with T-strap heels"
+            },
+            {
+                "label": "drop-waist silk dress and long pearl necklace",
+                "value": "drop-waist silk dress and long pearl necklace"
+            },
+            {
+                "label": "beaded evening gown with a feathered headband",
+                "value": "beaded evening gown with a feathered headband"
+            },
+            {
+                "label": "velvet evening dress with a faux-fur stole",
+                "value": "velvet evening dress with a faux-fur stole"
+            },
+            {
+                "label": "three-piece pinstripe suit with two-tone spectator shoes",
+                "value": "three-piece pinstripe suit with two-tone spectator shoes"
+            },
+            {
+                "label": "white dinner jacket and bow tie",
+                "value": "white dinner jacket and bow tie"
+            },
+            {
+                "label": "waistcoat with rolled shirt sleeves and sleeve garters",
+                "value": "waistcoat with rolled shirt sleeves and sleeve garters"
+            },
+            {
+                "label": "dark tailored overcoat and cloche hat",
+                "value": "dark tailored overcoat and cloche hat"
+            }
+        ],
+        "variants": {
+            "photo": {
+                "label": "1920s Monochrome Photograph",
+                "value": "authentic-looking late-1920s black-and-white nightlife photograph, silver-gelatin grain, slight halation and period tonal range",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Warm Tungsten Light",
+                    "Soft Studio Light"
+                ],
+                "photographicLook": [
+                    "Vintage Black and White"
+                ]
+            },
+            "artDeco": {
+                "label": "Art Deco Jazz Age Poster",
+                "value": "1920s Art Deco lithographic nightlife poster, bold geometry, jewel tones, stylized silhouettes and elegant decorative typography-free composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Warm Studio Light"
+                ],
+                "photographicLook": [
+                    "Vintage Illustration"
+                ]
+            },
+            "cinematic": {
+                "label": "Cinematic Period Photography",
+                "value": "cinematic photograph set in a 1920s Prohibition speakeasy, authentic period detail, rich atmospheric shadows, amber practical lamps and subtle film grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Warm Tungsten Light",
+                    "Low-Key Lighting"
+                ],
+                "photographicLook": [
+                    "Cinematic Film Look"
+                ]
+            },
+            "magazine": {
+                "label": "Vintage Magazine Illustration",
+                "value": "late-1920s illustrated magazine cover artwork, expressive hand-painted figures, period color palette and lively jazz-age composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up"
+                ],
+                "lighting": [
+                    "Warm Studio Light"
+                ],
+                "photographicLook": [
+                    "Vintage Illustration"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Charleston Dance Floor",
+                "setting": "a crowded underground 1920s speakeasy dance floor with Art Deco chandeliers, polished parquet, velvet booths and a lively jazz band",
+                "actions": [
+                    "kicking and swiveling through the Charleston among dancing couples",
+                    "dancing the Charleston with a partner while the crowd cheers",
+                    "clapping along beside the dance floor",
+                    "playing trumpet on the bandstand as flappers dance"
+                ]
+            },
+            {
+                "label": "Secret Basement Bar",
+                "setting": "a concealed Prohibition-era basement bar with polished mahogany counter, brass foot rail, amber lamps, rows of unlabeled bottles and patrons in evening wear",
+                "actions": [
+                    "leaning on the bar while a bartender pours bootleg whiskey",
+                    "serving drinks from behind the mahogany counter",
+                    "raising a cocktail glass in a crowded bar",
+                    "whispering to a companion over a drink"
+                ]
+            },
+            {
+                "label": "Private Gangster Booth",
+                "setting": "a secluded velvet booth at the back of a smoky 1920s speakeasy with a green-felt card table, poker chips, low amber lamps and heavy curtains",
+                "actions": [
+                    "studying a poker hand across the table",
+                    "stacking poker chips beside a whiskey glass",
+                    "leaning close to whisper to an associate",
+                    "sitting in a pinstripe suit with a fedora resting on the table"
+                ]
+            },
+            {
+                "label": "Jazz Club Performance",
+                "setting": "an intimate underground jazz stage in a 1920s speakeasy with an upright piano, trumpet player, upright bassist and vintage standing microphone",
+                "actions": [
+                    "singing into a vintage microphone beneath a spotlight",
+                    "playing an upright bass beside the pianist",
+                    "playing trumpet onstage while the audience watches",
+                    "sitting at the piano during a lively jazz number"
+                ]
+            },
+            {
+                "label": "Unmarked Alley Entrance",
+                "setting": "a rain-soaked 1920s city alley outside an unmarked speakeasy door, dim streetlamp, wet brickwork and a discreet peephole",
+                "actions": [
+                    "approaching the hidden door in a fur-trimmed coat",
+                    "knocking at the unmarked door and glancing over a shoulder",
+                    "waiting under a streetlamp for the doorman",
+                    "slipping through a half-open doorway into the club"
+                ]
+            },
+            {
+                "label": "Police Raid",
+                "setting": "a chaotic Prohibition-era speakeasy during a police raid, overturned chairs, spilled cocktails, swinging pendant lamps and startled patrons",
+                "actions": [
+                    "rushing toward a concealed exit as officers enter",
+                    "hiding bottles behind the bar in a hurry",
+                    "standing startled beside an overturned card table",
+                    "pulling a companion away from the crowded dance floor"
+                ]
+            },
+            {
+                "label": "Charleston Dance Contest",
+                "setting": "a glamorous late-1920s dance contest in a hidden nightclub with an excited crowd surrounding the polished floor and a hot jazz ensemble",
+                "actions": [
+                    "performing an energetic Charleston kick sequence",
+                    "dancing back-to-back with a partner as spectators cheer",
+                    "taking a dramatic final pose at the end of a Charleston routine"
+                ]
+            },
+            {
+                "label": "Dance Marathon",
+                "setting": "a crowded late-1920s dance marathon inside a jazz-age ballroom, weary couples and spectators seated around the edges",
+                "actions": [
+                    "dancing slowly with an exhausted partner beneath the chandeliers",
+                    "resting at the edge of the floor with a glass of water"
+                ]
+            }
+        ]
+    },
+    dinerLife1950s: {
+        "label": "1950s Diner & Rockabilly",
+        "era": "1950s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "high ponytail tied with a scarf",
+                "value": "high ponytail tied with a scarf"
+            },
+            {
+                "label": "short curled poodle cut",
+                "value": "short curled poodle cut"
+            },
+            {
+                "label": "rolled bangs and victory-inspired curls",
+                "value": "rolled bangs and victory-inspired curls"
+            },
+            {
+                "label": "greased pompadour",
+                "value": "greased pompadour"
+            },
+            {
+                "label": "smooth pageboy",
+                "value": "smooth pageboy"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "pastel circle skirt and fitted cardigan",
+                "value": "pastel circle skirt and fitted cardigan"
+            },
+            {
+                "label": "capri pants with a tucked-in blouse",
+                "value": "capri pants with a tucked-in blouse"
+            },
+            {
+                "label": "letterman jacket over a white T-shirt and cuffed jeans",
+                "value": "letterman jacket over a white T-shirt and cuffed jeans"
+            },
+            {
+                "label": "short-sleeved diner waitress uniform with apron",
+                "value": "short-sleeved diner waitress uniform with apron"
+            },
+            {
+                "label": "bowling shirt and pleated trousers",
+                "value": "bowling shirt and pleated trousers"
+            }
+        ],
+        "variants": {
+            "photo": {
+                "label": "Kodachrome Snapshot",
+                "value": "1950s Kodachrome candid photograph, rich colors and subtle grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Natural Light",
+                    "Neon Lighting",
+                    "Warm Tungsten Light"
+                ],
+                "photographicLook": [
+                    "1950s Kodachrome"
+                ]
+            },
+            "advert": {
+                "label": "Midcentury Advertising Illustration",
+                "value": "1950s hand-painted commercial illustration with clean shapes and cheerful color",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light"
+                ],
+                "photographicLook": [
+                    "Vintage Advertising Illustration"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "After-School Diner",
+                "setting": "a busy chrome-trimmed 1950s diner with red vinyl booths, jukeboxes, checkerboard tile and milkshake glasses",
+                "actions": [
+                    "sharing a milkshake across a booth",
+                    "leaning against the jukebox choosing a record",
+                    "carrying a tray of burgers and fries between booths"
+                ]
+            },
+            {
+                "label": "Midnight Counter",
+                "setting": "an almost-empty roadside diner after midnight, chrome stools, coffee urns and neon reflected in the windows",
+                "actions": [
+                    "sitting alone at the counter over a cup of coffee",
+                    "wiping down the counter beneath the neon sign",
+                    "reading a folded road map at a booth"
+                ]
+            },
+            {
+                "label": "Drive-In Date",
+                "setting": "a 1950s drive-in restaurant with carhop service, colorful signage and parked classic cars",
+                "actions": [
+                    "sitting on the hood of a two-tone 1956 Chevrolet Bel Air",
+                    "delivering a tray of sodas on roller skates",
+                    "talking through the open window of a parked convertible"
+                ]
+            },
+            {
+                "label": "Sock Hop",
+                "setting": "a high-school gymnasium decorated with crepe-paper streamers and a live rock-and-roll band",
+                "actions": [
+                    "dancing the jitterbug with a partner",
+                    "spinning in a full circle skirt",
+                    "watching couples dance from the bleachers"
+                ]
+            },
+            {
+                label: "Last Dance at the Sock Hop",
+                setting: "a dimly lit 1950s high school gymnasium decorated for a sock hop, with crepe-paper streamers, a polished wooden dance floor, a few couples in the background, and a soft smoky haze",
+                subjectMode: "multiple",
                 actions: [
-                    "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air."
+                    "a young couple slow dancing in a close embrace, her head resting gently on his shoulder, eyes closed, his arms wrapped around her",
+                    "a couple swaying slowly to a romantic ballad, holding each other close as the dance winds down",
+                    "a couple sharing a quiet, tender moment on the nearly empty dance floor, her cheek against his shoulder"
+                ],
+                lighting: [
+                    "dim, warm overhead lighting with soft shadows",
+                    "subtle amber stage lighting filtering through the haze"
+                ]
+            }
+        ]
+    },
+    modStreet1960s: {
+        "label": "1960s Mod City Life",
+        "era": "1960s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "geometric Vidal Sassoon bob",
+                "value": "geometric Vidal Sassoon bob"
+            },
+            {
+                "label": "flipped-end bob",
+                "value": "flipped-end bob"
+            },
+            {
+                "label": "tall beehive",
+                "value": "tall beehive"
+            },
+            {
+                "label": "short pixie cut",
+                "value": "short pixie cut"
+            },
+            {
+                "label": "long straight center-parted hair",
+                "value": "long straight center-parted hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "bold color-blocked A-line minidress and white go-go boots",
+                "value": "bold color-blocked A-line minidress and white go-go boots"
+            },
+            {
+                "label": "graphic Op Art shift dress",
+                "value": "graphic Op Art shift dress"
+            },
+            {
+                "label": "tailored narrow-lapel suit and Chelsea boots",
+                "value": "tailored narrow-lapel suit and Chelsea boots"
+            },
+            {
+                "label": "miniskirt and fitted turtleneck",
+                "value": "miniskirt and fitted turtleneck"
+            },
+            {
+                "label": "pillbox hat with a coordinated skirt suit",
+                "value": "pillbox hat with a coordinated skirt suit"
+            }
+        ],
+        "variants": {
+            "editorial": {
+                "label": "Swinging Sixties Editorial",
+                "value": "1960s London fashion editorial with vivid color film and playful graphic composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Studio Light",
+                    "Overcast Daylight"
+                ],
+                "photographicLook": [
+                    "1960s Color Film"
+                ]
+            },
+            "film": {
+                "label": "1960s Street Photograph",
+                "value": "candid 1960s street photography with authentic period color and film grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Natural Light",
+                    "Golden Hour"
+                ],
+                "photographicLook": [
+                    "Vintage Color Film"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Carnaby Street",
+                "setting": "London Carnaby Street in the mid-1960s, colorful boutiques, window displays and period scooters",
+                "actions": [
+                    "walking past a row of fashion boutiques",
+                    "posing beside a parked Vespa scooter",
+                    "looking at geometric dresses in a shop window"
+                ]
+            },
+            {
+                "label": "Mod Apartment",
+                "setting": "a fashionable mid-1960s apartment with an egg chair, graphic wallpaper, a record player and bold plastic furniture",
+                "actions": [
+                    "lounging in a white molded chair while holding a record sleeve",
+                    "dancing beside a portable record player",
+                    "looking out through floor-to-ceiling windows"
+                ]
+            },
+            {
+                "label": "Go-Go Club",
+                "setting": "a 1960s dance club with geometric light panels and a live beat band",
+                "actions": [
+                    "dancing the twist with friends",
+                    "performing on a small raised go-go platform",
+                    "watching the band from a booth"
+                ]
+            }
+        ]
+    },
+    rollerDisco1970s: {
+        "label": "1970s Roller Disco",
+        "era": "1970s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "feathered shoulder-length hair",
+                "value": "feathered shoulder-length hair"
+            },
+            {
+                "label": "voluminous Afro",
+                "value": "voluminous Afro"
+            },
+            {
+                "label": "long straight center-parted hair",
+                "value": "long straight center-parted hair"
+            },
+            {
+                "label": "curly shag haircut",
+                "value": "curly shag haircut"
+            },
+            {
+                "label": "disco curls",
+                "value": "disco curls"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "striped tube socks and satin athletic shorts",
+                "value": "striped tube socks and satin athletic shorts"
+            },
+            {
+                "label": "bright fitted roller-disco jumpsuit",
+                "value": "bright fitted roller-disco jumpsuit"
+            },
+            {
+                "label": "bell-bottom jeans and a glittery top",
+                "value": "bell-bottom jeans and a glittery top"
+            },
+            {
+                "label": "ringer T-shirt and short athletic shorts",
+                "value": "ringer T-shirt and short athletic shorts"
+            },
+            {
+                "label": "retro track jacket and flared pants",
+                "value": "retro track jacket and flared pants"
+            }
+        ],
+        "variants": {
+            "film": {
+                "label": "1970s Roller-Rink Film Still",
+                "value": "warm-grained 1970s color film still with energetic candid movement",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Colored Disco Lights",
+                    "Warm Tungsten Light"
+                ],
+                "photographicLook": [
+                    "1970s Color Film"
+                ]
+            },
+            "editorial": {
+                "label": "Retro Roller Disco Poster",
+                "value": "bright 1970s roller-skating advertisement with bold typography-inspired composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Colored Disco Lights",
+                    "Soft Studio Light"
+                ],
+                "photographicLook": [
+                    "Vintage Advertising Illustration"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Roller Rink",
+                "setting": "a packed 1970s roller rink with a glossy hardwood floor, mirrored disco ball, colored light spots and a snack bar",
+                "actions": [
+                    "gliding backward on quad roller skates",
+                    "skating hand-in-hand with a partner",
+                    "spinning beneath the disco ball",
+                    "tying roller-skate laces on a bench"
+                ]
+            },
+            {
+                "label": "Skate Rental Counter",
+                "setting": "the skate-rental counter of a retro roller rink with shelves of quad skates and orange plastic seating",
+                "actions": [
+                    "leaning on the counter holding a pair of rental skates",
+                    "helping a friend lace up skates",
+                    "watching the rink through a glass partition"
+                ]
+            },
+            {
+                "label": "Rink Parking Lot",
+                "setting": "outside a 1970s roller rink at dusk, illuminated marquee, vintage cars and groups of teenagers",
+                "actions": [
+                    "sitting on a curb adjusting quad skates",
+                    "laughing with friends beside a parked van",
+                    "carrying roller skates over one shoulder"
+                ]
+            }
+        ]
+    },
+    atticBedroom1970s: {
+        "label": "1970s Attic Bedroom",
+        "era": "1970s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "long feathered hair with a center part",
+                "value": "long feathered hair with a center part"
+            },
+            {
+                "label": "shag haircut with wispy bangs",
+                "value": "shag haircut with wispy bangs"
+            },
+            {
+                "label": "loose natural curls",
+                "value": "loose natural curls"
+            },
+            {
+                "label": "full rounded Afro",
+                "value": "full rounded Afro"
+            },
+            {
+                "label": "long straight hair",
+                "value": "long straight hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "faded band T-shirt and bell-bottom jeans",
+                "value": "faded band T-shirt and bell-bottom jeans"
+            },
+            {
+                "label": "crocheted vest over a peasant blouse",
+                "value": "crocheted vest over a peasant blouse"
+            },
+            {
+                "label": "short denim cutoffs and striped knee socks",
+                "value": "short denim cutoffs and striped knee socks"
+            },
+            {
+                "label": "corduroy flares and a fitted ribbed top",
+                "value": "corduroy flares and a fitted ribbed top"
+            },
+            {
+                "label": "oversized sweater and flared jeans",
+                "value": "oversized sweater and flared jeans"
+            }
+        ],
+        "variants": {
+            "snapshot": {
+                "label": "1970s Bedroom Snapshot",
+                "value": "intimate 1970s 35mm color snapshot with warm grain and lived-in realism",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Warm Tungsten Light",
+                    "Soft Window Light"
+                ],
+                "photographicLook": [
+                    "1970s Color Film"
+                ]
+            },
+            "cinematic": {
+                "label": "Nostalgic 1970s Film Still",
+                "value": "cinematic 1970s coming-of-age film still with natural textures and restrained warm color",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Window Light",
+                    "Warm Tungsten Light"
+                ],
+                "photographicLook": [
+                    "Vintage Color Film"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Poster-Covered Attic Bedroom",
+                "setting": "a cozy 1970s attic bedroom with a sharply sloped ceiling, wood-paneled walls plastered with rock-band posters, a low unmade bed, shag rug, record player and scattered LP sleeves",
+                "actions": [
+                    "sitting cross-legged on the shag rug flipping through vinyl records",
+                    "lying on the bed listening to music through oversized headphones",
+                    "taping another concert poster onto the angled ceiling",
+                    "leaning against the bed reading a music magazine"
+                ]
+            },
+            {
+                "label": "Rainy Afternoon in the Attic",
+                "setting": "a small 1970s attic bedroom with an angled ceiling, band posters, rain streaking a dormer window and a glowing bedside lamp",
+                "actions": [
+                    "watching rain from the dormer window",
+                    "writing in a notebook while a record spins",
+                    "sitting on the bed with a guitar"
+                ]
+            },
+            {
+                "label": "Attic Sleepover",
+                "setting": "a poster-covered 1970s attic bedroom lit by a lava lamp, with sleeping bags, magazines and vinyl records on the floor",
+                "actions": [
+                    "laughing with friends on the shag carpet",
+                    "passing around a stack of album covers",
+                    "playing a board game beneath the slanted ceiling"
+                ]
+            }
+        ]
+    },
+    arcadeMall1980s: {
+        "label": "1980s Mall & Arcade",
+        "era": "1980s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "big teased hair",
+                "value": "big teased hair"
+            },
+            {
+                "label": "high side ponytail",
+                "value": "high side ponytail"
+            },
+            {
+                "label": "feathered mullet",
+                "value": "feathered mullet"
+            },
+            {
+                "label": "crimped shoulder-length hair",
+                "value": "crimped shoulder-length hair"
+            },
+            {
+                "label": "short spiky haircut",
+                "value": "short spiky haircut"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "acid-wash jeans and oversized graphic sweatshirt",
+                "value": "acid-wash jeans and oversized graphic sweatshirt"
+            },
+            {
+                "label": "bright windbreaker and high-top sneakers",
+                "value": "bright windbreaker and high-top sneakers"
+            },
+            {
+                "label": "denim jacket over a band T-shirt",
+                "value": "denim jacket over a band T-shirt"
+            },
+            {
+                "label": "neon leotard with leggings and leg warmers",
+                "value": "neon leotard with leggings and leg warmers"
+            },
+            {
+                "label": "preppy polo shirt and pleated khaki pants",
+                "value": "preppy polo shirt and pleated khaki pants"
+            }
+        ],
+        "variants": {
+            "film": {
+                "label": "1980s Teen Movie Still",
+                "value": "1980s teen comedy film still with vivid practical lighting and fine analog grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Neon Lighting",
+                    "Fluorescent Lighting",
+                    "Warm Tungsten Light"
+                ],
+                "photographicLook": [
+                    "1980s Color Film"
+                ]
+            },
+            "snapshot": {
+                "label": "1980s Mall Snapshot",
+                "value": "candid consumer 35mm film photograph from the 1980s",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Fluorescent Lighting",
+                    "Soft Natural Light"
+                ],
+                "photographicLook": [
+                    "Vintage Color Film"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Video Arcade",
+                "setting": "a bustling 1980s arcade filled with glowing upright game cabinets, patterned carpet, neon signs and teenagers",
+                "actions": [
+                    "leaning over a joystick during a high-score attempt",
+                    "watching a friend play an arcade machine",
+                    "holding a paper cup of tokens beside the cabinets"
+                ]
+            },
+            {
+                "label": "Shopping Mall Food Court",
+                "setting": "a 1980s suburban mall food court with potted palms, skylights, bright storefronts and molded plastic tables",
+                "actions": [
+                    "sharing a tray of fries with friends",
+                    "sitting at a table with shopping bags",
+                    "looking over a mall directory"
+                ]
+            },
+            {
+                "label": "Cassette Bedroom",
+                "setting": "a teenager’s 1980s bedroom with cassette tapes, band posters, a boombox and colorful geometric bedding",
+                "actions": [
+                    "making a mixtape on a double-cassette deck",
+                    "dancing in front of a bedroom mirror",
+                    "lying on the floor reading liner notes"
+                ]
+            },
+            {
+                "label": "Video Rental Store",
+                "setting": "a 1980s video rental shop with rows of VHS boxes and fluorescent ceiling lights",
+                "actions": [
+                    "browsing a shelf of horror movie tapes",
+                    "holding up two VHS cases to compare them",
+                    "standing at the checkout counter with a stack of rentals"
+                ]
+            }
+        ]
+    },
+    grunge1990s: {
+        "label": "1990s Grunge & Alternative",
+        "era": "1990s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "messy shoulder-length hair",
+                "value": "messy shoulder-length hair"
+            },
+            {
+                "label": "chin-length choppy bob",
+                "value": "chin-length choppy bob"
+            },
+            {
+                "label": "grown-out pixie cut",
+                "value": "grown-out pixie cut"
+            },
+            {
+                "label": "long unstyled center-parted hair",
+                "value": "long unstyled center-parted hair"
+            },
+            {
+                "label": "shaggy layered hair",
+                "value": "shaggy layered hair"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "oversized flannel over a faded band T-shirt and ripped jeans",
+                "value": "oversized flannel over a faded band T-shirt and ripped jeans"
+            },
+            {
+                "label": "thrift-store floral slip dress with combat boots",
+                "value": "thrift-store floral slip dress with combat boots"
+            },
+            {
+                "label": "worn denim jacket and loose jeans",
+                "value": "worn denim jacket and loose jeans"
+            },
+            {
+                "label": "striped long-sleeve shirt and canvas sneakers",
+                "value": "striped long-sleeve shirt and canvas sneakers"
+            },
+            {
+                "label": "baggy cargo pants and a vintage hoodie",
+                "value": "baggy cargo pants and a vintage hoodie"
+            }
+        ],
+        "variants": {
+            "film": {
+                "label": "1990s Indie Film Still",
+                "value": "gritty 1990s independent film still with muted color and visible grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Overcast Daylight",
+                    "Warm Tungsten Light",
+                    "Stage Lighting"
+                ],
+                "photographicLook": [
+                    "1990s Color Film"
+                ]
+            },
+            "snapshot": {
+                "label": "1990s Disposable Camera",
+                "value": "1990s disposable-camera snapshot with direct flash, imperfect framing and grain",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Direct Flash",
+                    "Overcast Daylight"
+                ],
+                "photographicLook": [
+                    "Disposable Camera"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Garage Band Rehearsal",
+                "setting": "a cluttered 1990s garage rehearsal space with battered amplifiers, a drum kit, cables and peeling gig flyers",
+                "actions": [
+                    "tuning an electric guitar beside an amplifier",
+                    "sitting on a speaker watching the band rehearse",
+                    "singing into a wired microphone"
+                ]
+            },
+            {
+                "label": "Record Store",
+                "setting": "an independent 1990s record store with crowded CD racks, vinyl bins, handwritten staff picks and music posters",
+                "actions": [
+                    "flipping through secondhand records",
+                    "holding a CD case under the fluorescent lights",
+                    "talking with a friend near the listening station"
+                ]
+            },
+            {
+                "label": "Rainy Seattle Street",
+                "setting": "a rain-soaked Pacific Northwest street in the early 1990s with brick storefronts, gig flyers and parked older cars",
+                "actions": [
+                    "walking with hands in the pockets of an oversized flannel",
+                    "waiting outside a small music venue",
+                    "leaning against a brick wall under an awning"
+                ]
+            },
+            {
+                "label": "Alternative Bedroom",
+                "setting": "a messy 1990s bedroom with zines, band posters, a bulky CRT television, cassette tapes and thrift-store furniture",
+                "actions": [
+                    "sitting on the floor making a mixtape",
+                    "reading a photocopied zine on the bed",
+                    "pinning a concert ticket to a corkboard"
+                ]
+            }
+        ]
+    },
+    modernEveryday: {
+        "label": "2000s–Modern Everyday Life",
+        "era": "2000s",
+        "subjectMode": "required",
+        "hairstyles": [
+            {
+                "label": "long straight layered hair",
+                "value": "long straight layered hair"
+            },
+            {
+                "label": "side-swept bangs",
+                "value": "side-swept bangs"
+            },
+            {
+                "label": "messy bun",
+                "value": "messy bun"
+            },
+            {
+                "label": "short textured pixie cut",
+                "value": "short textured pixie cut"
+            },
+            {
+                "label": "loose natural curls",
+                "value": "loose natural curls"
+            },
+            {
+                "label": "shoulder-length bob",
+                "value": "shoulder-length bob"
+            }
+        ],
+        "outfits": [
+            {
+                "label": "jeans and a fitted T-shirt",
+                "value": "jeans and a fitted T-shirt"
+            },
+            {
+                "label": "casual sundress and sneakers",
+                "value": "casual sundress and sneakers"
+            },
+            {
+                "label": "hoodie and joggers",
+                "value": "hoodie and joggers"
+            },
+            {
+                "label": "business-casual blouse and trousers",
+                "value": "business-casual blouse and trousers"
+            },
+            {
+                "label": "tank top and denim shorts",
+                "value": "tank top and denim shorts"
+            },
+            {
+                "label": "light jacket over a graphic T-shirt",
+                "value": "light jacket over a graphic T-shirt"
+            }
+        ],
+        "variants": {
+            "digital": {
+                "label": "Contemporary Digital Photography",
+                "value": "natural contemporary digital photography with realistic color and crisp detail",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Window Light",
+                    "Soft Natural Light",
+                    "Golden Hour",
+                    "Warm Tungsten Light"
+                ],
+                "photographicLook": [
+                    "Contemporary Digital Photo"
+                ]
+            },
+            "phone": {
+                "label": "Casual Phone Snapshot",
+                "value": "candid smartphone photograph with everyday imperfections and natural composition",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Soft Natural Light",
+                    "Warm Indoor Light"
+                ],
+                "photographicLook": [
+                    "Smartphone Snapshot"
+                ]
+            },
+            "y2k": {
+                "label": "Early 2000s Digital Camera",
+                "value": "early-2000s compact digital camera photograph with direct flash and period color rendering",
+                "cameraAngles": [
+                    "Eye Level",
+                    "Low Angle",
+                    "High Angle"
+                ],
+                "cameraFraming": [
+                    "Full Body",
+                    "3/4 Body",
+                    "Waist-Up",
+                    "Environmental Portrait"
+                ],
+                "lighting": [
+                    "Direct Flash",
+                    "Soft Natural Light"
+                ],
+                "photographicLook": [
+                    "Early Digital Camera"
+                ]
+            }
+        },
+        "scenes": [
+            {
+                "label": "Apartment Kitchen",
+                "setting": "a lived-in apartment kitchen with dishes drying by the sink, magnets on the refrigerator and morning light",
+                "actions": [
+                    "making coffee at the counter",
+                    "leaning against the refrigerator checking a phone",
+                    "preparing breakfast while talking with a friend"
+                ]
+            },
+            {
+                "label": "Coffee Shop",
+                "setting": "a neighborhood coffee shop with worn wooden tables, large windows and a busy espresso counter",
+                "actions": [
+                    "reading at a window table",
+                    "waiting for a drink at the pickup counter",
+                    "talking with a friend over coffee"
+                ]
+            },
+            {
+                "label": "Apartment Living Room",
+                "setting": "a comfortable modern living room with a sofa, throw blanket, plants and a television",
+                "actions": [
+                    "sitting on the rug sorting photographs",
+                    "curling up on the couch reading a book",
+                    "playing a video game with friends"
+                ]
+            },
+            {
+                "label": "City Sidewalk",
+                "setting": "a busy contemporary city sidewalk with storefronts, bicycles and passing pedestrians",
+                "actions": [
+                    "walking with a takeaway coffee",
+                    "waiting at a pedestrian crossing",
+                    "checking directions on a phone"
+                ]
+            },
+            {
+                "label": "Backyard Evening",
+                "setting": "a modest suburban backyard with patio chairs, string lights and a small table",
+                "actions": [
+                    "sitting beneath string lights talking with friends",
+                    "watering plants along a fence",
+                    "looking out over the yard at dusk"
+                ]
+            },
+            {
+                "label": "Early-2000s Computer Desk",
+                "setting": "a Y2K-era bedroom with a beige CRT monitor, CD-R spindle, wired mouse and posters",
+                "actions": [
+                    "sitting at the desk browsing the internet",
+                    "holding up a freshly burned CD",
+                    "talking on a corded phone while looking at the monitor"
                 ]
             }
         ]
