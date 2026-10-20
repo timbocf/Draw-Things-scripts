@@ -54,30 +54,50 @@ const visualPresets = {
             {
                 label: "Bedroom, Early Morning",
                 value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
-                tags: ["bedroom"]
-            }
-        ],
-
-        environments: [
-            "Kitchen",
-            "Living Room",
-            "Studio",
-            "WWII Airfield",
-            "Bedroom"
-        ],
-
-        actions: [
-            {
-                label: "laying on a beach",
-                value: "laying on a beach",
-                aspectRatios: ["landscape", "square"],
-                tags: ["pinup", "laying", "beach"]
+                actions: [],
+                lighting: []
             },
             {
-                label: "Leaning Over a Kitchen Counter",
-                value: "standing, leaning over a kitchen counter, resting on elbows, ass pushed out, looking back at camera, wearing an apron.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["pinup", "boudoir", "standing", "kitchen"]
+                label: "Posing in Front of a US Flag",
+                value: "in front of a US flag that covers the background of the frame",
+                actions: [
+                    "smiling at the camera while she salutes with her right hand brought up to her eyebrow. Her legs are drawn up to her chest."
+                ],
+                lighting: ["Studio Light", "Moody High-Contrast Lighting"],
+
+            },
+            {
+                label: "In a Kitchen",
+                value: "in a 1940s era kitchen with bright vivid colors, an oven, countertops, cabinets, and a curtained window above a sink.",
+                actions: [
+                    "bending at the waist, legs straight, grabbing a sheet of cookies out of an oven",
+                    "reaching above her head to grab a can of green beans from a high shelf in a cabinet, standing on her tiptoes"
+                ],
+                lighting: []
+            },
+            {
+                label: "Sitting in a Living Room",
+                value: "in a 1940s era living room with bright vivid colors",
+                actions: [
+                    "sitting in a baby-blue upholstered wingback chair reading a large magazine",
+                    "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera"
+                ],
+                lighting: []
+            },
+            {
+                label: "WWII Airfield",
+                value: "in a WWII airfield with B-52 bomber airplanes in the background",
+                actions: [],
+                lighting: []
+            },
+            {
+                label: "On a Beach",
+                value: "on a beach",
+                actions: [
+                    "laying on her side",
+                    "running toward the water"
+                ],
+                lighting: ["bright summer day"]
             },
             {
                 label: "sitting on the floor, knees drawn up",
@@ -132,8 +152,8 @@ const visualPresets = {
             }
         ]
     },
-    boudoir: {
-        label: "Boudoir",
+    modernBoudoir: {
+        label: "Modern Boudoir",
         era: "2000s",
 
         variants: {
@@ -187,11 +207,171 @@ const visualPresets = {
             "Studio",
             "Bedroom"
         ]
+    },
+
+    victorianBoudoir: {
+        label: "Victorian Boudoir",
+        era: "1800s",
+
+        variants: {
+            tinType: {
+                label: "Tin Type",
+                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections"
+            },
+            oilPainting: {
+                label: "Victorian Oil Painting",
+                value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism."
+            }
+        },
+
+        cameraAngles: [
+            "Eye Level",
+            "High Angle",
+            "Low Angle"
+        ],
+
+        cameraFraming: [
+            "Full Body",
+            "3/4 Body"
+        ],
+
+        lighting: [
+            "Soft Studio Light"
+        ],
+
+        photographicLook: [
+            "2000s disposable camera",
+            "iPhone 16 Pro Max"
+        ],
+
+        scenes: [
+            {
+                label: "Bedroom, Early Morning",
+                value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                tags: ["bedroom"]
+            },
+            {
+                label: "Low Angle, Rim Lighting",
+                value: "",
+                cameraAngle: ["Low Angle"],
+                cameraFraming: ["Full Body", "3/4 Body"],
+                lighting: ["Rim Lighting", "Backlighting"],
+                timeOfDay: [],
+                photographicLook: [],
+                aspectRatios: ["square"],
+                tags: ["standing", "sitting", "crouching", "kneeling"]
+            }
+        ],
+        environments: [
+            "Kitchen",
+            "Living Room",
+            "Studio",
+            "Bedroom"
+        ]
+    },
+
+    victorian: {
+        label: "Boudoir",
+        era: "1800s",
+
+        variants: {
+            tinType: {
+                label: "Tin Type",
+                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections"
+            },
+            oilPainting: {
+                label: "Victorian Oil Painting",
+                value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism."
+            }
+        },
+
+        cameraAngles: [
+            "Eye Level",
+            "High Angle",
+            "Low Angle"
+        ],
+
+        cameraFraming: [
+            "Full Body",
+            "3/4 Body"
+        ],
+
+        lighting: [
+            "Soft Studio Light"
+        ],
+
+        photographicLook: [
+            "2000s disposable camera",
+            "iPhone 16 Pro Max"
+        ],
+
+
+        scenes: [
+            {
+                label: "Victorian Bedroom, Early Morning",
+                value: "Inside an ornate Victorian bedroom with a four-poster bed, carved wooden furniture, lace curtains, and soft morning sunlight.",
+                actions: [
+                    "sitting on the edge of the bed",
+                    "standing beside the window",
+                    "brushing her hair at a vanity"
+                ],
+                lighting: ["Window Light", "Soft Natural Light"],
+                cameraFraming: ["Full Body", "3/4 Body"]
+            },
+            {
+                label: "Victorian Sitting Room",
+                value: "Inside an elegant Victorian sitting room with patterned wallpaper, upholstered furniture, and a marble fireplace.",
+                actions: [
+                    "sitting in an upholstered armchair",
+                    "standing beside the fireplace",
+                    "reading a book on the sofa"
+                ],
+                lighting: ["Window Light", "Warm Indoor Lamps"]
+            }
+        ]
     }
 };
 
 // ERA PRESETS
 const eraPresets = {
+    "Victorian": {
+        outfits: [
+            "a high-necked Victorian dress with a fitted bodice and full skirt",
+            "an elegant silk ball gown with an off-the-shoulder neckline",
+            "a modest cotton day dress with long sleeves and a lace collar",
+            "a dark velvet Victorian evening gown with intricate embroidery",
+            "a fitted riding habit with a long skirt and tailored jacket",
+            "a simple working-class dress with a white apron",
+            "a Victorian mourning dress made of black crepe with a high collar",
+            "a floral-print muslin summer dress with puffed sleeves",
+            "a luxurious satin gown with lace trim and a bustle",
+            "a Victorian walking dress with a fitted jacket and floor-length skirt",
+            "a high-collared blouse with a long dark wool skirt",
+            "a Victorian tea gown with flowing fabric and lace detailing",
+            "a striped Victorian seaside dress with a high neckline",
+            "a Victorian wedding gown with lace sleeves and a fitted waist",
+            "a simple linen chemise with delicate lace trim",
+            "a late-Victorian shirtwaist blouse with leg-of-mutton sleeves and a long skirt"
+        ],
+
+        hairstyles: [
+            "dark hair parted in the center and gathered into a low bun",
+            "long hair styled in tight Victorian ringlets",
+            "an elaborate braided updo with pinned curls",
+            "a smooth center-parted hairstyle with a braided crown",
+            "a voluminous Gibson Girl pompadour updo",
+            "soft curls framing the face with hair pinned at the back",
+            "a neatly coiled chignon at the nape of the neck",
+            "long wavy hair cascading over the shoulders",
+            "an intricate Victorian hairstyle with braided loops",
+            "a high Victorian updo decorated with delicate ribbons",
+            "a center-parted hairstyle with sausage curls beside the cheeks",
+            "a loose Victorian updo with wispy curls around the temples",
+            "a polished braided bun with a center part",
+            "a Victorian hairstyle with a rolled fringe and pinned curls"
+        ],
+    },
+
     "1920s": {
         outfits: [],
         hairstyles: [
