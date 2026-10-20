@@ -3980,6 +3980,31 @@ function buildSingleSubject(concept) {
     };
 }
 
+function formatSingleSubject(subject) {
+    const {
+        nationality,
+        age,
+        overallBuild,
+        hairstyle,
+        hairColor,
+        skinTone,
+        eyeColor,
+        outfit
+    } = subject;
+
+    const description = [
+        `a ${age}-year-old ${nationality.label} woman`,
+        `with ${skinTone} skin`,
+        `${hairColor} ${hairstyle?.value ?? "hair"}`,
+        `${eyeColor} eyes`,
+        nationality.value,
+        overallBuild?.value,
+        outfit?.value ? `wearing ${outfit.value}` : ""
+    ];
+
+    return description.filter(Boolean).join(", ");
+}
+
 async function generateBatch() {
 
     canvas.clear();
@@ -4025,14 +4050,9 @@ async function generateBatch() {
     );
 
     const subject = buildSingleSubject(concept);
+    const subjectDescription = formatSingleSubject(subject);
 
-    // console.log("Concept:", concept.label);
-    // console.log("Variant:", variant.label);
-    // console.log("Scene:", scene.label);
-    // console.log("Subject Mode:", subjectMode);
-    // console.log("Subject:", JSON.stringify(subject, null, 2));
-
-    console.log("DEBUG TEST\n" + JSON.stringify(subject, null, 2));
+    console.log("SUBJECT:\n" + subjectDescription);
 
     imagePrompt = [
         `A ${variant.value}`,
