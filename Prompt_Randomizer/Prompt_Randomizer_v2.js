@@ -118,26 +118,26 @@ const visualPresets = {
             painting: {
                 label: "Oil Painting",
                 value: "1940s era pinup oil painting in the style of Gil Elvgren and Alberto Vargas",
-                cameraAngles: ["Eye Level", "Low Angle", "High Angle"],
-                cameraFraming: ["Full Body", "3/4 Body"],
-                lighting: ["Soft Studio Light", "Soft Natural Light"]
+                cameraAngles: ["eyeLevel", "lowAngle", "highAngle"],
+                cameraFraming: ["fullBody", "34Body"],
+                lighting: ["softStudioLight", "softNaturalLight"]
             },
 
             illustration: {
                 label: "Vintage Magazine Illustration",
                 value: "vintage magazine advertising illustration",
-                cameraAngles: ["Eye Level", "Low Angle", "High Angle"],
-                cameraFraming: ["Full Body", "3/4 Body"],
-                lighting: ["Soft Studio Light", "Soft Natural Light"]
+                cameraAngles: ["eyeLevel", "lowAngle", "highAngle"],
+                cameraFraming: ["fullBody", "34Body"],
+                lighting: ["softStudioLight", "softNaturalLight"]
             },
 
             photo: {
                 label: "Photography",
                 value: "1940s vintage pinup photograph",
-                photographicLook: ["1940s Kodachrome"],
-                cameraAngles: ["Eye Level", "Low Angle", "High Angle"],
-                cameraFraming: ["Full Body", "3/4 Body"],
-                lighting: ["Soft Studio Light", "Window Light"]
+                photographicLook: ["1940sKodachrome"],
+                cameraAngles: ["eyeLevel", "lowAngle", "highAngle"],
+                cameraFraming: ["fullBody", "34Body"],
+                lighting: ["softStudioLight", "windowLight"]
             }
         },
 
@@ -177,10 +177,7 @@ const visualPresets = {
                     "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
                     "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor"
                 ],
-                lighting: [
-                    "Soft studio lighting",
-                    "diffused sunlight through the sheer curtains covering a window"
-                ]
+                lighting: ["softStudioLight", "windowLightThroughSheerCurtains"]
             },
             {
                 label: "Posing in Front of a US Flag",
@@ -188,7 +185,7 @@ const visualPresets = {
                 actions: [
                     "smiling at the camera while she salutes with her right hand brought up to her eyebrow. Her legs are drawn up to her chest."
                 ],
-                lighting: ["Studio Light", "Moody High-Contrast Lighting"],
+                lighting: ["softStudioLight", "moodyHighContrastLighting"],
 
             },
             {
@@ -198,7 +195,7 @@ const visualPresets = {
                     "bending at the waist, legs straight, grabbing a sheet of cookies out of an oven",
                     "reaching above her head to grab a can of green beans from a high shelf in a cabinet, standing on her tiptoes"
                 ],
-                lighting: ["window lighting through sheer curtains"]
+                lighting: ["windowLightThroughSheerCurtains"]
             },
             {
                 label: "Living Room",
@@ -209,10 +206,7 @@ const visualPresets = {
                     "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
                     "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise"
                 ],
-                lighting: [
-                    "soft studio lighting",
-                    "soft indoor lamps"
-                ]
+                lighting: ["softStudioLight", "warmIndoorLamps"]
             },
             {
                 label: "WWII Airfield",
@@ -221,7 +215,7 @@ const visualPresets = {
                     "leaning against the side of a plane with one foot raised and pressed against the plane",
                     "standing with her feet shoulder-width apart, with her hands on her hips"
                 ],
-                lighting: ["bright sunny day"]
+                lighting: ["directSunlight"]
             },
             {
                 label: "On a Beach",
@@ -230,7 +224,7 @@ const visualPresets = {
                     "reclining on a beach towel",
                     "running toward the water"
                 ],
-                lighting: ["bright summer day"]
+                lighting: ["directSunlight"]
             },
             {
                 label: "Studio Portrait",
@@ -239,11 +233,7 @@ const visualPresets = {
                     "looking over one shoulder with a playful smile",
                     "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
                 ],
-                lighting: [
-                    "diffused studio lighting",
-                    "rim lighting",
-                    "backlighting"
-                ]
+                lighting: ["softStudioLight", "rimLighting", "backlighting"]
             },
             {
                 label: "1940s Hollywood Dressing Room",
@@ -259,7 +249,7 @@ const visualPresets = {
                 actions: [
                     "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera."
                 ],
-                lighting: ["soft indoor lighting"]
+                lighting: ["warmIndoorLamps"]
             }
         ]
     },
@@ -318,17 +308,17 @@ const visualPresets = {
             photo: {
                 label: "1940s Glamour Photo",
                 value: "1940s glamour photo",
-                photographicLook: ["1940s Kodachrome"],
-                cameraAngles: ["Eye Level", "Low Angle"],
-                cameraFraming: ["3/4 Body", "Full Body", "Waist-Up"],
-                lighting: ["Soft Studio Light", "Window Light"]
+                photographicLook: ["1940sKodachrome"],
+                cameraAngles: ["eyeLevel", "lowAngle"],
+                cameraFraming: ["34Body", "fullBody", "waistUp"],
+                lighting: ["softStudioLight", "windowLight"]
             },
             illustration: {
                 label: "Vintage Magazine Illustration",
                 value: "vintage magazine advertising illustration",
-                cameraAngles: ["Eye Level", "Low Angle"],
-                cameraFraming: ["3/4 Body", "Full Body"],
-                lighting: ["Soft Studio Light", "Soft Natural Light"]
+                cameraAngles: ["eyeLevel", "lowAngle"],
+                cameraFraming: ["34Body", "fullBody"],
+                lighting: ["softStudioLight", "softNaturalLight"]
             }
         },
 
@@ -352,10 +342,7 @@ const visualPresets = {
                     "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise",
                     "adjusting her hat in a mirror"
                 ],
-                lighting: [
-                    "soft studio lighting",
-                    "soft indoor lamps"
-                ]
+                lighting: ["softStudioLight", "warmIndoorLamps"]
             },
             {
                 label: "WWII Airfield",
@@ -364,7 +351,7 @@ const visualPresets = {
                     "leaning against the side of a plane with one foot raised and pressed against the plane",
                     "standing with her feet shoulder-width apart, with her hands on her hips"
                 ],
-                lighting: ["bright sunny day"]
+                lighting: ["directSunlight"]
             },
             {
                 label: "On a Beach",
@@ -373,7 +360,7 @@ const visualPresets = {
                     "laying on her side",
                     "running toward the water"
                 ],
-                lighting: ["bright summer day"]
+                lighting: ["directSunlight"]
             },
             {
                 label: "Studio Portrait",
@@ -381,11 +368,7 @@ const visualPresets = {
                 actions: [
                     "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
                 ],
-                lighting: [
-                    "diffused studio lighting",
-                    "rim lighting",
-                    "backlighting"
-                ]
+                lighting: ["softStudioLight", "rimLighting", "backlighting"]
             },
             {
                 label: "Art Deco Hotel Suite",
@@ -419,10 +402,10 @@ const visualPresets = {
             photo: {
                 label: "photography",
                 value: "photo",
-                cameraAngles: ["Eye Level", "High Angle", "Low Angle"],
-                cameraFraming: ["Full Body", "3/4 Body"],
-                lighting: ["Soft Studio Light"],
-                photographicLook: ["2000s Disposable Camera"]
+                cameraAngles: ["eyeLevel", "highAngle", "lowAngle"],
+                cameraFraming: ["fullBody", "34Body"],
+                lighting: ["softStudioLight"],
+                photographicLook: ["2000sDisposableCamera"]
             }
         },
 
@@ -470,16 +453,16 @@ const visualPresets = {
             tinType: {
                 label: "Tin Type",
                 value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections",
-                cameraAngles: ["Eye Level"],
-                cameraFraming: ["Waist-Up", "3/4 Body", "Full Body"],
-                lighting: ["Window Light", "Soft Natural Light"]
+                cameraAngles: ["eyeLevel"],
+                cameraFraming: ["waistUp", "34Body", "fullBody"],
+                lighting: ["windowLight", "softNaturalLight"]
             },
             oilPainting: {
                 label: "Victorian Oil Painting",
                 value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism.",
-                cameraAngles: ["Eye Level", "Low Angle"],
-                cameraFraming: ["3/4 Body", "Full Body", "Environmental Portrait"],
-                lighting: ["Window Light", "Candlelight / Firelight", "Low-Key / Chiaroscuro"]
+                cameraAngles: ["eyeLevel", "lowAngle"],
+                cameraFraming: ["34Body", "fullBody", "environmentalPortrait"],
+                lighting: ["windowLight", "candlelightFirelight", "lowKeyChiaroscuro"]
             }
         },
 
@@ -546,16 +529,16 @@ const visualPresets = {
             tinType: {
                 label: "Tin Type",
                 value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections",
-                cameraAngles: ["Eye Level"],
-                cameraFraming: ["Waist-Up", "3/4 Body", "Full Body"],
-                lighting: ["Window Light", "Soft Natural Light"]
+                cameraAngles: ["eyeLevel"],
+                cameraFraming: ["waistUp", "34Body", "fullBody"],
+                lighting: ["windowLight", "softNaturalLight"]
             },
             oilPainting: {
                 label: "Victorian Oil Painting",
                 value: "19th-century Victorian oil painting, traditional oil on canvas, realistic brushwork, rich muted colors, subtle chiaroscuro, fine painted details, classical academic realism.",
-                cameraAngles: ["Eye Level", "Low Angle"],
-                cameraFraming: ["3/4 Body", "Full Body", "Environmental Portrait"],
-                lighting: ["Window Light", "Candlelight / Firelight", "Low-Key / Chiaroscuro"]
+                cameraAngles: ["eyeLevel", "lowAngle"],
+                cameraFraming: ["34Body", "fullBody", "environmentalPortrait"],
+                lighting: ["windowLight", "candlelightFirelight", "lowKeyChiaroscuro"]
             }
         },
 
@@ -573,8 +556,8 @@ const visualPresets = {
                     "standing beside the window",
                     "brushing her hair at a vanity"
                 ],
-                lighting: ["Window Light", "Soft Natural Light"],
-                cameraFraming: ["Full Body", "3/4 Body"]
+                lighting: ["windowLight", "softNaturalLight"],
+                cameraFraming: ["fullBody", "34Body"]
             },
             {
                 label: "Victorian Sitting Room",
@@ -584,7 +567,7 @@ const visualPresets = {
                     "standing beside the fireplace",
                     "reading a book on the sofa"
                 ],
-                lighting: ["Window Light", "Warm Indoor Lamps"]
+                lighting: ["windowLight", "warmIndoorLamps"]
             }
         ]
     },
@@ -2752,10 +2735,7 @@ const visualPresets = {
                     "a couple swaying slowly to a romantic ballad, holding each other close as the dance winds down",
                     "a couple sharing a quiet, tender moment on the nearly empty dance floor, her cheek against his shoulder"
                 ],
-                lighting: [
-                    "dim, warm overhead lighting with soft shadows",
-                    "subtle amber stage lighting filtering through the haze"
-                ]
+                lighting: ["dimWarmOverheadLightingWithSoftShadows", "subtleAmberStageLightingFilteringThroughTheHaze"]
             }
         ]
     },
@@ -3696,8 +3676,6 @@ const nationalityPresets = [
     }
 ];
 
-
-
 // =========================================
 // AGE
 // =========================================
@@ -3733,34 +3711,31 @@ const specificBodyPresets = [
     { label: "Heavily pregnant", value: "heavily pregnant adult with a large, prominently rounded late-stage pregnancy belly" }
 ];
 
-const cameraFramingPresets = [
-    { label: "None Selected", value: "" },
-    { label: "Close-Up", value: "close-up portrait framing" },
-    { label: "Head & Shoulders", value: "head-and-shoulders portrait framing" },
-    { label: "Chest-Up", value: "chest-up framing" },
-    { label: "Waist-Up", value: "waist-up framing" },
-    { label: "3/4 Body", value: "three-quarter body framing" },
-    { label: "Full Body", value: "full-body framing with the entire subject visible" },
-    { label: "Wide Shot", value: "wide shot showing the subject and surrounding environment" },
-    { label: "Environmental Portrait", value: "environmental portrait with the subject integrated into the surrounding scene" }
-];
+const cameraFramingPresets = {
+    "noneSelected": "",
+    "closeUp": "close-up portrait framing",
+    "headShoulders": "head-and-shoulders portrait framing",
+    "chestUp": "chest-up framing",
+    "waistUp": "waist-up framing",
+    "34Body": "three-quarter body framing",
+    "fullBody": "full-body framing with the entire subject visible",
+    "wideShot": "wide shot showing the subject and surrounding environment",
+    "environmentalPortrait": "environmental portrait with the subject integrated into the surrounding scene",
+};
 
-const cameraAnglePresets = [
-    { label: "None Selected", value: "" },
-
-    { label: "Eye Level", value: "natural eye-level camera angle" },
-    { label: "Low Angle", value: "low-angle view looking upward toward the subject" },
-    { label: "Worm's-Eye", value: "extreme low-angle worm's-eye view" },
-    { label: "High Angle", value: "high-angle view looking downward toward the subject" },
-    { label: "Overhead", value: "directly overhead camera view looking down at the subject" },
-
-    { label: "Side View", value: "side-view perspective" },
-    { label: "3/4 View", value: "three-quarter view of the subject from an oblique angle" },
-    { label: "Over-the-Shoulder", value: "over-the-shoulder camera view" },
-    { label: "POV", value: "first-person point-of-view perspective" },
-
-    { label: "Dutch Angle", value: "tilted Dutch-angle composition" }
-];
+const cameraAnglePresets = {
+    "noneSelected": "",
+    "eyeLevel": "natural eye-level camera angle",
+    "lowAngle": "low-angle view looking upward toward the subject",
+    "wormSEye": "extreme low-angle worm's-eye view",
+    "highAngle": "high-angle view looking downward toward the subject",
+    "overhead": "directly overhead camera view looking down at the subject",
+    "sideView": "side-view perspective",
+    "34View": "three-quarter view of the subject from an oblique angle",
+    "overTheShoulder": "over-the-shoulder camera view",
+    "pov": "first-person point-of-view perspective",
+    "dutchAngle": "tilted Dutch-angle composition",
+};
 
 const timeOfDayPresets = [
     { label: "None Selected", value: "" },
@@ -3779,48 +3754,71 @@ const timeOfDayPresets = [
 // Light source, diffusion and direction
 // =========================================
 
-const lightingPresets = [
-    { label: "None Selected", value: "" },
+const lightingPresets = {
+    "noneSelected": "",
+    "softNaturalLight": "soft natural illumination with gentle shadows",
+    "directSunlight": "direct sunlight with strong highlights and defined shadows",
+    "overcastDiffused": "broad diffused natural light with soft even illumination",
+    "windowLight": "soft directional natural light entering through a window",
+    "windowLightThroughSheerCurtains": "natural window light filtered through sheer curtains, creating soft diffused illumination and delicate shadows",
+    "dappledLight": "dappled natural light creating irregular patches of light and shadow",
+    "warmIndoorLamps": "warm practical lamp lighting with natural interior ambience",
+    "candlelightFirelight": "warm flickering candlelight and firelight with soft surrounding shadows",
+    "urbanNeon": "colorful neon and street lighting with nighttime urban ambience",
+    "softStudioLight": "soft flattering studio illumination with gentle shadows",
+    "hardDirectionalLight": "hard directional illumination with crisp defined shadows",
+    "sideLighting": "directional side lighting emphasizing form and dimensionality",
+    "backlighting": "strong backlighting with the primary light positioned behind the subject",
+    "rimLighting": "bright rim lighting outlining the subject against the background",
+    "lowKeyChiaroscuro": "dramatic low-key lighting with chiaroscuro and deep shadows",
+    "volumetricRays": "visible volumetric light rays passing through a subtly hazy atmosphere",
+    "moodyHighContrastLighting": "Moody High-Contrast Lighting",
+    "highKeyLighting": "High-Key Lighting",
+    "dramaticColoredLighting": "Dramatic Colored Lighting",
+    "coloredPracticalLights": "Colored Practical Lights",
+    "moonlight": "Moonlight",
+    "hardSideLighting": "Hard Side Lighting",
+    "venetianBlindShadows": "Venetian Blind Shadows",
+    "goldenHour": "Golden Hour",
+    "directFlash": "Direct Flash",
+    "fluorescentLighting": "Fluorescent Lighting",
+    "harshMiddaySun": "Harsh Midday Sun",
+    "warmTungstenLight": "Warm Tungsten Light",
+    "warmStudioLight": "Warm Studio Light",
+    "dimWarmOverheadLightingWithSoftShadows": "dim, warm overhead lighting with soft shadows",
+    "subtleAmberStageLightingFilteringThroughTheHaze": "subtle amber stage lighting filtering through the haze",
+    "overcastDaylight": "Overcast Daylight",
+    "coloredDiscoLights": "Colored Disco Lights",
+    "stageLighting": "Stage Lighting",
+};
 
-    { label: "Soft Natural Light", value: "soft natural illumination with gentle shadows" },
-    { label: "Direct Sunlight", value: "direct sunlight with strong highlights and defined shadows" },
-    { label: "Overcast / Diffused", value: "broad diffused natural light with soft even illumination" },
-
-    { label: "Window Light", value: "soft directional natural light entering through a window" },
-    { label: "Window Light Through Sheer Curtains", value: "natural window light filtered through sheer curtains, creating soft diffused illumination and delicate shadows" },
-
-    { label: "Dappled Light", value: "dappled natural light creating irregular patches of light and shadow" },
-
-    { label: "Warm Indoor Lamps", value: "warm practical lamp lighting with natural interior ambience" },
-    { label: "Candlelight / Firelight", value: "warm flickering candlelight and firelight with soft surrounding shadows" },
-    { label: "Urban Neon", value: "colorful neon and street lighting with nighttime urban ambience" },
-
-    { label: "Soft Studio Light", value: "soft flattering studio illumination with gentle shadows" },
-    { label: "Hard Directional Light", value: "hard directional illumination with crisp defined shadows" },
-    { label: "Side Lighting", value: "directional side lighting emphasizing form and dimensionality" },
-    { label: "Backlighting", value: "strong backlighting with the primary light positioned behind the subject" },
-    { label: "Rim Lighting", value: "bright rim lighting outlining the subject against the background" },
-    { label: "Low-Key / Chiaroscuro", value: "dramatic low-key lighting with chiaroscuro and deep shadows" },
-    { label: "Volumetric Rays", value: "visible volumetric light rays passing through a subtly hazy atmosphere" }
-];
-
-const photographicLookPresets = [
-    { label: "None Selected", value: "" },
-
-    { label: "Black & White", value: "black-and-white photographic treatment" },
-    { label: "High-Contrast Noir", value: "high-contrast black-and-white noir photography with deep blacks and dramatic tonal separation" },
-    { label: "Soft Monochrome", value: "soft monochrome photographic treatment with gentle tonal transitions" },
-    { label: "Sepia", value: "warm sepia-toned photographic treatment" },
-
-    { label: "1930s Early Color Film", value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: ["1930s"] },
-    { label: "1940s Kodachrome", value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", tags: ["1940s"] },
-    { label: "1950s Magazine", value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", tags: ["1950s"] },
-    { label: "1960s Slide Film", value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", tags: ["1960s"] },
-    { label: "1970s Polaroid", value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", tags: ["1970s"] },
-    { label: "1980s VHS", value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", tags: ["1980s"] },
-    { label: "1990s Film", value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", tags: ["1990s"] },
-    { label: "2000s Disposable Camera", value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", tags: ["2000s"] }
-];
+const photographicLookPresets = {
+    "noneSelected": "",
+    "blackWhite": "black-and-white photographic treatment",
+    "highContrastNoir": "high-contrast black-and-white noir photography with deep blacks and dramatic tonal separation",
+    "softMonochrome": "soft monochrome photographic treatment with gentle tonal transitions",
+    "sepia": "warm sepia-toned photographic treatment",
+    "1930sEarlyColorFilm": { value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: ["1930s"] },
+    "1940sKodachrome": { value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", tags: ["1940s"] },
+    "1950sMagazine": { value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", tags: ["1950s"] },
+    "1960sSlideFilm": { value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", tags: ["1960s"] },
+    "1970sPolaroid": { value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", tags: ["1970s"] },
+    "1980sVhs": { value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", tags: ["1980s"] },
+    "1990sFilm": { value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", tags: ["1990s"] },
+    "2000sDisposableCamera": { value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", tags: ["2000s"] },
+    "technicolor": "Technicolor",
+    "1970sColorFilm": "1970s Color Film",
+    "1980sColorFilm": "1980s Color Film",
+    "35mmColorFilm": "35mm Color Film",
+    "vintagePostcard": "Vintage Postcard",
+    "vintageIllustration": "Vintage Illustration",
+    "cinematicFilmLook": "Cinematic Film Look",
+    "vintageAdvertisingIllustration": "Vintage Advertising Illustration",
+    "vintageColorFilm": "Vintage Color Film",
+    "contemporaryDigitalPhoto": "Contemporary Digital Photo",
+    "smartphoneSnapshot": "Smartphone Snapshot",
+    "earlyDigitalCamera": "Early Digital Camera",
+};
 
 
 
