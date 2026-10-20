@@ -3658,7 +3658,7 @@ const nationalityPresets = [
     {
         label: "East Asian",
         value: "with East Asian facial features",
-        hairColors: ["dark brown", "black", "pink hair in pigtails"],
+        hairColors: ["dark brown", "black"],
         skinTones: ["porcelain", "fair", "light", "olive"],
         eyeColors: ["dark brown", "black"]
     },
