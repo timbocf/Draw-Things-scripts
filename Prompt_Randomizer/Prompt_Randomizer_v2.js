@@ -4048,6 +4048,11 @@ async function generateBatch() {
         subjectMode: subjectMode ?? "MISSING",
         subject: subject
     }, null, 2));
+    console.log(JSON.stringify({
+        subjectMode,
+        includeSubject,
+        subject
+    }, null, 2));
 
     imagePrompt = [
         `A ${variant.value}`,
