@@ -34,7 +34,8 @@ const visualPresets = {
 
         cameraAngles: [
             "Eye Level",
-            "Low Angle"
+            "Low Angle",
+            "High Angle"
         ],
 
         cameraFraming: [
@@ -54,8 +55,16 @@ const visualPresets = {
             {
                 label: "Bedroom, Early Morning",
                 value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
-                actions: [],
-                lighting: []
+                actions: [
+                    "lying on her side, with the top leg bent high, hand lightly between her thighs",
+                    "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
+                    "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
+                    "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor"
+                ],
+                lighting: [
+                    "Soft studio lighting",
+                    "diffused sunlight through the sheer curtains covering a window"
+                ]
             },
             {
                 label: "Posing in Front of a US Flag",
@@ -76,19 +85,27 @@ const visualPresets = {
                 lighting: []
             },
             {
-                label: "Sitting in a Living Room",
+                label: "Living Room",
                 value: "in a 1940s era living room with bright vivid colors",
                 actions: [
                     "sitting in a baby-blue upholstered wingback chair reading a large magazine",
-                    "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera"
+                    "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera",
+                    "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
+                    "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise"
                 ],
-                lighting: []
+                lighting: [
+                    "soft studio lighting",
+                    "soft indoor lamps"
+                ]
             },
             {
                 label: "WWII Airfield",
                 value: "in a WWII airfield with B-52 bomber airplanes in the background",
-                actions: [],
-                lighting: []
+                actions: [
+                    "leaning against the side of a plane with one foot raised and pressed against the plane",
+                    "standing with her feet shoulder-width apart, with her hands on her hips"
+                ],
+                lighting: ["bright sunny day"]
             },
             {
                 label: "On a Beach",
@@ -100,55 +117,24 @@ const visualPresets = {
                 lighting: ["bright summer day"]
             },
             {
-                label: "sitting on the floor, knees drawn up",
-                value: "She is sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward.",
-                aspectRatios: ["square", "portrait", "landscape"],
-                tags: ["1940s", "pinup", "sitting"]
+                label: "Studio Portrait",
+                value: "in a professional photography studio",
+                actions: [
+                    "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
+                ],
+                lighting: [
+                    "diffused studio lighting",
+                    "rim lighting",
+                    "backlighting"
+                ]
             },
             {
-                label: "Laying on Her Side",
-                value: "lying on her side, with the top leg bent high, hand lightly between her thighs",
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Morning Stretch",
-                value: "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["pinup", "boudoir", "standing"]
-            },
-            {
-                label: "Lying in a Windowsill",
-                value: "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
-                aspectRatios: ["landscape", "square"],
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Lying on a Sofa, One Leg Up",
-                value: "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor",
-                aspectRatios: ["square", "landscape"],
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Lying on a Sofa, One Leg on Armrest",
-                value: "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
-                aspectRatios: ["square", "landscape"],
-                tags: ["pinup", "boudoir", "laying"]
-            },
-            {
-                label: "Putting on Lipstick, Bathroom",
-                value: "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera.",
-                tags: ["pinup", "boudoir", "standing"]
-            },
-            {
-                label: "Standing, Hands on Hips",
-                value: "standing with her feet shoulder-width apart, with her hands on her hips",
-                tags: ["pinup", "standing"]
-            },
-            {
-                label: "Shy, Bending Over",
-                value: "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise",
-                aspectRatios: ["square"],
-                tags: ["pinup", "standing"]
+                label: "Bathroom",
+                value: "in a bathroom with a large mirror over a countertop and sink. Various bathroom items are cluttered on the countertop.",
+                actions: [
+                    "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera."
+                ],
+                lighting: ["soft indoor lighting"]
             }
         ]
     },
