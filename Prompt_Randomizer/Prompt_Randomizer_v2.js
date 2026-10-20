@@ -4060,16 +4060,6 @@ async function generateBatch() {
         photographicLook
     ].filter(Boolean).join(", ") + ".";
 
-    imagePrompt = [
-        `A ${variant.value}`,
-        action,
-        scene.setting,
-        cameraFraming,
-        cameraAngle,
-        lighting,
-        photographicLook
-    ].filter(Boolean).join(", ") + ".";
-
     console.log("GENERATED PROMPT:\n" + imagePrompt);
 
     // console.log("Generating:");
@@ -4089,29 +4079,15 @@ async function generateBatch() {
 
     config.model = "krea_2_turbo_i8x.ckpt";
 
-    let aspectRatio;
+    const aspectRatioOptions = [
+        "portrait",
+        "square",
+        "landscape"
+    ];
 
-    if (promptSelections[0][0] === 0) {
-        // Random selection
-        const aspectRatioOptions = [
-            "portrait",
-            "square",
-            "landscape"
-        ];
-
-        const aspectRatio = promptSelections[0][0] === 0
-            ? randomize(aspectRatioOptions)
-            : aspectRatioOptions[promptSelections[0][0] - 1];
-    } else {
-        // Explicit selection
-        const aspectRatioOptions = [
-            "portrait",
-            "square",
-            "landscape"
-        ];
-
-        aspectRatio = aspectRatioOptions[promptSelections[0][0] - 1];
-    }
+    const aspectRatio = promptSelections[0][0] === 0
+        ? randomize(aspectRatioOptions)
+        : aspectRatioOptions[promptSelections[0][0] - 1];
 
     if (aspectRatio === "portrait") {
         config.width = 768;
