@@ -19,6 +19,100 @@ const visualPresets = {
         label: "1940s Pinup",
         era: "1940s",
 
+        hairstyles: [
+            {
+                label: "1940s Victory Rolls",
+                value: "hair styled in large polished Victory Rolls"
+            },
+            {
+                label: "1940s Hollywood Curls",
+                value: "shoulder-length hair styled in glamorous soft Hollywood curls"
+            },
+            {
+                label: "1940s Side-Swept Waves",
+                value: "shoulder-length hair styled in glossy side-swept waves with a deep side part"
+            },
+            {
+                label: "1940s Pin Curls",
+                value: "hair arranged in carefully sculpted pin curls"
+            },
+            {
+                label: "1940s Rolled Updo",
+                value: "hair swept up into a structured 1940s rolled updo"
+            },
+            {
+                label: "Shoulder-length brushed curls",
+                value: "shoulder-length brushed curls"
+            },
+            {
+                label: "Hair wrapped in a patterned scarf",
+                value: "hair wrapped in a patterned scarf"
+            }
+        ],
+
+        outfits: [
+            {
+                label: "1940s Leather Flight Jacket, Panties",
+                value: "1940s WWII-style leather flight jacket with leather bikini panties"
+            },
+            {
+                label: "1940s Sailor Uniform",
+                value: "1940s WWII-style Navy sailor uniform with a white collar and navy tie"
+            },
+            {
+                label: "French Maid Uniform",
+                value: "black French maid uniform with short pleated skirt and white collar and stiletto heels"
+            },
+            {
+                label: "Schoolgirl Uniform",
+                value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage."
+            },
+            {
+                label: "Sexy Nurse Uniform",
+                value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap"
+            },
+            {
+                label: "Halter Top, Pleated Shorts",
+                value: "a halter top and pleated shorts"
+            },
+            {
+                label: "A-line tea dress",
+                value: "A-line tea dress"
+            },
+            {
+                label: "High-waisted shorts and tied blouse",
+                value: "high-waisted shorts and tied blouse"
+            },
+            {
+                label: "Vintage two-piece swimsuit",
+                value: "vintage two-piece swimsuit"
+            },
+            {
+                label: "Halter-neck dress",
+                value: "halter-neck dress"
+            },
+            {
+                label: "WWII-era nurse uniform",
+                value: "WWII-era nurse uniform"
+            },
+            {
+                label: "Leather flight jacket with a white dress",
+                value: "leather flight jacket with a white dress"
+            },
+            {
+                label: "Mechanic's coveralls",
+                value: "mechanic's coveralls"
+            },
+            {
+                label: "Pencil Skirt and Fitted Blouse",
+                value: "pencil skirt and fitted blouse"
+            },
+            {
+                label: "Vintage lingerie and satin robe",
+                value: "vintage lingerie and satin robe"
+            }
+        ],
+
         variants: {
 
             painting: {
@@ -28,7 +122,8 @@ const visualPresets = {
 
             photo: {
                 label: "Photography",
-                value: "1940s vintage pinup photograph"
+                value: "1940s vintage pinup photograph",
+                photographicLook: ["1940s Kodachrome"]
             }
         },
 
@@ -47,16 +142,35 @@ const visualPresets = {
             "Soft Studio Light"
         ],
 
-        photographicLook: [
-            "1940s Kodachrome"
-        ],
-
         scenes: [
             {
+                label: "Vintage Car Garage",
+                setting: "in a vintage car garage with greasy tools, large red toolboxes and pinup posters on the walls promoting the war effort",
+                actions: [
+                    "leaning against a two-toned 1958 Ford Fairlane"
+                ]
+            },
+            {
+                label: "Manhattan Street Scene",
+                setting: "on a crowded Manhattan street in the 1940s. People are walking by, vintage cars are driving by.",
+                actions: [
+                    "holding down a skirt blown by the wind"
+                ]
+            },
+            {
+                label: "1940s Neighborhood",
+                setting: "in a 1940s-era neighborhood, with brilliant vivid colors, vintage cars, and vintage homes",
+                actions: [
+                    "holding down a skirt blown by the wind"
+                ]
+            },
+            {
                 label: "Bedroom, Early Morning",
-                value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
                 actions: [
                     "lying on her side, with the top leg bent high, hand lightly between her thighs",
+                    "sitting on a stool while adjusting a stocking",
+                    "sitting on the edge of a bed brushing her hair",
                     "standing, mid-stretch reaching both arms overhead while rising up on her toes, hands in her hair, back arched, chest pressed forward, shoulders pulled back.",
                     "lying on her stomach on a sunlit windowsill, chin resting on her hands, legs bent at the knees and crossed at the ankles in the air",
                     "lying on her back on a sofa, one leg hooked over the backrest, other foot on the floor"
@@ -68,7 +182,7 @@ const visualPresets = {
             },
             {
                 label: "Posing in Front of a US Flag",
-                value: "in front of a US flag that covers the background of the frame",
+                setting: "in front of a US flag that covers the background of the frame",
                 actions: [
                     "smiling at the camera while she salutes with her right hand brought up to her eyebrow. Her legs are drawn up to her chest."
                 ],
@@ -77,16 +191,16 @@ const visualPresets = {
             },
             {
                 label: "In a Kitchen",
-                value: "in a 1940s era kitchen with bright vivid colors, an oven, countertops, cabinets, and a curtained window above a sink.",
+                setting: "in a 1940s era kitchen with bright vivid colors, an oven, countertops, cabinets, and a curtained window above a sink.",
                 actions: [
                     "bending at the waist, legs straight, grabbing a sheet of cookies out of an oven",
                     "reaching above her head to grab a can of green beans from a high shelf in a cabinet, standing on her tiptoes"
                 ],
-                lighting: []
+                lighting: ["window lighting through sheer curtains"]
             },
             {
                 label: "Living Room",
-                value: "in a 1940s era living room with bright vivid colors",
+                setting: "in a 1940s era living room with bright vivid colors",
                 actions: [
                     "sitting in a baby-blue upholstered wingback chair reading a large magazine",
                     "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera",
@@ -100,7 +214,7 @@ const visualPresets = {
             },
             {
                 label: "WWII Airfield",
-                value: "in a WWII airfield with B-52 bomber airplanes in the background",
+                setting: "in a WWII airfield with B-52 bomber airplanes in the background",
                 actions: [
                     "leaning against the side of a plane with one foot raised and pressed against the plane",
                     "standing with her feet shoulder-width apart, with her hands on her hips"
@@ -109,17 +223,18 @@ const visualPresets = {
             },
             {
                 label: "On a Beach",
-                value: "on a beach",
+                setting: "on a beach",
                 actions: [
-                    "laying on her side",
+                    "reclining on a beach towel",
                     "running toward the water"
                 ],
                 lighting: ["bright summer day"]
             },
             {
                 label: "Studio Portrait",
-                value: "in a professional photography studio",
+                setting: "in a professional photography studio",
                 actions: [
+                    "looking over one shoulder with a playful smile",
                     "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
                 ],
                 lighting: [
@@ -129,8 +244,16 @@ const visualPresets = {
                 ]
             },
             {
+                label: "1940s Hollywood Dressing Room",
+                setting: "in a 1940s Hollywood starlet's dressing room",
+                actions: [
+                    "looking over one shoulder with a playful smile",
+                    "sitting in a highback chair, leaning forward toward a vanity mirror applying lipstick"
+                ]
+            }
+            {
                 label: "Bathroom",
-                value: "in a bathroom with a large mirror over a countertop and sink. Various bathroom items are cluttered on the countertop.",
+                setting: "in a bathroom with a large mirror over a countertop and sink. Various bathroom items are cluttered on the countertop.",
                 actions: [
                     "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera."
                 ],
@@ -138,6 +261,119 @@ const visualPresets = {
             }
         ]
     },
+
+    glamourShots1940s: {
+        hairstyles: [
+            {
+                label: "1940s Victory Rolls",
+                value: "hair styled in large polished Victory Rolls"
+            },
+            {
+                label: "1940s Hollywood Curls",
+                value: "shoulder-length hair styled in glamorous soft Hollywood curls"
+            },
+            {
+                label: "1940s Side-Swept Waves",
+                value: "shoulder-length hair styled in glossy side-swept waves with a deep side part"
+            },
+            {
+                label: "1940s Pin Curls",
+                value: "hair arranged in carefully sculpted pin curls"
+            },
+            {
+                label: "1940s Rolled Updo",
+                value: "hair swept up into a structured 1940s rolled updo"
+            },
+            {
+                label: "Shoulder-length brushed curls",
+                value: "shoulder-length brushed curls"
+            },
+            {
+                label: "Hair wrapped in a patterned scarf",
+                value: "hair wrapped in a patterned scarf"
+            }
+        ],
+
+        outfits: [
+            {
+                label: "1940s A-line Tea Dress",
+                value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders"
+            },
+            {
+                label: "1940s Leather Flight Jacket, White Dress",
+                value: "1940s WWII-style leather flight jacket worn over a white dress"
+            },
+            {
+                label: "1940s Sailor Uniform",
+                value: "1940s WWII-style Navy sailor uniform with a white collar and navy tie"
+            }
+        ],
+
+        variants: {
+            photo: {
+                label: "1940s Glamour Photo",
+                value: "1940s glamour photo",
+                photographicLook: "1940s Kodachrome"
+            }
+        },
+
+        scenes: [
+            {
+                label: "In a Kitchen",
+                setting: "in a 1940s era kitchen with bright vivid colors, an oven, countertops, cabinets, and a curtained window above a sink.",
+                actions: [
+                    "bending at the waist, legs straight, grabbing a sheet of cookies out of an oven",
+                    "reaching above her head to grab a can of green beans from a high shelf in a cabinet, standing on her tiptoes"
+                ],
+                lighting: []
+            },
+            {
+                label: "Living Room",
+                setting: "in a 1940s era living room with bright vivid colors",
+                actions: [
+                    "sitting in a baby-blue upholstered wingback chair reading a large magazine",
+                    "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera",
+                    "lying on her back on a sofa, one leg resting on opposite armrest, other foot on the floor",
+                    "leaning forward to grab something off of a lower level of a bookshelf, legs straight, knees locked, bending at waist only, looking at the camera sideways, with her hand covering her mouth and wide-eyed open-mouthed look of surprise"
+                ],
+                lighting: [
+                    "soft studio lighting",
+                    "soft indoor lamps"
+                ]
+            },
+            {
+                label: "WWII Airfield",
+                setting: "in a WWII airfield with B-52 bomber airplanes in the background",
+                actions: [
+                    "leaning against the side of a plane with one foot raised and pressed against the plane",
+                    "standing with her feet shoulder-width apart, with her hands on her hips"
+                ],
+                lighting: ["bright sunny day"]
+            },
+            {
+                label: "On a Beach",
+                setting: "on a beach",
+                actions: [
+                    "laying on her side",
+                    "running toward the water"
+                ],
+                lighting: ["bright summer day"]
+            },
+            {
+                label: "Studio Portrait",
+                setting: "in a professional photography studio",
+                actions: [
+                    "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
+                ],
+                lighting: [
+                    "diffused studio lighting",
+                    "rim lighting",
+                    "backlighting"
+                ]
+            }
+        ]
+    },
+
     modernBoudoir: {
         label: "Modern Boudoir",
         era: "2000s",
@@ -172,19 +408,8 @@ const visualPresets = {
         scenes: [
             {
                 label: "Bedroom, Early Morning",
-                value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
                 tags: ["bedroom"]
-            },
-            {
-                label: "Low Angle, Rim Lighting",
-                value: "",
-                cameraAngle: ["Low Angle"],
-                cameraFraming: ["Full Body", "3/4 Body"],
-                lighting: ["Rim Lighting", "Backlighting"],
-                timeOfDay: [],
-                photographicLook: [],
-                aspectRatios: ["square"],
-                tags: ["standing", "sitting", "crouching", "kneeling"]
             }
         ],
         environments: [
@@ -197,7 +422,24 @@ const visualPresets = {
 
     victorianBoudoir: {
         label: "Victorian Boudoir",
-        era: "1800s",
+        era: "Victorian",
+
+        hairstyles: [
+            "dark hair parted in the center and gathered into a low bun",
+            "long hair styled in tight Victorian ringlets",
+            "an elaborate braided updo with pinned curls",
+            "a smooth center-parted hairstyle with a braided crown",
+            "a voluminous Gibson Girl pompadour updo",
+            "soft curls framing the face with hair pinned at the back",
+            "a neatly coiled chignon at the nape of the neck",
+            "long wavy hair cascading over the shoulders",
+            "an intricate Victorian hairstyle with braided loops",
+            "a high Victorian updo decorated with delicate ribbons",
+            "a center-parted hairstyle with sausage curls beside the cheeks",
+            "a loose Victorian updo with wispy curls around the temples",
+            "a polished braided bun with a center part",
+            "a Victorian hairstyle with a rolled fringe and pinned curls"
+        ],
 
         variants: {
             tinType: {
@@ -233,19 +475,8 @@ const visualPresets = {
         scenes: [
             {
                 label: "Bedroom, Early Morning",
-                value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
                 tags: ["bedroom"]
-            },
-            {
-                label: "Low Angle, Rim Lighting",
-                value: "",
-                cameraAngle: ["Low Angle"],
-                cameraFraming: ["Full Body", "3/4 Body"],
-                lighting: ["Rim Lighting", "Backlighting"],
-                timeOfDay: [],
-                photographicLook: [],
-                aspectRatios: ["square"],
-                tags: ["standing", "sitting", "crouching", "kneeling"]
             }
         ],
         environments: [
@@ -257,8 +488,44 @@ const visualPresets = {
     },
 
     victorian: {
-        label: "Boudoir",
-        era: "1800s",
+        label: "Victorian",
+        era: "Victorian",
+
+        hairstyles: [
+            "dark hair parted in the center and gathered into a low bun",
+            "long hair styled in tight Victorian ringlets",
+            "an elaborate braided updo with pinned curls",
+            "a smooth center-parted hairstyle with a braided crown",
+            "a voluminous Gibson Girl pompadour updo",
+            "soft curls framing the face with hair pinned at the back",
+            "a neatly coiled chignon at the nape of the neck",
+            "long wavy hair cascading over the shoulders",
+            "an intricate Victorian hairstyle with braided loops",
+            "a high Victorian updo decorated with delicate ribbons",
+            "a center-parted hairstyle with sausage curls beside the cheeks",
+            "a loose Victorian updo with wispy curls around the temples",
+            "a polished braided bun with a center part",
+            "a Victorian hairstyle with a rolled fringe and pinned curls"
+        ],
+
+        outfits: [
+            "a high-necked Victorian dress with a fitted bodice and full skirt",
+            "an elegant silk ball gown with an off-the-shoulder neckline",
+            "a modest cotton day dress with long sleeves and a lace collar",
+            "a dark velvet Victorian evening gown with intricate embroidery",
+            "a fitted riding habit with a long skirt and tailored jacket",
+            "a simple working-class dress with a white apron",
+            "a Victorian mourning dress made of black crepe with a high collar",
+            "a floral-print muslin summer dress with puffed sleeves",
+            "a luxurious satin gown with lace trim and a bustle",
+            "a Victorian walking dress with a fitted jacket and floor-length skirt",
+            "a high-collared blouse with a long dark wool skirt",
+            "a Victorian tea gown with flowing fabric and lace detailing",
+            "a striped Victorian seaside dress with a high neckline",
+            "a Victorian wedding gown with lace sleeves and a fitted waist",
+            "a simple linen chemise with delicate lace trim",
+            "a late-Victorian shirtwaist blouse with leg-of-mutton sleeves and a long skirt"
+        ],
 
         variants: {
             tinType: {
@@ -295,7 +562,7 @@ const visualPresets = {
         scenes: [
             {
                 label: "Victorian Bedroom, Early Morning",
-                value: "Inside an ornate Victorian bedroom with a four-poster bed, carved wooden furniture, lace curtains, and soft morning sunlight.",
+                setting: "Inside an ornate Victorian bedroom with a four-poster bed, carved wooden furniture, lace curtains, and soft morning sunlight.",
                 actions: [
                     "sitting on the edge of the bed",
                     "standing beside the window",
@@ -306,7 +573,7 @@ const visualPresets = {
             },
             {
                 label: "Victorian Sitting Room",
-                value: "Inside an elegant Victorian sitting room with patterned wallpaper, upholstered furniture, and a marble fireplace.",
+                setting: "Inside an elegant Victorian sitting room with patterned wallpaper, upholstered furniture, and a marble fireplace.",
                 actions: [
                     "sitting in an upholstered armchair",
                     "standing beside the fireplace",
@@ -320,43 +587,7 @@ const visualPresets = {
 
 // ERA PRESETS
 const eraPresets = {
-    "Victorian": {
-        outfits: [
-            "a high-necked Victorian dress with a fitted bodice and full skirt",
-            "an elegant silk ball gown with an off-the-shoulder neckline",
-            "a modest cotton day dress with long sleeves and a lace collar",
-            "a dark velvet Victorian evening gown with intricate embroidery",
-            "a fitted riding habit with a long skirt and tailored jacket",
-            "a simple working-class dress with a white apron",
-            "a Victorian mourning dress made of black crepe with a high collar",
-            "a floral-print muslin summer dress with puffed sleeves",
-            "a luxurious satin gown with lace trim and a bustle",
-            "a Victorian walking dress with a fitted jacket and floor-length skirt",
-            "a high-collared blouse with a long dark wool skirt",
-            "a Victorian tea gown with flowing fabric and lace detailing",
-            "a striped Victorian seaside dress with a high neckline",
-            "a Victorian wedding gown with lace sleeves and a fitted waist",
-            "a simple linen chemise with delicate lace trim",
-            "a late-Victorian shirtwaist blouse with leg-of-mutton sleeves and a long skirt"
-        ],
 
-        hairstyles: [
-            "dark hair parted in the center and gathered into a low bun",
-            "long hair styled in tight Victorian ringlets",
-            "an elaborate braided updo with pinned curls",
-            "a smooth center-parted hairstyle with a braided crown",
-            "a voluminous Gibson Girl pompadour updo",
-            "soft curls framing the face with hair pinned at the back",
-            "a neatly coiled chignon at the nape of the neck",
-            "long wavy hair cascading over the shoulders",
-            "an intricate Victorian hairstyle with braided loops",
-            "a high Victorian updo decorated with delicate ribbons",
-            "a center-parted hairstyle with sausage curls beside the cheeks",
-            "a loose Victorian updo with wispy curls around the temples",
-            "a polished braided bun with a center part",
-            "a Victorian hairstyle with a rolled fringe and pinned curls"
-        ],
-    },
 
     "1920s": {
         outfits: [],
@@ -388,103 +619,6 @@ const eraPresets = {
                 value: "chin-length bob styled in soft polished waves",
             }
         ]
-    },
-
-    "1940s": {
-        outfits: [
-            {
-                label: "1940s A-line Tea Dress",
-                value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, and padded shoulders"
-            },
-            {
-                label: "1940s Leather Flight Jacket, White Dress",
-                value: "1940s WWII-style leather flight jacket worn over a white dress"
-            },
-            {
-                label: "1940s Sailor Uniform",
-                value: "1940s WWII-style Navy sailor uniform with a white collar and navy tie"
-            }
-        ],
-        hairstyles: [
-            {
-                label: "1940s Victory Rolls",
-                value: "hair styled in large polished Victory Rolls"
-            },
-            {
-                label: "1940s Hollywood Curls",
-                value: "shoulder-length hair styled in glamorous soft Hollywood curls"
-            },
-            {
-                label: "1940s Side-Swept Waves",
-                value: "shoulder-length hair styled in glossy side-swept waves with a deep side part"
-            },
-            {
-                label: "1940s Pin Curls",
-                value: "hair arranged in carefully sculpted pin curls"
-            },
-            {
-                label: "1940s Rolled Updo",
-                value: "hair swept up into a structured 1940s rolled updo"
-            },
-            {
-                label: "Full-Length Wedding Gown",
-                value: "a full-length evening gown"
-            }
-        ],
-    },
-
-    "pinup1940s": {
-        outfits: [
-            {
-                label: "Unbuttoned Mens Dress Shirt",
-                value: "an unbuttoned mens dress shirt"
-            },
-            {
-                label: "1940s Leather Flight Jacket, Panties",
-                value: "1940s WWII-style leather flight jacket with leather bikini panties"
-            },
-            {
-                label: "1940s Sailor Uniform",
-                value: "1940s WWII-style Navy sailor uniform with a white collar and navy tie"
-            },
-            {
-                label: "French Maid Uniform",
-                value: "black French maid uniform with short pleated skirt and white collar and stiletto heels"
-            },
-            {
-                label: "Schoolgirl Uniform",
-                value: "a schoolgirl uniform with a short pleated skirt and thigh-high white socks. The shirt is unbuttoned down to her navel, revealing deep cleavage."
-            },
-            {
-                label: "Sexy Nurse Uniform",
-                value: "a sexy nurse's uniform, showing ample cleavage, and a nurse's cap"
-            },
-            {
-                label: "Loose T-Shirt & Panties",
-                value: "a loose fitting T-shirt and bikini panties"
-            },
-            {
-                label: "Bra & Panties",
-                value: "a bra and panties, barefoot"
-            },
-            {
-                label: "Bra & Panties, Stiletto Heels",
-                value: "a bra and panties with stiletto heels"
-            },
-            {
-                label: "Halter Top, Pleated Shorts",
-                value: "a halter top and pleated shorts"
-            },
-            {
-                label: "Silk Pajama Short Set",
-                value: "a silk pajama short set"
-            },
-            {
-                label: "Lace Bustier, Garter Belt, Stockings, Heels",
-                value: "a lace bustier, garter belt, thigh-high stockings and stiletto heels"
-            }
-        ],
-        hairstyles: [],
     },
 
     "1950s": {
@@ -520,14 +654,14 @@ const eraPresets = {
             }
 
         ],
-        scenePresets: [
+        scenes: [
             {
                 label: "1950s Diner — After Midnight",
-                value: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette."
+                setting: "Inside a nearly empty 1950s American diner at night. Red vinyl booths, chrome fixtures, checkerboard floor, warm overhead pendant lights and colored neon glowing through the windows. Nostalgic Kodachrome-inspired color palette."
             },
             {
                 label: "Retro Laundromat — Fluorescent Lighting",
-                value: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere."
+                setting: "Rows of chrome washing machines, pale green fluorescent lighting, reflections in glass doors and a slightly eerie atmosphere."
             }
         ]
     },
@@ -735,217 +869,65 @@ const eraPresets = {
                 value: "long partially crimped hair with pronounced textured waves",
             }
         ],
-        scenePresets: [
+        scenes: [
             {
                 label: "Selfie at Coachella",
-                value: "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair.",
+                setting: "at the Coachella Music Festival in front of a stage with a live band. A crowd of people are between the subject and the stage, all watching the band play.",
+                actions: [
+                    "standing in front of a crowd of people near a stage at the Coachella music festival. A band is playing on the stage in the background. One of the woman's arms is extended upward toward the bottom right corner of the frame. Extreme foreshortening. The woman is posing for a picture, 1/4 turn toward the camera. One hand is above her head with her fingers teasing out her hair."
+                ],
                 selfiePhoto: true,
                 tags: ["2000s", "festival"]
             },
             {
-                label: "Facedown Selfie, on a Bed",
-                value: "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body",
-                tags: ["pinup", "laying", "bedroom"]
+                label: "Bedroom",
+                value: "in a cozy bedroom on a bed with crumpled slept-in sheets. Beside the bed is a nightstand with a bedside lamp.",
+                actions: [
+                    "laying facedown on a bed, kicking her feet in the air. She is looking at the camera at the end of her outstretched arm looking lengthwise down her body",
+                    "standing, looking away from the camera",
+                    "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted",
+                    "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.",
+                    "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera",
+                    "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera",
+                    "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her",
+                    "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees",
+                    "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile",
+                    "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.",
+                    "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.",
+                    "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.",
+                    "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked",
+                    "on all fours, head turned to the side, back arched hard, smiling at the camera",
+                    "crawling toward the camera on all fours",
+                    "standing in front of a full-length mirror while pulling her hair up",
+                    "sitting in front of a full-length mirror looking at her reflection"
+                ]
             },
             {
-                label: "Standing, Looking Away from the Camera",
-                value: "standing, looking away from the camera",
-                tags: ["standing"]
+                label: "Walk-in Shower",
+                value: "nude, in a bathroom walk-in shower. Water is cascading down her head and body. Her hair is wet and plastered to the sides of her face.",
+                actions: [
+                    "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up",
+                    "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down",
+                    "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace"
+                ]
             },
             {
-                label: "Wall Pose, Arms Raised",
-                value: "standing while leaning back against a wall, with her arms raised high above her head and hands clasped, lips parted",
-                aspectRatios: ["portrait", "square"],
-                tags: ["pinup", "boudoir", "standing"]
+                label: "Bathroom Selfie",
+                value: "in a bathroom facing a full-size mirror",
+                actions: [
+                    "taking a selfie in her reflection in the mirror"
+                ]
             },
             {
-                label: "Wall Pose, Arms Down",
-                value: "standing while leaning back against a wall, with one knee bent with the foot pressed against the wall, arms at her sides, pressed against the wall, lips parted.",
-                aspectRatios: ["portrait", "square"],
-                tags: ["boudoir", "standing"]
-            },
-            {
-                label: "Bed Lean, On Elbows",
-                value: "standing at the edge of a bed, leaning forward, feet on floor, elbows on the bed, pushing her ass toward the camera",
-                tags: ["pinup", "boudoir", "standing"],
-                environmentTags: ["bedroom"]
-            },
-            {
-                label: "Bed Lean, Face Down",
-                value: "standing at the edge of a bed, leaning forward, feet on floor, one cheek touching the bed, looking to the side at the camera, pushing her ass toward the camera",
-                tags: ["pinup", "boudoir", "standing"],
-                environmentTags: ["bedroom"]
-            },
-            {
-                label: "On Knees, Facing Camera",
-                value: "on her knees, leaning forward, her face in the foreground, back arched, ass high in the air, arms stretched out in front of her",
-                aspectRatios: ["square", "portrait"],
-                tags: ["boudoir", "laying"]
-            },
-            {
-                label: "Deep Squat, From Below",
-                value: "squatting with her knees spread wide and on the tips of her toes, hands resting on her knees",
-                tags: ["lowAngleRequired", "squatting", "crouching"],
-                aspectRatios: ["landscape", "square"]
-            },
-            {
-                label: "Sitting Cross-Legged",
-                value: "sitting cross-legged on the floor, leaning back slightly on her hands, looking directly into the camera with a relaxed smile",
-                tags: ["sitting"]
-            },
-            {
-                label: "Shower, From Below",
-                value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, looking up at the water as it streams out of the showerhead, the camera sitting candidly below her looking up",
-                tags: ["nudeRequired", "standing"],
-                environmentTags: ["shower"]
-            },
-            {
-                label: "Shower, From Above",
-                value: "standing and rubbing soapy lather all over her body in the shower with a soapy loofah, water and soap cascading down her nude body, her head tilted up and eyes closed as the water streams out of the showerhead onto her face, the camera sitting candidly above her looking down",
-                tags: ["nudeRequired", "standing"],
-                environmentTags: ["shower"]
-            },
-            {
-                label: "Doorway, Foot Up Against Frame",
-                value: "standing in a bedroom doorway. her back is against one side of the door frame, and one of her feet is elevated to eye-level and the sole of her shoe is pressing against the opposite door frame, putting her knee close to her face.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["boudoir", "standing"],
-                environmentTags: ["bedroom"]
-            },
-            {
-                label: "Doorway, Arms Raised",
-                value: "standing in a bedroom doorway. Her arms are raised above her head, and pressing against either side of the door frame. She is leaning slightly forward.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["pinup", "boudoir", "standing"],
-                environmentTags: ["bedroom"]
-
-            },
-            {
-                label: "Doorway, Shyly Touching Lip",
-                value: "standing in a bedroom doorway, she is touching her index finger to her bottom lip with a shy embarrassed smile and biting her bottom lip. her legs are crossed and her free hand is above her head touching the door frame.",
-                aspectRatios: ["square", "portrait"],
-                tags: ["pinup", "boudoir", "standing"],
-                environmentTags: ["bedroom"]
-            },
-            {
-                label: "Bent Over, Ass Toward the Camera",
-                value: "standing, facing away from the camera, leaning forward, her ass toward the camera, hands on her knees, looking back at the camera, legs straight, knees locked",
-                aspectRatios: ["square"],
-                tags: ["pinup", "boudoir", "standing"]
-            },
-            {
-                label: "Kneeling in Front of a Fireplace",
-                value: "kneeling on a soft rug in front of a fireplace, hands on her thighs, chest pushed forward, wearing a long pearl necklace",
-                aspectRatios: ["portrait", "square"],
-                tags: ["boudoir", "kneeling", "crouching", "sitting"]
-            },
-            {
-                label: "On All Fours, Side View",
-                value: "on all fours, head turned to the side, back arched hard, smiling at the camera",
-                aspectRatios: ["square", "portrait"],
-                tags: ["boudoir", "crouching", "laying"]
-            },
-            {
-                label: "Crawling Toward Camera",
-                value: "crawling toward the camera on all fours",
-                aspectRatios: ["square"],
-                tags: ["boudoir", "crawling"]
-            },
-            {
-                label: "Bathroom Mirror Selfie",
-                value: "taking a selfie in a bathroom mirror",
-                aspectRatios: ["square", "portrait"],
-                tags: ["2000s", "standing"],
-                environmentTags: ["bathroom"]
-            },
-            {
-                label: "Standing, Mirror, Pulling Hair Up",
-                value: "standing in front of a full-length mirror while pulling her hair up",
-                aspectRatios: ["portrait", "square"],
-                tags: ["pinup", "boudoir", "standing"],
-                environmentTags: ["bedroom"]
-            },
-            {
-                label: "Sitting, Mirror",
-                value: "sitting in front of a full-length mirror looking at her reflection",
-                aspectRatios: ["square"],
-                tags: ["boudoir", "sitting"],
-                environmentTags: ["bedroom"]
-            },
-            {
-                label: "Smoking Outside",
-                value: "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air.",
-                aspectRatios: ["square", "portrait", "landscape"],
-                tags: ["standing", "sitting", "crouching"]
+                label: "Smoking on the Balcony",
+                value: "on the balcony of a Manhattan apartment",
+                actions: [
+                    "standing, leaning against a glass door on the balcony of a third-floor Manhattan apartment. her legs are crossed and she is smoking a cigarette, blowing the smoke up into the air."
+                ]
             }
         ]
     }
 };
-
-// SCENE PRESETS
-const scenePresets = [
-    {
-        label: "Woodland Glade — Dappled Sunlight",
-        value: "A lush forest clearing with broken sunlight filtering through the canopy, creating irregular patches of light and shadow across the subject and surrounding foliage. Soft green ambient light, warm sunbeams, natural woodland atmosphere."
-    },
-    {
-        label: "Vintage Motel Pool — Blue Hour",
-        value: "Beside a deserted roadside motel swimming pool just after sunset. Fading blue twilight, warm motel-room windows, reflections of a flickering neon sign across the water, nostalgic cinematic color grading."
-    },
-    {
-        label: "Golden-Hour Meadow",
-        value: "Standing among tall wild grasses in a meadow.",
-        cameraAngle: ["Eye Level", "Low Angle"],
-        cameraFraming: ["Full Body", "3/4 Body", "Wide Shot"],
-        timeOfDay: ["Golden Hour"],
-        lighting: ["Backlighting", "Rim Lighting"],
-        photographicLook: [],
-        tags: ["standing", "sitting", "kneeling"]
-    },
-    {
-        label: "Rainy City Street — Neon Reflections",
-        value: "On a rain-soaked downtown sidewalk at night. Colorful neon signs reflecting in puddles, wet pavement, blurred headlights in the distance, cool blue shadows contrasting with pink and red storefront lighting."
-    },
-    {
-        label: "Bedroom — Venetian Blind Shadows",
-        value: "Inside a modest bedroom with partially closed Venetian blinds casting narrow bands of sunlight and shadow across the walls and furniture",
-        cameraAngle: ["Eye Level", "3/4 View"],
-        cameraFraming: ["3/4 Body", "Full Body"],
-        timeOfDay: ["Late Afternoon"],
-        lighting: ["Hard Directional Light", "Side Lighting"],
-        photographicLook: [],
-        tags: ["standing", "sitting", "laying", "kneeling"]
-    },
-    {
-        label: "Apartment Window — Soft Backlight",
-        value: "Inside an old apartment beside a tall window covered with sheer white curtains. Bright overcast daylight diffuses through the fabric, softly backlighting the subject. Gentle shadows, pale neutral tones, intimate natural-light photography."
-    },
-    {
-        label: "Vintage Dressing Room — Vanity Bulbs",
-        value: "Inside a vintage theater dressing room. An ornate vanity mirror surrounded by warm incandescent bulbs, cosmetics scattered across the tabletop, velvet curtains, soft golden light reflected in the mirror, classic Hollywood glamour photography."
-    },
-    {
-        label: "Dusty Attic — Sunbeams",
-        value: "Shafts of sunlight entering through a small attic window, illuminating suspended dust particles and old wooden furniture."
-    },
-    {
-        label: "Greenhouse — Diffused Glass Light",
-        value: "Dense tropical foliage, condensation on glass panes, soft filtered daylight and green reflections."
-    },
-    {
-        label: "Desert Highway — Twilight",
-        value: "Empty roadside, distant mountains, dusty pink horizon, fading blue ambient light and cinematic wide-angle composition."
-    },
-    {
-        label: "Old Hotel Hallway - Tungsten Lighting",
-        value: "Long narrow hallway, patterned carpet, warm wall sconces and dramatic perspective lines."
-    },
-    {
-        label: "Rooftop — Windy Overcast Day",
-        value: "Urban skyline, windblown hair and clothing, soft gray directional daylight, subdued colors."
-    },
-]
-
 
 // --- NATIONALITY / ETHNICITY ---
 
@@ -1092,29 +1074,6 @@ const specificBodyPresets = [
     { label: "Adult with achondroplasia", value: "adult with achondroplasia, characteristic short stature and naturally proportioned body" },
     { label: "Pregnant", value: "pregnant adult with a visibly rounded pregnant belly" },
     { label: "Heavily pregnant", value: "heavily pregnant adult with a large, prominently rounded late-stage pregnancy belly" }
-];
-
-const outfitPresets = [];
-
-const actionPresets = [];
-
-const environments = [
-    { label: "None selected", value: "" },
-
-    { label: "in a bedroom", value: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. A nearby window has sheer curtains", tags: ["pinup", "boudoir", "bedroom"] },
-    { label: "in a kitchen", value: "in a kitchen, with granite countertops, an aluminum oven/stovetop under an aluminum microwave. Cabinets line either side of the microwave. A kitchen sink sits nearby underneath a window with sheer curtains", tags: ["pinup", "boudoir", "kitchen"] },
-    { label: "in the backseat of a car", value: "in the backseat of a car" },
-    { label: "in a surgical theatre", value: "in a well-lit surgical theater with two surgical tables covered in blue paper, a large overhead lamp and numerous surgical machines" },
-    { label: "in a crowded city street", value: "in a crowded city street with cars driving by and people walking along the sidewalks" },
-    { label: "in a glade", value: "in a lush glade with doppled sunlight through the canopy of trees" },
-    { label: "on an office desk", value: "on an office desk in a wood-paneled office. Papers are strewn about laying on top of the desk. A tall potted hibiscus sits in a corner of the office", tags: ["boudoir", "office"] },
-    { label: "at a poolside", value: "near a pool surrounded by lounge chairs", tags: ["pinup", "poolside"] },
-    { label: "on a beach at sunset", value: "on a beach at sunset", tags: ["pinup", "beach"] },
-    { label: "in a nightclub", value: "in a crowded nightclub, dimly lit with bright neon spotlights", tags: ["1990s", "2000s"] },
-    { label: "in a hotel room", value: "in a hotel room with smoke-stained walls and curtains", tags: ["pinup", "boudoir", "bedroom", "hotel"] },
-    { label: "on a rooftop at night", value: "on the spacious roof of a Manhattan highrise apartment building" },
-    { label: "in an elevator", value: "in an elevator" },
-    { label: "in a library", value: "in a softly lit public library surrounded by tall racks of hardcover books", tags: ["pinup", "library"] }
 ];
 
 const cameraFramingPresets = [
