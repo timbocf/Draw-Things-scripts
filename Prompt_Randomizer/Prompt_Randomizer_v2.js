@@ -170,7 +170,7 @@ const visualPresets = {
             },
             {
                 label: "Bedroom, Early Morning",
-                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps.",
                 actions: [
                     "lying on her side, with the top leg bent high, hand lightly between her thighs",
                     "sitting on a stool while adjusting a stocking",
@@ -428,7 +428,7 @@ const visualPresets = {
         scenes: [
             {
                 label: "Bedroom, Early Morning",
-                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps.",
                 actions: [
                     "sitting on the edge of the bed",
                     "standing beside the window",
