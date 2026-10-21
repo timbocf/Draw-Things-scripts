@@ -2481,7 +2481,7 @@ const visualPresets = {
             },
             "artDeco": {
                 "label": "Art Deco Jazz Age Poster",
-                "value": "1920s Art Deco lithographic nightlife poster, bold geometry, jewel tones, stylized silhouettes and elegant decorative typography-free composition",
+                "value": "1920s Art Deco lithographic nightlife poster, bold geometric composition, rich jewel tones, elegant decorative linework and softly shaded figures",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle"
