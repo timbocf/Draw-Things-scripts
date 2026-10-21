@@ -3412,6 +3412,22 @@ const visualPresets = {
         "subjectMode": "required",
         "hairstyles": [
             {
+                label: "Box Braids",
+                value: "hair styled in long box braids",
+                nationalities: ["Black", "Mixed-Race"]
+            },
+            {
+                label: "Cornrows",
+                value: "hair styled in neat cornrows",
+                nationalities: ["Black", "Mixed-Race"]
+            },
+            {
+                label: "Blonde and Black Cornrows",
+                value: "cornrows with alternating black and blonde braids",
+                hairColor: "black and blonde",
+                nationalities: ["Black", "Mixed-Race"]
+            },
+            {
                 "label": "long straight layered hair",
                 "value": "long straight layered hair"
             },
@@ -3435,6 +3451,13 @@ const visualPresets = {
                 "label": "shoulder-length bob",
                 "value": "shoulder-length bob"
             }
+        ],
+        styling: [
+            "a small floral tattoo on her shoulder",
+            "a delicate nose piercing",
+            "multiple ear piercings",
+            "tattoos on both arms",
+            "no visible tattoos or piercings"
         ],
         "outfits": [
             {
@@ -3989,12 +4012,20 @@ function buildSingleSubject(concept) {
         : overallBuildPresets[promptSelections[7][0] - 1];
 
     // HAIR
-    const hairstyle = randomize(concept.hairstyles ?? []);
-    const hairColor = randomize(nationality.hairColors ?? []);
+    const eligibleHairstyles = (concept.hairstyles ?? []).filter(
+        style =>
+            !style.nationalities ||
+            style.nationalities.includes(nationality.label)
+    );
+
+    const hairstyle = randomize(eligibleHairstyles);
+    const hairColor = hairstyle?.hairColor ??
+        randomize(nationality.hairColors ?? []);
 
     // APPEARANCE
     const skinTone = randomize(nationality.skinTones ?? []);
     const eyeColor = randomize(nationality.eyeColors ?? []);
+    const styling = randomize(concept.styling ?? []);
 
     // OUTFIT
     const outfit = randomize(concept.outfits ?? []);
@@ -4011,6 +4042,7 @@ function buildSingleSubject(concept) {
         skinTone,
         eyeColor,
         outfit,
+        styling,
         pregnant,
         achondroplasia
     };
@@ -4026,6 +4058,7 @@ function formatSingleSubject(subject) {
         skinTone,
         eyeColor,
         outfit,
+        styling,
         pregnant,
         achondroplasia
     } = subject;
@@ -4037,12 +4070,15 @@ function formatSingleSubject(subject) {
         : `a ${age}-year-old ${nationality.label} ${gender}`;
 
     const hairStyle = hairstyle?.value ?? "hair";
-    // A few historical presets specify a hair color themselves.
-    // Don't prepend a second, potentially conflicting color.
-    const hasPresetHairColor = /^(?:dark|black|blonde|brown|red|ginger|silver|white|gray|grey)\b/i.test(hairStyle);
+
+    const hasPresetHairColor =
+        Boolean(hairstyle?.hairColor) ||
+        /^(?:dark|black|blonde|brown|red|ginger|silver|white|gray|grey)\b/i.test(hairStyle);
+
     const hair = hasPresetHairColor
         ? hairStyle
         : [hairColor, hairStyle].filter(Boolean).join(" ");
+
     const appearance = nationality.named ? [] : [
         skinTone ? `with ${skinTone} skin` : "",
         hair,
@@ -4056,7 +4092,8 @@ function formatSingleSubject(subject) {
         ...appearance,
         pregnant ? "pregnant with a visibly rounded belly" : "",
         achondroplasia ? "with achondroplasia and characteristic short stature" : "",
-        outfit?.value ? `wearing ${outfit.value}` : ""
+        outfit?.value ? `wearing ${outfit.value}` : "",
+        styling
     ];
 
     return description.filter(Boolean).join(", ");
