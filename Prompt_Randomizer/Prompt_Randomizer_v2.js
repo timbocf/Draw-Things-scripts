@@ -3650,24 +3650,25 @@ const nationalityPresets = [
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     },
+
     {
         label: "Black",
         value: "with African facial features",
-        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde", "black with blonde streaks"],
-        skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
+        hairColors: ["dark brown", "black", "blonde", "black with blonde highlights"],
+        skinTones: ["rich mocha", "brown", "dark brown", "deep ebony"],
         eyeColors: ["dark brown", "black"]
     },
     {
         label: "Mexican",
-        value: "with prominent Indigenous Mesoamerican facial features and full lips",
+        value: "with Mexican facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
     },
     {
         label: "Mixed-Race",
-        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, and thick naturally arched eyebrows",
-        hairColors: ["dark brown", "black"],
+        value: "with a blend of African and European facial features",
+        hairColors: ["dark brown", "black", "blonde"],
         skinTones: ["deep golden-bronze", "warm olive"],
         eyeColors: ["blue", "dark brown", "light brown", "hazel"]
     },
