@@ -4113,12 +4113,14 @@ async function generateBatch() {
     const scene = randomize(concept.scenes);
     const action = randomize(scene.actions ?? []);
 
-    const cameraAngle = selectVisualProperty(
-        scene,
-        variant,
-        "cameraAngles",
-        cameraAnglePresets
-    );
+    const cameraAngle = Math.random() < 0.75
+        ? ""
+        : selectVisualProperty(
+            scene,
+            variant,
+            "cameraAngles",
+            cameraAnglePresets
+        );
 
     const cameraFraming = selectVisualProperty(
         scene,
