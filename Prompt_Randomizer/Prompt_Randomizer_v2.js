@@ -399,6 +399,16 @@ const visualPresets = {
     modernBoudoir: {
         label: "Modern Boudoir",
         era: "2000s",
+        hairstyles: [
+            { label: "Soft loose waves", value: "soft loose waves" },
+            { label: "Long straight hair", value: "long straight hair" },
+            { label: "Messy bun", value: "hair gathered into a loose messy bun" }
+        ],
+        outfits: [
+            { label: "Satin robe", value: "a satin robe" },
+            { label: "Silk slip dress", value: "a silk slip dress" },
+            { label: "Oversized knit sweater", value: "an oversized knit sweater" }
+        ],
 
         variants: {
             photo: {
@@ -419,7 +429,11 @@ const visualPresets = {
             {
                 label: "Bedroom, Early Morning",
                 setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
-                tags: ["bedroom"]
+                actions: [
+                    "sitting on the edge of the bed",
+                    "standing beside the window",
+                    "relaxing in an armchair"
+                ]
             }
         ],
         environments: [
@@ -433,6 +447,11 @@ const visualPresets = {
     victorianBoudoir: {
         label: "Victorian Boudoir",
         era: "Victorian",
+        outfits: [
+            { label: "Victorian lace-trimmed chemise", value: "a Victorian lace-trimmed linen chemise" },
+            { label: "Victorian dressing gown", value: "a flowing Victorian silk dressing gown" },
+            { label: "Victorian nightdress", value: "a long Victorian cotton nightdress with lace cuffs" }
+        ],
 
         hairstyles: [
             { label: "Dark hair parted in the center and gathered into a low bun", value: "dark hair parted in the center and gathered into a low bun" },
@@ -476,7 +495,11 @@ const visualPresets = {
             {
                 label: "Bedroom, Early Morning",
                 setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
-                tags: ["bedroom"]
+                actions: [
+                    "sitting at a dressing table",
+                    "standing beside the window",
+                    "reading a letter beside the bed"
+                ]
             }
         ],
         environments: [
@@ -631,63 +654,63 @@ const visualPresets = {
                 "label": "Space-Age Fashion Editorial",
                 "value": "1960s space-age fashion editorial, crisp retro-futurist styling, saturated color film",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "High-Key Lighting"
+                    "softStudioLight",
+                    "highKeyLighting"
                 ],
                 "photographicLook": [
-                    "1960s Color Film"
+                    "1960sSlideFilm"
                 ]
             },
             "pulp": {
                 "label": "Retro Science Fiction Illustration",
                 "value": "1960s pulp science-fiction magazine illustration with bold flat colors and airbrushed chrome",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Dramatic Colored Lighting",
-                    "Soft Studio Light"
+                    "dramaticColoredLighting",
+                    "softStudioLight"
                 ]
             },
             "technicolor": {
                 "label": "Technicolor Film Still",
                 "value": "1960s Technicolor retro-futurist cinema still with practical miniature-set atmosphere",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "Colored Practical Lights"
+                    "softStudioLight",
+                    "coloredPracticalLights"
                 ],
                 "photographicLook": [
-                    "Technicolor"
+                    "technicolor"
                 ]
             }
         },
@@ -788,59 +811,59 @@ const visualPresets = {
                 "label": "Dark Romantic Oil Painting",
                 "value": "19th-century dark romantic oil painting, textured canvas, gothic atmosphere",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Candlelight / Firelight",
-                    "Low-Key / Chiaroscuro",
-                    "Moonlight"
+                    "candlelightFirelight",
+                    "lowKeyChiaroscuro",
+                    "moonlight"
                 ]
             },
             "photograph": {
                 "label": "Gothic Period Photograph",
                 "value": "moody Victorian photographic portrait, restrained sepia tones and antique lens softness",
                 "cameraAngles": [
-                    "Eye Level"
+                    "eyeLevel"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Window Light",
-                    "Low-Key / Chiaroscuro"
+                    "windowLight",
+                    "lowKeyChiaroscuro"
                 ],
                 "photographicLook": [
-                    "Sepia Photograph"
+                    "sepia"
                 ]
             },
             "illustration": {
                 "label": "Gothic Book Illustration",
                 "value": "engraved Victorian gothic book illustration with dense crosshatching and ominous shadows",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Moonlight",
-                    "Candlelight / Firelight"
+                    "moonlight",
+                    "candlelightFirelight"
                 ]
             }
         },
@@ -941,62 +964,62 @@ const visualPresets = {
                 "label": "Archival Crime Photograph",
                 "value": "grainy 1920s black-and-white crime press photograph with period film grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Waist-Up",
-                    "3/4 Body",
-                    "Environmental Portrait"
+                    "waistUp",
+                    "34Body",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Hard Side Lighting",
-                    "Window Light"
+                    "hardSideLighting",
+                    "windowLight"
                 ],
                 "photographicLook": [
-                    "Black and White Film"
+                    "blackWhite"
                 ]
             },
             "cinema": {
                 "label": "Silent-Era Film Still",
                 "value": "1920s silent-era gangster film still, monochrome silver-gelatin texture",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Low-Key / Chiaroscuro",
-                    "Hard Side Lighting"
+                    "lowKeyChiaroscuro",
+                    "hardSideLighting"
                 ],
                 "photographicLook": [
-                    "Black and White Film"
+                    "blackWhite"
                 ]
             },
             "poster": {
                 "label": "Pulp Crime Illustration",
                 "value": "vintage pulp crime magazine illustration with bold shadows and hand-painted color",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Dramatic Colored Lighting",
-                    "Low-Key / Chiaroscuro"
+                    "dramaticColoredLighting",
+                    "lowKeyChiaroscuro"
                 ]
             }
         },
@@ -1097,41 +1120,41 @@ const visualPresets = {
                 "label": "Black-and-White Film Still",
                 "value": "1940s black-and-white film noir still, deep blacks, luminous highlights, smoky atmosphere",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Low-Key / Chiaroscuro",
-                    "Hard Side Lighting",
-                    "Venetian Blind Shadows"
+                    "lowKeyChiaroscuro",
+                    "hardSideLighting",
+                    "venetianBlindShadows"
                 ],
                 "photographicLook": [
-                    "Black and White Film"
+                    "blackWhite"
                 ]
             },
             "publicity": {
                 "label": "Studio Publicity Portrait",
                 "value": "1940s Hollywood publicity portrait with dramatic sculpted monochrome studio lighting",
                 "cameraAngles": [
-                    "Eye Level"
+                    "eyeLevel"
                 ],
                 "cameraFraming": [
-                    "Waist-Up",
-                    "3/4 Body"
+                    "waistUp",
+                    "34Body"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "Hard Side Lighting"
+                    "softStudioLight",
+                    "hardSideLighting"
                 ],
                 "photographicLook": [
-                    "Black and White Film"
+                    "blackWhite"
                 ]
             }
         },
@@ -1224,50 +1247,50 @@ const visualPresets = {
                 "label": "Decorative Lithographic Poster",
                 "value": "Art Nouveau color lithograph poster, flowing organic linework, flat decorative colors, ornate floral border",
                 "cameraAngles": [
-                    "Eye Level"
+                    "eyeLevel"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body"
+                    "fullBody",
+                    "34Body"
                 ],
                 "lighting": [
-                    "Soft Natural Light"
+                    "softNaturalLight"
                 ]
             },
             "watercolor": {
                 "label": "Art Nouveau Watercolor",
                 "value": "delicate Art Nouveau watercolor and ink illustration with curling botanical ornament",
                 "cameraAngles": [
-                    "Eye Level"
+                    "eyeLevel"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Natural Light",
-                    "Window Light"
+                    "softNaturalLight",
+                    "windowLight"
                 ]
             },
             "oil": {
                 "label": "Symbolist Oil Painting",
                 "value": "turn-of-the-century Symbolist oil painting with decorative botanical forms and luminous muted colors",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Natural Light",
-                    "Golden Hour"
+                    "softNaturalLight",
+                    "goldenHour"
                 ]
             }
         },
@@ -1368,60 +1391,60 @@ const visualPresets = {
                 "label": "1970s Science Fiction Film Still",
                 "value": "1970s practical-effects science-fiction film still, tactile sets, subtle film grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Colored Practical Lights",
-                    "Low-Key / Chiaroscuro"
+                    "coloredPracticalLights",
+                    "lowKeyChiaroscuro"
                 ],
                 "photographicLook": [
-                    "1970s Color Film"
+                    "1970sColorFilm"
                 ]
             },
             "paperback": {
                 "label": "Vintage Paperback Cover",
                 "value": "1970s science-fiction paperback cover painting with painterly cosmic vistas",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Dramatic Colored Lighting",
-                    "Golden Hour"
+                    "dramaticColoredLighting",
+                    "goldenHour"
                 ]
             },
             "airbrush": {
                 "label": "Retro Airbrush Concept Art",
                 "value": "1970s retro-futurist airbrushed concept art with soft gradients and industrial detail",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Colored Practical Lights",
-                    "Soft Studio Light"
+                    "coloredPracticalLights",
+                    "softStudioLight"
                 ]
             }
         },
@@ -1522,61 +1545,61 @@ const visualPresets = {
                 "label": "Fantasy Paperback Cover",
                 "value": "1980s dark fantasy paperback cover painting, dramatic hand-painted brushwork and heroic composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Dramatic Colored Lighting",
-                    "Moonlight",
-                    "Candlelight / Firelight"
+                    "dramaticColoredLighting",
+                    "moonlight",
+                    "candlelightFirelight"
                 ]
             },
             "oil": {
                 "label": "Dark Fantasy Oil Illustration",
                 "value": "richly textured fantasy oil illustration, misty ruins, monumental scale",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Low-Key / Chiaroscuro",
-                    "Moonlight"
+                    "lowKeyChiaroscuro",
+                    "moonlight"
                 ]
             },
             "film": {
                 "label": "Practical-Effects Fantasy Film",
                 "value": "1980s practical-effects dark fantasy film still, atmospheric smoke and tactile sets",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Candlelight / Firelight",
-                    "Moonlight"
+                    "candlelightFirelight",
+                    "moonlight"
                 ],
                 "photographicLook": [
-                    "1980s Color Film"
+                    "1980sColorFilm"
                 ]
             }
         },
@@ -1677,64 +1700,64 @@ const visualPresets = {
                 "label": "Vintage Fashion Magazine",
                 "value": "1970s fashion magazine editorial, warm film grain, tactile styling",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "Golden Hour",
-                    "Warm Indoor Lamps"
+                    "softStudioLight",
+                    "goldenHour",
+                    "warmIndoorLamps"
                 ],
                 "photographicLook": [
-                    "1970s Color Film"
+                    "1970sColorFilm"
                 ]
             },
             "flash": {
                 "label": "Direct-Flash Fashion Photo",
                 "value": "1970s direct-flash fashion photography, punchy contrast and candid composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Direct Flash",
-                    "Warm Indoor Lamps"
+                    "directFlash",
+                    "warmIndoorLamps"
                 ],
                 "photographicLook": [
-                    "1970s Color Film"
+                    "1970sColorFilm"
                 ]
             },
             "advert": {
                 "label": "Retro Advertising Illustration",
                 "value": "1970s commercial fashion illustration with warm saturated palette and stylized brushwork",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "Golden Hour"
+                    "softStudioLight",
+                    "goldenHour"
                 ]
             }
         },
@@ -1831,57 +1854,57 @@ const visualPresets = {
                 "label": "1990s Hand-Drawn Anime",
                 "value": "1990s hand-drawn cyberpunk anime cel, detailed painted backgrounds, sharp inked outlines",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Neon Lighting",
-                    "Colored Practical Lights"
+                    "urbanNeon",
+                    "coloredPracticalLights"
                 ]
             },
             "ova": {
                 "label": "Retro Cyberpunk OVA Still",
                 "value": "1990s original-video-animation cyberpunk still with gritty film texture and dense urban detail",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Neon Lighting",
-                    "Low-Key / Chiaroscuro"
+                    "urbanNeon",
+                    "lowKeyChiaroscuro"
                 ]
             },
             "poster": {
                 "label": "Anime Film Poster",
                 "value": "1990s Japanese cyberpunk anime poster illustration, dynamic composition and bold graphic silhouettes",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Dramatic Colored Lighting",
-                    "Neon Lighting"
+                    "dramaticColoredLighting",
+                    "urbanNeon"
                 ]
             }
         },
@@ -1970,44 +1993,44 @@ const visualPresets = {
                 "label": "Cinematic Night Photography",
                 "value": "cinematic 35mm night photography, lonely urban atmosphere and natural film grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Fluorescent Lighting",
-                    "Neon Lighting"
+                    "fluorescentLighting",
+                    "urbanNeon"
                 ],
                 "photographicLook": [
-                    "35mm Color Film"
+                    "35mmColorFilm"
                 ]
             },
             "surreal": {
                 "label": "Surreal Documentary Photograph",
                 "value": "subtly surreal documentary photography, uncanny stillness and meticulously ordinary details",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Fluorescent Lighting",
-                    "Neon Lighting"
+                    "fluorescentLighting",
+                    "urbanNeon"
                 ],
                 "photographicLook": [
-                    "35mm Color Film"
+                    "35mmColorFilm"
                 ]
             }
         },
@@ -2101,59 +2124,59 @@ const visualPresets = {
                 "label": "Surreal Road Cinema",
                 "value": "surreal widescreen road-movie photograph, unsettling empty space and grounded realism",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "Environmental Portrait",
-                    "Wide Shot"
+                    "fullBody",
+                    "environmentalPortrait",
+                    "wideShot"
                 ],
                 "lighting": [
-                    "Golden Hour",
-                    "Harsh Midday Sun",
-                    "Moonlight"
+                    "goldenHour",
+                    "harshMiddaySun",
+                    "moonlight"
                 ],
                 "photographicLook": [
-                    "35mm Color Film"
+                    "35mmColorFilm"
                 ]
             },
             "painting": {
                 "label": "Hyperreal Desert Painting",
                 "value": "hyperreal surrealist painting of an impossible roadside landscape, meticulous detail and vast negative space",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Environmental Portrait",
-                    "Wide Shot"
+                    "environmentalPortrait",
+                    "wideShot"
                 ],
                 "lighting": [
-                    "Golden Hour",
-                    "Harsh Midday Sun"
+                    "goldenHour",
+                    "harshMiddaySun"
                 ]
             },
             "retro": {
                 "label": "Faded Roadside Postcard",
                 "value": "faded mid-century roadside color postcard with subtly impossible architecture",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Environmental Portrait",
-                    "Wide Shot"
+                    "environmentalPortrait",
+                    "wideShot"
                 ],
                 "lighting": [
-                    "Golden Hour",
-                    "Harsh Midday Sun"
+                    "goldenHour",
+                    "harshMiddaySun"
                 ],
                 "photographicLook": [
-                    "Vintage Postcard"
+                    "vintagePostcard"
                 ]
             }
         },
@@ -2265,64 +2288,64 @@ const visualPresets = {
                 "label": "Kodachrome Roadside Photograph",
                 "value": "1950s Kodachrome roadside travel photograph, rich vintage color and gentle film grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Golden Hour",
-                    "Harsh Midday Sun",
-                    "Neon Lighting"
+                    "goldenHour",
+                    "harshMiddaySun",
+                    "urbanNeon"
                 ],
                 "photographicLook": [
-                    "1950s Kodachrome"
+                    "1950sMagazine"
                 ]
             },
             "postcard": {
                 "label": "Vintage Motel Postcard",
                 "value": "1950s linen-finish roadside motel postcard illustration, saturated optimistic colors",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Golden Hour",
-                    "Soft Natural Light"
+                    "goldenHour",
+                    "softNaturalLight"
                 ],
                 "photographicLook": [
-                    "Vintage Postcard"
+                    "vintagePostcard"
                 ]
             },
             "advert": {
                 "label": "Mid-Century Advertising Art",
                 "value": "1950s American roadside advertising illustration with clean painted shapes and bright color",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "Golden Hour"
+                    "softStudioLight",
+                    "goldenHour"
                 ]
             }
         },
@@ -2438,82 +2461,82 @@ const visualPresets = {
                 "label": "1920s Monochrome Photograph",
                 "value": "authentic-looking late-1920s black-and-white nightlife photograph, silver-gelatin grain, slight halation and period tonal range",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Warm Tungsten Light",
-                    "Soft Studio Light"
+                    "warmTungstenLight",
+                    "softStudioLight"
                 ],
                 "photographicLook": [
-                    "Vintage Black and White"
+                    "blackWhite"
                 ]
             },
             "artDeco": {
                 "label": "Art Deco Jazz Age Poster",
                 "value": "1920s Art Deco lithographic nightlife poster, bold geometry, jewel tones, stylized silhouettes and elegant decorative typography-free composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle"
+                    "eyeLevel",
+                    "lowAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Warm Studio Light"
+                    "warmStudioLight"
                 ],
                 "photographicLook": [
-                    "Vintage Illustration"
+                    "vintageIllustration"
                 ]
             },
             "cinematic": {
                 "label": "Cinematic Period Photography",
                 "value": "cinematic photograph set in a 1920s Prohibition speakeasy, authentic period detail, rich atmospheric shadows, amber practical lamps and subtle film grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Warm Tungsten Light",
-                    "Low-Key Lighting"
+                    "warmTungstenLight",
+                    "lowKeyChiaroscuro"
                 ],
                 "photographicLook": [
-                    "Cinematic Film Look"
+                    "cinematicFilmLook"
                 ]
             },
             "magazine": {
                 "label": "Vintage Magazine Illustration",
                 "value": "late-1920s illustrated magazine cover artwork, expressive hand-painted figures, period color palette and lively jazz-age composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle"
+                    "eyeLevel",
+                    "lowAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up"
+                    "fullBody",
+                    "34Body",
+                    "waistUp"
                 ],
                 "lighting": [
-                    "Warm Studio Light"
+                    "warmStudioLight"
                 ],
                 "photographicLook": [
-                    "Vintage Illustration"
+                    "vintageIllustration"
                 ]
             }
         },
@@ -2650,44 +2673,44 @@ const visualPresets = {
                 "label": "Kodachrome Snapshot",
                 "value": "1950s Kodachrome candid photograph, rich colors and subtle grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Natural Light",
-                    "Neon Lighting",
-                    "Warm Tungsten Light"
+                    "softNaturalLight",
+                    "urbanNeon",
+                    "warmTungstenLight"
                 ],
                 "photographicLook": [
-                    "1950s Kodachrome"
+                    "1950sMagazine"
                 ]
             },
             "advert": {
                 "label": "Midcentury Advertising Illustration",
                 "value": "1950s hand-painted commercial illustration with clean shapes and cheerful color",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light"
+                    "softStudioLight"
                 ],
                 "photographicLook": [
-                    "Vintage Advertising Illustration"
+                    "vintageAdvertisingIllustration"
                 ]
             }
         },
@@ -2794,44 +2817,44 @@ const visualPresets = {
                 "label": "Swinging Sixties Editorial",
                 "value": "1960s London fashion editorial with vivid color film and playful graphic composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Studio Light",
-                    "Overcast Daylight"
+                    "softStudioLight",
+                    "overcastDaylight"
                 ],
                 "photographicLook": [
-                    "1960s Color Film"
+                    "1960sSlideFilm"
                 ]
             },
             "film": {
                 "label": "1960s Street Photograph",
                 "value": "candid 1960s street photography with authentic period color and film grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Natural Light",
-                    "Golden Hour"
+                    "softNaturalLight",
+                    "goldenHour"
                 ],
                 "photographicLook": [
-                    "Vintage Color Film"
+                    "vintageColorFilm"
                 ]
             }
         },
@@ -2918,44 +2941,44 @@ const visualPresets = {
                 "label": "1970s Roller-Rink Film Still",
                 "value": "warm-grained 1970s color film still with energetic candid movement",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Colored Disco Lights",
-                    "Warm Tungsten Light"
+                    "coloredDiscoLights",
+                    "warmTungstenLight"
                 ],
                 "photographicLook": [
-                    "1970s Color Film"
+                    "1970sColorFilm"
                 ]
             },
             "editorial": {
                 "label": "Retro Roller Disco Poster",
                 "value": "bright 1970s roller-skating advertisement with bold typography-inspired composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Colored Disco Lights",
-                    "Soft Studio Light"
+                    "coloredDiscoLights",
+                    "softStudioLight"
                 ],
                 "photographicLook": [
-                    "Vintage Advertising Illustration"
+                    "vintageAdvertisingIllustration"
                 ]
             }
         },
@@ -3043,44 +3066,44 @@ const visualPresets = {
                 "label": "1970s Bedroom Snapshot",
                 "value": "intimate 1970s 35mm color snapshot with warm grain and lived-in realism",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Warm Tungsten Light",
-                    "Soft Window Light"
+                    "warmTungstenLight",
+                    "windowLight"
                 ],
                 "photographicLook": [
-                    "1970s Color Film"
+                    "1970sColorFilm"
                 ]
             },
             "cinematic": {
                 "label": "Nostalgic 1970s Film Still",
                 "value": "cinematic 1970s coming-of-age film still with natural textures and restrained warm color",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Window Light",
-                    "Warm Tungsten Light"
+                    "windowLight",
+                    "warmTungstenLight"
                 ],
                 "photographicLook": [
-                    "Vintage Color Film"
+                    "vintageColorFilm"
                 ]
             }
         },
@@ -3168,45 +3191,45 @@ const visualPresets = {
                 "label": "1980s Teen Movie Still",
                 "value": "1980s teen comedy film still with vivid practical lighting and fine analog grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Neon Lighting",
-                    "Fluorescent Lighting",
-                    "Warm Tungsten Light"
+                    "urbanNeon",
+                    "fluorescentLighting",
+                    "warmTungstenLight"
                 ],
                 "photographicLook": [
-                    "1980s Color Film"
+                    "1980sColorFilm"
                 ]
             },
             "snapshot": {
                 "label": "1980s Mall Snapshot",
                 "value": "candid consumer 35mm film photograph from the 1980s",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Fluorescent Lighting",
-                    "Soft Natural Light"
+                    "fluorescentLighting",
+                    "softNaturalLight"
                 ],
                 "photographicLook": [
-                    "Vintage Color Film"
+                    "vintageColorFilm"
                 ]
             }
         },
@@ -3302,45 +3325,45 @@ const visualPresets = {
                 "label": "1990s Indie Film Still",
                 "value": "gritty 1990s independent film still with muted color and visible grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Overcast Daylight",
-                    "Warm Tungsten Light",
-                    "Stage Lighting"
+                    "overcastDaylight",
+                    "warmTungstenLight",
+                    "stageLighting"
                 ],
                 "photographicLook": [
-                    "1990s Color Film"
+                    "1990sFilm"
                 ]
             },
             "snapshot": {
                 "label": "1990s Disposable Camera",
                 "value": "1990s disposable-camera snapshot with direct flash, imperfect framing and grain",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Direct Flash",
-                    "Overcast Daylight"
+                    "directFlash",
+                    "overcastDaylight"
                 ],
                 "photographicLook": [
-                    "Disposable Camera"
+                    "2000sDisposableCamera"
                 ]
             }
         },
@@ -3444,68 +3467,68 @@ const visualPresets = {
                 "label": "Contemporary Digital Photography",
                 "value": "natural contemporary digital photography with realistic color and crisp detail",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Window Light",
-                    "Soft Natural Light",
-                    "Golden Hour",
-                    "Warm Tungsten Light"
+                    "windowLight",
+                    "softNaturalLight",
+                    "goldenHour",
+                    "warmTungstenLight"
                 ],
                 "photographicLook": [
-                    "Contemporary Digital Photo"
+                    "contemporaryDigitalPhoto"
                 ]
             },
             "phone": {
                 "label": "Casual Phone Snapshot",
                 "value": "candid smartphone photograph with everyday imperfections and natural composition",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Soft Natural Light",
-                    "Warm Indoor Light"
+                    "softNaturalLight",
+                    "warmIndoorLamps"
                 ],
                 "photographicLook": [
-                    "Smartphone Snapshot"
+                    "smartphoneSnapshot"
                 ]
             },
             "y2k": {
                 "label": "Early 2000s Digital Camera",
                 "value": "early-2000s compact digital camera photograph with direct flash and period color rendering",
                 "cameraAngles": [
-                    "Eye Level",
-                    "Low Angle",
-                    "High Angle"
+                    "eyeLevel",
+                    "lowAngle",
+                    "highAngle"
                 ],
                 "cameraFraming": [
-                    "Full Body",
-                    "3/4 Body",
-                    "Waist-Up",
-                    "Environmental Portrait"
+                    "fullBody",
+                    "34Body",
+                    "waistUp",
+                    "environmentalPortrait"
                 ],
                 "lighting": [
-                    "Direct Flash",
-                    "Soft Natural Light"
+                    "directFlash",
+                    "softNaturalLight"
                 ],
                 "photographicLook": [
-                    "Early Digital Camera"
+                    "earlyDigitalCamera"
                 ]
             }
         },
@@ -3623,27 +3646,27 @@ const nationalityPresets = [
     {
         label: "Caucasian",
         value: "with Western European facial features",
-        hairColors: ["blonde", "brunette", "black", "ginger", "ombre", "balayage"],
+        hairColors: ["blonde", "brunette", "black", "ginger", "light brown", "dark brown"],
         skinTones: ["porcelain", "light", "fair", "sun-kissed tan"],
         eyeColors: ["brown", "hazel", "green", "blue", "amber"]
     },
     {
         label: "Black",
-        value: "with rich deep skin tone and classic African facial features, neck/back/arm tattoos, heavy mascara, smokey eyes, light body hair, hoop earrings, long fingernails, nose/navel/nipple piercings",
-        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde", "box braids black", "box braids and blonde streaks of hair braided in black"],
+        value: "with African facial features",
+        hairColors: ["dark brown", "black", "black with blonde streaks", "dyed blonde", "black with blonde streaks"],
         skinTones: ["rich mocha", "brown", "dark brown", "black", "dark glossy black"],
         eyeColors: ["dark brown", "black"]
     },
     {
         label: "Mexican",
-        value: "with prominent Indigenous Mesoamerican features, plump lips, smokey eyes, heavy mascara, arm/back/neck tattoos, light body hair, hoop earrings, multiple rings, nose/navel/nipple piercings",
+        value: "with prominent Indigenous Mesoamerican facial features and full lips",
         hairColors: ["dark brown", "black"],
         skinTones: ["warm olive tan", "sun-darkened"],
         eyeColors: ["dark brown", "black", "light brown"]
     },
     {
         label: "Mixed-Race",
-        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, thick naturally arched eyebrows, thick hair with thick wavy curls, a curvy hourglass figure, and a round ass",
+        value: "with a natural blend of African and European facial features, softly flared nostrils, a straight natural nose bridge, high defined cheekbones, and thick naturally arched eyebrows",
         hairColors: ["dark brown", "black"],
         skinTones: ["deep golden-bronze", "warm olive"],
         eyeColors: ["blue", "dark brown", "light brown", "hazel"]
@@ -3813,6 +3836,8 @@ const photographicLookPresets = {
     "contemporaryDigitalPhoto": "Contemporary Digital Photo",
     "smartphoneSnapshot": "Smartphone Snapshot",
     "earlyDigitalCamera": "Early Digital Camera",
+    "1950sKodachrome": "1950s Kodachrome-inspired color film with vivid mid-century color and gentle contrast",
+    "1990sColorFilm": "1990s color-film photograph with subtle grain and natural tones",
 };
 
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
@@ -3923,11 +3948,16 @@ function randomObjectValue(object) {
 }
 
 function resolvePreset(key, presets) {
-    return presets[key] ?? key;
+    const preset = presets[key] ?? key;
+    return typeof preset === "object" && preset !== null
+        ? (preset.value ?? "")
+        : preset;
 }
 
 function selectVisualProperty(scene, variant, property, presets) {
-    const options = scene[property] ?? variant[property] ?? [];
+    const options = scene[property]?.length
+        ? scene[property]
+        : (variant[property] ?? []);
 
     if (options.length === 0) {
         return "";
@@ -3968,6 +3998,9 @@ function buildSingleSubject(concept) {
     // OUTFIT
     const outfit = randomize(concept.outfits ?? []);
 
+    const pregnant = promptSelections[6][0] === true;
+    const achondroplasia = promptSelections[6][1] === true;
+
     return {
         nationality,
         age,
@@ -3976,7 +4009,9 @@ function buildSingleSubject(concept) {
         hairColor,
         skinTone,
         eyeColor,
-        outfit
+        outfit,
+        pregnant,
+        achondroplasia
     };
 }
 
@@ -3989,16 +4024,37 @@ function formatSingleSubject(subject) {
         hairColor,
         skinTone,
         eyeColor,
-        outfit
+        outfit,
+        pregnant,
+        achondroplasia
     } = subject;
 
-    const description = [
-        `a ${age}-year-old ${nationality.label} woman`,
-        `with ${skinTone} skin`,
-        `${hairColor} ${hairstyle?.value ?? "hair"}`,
-        `${eyeColor} eyes`,
+    // Named character presets already describe the character; don't add
+    // a second nationality, age, or body description on top of them.
+    const identity = nationality.named
+        ? nationality.value
+        : `a ${age}-year-old ${nationality.label} ${gender}`;
+
+    const hairStyle = hairstyle?.value ?? "hair";
+    // A few historical presets specify a hair color themselves.
+    // Don't prepend a second, potentially conflicting color.
+    const hasPresetHairColor = /^(?:dark|black|blonde|brown|red|ginger|silver|white|gray|grey)\b/i.test(hairStyle);
+    const hair = hasPresetHairColor
+        ? hairStyle
+        : [hairColor, hairStyle].filter(Boolean).join(" ");
+    const appearance = nationality.named ? [] : [
+        skinTone ? `with ${skinTone} skin` : "",
+        hair,
+        eyeColor ? `${eyeColor} eyes` : "",
         nationality.value,
-        overallBuild?.value,
+        overallBuild?.value
+    ];
+
+    const description = [
+        identity,
+        ...appearance,
+        pregnant ? "pregnant with a visibly rounded belly" : "",
+        achondroplasia ? "with achondroplasia and characteristic short stature" : "",
         outfit?.value ? `wearing ${outfit.value}` : ""
     ];
 
@@ -4051,7 +4107,7 @@ async function generateBatch() {
     const subjectDescription = formatSingleSubject(subject);
 
     const imagePrompt = [
-        `${variant.value} of ${subjectDescription}`,
+        `${variant.value} featuring ${subjectDescription}`,
         action,
         scene.setting,
         cameraFraming,
@@ -4142,7 +4198,7 @@ async function generateBatch() {
         });
     }
 
-    console.log("Image complete.");
+    console.log(DEBUG ? "Debug prompt complete." : "Image complete.");
 }
 const imageCount = imageCounts[promptSelections[1][0]];
 
