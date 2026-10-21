@@ -4145,7 +4145,7 @@ async function generateBatch() {
     const subjectDescription = formatSingleSubject(subject);
 
     const imagePrompt = [
-        `${variant.value} featuring ${subjectDescription}`,
+        `${variant.value.replace(/[,\s.]+$/, "")} featuring ${subjectDescription}`,
         action,
         scene.setting,
         cameraFraming,
