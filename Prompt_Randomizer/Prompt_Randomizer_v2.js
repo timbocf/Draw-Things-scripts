@@ -3678,7 +3678,7 @@ const nationalityPresets = [
         label: "Black",
         value: "with African facial features",
         hairColors: ["dark brown", "black", "blonde", "black with blonde highlights"],
-        skinTones: ["rich mocha", "brown", "dark brown", "deep ebony"],
+        skinTones: ["rich mocha", "brown", "rich dark brown",],
         eyeColors: ["dark brown", "black"]
     },
     {
