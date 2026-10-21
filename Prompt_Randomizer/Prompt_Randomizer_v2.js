@@ -652,7 +652,7 @@ const visualPresets = {
         "variants": {
             "editorial": {
                 "label": "Space-Age Fashion Editorial",
-                "value": "1960s space-age fashion editorial, crisp retro-futurist styling, saturated color film",
+                "value": "1960s space-age fashion editorial, crisp retro-futurist styling",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -693,7 +693,7 @@ const visualPresets = {
             },
             "technicolor": {
                 "label": "Technicolor Film Still",
-                "value": "1960s Technicolor retro-futurist cinema still with practical miniature-set atmosphere",
+                "value": "1960s retro-futurist cinema still with practical miniature-set atmosphere",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -829,7 +829,7 @@ const visualPresets = {
             },
             "photograph": {
                 "label": "Gothic Period Photograph",
-                "value": "moody Victorian photographic portrait, restrained sepia tones and antique lens softness",
+                "value": "moody Victorian photographic portrait and antique lens softness",
                 "cameraAngles": [
                     "eyeLevel"
                 ],
@@ -962,7 +962,7 @@ const visualPresets = {
         "variants": {
             "crimePhoto": {
                 "label": "Archival Crime Photograph",
-                "value": "grainy 1920s black-and-white crime press photograph with period film grain",
+                "value": "1920s crime press photograph",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -1141,7 +1141,7 @@ const visualPresets = {
             },
             "publicity": {
                 "label": "Studio Publicity Portrait",
-                "value": "1940s Hollywood publicity portrait with dramatic sculpted monochrome studio lighting",
+                "value": "1940s Hollywood publicity portrait",
                 "cameraAngles": [
                     "eyeLevel"
                 ],
@@ -1698,7 +1698,7 @@ const visualPresets = {
         "variants": {
             "magazine": {
                 "label": "Vintage Fashion Magazine",
-                "value": "1970s fashion magazine editorial, warm film grain, tactile styling",
+                "value": "1970s fashion magazine editorial, tactile styling",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -1773,7 +1773,7 @@ const visualPresets = {
             },
             {
                 "label": "Desert Highway Editorial",
-                "setting": "beside a vintage coupe on an empty desert highway at golden hour",
+                "setting": "beside a vintage coupe on an empty desert highway",
                 "actions": [
                     "leaning on the car hood",
                     "walking along the road shoulder",
@@ -2286,7 +2286,7 @@ const visualPresets = {
         "variants": {
             "kodachrome": {
                 "label": "Kodachrome Roadside Photograph",
-                "value": "1950s Kodachrome roadside travel photograph, rich vintage color and gentle film grain",
+                "value": "1950s Kodachrome roadside travel photograph",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -2815,7 +2815,7 @@ const visualPresets = {
         "variants": {
             "editorial": {
                 "label": "Swinging Sixties Editorial",
-                "value": "1960s London fashion editorial with vivid color film and playful graphic composition",
+                "value": "1960s London fashion editorial",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -3558,7 +3558,7 @@ const visualPresets = {
         "scenes": [
             {
                 "label": "Apartment Kitchen",
-                "setting": "a lived-in apartment kitchen with dishes drying by the sink, magnets on the refrigerator and morning light",
+                "setting": "a lived-in apartment kitchen with dishes drying by the sink, and magnets on the refrigerator",
                 "actions": [
                     "making coffee at the counter",
                     "leaning against the refrigerator checking a phone",
@@ -3842,14 +3842,14 @@ const photographicLookPresets = {
     "sepia": "warm sepia-toned photographic treatment",
     "1930sEarlyColorFilm": { value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: ["1930s"] },
     "1940sKodachrome": { value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", tags: ["1940s"] },
-    "1950sMagazine": { value: "1950s glossy magazine photography with polished tones, subtle bloom, and clean mid-century color", tags: ["1950s"] },
-    "1960sSlideFilm": { value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering", tags: ["1960s"] },
+    "1950sMagazine": { value: "1950s glossy magazine photography with polished tones, subtle bloom, rich vintage color, gentle film grain, and clean mid-century color", tags: ["1950s"] },
+    "1960sSlideFilm": { value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering,  with vivid color film and playful graphic composition", tags: ["1960s"] },
     "1970sPolaroid": { value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", tags: ["1970s"] },
     "1980sVhs": { value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", tags: ["1980s"] },
     "1990sFilm": { value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", tags: ["1990s"] },
     "2000sDisposableCamera": { value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", tags: ["2000s"] },
     "technicolor": "Technicolor",
-    "1970sColorFilm": "1970s Color Film",
+    "1970sColorFilm": "1970s Color Film with warm film grain",
     "1980sColorFilm": "1980s Color Film",
     "35mmColorFilm": "35mm Color Film",
     "vintagePostcard": "Vintage Postcard",
@@ -3861,7 +3861,7 @@ const photographicLookPresets = {
     "smartphoneSnapshot": "Smartphone Snapshot",
     "earlyDigitalCamera": "Early Digital Camera",
     "1950sKodachrome": "1950s Kodachrome-inspired color film with vivid mid-century color and gentle contrast",
-    "1990sColorFilm": "1990s color-film photograph with subtle grain and natural tones",
+    "1990sColorFilm": "1990s color-film photograph with subtle grain, direct flash and natural tones",
 };
 
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
