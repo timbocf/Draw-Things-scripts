@@ -473,7 +473,7 @@ const visualPresets = {
         variants: {
             tinType: {
                 label: "Tin Type",
-                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections, ",
+                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections,",
                 cameraAngles: ["eyeLevel"],
                 cameraFraming: ["waistUp", "34Body", "fullBody"],
                 lighting: ["windowLight", "softNaturalLight"]
@@ -553,7 +553,7 @@ const visualPresets = {
         variants: {
             tinType: {
                 label: "Tin Type",
-                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections, ",
+                value: "1880s Victorian tintype photograph, authentic wet-plate collodion process, monochromatic silver-gray tones, faded contrast, subtle chemical imperfections,",
                 cameraAngles: ["eyeLevel"],
                 cameraFraming: ["waistUp", "34Body", "fullBody"],
                 lighting: ["windowLight", "softNaturalLight"]
