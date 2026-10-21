@@ -494,7 +494,7 @@ const visualPresets = {
         scenes: [
             {
                 label: "Bedroom, Early Morning",
-                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps. Early morning sunlight shines delicately through a window with sheer curtains.",
+                setting: "an ornate Victorian bedroom with carved wooden furniture, patterned wallpaper, and lace curtains.",
                 actions: [
                     "sitting at a dressing table",
                     "standing beside the window",
@@ -575,7 +575,7 @@ const visualPresets = {
         scenes: [
             {
                 label: "Victorian Bedroom, Early Morning",
-                setting: "Inside an ornate Victorian bedroom with a four-poster bed, carved wooden furniture, lace curtains, and soft morning sunlight.",
+                setting: "an ornate Victorian bedroom with carved wooden furniture, patterned wallpaper, and lace curtains",
                 actions: [
                     "sitting on the edge of the bed",
                     "standing beside the window",
