@@ -3688,11 +3688,11 @@ const nationalityPresets = [
     },
     {
         label: "Mixed-Race",
-        value: "with a blend of African and European facial features",
-        hairColors: ["dark brown", "black", "blonde"],
-        skinTones: ["deep golden-bronze", "warm olive"],
-        eyeColors: ["blue", "dark brown", "light brown", "hazel"]
-    },
+        value: "of mixed Black and White ancestry, with naturally blended facial features",
+        hairColors: ["dark brown", "black", "light brown", "blonde"],
+        skinTones: ["light brown", "golden brown", "caramel", "medium brown", "deep brown"],
+        eyeColors: ["dark brown", "brown", "hazel", "green", "blue"]
+    }
     {
         label: "Indian",
         value: "with South Asian facial features",
