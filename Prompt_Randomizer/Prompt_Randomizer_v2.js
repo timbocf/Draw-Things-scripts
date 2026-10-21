@@ -3189,7 +3189,7 @@ const visualPresets = {
         "variants": {
             "film": {
                 "label": "1980s Teen Movie Still",
-                "value": "1980s teen comedy film still with vivid practical lighting and fine analog grain",
+                "value": "1980s teen comedy film still",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
