@@ -127,8 +127,7 @@ const visualPresets = {
 
             illustration: {
                 label: "Vintage Magazine Illustration",
-                value: "vintage magazine advertising illustration",
-                cameraAngles: ["eyeLevel", "lowAngle", "highAngle"],
+                value: "1940s vintage magazine advertising illustration, hand-painted commercial artwork with smooth airbrushed shading, polished figures, and rich printed colors", cameraAngles: ["eyeLevel", "lowAngle", "highAngle"],
                 cameraFraming: ["fullBody", "34Body"],
                 lighting: ["softStudioLight", "softNaturalLight"]
             },
@@ -170,7 +169,7 @@ const visualPresets = {
             },
             {
                 label: "Bedroom, Early Morning",
-                setting: "in a bedroom with a bed with crumpled slept-in sheets, with pillows piled up near the wall at the head of the bed. Nightstands are on either side of the bed with bedside lamps.",
+                setting: "in a modest 1940s bedroom with a wooden bedframe, rumpled cotton bedsheets, floral wallpaper, matching nightstands with ceramic bedside lamps, and a wooden vanity with an oval mirror",
                 actions: [
                     "lying on her side, with the top leg bent high, hand lightly between her thighs",
                     "sitting on a stool while adjusting a stocking",
@@ -192,7 +191,7 @@ const visualPresets = {
             },
             {
                 label: "In a Kitchen",
-                setting: "in a 1940s era kitchen with bright vivid colors, an oven, countertops, cabinets, and a curtained window above a sink.",
+                setting: "in a cheerful 1940s kitchen with painted wooden cabinets, a freestanding enamel gas stove, linoleum flooring, chrome-edged Formica countertops, and a curtained window above a porcelain sink",
                 actions: [
                     "bending at the waist, legs straight, grabbing a sheet of cookies out of an oven",
                     "reaching above her head to grab a can of green beans from a high shelf in a cabinet, standing on her tiptoes"
@@ -201,7 +200,7 @@ const visualPresets = {
             },
             {
                 label: "Living Room",
-                setting: "in a 1940s era living room with bright vivid colors",
+                setting: "in a cozy 1940s living room with floral wallpaper, a patterned rug, an upholstered sofa, a wooden radio console, a baby-blue wingback chair, and a bookshelf filled with magazines and novels",
                 actions: [
                     "sitting in a baby-blue upholstered wingback chair reading a large magazine",
                     "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera",
@@ -230,7 +229,7 @@ const visualPresets = {
             },
             {
                 label: "Studio Portrait",
-                setting: "in a professional photography studio",
+                setting: "in a 1940s commercial photography studio with painted canvas backdrops, a velvet-upholstered posing stool, folding screens, and vintage studio equipment",
                 actions: [
                     "looking over one shoulder with a playful smile",
                     "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
@@ -239,7 +238,7 @@ const visualPresets = {
             },
             {
                 label: "1940s Hollywood Dressing Room",
-                setting: "in a 1940s Hollywood starlet's dressing room",
+                setting: "in a 1940s Hollywood starlet's dressing room with a mirrored makeup vanity, upholstered dressing chair, perfume bottles, powder compacts, costume jewelry, and elegant Art Deco furnishings",
                 actions: [
                     "looking over one shoulder with a playful smile",
                     "sitting in a highback chair, leaning forward toward a vanity mirror applying lipstick"
@@ -247,7 +246,7 @@ const visualPresets = {
             },
             {
                 label: "Bathroom",
-                setting: "in a bathroom with a large mirror over a countertop and sink. Various bathroom items are cluttered on the countertop.",
+                setting: "in a 1940s bathroom with pastel ceramic wall tiles, a porcelain sink, a chrome-framed medicine cabinet, a mirrored vanity, glass perfume bottles, and neatly arranged cosmetics",
                 actions: [
                     "standing in a bathroom, leaning over the counter, close to the mirror, applying deep red lipstick. Facing away from the camera."
                 ],
@@ -317,8 +316,7 @@ const visualPresets = {
             },
             illustration: {
                 label: "Vintage Magazine Illustration",
-                value: "vintage magazine advertising illustration",
-                cameraAngles: ["eyeLevel", "lowAngle"],
+                value: "1940s vintage magazine advertising illustration, hand-painted commercial artwork with smooth airbrushed shading, polished figures, and rich printed colors", cameraAngles: ["eyeLevel", "lowAngle"],
                 cameraFraming: ["34Body", "fullBody"],
                 lighting: ["softStudioLight", "softNaturalLight"]
             }
@@ -327,7 +325,7 @@ const visualPresets = {
         scenes: [
             {
                 label: "In a Kitchen",
-                setting: "in a 1940s era kitchen with bright vivid colors, an oven, countertops, cabinets, and a curtained window above a sink.",
+                setting: "in a cheerful 1940s kitchen with painted wooden cabinets, a freestanding enamel gas stove, linoleum flooring, chrome-edged Formica countertops, and a curtained window above a porcelain sink",
                 actions: [
                     "bending at the waist, legs straight, grabbing a sheet of cookies out of an oven",
                     "reaching above her head to grab a can of green beans from a high shelf in a cabinet, standing on her tiptoes"
@@ -336,7 +334,7 @@ const visualPresets = {
             },
             {
                 label: "Living Room",
-                setting: "in a 1940s era living room with bright vivid colors",
+                setting: "in a cozy 1940s living room with floral wallpaper, a patterned rug, an upholstered sofa, a wooden radio console, a baby-blue wingback chair, and a bookshelf filled with magazines and novels",
                 actions: [
                     "sitting in a baby-blue upholstered wingback chair reading a large magazine",
                     "sitting sideways in a baby-blue upholstered wingback chair, with her legs crossed and draped over one armrest, one arm draped over the headrest, and her chin tilted upward, laughing at the camera",
@@ -366,7 +364,7 @@ const visualPresets = {
             },
             {
                 label: "Studio Portrait",
-                setting: "in a professional photography studio",
+                setting: "in a 1940s commercial photography studio with painted canvas backdrops, a velvet-upholstered posing stool, folding screens, and vintage studio equipment",
                 actions: [
                     "sitting on the floor with her knees drawn to her chest. She is smiling at the camera, and her head is tilted upward."
                 ],
@@ -374,21 +372,21 @@ const visualPresets = {
             },
             {
                 label: "Art Deco Hotel Suite",
-                setting: "in a 1940s Art Deco hotel suite with a made bed, a nightstand with a bedside lamp, and a window with sheer curtains",
+                setting: "in an elegant 1940s hotel suite with walnut veneer furniture, an upholstered bed, geometric Art Deco wallpaper, a mirrored dressing table, brass hardware, and a leather travel suitcase",
                 actions: [
                     "sitting on a suitcase preparing for a trip"
                 ]
             },
             {
                 label: "Train Station Platform",
-                setting: "on a train station platform",
+                setting: "on a bustling 1940s railway platform with a steam locomotive, wooden luggage carts, leather suitcases, enamel station signs, and passengers in period clothing",
                 actions: [
                     "looking past the camera, leaning forward, waiting on a train"
                 ]
             },
             {
                 label: "Classic Roadside Diner",
-                setting: "in a classic roadside diner, with bright vivid colors and neon signs, white leather upholstery on each booth bench seat and bar stool",
+                setting: "inside a 1940s roadside diner with chrome-trimmed booths, red vinyl upholstery, a long Formica counter, pedestal stools, a jukebox, and large windows overlooking the highway",
                 actions: [
                     "sitting in a booth looking out the window as the rain cascades down the glass. A waitress in an A-line tea dress and a dainty apron that covers her lower torso is pouring coffee into the woman's coffee mug from a glass carafe."
                 ]
@@ -3346,7 +3344,7 @@ const visualPresets = {
             },
             "snapshot": {
                 "label": "1990s Disposable Camera",
-                "value": "1990s disposable-camera snapshot with direct flash, imperfect framing and grain",
+                "value": "1990s disposable-camera snapshot with imperfect framing and grain",
                 "cameraAngles": [
                     "eyeLevel",
                     "lowAngle",
@@ -3839,17 +3837,17 @@ const photographicLookPresets = {
     "blackWhite": "black-and-white photographic treatment",
     "highContrastNoir": "high-contrast black-and-white noir photography with deep blacks and dramatic tonal separation",
     "softMonochrome": "soft monochrome photographic treatment with gentle tonal transitions",
-    "sepia": "warm sepia-toned photographic treatment",
+    "sepia": "subtle sepia toning, softly faded contrast, and delicate antique photographic texture",
     "1930sEarlyColorFilm": { value: "1930s early color-film aesthetic with muted tones and classic pre-war photographic softness", tags: ["1930s"] },
     "1940sKodachrome": { value: "1940s Kodachrome-inspired photography with rich saturated color and gentle vintage contrast", tags: ["1940s"] },
-    "1950sMagazine": { value: "1950s glossy magazine photography with polished tones, subtle bloom, rich vintage color, gentle film grain, and clean mid-century color", tags: ["1950s"] },
-    "1960sSlideFilm": { value: "1960s slide-film photography with vibrant saturated color and crisp vintage rendering,  with vivid color film and playful graphic composition", tags: ["1960s"] },
+    "1950sMagazine": { value: "1950s glossy color magazine photography, polished color reproduction, subtle highlight bloom, gentle film grain, and smooth tonal transitions", tags: ["1950s"] },
+    "1960sSlideFilm": { value: "1960s color slide-film photography, vivid saturated colors, crisp detail, fine film grain, and punchy contrast", tags: ["1960s"] },
     "1970sPolaroid": { value: "1970s Polaroid snapshot aesthetic with warm tones, soft contrast, and instant-film color drift", tags: ["1970s"] },
     "1980sVhs": { value: "1980s VHS aesthetic with analog softness, washed color, and subtle magnetic video noise", tags: ["1980s"] },
     "1990sFilm": { value: "1990s consumer film photography with natural color, smooth tonal transitions, and nostalgic analog character", tags: ["1990s"] },
-    "2000sDisposableCamera": { value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, and inexpensive film imperfections", tags: ["2000s"] },
+    "2000sDisposableCamera": { value: "2000s disposable-camera snapshot aesthetic with direct-flash character, slight color cast, soft focus, visible film grain and inexpensive film imperfections", tags: ["2000s"] },
     "technicolor": "Technicolor",
-    "1970sColorFilm": "1970s Color Film with warm film grain",
+    "1970sColorFilm": "1970s color-film photography, warm slightly faded colors, organic fine film grain, and gentle contrast",
     "1980sColorFilm": "1980s Color Film",
     "35mmColorFilm": "35mm Color Film",
     "vintagePostcard": "Vintage Postcard",
