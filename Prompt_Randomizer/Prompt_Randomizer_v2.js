@@ -1,6 +1,36 @@
 //@api-1.0
 
-const DEBUG = true;
+const DEBUG = false;
+
+// Each batch item creates one prompt, then renders it once in every selected model.
+// Filenames and inference settings follow drawthingsai/community-models.
+// Prefer an installed quantization; never download a model automatically.
+const generationModels = [
+    {
+        label: "Krea 2",
+        files: ["krea_2_turbo_i8x.ckpt", "krea_2_turbo_q6p.ckpt", "krea_2_turbo_q8p.ckpt"],
+        defaults: { steps: 8, sampler: 10, guidanceScale: 1, shift: 3 },
+        useKreaLoras: true
+    },
+    {
+        label: "Flux 2 Klein",
+        files: ["flux_2_klein_9b_i8x.ckpt", "flux_2_klein_9b_q6p.ckpt", "flux_2_klein_9b_q8p.ckpt"],
+        defaults: { steps: 4, sampler: 16, guidanceScale: 1, shift: 3 },
+        useKreaLoras: false
+    },
+    {
+        label: "Qwen Image 2.1 Turbo",
+        files: ["qwen_image_2.1_turbo_i4x.ckpt", "qwen_image_2.1_turbo_i8x.ckpt", "qwen_image_2.1_turbo_q6p.ckpt", "qwen_image_2.1_turbo_q8p.ckpt"],
+        defaults: { steps: 8, sampler: 16, guidanceScale: 1, shift: 6.5 },
+        useKreaLoras: false
+    }
+];
+
+// Named section indices prevent the new Models section from shifting old choices.
+const selectionIndex = {
+    models: 0, aspectRatio: 1, imageCount: 2, loras: 3, concept: 4,
+    nationality: 5, age: 6, specialBodyTypes: 7, bodyType: 8
+};
 
 // =========================================
 // KREA 2 RANDOM GENERATOR
@@ -3692,7 +3722,7 @@ const nationalityPresets = [
         hairColors: ["dark brown", "black", "light brown", "blonde"],
         skinTones: ["light brown", "golden brown", "caramel", "medium brown", "deep brown"],
         eyeColors: ["dark brown", "brown", "hazel", "green", "blue"]
-    }
+    },
     {
         label: "Indian",
         value: "with South Asian facial features",
@@ -3864,6 +3894,11 @@ const photographicLookPresets = {
 
 const promptSelections = requestFromUser("Select from the dropdowns or randomize them", "Generate", function () {
     return [
+        this.section(
+            "Models",
+            "Generate the same prompt in every selected model. Select at least one.",
+            generationModels.map((model, index) => this.switch(index === 0, model.label))
+        ),
 
         this.section(
             "Aspect Ratio",
@@ -3880,8 +3915,8 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
 
         // Number of Images to Generate
         this.section(
-            "Number of Images to Generate",
-            "Select from the dropdown:",
+            "Number of Images per Model",
+            "Each prompt is generated once in every selected model:",
             [
                 this.menu(0, [
                     "1 image",
@@ -3896,7 +3931,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
         // Lora or no Lora??
         this.section(
             "Loras",
-            "Select whether to use loras to bypass safety filters: ",
+            "Use the configured Krea LoRAs for Krea 2 only:",
             [
                 this.switch(true, "Use LoRAs")
             ]
@@ -3995,19 +4030,19 @@ function buildSingleSubject(concept) {
         item => !item.named
     );
 
-    const nationality = promptSelections[4][0] === 0
+    const nationality = promptSelections[selectionIndex.nationality][0] === 0
         ? randomize(nationalityOptions)
-        : nationalityPresets[promptSelections[4][0] - 1];
+        : nationalityPresets[promptSelections[selectionIndex.nationality][0] - 1];
 
     // AGE
-    const age = promptSelections[5][0] === 0
+    const age = promptSelections[selectionIndex.age][0] === 0
         ? randomize(agePresets)
-        : agePresets[promptSelections[5][0] - 1];
+        : agePresets[promptSelections[selectionIndex.age][0] - 1];
 
     // BODY TYPE
-    const overallBuild = promptSelections[7][0] === 0
+    const overallBuild = promptSelections[selectionIndex.bodyType][0] === 0
         ? randomize(overallBuildPresets)
-        : overallBuildPresets[promptSelections[7][0] - 1];
+        : overallBuildPresets[promptSelections[selectionIndex.bodyType][0] - 1];
 
     // HAIR
     const eligibleHairstyles = (concept.hairstyles ?? []).filter(
@@ -4028,8 +4063,8 @@ function buildSingleSubject(concept) {
     // OUTFIT
     const outfit = randomize(concept.outfits ?? []);
 
-    const pregnant = promptSelections[6][0] === true;
-    const achondroplasia = promptSelections[6][1] === true;
+    const pregnant = promptSelections[selectionIndex.specialBodyTypes][0] === true;
+    const achondroplasia = promptSelections[selectionIndex.specialBodyTypes][1] === true;
 
     return {
         nationality,
@@ -4097,15 +4132,13 @@ function formatSingleSubject(subject) {
     return description.filter(Boolean).join(", ");
 }
 
-async function generateBatch() {
-
-    canvas.clear();
+async function generateBatch(selectedModels, baseConfiguration) {
 
     const conceptOptions = Object.values(visualPresets);
 
-    const concept = promptSelections[3][0] === 0
+    const concept = promptSelections[selectionIndex.concept][0] === 0
         ? randomize(conceptOptions)
-        : conceptOptions[promptSelections[3][0] - 1];
+        : conceptOptions[promptSelections[selectionIndex.concept][0] - 1];
 
     const variant = randomObjectValue(concept.variants);
     const scene = randomize(concept.scenes);
@@ -4159,90 +4192,86 @@ async function generateBatch() {
     // console.log("Generating:");
     // console.log(imagePrompt);
 
-    // =================================
-    // COPY CURRENT CONFIGURATION
-    // =================================
-
-    let config = JSON.parse(
-        JSON.stringify(pipeline.configuration)
-    );
-
-    // =================================
-    // KREA 2 SETTINGS
-    // =================================
-
-    config.model = "krea_2_turbo_i8x.ckpt";
-
+    // Choose the shape once so comparisons use the same prompt and dimensions.
     const aspectRatioOptions = [
         "portrait",
         "square",
         "landscape"
     ];
 
-    const aspectRatio = promptSelections[0][0] === 0
+    const aspectRatio = promptSelections[selectionIndex.aspectRatio][0] === 0
         ? randomize(aspectRatioOptions)
-        : aspectRatioOptions[promptSelections[0][0] - 1];
+        : aspectRatioOptions[promptSelections[selectionIndex.aspectRatio][0] - 1];
 
-    if (aspectRatio === "portrait") {
-        config.width = 768;
-        config.height = 1024;
+    const dimensions = {
+        portrait: { width: 768, height: 1024 },
+        square: { width: 1024, height: 1024 },
+        landscape: { width: 1024, height: 768 }
+    }[aspectRatio];
+
+    for (const model of selectedModels) {
+        // pipeline.run changes pipeline.configuration. Always start from the original
+        // snapshot so the previous model's settings cannot leak into the next run.
+        const config = JSON.parse(JSON.stringify(baseConfiguration));
+        Object.assign(config, model.defaults, dimensions);
+        config.model = model.file;
+        config.resolutionDependentShift = false;
+        config.batchCount = 1;
+        config.batchSize = 1;
+        config.seed = -1;
+        config.strength = 1;
+        config.hiresFix = false;
+        config.controls = [];
+        config.loras = model.useKreaLoras && promptSelections[selectionIndex.loras][0]
+            ? [
+                { mode: "all", file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt", weight: 1.0 },
+                { mode: "all", file: "mysticxxx_krea2_v3_lora_f16.ckpt", weight: 0.6 }
+            ]
+            : [];
+
+        console.log("Generating with " + model.label + " (" + model.file + ")");
+        if (!DEBUG) {
+            // Clear before every model so Flux/Qwen do not edit the preceding image.
+            canvas.clear();
+            await pipeline.run({ configuration: config, prompt: imagePrompt });
+        }
+        console.log(DEBUG ? "Debug prompt complete." : "Image complete: " + model.label);
     }
-    if (aspectRatio === "square") {
-        config.width = 1024;
-        config.height = 1024;
-    }
-    if (aspectRatio === "landscape") {
-        config.width = 1024;
-        config.height = 768;
-    }
-
-    config.batchCount = 1;
-    config.batchSize = 1;
-
-    // =================================
-    // RANDOM SEED
-    // =================================
-    config.seed = -1;
-
-    // =================================
-    // LORAS
-    // =================================
-
-    if (promptSelections[2][0]) {
-        config.loras = [
-            {
-                mode: "all",
-                file: "pornmaster_uncensored_krea2_v1_lora_f16.ckpt",
-                weight: 1.0
-            },
-            {
-                mode: "all",
-                file: "mysticxxx_krea2_v3_lora_f16.ckpt",
-                weight: 0.6
-            }
-        ]
-    } else {
-        config.loras = [];
-    }
-
-    // =================================
-    // GENERATE
-    // =================================
-
-    if (!DEBUG) {
-        await pipeline.run({
-            configuration: config,
-            prompt: imagePrompt
-        });
-    }
-
-    console.log(DEBUG ? "Debug prompt complete." : "Image complete.");
 }
-const imageCount = imageCounts[promptSelections[1][0]];
+
+function getSelectedModels(baseConfiguration) {
+    const selected = generationModels.filter(
+        (_, index) => promptSelections[selectionIndex.models][index] === true
+    );
+    if (selected.length === 0) {
+        throw new Error("Select at least one model: Krea 2, Flux 2 Klein or Qwen Image 2.1 Turbo.");
+    }
+
+    // Resolve the entire selection before clearing the canvas or generating images.
+    return selected.map(model => {
+        const files = model.files.includes(baseConfiguration.model)
+            ? [baseConfiguration.model, ...model.files.filter(file => file !== baseConfiguration.model)]
+            : model.files;
+        if (DEBUG) return { ...model, file: files[0] };
+        const installed = pipeline.areModelsDownloaded(files);
+        const file = files.find((_, index) => installed[index] === true);
+        if (!file) {
+            throw new Error(model.label + " is not installed. Install a supported version in Draw Things " +
+                "or update generationModels.files to its local filename. Supported files: " + files.join(", "));
+        }
+        return { ...model, file };
+    });
+}
+
+const imageCount = imageCounts[promptSelections[selectionIndex.imageCount][0]];
 
 async function runBatch() {
-    for (var i = 0; i < imageCount; i++) {
-        await generateBatch();
+    const baseConfiguration = JSON.parse(JSON.stringify(pipeline.configuration));
+    const selectedModels = getSelectedModels(baseConfiguration);
+    console.log(imageCount + " prompt(s) × " + selectedModels.length + " model(s) = " +
+        (imageCount * selectedModels.length) + " image(s).");
+    for (let i = 0; i < imageCount; i++) {
+        await generateBatch(selectedModels, baseConfiguration);
     }
     console.log("Batch Finished!");
 }
@@ -4250,4 +4279,6 @@ async function runBatch() {
 console.log("promptSelections:", promptSelections);
 console.log("imageCount:", imageCount);
 
-runBatch();
+runBatch().catch(error => {
+    console.log("Batch stopped: " + error.message);
+});
