@@ -3717,38 +3717,10 @@ const nationalityPresets = [
         eyeColors: ["dark brown", "black", "light brown"]
     },
     {
-        label: "Mixed-Race",
-        value: "of mixed Black and White ancestry, with naturally blended facial features",
-        hairColors: ["dark brown", "black", "light brown", "blonde"],
-        skinTones: ["light brown", "golden brown", "caramel", "medium brown", "deep brown"],
-        eyeColors: ["dark brown", "brown", "hazel", "green", "blue"]
-    },
-    {
-        label: "Indian",
-        value: "with South Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["deep golden-bronze", "dark tan", "warm brown"],
-        eyeColors: ["black", "dark brown"]
-    },
-    {
         label: "East Asian",
         value: "with East Asian facial features",
         hairColors: ["dark brown", "black"],
         skinTones: ["porcelain", "fair", "light", "olive"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Southeast Asian",
-        value: "with Southeast Asian facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["light", "warm tan", "golden-tan", "deep golden-bronze"],
-        eyeColors: ["dark brown", "black"]
-    },
-    {
-        label: "Middle Eastern",
-        value: "with Middle Eastern facial features",
-        hairColors: ["dark brown", "black"],
-        skinTones: ["olive", "dark"],
         eyeColors: ["dark brown", "black"]
     }
 ];
