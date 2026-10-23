@@ -9,7 +9,7 @@ const generationModels = [
     {
         label: "Krea 2",
         files: ["krea_2_turbo_i8x.ckpt", "krea_2_turbo_q6p.ckpt", "krea_2_turbo_q8p.ckpt"],
-        defaults: { steps: 8, sampler: 10, guidanceScale: 1, shift: 3 },
+        defaults: { steps: 8, sampler: 10, guidanceScale: 1, shift: 1.15 },
         useKreaLoras: true
     },
     {
