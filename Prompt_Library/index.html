@@ -1,30 +1,233 @@
-<!-- index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Prompt Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f6f7f9;
+        }
 
-    <style type="text/css"></style>
+        .container {
+            max-width: 960px;
+        }
+
+        .prompt-preview {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        textarea {
+            min-height: 210px;
+        }
+
+        .prompt-card {
+            border: 1px solid #e1e4e8;
+        }
+
+        .prompt-card .prompt-preview {
+            max-height: 115px;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-
-    <div class="container py-4">
-        <div class="row">
-
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
+    <main class="container py-4">
+        <header class="d-flex justify-content-between align-items-center mb-4 gap-2">
+            <div>
+                <h1 class="h3 mb-1">Prompt Library</h1>
+                <p class="text-secondary mb-0">Save, search, and copy your Draw Things prompts.</p>
+            </div>
+            <button id="signOut" class="btn btn-outline-secondary btn-sm d-none">Sign out</button>
+        </header>
+        <div id="notice" class="alert d-none" role="status"></div>
+        <section id="setup" class="alert alert-warning d-none">
+            Add your Supabase project URL and publishable key to <code>config.js</code>, then reload.
+        </section>
+        <section id="login" class="card p-4 d-none">
+            <h2 class="h5">Sign in</h2>
+            <p class="text-secondary">Enter the email address of your Supabase account. We'll send a login link.</p>
+            <form id="loginForm">
+                <label for="email" class="form-label">Email address</label>
+                <input id="email" type="email" class="form-control mb-3" autocomplete="email" required>
+                <button class="btn btn-primary" type="submit">Email me a sign-in link</button>
+            </form>
+        </section>
+        <section id="app" class="d-none">
+            <div class="card p-3 p-md-4 mb-4">
+                <h2 id="editorHeading" class="h5">Save a prompt</h2>
+                <form id="promptForm">
+                    <label class="form-label" for="title">Title</label>
+                    <input id="title" class="form-control mb-3" maxlength="200" placeholder="e.g. 1940s Vanity"
+                        required>
+                    <label class="form-label" for="prompt">Prompt (preserved exactly as pasted)</label>
+                    <textarea id="prompt" class="form-control mb-3" placeholder="Paste your Draw Things prompt here..."
+                        required></textarea>
+                    <button id="saveBtn" type="submit" class="btn btn-primary">Save prompt</button>
+                    <button id="cancelEdit" type="button" class="btn btn-outline-secondary d-none">Cancel edit</button>
+                </form>
+            </div>
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                <h2 class="h5 mb-0">Saved prompts <span id="count" class="text-secondary"></span></h2>
+                <div class="d-flex gap-2">
+                    <button id="exportBtn" class="btn btn-outline-secondary btn-sm">Export JSON</button>
+                    <label for="importFile" class="btn btn-outline-secondary btn-sm mb-0">Import JSON</label>
+                    <input id="importFile" type="file" accept=".json,application/json" class="visually-hidden">
+                </div>
+            </div>
+            <input id="search" type="search" class="form-control mb-3" placeholder="Search titles and prompt text...">
+            <div id="results" class="row g-3"></div>
+        </section>
+    </main>
+    <script src="config.js"></script>
+    <script type="module">
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+        const $ = id => document.getElementById(id);
+        const show = (id, visible) => $(id).classList.toggle('d-none', !visible);
+        let client, records = [], editingId = null, user = null;
+        function notice(message, type = 'success') {
+            $('notice').textContent = message;
+            $('notice').className = `alert alert-${type}`;
+        }
+        function errorMessage(error) { notice(error?.message || String(error), 'danger'); }
+        const cfg = window.PROMPT_LIBRARY_CONFIG;
+        if (!cfg?.url || !cfg?.publishableKey || cfg.url.includes('YOUR_') || cfg.publishableKey.includes('YOUR_')) {
+            show('setup', true);
+        } else {
+            client = createClient(cfg.url, cfg.publishableKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+            client.auth.onAuthStateChange((_event, session) => { setTimeout(() => updateSession(session), 0); });
+            const { data, error } = await client.auth.getSession();
+            if (error) errorMessage(error);
+            await updateSession(data?.session);
+        }
+        async function updateSession(session) {
+            const nextUser = session?.user || null;
+            const changed = nextUser?.id !== user?.id;
+            user = nextUser;
+            show('login', !user); show('app', !!user); show('signOut', !!user);
+            if (!user) { records = []; render(); return; }
+            if (changed) await load();
+        }
+        $('loginForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const button = e.target.querySelector('button');
+            button.disabled = true;
+            try {
+                const { error } = await client.auth.signInWithOtp({
+                    email: $('email').value.trim(),
+                    options: { shouldCreateUser: false, emailRedirectTo: window.location.origin + window.location.pathname }
+                });
+                if (error) throw error;
+                notice('Check your email for a sign-in link.');
+            } catch (err) { errorMessage(err); }
+            finally { button.disabled = false; }
+        });
+        $('signOut').addEventListener('click', async () => {
+            const { error } = await client.auth.signOut();
+            if (error) errorMessage(error);
+            else { resetEditor(); notice('Signed out.'); }
+        });
+        async function load() {
+            const all = [];
+            let from = 0;
+            while (true) {
+                const { data, error } = await client.from('prompts').select('id,title,prompt,created_at,updated_at')
+                    .order('created_at', { ascending: false }).range(from, from + 999);
+                if (error) { errorMessage(error); return; }
+                all.push(...data);
+                if (data.length < 1000) break;
+                from += 1000;
+            }
+            records = all; render();
+        }
+        function resetEditor() {
+            editingId = null;
+            $('promptForm').reset();
+            $('editorHeading').textContent = 'Save a prompt';
+            $('saveBtn').textContent = 'Save prompt';
+            show('cancelEdit', false);
+        }
+        $('cancelEdit').addEventListener('click', resetEditor);
+        $('promptForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const title = $('title').value.trim(), prompt = $('prompt').value;
+            if (!title || !prompt.trim()) { notice('Enter a title and prompt.', 'warning'); return; }
+            const button = $('saveBtn'); button.disabled = true;
+            try {
+                const payload = { title, prompt };
+                const result = editingId
+                    ? await client.from('prompts').update({ ...payload, updated_at: new Date().toISOString() }).eq('id', editingId)
+                    : await client.from('prompts').insert(payload);
+                if (result.error) throw result.error;
+                resetEditor(); await load(); notice('Prompt saved.');
+            } catch (err) { errorMessage(err); }
+            finally { button.disabled = false; }
+        });
+        $('search').addEventListener('input', render);
+        function render() {
+            const term = $('search').value.toLocaleLowerCase();
+            const matching = records.filter(r => (r.title + '\n' + r.prompt).toLocaleLowerCase().includes(term));
+            $('count').textContent = `(${records.length})`;
+            const root = $('results'); root.replaceChildren();
+            if (!matching.length) {
+                const p = document.createElement('p'); p.className = 'text-secondary';
+                p.textContent = records.length ? 'No matching prompts.' : 'No saved prompts yet.';
+                root.append(p); return;
+            }
+            for (const item of matching) {
+                const col = document.createElement('div'); col.className = 'col-12';
+                const card = document.createElement('div'); card.className = 'card prompt-card p-3';
+                const title = document.createElement('h3'); title.className = 'h6'; title.textContent = item.title;
+                const preview = document.createElement('div'); preview.className = 'prompt-preview text-secondary small mb-3'; preview.textContent = item.prompt;
+                const buttons = document.createElement('div'); buttons.className = 'd-flex flex-wrap gap-2';
+                for (const [label, action, variant] of [
+                    ['Copy', async () => { try { await navigator.clipboard.writeText(item.prompt); notice('Copied prompt.'); } catch { errorMessage(new Error('Copy failed. Try opening this site over HTTPS.')); } }, 'primary'],
+                    ['View', () => { const expanded = preview.style.maxHeight === 'none'; preview.style.maxHeight = expanded ? '' : 'none'; preview.style.overflow = expanded ? '' : 'visible'; }, 'outline-secondary'],
+                    ['Edit', () => { editingId = item.id; $('title').value = item.title; $('prompt').value = item.prompt; $('editorHeading').textContent = 'Edit prompt'; $('saveBtn').textContent = 'Save changes'; show('cancelEdit', true); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 'outline-secondary'],
+                    ['Delete', async () => { if (!confirm(`Delete "${item.title}"? This cannot be undone.`)) return; const { error } = await client.from('prompts').delete().eq('id', item.id); if (error) errorMessage(error); else { if (editingId === item.id) resetEditor(); await load(); notice('Prompt deleted.'); } }, 'outline-danger']
+                ]) {
+                    const b = document.createElement('button'); b.type = 'button'; b.className = `btn btn-sm btn-${variant}`; b.textContent = label;
+                    b.addEventListener('click', action); buttons.append(b);
+                }
+                card.append(title, preview, buttons); col.append(card); root.append(col);
+            }
+        }
+        $('exportBtn').addEventListener('click', () => {
+            const json = JSON.stringify({
+                format: 'prompt-library-v1', exported_at: new Date().toISOString(),
+                prompts: records.map(({ title, prompt, created_at }) => ({ title, prompt, created_at }))
+            }, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = `prompt-library-${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+        });
+        $('importFile').addEventListener('change', async e => {
+            const file = e.target.files?.[0]; if (!file) return;
+            try {
+                const content = JSON.parse(await file.text());
+                if (content.format !== 'prompt-library-v1' || !Array.isArray(content.prompts)) throw new Error('Not a Prompt Library backup.');
+                if (content.prompts.length > 10000) throw new Error('Import too large; split into smaller files.');
+                const valid = content.prompts.map(r => {
+                    if (typeof r.title !== 'string' || !r.title.trim() || r.title.length > 200 || typeof r.prompt !== 'string' || !r.prompt.trim()) throw new Error('Backup contains an invalid prompt.');
+                    return { title: r.title, prompt: r.prompt };
+                });
+                if (!confirm(`Import ${valid.length} prompts? Existing prompts will remain. Exact title + prompt duplicates will be skipped.`)) return;
+                const known = new Set(records.map(r => JSON.stringify([r.title, r.prompt])));
+                const fresh = valid.filter(r => { const key = JSON.stringify([r.title, r.prompt]); if (known.has(key)) return false; known.add(key); return true; });
+                for (let i = 0; i < fresh.length; i += 100) {
+                    const { error } = await client.from('prompts').insert(fresh.slice(i, i + 100));
+                    if (error) throw error;
+                }
+                await load(); notice(`Imported ${fresh.length} prompts; skipped ${valid.length - fresh.length} duplicates.`);
+            } catch (err) { await load(); errorMessage(err); }
+            finally { e.target.value = ''; }
+        });
+    </script>
 </body>
 
 </html>
