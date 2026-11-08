@@ -1,4 +1,5 @@
 // JS Prompt Generator
+// Generates prompts randomly to paste in ComfyUI or Draw Things
 
 // =========================================
 // PROMPT GENERATOR
