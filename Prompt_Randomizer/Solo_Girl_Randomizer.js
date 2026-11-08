@@ -662,7 +662,7 @@ const promptSelections = requestFromUser("Select from the dropdowns or randomize
             [
                 this.menu(1, [
                     "Random Selection",
-                    ...artStylePresets.map(item => item.label)
+                    ...visualPresets.map(item => item.label)
                 ])
             ]),
 
@@ -812,7 +812,7 @@ async function generateBatch() {
     canvas.clear();
 
     let imagePrompt;
-    let artStyle = artStylePresets[promptSelections[3][0]];
+    let artStyle = visualPresets[promptSelections[3][0]];
     let nationality;
     let isPregnant;
     let isMidget;
@@ -833,9 +833,9 @@ async function generateBatch() {
     let photographicLook = photographicLookPresets[promptSelections[16][0]].value;
 
     if (promptSelections[3][0] === 0) {
-        artStyle = randomize(artStylePresets);
+        artStyle = randomize(visualPresets);
     } else {
-        artStyle = artStylePresets[promptSelections[3][0] - 1];
+        artStyle = visualPresets[promptSelections[3][0] - 1];
     }
 
     if (promptSelections[4][0] === 0) {
@@ -1034,7 +1034,7 @@ async function generateBatch() {
     }
 
     if (environment === scenePreset && scenePreset?.selfiePhoto) {
-        artStyle = artStylePresets.find(
+        artStyle = visualPresets.find(
             style => style.label === "Selfie Photo, from Above"
         );
     }
