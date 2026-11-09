@@ -430,6 +430,7 @@ function applyClothingColor(item, color) {
 const clothingGroups = [
     {
         title: "Tops",
+        scene: "everyday",
         description: "Upper-body styling and color",
         hasColorMenu: true,
         presets: [
@@ -446,6 +447,7 @@ const clothingGroups = [
     },
     {
         title: "Bottoms",
+        scene: "everyday",
         description: "Skirts, shorts, bottoms, and color",
         hasColorMenu: true,
         presets: [
@@ -460,17 +462,19 @@ const clothingGroups = [
     },
     {
         title: "Dresses",
+        scene: "dress",
         description: "Dress and one-piece styles and color",
         hasColorMenu: true,
         presets: [
-            "a short babydoll dress", "a summer dress", "a multicolored sari",
-            "a burqa", "a nun's habit", "a traditional wedding dress",
-            "an edgy racy wedding dress", "a full-length evening gown",
+            "a short babydoll dress", "a summer dress", { label: "a multicolored sari", value: "a multicolored sari", tags: ["covered"] },
+            { label: "a burqa", value: "a burqa", tags: ["covered"] }, { label: "a nun's habit", value: "a nun's habit", tags: ["covered"] }, { label: "a traditional wedding dress", value: "a traditional wedding dress", tags: ["formal"] },
+            { label: "an edgy racy wedding dress", value: "an edgy racy wedding dress", tags: ["formal"] }, { label: "a full-length evening gown", value: "a full-length evening gown", tags: ["formal"] },
             "a lowcut full-length sheer dress with side pockets", "cut-out dress with a side slit from her waist down"
         ]
     },
     {
         title: "Lingerie",
+        scene: "intimate",
         description: "Lingerie, underlayers, and color",
         hasColorMenu: true,
         presets: [
@@ -486,17 +490,20 @@ const clothingGroups = [
     },
     {
         title: "Swimwear",
+        scene: "swim",
         presets: [
             "one-piece swimsuit", "two-piece bikini", "micro bikini", "string bikini"
         ]
     },
     {
         title: "Robes / Loungewear",
+        scene: "home",
         description: "Robes and casual lounging outfits",
         presets: ["kimono robe", "silk cami and shorts set"]
     },
     {
         title: "Sets",
+        scene: "home",
         description: "Specialty outfit presets",
         presets: [
             { label: "Champagne Silk Pajama Set", value: "champagne-colored silk pajama set with shorts that show ample thigh" },
@@ -505,6 +512,7 @@ const clothingGroups = [
     },
     {
         title: "Uniforms",
+        scene: "costume",
         description: "Uniform-style outfit presets",
         presets: [
             { label: "French Maid Uniform", value: "black French maid uniform with short pleated skirt and white collar" },
@@ -525,6 +533,7 @@ const clothingGroups = [
     },
     {
         title: "Period Fashion",
+        scene: "period",
         description: "1940s WWII-era and 1960s mid-century styling",
         presets: [
             { label: "1940s WWII Women's Ensemble", value: "1940s WWII-era women's ensemble: A-line tea dress with a fitted waist, padded shoulders, and Victory Roll hairstyle" },
@@ -1464,16 +1473,133 @@ function buildRandomSubject(cfg) {
 function buildRandomOutfit(cfg) {
     const fixed = joinParts([cfg.selectedOutfit, cfg.customOutfit, ...cfg.clothingGroupValues]);
     if (fixed) return fixed;
-    const main = clothingGroups.filter(group => !["Footwear", "Costume Oddities"].includes(group.title));
-    const group = randomElement(main);
+    const scene = sceneOfAction();
+    // A shower, or an action that already describes a nude body, takes
+    // no outfit at all -- clothing text would contradict the scene.
+    if (sceneNeedsNoOutfit()) return "";
+    for (let attempt = 0; attempt < 3; attempt++) {
+        const outfit = rollOutfitForScene(scene);
+        if (!outfitClashes(outfit)) return outfit;
+    }
+    // Last resort: a plain top + bottom never clashes.
+    return joinParts([
+        randomOutfitItem(clothingGroups.find(g => g.title === "Tops"), scene),
+        randomOutfitItem(clothingGroups.find(g => g.title === "Bottoms"), scene)
+    ]);
+}
+
+function rollOutfitForScene(scene) {
+    const group = randomElement(outfitGroupsForScene(scene));
     if (group.title === "Tops") {
-        return joinParts([randomPresetValue(group.presets), randomPresetValue(clothingGroups.find(g => g.title === "Bottoms").presets)]);
+        return joinParts([randomOutfitItem(group, scene), randomOutfitItem(clothingGroups.find(g => g.title === "Bottoms"), scene)]);
     }
     if (group.title === "Bottoms") {
-        return joinParts([randomPresetValue(clothingGroups.find(g => g.title === "Tops").presets), randomPresetValue(group.presets)]);
+        return joinParts([randomOutfitItem(clothingGroups.find(g => g.title === "Tops"), scene), randomOutfitItem(group, scene)]);
     }
-    return randomPresetValue(group.presets);
+    return randomOutfitItem(group, scene);
 }
+
+// =========================================
+// OUTFIT / SCENE MATCHING
+// The action is built before the outfit (see the generation loop) and
+// remembers the scene it made in lastActionScene. The random outfit is
+// rolled only from clothing groups that fit that scene -- each group
+// carries a `scene` class (swim, intimate, home, costume, period,
+// dress, everyday) -- so a swimsuit stays at the water and pajamas
+// stay out of the nightclub. Menu-picked outfits are never filtered;
+// only the random roll is.
+// =========================================
+
+// Scene words that mark a place where people dress up.
+const DRESSY_SCENE_WORDS = ["nightclub", "party", "gala", "ball", "casino", "red carpet", "date night"];
+// Scene words that mark a workplace or public-professional place.
+const WORK_SCENE_WORDS = ["surgical", "office", "library"];
+
+// Plain-language read of the last random action's scene.
+function sceneOfAction() {
+    if (!lastActionScene) return null;
+    const text = lastActionScene.text;
+    return {
+        water: lastActionScene.tags.includes("water"),
+        dressy: DRESSY_SCENE_WORDS.some(word => text.includes(word)),
+        work: WORK_SCENE_WORDS.some(word => text.includes(word)),
+        hasSetting: lastActionScene.hasSetting
+    };
+}
+
+function sceneNeedsNoOutfit() {
+    if (!lastActionScene) return false;
+    const text = lastActionScene.text;
+    return text.includes("shower") || text.includes("nude body") || text.includes("nude bodies");
+}
+
+// Which clothing groups may be rolled for this scene.
+function outfitGroupsForScene(scene) {
+    const main = clothingGroups.filter(group => !["Footwear", "Costume Oddities"].includes(group.title));
+    if (!scene) return main;
+    const fits = main.filter(group => {
+        switch (group.scene) {
+            case "swim": return scene.water;
+            case "intimate": return !scene.water && !scene.work;
+            case "home": return !scene.water && !scene.work && !scene.dressy;
+            case "costume": return !scene.water && !scene.work;
+            case "period": return !scene.water && !scene.work;
+            default: return true; // everyday and dress groups fit anywhere
+        }
+    });
+    return fits.length ? fits : main;
+}
+
+// One random item from a group, honoring item tags: "formal" items
+// (wedding dresses, the evening gown) land only in dressy scenes or
+// placeless portraits, and "covered" items (burqa, nun's habit, sari)
+// stay out of the water.
+function randomOutfitItem(group, scene) {
+    if (!group) return "";
+    const candidates = group.presets.filter(preset => {
+        if (!scene) return true;
+        const tags = presetTags(preset);
+        if (tags.includes("formal") && (scene.water || scene.work || (scene.hasSetting && !scene.dressy))) return false;
+        if (tags.includes("covered") && scene.water) return false;
+        return true;
+    });
+    return randomPresetValue(candidates.length ? candidates : group.presets);
+}
+
+// Backstop for odd pairs the group rules cannot express, mostly so a
+// future item added without tags still cannot land somewhere silly:
+// [outfit words, scene words] that must never appear together.
+const NEVER_TOGETHER = [
+    [/wedding|evening gown/, /shower|poolside|beach|library|office|surgical|kitchen|street|glade/],
+    [/burqa|nun's habit|sari/, /shower|poolside|beach|nightclub/],
+    [/bikini|swimsuit/, /library|office|surgical|kitchen|street|glade|elevator/],
+    [/pajama/, /nightclub|street|office|library|surgical/]
+];
+function outfitClashes(outfitText) {
+    if (!outfitText || !lastActionScene) return false;
+    const text = lastActionScene.text;
+    return NEVER_TOGETHER.some(([outfitPattern, scenePattern]) =>
+        outfitPattern.test(outfitText) && scenePattern.test(text));
+}
+
+// Adding a pose? If its text names a place or furniture (a bed, a
+// couch, a desk...), it MUST carry the "location" tag, or the random
+// Setting roll can drop that furniture somewhere impossible. This
+// check runs once at load and lists any pose that looks like it names
+// a place but is missing the tag.
+const PLACE_WORDS = ["bed", "sofa", "couch", "chair", "desk", "table", "doorway", "bathtub", "hammock", "backseat", "counter", "stool", "bench"];
+function auditLocationTags() {
+    const positionGroup = actionGroups.find(g => g.title === "Position");
+    const poses = [...(positionGroup ? positionGroup.presets : []), ...complexActionPresets];
+    const missing = poses.filter(preset => {
+        const value = (getPresetValue(preset) || "").toLowerCase();
+        return !hasPresetTag(preset, "location") && PLACE_WORDS.some(word => value.includes(word));
+    });
+    if (missing.length) {
+        console.log("Warning: poses that name a place but have no 'location' tag:", missing.map(p => p.label || getPresetValue(p)));
+    }
+}
+auditLocationTags();
 
 // =========================================
 // TAG-BASED COMPATIBILITY (cf. Prompt Randomizer v1)
@@ -1500,6 +1626,12 @@ function randomPreset(presets) {
 // action. Read when randomizing lighting (see buildRandomAction).
 let lastActionEnvTags = [];
 
+// The scene the most recently built RANDOM action made: its combined
+// tags, its text, and whether a Setting was added. buildRandomOutfit
+// reads it to dress the subject for the scene. Null when the action
+// was user-chosen (the outfit is then rolled unfiltered, as before).
+let lastActionScene = null;
+
 // Random lighting preset whose tags match the last built action's
 // environment. Falls back to the full list when the context is unknown.
 function randomCompatibleLighting() {
@@ -1517,7 +1649,10 @@ function randomCompatibleLighting() {
 // several mutually exclusive base positions into a single prompt.
 function buildRandomAction(cfg) {
     const fixed = joinParts([cfg.selectedAction, cfg.customAction, ...cfg.actionGroupValues]);
-    if (fixed) return fixed;
+    if (fixed) {
+        lastActionScene = null; // user-chosen action: outfit stays unfiltered
+        return fixed;
+    }
     // Tag-driven compatibility: the position (or a complex pose) is picked
     // first; a setting is added unless the position carries its own
     // location; flavor is filtered by pose tags; the environment tags are
@@ -1533,11 +1668,13 @@ function buildRandomAction(cfg) {
 
     // Setting, unless the position already names a location.
     let envTags = [];
+    let settingAdded = false;
     if (!positionTags.includes("location") && Math.random() < 0.7) {
         const settingPreset = randomPreset(groupByTitle("Setting").presets);
         if (settingPreset) {
             parts.push(getPresetValue(settingPreset));
             envTags = presetTags(settingPreset);
+            settingAdded = true;
         }
     }
     if (envTags.length === 0) {
@@ -1560,7 +1697,14 @@ function buildRandomAction(cfg) {
             break;
         }
     }
-    return joinParts(parts);
+    // Remember the scene for the outfit roll (see buildRandomOutfit).
+    const actionText = joinParts(parts);
+    lastActionScene = {
+        tags: [...positionTags, ...envTags],
+        text: actionText.toLowerCase(),
+        hasSetting: settingAdded
+    };
+    return actionText;
 }
 
 function makePrompt(data, aspectOption) {
