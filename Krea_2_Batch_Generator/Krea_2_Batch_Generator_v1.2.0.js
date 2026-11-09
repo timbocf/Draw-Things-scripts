@@ -1,4 +1,5 @@
 //@api-1.0
+// version 1.2.0
 
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
