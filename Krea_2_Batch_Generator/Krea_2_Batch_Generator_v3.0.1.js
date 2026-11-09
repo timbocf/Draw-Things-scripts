@@ -1,8 +1,8 @@
 //@api-1.0
-// version 7
+// version 3.0.1
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
-// V7 — REFACTORED / ORGANIZED / STABILIZED
+// V3.0.1 — REFACTORED / ORGANIZED / STABILIZED
 // PRESETS + BODY PHYSIQUE + GENDER-AWARE TERMS
 // + CAMERA + LIGHTING + TENEBRISM
 // =========================================
