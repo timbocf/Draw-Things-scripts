@@ -1,8 +1,8 @@
 //@api-1.0
-// version 13
+// version 4.3.0
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
-// Version 13 — adds Randomization Mode
+// Version 4.3.0 — adds Randomization Mode
 // =========================================
 
 // =========================================
