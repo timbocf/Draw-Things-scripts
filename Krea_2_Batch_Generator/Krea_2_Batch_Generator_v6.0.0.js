@@ -1,8 +1,8 @@
 //@api-1.0
-// version 18
+// version 6.0.0
 // =========================================
 // KREA 2 MODULAR BATCH GENERATOR
-// Version 18 — Heritage descriptions replace trait menus
+// Version 6.0.0 — Heritage descriptions replace trait menus
 // =========================================
 // Merged into Krea_2_Batch_Generator as v18 (Nov 8, 2026): the
 // V15-V18 line from the standalone Krea-2-generator-v14 repo,
